@@ -1,0 +1,84 @@
+<view class="body">
+  <view class="userCard app-shadow">
+    <view class="userCard-left">
+      <view class="userCard-name">王小田</view>
+      <view>
+        <view class="userCard-section">客服部</view>
+        <view class="userCard-company">北京鹏龙星徽汽车贸易有限公司</view>
+      </view>
+    </view>
+    <view class="userCard-right">
+      <view class="userCard-img">
+        <image mode="aspectFill" src="http://a1.att.hudong.com/77/54/01300001093852129837548138605.jpg" />
+      </view>
+      <view class="userCard-index">C0330</view>
+    </view>
+  </view>
+  <view class="my-data">
+    <view class="my-data-title">我的数据</view>
+    <view class="ui-row" style="">
+      <view class="ui-col ui-col-6" style="flex: 0 0 50%;">
+        <view class="ui-col-content">
+          <view class="my-data-item-title">总产值
+            <span>（元）</span>
+          </view>
+          <view class="my-data-item-num">1562000</view>
+        </view>
+      </view>
+      <view class="ui-col ui-col-6" style="flex: 0 0 50%;">
+        <view class="ui-col-content">
+          <view class="my-data-rangking">
+            <view class="my-data-item-title">本月店内排名</view>
+            <view class="my-data-item-index">第
+              <span>1</span>名</view>
+          </view>
+          <view class="my-data-img">
+            <image mode="aspectFill" src="http://a1.att.hudong.com/77/54/01300001093852129837548138605.jpg" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='my-data-list app-scroll-none'>
+      <view class="my-data-item app-shadow">
+          <view class="my-data-item-title my-data-item-list">本月目标
+            <span>（台）</span>
+          </view>
+          <view class="my-data-item-num my-data-item-list">3<span>/5</span></view>
+      </view>
+      <view class="my-data-item  app-shadow">
+          <view class="my-data-item-title my-data-item-list">我的客户
+            <span>（位）</span>
+          </view>
+          <view class="my-data-item-num my-data-item-list">103</view>
+      </view>
+      <view  class="my-data-item  app-shadow">
+        <view class="my-data-item-title my-data-item-list"> 活跃客户
+          <span>（位）</span>
+        </view>
+        <view class="my-data-item-num my-data-item-list">32</view>
+      </view>
+      <view  class="my-data-item  app-shadow">
+        <view class="my-data-item-title my-data-item-list"> 当日接车
+          <span>（台）</span>
+        </view>
+        <view class="my-data-item-num my-data-item-list">3</view>
+      </view>
+      <view  class="my-data-item  app-shadow">
+        <view class="my-data-item-title my-data-item-list"> 当月产值
+          <span>（元）</span>
+        </view>
+        <view class="my-data-item-num my-data-item-list">90000</view>
+      </view>
+    </view>
+  </view>
+  <!-- <view class="item-list">
+    <view class="item">
+      <view class="icon">1</view>
+      <view class="text">活动报名</view>
+    </view>
+    <view class="item">
+      <view class="icon">1</view>
+      <view class="text">活动报名</view>
+    </view>
+  </view> -->
+</view>

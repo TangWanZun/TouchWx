@@ -1,0 +1,208 @@
+<template>
+  <view class="body">
+    <view class="userCard">
+        <view class="userCard-left">
+          <view  class="userCard-name">王小田</view>
+          <view>
+            <view class="userCard-section">客服部</view>
+            <view class="userCard-company">北京鹏龙星徽汽车贸易有限公司</view>
+          </view>
+        </view>
+        <view class="userCard-right">
+          <view class="userCard-img">
+            <image mode="aspectFill" src="http://a1.att.hudong.com/77/54/01300001093852129837548138605.jpg" />
+          </view>
+          <view class="userCard-index">C0330</view>
+        </view>
+    </view>
+    <view class="my-data">
+      <view class="my-data-title">我的数据</view>
+      <ui-row>
+        <ui-col span="6">
+          <view class="my-data-item-title">总产值<span>（元）</span></view>
+          <view class="my-data-item-num">1562000</view>
+        </ui-col>
+        <ui-col span="6">
+          <view class="my-data-rangking">
+            <view class="my-data-item-title">本月店内排名</view>
+            <view class="my-data-item-index">第<span>1</span>名</view>
+          </view>
+          <view class="my-data-img">
+            <image mode="aspectFill" src="http://a1.att.hudong.com/77/54/01300001093852129837548138605.jpg" />
+          </view>
+        </ui-col>
+      </ui-row>
+      <view class="my-data-item">
+        <ui-row>
+          <ui-col span="6">
+            <view class="my-data-item-title my-data-item-list">我的客户<span>（位）</span></view>
+            <view class="my-data-item-num my-data-item-list" >103</view>
+          </ui-col>
+          <ui-col span="6">
+            <view class="my-data-item-title my-data-item-list"> 活跃客户<span>（位）</span></view>
+            <view class="my-data-item-num my-data-item-list">32</view>
+          </ui-col>
+        </ui-row>
+      </view>
+      <view class="my-data-item">
+        <ui-row>
+          <ui-col span="6">
+            <view class="my-data-item-title my-data-item-list">当日接车<span>（台）</span></view>
+            <view class="my-data-item-num my-data-item-list">3</view>
+          </ui-col>
+          <ui-col span="6">
+            <view class="my-data-item-title my-data-item-list">当月产值<span>（元）</span></view>
+            <view class="my-data-item-num my-data-item-list">90000</view>
+          </ui-col>
+        </ui-row>
+      </view>
+    </view>
+    <view class="item-list">
+      <view class="item">
+        <view class="icon">1</view>
+        <view class="text">活动报名</view>
+      </view>
+      <view class="item">
+        <view class="icon">1</view>
+        <view class="text">活动报名</view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+export default {
+  config: {
+    navigationBarTitleText: '我的'
+  },
+  data: {}
+}
+</script>
+
+<style lang="less">
+@color:#4eb4ff;
+.body{
+  padding-top: 10px;
+  background-color: #fafafa;
+  min-height: 100vh;
+}
+.userCard{
+  background-color: white;
+  margin:0 15px;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding:15px;
+  min-height: 150px;
+  display: flex;
+  justify-content: space-between;
+  .userCard-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .userCard-name{
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .userCard-section{
+      font-size: 18px;
+    }
+    .userCard-company{
+      font-size: 16px;
+      width:230px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  .userCard-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    min-width:70px;
+    .userCard-img{
+      width:70px;
+      height: 70px;
+      border-radius: 100%;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    .userCard-index{
+      padding:3px 10px;
+      border-radius: 5px;
+      color: white;
+      background-color: @color;
+    }
+  }
+}
+.my-data{
+  background-color: white;
+  padding:0 15px;
+  padding-bottom: 10px;
+  margin-top: 20px;
+  .my-data-title{
+    font-size: 18px;
+    padding:15px 0;
+  }
+  .my-data-rangking{
+    position: relative;
+  }
+  .my-data-item{
+    margin:25px 0;
+  }
+  .my-data-item-title{
+    font-size: 14px;
+    >span{
+      color: rgba(0, 0, 0, 0.5);
+    }
+    margin-bottom: 5px;
+  }
+  .my-data-item-index{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+    >span{
+      color:@color;
+    }
+  }
+  .my-data-item-num{
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .my-data-img{
+    width:40px;
+    height: 40px;
+    border:3px solid @color;
+    border-radius: 100%;
+    overflow: hidden;
+  }
+  .my-data-item-list{
+    text-align: center;
+  }
+}
+.item-list{
+  background-color: white;
+  padding:0 15px;
+  margin-top: 20px;
+  .item{
+    padding:15px 15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    &:last-child{
+      border:0;
+    }
+    .icon{
+      margin-right: 10px;
+    }
+    .text{
+      font-size: 18px;
+    }
+  }
+}
+</style>

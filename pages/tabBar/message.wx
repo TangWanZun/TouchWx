@@ -1,0 +1,15 @@
+<template>
+  <view></view>
+</template>
+
+<script>
+export default {
+  config: {
+    navigationBarTitleText: '消息'
+  },
+  data: {}
+}
+</script>
+
+<style lang="less">
+</style>

@@ -1,0 +1,180 @@
+/* 1像素解决方案 */
+/*
+ * 清除1px
+ */
+/*
+ * 清除浮动
+ */
+/*
+ * mobile
+ */
+/*
+ * 1px
+ */
+/*
+ * text
+ */
+/* 垂直居中 */
+/* 水平居中 */
+/* 水平垂直居中 */
+/* 超出部分出省略号 */
+/* 多行文本超出部分省略号 */
+.body {
+  padding-top: 10px;
+  background-color: #fafafa;
+  min-height: 100vh;
+}
+.userCard {
+  background-color: white;
+  margin: 0 15px;
+  border-radius: 5px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  min-height: 160px;
+}
+.userCard .userCard-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  width:100px;
+}
+.userCard .userCard-left .userCard-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+.userCard .userCard-left .userCard-section {
+  font-size: 18px;
+}
+.userCard .userCard-left .userCard-company {
+  font-size: 16px;
+  width:100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.userCard .userCard-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  min-width: 70px;
+}
+.userCard .userCard-right .userCard-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.userCard .userCard-right .userCard-index {
+  padding: 3px 10px;
+  border-radius: 5px;
+  color: white;
+  background-color: #4eb4ff;
+}
+.my-data {
+  background-color: white;
+  padding: 0 15px;
+  margin-top: 20px;
+}
+.my-data .my-data-title {
+  font-size: 18px;
+  padding: 20px 0;
+}
+.my-data .my-data-rangking {
+  position: relative;
+}
+.my-data-list{
+  display: flex;
+  justify-content:flex-start;
+  overflow: auto;
+  padding:20px 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+.my-data-list::after{
+  content: "";
+  display: block;
+  width:10px;
+  height: 10px;
+  flex-shrink: 0;
+}
+.my-data .my-data-item {
+  padding:15px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  margin-right: 10px;
+}
+.my-data .my-data-item-title {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.my-data .my-data-item-title > span {
+  color: rgba(0, 0, 0, 0.5);
+}
+.my-data .my-data-item-index {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+.my-data .my-data-item-index > span {
+  color: #4eb4ff;
+}
+.my-data .my-data-item-num {
+  font-size: 25px;
+  font-weight: bold;
+}
+.my-data .my-data-item-num >span{
+  font-size: 20px;
+}
+.my-data .my-data-img {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #4eb4ff;
+  border-radius: 100%;
+  overflow: hidden;
+}
+.my-data .my-data-item-list {
+  text-align: center;
+}
+.item-list {
+  background-color: white;
+  padding: 0 15px;
+}
+.item-list .item {
+  padding: 15px 15px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+  position: relative;
+}
+.item-list .item::after{
+  content:'';
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNTM4OTY1NDQyOTkyIiBjbGFzcz0iaWNvbiIgc3R5bGU9IiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjE5MTMiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNDgiIGhlaWdodD0iNDgiPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PC9zdHlsZT48L2RlZnM+PHBhdGggZD0iTTY5MS44NDMgNDY5LjMzMzk5OTk5YzAgOC4zODYtMy4zMzEgMTYuNDI5LTkuMjYyIDIyLjM1NzAwMDAxbC0yOTYuNDQ4IDI5Ni40NDljLTEyLjM0OCAxMi4zNDgtMzIuMzY4IDEyLjM0OC00NC43MTUgMC0xMi4zNDgtMTIuMzQ4LTEyLjM0OC0zMi4zNjcgMC00NC43MTVsMjc0LjA5MDk5OTk5LTI3NC4wOS0yNzQuMDkwOTk5OTktMjc0LjA5Yy0xMi4zNDgtMTIuMzQ4LTEyLjM0OC0zMi4zNjcgMC00NC43MTVzMzIuMzY3LTEyLjM0OCA0NC43MTUgMGwyOTYuNDQ4IDI5Ni40NDdjNS45MyA1LjkyOSA5LjI2MiAxMy45NzMgOS4yNjIgMjIuMzU2OTk5OTl6IiBwLWlkPSIxOTE0IiBmaWxsPSIjMmMyYzJjIj48L3BhdGg+PC9zdmc+');
+  position: absolute;
+  top: 0;
+  right: 0px;
+  height: 100%;
+  width: 25px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+}
+.item-list .item:last-child {
+  border: 0;
+}
+.item-list .item .icon {
+  margin-right: 10px;
+}
+.item-list .item .text {
+  font-size: 18px;
+}
+/*添加目标*/
+

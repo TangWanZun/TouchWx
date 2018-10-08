@@ -1,0 +1,62 @@
+<template>
+  <page></page>
+</template>
+
+<script>
+import system from './static/utils/system'
+export default {
+  config: {
+    usingComponents: {},
+    pages: [
+      'pages/tabBar/home',
+      'pages/tabBar/message',
+      'pages/tabBar/report',
+      'pages/tabBar/user'
+    ],
+    window: {
+      backgroundTextStyle: 'dark',
+      backgroundColor: '#efefef',
+      navigationBarBackgroundColor: '#ffffff',
+      navigationBarTitleText: 'TouchUI',
+      navigationBarTextStyle: 'black',
+    },
+    tabBar: {
+      list: [{
+          pagePath:'pages/tabBar/home',
+          text: '首页'
+        },
+        {
+          pagePath: 'pages/tabBar/message',
+          text: '消息'
+        },
+        {
+          pagePath: 'pages/tabBar/report',
+          text: '报表'
+        },
+        {
+          pagePath: 'pages/tabBar/user',
+          text: '我的'
+        }
+      ],
+      color:"#ab9783",
+      selectedColor:"#e4c76e"
+    },
+    networkTimeout: {
+      request: 10000
+    },
+    theme: {
+      'theme-color': '#39f'
+    }
+  },
+  globalData: {},
+  onLaunch() {
+    system.attachInfo()
+  },
+  onShow() {},
+  onHide() {}
+}
+</script>
+
+<style lang="less">
+@import './static/styles/index.less';
+</style>

@@ -1,0 +1,21 @@
+<view class="body">
+  <!-- 查询栏 -->
+  <view class='select-box'>
+    <view class='select-content'>
+      <view class='select-icon'><image src='/assets/icon/select.svg'></image></view>
+      <view class='select-text'>查询</view>
+    </view>
+  </view>
+  <!-- 用户列表 -->
+  <view class='client-list'>
+    <view class='client-ltter' wx:for="{{dataList}}" wx:key="{{index}}">
+      <view class='client-title'>{{index}}</view>
+      <view class='client-body'>
+        <view class='client-item' wx:for="{{item}}" wx:for-item="itemItem" wx:for-index="itemIndex" wx:key="{{itemIndex}}">
+          <view class='client-img'><image src='{{itemItem.img}}'></image></view>
+          <view class='client-name'>{{itemItem.name}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
