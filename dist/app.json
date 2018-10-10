@@ -5,6 +5,14 @@
     "pages/tabBar/work",
     "pages/tabBar/user"
   ],
+  "subPackages": [
+    {
+      "root": "pages/client",
+      "pages": [
+        "clientDetails"
+      ]
+    }
+  ],
   "window": {
     "backgroundTextStyle": "dark",
     "backgroundColor": "#efefef",
@@ -17,8 +25,8 @@
       {
         "pagePath": "pages/tabBar/message",
         "text": "消息",
-        "iconPath":"assets/tabBar/message.png",
-        "selectedIconPath":"assets/tabBar/message-select.png"
+        "iconPath": "assets/tabBar/message.png",
+        "selectedIconPath": "assets/tabBar/message-select.png"
       },
       {
         "pagePath": "pages/tabBar/client",

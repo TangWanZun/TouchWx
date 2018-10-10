@@ -11,10 +11,10 @@
     <view class='client-ltter' wx:for="{{dataList}}" wx:key="{{index}}">
       <view class='client-title'>{{index}}</view>
       <view class='client-body'>
-        <view class='client-item' wx:for="{{item}}" wx:for-item="itemItem" wx:for-index="itemIndex" wx:key="{{itemIndex}}">
+        <navigator url='/pages/client/clientDetails?clientId={{itemItem.name}}' class='client-item' wx:for="{{item}}" wx:for-item="itemItem" wx:for-index="itemIndex" wx:key="{{itemIndex}}">
           <view class='client-img'><image src='{{itemItem.img}}'></image></view>
           <view class='client-name'>{{itemItem.name}}</view>
-        </view>
+        </navigator>
       </view>
     </view>
   </view>

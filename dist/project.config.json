@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -48,7 +48,14 @@
 				{
 					"id": -1,
 					"name": "客户",
-					"pathName": "pages/tabBar/client"
+					"pathName": "pages/tabBar/client",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "客户详情",
+					"pathName": "pages/client/clientDetails",
+					"query": "clientId=孙尚香"
 				}
 			]
 		}

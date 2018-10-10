@@ -1,0 +1,114 @@
+<view class='body'>
+  <!-- 头部 -->
+  <view class='header'>
+    <!-- 头部内容 -->
+    <view class='header-center'>
+      <view class='header-top'>
+        <!-- 头像 -->
+        <view class='header-img'>
+          <image src='{{clientData.headImage}}'></image>
+        </view>
+        <!-- 爱好标签 -->
+        <view class='header-likes'>
+          <view class='header-likes-item' wx:for="{{clientData.likeList}}" wx:key="*this">{{item}}</view>
+        </view>
+      </view>
+      <view class='header-botton'>
+        <view class='header-botton-item'>
+          <view class='header-botton-item-title'>储值</view>
+          <view class='header-botton-item-number'>￥{{clientData.integral}}</view>
+        </view>
+        <view class='header-botton-item'>
+          <view class='header-botton-item-title'>积分</view>
+          <view class='header-botton-item-number'>{{clientData.stored}}</view>
+        </view>
+        <view class='header-botton-item'>
+          <view class='header-botton-item-title'>电子券</view>
+          <view class='header-botton-item-number'>{{clientData.coupon}}张</view>
+        </view>
+      </view>
+    </view>
+    <!-- 背景图 -->
+    <view class='header-bg'>
+      <image mode='aspectFill' src='{{clientData.headImage}}'></image>
+    </view>
+  </view>
+  <!-- 正文内容 -->
+  <view class='content'>
+    <view class='content-card'>
+      <view class='content-card-title'>
+        <view class='content-card-title-left'>联系方式</view>
+        <view class='content-card-title-right'>更改联系方式</view>
+      </view>
+      <view class='content-card-body'>
+        <view wx:for="{{clientData.contact}}" wx:key="*this" class='panel-item'>
+          <!-- 拨打电话 -->
+          <view wx:if="{{item.conType==='panel'}}" class='panel' catchtap="makePhoneCall"  data-panel="18953891019">
+            <view class='panel-number'>18953891019</view>
+            <view class='panel-icon'><image src='/assets/icon/call.svg'></image></view>
+          </view>
+          <!-- qq -->
+          <view wx:elif="{{item.conType==='QQ'}}" class='panel'>
+            <view class='panel-number'>997018562</view>
+            <view class='panel-icon'><image src='/assets/icon/QQ.svg'></image></view>
+          </view>
+          <!-- 微信 -->
+          <view wx:elif="{{item.conType==='WX'}}" class='panel'>
+            <view class='panel-number'>sunshangxiang1</view>
+            <view class='panel-icon'><image src='/assets/icon/WX.svg'></image></view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='content-card'>
+      <view class='content-card-title'>
+        <view class='content-card-title-left'>服务顾问</view>
+        <view class='content-card-title-right'>更改顾问</view>
+      </view>
+      <view class='content-card-body'>
+        <view class='counselor-list app-scroll-none'>
+          <view class='counselor app-shadow' wx:for="{{clientData.counselor}}" wx:key="*this">
+            <view class='counselor-img'><image src='{{item.img}}' mode='aspectFill'></image></view>
+            <view class='counselor-right'>
+              <view class='counselor-name'>{{item.name}}</view>
+              <view>
+                <view class='counselor-career'>{{item.career}}</view>
+                <view class='counselor-index'>{{item.index}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='content-card'>
+      <view class='content-card-title'>
+        <view class='content-card-title-left'>绑定车辆</view>
+        <view class='content-card-title-right'></view>
+      </view>
+      <view class='content-card-body'>
+        <view class='car' wx:for="{{clientData.car}}" wx:key="*this">
+          <view class='car-con'>
+            <view class='car-img'><image src='/assets/carIcon/{{item.brand}}-i.svg'></image></view>
+            <view class='car-model'>{{item.model}}</view>
+          </view>
+          <view class='car-bg'><image mode='aspectFit' src='/assets/carIcon/{{item.brand}}.svg'></image></view>
+          <view class='car-number'>{{item.num}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='content-card'>
+      <view class='content-card-title'>
+        <view class='content-card-title-left'>用户画像</view>
+        <view class='content-card-title-right'>编辑信息</view>
+      </view>
+      <view class='content-card-body'>
+        <view class='client' wx:for="{{clientData.portrayal}}" wx:key="*this">
+          <view class='client-header' >
+            <view class='client-title'>{{item.title}}</view>
+          </view>
+          <view class='client-value'>{{item.value}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

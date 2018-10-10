@@ -1,0 +1,255 @@
+/* 头部 */
+.header{
+  /* min-height: 200px; */
+  position: relative;
+  overflow: hidden;
+}
+/*头部背景图*/
+.header-bg{
+  position: absolute;
+  top: -5%;
+  left:-5%;
+  width:110%;
+  height: 110%;
+  filter: blur(5px);
+}
+.header-bg>image{
+  width: 100%;
+  height: 100%;
+}
+/* 头部内容 */
+.header-center{
+  position: relative;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.header-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 10px;
+  padding-left: 15px;
+}
+/* 头像 */
+.header-img{
+  width: 20vw;
+  height: 20vw;
+  border-radius: 100%;
+  overflow: hidden;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
+}
+/* 爱好组 */
+.header-likes{
+  max-height: 150px;
+  display: flex;
+  flex-direction: column-reverse;
+  flex-wrap: wrap-reverse;
+}
+.header-likes-item{
+  padding:3px 15px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.5);
+  margin:7px 5px;
+  font-size: 12px;
+  text-align: center;
+}
+/* 头部三分处 */
+.header-botton{
+  display: flex;
+  justify-content: space-between;
+  padding:20px 25px;
+}
+.header-botton-item-title{
+  color:rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+.header-botton-item-number{
+  color: white;
+  font-size: 20px;
+}
+/* 正文内容 */
+.content{
+  box-shadow: 0 -10px 10px 1px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  width: 100vw;
+  height: 20px;
+  position: relative;
+  z-index: 3;
+  padding:20px 15px;
+}
+/* 正文模块标题 */
+.content-card-title{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.content-card-title-left{
+  font-size: 18px;
+  font-weight: bold;
+}
+.content-card-title-right{
+  font-size: 15px;
+  color: #46ccf8;
+}
+/* 正文模块内容 */
+.content-card-body{
+}
+.content-card{
+  margin-bottom: 15px;
+}
+/*联系方式*/
+.panel-item{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.panel-item:last-child{
+  border-bottom: none;
+}
+.panel{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:15px 0;
+}
+.panel:active{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.panel-number{
+  font-size: 18px;
+}
+.panel-icon{
+  width:35px;
+  height: 35px;
+}
+/* 服务顾问 */
+.counselor-list{
+  display: flex;
+  justify-content: flex-start;
+  overflow: auto;
+  padding:20px 5px;
+}
+.counselor-list::after{
+  content: "";
+  display: block;
+  width:10px;
+  height: 10px;
+  flex-shrink: 0;
+}
+.counselor{
+  margin-right: 15px;
+  border-radius: 10px;
+  padding:10px 30px 10px 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items:stretch;
+}
+.counselor-img{
+  width:80px;
+  height: 80px;
+  border-radius: 100%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+/* 服务顾问卡片右侧 */
+.counselor-right{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.counselor-name{
+  font-size: 18px;
+}
+.counselor-career{
+  font-size: 15px;
+}
+.counselor-index{
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.6);
+}
+/* 汽车 */
+.car{
+  background-image: linear-gradient(24deg, #fb8653 0%, #fb4859 100%);
+  border-radius: 10px;
+  min-height: 110px;
+  margin:15px 0;
+  position: relative;
+  overflow: hidden;
+  padding:10px;
+}
+.car:last-child{
+  margin-bottom: 40px;
+}
+.car-con{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.car-img{
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  overflow: hidden;
+  background-color: white;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.car-img>image{
+  width:80%;
+  height: 80%;
+}
+.car-model{
+  font-size: 17px;
+  color: white;
+}
+.car-number{
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+.car-bg{
+  position: absolute;
+  top: 10px;
+  right: -20px;
+  width:40vw;
+  height: 40vw;
+  opacity: 0.2;
+}
+/* 用户画像 */
+.client{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.client:last-child{
+  border-bottom: none;
+}
+.client-header{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.client-icon{
+  width:20px;
+  height: 20px;
+  margin-right: 10px;
+  opacity: 0.5;
+}
+.client-title{
+  font-size: 18px;
+  width: 100px;
+}
+.client-value{
+  font-size: 18px;
+}
+.client-in{
+  position: absolute;
+  height: 100%;
+}

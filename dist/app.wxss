@@ -1,7 +1,11 @@
 /*颜色*/
-.app-main-color{
+.app-main-bg{
   /* 主色 */
   background-color: #4eb4ff;
+}
+.app-main-bg-5{
+  /* 主色 */
+  background-color: rgba(78,180,255,0.5);
 }
 /*app取消滚动条*/
 .app-scroll-none::-webkit-scrollbar{
