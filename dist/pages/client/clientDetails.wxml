@@ -86,14 +86,14 @@
         <view class='content-card-title-right'></view>
       </view>
       <view class='content-card-body'>
-        <view class='car' wx:for="{{clientData.car}}" wx:key="*this">
+        <navigator url="clientDetails/carDetails?carID=1" class='car' wx:for="{{clientData.car}}" wx:key="*this">
           <view class='car-con'>
             <view class='car-img'><image src='/assets/carIcon/{{item.brand}}-i.svg'></image></view>
             <view class='car-model'>{{item.model}}</view>
           </view>
           <view class='car-bg'><image mode='aspectFit' src='/assets/carIcon/{{item.brand}}.svg'></image></view>
           <view class='car-number'>{{item.num}}</view>
-        </view>
+        </navigator>
       </view>
     </view>
     <view class='content-card'>

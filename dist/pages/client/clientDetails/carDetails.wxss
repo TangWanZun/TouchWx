@@ -1,0 +1,163 @@
+.page-bg{
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  height: 70vw;
+  width: 100vw;
+  border-radius: 0 0 20% 20%;
+}
+.page-box{
+  width:100vw;
+  height: 100vh;
+  overflow: auto;
+  top: 0px;
+  left: 0px;
+  padding-top:60vw;
+  position: absolute;
+}
+
+.page-basic{
+  background-color: rgba(255, 255, 255, 0.9);
+  /* border:1px solid rgba(0, 0, 0, 0.1); */
+  /* border-radius: 10px; */
+  padding:5px;
+  padding-top: 18vw;
+  position: relative;
+  /* margin: 0 15px; */
+}
+.page-basic-logo{
+  width:25vw;
+  height: 25vw;
+  border-radius: 100%;
+  position: absolute;
+  top:-10vw;
+  left:50%;
+  margin-left:-12.5vw;
+  overflow: hidden;
+  background-size:cover;
+  background-position: center;
+}
+.page-basic-name{
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+.page-basic-VIN{
+  text-align: center;
+  font-size: 18px;
+  padding-top: 10px;
+}
+.page-basic-else{
+  display: flex;
+  justify-content: space-between;
+  padding:20px 15px;
+}
+.page-basic-else-item{
+  text-align: center;
+}
+.page-basic-else-item-title{
+  flex-shrink: 0;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.5);
+}
+.page-basic-else-item-con{
+  font-size: 16px;
+  padding-top: 10px;
+}
+.page-mileage-box{
+  margin: 0 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+.page-mileage{
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px 10px 0 0;
+  min-height: 100px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 15px;
+}
+.page-mileage-img>image{
+  width:20vw;
+  height: 20vw;
+}
+.page-mileage-con{
+  padding-left:20px;
+}
+.page-mileage-con>div{
+  font-size: 18px;
+}
+.page-mileage-con>div:first-child{
+  margin-bottom: 20px;
+}
+.page-set{
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius:0 0 10px 10px;
+  border-top: 1px dotted;
+  padding:10px 15px;
+}
+.page-set-item{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.page-set-item:last-child{
+  border:none;
+}
+.page-set-item>div{
+  font-size: 18px;
+  padding:10px 0;
+}
+.page-record{
+  min-height: 200px;
+  background-color: rgba(255, 255, 255, 0.9);
+  margin-top: 20px;
+  border-left: 3px solid #3be9f2;
+  padding-bottom: 20px;
+}
+.page-record-header{
+  padding:20px 15px;
+  font-size: 20px;   
+}
+.page-record-item{
+  position: relative;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;      
+  padding-left: 60px;
+}
+.page-record-axle{
+  position:absolute;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  width:50px;
+}
+.page-record-axle-o{
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border:2px solid #6465f1;
+    border-radius: 100%;
+    margin-left: -10px;
+    margin-top: -10px;
+    left: 50%;
+    top:50%;
+    position: absolute;
+}
+.page-record-axle-l{
+    width: 2px;
+    height: 100%;
+    background-color: #6465f1;
+    margin-left: -1px;
+    left: 50%;
+    position: absolute;
+}
+.page-record-time{
+  margin-bottom: 10px;
+}
+.page-record-con{
+  font-size: 18px;
+}

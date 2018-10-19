@@ -16,7 +16,12 @@
 * 通用样式
 */
 .app-shadow{
-  box-shadow: 0px 0px 15px 1px rgba(122, 122, 122, 0.1);
+  box-shadow: 0px 0px 15px 1px rgba(0,0,0, 0.08);
+}
+.app-body{
+  width:100vw;
+  min-height: 100vh;
+  background-color: rgb(245, 245,245);
 }
 /* 1像素解决方案 */
 /*

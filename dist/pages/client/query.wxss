@@ -1,0 +1,23 @@
+/* 查询 */
+.select-box{
+  box-sizing: border-box;
+  padding:10px 15px;
+  background-color: white;
+  margin-bottom: 1px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.select-box .select-content{
+  height: 35px;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+  padding:0 15px;
+}
+.select-content input{
+  width: 100%;
+}

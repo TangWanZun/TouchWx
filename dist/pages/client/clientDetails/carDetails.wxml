@@ -1,0 +1,58 @@
+<view class='app-body'>
+  <view class="page-bg" style="background-image:{{formData.carImg}}">
+  </view>
+  <view class="page-box app-scroll-none">
+    <!-- 基本信息 -->
+    <view class="page-basic app-shadow">
+      <view class="page-basic-logo" style="background-image:{{formData.carLogo}}"></view>
+      <view class="page-basic-name">京N12345</view>
+      <view class="page-basic-VIN">VIN:896752</view>
+      <view class="page-basic-else">
+        <view class="page-basic-else-item">
+          <view class="page-basic-else-item-title">颜色</view>
+          <view class="page-basic-else-item-con">米白色</view>
+        </view>
+        <view class="page-basic-else-item">
+          <view class="page-basic-else-item-title">车型</view>
+          <view class="page-basic-else-item-con">GLA200运动型</view>
+        </view>
+        <view class="page-basic-else-item">
+          <view class="page-basic-else-item-title">车系</view>
+          <view class="page-basic-else-item-con">GLA</view>
+        </view>
+      </view>
+    </view>
+    <view class='page-mileage-box app-shadow'>
+      <view class="page-mileage">
+        <view class="page-mileage-img">
+          <image src='/assets/icon/ybp.svg'></image>
+        </view>
+        <view class="page-mileage-con">
+          <view>当前里程:100000KM</view>
+          <view>下次保养:2019-3-1</view>
+        </view>
+      </view>
+      <view class="page-set">
+        <view class="page-set-item">
+          <view>推荐套餐</view>
+          <view>A保+B保</view>
+        </view>
+        <view class="page-set-item">
+          <view>建议</view>
+          <view>更换刹车片</view>
+        </view>
+      </view>
+    </view>
+    <view class="page-record">
+      <view class="page-record-header">爱车履历</view>
+      <view class="page-record-item">
+        <view class="page-record-axle">
+          <view class="page-record-axle-l"></view>
+          <view class="page-record-axle-o"></view>
+        </view>
+        <view class="page-record-time">2018-1-1</view>
+        <view class="page-record-con">购买爱车,首次投保</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -4,6 +4,7 @@
 }
 /* 查询 */
 .select-box{
+  box-sizing: border-box;
   padding:10px 15px;
   background-color: white;
   margin-bottom: 1px;
