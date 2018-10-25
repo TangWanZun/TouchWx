@@ -1,0 +1,186 @@
+/* 工作类别 */
+.work-type-list{
+  background-color: white;
+  padding:10px 0;
+  display: flex;
+  justify-content:space-between;
+  overflow: auto;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+}
+/* .work-type-list::after{
+  content: "";
+  display: block;
+  width:10px;
+  height: 20px;
+  flex-shrink: 0;
+} */
+.work-type-icon{
+  width: 35px;
+  height: 35px;
+  margin: 0 auto;
+}
+.work-type-title{
+  text-align: center;
+  font-size: 12px;
+}
+.work-type{
+  flex-shrink: 0;
+  flex-grow: 1;
+  /* margin-right: 30px; */
+}
+/* 今日工作 */
+.work-list-title{
+  font-size: 18px;
+  padding-left: 15px;
+  padding-top: 85px;
+}
+.work-list{
+  column-count:2;
+  column-gap: 10px;
+  margin:0 15px;
+  padding-top: 5px;
+  padding-bottom: 20px;
+}
+.work-item-box{
+  box-sizing: border-box;
+  /* width: 50%; */
+  padding:5px 0;
+  break-inside: avoid;
+}
+.work-item{
+  min-height: 80px;
+  background-color: white;
+  border-radius: 2px;
+  transition: transform 0.1s;
+  overflow: hidden;
+}
+.work-item-head{
+  font-size: 16px;
+  padding:5px 10px;
+}
+.work-item-body{
+  padding:5px 10px;
+}
+.work-item-foot{
+  /* border-top: 1px solid rgba(255,255,255,0.08); */
+  border-top: 1px solid rgba(0,0,0,0.03);
+  padding:5px 10px;
+}
+.work-item-headimg{
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  margin-right: 10px;
+  overflow: hidden;
+}
+/* 投诉建议 */
+/* .work-tsjy{
+  background-color:  #3f51b5;
+}
+.work-tsjy view{
+  color: white;
+} */
+.work-tsjy .work-item-body-title{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.work-tsjy .work-item-body-con{
+  padding-top: 5px;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* 服务预约 */
+/* .work-fwyy{
+  background-color: #607d8b;
+}
+.work-fwyy view{
+  color: white;
+} */
+.work-fwyy .work-item-body{
+  padding-top: 0px;
+}
+.work-fwyy .work-item-body-title{
+  text-align: right;
+}
+.work-fwyy .work-item-body-con{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+/*活动报名*/
+/* .work-hdbm{
+  background-color: #ff7043;
+}
+.work-hdbm view{
+  color: white;
+} */
+.work-hdbm>.work-item-head{
+  position: relative;
+  height: 20vw;
+}
+.work-hdbm .work-item-body-title{
+  text-align: right;
+}
+.work-hdbm .work-item-title{
+  position: relative;
+  color: white;
+  z-index: 2;
+  text-shadow: 0 0 2px rgb(0, 0, 0);
+}
+.work-hdbm .work-item-bg{
+  position: absolute;
+  top:0px;
+  left:0px;
+  width: 100%;
+  height: 100%;
+}
+.work-hdbm .work-item-body-con{
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+}
+/* 救援服务 */
+.work-jyfw{
+  /* background-color: #00bcd4; */
+  background-color: #ff7043;
+}
+.work-jyfw view{
+  color: white;
+}
+.work-jyfw .work-item-body-title{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.work-jyfw .work-item-car{
+  text-align: right;
+}
+
+.work-jyfw .work-item-body-con{
+  padding-top: 10px;
+  line-height: 20px;
+}
+.work-jyfw span{
+  display: inline-block;
+  width:15px;
+  height: 15px;
+}
+.work-jyfw .work-item-foot{
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+/*到期提醒*/
+.work-dqtx .work-item-body-title{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+}

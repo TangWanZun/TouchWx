@@ -10,52 +10,60 @@ Page({
     // 获得的传输数据
     responseList:[
       {
-        img: "https://pic.qqtn.com/up/2017-12/2017120911584443954.jpg",
+        img: "http://k2.jsqq.net/uploads/allimg/1711/17_171110094803_1.jpg",
         name: "Altr"
       },
       {
-        img: "https://pic.qqtn.com/up/2017-12/2017120911584443954.jpg",
+        img: "https://tse4.mm.bing.net/th?id=OIP._1RwYha0J95DCBGZcApHwAAAAA&pid=Api",
         name: "阿斗"
       },
       {
-        img: "https://pic.qqtn.com/up/2017-12/2017120911584443954.jpg",
+        img: "http://pic.qqtn.com/up/2017-9/15055386151767362.jpg",
         name: "魏延"
       },
       {
-        img: "https://pic.qqtn.com/up/2017-12/2017120911584443954.jpg",
+        img: "http://pic.qqtn.com/up/2017-11/15115072217014845.jpg",
         name: "陈宫"
       },
       {
-        img: "https://pic.qqtn.com/up/2017-12/2017120911584443954.jpg",
-        name: "关羽"
+        img: "http://imgz.ermiao.com/2010/09/6992022-fr.jpg",
+        name: "典韦"
       },
       {
-        img: "https://pic.qqtn.com/up/2017-12/2017120911584443954.jpg",
+        img: "https://tse1.mm.bing.net/th?id=OIP.BRoCEgh15frmcQfT0Z0j2AAAAA&pid=Api",
         name: "张飞"
       },
       {
         img: "http://img2.woyaogexing.com/2017/08/07/17a2f2a6de5de111!400x400_big.jpg",
-        name: "吕布"
+        name: "吕蒙"
       },
       {
-        img: "http://imgtu.5011.net/uploads/content/20170609/8514541496978849.jpg",
+        img: "http://imgtu.5011.net/uploads/content/20170428/6956571493368294.jpg",
         name: "孙尚香"
       },
       {
-        img: "http://imgtu.5011.net/uploads/content/20170609/8514541496978849.jpg",
+        img: "https://tse4.mm.bing.net/th?id=OIP.ylVp5b20v4LTsB7ZJWtI2wAAAA&pid=Api",
         name: "曹操"
       },
       {
-        img: "http://imgtu.5011.net/uploads/content/20170609/8514541496978849.jpg",
+        img: "http://imgtu.5011.net/uploads/content/20170627/7001211498570801.jpg",
         name: "曹丕"
       },
       {
-        img: "https://pic.qqtn.com/up/2017-12/2017120911584443954.jpg",
-        name: "曹爽"
+        img: "http://img.jf258.com/uploads/2013-07-07/194913270.jpg",
+        name: "夏侯惇"
+      }, 
+      {
+        img: "http://imgtu.5011.net/uploads/content/20170420/1469701492668162.jpg",
+        name: "小乔"
       },
       {
-        img: "http://imgtu.5011.net/uploads/content/20170609/8514541496978849.jpg",
-        name: "张辽"
+        name: "蒋干",
+        img: "https://p1.4499.cn/touxiang/UploadPic/2015-6/17/2015061716013860658.jpg",
+      },
+      {
+        name: "张春华",
+        img: "http://imgtu.5011.net/uploads/content/20170515/1938101494835991.jpg",
       }
     ]
   },

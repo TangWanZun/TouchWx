@@ -1,8 +1,14 @@
 <view class="app-body">
   <!-- 查询栏 -->
-  <div  class='select-box'>
+  <view  class='select-box'>
     <view class='select-content'>
       <input bindinput="queryInput" placeholder="请输入查询客户" focus="true" confirm-type="search"></input>
     </view>
-  </div>
+  </view>
+  <view class='select-body {{selectBodyShow?"select-body-show":""}}'>
+    <navigator url='/pages/client/clientDetails?clientId={{item.name}}&img={{item.img}}' class='select-item' wx:for="{{dataList}}" wx:key="{{key}}">
+      <view class='select-img'><image src='{{item.img}}'></image></view>
+      <view class='select-name'>{{item.name}}</view>
+    </navigator>
+  </view>
 </view>

@@ -21,3 +21,33 @@
 .select-content input{
   width: 100%;
 }
+/* 用户列表 */
+.select-body{
+  padding-top:50px;
+  display: none;
+}
+.select-body-show{
+  display: block;
+}
+.select-item{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+  padding:0 15px;
+}
+.select-img{
+  width:60px;
+  height: 60px;
+  overflow: hidden;
+  border-radius: 100%;
+}
+.select-name{
+  font-size: 18px;
+  flex-grow: 1;
+  padding:25px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.select-body .select-item:last-child .select-name{
+  border-bottom:none;
+}

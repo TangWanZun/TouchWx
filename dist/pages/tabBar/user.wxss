@@ -77,12 +77,22 @@
 }
 .my-data {
   background-color: white;
-  padding: 0 15px;
   margin-top: 20px;
 }
 .my-data .my-data-title {
   font-size: 18px;
-  padding: 20px 0;
+  padding: 20px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.my-data-con{
+  padding: 0 15px;
+}
+.my-data-title-icon{
+  width:20px;
+  height: 20px;
+  opacity: 0.5;
 }
 .my-data .my-data-rangking {
   position: relative;
@@ -92,7 +102,6 @@
   justify-content:flex-start;
   overflow: auto;
   padding:20px 10px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
 }
 .my-data-list::after{
   content: "";

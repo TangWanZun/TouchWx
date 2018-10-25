@@ -6,7 +6,7 @@
 	"setting": {
 		"urlCheck": true,
 		"es6": true,
-		"postcss": true,
+		"postcss": false,
 		"minified": true,
 		"newFeature": true
 	},
@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 8,
 			"list": [
 				{
 					"id": -1,
@@ -68,6 +68,30 @@
 					"name": "查询",
 					"pathName": "pages/client/query",
 					"query": "carId=1"
+				},
+				{
+					"id": -1,
+					"name": "我的数据",
+					"pathName": "pages/user/myData",
+					"query": ""
+				},
+				{
+					"id": 6,
+					"name": "工作",
+					"pathName": "pages/tabBar/work",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "消息",
+					"pathName": "pages/tabBar/message",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的数据",
+					"pathName": "pages/user/myData",
+					"query": ""
 				}
 			]
 		}

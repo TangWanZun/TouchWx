@@ -1,0 +1,63 @@
+.page-item{
+  display: flex;
+  justify-content: flex-start;
+  align-items:stretch;
+}
+.page-item:last-child .page-item-con{
+  border-bottom: none;
+}
+.page-item-img{
+  flex-shrink: 0;
+  width:20vw;
+  height: 20vw;
+  padding:10px;
+  position: relative;
+}
+.page-item-img>.page-item-badge{
+  font-size: 10px;
+  color: white;
+  padding:0 5px;
+  min-width: 20px;
+  height: 20px;
+  line-height: 20px;
+  border-radius: 30px;
+  background-color: red;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  text-align: center;
+}
+.page-item-img>image{
+  border-radius: 100%;
+}
+.page-item-con{
+  flex-grow: 1;
+  padding-right: 15px;
+  max-width: 80vw;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.page-item-con-con{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.page-item-name{
+  font-size: 17px;
+}
+.page-item-date{
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.5);
+}
+.page-item-message{
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.7);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}

@@ -7,7 +7,7 @@ Page({
   data: {
     clientData:{
       //头像
-      headImage:"https://pic.qqtn.com/up/2017-12/2017120911584443954.jpg",
+      headImage:"/assets/icon/tx.png",
       //爱好
       likeList: ["高尔夫","文学","自驾游","游泳","爬山"],
       //积分
@@ -50,6 +50,9 @@ Page({
     wx.setNavigationBarTitle({
       title: options.clientId,
     })
+    this.setData({
+      "clientData.headImage": options.img
+    })
   },
 
   /**
@@ -58,14 +61,12 @@ Page({
   onReady: function () {
   
   },
-
   /**
    * 拨打电话
   */
   makePhoneCall(e){
-    // console.log(e)
     wx.makePhoneCall({
-      phoneNumber: e.target.dataset.panel,
+      phoneNumber: e.currentTarget.dataset.panel,
     })
   },
   /**

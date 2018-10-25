@@ -13,11 +13,16 @@
         "clientDetails/carDetails",
         "query"
       ]
+    },
+    {
+      "root": "pages/user",
+      "pages": [
+        "myData"
+      ]
     }
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "backgroundColor": "#efefef",
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "TouchUI",
     "navigationBarTextStyle": "black"

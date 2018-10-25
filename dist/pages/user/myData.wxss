@@ -1,0 +1,10 @@
+/**index.wxss**/
+.app-body{
+  padding-top: 20px;
+}
+.container {
+  height: 50vh;
+  margin:0 10px;
+  background-color: white;
+  border-radius: 5px;
+}

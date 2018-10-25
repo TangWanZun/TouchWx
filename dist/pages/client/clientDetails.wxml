@@ -10,7 +10,7 @@
         </view>
         <!-- 爱好标签 -->
         <view class='header-likes'>
-          <view class='header-likes-item' wx:for="{{clientData.likeList}}" wx:key="*this">{{item}}</view>
+          <view class='header-likes-item' wx:for="{{clientData.likeList}}" wx:key="{{key}}">{{item}}</view>
         </view>
       </view>
       <view class='header-botton'>
@@ -41,11 +41,11 @@
         <view class='content-card-title-right'>更改联系方式</view>
       </view>
       <view class='content-card-body'>
-        <view wx:for="{{clientData.contact}}" wx:key="*this" class='panel-item'>
+        <view wx:for="{{clientData.contact}}" wx:key="{{key}}" class='panel-item'>
           <!-- 拨打电话 -->
-          <view wx:if="{{item.conType==='panel'}}" class='panel' catchtap="makePhoneCall"  data-panel="18953891019">
+          <view wx:if="{{item.conType==='panel'}}" class='panel' >
             <view class='panel-number'>18953891019</view>
-            <view class='panel-icon'><image src='/assets/icon/call.svg'></image></view>
+            <view class='panel-icon' data-panel="18953891019" catchtap="makePhoneCall"><image src='/assets/icon/call.svg'></image></view>
           </view>
           <!-- qq -->
           <view wx:elif="{{item.conType==='QQ'}}" class='panel'>
@@ -67,7 +67,7 @@
       </view>
       <view class='content-card-body'>
         <view class='counselor-list app-scroll-none'>
-          <view class='counselor app-shadow' wx:for="{{clientData.counselor}}" wx:key="*this">
+          <view class='counselor app-shadow-2' wx:for="{{clientData.counselor}}" wx:key="{{key}}">
             <view class='counselor-img'><image src='{{item.img}}' mode='aspectFill'></image></view>
             <view class='counselor-right'>
               <view class='counselor-name'>{{item.name}}</view>
@@ -86,7 +86,7 @@
         <view class='content-card-title-right'></view>
       </view>
       <view class='content-card-body'>
-        <navigator url="clientDetails/carDetails?carID=1" class='car' wx:for="{{clientData.car}}" wx:key="*this">
+        <navigator url="clientDetails/carDetails?carID=1" class='car' wx:for="{{clientData.car}}" wx:key="{{key}}">
           <view class='car-con'>
             <view class='car-img'><image src='/assets/carIcon/{{item.brand}}-i.svg'></image></view>
             <view class='car-model'>{{item.model}}</view>
@@ -102,7 +102,7 @@
         <view class='content-card-title-right'>编辑信息</view>
       </view>
       <view class='content-card-body'>
-        <view class='client' wx:for="{{clientData.portrayal}}" wx:key="*this">
+        <view class='client' wx:for="{{clientData.portrayal}}" wx:key="{{key}}">
           <view class='client-header' >
             <view class='client-title'>{{item.title}}</view>
           </view>
