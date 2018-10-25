@@ -1,6 +1,26 @@
 <!--index.wxml-->
-<view class='app-body'>
+<view class='app-body app-main-bg'>
   <view class="container app-shadow-2">
     <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+  </view>
+  <view class='page-card-box'>
+    <view class='page-card page-target app-shadow-2'>
+      <view class='page-card-title'>
+        <image src='/assets/icon/zyll.svg'></image>
+        <view>职业履历</view>
+      </view>
+      <view class='page-card-body'>
+        <view class='page-card-body-title'>总售车辆</view>
+        <view class='page-card-body-con'>24台</view>
+        <view class='page-card-body-title'>客户总计</view>
+        <view class='page-card-body-con'>240位</view>
+        <view class='page-card-body-title'>销售总额</view>
+        <view class='page-card-body-con'>1465000元</view>
+      </view>
+    </view>
+    <view class='page-card-box-min'>
+      <view class='page-card page-card-min app-shadow-2'></view>
+      <view class='page-card page-card-min app-shadow-2'></view>
+    </view>
   </view>
 </view>

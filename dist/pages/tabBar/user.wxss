@@ -43,6 +43,15 @@
 .userCard .userCard-left .userCard-name {
   font-size: 20px;
   font-weight: bold;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.userCard-name image{
+  margin-left: 15px;
+  margin-right: 15px;
+  width:30px;
+  height: 30px;
 }
 .userCard .userCard-left .userCard-section {
   font-size: 18px;
@@ -97,6 +106,11 @@
 .my-data .my-data-rangking {
   position: relative;
 }
+.my-data-rangking-in{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
 .my-data-list{
   display: flex;
   justify-content:flex-start;
@@ -124,10 +138,7 @@
   color: rgba(0, 0, 0, 0.5);
 }
 .my-data .my-data-item-index {
-  position: absolute;
-  right: 0px;
-  bottom: 0px;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: bold;
   margin-left: 10px;
 }
@@ -135,11 +146,11 @@
   color: #4eb4ff;
 }
 .my-data .my-data-item-num {
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
 }
 .my-data .my-data-item-num >span{
-  font-size: 20px;
+  font-size: 18px;
 }
 .my-data .my-data-img {
   width: 40px;

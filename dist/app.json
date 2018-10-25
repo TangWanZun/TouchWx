@@ -17,7 +17,8 @@
     {
       "root": "pages/user",
       "pages": [
-        "myData"
+        "myData",
+        "myQr"
       ]
     }
   ],

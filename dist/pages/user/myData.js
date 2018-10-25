@@ -9,6 +9,12 @@ function initChart(canvas, width, height) {
   });
   canvas.setChart(chart);
   var option = {
+    title:{
+      text:'月产值(点击图表查看详情)',
+      textStyle:{
+        fontSize:16
+      }
+    },
     tooltip: {
       trigger: 'axis',
       axisPointer: {
@@ -16,10 +22,13 @@ function initChart(canvas, width, height) {
         crossStyle: {
           color: '#999'
         },
-      }
+      },
+      // 绝对位置，相对于容器左侧 10px, 上侧 10 px
+      position: [10, 10]
     },
     legend: {
-      data: ['总产值(元)', '店内排名']
+      data: ['月产值(元)', '店内排名'],
+      bottom:5
     },
     xAxis: [
       {
@@ -33,22 +42,29 @@ function initChart(canvas, width, height) {
     yAxis: [
       {
         type: 'value',
-        name: '总产值(元)',
+        name: '月产值(万)',
         axisLabel: {
-          formatter: '{value}'
+          formatter: function (value, index) {
+            return value / 10000
+          },
         }
       },
       {
         type: 'value',
         name: '店内排名',
-        axisLabel: {
-          formatter: '{value}'
-        }
+        max: 20,
+        min:  1,
+        inverse:true,
+        interval:5,
+        splitLine:{
+          show:false
+        },
+        nameLocation:"start"
       }
     ],
     series: [
       {
-        name: '总产值(元)',
+        name: '月产值(元)',
         type: 'bar',
         data: [156200, 182100, 156200, 156200, 556200, 312200]
       },

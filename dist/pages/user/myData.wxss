@@ -7,4 +7,62 @@
   margin:0 10px;
   background-color: white;
   border-radius: 5px;
+  padding: 10px 10px;
+}
+.page-card{
+  border-radius: 5px;
+  padding: 10px 10px;
+  background-color:white;
+}
+.page-card-box{
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding:10px 10px;
+}
+/* 定制目标 */
+.page-target{
+  width: calc( ( 100vw - 30px ) / 2 )
+}
+.page-card-title{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.page-card-title>image{
+  width:25px;
+  height: 25px;
+  margin-right: 10px;
+}
+.page-card-body{
+  font-size: 15px;
+  padding-top:10px;
+  /* font-weight: bold; */
+}
+.page-card-body-title{
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.5);
+  margin-top: 2px;
+}
+.page-card-body-con{
+  text-align: right;
+  font-weight: bold;
+  padding-bottom: 2px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.page-card-body-con:last-child{
+  border-bottom:none;
+}
+.page-card-box-min{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-left: 10px;
+}
+.page-card-min{
+  flex-grow: 1;
+}
+.page-card-min:last-child{
+  margin-top: 10px;
 }

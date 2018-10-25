@@ -1,7 +1,10 @@
 <view class="body">
   <view class="userCard app-shadow-2">
     <view class="userCard-left">
-      <view class="userCard-name">吕玲绮</view>
+      <view class="userCard-name">
+        <view  class="userCard-name-text">吕玲绮</view>
+        <navigator url='../user/myQr'><image src='/assets/icon/qr.svg'></image></navigator>
+      </view>
       <view>
         <view class="userCard-section">客服部</view>
         <view class="userCard-company">北京鹏龙星徽汽车贸易有限公司</view>
@@ -32,11 +35,13 @@
         <view class="ui-col ui-col-6" style="flex: 0 0 50%;">
           <view class="ui-col-content">
             <view class="my-data-rangking">
-              <view class="my-data-item-title">本月店内排名</view>
-              <view class="my-data-item-index">第<span>1</span>名</view></view>
-            <view class="my-data-img">
-              <image mode="aspectFill" src="http://imgtu.5011.net/uploads/content/20170515/2880041494837771.jpg" />
-            </view>
+              <view class='my-data-rangking-in'>
+                <view class="my-data-item-title">本月店内排名</view>
+                <view class="my-data-item-index">第<span>1</span>名</view></view>
+              </view>
+              <view class="my-data-img">
+                <image mode="aspectFill" src="http://imgtu.5011.net/uploads/content/20170515/2880041494837771.jpg" />
+              </view>
           </view>
         </view>
       </view>
