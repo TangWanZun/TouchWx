@@ -1,0 +1,45 @@
+<view class="app-body">
+  <!-- 底部栏 -->
+  <view class='page-foot'>
+    <!-- 聊天框区域 -->
+    <view class='page-input-box'>
+      <view class='page-input app-center {{inputCon?"page-input-show":""}}'>
+        <input confirm-type="send" confirm-hold="true" cursor-spacing="50" bindinput="bindInput"></input>
+      </view>
+      <view class='page-send app-center {{inputCon?"app-main-bg":""}}'>发送</view>
+    </view>
+    <!-- 功能区 -->
+    <view class='page-funtion'>
+      <view class='page-funtion-item' bindtouchstart='voiceInShow'>
+        <image src='/assets/chat/yy{{voiceBtn.functionUnfoldShow?"_show":""}}.svg'></image>
+      </view>
+      <view class='page-funtion-item'>
+        <image src='/assets/chat/tp.svg'></image>
+      </view>
+      <view class='page-funtion-item'>
+        <image src='/assets/chat/zx.svg'></image>
+      </view>
+      <view class='page-funtion-item'>
+        <image src='/assets/chat/wz.svg'></image>
+      </view>
+    </view>
+    <!-- 功能展开区列如语音 -->
+    <view class='page-function-unfold {{voiceBtn.functionUnfoldShow?"page-function-unfold-show":""}} app-center'>
+      <view class='page-voice-hint'>
+        {{voiceBtn.hint}}
+      </view>
+      <view class='page-voice-buttom {{voiceBtn.btnStart?"page-voice-buttom-action":""}} app-main-bg app-center'
+       bindtouchstart="voiceTouchstart"
+       bindtouchmove="voiceTouchmove"
+       bindtouchcancel=""
+       bindtouchend="voiceTouchend"
+       >
+        <image src='/assets/chat/ht.svg'></image>
+      </view>
+      <!-- 取消语音区域 -->
+      <view class='page-voice-cancel {{voiceBtn.btnStart?"page-voice-cancel-show":""}} {{voiceBtn.isDelete?"page-voice-cancel-highlight":""}} app-center'>
+        <image class='page-voice-cancel-image' src='/assets/chat/sc.svg'></image>
+      </view>
+    </view>
+  </view>
+</view>

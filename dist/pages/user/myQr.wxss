@@ -1,1 +1,63 @@
 /* pages/user/myQr.wxss */
+.app-body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+.page-box{
+  border-radius: 5px;
+  width:80vw;
+  height: 70vh;
+  background-color: white;
+  box-shadow: 0 10px 20px 5px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  overflow: hidden;
+}
+.page-head{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+  flex-shrink: 0;
+  position: relative;
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.05); */
+}
+.page-section{
+  position: absolute;
+  top: 0px;
+  right: 15px;
+  padding: 5px 10px;
+  padding-bottom: 15px;
+  border-radius: 0 0 5px 5px;
+  width:32px;
+  color: white;
+  font-size: 12px;
+}
+.page-headimg{
+  width:15vw;
+  height: 15vw;
+  border-radius: 100%;
+  overflow: hidden;
+  margin-right: 20px;
+}
+.page-name{
+
+}
+.page-body{
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page-qr{
+  width: 50vw;
+  height: 50vw;
+  padding:2vw;
+  background-color: white;
+  border:1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}

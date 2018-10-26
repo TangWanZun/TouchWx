@@ -20,6 +20,12 @@
         "myData",
         "myQr"
       ]
+    },
+    {
+      "root": "pages/message",
+      "pages": [
+        "chat"
+      ]
     }
   ],
   "window": {

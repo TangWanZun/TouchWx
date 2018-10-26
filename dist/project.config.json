@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -91,6 +91,12 @@
 					"id": -1,
 					"name": "我的数据",
 					"pathName": "pages/user/myData",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "聊天框",
+					"pathName": "pages/message/chat",
 					"query": ""
 				}
 			]
