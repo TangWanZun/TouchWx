@@ -1,5 +1,7 @@
 <view class='app-body'>
-  <view>手机登陆</view>
   <view class='login-box'>
+    <view class='login-rts-box'>
+      <view class='login-rts'></view>
+    </view>
   </view>
 </view>

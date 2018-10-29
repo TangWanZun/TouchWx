@@ -13,6 +13,7 @@
   }
 }
 .login-box{
+  position: relative;
   width:80vw;
   height: 70vh;
   margin-top: -10vh;
@@ -20,7 +21,25 @@
   box-shadow: 0px 3px 10px 1px rgba(0,0,0, 0.08);
   /* animation: loginBox 5s; */
   transition: 1s;
+  overflow: hidden;
 }
 .login-box:hover{
   box-shadow: 0px 8px 20px 3px rgba(0,0,0, 0.2);
+}
+.login-rts-box{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width:25vw;
+  height: 25vw;
+}
+.login-rts{
+  border-style: solid;
+  border-width: 25vw 0px 0 25vw;
+  border-color: #4eb4ff transparent  transparent;
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
