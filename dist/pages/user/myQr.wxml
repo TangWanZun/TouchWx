@@ -2,9 +2,9 @@
   <view class='page-box'>
     <view class='page-head'>
       <view class='page-headimg'>
-        <image mode="aspectFill" src="http://imgtu.5011.net/uploads/content/20170515/2880041494837771.jpg" />
+        <open-data type="userAvatarUrl"></open-data>
       </view>
-      <view class='page-name'>吕玲绮</view>
+      <view class='page-name'><open-data type="userNickName"></open-data></view>
       <view class='page-section app-main-bg'>客服部</view>
     </view>
     <view class='page-body'>

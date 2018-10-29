@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 10,
 			"list": [
 				{
 					"id": -1,
@@ -98,6 +98,11 @@
 					"name": "聊天框",
 					"pathName": "pages/message/chat",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "注册页面",
+					"pathName": "pages/user/login"
 				}
 			]
 		}

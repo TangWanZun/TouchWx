@@ -2,7 +2,7 @@
   <view class="userCard app-shadow-2">
     <view class="userCard-left">
       <view class="userCard-name">
-        <view  class="userCard-name-text">吕玲绮</view>
+        <view  class="userCard-name-text"><open-data type="userNickName"></open-data></view>
         <navigator url='../user/myQr'><image src='/assets/icon/qr.svg'></image></navigator>
       </view>
       <view>
@@ -12,7 +12,7 @@
     </view>
     <view class="userCard-right">
       <view class="userCard-img">
-        <image mode="aspectFill" src="http://imgtu.5011.net/uploads/content/20170515/2880041494837771.jpg" />
+        <open-data type="userAvatarUrl"></open-data>
       </view>
       <view class="userCard-index">C0330</view>
     </view>
@@ -40,7 +40,7 @@
                 <view class="my-data-item-index">第<span>1</span>名</view></view>
               </view>
               <view class="my-data-img">
-                <image mode="aspectFill" src="http://imgtu.5011.net/uploads/content/20170515/2880041494837771.jpg" />
+                <open-data type="userAvatarUrl"></open-data>
               </view>
           </view>
         </view>
@@ -78,12 +78,12 @@
         <view class="my-data-item-num my-data-item-list">90000</view>
       </view>
     </view>
-    <view class="my-data-title app-item-div">
-      <view>客户画像</view>
+    <navigator url='/pages/user/login' class="my-data-title app-item-div">
+      <view>注册页面</view>
       <view class="my-data-title-icon"><image src='/assets/icon/right.svg'></image></view>
-    </view>
+    </navigator>
     <view class="my-data-title">
-      <view>工作概况</view>
+      <view>客户画像</view>
       <view class="my-data-title-icon"><image src='/assets/icon/right.svg'></image></view>
     </view>
   </view>
