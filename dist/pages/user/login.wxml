@@ -1,7 +1,62 @@
 <view class='app-body'>
-  <view class='login-box'>
-    <view class='login-rts-box'>
-      <view class='login-rts'></view>
+  <!-- <view class='userInfo'>
+    <button open-type='getUserInfo' bindgetuserinfo="bindgetuserinfo">微信登陆获取</button>
+  </view> -->
+  <view class='app-box {{accountShow?"app-box-show":""}}'>
+    <view class='login-box'>
+      <view class='login-rts-box'>
+        <image bindtap="loginEx" src='/assets/icon/sj.svg'></image>
+      </view>
+      <view class='login-con'>
+        <view class='login-con-head'>手机登陆</view>
+        <view class='login-con-body'  >
+          <view class='page-input'>
+            <view class='page-input-title'>手机号码</view>
+            <view class='page-input-con'>
+              <input  maxlength="13" cursor-spacing="20" placeholder="请输入13位手机号码"></input>
+            </view>
+          </view>
+          <view class='page-ground'>
+            <view class='page-input'>
+              <view class='page-input-title'>验证码</view>
+              <view class='page-input-con'>
+                <input maxlength="6" cursor-spacing="20" placeholder="请输入验证码"></input>
+              </view>
+            </view>
+            <view class='page-buttom {{codeObj.isCountDown?"page-buttom-hidden":""}}' bindtap="sendCode">
+              {{codeObj.codeText}}
+            </view>
+          </view>
+          <view class='page-login' bindtap='login'>
+            登陆
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='login-box'>
+      <view class='login-rts-box'>
+        <image bindtap="loginEx" src='/assets/icon/dn.svg'></image>
+      </view>
+      <view class='login-con'>
+        <view class='login-con-head'>账号密码登陆</view>
+        <view class='login-con-body'  >
+          <view class='page-input'>
+            <view class='page-input-title'>账号</view>
+            <view class='page-input-con'>
+              <input maxlength="13" cursor-spacing="20" placeholder="请输入DMS账号"></input>
+            </view>
+          </view>
+          <view class='page-input'>
+            <view class='page-input-title'>密码</view>
+            <view class='page-input-con'>
+              <input password="true" maxlength="16" cursor-spacing="20" placeholder="请输入密码"></input>
+            </view>
+          </view>
+          <view class='page-login' bindtap='login'>
+            登陆
+          </view>
+        </view>
+      </view>
     </view>
   </view>
 </view>

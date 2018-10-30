@@ -57,10 +57,10 @@ Page({
         img: "http://imgtu.5011.net/uploads/content/20170420/1469701492668162.jpg",
         name: "小乔"
       },
-      {
-        name: "蒋干",
-        img: "https://p1.4499.cn/touxiang/UploadPic/2015-6/17/2015061716013860658.jpg",
-      },
+      // {
+      //   name: "蒋干",
+      //   img: "https://p1.4499.cn/touxiang/UploadPic/2015-6/17/2015061716013860658.jpg",
+      // },
       {
         name: "张春华",
         img: "http://imgtu.5011.net/uploads/content/20170515/1938101494835991.jpg",

@@ -3,10 +3,151 @@
   /* 主色 */
   background-color: #4eb4ff !important;
 }
+
 .app-center{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.app-body{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+}
+/*
+*===================================
+*聊天内容
+*====================================
+*/
+.page-con{
+  flex-grow: 1;
+  padding-top: 20px;
+  overflow:auto;
+}
+.page-chat-box{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding:0px 15px 20px 15px;
+}
+.page-chat-body{
+  padding: 0 20px;
+}
+.page-chat-img{
+  width:13vw;
+  height: 13vw;
+  overflow: hidden;
+  border-radius: 100%;
+  flex-shrink: 0;
+}
+.page-chat-name{
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.5);
+  margin-bottom: 5px;
+}
+/*
+*文字---默认左侧
+*/
+.page-chat-con{
+  color: black;
+  font-size: 17px;
+  padding: 10px;
+  border-radius:0px 5px 5px 5px;
+  background-color: white;
+  max-width: 60vw;
+  position: relative;
+}
+.page-chat-con::after{
+  content:"";
+  position: absolute;
+  top:0px;
+  left: -15px;
+  width: 0;
+  height: 0;
+  box-sizing: content-box;
+  border-top: 5px solid rgb(255, 255, 255);
+  border-left: 10px solid rgba(0, 0, 0, 0);
+  border-bottom: 5px solid rgba(0, 0, 0, 0);
+  border-right: 10px solid rgb(255, 255, 255);
+}
+/* 右侧 */
+.page-chat-box-right{
+  flex-direction:row-reverse;
+}
+.page-chat-box-right .page-chat-name{
+  text-align: right;
+}
+.page-chat-box-right .page-chat-con{
+  background-color: #4eb4ff;
+  color: white;
+  border-radius:5px 0px 5px 5px;
+}
+.page-chat-box-right .page-chat-con::after{
+  left:auto;  
+  right: -15px;
+  border-top: 5px solid #4eb4ff;
+  border-right: 10px solid rgba(0, 0, 0, 0);
+  border-bottom: 5px solid rgba(0, 0, 0, 0);
+  border-left: 10px solid #4eb4ff;
+}
+/*
+*图片---默认左侧
+*/
+.page-chat-con-img{
+  border-radius: 5px;
+  border:1px solid rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 40vw;
+}
+/*
+*地理位置---默认左侧
+*/
+.page-chat-con-map{
+  border-radius: 5px;
+  padding:10px;
+  border:1px solid rgba(0, 0, 0, 0.05);
+  width: 60vw;
+  background-color: rgba(255, 255, 255,0.8);
+}
+.page-chat-con-map-head{
+  font-size: 17px;
+}
+.page-chat-con-map-body{
+  background-color: white;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 13px;
+}
+.page-chat-con-map-head{
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+.page-chat-con-map-body{
+  padding-top: 5px;
+}
+/*
+*语音---默认左侧
+*/
+.page-chat-con-audio-image{
+  width:20px;
+  height: 20px;
+  margin-right: 10px;
+}
+.page-chat-con-audio{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-right: 15vw;
+}
+/* 右侧 */
+.page-chat-box-right .page-chat-con-audio{
+  flex-direction:row-reverse;
+  padding-right: 10px;
+  padding-left: 15vw;
+}
+.page-chat-box-right .page-chat-con-audio-image{
+  margin-right: 0px;
+  margin-left: 10px;
 }
 /*
 *===================================
@@ -14,8 +155,10 @@
 *====================================
 */
 .page-foot{
-  position: fixed;
-  bottom: 0px;
+  flex-shrink: 0;
+  /* position: fixed; */
+  position: relative;
+  /* bottom: 0px; */
   width: 100vw;
   background-color: white;
   padding-top: 10px;
@@ -50,6 +193,7 @@
   margin-left: 10px;
   color: white;
   background-color: rgb(200, 200, 200);
+  font-size: 16px;
 }
 /* 功能区 */
 .page-funtion{

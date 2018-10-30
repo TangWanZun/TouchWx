@@ -70,8 +70,13 @@ function loginTest() {
   //   }
   // })
   // 跳转到登陆页面
-  wx.reLaunch({
-    url:"/pages/user/login"
-  })
+  let loginFlag = wx.getStorageSync('skey');
+  if (loginFlag){
+
+  }else{
+    wx.redirectTo({
+      url: "/pages/user/login"
+    })
+  }
 }
 export { loginTest as default}

@@ -8,15 +8,14 @@ App({
   onLaunch: function () {
     //挂载$request接口
     wx.$request = $request;
-    //获取用户数据
-    // login();
   },
 
   /**
    * 当小程序启动，或从后台进入前台显示，会触发 onShow
    */
   onShow: function (options) {
-    
+    //获取用户数据
+    // login();
   },
 
   /**
