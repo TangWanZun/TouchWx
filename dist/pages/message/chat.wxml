@@ -1,71 +1,23 @@
 <view class="app-body">
   <!-- 聊天内容 -->
   <view class='page-con'>
-      <view class='page-chat-box'>
-        <view class='page-chat-img'><image src="http://imgz.ermiao.com/2010/09/6992022-fr.jpg"></image></view>
+      <view class='page-chat-box {{item.FromType===CHAT_TYPE.CHAT_RIGHT?"page-chat-box-right":""}}' wx:for='{{chatData}}' wx:key="{{item.MsgId}}">
+        <view class='page-chat-img'><image src="{{item.ProfilePhoto?item.ProfilePhoto:item.FromType===CHAT_TYPE.CHAT_RIGHT?'/assets/chat/kf_tx.svg':'/assets/chat/kh_tx.svg'}}"></image></view>
         <view class='page-chat-body'>
-          <view class='page-chat-name'>典韦</view>
-          <view class='page-chat-con'>我是内容</view>
-        </view>
-      </view>
-      <view class='page-chat-box page-chat-box-right'>
-        <view class='page-chat-img'><image src="http://imgz.ermiao.com/2010/09/6992022-fr.jpg"></image></view>
-        <view class='page-chat-body'>
-          <view class='page-chat-name'>典韦</view>
-          <view class='page-chat-con'>我是内容啊我是内容啊我是内容啊我是内容啊我是内容啊我是内容啊我是内容啊我是内容啊我是内容啊</view>
-        </view>
-      </view>
-      <view class='page-chat-box'>
-        <view class='page-chat-img'><image src="http://imgz.ermiao.com/2010/09/6992022-fr.jpg"></image></view>
-        <view class='page-chat-body'>
-          <view class='page-chat-name'>典韦</view>
-          <view class='page-chat-con-img'><image mode="widthFix" src='http://img15.3lian.com/2015/f2/160/d/65.jpg'></image></view>
-        </view>
-      </view>
-      <view class='page-chat-box page-chat-box-right'>
-        <view class='page-chat-img'><image src="http://imgz.ermiao.com/2010/09/6992022-fr.jpg"></image></view>
-        <view class='page-chat-body'>
-          <view class='page-chat-name'>典韦</view>
-          <view class='page-chat-con-img'><image mode="widthFix" src='http://img15.3lian.com/2015/f2/160/d/65.jpg'></image></view>
-        </view>
-      </view>
-      <view class='page-chat-box'>
-        <view class='page-chat-img'><image src="http://imgz.ermiao.com/2010/09/6992022-fr.jpg"></image></view>
-        <view class='page-chat-body'>
-          <view class='page-chat-name'>典韦</view>
-          <view class='page-chat-con-map'>
-            <view class='page-chat-con-map-head'>位置(点击查看)</view>
-            <view class='page-chat-con-map-body'>山东省济南市槐荫区绿地缤纷城圣丽亚戈酒店</view>
+          <view class='page-chat-name'>{{item.FromType===CHAT_TYPE.CHAT_RIGHT?item.UserName:item.CardName}}</view>
+          <!-- 文本内容 -->
+          <view wx:if="{{item.MsgType===CHAT_TYPE.CHAT_TEXT}}" class='page-chat-con'>{{item.MsgData}}</view>
+          <!-- 图片内容 -->
+          <view wx:elif="{{item.MsgType===CHAT_TYPE.CHAT_IAMGE}}" class='page-chat-con-img'><image mode="widthFix" src='{{item.Thumbnail}}'></image></view>
+          <!-- 地理位置 -->
+          <view bindtap='openLocationFun' wx:elif="{{item.MsgType===CHAT_TYPE.CHAT_ADDS}}" data-name='{{item.AddressName}}' data-address='{{item.AddressDetails}}' data-latitude='{{item.Latitude}}' data-longitude='{{item.Longitude}}' class='page-chat-con-map'>
+            <view  class='page-chat-con-map-head'>位置(点击查看)</view>
+            <view class='page-chat-con-map-body'>{{item.AddressDetails}}</view>
           </view>
-        </view>
-      </view>
-      <view class='page-chat-box page-chat-box-right'>
-        <view class='page-chat-img'><image src="http://imgz.ermiao.com/2010/09/6992022-fr.jpg"></image></view>
-        <view class='page-chat-body'>
-          <view class='page-chat-name'>典韦</view>
-          <view class='page-chat-con-map'>
-            <view class='page-chat-con-map-head'>位置(点击查看)</view>
-            <view class='page-chat-con-map-body'>山东省济南市槐荫区绿地缤纷城圣丽亚戈酒店</view>
-          </view>
-        </view>
-      </view>
-      <view class='page-chat-box'>
-        <view class='page-chat-img'><image src="http://imgz.ermiao.com/2010/09/6992022-fr.jpg"></image></view>
-        <view class='page-chat-body'>
-          <view class='page-chat-name'>典韦</view>
-          <view class='page-chat-con page-chat-con-audio'>
-            <view class='page-chat-con-audio-image'><image src='/assets/chat/audio.svg'></image></view>
-            <view class='page-chat-con-audio-time'>12"</view>
-          </view>
-        </view>
-      </view>
-      <view class='page-chat-box page-chat-box-right'>
-        <view class='page-chat-img'><image src="http://imgz.ermiao.com/2010/09/6992022-fr.jpg"></image></view>
-        <view class='page-chat-body'>
-          <view class='page-chat-name'>典韦</view>
-          <view class='page-chat-con page-chat-con-audio'>
-            <view class='page-chat-con-audio-image'><image src='/assets/chat/audio-b.svg'></image></view>
-            <view class='page-chat-con-audio-time'>12"</view>
+          <!-- 语音 -->
+          <view wx:elif="{{item.MsgType===CHAT_TYPE.CHAT_VOICE}}" data-msgid="{{item.MsgId}}" class='page-chat-con page-chat-con-audio' bindtap='playAudio'>
+            <view class='page-chat-con-audio-image {{audio.playMsgId===item.MsgId?"page-chat-con-audio-play":""}} '><image src='/assets/chat/audio{{item.FromType===CHAT_TYPE.CHAT_RIGHT?"-b":""}}.svg'></image></view>
+            <view class='page-chat-con-audio-time'>{{item.Duration}}"</view>
           </view>
         </view>
       </view>
@@ -81,16 +33,19 @@
     </view>
     <!-- 功能区 -->
     <view class='page-funtion'>
-      <view class='page-funtion-item' bindtouchstart='voiceInShow'>
+      <!-- 语音 -->
+      <view class='page-funtion-item page-funtion-item-audio' bindtouchstart='voiceInShow'>
         <image src='/assets/chat/yy{{voiceBtn.functionUnfoldShow?"_show":""}}.svg'></image>
       </view>
-      <view class='page-funtion-item'>
+      <!-- 图库 -->
+      <view class='page-funtion-item' bindtap='chooseImageFun'>
         <image src='/assets/chat/tp.svg'></image>
       </view>
-      <view class='page-funtion-item'>
+      <!-- 拍照 -->
+      <!-- <view class='page-funtion-item' bindtap='chooseCameraFun'>
         <image src='/assets/chat/zx.svg'></image>
-      </view>
-      <view class='page-funtion-item'>
+      </view> -->
+      <view class='page-funtion-item' bindtap='chooseLocationFun'>
         <image src='/assets/chat/wz.svg'></image>
       </view>
     </view>

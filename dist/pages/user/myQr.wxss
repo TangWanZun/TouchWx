@@ -36,6 +36,7 @@
   width:32px;
   color: white;
   font-size: 12px;
+  /* writing-mode: vertical-rl; */
 }
 .page-headimg{
   width:15vw;
