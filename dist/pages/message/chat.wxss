@@ -21,8 +21,8 @@
 *====================================
 */
 .page-con{
+  height: 300px;
   flex-grow: 1;
-  padding-top: 20px;
   overflow:auto;
 }
 .page-chat-box{
@@ -30,6 +30,9 @@
   justify-content: flex-start;
   align-items: flex-start;
   padding:0px 15px 20px 15px;
+}
+.page-chat-box:first-child{
+  padding-top: 20px;
 }
 .page-chat-body{
   padding: 0 20px;
@@ -42,7 +45,7 @@
   flex-shrink: 0;
 }
 .page-chat-name{
-  font-size: 15px;
+  font-size: 13px;
   color: rgba(0, 0, 0, 0.5);
   margin-bottom: 5px;
 }
@@ -133,7 +136,10 @@
   width:20px;
   height: 20px;
   margin-right: 10px;
+  position: relative;
 }
+
+
 .page-chat-con-audio{
   display: flex;
   justify-content: flex-start;
@@ -154,20 +160,66 @@
 @keyframes audioPlay{
   0%{
     transform:scale(1);
+    /* clip-path: polygon(3px 0px,17px 0px,17px 20px,3px 20px); */
   }
-  20%{
+  10%{
     transform:scale(1.1);
+    /* clip-path: polygon(8px 0px,12px 0px, 12px 20px,8px 20px); */
   }
   80%{
     transform:scale(0.7);
+    /* clip-path: polygon(0px 0px,20px 0px,20px 20px,0px 20px); */
   }
   100%{
     transform:scale(1);
+    /* clip-path: polygon(3px 0px,17px 0px,17px 20px,3px 20px); */
+  }
+}
+/*图标遮罩*/
+@keyframes clipPath{
+  0%{
+    width: 3px;
+  }
+  10%{
+    width: 8px;
+  }
+  80%{
+    width: 0;
+  }
+  100%{
+    width:3px;
   }
 }
 .page-chat-con-audio-play{
   animation: audioPlay 1s;
   animation-iteration-count:infinite;
+}
+/*左侧*/
+.page-chat-con-audio-play::before{
+  content: "";
+  position: absolute;
+  width:3px;
+  background-color: white;
+  height: 100%;
+  top:0px;
+  left: 0px;
+  animation: clipPath 1s;
+  animation-iteration-count:infinite;
+}
+.page-chat-con-audio-play::after{
+  content: "";
+  position: absolute;
+  width:3px;
+  background-color: white;
+  height: 100%;
+  top:0px;
+  right: 0px;
+  animation: clipPath 1s;
+  animation-iteration-count:infinite;
+}
+/*右侧*/
+.page-chat-box-right .page-chat-con-audio-play::after,.page-chat-box-right .page-chat-con-audio-play::before{
+  background-color: #4eb4ff;
 }
 /*
 * 为所有聊天框添加点击效果
@@ -176,6 +228,7 @@
   transition:opacity  0.1;
   opacity: 0.5;
 }
+
 /*
 *===================================
 *底部栏

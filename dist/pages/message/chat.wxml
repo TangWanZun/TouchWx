@@ -1,35 +1,35 @@
 <view class="app-body">
   <!-- 聊天内容 -->
-  <view class='page-con'>
-      <view class='page-chat-box {{item.FromType===CHAT_TYPE.CHAT_RIGHT?"page-chat-box-right":""}}' wx:for='{{chatData}}' wx:key="{{item.MsgId}}">
-        <view class='page-chat-img'><image src="{{item.ProfilePhoto?item.ProfilePhoto:item.FromType===CHAT_TYPE.CHAT_RIGHT?'/assets/chat/kf_tx.svg':'/assets/chat/kh_tx.svg'}}"></image></view>
-        <view class='page-chat-body'>
-          <view class='page-chat-name'>{{item.FromType===CHAT_TYPE.CHAT_RIGHT?item.UserName:item.CardName}}</view>
-          <!-- 文本内容 -->
-          <view wx:if="{{item.MsgType===CHAT_TYPE.CHAT_TEXT}}" class='page-chat-con'>{{item.MsgData}}</view>
-          <!-- 图片内容 -->
-          <view wx:elif="{{item.MsgType===CHAT_TYPE.CHAT_IAMGE}}" class='page-chat-con-img'><image mode="widthFix" src='{{item.Thumbnail}}'></image></view>
-          <!-- 地理位置 -->
-          <view bindtap='openLocationFun' wx:elif="{{item.MsgType===CHAT_TYPE.CHAT_ADDS}}" data-name='{{item.AddressName}}' data-address='{{item.AddressDetails}}' data-latitude='{{item.Latitude}}' data-longitude='{{item.Longitude}}' class='page-chat-con-map'>
-            <view  class='page-chat-con-map-head'>位置(点击查看)</view>
-            <view class='page-chat-con-map-body'>{{item.AddressDetails}}</view>
-          </view>
-          <!-- 语音 -->
-          <view wx:elif="{{item.MsgType===CHAT_TYPE.CHAT_VOICE}}" data-msgid="{{item.MsgId}}" class='page-chat-con page-chat-con-audio' bindtap='playAudio'>
-            <view class='page-chat-con-audio-image {{audio.playMsgId===item.MsgId?"page-chat-con-audio-play":""}} '><image src='/assets/chat/audio{{item.FromType===CHAT_TYPE.CHAT_RIGHT?"-b":""}}.svg'></image></view>
-            <view class='page-chat-con-audio-time'>{{item.Duration}}"</view>
-          </view>
+  <scroll-view  scroll-y="true" scroll-into-view="chat-{{intoView}}" class='page-con'>
+    <view id='chat-{{index+1}}' class='page-chat-box {{item.FromType===CHAT_TYPE.CHAT_RIGHT?"page-chat-box-right":""}}' wx:for='{{chatData}}' wx:key="{{item.MsgId}}">
+      <view class='page-chat-img'><image src="{{item.ProfilePhoto?item.ProfilePhoto:item.FromType===CHAT_TYPE.CHAT_RIGHT?'/assets/chat/kf_tx.svg':'/assets/chat/kh_tx.svg'}}"></image></view>
+      <view class='page-chat-body'>
+        <view class='page-chat-name'>{{item.FromType===CHAT_TYPE.CHAT_RIGHT?item.UserName:item.CardName}}</view>
+        <!-- 文本内容 -->
+        <view wx:if="{{item.MsgType===CHAT_TYPE.CHAT_TEXT}}" class='page-chat-con'>{{item.MsgData}}</view>
+        <!-- 图片内容 -->
+        <view wx:elif="{{item.MsgType===CHAT_TYPE.CHAT_IAMGE}}" class='page-chat-con-img' data-src="{{item.Thumbnail}}" bindtap='showBigImage'><image mode="widthFix" src='{{item.Thumbnail}}'></image></view>
+        <!-- 地理位置 -->
+        <view bindtap='openLocationFun' wx:elif="{{item.MsgType===CHAT_TYPE.CHAT_ADDS}}" data-name='{{item.AddressName}}' data-address='{{item.AddressDetails}}' data-latitude='{{item.Latitude}}' data-longitude='{{item.Longitude}}' class='page-chat-con-map'>
+          <view  class='page-chat-con-map-head'>位置(点击查看)</view>
+          <view class='page-chat-con-map-body'>{{item.AddressDetails}}</view>
+        </view>
+        <!-- 语音 -->
+        <view wx:elif="{{item.MsgType===CHAT_TYPE.CHAT_VOICE}}" data-msgid="{{index}}" data-src="{{item.Thumbnail}}" class='page-chat-con page-chat-con-audio' bindtap='playAudio'>
+          <view class='page-chat-con-audio-image {{audio.playMsgId===index?"page-chat-con-audio-play":""}} '><image src='/assets/chat/audio{{item.FromType===CHAT_TYPE.CHAT_RIGHT?"-b":""}}.svg'></image></view>
+          <view class='page-chat-con-audio-time'>{{item.Duration}}"</view>
         </view>
       </view>
-  </view>
+    </view>
+  </scroll-view>
   <!-- 底部栏 -->
   <view class='page-foot'>
     <!-- 聊天框区域 -->
     <view class='page-input-box'>
-      <view class='page-input app-center {{inputCon?"page-input-show":""}}'>
-        <input confirm-type="send" confirm-hold="true" cursor-spacing="50" bindinput="bindInput"></input>
+      <view class='page-input app-cente r {{inputCon.isValue?"page-input-show":""}}'>
+        <input bindconfirm="sendText" value="{{inputCon.inputValue}}" confirm-type="send" confirm-hold="true" cursor-spacing="50" bindinput="bindInput"></input>
       </view>
-      <view class='page-send app-center {{inputCon?"app-main-bg":""}}'>发送</view>
+      <view class='page-send app-center {{inputCon.isValue?"app-main-bg":""}}' bindtap='sendText'>发送</view>
     </view>
     <!-- 功能区 -->
     <view class='page-funtion'>

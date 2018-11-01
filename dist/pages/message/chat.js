@@ -5,8 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    inputCon:{
     //输入框中是否存在内容
-    inputCon:false,
+      isValue:false,
+      //用于清空input内容
+      value:""
+    },
     //语音按钮
     voiceBtn:{
       CONST_I:{
@@ -25,7 +29,7 @@ Page({
     //音频播放
     audio:{
       isPlay:false,
-      playMsgId:0,
+      playMsgId:-1,
     },
     //获取聊天类型
     CHAT_TYPE:{
@@ -37,6 +41,14 @@ Page({
       CHAT_LEFT: 'Client',//客户
       CHAT_RIGHT:'Server',//客服
     },
+    //用于滚动到页面底部的
+    intoView: "",
+    // 客服档案
+    serverInfo:{
+      userCode: 'admin',											
+      userName: '系统管理员',	
+      profilePhoto: "https://img.52z.com/upload/news/image/20171213/20171213124121_25664.jpg",		
+    },
     chatData:[
 
     ]
@@ -46,37 +58,250 @@ Page({
    * ========================================
   */
   /**
-   * 输入框输入内容是
-  */
-  bindInput:function(e){
-    // 改变发送按钮颜色
-    this.setData({
-      inputCon: e.detail.value.length > 0
-    })
-  },
-  /**
    * 语音功能开关 
   */
   voiceInShow:function(){
+    var bool = this.data.voiceBtn.functionUnfoldShow
+    //滚动到页面底部
+    //因为滚动速度快于语音展开，所以延时调用
+    setTimeout(()=>{
+      !bool ? this.toBottom() : "";
+    },300);
     this.setData({
-      'voiceBtn.functionUnfoldShow': !this.data.voiceBtn.functionUnfoldShow
+      'voiceBtn.functionUnfoldShow': !bool
     })
+  },
+  /**========================================
+   * 发送事件
+   * ========================================
+  */
+  /**
+   * 文本信息发送
+  */
+  sendText(){
+    if (this.inputValue.length>0){
+      this.chatSend({
+        msgType: this.data.CHAT_TYPE.CHAT_TEXT,
+        data: this.inputValue
+      });
+    }
+
+    //清除input内容 发送键复原
+    this.setData({
+      'inputCon.inputValue': '',
+      'inputCon.isValue': false,
+    })
+  },
+  /**
+   * 语音发送
+  */
+  sendRecord(){
+    var record  = this.createRecord();
+    record.stop();
+    record.onStop((res)=>{
+      this.chatSend({
+        msgType: this.data.CHAT_TYPE.CHAT_VOICE,
+        duration:Math.round(res.duration / 1000),
+        thumbnail:res.tempFilePath
+      });
+    })
+  },
+  /**
+   * 地理位置发送
+  */
+  sendLocation(res){
+    this.chatSend({
+      msgType: this.data.CHAT_TYPE.CHAT_ADDS,
+      addressName: res.name,
+      addressDetails: res.address,
+      latitude: res.latitude,
+      longitude: res.longitude,
+    });
+  },
+  /**
+   * 图片发送
+  */
+  sendImage(res) {
+    console.log(res);
+    let forDom = res.tempFilePaths;
+    for (let i = 0; i < forDom.length;i++){
+      this.chatSend({
+        msgType: this.data.CHAT_TYPE.CHAT_IAMGE,
+        thumbnail: forDom[i],
+        mediaOriginal: forDom[i],
+      });
+    }
+  },
+  /*
+  * 发送信息(包括语音图片等)
+  */
+  chatSend(pro) {
+    var msg = {
+      MsgId: 1,
+      AddressDetails: pro.addressDetails||null,															//地理位置详情
+      AddressName: pro.addressName|| null,							//地理位置名称
+      CardName: null,																 //真实姓名
+      Duration: pro.duration||null,																	  //语音持续时间
+      FromType: this.data.CHAT_TYPE.CHAT_RIGHT,					//聊天人身份
+      Latitude: pro.latitude|| null,																	//地理位置的维度
+      Longitude: pro.longitude|| null,																//地理位置的精度
+      MediaOriginal: pro.mediaOriginal||null,																//图片初始图
+      MsgData: pro.data||null,		                          //聊天内容
+      MsgDate: new Date(),												//时间					
+      MsgType: pro.msgType,																	//类型
+      NickName: "兔子只吃胡萝卜",														//微信名称
+      OpenId: "oS4HgskVQqtMvZ9IbB2d-k4GhcRA",											//openid
+      ProfilePhoto: this.data.serverInfo.profilePhoto,																//头像
+      Thumbnail: pro.thumbnail || null,																	//缩略图
+      UserCode: this.data.serverInfo.userCode,																	//客服code
+      UserName: this.data.serverInfo.userName,																	//客服name
+      WxId: "gh_40c534b93a9f"
+    }
+    console.log(msg);
+    this.data.chatData.push(msg);
+    this.setData({
+      chatData: this.data.chatData
+    });
+    //滚动到页面底部
+    this.toBottom();
+  },
+  /**========================================
+   * 页面聊天事件所需被调用函数
+   * ========================================
+  */
+  /**
+   * 滚动到页面底部
+  */
+  toBottom(){
+    this.setData({
+      intoView: this.data.chatData.length - 1
+    })
+  },
+  /*
+  *文本输入框内容
+  */
+  inputValue:"",
+  /**
+   * 输入框输入内容
+  */
+  bindInput: function (e) {
+    // 改变发送按钮颜色
+    this.setData({
+      'inputCon.isValue':e.detail.value.length > 0,
+    })
+    //拿去文件数据
+    this.inputValue = e.detail.value;
+  },
+  /**
+   * 音乐停止
+   * 当音乐正常关闭,或者页面发生跳转音乐强行关闭许运行的函数
+  */
+  audioStop() {
+    var audio =  this.createAudio();
+    audio.isPlay = false;
+    //将播放ID设置为-1 取消闪动
+    this.setData({
+      'audio.playMsgId': -1
+    })
+  },
+  //录音单例
+  record:undefined,
+  /**
+   * 录音事件单例模式
+  */
+  createRecord(){
+    if(this.record){
+      return this.record;
+    }else{
+      this.record = wx.getRecorderManager()
+      //开始录音时
+      this.record.onStart(() => {
+        console.log('录音开始')
+      })
+      //录音停止时
+      this.record.onStop((res) => {
+        console.log('录音停止', res);
+      })
+      //录音出现错误
+      this.record.onError((res)=>{
+        console.log("录音错误",res);
+        //处理未授权
+        wx.getSetting({
+          success(res) {
+            if (!res.authSetting['scope.record']) {
+              //未授权
+              wx.showModal({
+                title: '使用录音需要授权',
+                content: '是否前往授权',
+                showCancel: true,
+                cancelText: '取消',
+                confirmText: '前往授权',
+                success(res) {
+                  if (res.confirm) {
+                    wx.openSetting();
+                  }
+                }
+              })
+            }
+          }
+        })
+      })
+      this.record.options = {
+        duration: 10000,
+        sampleRate: 44100,
+        numberOfChannels: 1,
+        encodeBitRate: 192000,
+        format: 'mp3',
+        frameSize: 50
+      }
+      return this.record;
+    }
+  },
+  //音频单例
+  audio: undefined,
+  /**
+   * 音频事件单例模式
+  */
+  createAudio() {
+    if (this.audio) {
+      //取消开始音乐播放监听
+      this.audio.offPlay();
+      return this.audio
+    } else {
+      this.audio = wx.createInnerAudioContext();
+      this.audio.isPlay = false;
+      //音频播放出现错误
+      this.audio.onError((res) => {
+        console.log(res.errMsg)
+        console.log(res.errCode)
+      })
+      //音乐停止事件
+      this.audio.onStop((res) => {
+        console.log('播放停止');
+        this.audioStop()
+      })
+      //音频自然播放至停止
+      this.audio.onEnded((res) => {
+        console.log('播放结束');
+        this.audioStop()
+      })
+      //音频因为数据不足，需要停下来加载时会触发
+      this.audio.onWaiting((res) => {
+        console.log('数据不足');
+      })
+      return this.audio;
+    }
   },
   /**========================================
    * 页面聊天事件
    * ========================================
   */
   /**
-   * 打开地图查看位置
+   * 查看大图
   */
-  openLocationFun(e){
-    var data = e.currentTarget.dataset;
-    console.log(e);
-    wx.openLocation({
-      latitude: data.latitude,
-      longitude: data.longitude,
-      name: data.name,
-      address: data.address
+  showBigImage(e){
+    wx.previewImage({
+      urls: [e.currentTarget.dataset.src]
     })
   },
   /**
@@ -85,28 +310,45 @@ Page({
   playAudio(e){
     //获取需要播放的msgid
     var id = e.currentTarget.dataset.msgid;
-    //音频图片闪动
-    this.setData({
-      'audio.playMsgId': id
+    //获取播放路径
+    var src = e.currentTarget.dataset.src;
+    var audio = this.createAudio();
+    //当前为播放音频状态时且点击的为同一ID时，音频暂停
+    if (audio.isPlay && id === this.data.audio.playMsgId){
+      audio.stop();
+    }else{
+      audio.src = src;
+      audio.play();
+    }
+    audio.onPlay(() => {
+      console.log('播放开始');
+      this.audio.isPlay = true;
+      //音频图片闪动
+      this.setData({
+        'audio.playMsgId': id
+      })
     })
-    // const innerAudioContext = wx.createInnerAudioContext()
-    // innerAudioContext.autoplay = true
-    // innerAudioContext.src = 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46'
-    // innerAudioContext.onPlay(() => {
-    //   console.log('开始播放')
-    // })
-    // innerAudioContext.onError((res) => {
-    //   console.log(res.errMsg)
-    //   console.log(res.errCode)
-    // })
+  },
+  /**
+   * 打开地图查看位置
+  */
+  openLocationFun(e) {
+    var data = e.currentTarget.dataset;
+    wx.openLocation({
+      latitude: data.latitude,
+      longitude: data.longitude,
+      name: data.name,
+      address: data.address
+    })
   },
   /**
    * 打开相册
   */
   chooseImageFun(){
+    var _this = this;
     wx.chooseImage({
       success(res){
-        console.log(tempFilePaths);
+        _this.sendImage(res);
       }
     })
   },
@@ -114,9 +356,10 @@ Page({
    * 选择位置
   */
   chooseLocationFun(){
+    var _this = this;
     wx.chooseLocation({
       success(res){
-        console.log('成功', res)
+        _this.sendLocation(res);
       },
       fail(res){
         //判断此接口是否授权
@@ -133,7 +376,6 @@ Page({
                 success(res) {
                   if (res.confirm) {
                     wx.openSetting();
-                    console.log(1)
                   } 
                 }
               })
@@ -148,6 +390,8 @@ Page({
   */
   voiceTouchstart: function () {
     //改变状态为按钮被按下
+    var record =  this.createRecord();
+    record.start(record.options);
     //改变提示语句
     this.setData({
       'voiceBtn.btnStart': true,
@@ -185,6 +429,18 @@ Page({
    * 结束点击语音按钮
   */
   voiceTouchend: function () {
+    //判断语音是在被什么状态下结束
+    if (this.data.voiceBtn.isDelete){
+      //取消语音
+      console.log('取消语音');
+      var record = this.createRecord();
+      record.stop();
+    }else{
+      //发送语音
+      console.log('发送语音');
+      //调用语音发送
+      this.sendRecord();
+    }
     //改变状态为按钮被松开
     //改变提示语句
     this.setData({
@@ -199,11 +455,18 @@ Page({
    * ========================================
   */
   /**
+   * 获取聊天记录
+  */
+  getData(){
+    var data =  this.modelData();
+    
+  },
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     //加载模拟数据
-    this.modelData();
+    this.getData();
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -216,14 +479,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+    this.audioStop()
   },
 
   /**
@@ -397,7 +659,7 @@ Page({
           AddressDetails: null,	//地理位置详情
           AddressName:null,																//地理位置名称
           CardName: "典韦",																 //真实姓名
-          Duration: 5,																	  //语音持续时间
+          Duration: 1,																	  //语音持续时间
           FromType: "Client",																//聊天人身份
           Latitude: 36, 																	//地理位置的维度
           Longitude: 116,															//地理位置的精度
@@ -409,7 +671,7 @@ Page({
           OpenId: "oS4HgskVQqtMvZ9IbB2d-k4GhcRA",											//openid
           ProfilePhoto: "http://imgz.ermiao.com/2010/09/6992022-fr.jpg",																//头像
           Rown: 7,																		//此消息位次
-          Thumbnail: 'http://img15.3lian.com/2015/f2/160/d/65.jpg',																	//缩略图
+          Thumbnail: 'http://www.runoob.com/try/demo_source/horse.ogg',																	//缩略图
           UserCode: null,																	//客服code
           UserName: null,																	//客服name
           WxId: "gh_40c534b93a9f"
@@ -419,7 +681,7 @@ Page({
           AddressDetails: null,	                    //地理位置详情
           AddressName: null,																//地理位置名称
           CardName: null,																 //真实姓名
-          Duration: 13,																	  //语音持续时间
+          Duration: 20,																	  //语音持续时间
           FromType: "Server",																//聊天人身份
           Latitude: null,																	//地理位置的维度
           Longitude: null,																//地理位置的精度
@@ -431,7 +693,7 @@ Page({
           OpenId: "oS4HgskVQqtMvZ9IbB2d-k4GhcRA",											//openid
           ProfilePhoto: "https://img.52z.com/upload/news/image/20171213/20171213124121_25664.jpg",																//头像
           Rown: 7,																		//此消息位次
-          Thumbnail: 'http://www.imagewa.com/PhotoPreview/229/229_18760.jpg',		mp3:11	,														//缩略图
+          Thumbnail: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46',		mp3:11	,														//缩略图
           UserCode: null,																	//客服code
           UserName: '系统管理员',																	//客服name
           WxId: "gh_40c534b93a9f"
