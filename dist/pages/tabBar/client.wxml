@@ -1,4 +1,4 @@
-<view class="body">
+<view class="page-body">
   <!-- 查询栏 -->
   <navigator url="/pages/client/query" class='select-box'>
     <view class='select-content'>

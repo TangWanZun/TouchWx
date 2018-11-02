@@ -9,16 +9,77 @@ Page({
     accountShow:false,
     //验证码系统
     codeObj:{
-      codeTextOut: "获取验证码",
+      codeTextOut: "验证码",
       COUNT_DOWN_TIME:30,
       isCountDown:false,
-      codeText:"获取验证码",
+      codeText:"验证码",
       NEW_TIME:30,
       TIME_CONST:0
+    },
+    /**
+     * 第一页签登录是否禁用
+    */
+    disabledOne: true,
+    /**
+     * 第二页签登录是否禁用
+    */
+    disabledTow:true,
+  },
+  formData: {
+    phone: "",
+    code: "",
+    user: "",
+    pass: ""
+  },
+  /**
+ * 第一页签登录开启验证
+*/
+  bindblurOne() {
+    var data = this.formData;
+    if (data.phone.length==11 && data.code.length==6){
+      this.setData({
+        disabledOne: false,
+      })
+    }else{
+      this.setData({
+        disabledOne: true,
+      })
     }
   },
-  bindgetuserinfo(res) {
-    console.log(res);
+  /**
+* 第二页签登录开启验证
+*/
+  bindblurTow() {
+    var data = this.formData;
+    if (data.user.length >1 && data.pass.length>=4) {
+      this.setData({
+        disabledTow: false,
+      })
+    } else {
+      this.setData({
+        disabledTow: true,
+      })
+    }
+  },
+  //手机input
+  bindinputPhone(res){
+    this.formData.phone = res.detail.value;
+    this.bindblurOne();
+  },
+  //验证码input
+  bindinputCode(res) {
+    this.formData.code = res.detail.value;
+    this.bindblurOne();
+  },
+  //手机input
+  bindinputUser(res) {
+    this.formData.user = res.detail.value;
+    this.bindblurTow();
+  },
+  //验证码input
+  bindinputPass(res) {
+    this.formData.pass = res.detail.value;
+    this.bindblurTow();
   },
   /**
    * 登陆方式切换
@@ -60,18 +121,34 @@ Page({
       });
     }
   },
+
   /**
    * 登陆
   */
-  login:function(e){
+  login: function (res){
     // console.log(e);
-    
+    console.log(res);
+    wx.setStorage({
+      key:'userInfo',
+      data: res.detail,
+      success:(res)=>{
+        wx.switchTab({
+          url: "/pages/tabBar/user"
+        });
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var userInfo = wx.getStorageSync('userInfo');
+    console.log(userInfo);
+    if(userInfo){
+      wx.switchTab({
+        url: "/pages/tabBar/user"
+      });
+    }
   },
 
   /**

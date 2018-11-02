@@ -176,8 +176,8 @@ Page({
         {
           id: 2,
           workType: "A02",
-          clientName: "蒋干",
-          clientImg: "https://p1.4499.cn/touxiang/UploadPic/2015-6/17/2015061716013860658.jpg",
+          clientName: "陈宫",
+          clientImg: "http://pic.qqtn.com/up/2017-11/15115072217014845.jpg",
           date: "2018-10-24",
           data: {
             conText: "服务态度不好,交车时居然缺少了配件,服务态度不好, 交车时居然缺少了配件,服务态度不好, 交车时居然缺少了配件,",

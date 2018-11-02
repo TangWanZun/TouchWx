@@ -1,4 +1,4 @@
-<view class="body">
+<view class="page-body">
   <view class="userCard app-shadow-2">
     <view class="userCard-left">
       <view class="userCard-name">
@@ -78,10 +78,10 @@
         <view class="my-data-item-num my-data-item-list">90000</view>
       </view>
     </view>
-    <navigator url='/pages/user/login' class="my-data-title app-item-div">
+    <view  class="my-data-title app-item-div">
       <view>注册页面</view>
       <view class="my-data-title-icon"><image src='/assets/icon/right.svg'></image></view>
-    </navigator>
+    </view>
     <view class="my-data-title">
       <view>客户画像</view>
       <view class="my-data-title-icon"><image src='/assets/icon/right.svg'></image></view>

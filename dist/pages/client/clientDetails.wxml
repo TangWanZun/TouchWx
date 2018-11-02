@@ -53,10 +53,10 @@
             <view class='panel-icon'><image src='/assets/icon/QQ.svg'></image></view>
           </view>
           <!-- 微信 -->
-          <view wx:elif="{{item.conType==='WX'}}" class='panel'>
+          <navigator url='/pages/message/chat' wx:elif="{{item.conType==='WX'}}" class='panel'>
             <view class='panel-number'>sunshangxiang1</view>
             <view class='panel-icon'><image src='/assets/icon/WX.svg'></image></view>
-          </view>
+          </navigator>
         </view>
       </view>
     </view>

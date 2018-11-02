@@ -95,17 +95,18 @@
 .page-buttom{
   flex-shrink: 0;
   border-radius: 50px;
-  padding:10px 0;
+  padding:8px 0;
   margin-left: 10px;
   text-align: center;
   color: white;
   background-color: #4eb4ff;
   transition: 0.2s;
   font-size: 15px;
-  width: 120px;
+  width: 80px;
 }
 .page-buttom-hidden{
-  background-color: rgba(0,0,0, 0.2);
+  background-color: rgb(247,247,247);
+  color: rgb(172, 172, 172)
 }
 
 .page-login{
@@ -113,12 +114,20 @@
   background-color: #4eb4ff;
   border-radius: 50px;
   text-align: center;
-  padding:10px 0;
+  /* padding:10px 0; */
   transition: 0.2s;
   margin-top: 20px;
   font-size: 15px;
   border:0px;
   height: auto;
+}
+.page-login::before{
+  content:"";
+  border:0px !important;
+}
+.page-login::after{
+  content:"";
+  border:0px !important;
 }
 .page-login:active{
   transform:scale(0.95);

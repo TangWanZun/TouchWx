@@ -15,11 +15,6 @@
   flex-direction: column;
   justify-content: space-between; 
 }
-/*
-*===================================
-*聊天内容
-*====================================
-*/
 .page-con{
   height: 300px;
   flex-grow: 1;
@@ -36,6 +31,8 @@
 }
 .page-chat-body{
   padding: 0 20px;
+  padding-top: 20px;
+  position: relative;
 }
 .page-chat-img{
   width:13vw;
@@ -47,8 +44,20 @@
 .page-chat-name{
   font-size: 13px;
   color: rgba(0, 0, 0, 0.5);
-  margin-bottom: 5px;
+  position: absolute;
+  top: 0px;
+  left: 20px;
+  width: 100%;
 }
+.page-chat-box-right .page-chat-name{
+  left:auto;
+  right: 20px ;
+}
+/*
+*===================================
+*聊天内容
+*====================================
+*/
 /*
 *文字---默认左侧
 */
@@ -61,6 +70,7 @@
   max-width: 60vw;
   position: relative;
   word-break:break-all;
+  display:flex;
 }
 .page-chat-con::after{
   content:"";

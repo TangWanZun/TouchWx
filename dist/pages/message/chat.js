@@ -5,51 +5,51 @@ Page({
    * 页面的初始数据
    */
   data: {
-    inputCon:{
-    //输入框中是否存在内容
-      isValue:false,
+    inputCon: {
+      //输入框中是否存在内容
+      isValue: false,
       //用于清空input内容
-      value:""
+      value: ""
     },
     //语音按钮
-    voiceBtn:{
-      CONST_I:{
+    voiceBtn: {
+      CONST_I: {
         HINT_OUT: "按住说话",
         HINT_IN: "左滑取消发送",
         HINT_DEL: "松开取消发送",
       },
       //语音功能是否被打开
-      functionUnfoldShow:false,
+      functionUnfoldShow: false,
       //按钮是否被按下
       btnStart: false,
       //手指是否位于删除位置
-      isDelete:false,
-      hint:"按住说话",
+      isDelete: false,
+      hint: "按住说话",
     },
     //音频播放
-    audio:{
-      isPlay:false,
-      playMsgId:-1,
+    audio: {
+      isPlay: false,
+      playMsgId: -1,
     },
     //获取聊天类型
-    CHAT_TYPE:{
+    CHAT_TYPE: {
       CHAT_TEXT: 'text',//文本消息
       CHAT_IAMGE: 'image',//图片消息
       CHAT_ADDS: 'location',//位置消息
       CHAT_VOICE: 'voice',//音频消息
       CHAT_VIDEO: 'video',//视频信息
       CHAT_LEFT: 'Client',//客户
-      CHAT_RIGHT:'Server',//客服
+      CHAT_RIGHT: 'Server',//客服
     },
     //用于滚动到页面底部的
     intoView: "",
     // 客服档案
-    serverInfo:{
-      userCode: 'admin',											
-      userName: '系统管理员',	
-      profilePhoto: "https://img.52z.com/upload/news/image/20171213/20171213124121_25664.jpg",		
+    serverInfo: {
+      userCode: 'admin',
+      userName: '系统管理员',
+      profilePhoto: "https://img.52z.com/upload/news/image/20171213/20171213124121_25664.jpg",
     },
-    chatData:[
+    chatData: [
 
     ]
   },
@@ -60,13 +60,13 @@ Page({
   /**
    * 语音功能开关 
   */
-  voiceInShow:function(){
+  voiceInShow: function () {
     var bool = this.data.voiceBtn.functionUnfoldShow
     //滚动到页面底部
     //因为滚动速度快于语音展开，所以延时调用
-    setTimeout(()=>{
+    setTimeout(() => {
       !bool ? this.toBottom() : "";
-    },300);
+    }, 300);
     this.setData({
       'voiceBtn.functionUnfoldShow': !bool
     })
@@ -78,8 +78,8 @@ Page({
   /**
    * 文本信息发送
   */
-  sendText(){
-    if (this.inputValue.length>0){
+  sendText() {
+    if (this.inputValue.length > 0) {
       this.chatSend({
         msgType: this.data.CHAT_TYPE.CHAT_TEXT,
         data: this.inputValue
@@ -95,21 +95,17 @@ Page({
   /**
    * 语音发送
   */
-  sendRecord(){
-    var record  = this.createRecord();
-    record.stop();
-    record.onStop((res)=>{
-      this.chatSend({
-        msgType: this.data.CHAT_TYPE.CHAT_VOICE,
-        duration:Math.round(res.duration / 1000),
-        thumbnail:res.tempFilePath
-      });
-    })
+  sendRecord(res) {
+    this.chatSend({
+      msgType: this.data.CHAT_TYPE.CHAT_VOICE,
+      duration: Math.round(res.duration / 1000),
+      thumbnail: res.tempFilePath
+    });
   },
   /**
    * 地理位置发送
   */
-  sendLocation(res){
+  sendLocation(res) {
     this.chatSend({
       msgType: this.data.CHAT_TYPE.CHAT_ADDS,
       addressName: res.name,
@@ -124,7 +120,7 @@ Page({
   sendImage(res) {
     console.log(res);
     let forDom = res.tempFilePaths;
-    for (let i = 0; i < forDom.length;i++){
+    for (let i = 0; i < forDom.length; i++) {
       this.chatSend({
         msgType: this.data.CHAT_TYPE.CHAT_IAMGE,
         thumbnail: forDom[i],
@@ -138,15 +134,15 @@ Page({
   chatSend(pro) {
     var msg = {
       MsgId: 1,
-      AddressDetails: pro.addressDetails||null,															//地理位置详情
-      AddressName: pro.addressName|| null,							//地理位置名称
+      AddressDetails: pro.addressDetails || null,															//地理位置详情
+      AddressName: pro.addressName || null,							//地理位置名称
       CardName: null,																 //真实姓名
-      Duration: pro.duration||null,																	  //语音持续时间
+      Duration: pro.duration || null,																	  //语音持续时间
       FromType: this.data.CHAT_TYPE.CHAT_RIGHT,					//聊天人身份
-      Latitude: pro.latitude|| null,																	//地理位置的维度
-      Longitude: pro.longitude|| null,																//地理位置的精度
-      MediaOriginal: pro.mediaOriginal||null,																//图片初始图
-      MsgData: pro.data||null,		                          //聊天内容
+      Latitude: pro.latitude || null,																	//地理位置的维度
+      Longitude: pro.longitude || null,																//地理位置的精度
+      MediaOriginal: pro.mediaOriginal || null,																//图片初始图
+      MsgData: pro.data || null,		                          //聊天内容
       MsgDate: new Date(),												//时间					
       MsgType: pro.msgType,																	//类型
       NickName: "兔子只吃胡萝卜",														//微信名称
@@ -157,7 +153,7 @@ Page({
       UserName: this.data.serverInfo.userName,																	//客服name
       WxId: "gh_40c534b93a9f"
     }
-    console.log(msg);
+    // console.log(msg, this.data.chatData)
     this.data.chatData.push(msg);
     this.setData({
       chatData: this.data.chatData
@@ -172,7 +168,7 @@ Page({
   /**
    * 滚动到页面底部
   */
-  toBottom(){
+  toBottom() {
     this.setData({
       intoView: this.data.chatData.length - 1
     })
@@ -180,14 +176,14 @@ Page({
   /*
   *文本输入框内容
   */
-  inputValue:"",
+  inputValue: "",
   /**
    * 输入框输入内容
   */
   bindInput: function (e) {
     // 改变发送按钮颜色
     this.setData({
-      'inputCon.isValue':e.detail.value.length > 0,
+      'inputCon.isValue': e.detail.value.length > 0,
     })
     //拿去文件数据
     this.inputValue = e.detail.value;
@@ -197,7 +193,7 @@ Page({
    * 当音乐正常关闭,或者页面发生跳转音乐强行关闭许运行的函数
   */
   audioStop() {
-    var audio =  this.createAudio();
+    var audio = this.createAudio();
     audio.isPlay = false;
     //将播放ID设置为-1 取消闪动
     this.setData({
@@ -205,14 +201,14 @@ Page({
     })
   },
   //录音单例
-  record:undefined,
+  record: undefined,
   /**
    * 录音事件单例模式
   */
-  createRecord(){
-    if(this.record){
+  createRecord() {
+    if (this.record) {
       return this.record;
-    }else{
+    } else {
       this.record = wx.getRecorderManager()
       //开始录音时
       this.record.onStart(() => {
@@ -223,8 +219,13 @@ Page({
         console.log('录音停止', res);
       })
       //录音出现错误
-      this.record.onError((res)=>{
-        console.log("录音错误",res);
+      this.record.onError((res) => {
+        if (this.record.isError) {
+          return;
+        }
+        console.log("录音错误", res);
+        var _record = this.record;
+        _record.isError = true;
         //处理未授权
         wx.getSetting({
           success(res) {
@@ -240,6 +241,9 @@ Page({
                   if (res.confirm) {
                     wx.openSetting();
                   }
+                },
+                complete(res) {
+                  _record.isError = false;
                 }
               })
             }
@@ -273,7 +277,9 @@ Page({
       //音频播放出现错误
       this.audio.onError((res) => {
         console.log(res.errMsg)
-        console.log(res.errCode)
+        console.log(res.errCode);
+        //停止闪动
+        this.audioStop();
       })
       //音乐停止事件
       this.audio.onStop((res) => {
@@ -299,7 +305,7 @@ Page({
   /**
    * 查看大图
   */
-  showBigImage(e){
+  showBigImage(e) {
     wx.previewImage({
       urls: [e.currentTarget.dataset.src]
     })
@@ -307,16 +313,16 @@ Page({
   /**
    * 播放音频
   */
-  playAudio(e){
+  playAudio(e) {
     //获取需要播放的msgid
     var id = e.currentTarget.dataset.msgid;
     //获取播放路径
     var src = e.currentTarget.dataset.src;
     var audio = this.createAudio();
     //当前为播放音频状态时且点击的为同一ID时，音频暂停
-    if (audio.isPlay && id === this.data.audio.playMsgId){
+    if (audio.isPlay && id === this.data.audio.playMsgId) {
       audio.stop();
-    }else{
+    } else {
       audio.src = src;
       audio.play();
     }
@@ -344,10 +350,10 @@ Page({
   /**
    * 打开相册
   */
-  chooseImageFun(){
+  chooseImageFun() {
     var _this = this;
     wx.chooseImage({
-      success(res){
+      success(res) {
         _this.sendImage(res);
       }
     })
@@ -355,28 +361,28 @@ Page({
   /**
    * 选择位置
   */
-  chooseLocationFun(){
+  chooseLocationFun() {
     var _this = this;
     wx.chooseLocation({
-      success(res){
+      success(res) {
         _this.sendLocation(res);
       },
-      fail(res){
+      fail(res) {
         //判断此接口是否授权
         wx.getSetting({
-          success(res){
-            if (!res.authSetting['scope.userLocation']){
+          success(res) {
+            if (!res.authSetting['scope.userLocation']) {
               //未授权
               wx.showModal({
-                title:'位置信息需要授权',
-                content:'是否前往授权',
-                showCancel:true,
-                cancelText:'取消',
-                confirmText:'前往授权',
+                title: '位置信息需要授权',
+                content: '是否前往授权',
+                showCancel: true,
+                cancelText: '取消',
+                confirmText: '前往授权',
                 success(res) {
                   if (res.confirm) {
                     wx.openSetting();
-                  } 
+                  }
                 }
               })
             }
@@ -390,7 +396,7 @@ Page({
   */
   voiceTouchstart: function () {
     //改变状态为按钮被按下
-    var record =  this.createRecord();
+    var record = this.createRecord();
     record.start(record.options);
     //改变提示语句
     this.setData({
@@ -429,18 +435,22 @@ Page({
    * 结束点击语音按钮
   */
   voiceTouchend: function () {
+    //停止语音录制
+    var record = this.createRecord();
     //判断语音是在被什么状态下结束
-    if (this.data.voiceBtn.isDelete){
+    if (this.data.voiceBtn.isDelete) {
       //取消语音
       console.log('取消语音');
-      var record = this.createRecord();
-      record.stop();
-    }else{
+      record.onStop((res) => { })
+    } else {
       //发送语音
       console.log('发送语音');
-      //调用语音发送
-      this.sendRecord();
+      record.onStop((res) => {
+        //调用语音发送
+        this.sendRecord(res)
+      })
     }
+    record.stop();
     //改变状态为按钮被松开
     //改变提示语句
     this.setData({
@@ -449,6 +459,7 @@ Page({
       //删除按钮取消高亮
       'voiceBtn.isDelete': false,
     })
+
   },
   /**========================================
    * app事件函数
@@ -457,9 +468,12 @@ Page({
   /**
    * 获取聊天记录
   */
-  getData(){
-    var data =  this.modelData();
-    
+  getData() {
+    //模拟信息获得
+    var data = this.modelData();
+    this.setData({
+      chatData:data
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -472,7 +486,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
@@ -492,213 +506,233 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   },
   /**
    * 模拟数据
   */
-  modelData(){
-    this.setData({
-      chatData:[
-        {//默认客户图片
-          MsgId: 1,
-          AddressDetails: null,															//地理位置详情
-          AddressName: null,																//地理位置名称
-          CardName: "典韦",																 //真实姓名
-          Duration: null,																	  //语音持续时间
-          FromType: "Client",																//聊天人身份
-          Latitude: null,																	//地理位置的维度
-          Longitude: null	,																//地理位置的精度
-          MediaOriginal: null,																//图片初始图
-          MsgData: "https://www.sap-unis.com/wxapp/#/news/index?wxid=gh_40c534b93a9f",		//聊天内容
-          MsgDate: "2018-10-12 12:45:54.000",												//时间					
-          MsgType: "text",																	//类型
-          NickName: "兔子只吃胡萝卜",														//微信名称
-          OpenId: "oS4HgskVQqtMvZ9IbB2d-k4GhcRA",											//openid
-          ProfilePhoto: "",																//头像
-          Rown: 7,																		//此消息位次
-          Thumbnail: null,																	//缩略图
-          UserCode: null,																	//客服code
-          UserName: null,																	//客服name
-          WxId: "gh_40c534b93a9f"
-        },
-        {//默认客服图片
-          MsgId: 2,
-          AddressDetails: null,															//地理位置详情
-          AddressName: null,																//地理位置名称
-          CardName: null,																 //真实姓名
-          Duration: null,																	  //语音持续时间
-          FromType: "Server",																//聊天人身份
-          Latitude: null,																	//地理位置的维度
-          Longitude: null,																//地理位置的精度
-          MediaOriginal: null,																//图片初始图
-          MsgData: "请问需要什么帮助",		//聊天内容
-          MsgDate: "2018-10-12 12:45:54.000",												//时间					
-          MsgType: "text",																	//类型
-          NickName: null,														//微信名称
-          OpenId: "oS4HgskVQqtMvZ9IbB2d-k4GhcRA",											//openid
-          ProfilePhoto: "",																//头像
-          Rown: 7,																		//此消息位次
-          Thumbnail: null,																	//缩略图
-          UserCode: null,																	//客服code
-          UserName: '系统管理员',																	//客服name
-          WxId: "gh_40c534b93a9f"
-        },
-        {
-          MsgId: 3,
-          AddressDetails: null,															//地理位置详情
-          AddressName: null,																//地理位置名称
-          CardName: "典韦",																 //真实姓名
-          Duration: null,																	  //语音持续时间
-          FromType: "Client",																//聊天人身份
-          Latitude: null,																	//地理位置的维度
-          Longitude: null,																//地理位置的精度
-          MediaOriginal: null,																//图片初始图
-          MsgData: "https://www.sap-unis.com/wxapp/#/news/index?wxid=gh_40c534b93a9f",		//聊天内容
-          MsgDate: "2018-10-12 12:45:54.000",												//时间					
-          MsgType: "image",																	//类型
-          NickName: "兔子只吃胡萝卜",														//微信名称
-          OpenId: "oS4HgskVQqtMvZ9IbB2d-k4GhcRA",											//openid
-          ProfilePhoto: "http://imgz.ermiao.com/2010/09/6992022-fr.jpg",																//头像
-          Rown: 7,																		//此消息位次
-          Thumbnail: 'http://img15.3lian.com/2015/f2/160/d/65.jpg',																	//缩略图
-          UserCode: null,																	//客服code
-          UserName: null,																	//客服name
-          WxId: "gh_40c534b93a9f"
-        },
-        {
-          MsgId: 4,
-          AddressDetails: null,															//地理位置详情
-          AddressName: null,																//地理位置名称
-          CardName: null,																 //真实姓名
-          Duration: null,																	  //语音持续时间
-          FromType: "Server",																//聊天人身份
-          Latitude: null,																	//地理位置的维度
-          Longitude: null,																//地理位置的精度
-          MediaOriginal: null,																//图片初始图
-          MsgData: "请问需要什么帮助",		//聊天内容
-          MsgDate: "2018-10-12 12:45:54.000",												//时间					
-          MsgType: "image",																	//类型
-          NickName: null,														//微信名称
-          OpenId: "oS4HgskVQqtMvZ9IbB2d-k4GhcRA",											//openid
-          ProfilePhoto: "https://img.52z.com/upload/news/image/20171213/20171213124121_25664.jpg",																//头像
-          Rown: 7,																		//此消息位次
-          Thumbnail: 'http://www.imagewa.com/PhotoPreview/229/229_18760.jpg',																	//缩略图
-          UserCode: null,																	//客服code
-          UserName: '系统管理员',																	//客服name
-          WxId: "gh_40c534b93a9f"
-        },
-        //地理位置
-        {
-          MsgId: 5,
-          AddressDetails: '北京市东城区体育馆路街道天安门广场',	//地理位置详情
-          AddressName: '天安门广场',																//地理位置名称
-          CardName: "典韦",																 //真实姓名
-          Duration: null,																	  //语音持续时间
-          FromType: "Client",																//聊天人身份
-          Latitude: 39.9037118881, 															//地理位置的维度
-          Longitude: 116.3978290558,																//地理位置的精度
-          MediaOriginal: null,																//图片初始图
-          MsgData: "https://www.sap-unis.com/wxapp/#/news/index?wxid=gh_40c534b93a9f",		//聊天内容
-          MsgDate: "2018-10-12 12:45:54.000",												//时间					
-          MsgType: "location",																	//类型
-          NickName: "兔子只吃胡萝卜",														//微信名称
-          OpenId: "oS4HgskVQqtMvZ9IbB2d-k4GhcRA",											//openid
-          ProfilePhoto: "http://imgz.ermiao.com/2010/09/6992022-fr.jpg",																//头像
-          Rown: 7,																		//此消息位次
-          Thumbnail: 'http://img15.3lian.com/2015/f2/160/d/65.jpg',																	//缩略图
-          UserCode: null,																	//客服code
-          UserName: null,																	//客服name
-          WxId: "gh_40c534b93a9f"
-        },
-        {
-          MsgId:6,
-          AddressDetails: '山东省济南市槐荫区淄博路与聊城路交叉口西北角济南西城实验初级中学',	//地理位置详情
-          AddressName: '西城实验初级中学',																//地理位置名称
-          CardName: null,																 //真实姓名
-          Duration: null,																	  //语音持续时间
-          FromType: "Server",																//聊天人身份
-          Latitude: 36.6848711670,																//地理位置的维度
-          Longitude: 116.9150018692,																//地理位置的精度
-          MediaOriginal: null,																//图片初始图
-          MsgData: "请问需要什么帮助",		//聊天内容
-          MsgDate: "2018-10-12 12:45:54.000",												//时间					
-          MsgType: "location",																	//类型
-          NickName: null,														//微信名称
-          OpenId: "oS4HgskVQqtMvZ9IbB2d-k4GhcRA",											//openid
-          ProfilePhoto: "https://img.52z.com/upload/news/image/20171213/20171213124121_25664.jpg",																//头像
-          Rown: 7,																		//此消息位次
-          Thumbnail: 'http://www.imagewa.com/PhotoPreview/229/229_18760.jpg',																	//缩略图
-          UserCode: null,																	//客服code
-          UserName: '系统管理员',																	//客服name
-          WxId: "gh_40c534b93a9f"
-        },
-        {
-          MsgId: 7,
-          AddressDetails: null,	//地理位置详情
-          AddressName:null,																//地理位置名称
-          CardName: "典韦",																 //真实姓名
-          Duration: 1,																	  //语音持续时间
-          FromType: "Client",																//聊天人身份
-          Latitude: 36, 																	//地理位置的维度
-          Longitude: 116,															//地理位置的精度
-          MediaOriginal: null,																//图片初始图
-          MsgData: "https://www.sap-unis.com/wxapp/#/news/index?wxid=gh_40c534b93a9f",		//聊天内容
-          MsgDate: "2018-10-12 12:45:54.000",												//时间					
-          MsgType: "voice",																	//类型
-          NickName: "兔子只吃胡萝卜",														//微信名称
-          OpenId: "oS4HgskVQqtMvZ9IbB2d-k4GhcRA",											//openid
-          ProfilePhoto: "http://imgz.ermiao.com/2010/09/6992022-fr.jpg",																//头像
-          Rown: 7,																		//此消息位次
-          Thumbnail: 'http://www.runoob.com/try/demo_source/horse.ogg',																	//缩略图
-          UserCode: null,																	//客服code
-          UserName: null,																	//客服name
-          WxId: "gh_40c534b93a9f"
-        },
-        {
-          MsgId: 8,
-          AddressDetails: null,	                    //地理位置详情
-          AddressName: null,																//地理位置名称
-          CardName: null,																 //真实姓名
-          Duration: 20,																	  //语音持续时间
-          FromType: "Server",																//聊天人身份
-          Latitude: null,																	//地理位置的维度
-          Longitude: null,																//地理位置的精度
-          MediaOriginal: null,	amr:11,															//图片初始图
-          MsgData: "请问需要什么帮助",		//聊天内容
-          MsgDate: "2018-10-12 12:45:54.000",												//时间					
-          MsgType: "voice",																	//类型
-          NickName: null,														//微信名称
-          OpenId: "oS4HgskVQqtMvZ9IbB2d-k4GhcRA",											//openid
-          ProfilePhoto: "https://img.52z.com/upload/news/image/20171213/20171213124121_25664.jpg",																//头像
-          Rown: 7,																		//此消息位次
-          Thumbnail: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46',		mp3:11	,														//缩略图
-          UserCode: null,																	//客服code
-          UserName: '系统管理员',																	//客服name
-          WxId: "gh_40c534b93a9f"
-        },
-      ]
-    })
+  modelData() {
+    return [
+      {//默认客户图片
+        MsgId: 1,
+        AddressDetails: null,															//地理位置详情
+        AddressName: null,																//地理位置名称
+        CardName: "典韦",																 //真实姓名
+        Duration: null,																	  //语音持续时间
+        FromType: "Client",																//聊天人身份
+        Latitude: null,																	//地理位置的维度
+        Longitude: null,																//地理位置的精度
+        MediaOriginal: null,																//图片初始图
+        MsgData: "https://www.sap-unis.com/wxapp/#/news/index?wxid=gh_40c534b93a9f",		//聊天内容
+        MsgDate: "2018-10-12 12:45:54.000",												//时间					
+        MsgType: "text",																	//类型
+        NickName: "兔子只吃胡萝卜",														//微信名称
+        OpenId: "oS4HgskVQqtMvZ9IbB2d-k4GhcRA",											//openid
+        ProfilePhoto: "",																//头像
+        Rown: 7,																		//此消息位次
+        Thumbnail: null,																	//缩略图
+        UserCode: null,																	//客服code
+        UserName: null,																	//客服name
+        WxId: "gh_40c534b93a9f"
+      },
+      {//默认客户图片
+        MsgId: 1,
+        AddressDetails: null,															//地理位置详情
+        AddressName: null,																//地理位置名称
+        CardName: "典韦",																 //真实姓名
+        Duration: null,																	  //语音持续时间
+        FromType: "Client",																//聊天人身份
+        Latitude: null,																	//地理位置的维度
+        Longitude: null,																//地理位置的精度
+        MediaOriginal: null,																//图片初始图
+        MsgData: "1",		//聊天内容
+        MsgDate: "2018-10-12 12:45:54.000",												//时间					
+        MsgType: "text",																	//类型
+        NickName: "兔子只吃胡萝卜",														//微信名称
+        OpenId: "oS4HgskVQqtMvZ9IbB2d-k4GhcRA",											//openid
+        ProfilePhoto: "",																//头像
+        Rown: 7,																		//此消息位次
+        Thumbnail: null,																	//缩略图
+        UserCode: null,																	//客服code
+        UserName: null,																	//客服name
+        WxId: "gh_40c534b93a9f"
+      },
+      {//默认客服图片
+        MsgId: 2,
+        AddressDetails: null,															//地理位置详情
+        AddressName: null,																//地理位置名称
+        CardName: null,																 //真实姓名
+        Duration: null,																	  //语音持续时间
+        FromType: "Server",																//聊天人身份
+        Latitude: null,																	//地理位置的维度
+        Longitude: null,																//地理位置的精度
+        MediaOriginal: null,																//图片初始图
+        MsgData: "请问需要什么帮助",		//聊天内容
+        MsgDate: "2018-10-12 12:45:54.000",												//时间					
+        MsgType: "text",																	//类型
+        NickName: null,														//微信名称
+        OpenId: "oS4HgskVQqtMvZ9IbB2d-k4GhcRA",											//openid
+        ProfilePhoto: "",																//头像
+        Rown: 7,																		//此消息位次
+        Thumbnail: null,																	//缩略图
+        UserCode: null,																	//客服code
+        UserName: '系统管理员',																	//客服name
+        WxId: "gh_40c534b93a9f"
+      },
+      {
+        MsgId: 3,
+        AddressDetails: null,															//地理位置详情
+        AddressName: null,																//地理位置名称
+        CardName: "典韦",																 //真实姓名
+        Duration: null,																	  //语音持续时间
+        FromType: "Client",																//聊天人身份
+        Latitude: null,																	//地理位置的维度
+        Longitude: null,																//地理位置的精度
+        MediaOriginal: null,																//图片初始图
+        MsgData: "https://www.sap-unis.com/wxapp/#/news/index?wxid=gh_40c534b93a9f",		//聊天内容
+        MsgDate: "2018-10-12 12:45:54.000",												//时间					
+        MsgType: "image",																	//类型
+        NickName: "兔子只吃胡萝卜",														//微信名称
+        OpenId: "oS4HgskVQqtMvZ9IbB2d-k4GhcRA",											//openid
+        ProfilePhoto: "http://imgz.ermiao.com/2010/09/6992022-fr.jpg",																//头像
+        Rown: 7,																		//此消息位次
+        Thumbnail: 'http://img15.3lian.com/2015/f2/160/d/65.jpg',																	//缩略图
+        UserCode: null,																	//客服code
+        UserName: null,																	//客服name
+        WxId: "gh_40c534b93a9f"
+      },
+      {
+        MsgId: 4,
+        AddressDetails: null,															//地理位置详情
+        AddressName: null,																//地理位置名称
+        CardName: null,																 //真实姓名
+        Duration: null,																	  //语音持续时间
+        FromType: "Server",																//聊天人身份
+        Latitude: null,																	//地理位置的维度
+        Longitude: null,																//地理位置的精度
+        MediaOriginal: null,																//图片初始图
+        MsgData: "请问需要什么帮助",		//聊天内容
+        MsgDate: "2018-10-12 12:45:54.000",												//时间					
+        MsgType: "image",																	//类型
+        NickName: null,														//微信名称
+        OpenId: "oS4HgskVQqtMvZ9IbB2d-k4GhcRA",											//openid
+        ProfilePhoto: "https://img.52z.com/upload/news/image/20171213/20171213124121_25664.jpg",																//头像
+        Rown: 7,																		//此消息位次
+        Thumbnail: 'http://www.imagewa.com/PhotoPreview/229/229_18760.jpg',																	//缩略图
+        UserCode: null,																	//客服code
+        UserName: '系统管理员',																	//客服name
+        WxId: "gh_40c534b93a9f"
+      },
+      //地理位置
+      {
+        MsgId: 5,
+        AddressDetails: '北京市东城区体育馆路街道天安门广场',	//地理位置详情
+        AddressName: '天安门广场',																//地理位置名称
+        CardName: "典韦",																 //真实姓名
+        Duration: null,																	  //语音持续时间
+        FromType: "Client",																//聊天人身份
+        Latitude: 39.9037118881, 															//地理位置的维度
+        Longitude: 116.3978290558,																//地理位置的精度
+        MediaOriginal: null,																//图片初始图
+        MsgData: "https://www.sap-unis.com/wxapp/#/news/index?wxid=gh_40c534b93a9f",		//聊天内容
+        MsgDate: "2018-10-12 12:45:54.000",												//时间					
+        MsgType: "location",																	//类型
+        NickName: "兔子只吃胡萝卜",														//微信名称
+        OpenId: "oS4HgskVQqtMvZ9IbB2d-k4GhcRA",											//openid
+        ProfilePhoto: "http://imgz.ermiao.com/2010/09/6992022-fr.jpg",																//头像
+        Rown: 7,																		//此消息位次
+        Thumbnail: 'http://img15.3lian.com/2015/f2/160/d/65.jpg',																	//缩略图
+        UserCode: null,																	//客服code
+        UserName: null,																	//客服name
+        WxId: "gh_40c534b93a9f"
+      },
+      {
+        MsgId: 6,
+        AddressDetails: '山东省济南市槐荫区淄博路与聊城路交叉口西北角济南西城实验初级中学',	//地理位置详情
+        AddressName: '西城实验初级中学',																//地理位置名称
+        CardName: null,																 //真实姓名
+        Duration: null,																	  //语音持续时间
+        FromType: "Server",																//聊天人身份
+        Latitude: 36.6848711670,																//地理位置的维度
+        Longitude: 116.9150018692,																//地理位置的精度
+        MediaOriginal: null,																//图片初始图
+        MsgData: "请问需要什么帮助",		//聊天内容
+        MsgDate: "2018-10-12 12:45:54.000",												//时间					
+        MsgType: "location",																	//类型
+        NickName: null,														//微信名称
+        OpenId: "oS4HgskVQqtMvZ9IbB2d-k4GhcRA",											//openid
+        ProfilePhoto: "https://img.52z.com/upload/news/image/20171213/20171213124121_25664.jpg",																//头像
+        Rown: 7,																		//此消息位次
+        Thumbnail: 'http://www.imagewa.com/PhotoPreview/229/229_18760.jpg',																	//缩略图
+        UserCode: null,																	//客服code
+        UserName: '系统管理员',																	//客服name
+        WxId: "gh_40c534b93a9f"
+      },
+      {
+        MsgId: 7,
+        AddressDetails: null,	//地理位置详情
+        AddressName: null,																//地理位置名称
+        CardName: "典韦",																 //真实姓名
+        Duration: 1,																	  //语音持续时间
+        FromType: "Client",																//聊天人身份
+        Latitude: 36, 																	//地理位置的维度
+        Longitude: 116,															//地理位置的精度
+        MediaOriginal: null,																//图片初始图
+        MsgData: "https://www.sap-unis.com/wxapp/#/news/index?wxid=gh_40c534b93a9f",		//聊天内容
+        MsgDate: "2018-10-12 12:45:54.000",												//时间					
+        MsgType: "voice",																	//类型
+        NickName: "兔子只吃胡萝卜",														//微信名称
+        OpenId: "oS4HgskVQqtMvZ9IbB2d-k4GhcRA",											//openid
+        ProfilePhoto: "http://imgz.ermiao.com/2010/09/6992022-fr.jpg",																//头像
+        Rown: 7,																		//此消息位次
+        Thumbnail: 'http://www.runoob.com/try/demo_source/horse.ogg',																	//缩略图
+        UserCode: null,																	//客服code
+        UserName: null,																	//客服name
+        WxId: "gh_40c534b93a9f"
+      },
+      {
+        MsgId: 8,
+        AddressDetails: null,	                    //地理位置详情
+        AddressName: null,																//地理位置名称
+        CardName: null,																 //真实姓名
+        Duration: 20,																	  //语音持续时间
+        FromType: "Server",																//聊天人身份
+        Latitude: null,																	//地理位置的维度
+        Longitude: null,																//地理位置的精度
+        MediaOriginal: null, amr: 11,															//图片初始图
+        MsgData: "请问需要什么帮助",		//聊天内容
+        MsgDate: "2018-10-12 12:45:54.000",												//时间					
+        MsgType: "voice",																	//类型
+        NickName: null,														//微信名称
+        OpenId: "oS4HgskVQqtMvZ9IbB2d-k4GhcRA",											//openid
+        ProfilePhoto: "https://img.52z.com/upload/news/image/20171213/20171213124121_25664.jpg",																//头像
+        Rown: 7,																		//此消息位次
+        Thumbnail: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46', mp3: 11,														//缩略图
+        UserCode: null,																	//客服code
+        UserName: '系统管理员',																	//客服name
+        WxId: "gh_40c534b93a9f"
+      },
+    ]
   }
 })

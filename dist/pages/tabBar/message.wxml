@@ -1,4 +1,4 @@
-<view>
+<view class="page-body">
   <view class='page-list'>
     <navigator url="/pages/message/chat" class='page-item' wx:for="{{dataList}}" wx:key="{{item.id}}">
       <view class='page-item-img'><image src='{{item.clientImg}}'></image><view wx:if="{{item.badge!==0}}" class='page-item-badge'>{{item.badge}}</view></view>

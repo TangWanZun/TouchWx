@@ -1,0 +1,8 @@
+<view class='tuiTabBar-box'>
+  <view class='tuiTabBar-lest'>
+    <navigator  url='{{item.url}}' open-type='switchTab' class='tuiTabBar-item {{newIndex===index?"tuiTabBar-item-show":""}}' wx:for="{{itemList}}" wx:key="{{item.title}}">
+      <image src='{{newIndex===index?item.iconSelect:item.icon}}'></image>
+      <view>{{item.title}}</view>
+    </navigator>
+  </view>
+</view>
