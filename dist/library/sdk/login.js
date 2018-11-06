@@ -51,32 +51,57 @@ function login(){
     doLogin();
   }
 }
-
+//保存用户信息
+function saveUserInfo(res,obj={}){
+  // console.log("success", res);
+  let privateData = getApp().privateData;
+  //将Token保存到内存
+  privateData.Token = res.Data.Token;
+  //将个人信息保存到内存
+  privateData.loginInfo = res.Data.LoginInfo;
+  //当用户连接上时，发送重新发送滞留消息
+  privateData.requestRetention.forEach(wx.$request);
+  //清空滞留消息
+  privateData.requestRetention.length = 0;
+  //保存Token信息持久化
+  wx.setStorage({
+    key: 'Token',
+    data: res.Data.Token,
+    success(response) {
+      //保存到内存
+      obj.success && obj.success(response);
+    }
+  })
+}
 //测试信息调取
 function loginTest() {
-  //获取用户非敏感信息(这些信息是无需登陆状态的，只需要用户授权即可)
-  // wx.authorize({
-  //   scope:"scope.userInfo",
-  //   success(res){
-  //     wx.getUserInfo({
-  //       withCredentials: false,
-  //       success: function (res) {
-  //         getApp().privateData.userInfo = res.userInfo;
-  //       }
-  //     })
-  //   },
-  //   fail(res){
-  //     console.log(res);
-  //   }
-  // })
-  // 跳转到登陆页面
-  let loginFlag = wx.getStorageSync('skey');
-  if (loginFlag){
-
-  }else{
-    wx.redirectTo({
-      url: "/pages/user/login"
-    })
-  }
+  var Token =  wx.getStorageSync('Token');
+  // console.log(Token);
+  //获取code
+  wx.login({
+    success: function (loginRes) {
+      // 将code传到后台，并换取后台自定义的用户登录态标识
+      wx.$request({
+        url: '/WeMinProLogin/Login',
+        data: {
+          code: loginRes.code
+        },
+        UV:true,
+        success(res) {
+          saveUserInfo(res);
+        },
+        fail(res){
+          saveUserInfo(res,{
+            success:function(){
+              // 进入登陆页
+              wx.reLaunch({
+                url: "/pages/tabBar/login"
+              })
+            }
+          })
+        }
+      })
+    }
+  });
 }
 export { loginTest as default}

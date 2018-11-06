@@ -101,14 +101,15 @@
 				},
 				{
 					"id": -1,
-					"name": "注册页面",
-					"pathName": "pages/user/login",
+					"name": "我的二维码",
+					"pathName": "pages/user/myQr",
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "我的二维码",
-					"pathName": "pages/user/myQr"
+					"id": 11,
+					"name": "登陆",
+					"pathName": "pages/tabBar/login",
+					"query": ""
 				}
 			]
 		}

@@ -7,15 +7,16 @@
     </view>
   </navigator>
   <!-- 用户列表 -->
-  <view class='client-list'>
-    <view class='client-ltter' wx:for="{{dataList}}" wx:key="{{index}}">
-      <view class='client-title'>{{index}}</view>
-      <view class='client-body'>
-        <navigator url='/pages/client/clientDetails?clientId={{itemItem.name}}&img={{itemItem.img}}' class='client-item' wx:for="{{item}}" wx:for-item="itemItem" wx:for-index="itemIndex" wx:key="{{itemIndex}}">
-          <view class='client-img'><image src='{{itemItem.img}}'></image></view>
-          <view class='client-name'>{{itemItem.name}}</view>
-        </navigator>
+  <!-- <view class='client-ltter' wx:for="{{dataList}}" wx:key="{{index}}"> -->
+  <!-- <view class='client-title'>{{index}}</view> -->
+  <scroll-view scroll-y="true" lower-threshold="50" bindscrolltolower="scrolltolower" class='client-body'>
+    <navigator url='/pages/client/clientDetails' class='client-item' wx:for="{{dataList}}" wx:key="{{itemIndex}}">
+      <view class='client-img {{item.Online?"":"client-img-hidden"}}'>
+        <image src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
+        <view class='client-online {{item.Online?"":"client-online-hidden"}}'></view>
       </view>
-    </view>
-  </view>
+      <view class='client-name'>{{item.CardName?item.CardName:item.NickName}}</view>
+    </navigator>
+    <view class="list-loging">列表加载完成</view>
+  </scroll-view>
 </view>

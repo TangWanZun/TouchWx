@@ -1,10 +1,11 @@
+const wxid = "gh_88faf4d66bc0";
+const host = "https://www.sap-unis.com/";
 let configUrl = {
-  wxid:"ax1111111",
-  url:"www.sap-unis.com"
+  wxid,
+  host,
+  url: `${host}wx/${wxid}`,
+  imgUrl:`${host}pc/`
 }
-//
-let app = getApp();
-app.privateData.configUrl = configUrl;
 //工作类型
 const WORK_TYPE = {
   WORK_JY: "A01",
@@ -21,4 +22,4 @@ const CHAT_TYPE = {
   CHAT_VOICE:'voice',//音频消息
   CHAT_VIDEO:'video',//视频信息
 }
-export { WORK_TYPE, CHAT_TYPE}
+export { WORK_TYPE, CHAT_TYPE, configUrl}

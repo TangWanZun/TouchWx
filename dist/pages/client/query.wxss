@@ -36,16 +36,21 @@
   background-color: white;
   padding:0 15px;
 }
+
 .select-img{
-  width:60px;
-  height: 60px;
+  width:50px;
+  height: 50px;
   overflow: hidden;
   border-radius: 100%;
+}
+/* 离线头像 */
+.select-img-hidden>image{
+  opacity: 0.3;
 }
 .select-name{
   font-size: 18px;
   flex-grow: 1;
-  padding:25px;
+  padding:20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 .select-body .select-item:last-child .select-name{

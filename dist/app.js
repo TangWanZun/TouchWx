@@ -1,4 +1,5 @@
 import $request from 'library/sdk/request.js'
+import * as $config from 'library/sdk/config.js'
 import login from 'library/sdk/login.js'
 App({
 
@@ -8,14 +9,16 @@ App({
   onLaunch: function () {
     //挂载$request接口
     wx.$request = $request;
+    //挂载configUrl
+    this.privateData.configUrl = $config.configUrl;
+    //运行
+    login();
   },
 
   /**
    * 当小程序启动，或从后台进入前台显示，会触发 onShow
    */
   onShow: function (options) {
-    //获取用户数据
-    // login();
   },
 
   /**
@@ -37,8 +40,10 @@ App({
    * 用于存放全局变量的
   */
   privateData:{
+    //登陆凭证
+    Token:"",
     //用户信息
-    userInfo:undefined,
+    loginInfo:undefined,
     //请求滞留池
     requestRetention:[],
     // url配置

@@ -2,19 +2,19 @@
   <view class="userCard app-shadow-2">
     <view class="userCard-left">
       <view class="userCard-name">
-        <view  class="userCard-name-text"><open-data type="userNickName"></open-data></view>
-        <navigator url='../user/myQr'><image src='/assets/icon/qr.svg'></image></navigator>
+        <view  class="userCard-name-text">{{loginInfo.UserName}}</view>
+        <!-- <navigator url='../user/myQr'><image src='/assets/icon/qr.svg'></image></navigator> -->
       </view>
       <view>
-        <view class="userCard-section">客服部</view>
-        <view class="userCard-company">北京鹏龙星徽汽车贸易有限公司</view>
+        <view class="userCard-section">{{loginInfo.DeptName}}</view>
+        <view class="userCard-company">{{loginInfo.CmpName}}</view>
       </view>
     </view>
     <view class="userCard-right">
       <view class="userCard-img">
-        <open-data type="userAvatarUrl"></open-data>
+        <head-img></head-img>
       </view>
-      <view class="userCard-index">C0330</view>
+      <view class="userCard-index">{{loginInfo.UserCode}}</view>
     </view>
   </view>
   <view class="my-data">
@@ -40,7 +40,7 @@
                 <view class="my-data-item-index">第<span>1</span>名</view></view>
               </view>
               <view class="my-data-img">
-                <open-data type="userAvatarUrl"></open-data>
+                <head-img></head-img>
               </view>
           </view>
         </view>
@@ -78,13 +78,9 @@
         <view class="my-data-item-num my-data-item-list">90000</view>
       </view>
     </view>
-    <view  class="my-data-title app-item-div">
-      <view>注册页面</view>
+    <navigator url='/pages/tabBar/login' class="my-data-title">
+      <view>注销登陆</view>
       <view class="my-data-title-icon"><image src='/assets/icon/right.svg'></image></view>
-    </view>
-    <view class="my-data-title">
-      <view>客户画像</view>
-      <view class="my-data-title-icon"><image src='/assets/icon/right.svg'></image></view>
-    </view>
+    </navigator>
   </view>
 </view>

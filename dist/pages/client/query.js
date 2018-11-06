@@ -6,33 +6,36 @@ Page({
    */
   data: {
     dataList:[
-      {
-        img: "http://imgz.ermiao.com/2010/09/6992022-fr.jpg",
-        name: "典韦"
-      },
-      {
-        img: "https://tse1.mm.bing.net/th?id=OIP.BRoCEgh15frmcQfT0Z0j2AAAAA&pid=Api",
-        name: "张飞"
-      },
-      {
-        img: "http://img2.woyaogexing.com/2017/08/07/17a2f2a6de5de111!400x400_big.jpg",
-        name: "吕蒙"
-      },
-      {
-        img: "http://imgtu.5011.net/uploads/content/20170428/6956571493368294.jpg",
-        name: "孙尚香"
-      }
     ],
-    selectBodyShow:false
+    selectBodyShow:true,
+    //图片数据
+    imgUrl: getApp().privateData.configUrl.imgUrl
   },
   /**
    * 输入框查询
   */
-  queryInput: function (event){
-    //这里先做一个假的
-    this.setData({
-      selectBodyShow: event.detail.value.length > 0
-    })
+  queryInput: function (event) {
+    let _this = this;
+    if (event.detail.value.length===0){
+      this.setData({
+        dataList: []
+      })
+    }else{
+      wx.$request({
+        url: "/WeMinProChatMessage/GetContactList",
+        data: {
+          searchv: event.detail.value,
+          start: 0,
+          limit: 25,
+        },
+        success(res) {
+          console.log(res)
+          _this.setData({
+            dataList: res.data
+          })
+        }
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载

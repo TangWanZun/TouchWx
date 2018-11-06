@@ -1,6 +1,6 @@
 <view class="app-body">
   <!-- 聊天内容 -->
-  <scroll-view  scroll-y="true" scroll-into-view="chat-{{intoView}}" class='page-con'>
+  <scroll-view  scroll-y="true" scroll-into-view="chat-{{intoView}}" class='page-con' style='height:{{voiceBtn.functionUnfoldShow?"calc( 60vh - 105px )":"calc( 100vh - 105px )"}}'>
     <view id='chat-{{index+1}}' class='page-chat-box {{item.FromType===CHAT_TYPE.CHAT_RIGHT?"page-chat-box-right":""}}' wx:for='{{chatData}}' wx:key="{{item.MsgId}}">
       <view class='page-chat-img'><image src="{{item.ProfilePhoto?item.ProfilePhoto:item.FromType===CHAT_TYPE.CHAT_RIGHT?'/assets/chat/kf_tx.svg':'/assets/chat/kh_tx.svg'}}"></image></view>
       <view class='page-chat-body'>

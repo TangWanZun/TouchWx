@@ -4,11 +4,11 @@
   </view> -->
   <view class='app-box {{accountShow?"app-box-show":""}}'>
     <view class='login-box'>
-      <view class='login-rts-box'>
-        <image bindtap="loginEx" src='/assets/icon/sj.svg'></image>
+      <view class='login-rts-box'  bindtap="loginEx" >
+        <image src='/assets/icon/sj.svg'></image>
       </view>
       <view class='login-con'>
-        <view class='login-con-head'>手机登陆</view>
+        <view class='login-con-head'>手机登录</view>
         <view class='login-con-body'  >
           <view class='page-input'>
             <view class='page-input-title'>手机号码</view>
@@ -30,21 +30,21 @@
           <!-- <view class='page-login' bindtap='login'>
             登录
           </view> -->
-          <button class='page-login' disabled="{{disabledOne}}" open-type='getUserInfo' bindgetuserinfo="login">登录</button>
+          <button  data-logtype="phone"  class='page-login' disabled="{{disabledOne}}" lang="zh_CN" open-type='getUserInfo' bindgetuserinfo="login">登录</button>
         </view>
       </view>
     </view>
     <view class='login-box'>
-      <view class='login-rts-box'>
-        <image bindtap="loginEx" src='/assets/icon/dn.svg'></image>
+      <view class='login-rts-box' bindtap="loginEx">
+        <image  src='/assets/icon/dn.svg'></image>
       </view>
       <view class='login-con'>
-        <view class='login-con-head'>账号密码登陆</view>
+        <view class='login-con-head'>账号密码登录</view>
         <view class='login-con-body'>
           <view class='page-input'>
             <view class='page-input-title'>账号</view>
             <view class='page-input-con'>
-              <input bindinput="bindinputUser" maxlength="13" cursor-spacing="20" placeholder="请输入DMS账号"></input>
+              <input bindinput="bindinputUser" maxlength="13" cursor-spacing="20" placeholder="请输入账号"></input>
             </view>
           </view>
           <view class='page-input'>
@@ -56,7 +56,7 @@
           <!-- <view class='page-login' bindtap='login'>
             登录
           </view> -->
-          <button class='page-login' disabled="{{disabledTow}}"  open-type='getUserInfo' bindgetuserinfo="login">登录</button>
+          <button data-logtype="code" class='page-login' disabled="{{disabledTow}}" lang="zh_CN"  open-type='getUserInfo' bindgetuserinfo="login">登录</button>
         </view>
       </view>
     </view>

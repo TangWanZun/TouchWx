@@ -48,15 +48,15 @@
             <view class='panel-icon' data-panel="18953891019" catchtap="makePhoneCall"><image src='/assets/icon/call.svg'></image></view>
           </view>
           <!-- qq -->
-          <view wx:elif="{{item.conType==='QQ'}}" class='panel'>
+          <!-- <view wx:elif="{{item.conType==='QQ'}}" class='panel'>
             <view class='panel-number'>997018562</view>
             <view class='panel-icon'><image src='/assets/icon/QQ.svg'></image></view>
-          </view>
+          </view> -->
           <!-- 微信 -->
-          <navigator url='/pages/message/chat' wx:elif="{{item.conType==='WX'}}" class='panel'>
+          <view wx:elif="{{item.conType==='WX'}}" class='panel'>
             <view class='panel-number'>sunshangxiang1</view>
-            <view class='panel-icon'><image src='/assets/icon/WX.svg'></image></view>
-          </navigator>
+            <navigator  url='/pages/message/chat' class='panel-icon'><image src='/assets/icon/WX.svg'></image></navigator>
+          </view>
         </view>
       </view>
     </view>

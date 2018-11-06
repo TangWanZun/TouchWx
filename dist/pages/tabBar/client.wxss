@@ -12,6 +12,7 @@
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 9;
 }
 .select-box .select-content{
   height: 35px;
@@ -48,17 +49,49 @@
   align-items: center;
 }
 .client-img{
-  width:60px;
-  height: 60px;
-  overflow: hidden;
+  width:50px;
+  height: 50px;
+  position: relative;
+}
+.client-img>image{
   border-radius: 100%;
+}
+/* 离线头像 */
+.client-img-hidden>image{
+  opacity: 0.3;
+}
+/*在线离线标识符*/
+.client-online{
+  position: absolute;
+  bottom: 0;
+  right: 0px;
+  width:10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: rgb(93, 236, 148);
+}
+.client-online-hidden{
+  background-color: rgb(236, 93, 93);
 }
 .client-name{
   font-size: 18px;
   flex-grow: 1;
-  padding:25px;
+  padding:20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.client-body{
+  height: 100vh;
+  box-sizing: border-box;
+  padding:10px 15px;
+  background-color: white;
+  padding-top: 50px;
 }
 .client-body .client-item:last-child .client-name{
   border-bottom:none;
+}
+.list-loging{
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 12px;
+  padding:20px 0;
 }

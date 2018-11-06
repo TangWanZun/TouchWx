@@ -16,8 +16,8 @@
   justify-content: space-between; 
 }
 .page-con{
-  height: 300px;
-  flex-grow: 1;
+  /* flex-grow: 1; */
+  /* height: 100%; */
   overflow:auto;
 }
 .page-chat-box{
@@ -247,7 +247,7 @@
 .page-foot{
   flex-shrink: 0;
   /* position: fixed; */
-  position: relative;
+  /* position: relative; */
   /* bottom: 0px; */
   width: 100vw;
   background-color: white;
@@ -332,6 +332,10 @@
 .page-voice-buttom{
   position: absolute;
   z-index: 2;
+  top: 50%;
+  left:50%;
+  margin-top: -9vh;
+  margin-left: -9vh;
   width:18vh;
   height: 18vh;
   border-radius: 100%;

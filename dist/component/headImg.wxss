@@ -1,0 +1,18 @@
+/* component/headImg.wxss */
+.headimg-box{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.headimg-bg{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+.headimg-img{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}

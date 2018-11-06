@@ -1,6 +1,6 @@
 // pages/user/login.js
+// import login from '../../library/sdk/login.js'
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -14,7 +14,7 @@ Page({
       isCountDown:false,
       codeText:"验证码",
       NEW_TIME:30,
-      TIME_CONST:0
+      // TIME_CONST:0
     },
     /**
      * 第一页签登录是否禁用
@@ -25,6 +25,9 @@ Page({
     */
     disabledTow:true,
   },
+  /**
+   * 上传信息
+  */
   formData: {
     phone: "",
     code: "",
@@ -71,12 +74,12 @@ Page({
     this.formData.code = res.detail.value;
     this.bindblurOne();
   },
-  //手机input
+  //用户名
   bindinputUser(res) {
     this.formData.user = res.detail.value;
     this.bindblurTow();
   },
-  //验证码input
+  //密码
   bindinputPass(res) {
     this.formData.pass = res.detail.value;
     this.bindblurTow();
@@ -95,46 +98,75 @@ Page({
   sendCode:function(){
     if (!this.data.codeObj.isCountDown){
       var _this = this;
-      let TIME_CONST = setInterval(function(){
-        let obj = _this.data.codeObj;
-        if (obj.NEW_TIME<=0){
-          //倒计时结束
-          _this.setData({
-            'codeObj.isCountDown': false,
-            'codeObj.codeText': obj.codeTextOut,
-            'codeObj.NEW_TIME': obj.COUNT_DOWN_TIME,
+      wx.$request({
+        url:"/WeMinProLogin/SendVerifCode",
+        data:{
+          phone: this.formData.phone
+        },
+        // UV: true,
+        success(res){
+          console.log(res);
+          //开启倒计时
+          var TIME_CONST = setInterval(function () {
+            let obj = _this.data.codeObj;
+            if (obj.NEW_TIME <= 0) {
+              //倒计时结束
+              _this.setData({
+                'codeObj.isCountDown': false,
+                'codeObj.codeText': obj.codeTextOut,
+                'codeObj.NEW_TIME': obj.COUNT_DOWN_TIME,
+              });
+              clearInterval(TIME_CONST);
+            } else {
+              //倒计时进行中
+              _this.setData({
+                'codeObj.NEW_TIME': obj.NEW_TIME - 1,
+                'codeObj.codeText': `${obj.NEW_TIME - 1}S`,
+              });
+            }
+          }, 1000);
+          this.setData({
+            'codeObj.isCountDown': true,
+            // 'codeObj.TIME_CONST': TIME_CONST,
           });
-          //清除计时器
-          clearInterval(obj.TIME_CONST);
-        }else{
-          //倒计时进行中
-          _this.setData({
-            'codeObj.NEW_TIME': obj.NEW_TIME-1,
-            'codeObj.codeText': `${obj.NEW_TIME-1}S`,
-          });
+        },
+        fail(res){
+          console.log(res);
         }
-      },1000);
-      //开启倒计时
-      this.setData({
-        'codeObj.isCountDown': true,
-        'codeObj.TIME_CONST': TIME_CONST,
-      });
+      })
+     
     }
   },
 
   /**
    * 登陆
+   * 全部信息上传
   */
   login: function (res){
-    // console.log(e);
     console.log(res);
-    wx.setStorage({
-      key:'userInfo',
-      data: res.detail,
-      success:(res)=>{
+    let logtype = res.currentTarget.dataset.logtype;
+    wx.$request({
+      url: '/WeMinProLogin/ReLogin',
+      data:{
+        UserCode: logtype==="code"?this.formData.user:"",
+        Psw: logtype === "code" ?this.formData.pass:"",
+        Phone: logtype === "phone"?this.formData.phone:"",
+        VerifCode: logtype === "phone" ?this.formData.code:"",
+        Iv: res.detail.iv,
+        EncryptedData: res.detail.encryptedData
+      },
+      // UV: true,
+      success(res) {
+        console.log("success", res);
+        //将个人信息保存到内存
+        getApp().privateData.loginInfo = res.Data;
+        //登陆成功
         wx.switchTab({
-          url: "/pages/tabBar/user"
-        });
+          url:"/pages/tabBar/message",
+        })
+      },
+      fail(res) {
+        console.log("fail", res)
       }
     })
   },
@@ -142,15 +174,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var userInfo = wx.getStorageSync('userInfo');
-    console.log(userInfo);
-    if(userInfo){
-      wx.switchTab({
-        url: "/pages/tabBar/user"
-      });
-    }
+    
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -197,6 +222,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+    
   }
 })

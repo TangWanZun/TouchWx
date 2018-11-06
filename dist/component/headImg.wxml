@@ -1,0 +1,9 @@
+<view class='headimg-box'>
+  <view class='headimg-bg'>
+    <image src='/assets/chat/kf_tx.svg'></image>
+  </view>
+  <view class='headimg-img'>
+    <image wx:if="{{loginInfo.ProfilePhoto}}" src='{{imgUrl+loginInfo.ProfilePhoto}}'></image>
+    <open-data wx:else type="userAvatarUrl"></open-data>
+  </view>
+</view>

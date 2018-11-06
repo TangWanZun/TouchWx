@@ -392,17 +392,25 @@ Page({
     })
   },
   /**
+   * 点击运行时间
+  */
+  TOUCH_TIME:0,
+  /**
    * 开始点击语音按钮
   */
   voiceTouchstart: function () {
-    //改变状态为按钮被按下
-    var record = this.createRecord();
-    record.start(record.options);
-    //改变提示语句
-    this.setData({
-      'voiceBtn.btnStart': true,
-      'voiceBtn.hint': this.data.voiceBtn.CONST_I.HINT_IN
-    })
+    var _this = this;
+    //按键超过350毫秒才运行下面代码
+    this.TOUCH_TIME = setTimeout(function(){
+      //改变状态为按钮被按下
+      var record = _this.createRecord();
+      record.start(record.options);
+      //改变提示语句
+      _this.setData({
+        'voiceBtn.btnStart': true,
+        'voiceBtn.hint': _this.data.voiceBtn.CONST_I.HINT_IN
+      })
+    },350);
   },
   /**
    * 点击移动时
@@ -435,6 +443,8 @@ Page({
    * 结束点击语音按钮
   */
   voiceTouchend: function () {
+    //当前点击时间低于350毫秒时,取消按钮开始事件
+    clearTimeout(this.TOUCH_TIME);
     //停止语音录制
     var record = this.createRecord();
     //判断语音是在被什么状态下结束
@@ -446,6 +456,15 @@ Page({
       //发送语音
       console.log('发送语音');
       record.onStop((res) => {
+        console.log(res);
+        //判断如果语音时间小于500毫秒则显示录音时间太短
+        if (res.duration<=500){
+          wx.showToast({
+            icon:"none",
+            title:"按键时间太短"
+          });
+          return;
+        }
         //调用语音发送
         this.sendRecord(res)
       })

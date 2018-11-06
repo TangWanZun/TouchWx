@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/tabBar/login",
-    "pages/tabBar/client",
     "pages/tabBar/message",
+    "pages/tabBar/client",
     "pages/tabBar/work",
-    "pages/tabBar/user"
+    "pages/tabBar/user",
+    "pages/tabBar/login"
   ],
   "subPackages": [
     {

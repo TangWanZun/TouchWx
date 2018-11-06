@@ -10,13 +10,13 @@
  *      |- 越权请求为,可以在获取用户身份之前进行请求
  * 
 */
+//获取cookie
+var Token = wx.getStorageSync('Token');
 function consoleError(property,src){
   console.error(`wx.$request:${property}:${src}`);
 }
 function $request(para) {
-  let app = getApp();
-  console.log(app);
-  let privateData = app.privateData;
+  let privateData = getApp().privateData;
   let mepara = {
     url: para.url || undefined,
     UV:para.UV||false,
@@ -31,30 +31,52 @@ function $request(para) {
     return;
   }
   //若是为非越权请求并且当前没有获得用户身份,则此请求需要进入请求滞留池中，等待获取用户身份
-  if (!para.UV && typeof privateData.userInfo === 'undefined'){
+  if (!para.UV && typeof privateData.loginInfo === 'undefined'){
     privateData.requestRetention.push(para);
     return;
   }
+  let defaultheader = {
+    // 'content-type': 'application/json', // 默认值
+    'content-type': 'application/x-www-form-urlencoded',
+    'cookie': privateData.Token || Token
+  };
+  //判断当前用户数据不存在,则视为未登陆状态需要
+  if (typeof privateData.loginInfo === 'undefined'){
+    //在当前页面显示login
+    wx.showLoading({
+      title: '加载中',
+      mask:true,
+    })
+  }else{
+    wx.showNavigationBarLoading()
+  }
   wx.request({
-    url: '',
+    url: `${privateData.configUrl.url}${mepara.url}`,
     data: mepara.data||{},
-    success: function (response) {
-      console.log(response);
-      var ponse = response.data;
-      if (ponse.success) {
-        mepara.success(ponse.Data);
-      } else {
-        // $tui.toast(ponse.msg);
-        mepara.fail(ponse);
+    header: defaultheader,
+    dataType: "json",
+    method: mepara.method||'POST',
+    success: function (res) {
+      if (res.statusCode == 200 || res.statusCode == 500) {
+        let result = res.data;
+        if (result.success) {
+          mepara.success && mepara.success(result);
+        } else {
+          mepara.fail && mepara.fail(result);
+         
+        }
       }
     },
     fail: function (response) {
-      console.log(response);
-      mepara.fail(response);
+      // console.log(response);
+      // mepara.fail(response);
     },
     complete:function(response){
-      console.log(response);
-      mepara.complete(response);
+      //隐藏加载loding
+      wx.hideLoading();
+      wx.hideNavigationBarLoading();
+      // console.log(response);
+      // mepara.complete(response);
     }
   })
 }
