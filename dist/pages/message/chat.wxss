@@ -252,6 +252,7 @@
   width: 100vw;
   background-color: white;
   padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 /* 聊天输入框 */
@@ -265,16 +266,17 @@
   /* background-color: white; */
   /* border-radius: 5px; */
   height: 35px;
-  padding:10px 15px;
   flex-grow: 1;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  transition:border-bottom 0.3s;
-}
-.page-input-show{
-  border-bottom: 1px solid #4eb4ff;
 }
 .page-input>input{
   flex-grow: 1;
+  padding:0 15px;
+  height: 100%;
+  transition:border-bottom 0.3s;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.page-input>input:hover{
+    border-bottom: 1px solid #4eb4ff;
 }
 /* 发送按键 */
 .page-send{

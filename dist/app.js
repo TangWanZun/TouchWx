@@ -34,7 +34,12 @@ App({
   onError: function (msg) {
     
   },
+  /**
+   * 初始化当程序加载完成运行
+  */
+  onLoading(){
 
+  },
   /**
    * 私有数据,
    * 用于存放全局变量的
@@ -43,7 +48,7 @@ App({
     //登陆凭证
     Token:"",
     //用户信息
-    loginInfo:undefined,
+    loginInfo:null,
     //请求滞留池
     requestRetention:[],
     // url配置

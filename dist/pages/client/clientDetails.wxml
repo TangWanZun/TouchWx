@@ -55,7 +55,7 @@
           <!-- 微信 -->
           <view wx:elif="{{item.conType==='WX'}}" class='panel'>
             <view class='panel-number'>sunshangxiang1</view>
-            <navigator  url='/pages/message/chat' class='panel-icon'><image src='/assets/icon/WX.svg'></image></navigator>
+            <navigator  url='/pages/message/chat?openId={{clientData.openId}}' class='panel-icon'><image src='/assets/icon/WX.svg'></image></navigator>
           </view>
         </view>
       </view>

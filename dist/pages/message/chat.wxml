@@ -1,14 +1,16 @@
 <view class="app-body">
   <!-- 聊天内容 -->
-  <scroll-view  scroll-y="true" scroll-into-view="chat-{{intoView}}" class='page-con' style='height:{{voiceBtn.functionUnfoldShow?"calc( 60vh - 105px )":"calc( 100vh - 105px )"}}'>
-    <view id='chat-{{index+1}}' class='page-chat-box {{item.FromType===CHAT_TYPE.CHAT_RIGHT?"page-chat-box-right":""}}' wx:for='{{chatData}}' wx:key="{{item.MsgId}}">
-      <view class='page-chat-img'><image src="{{item.ProfilePhoto?item.ProfilePhoto:item.FromType===CHAT_TYPE.CHAT_RIGHT?'/assets/chat/kf_tx.svg':'/assets/chat/kh_tx.svg'}}"></image></view>
+  <!-- 这个是当使用功能区的时候为了兼容苹果flex -->
+  <!-- {{voiceBtn.functionUnfoldShow?"calc( 60vh - 105px )":"calc( 100vh - 105px )"}} -->
+  <scroll-view  scroll-y="true" scroll-into-view="chat-{{intoView}}" class='page-con' style='height:calc( 100vh - 55px )'>
+    <view id='chat-{{index+1}}' class='page-chat-box {{item.FromType===CHAT_TYPE.CHAT_RIGHT?"page-chat-box-right":""}}' wx:for='{{dataList}}' wx:key="{{item.MsgId}}">
+      <view class='page-chat-img'><image src="{{item.ProfilePhoto?(imgUrl+item.ProfilePhoto):item.FromType===CHAT_TYPE.CHAT_RIGHT?'/assets/chat/kf_tx.svg':'/assets/chat/kh_tx.svg'}}"></image></view>
       <view class='page-chat-body'>
         <view class='page-chat-name'>{{item.FromType===CHAT_TYPE.CHAT_RIGHT?item.UserName:item.CardName}}</view>
         <!-- 文本内容 -->
         <view wx:if="{{item.MsgType===CHAT_TYPE.CHAT_TEXT}}" class='page-chat-con'>{{item.MsgData}}</view>
         <!-- 图片内容 -->
-        <view wx:elif="{{item.MsgType===CHAT_TYPE.CHAT_IAMGE}}" class='page-chat-con-img' data-src="{{item.Thumbnail}}" bindtap='showBigImage'><image mode="widthFix" src='{{item.Thumbnail}}'></image></view>
+        <view wx:elif="{{item.MsgType===CHAT_TYPE.CHAT_IAMGE}}" class='page-chat-con-img' data-src="{{imgUrl+item.MediaOriginal}}" bindtap='showBigImage'><image mode="widthFix" src='{{imgUrl+item.Thumbnail}}'></image></view>
         <!-- 地理位置 -->
         <view bindtap='openLocationFun' wx:elif="{{item.MsgType===CHAT_TYPE.CHAT_ADDS}}" data-name='{{item.AddressName}}' data-address='{{item.AddressDetails}}' data-latitude='{{item.Latitude}}' data-longitude='{{item.Longitude}}' class='page-chat-con-map'>
           <view  class='page-chat-con-map-head'>位置(点击查看)</view>
@@ -26,31 +28,31 @@
   <view class='page-foot'>
     <!-- 聊天框区域 -->
     <view class='page-input-box'>
-      <view class='page-input app-cente r {{inputCon.isValue?"page-input-show":""}}'>
-        <input bindconfirm="sendText" value="{{inputCon.inputValue}}" confirm-type="send" confirm-hold="true" cursor-spacing="50" bindinput="bindInput"></input>
+      <view class='page-input app-center'>
+        <input bindconfirm="sendText" value="{{inputCon.value}}" confirm-type="send" confirm-hold="true" cursor-spacing="20" bindinput="bindInput"></input>
       </view>
       <view class='page-send app-center {{inputCon.isValue?"app-main-bg":""}}' bindtap='sendText'>发送</view>
     </view>
     <!-- 功能区 -->
-    <view class='page-funtion'>
+    <!-- <view class='page-funtion'> -->
       <!-- 语音 -->
-      <view class='page-funtion-item page-funtion-item-audio' bindtouchstart='voiceInShow'>
+      <!-- <view class='page-funtion-item page-funtion-item-audio' bindtouchstart='voiceInShow'>
         <image src='/assets/chat/yy{{voiceBtn.functionUnfoldShow?"_show":""}}.svg'></image>
-      </view>
+      </view> -->
       <!-- 图库 -->
-      <view class='page-funtion-item' bindtap='chooseImageFun'>
+      <!-- <view class='page-funtion-item' bindtap='chooseImageFun'>
         <image src='/assets/chat/tp.svg'></image>
-      </view>
+      </view> -->
       <!-- 拍照 -->
       <!-- <view class='page-funtion-item' bindtap='chooseCameraFun'>
         <image src='/assets/chat/zx.svg'></image>
       </view> -->
-      <view class='page-funtion-item' bindtap='chooseLocationFun'>
+      <!-- <view class='page-funtion-item' bindtap='chooseLocationFun'>
         <image src='/assets/chat/wz.svg'></image>
       </view>
-    </view>
+    </view> -->
     <!-- 功能展开区列如语音 -->
-    <view class='page-function-unfold {{voiceBtn.functionUnfoldShow?"page-function-unfold-show":""}} app-center'>
+    <!-- <view class='page-function-unfold {{voiceBtn.functionUnfoldShow?"page-function-unfold-show":""}} app-center'>
       <view class='page-voice-hint'>
         {{voiceBtn.hint}}
       </view>
@@ -62,10 +64,9 @@
        >
         <image src='/assets/chat/ht.svg'></image>
       </view>
-      <!-- 取消语音区域 -->
       <view class='page-voice-cancel {{voiceBtn.btnStart?"page-voice-cancel-show":""}} {{voiceBtn.isDelete?"page-voice-cancel-highlight":""}} app-center'>
         <image class='page-voice-cancel-image' src='/assets/chat/sc.svg'></image>
       </view>
-    </view>
+    </view> -->
   </view>
 </view>

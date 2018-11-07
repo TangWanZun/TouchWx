@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 11,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -94,10 +94,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 9,
 					"name": "聊天框",
 					"pathName": "pages/message/chat",
-					"query": ""
+					"query": "openId=oS4HgsvcWpf3jL8ss_AO7JCShhq0"
 				},
 				{
 					"id": -1,

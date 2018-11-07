@@ -8,32 +8,53 @@ Page({
     //使用数据
     dataList:[],
     //图片数据
-    imgUrl: getApp().privateData.configUrl.imgUrl
+    imgUrl: getApp().privateData.configUrl.imgUrl,
+    //分页功能
+    pageOver:false
   },
   /**
    * 获取数据
   */
-  getData(){
+  page: {
+    start: 0,
+    limit: 25
+  },
+  getData(dataReset=false){
+    //数据重置
+    if (dataReset){
+      this.setData({
+        dataList: [],
+        pageOver: false
+      })
+      this.page.start = 0;
+    }
+    //数据全部加载后阻止
+    if (this.data.pageOver){
+      return;
+    }
     let _this = this;
     wx.$request({
       url: "/WeMinProChatMessage/GetContactList",
       data: {
-        start: 0,
-        limit: 25,
+        start: this.page.start,
+        limit: this.page.limit,
       },
       success(res) {
-        console.log(res)
+        if (res.data.length < _this.page.limit){
+          //数据以全部拉取完成
+          _this.setData({
+            pageOver:true
+          })
+        }        
         _this.setData({
-          dataList: res.data
+          dataList: _this.data.dataList.concat(res.data)
         })
+        _this.page.start += _this.page.limit;
+      },
+      complete() {
+        wx.stopPullDownRefresh();
       }
     })
-  },
-  /**
-   * 滚动数据加载
-  */
-  scrolltolower(){
-    console.log(1);
   },
   /**
    * 生命周期函数--监听页面加载
@@ -101,14 +122,16 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+    //获取全部用户
+    this.getData(true);
+    // wx.stopPullDownRefresh();
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+    this.getData();
   },
 
   /**

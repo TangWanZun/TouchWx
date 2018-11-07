@@ -1,3 +1,4 @@
+import {CHAT_TYPE} from '../../library/sdk/config.js'
 // pages/message/chat.js
 Page({
 
@@ -11,6 +12,8 @@ Page({
       //用于清空input内容
       value: ""
     },
+    //图片数据
+    imgUrl: getApp().privateData.configUrl.imgUrl,
     //语音按钮
     voiceBtn: {
       CONST_I: {
@@ -32,27 +35,20 @@ Page({
       playMsgId: -1,
     },
     //获取聊天类型
-    CHAT_TYPE: {
-      CHAT_TEXT: 'text',//文本消息
-      CHAT_IAMGE: 'image',//图片消息
-      CHAT_ADDS: 'location',//位置消息
-      CHAT_VOICE: 'voice',//音频消息
-      CHAT_VIDEO: 'video',//视频信息
-      CHAT_LEFT: 'Client',//客户
-      CHAT_RIGHT: 'Server',//客服
-    },
+    CHAT_TYPE: CHAT_TYPE,
     //用于滚动到页面底部的
     intoView: "",
-    // 客服档案
-    serverInfo: {
-      userCode: 'admin',
-      userName: '系统管理员',
-      profilePhoto: "https://img.52z.com/upload/news/image/20171213/20171213124121_25664.jpg",
-    },
-    chatData: [
+    //登陆数据
+    loginInfo:{},
+    dataList: [
 
     ]
   },
+  /**========================================
+   * 全局变量非setData型
+   * ========================================
+  */
+  openid:null,
   /**========================================
    *  页面样式控制函数
    * ========================================
@@ -85,12 +81,12 @@ Page({
         data: this.inputValue
       });
     }
-
     //清除input内容 发送键复原
     this.setData({
-      'inputCon.inputValue': '',
+      'inputCon.value': '',
       'inputCon.isValue': false,
     })
+    this.inputValue = "";
   },
   /**
    * 语音发送
@@ -145,18 +141,21 @@ Page({
       MsgData: pro.data || null,		                          //聊天内容
       MsgDate: new Date(),												//时间					
       MsgType: pro.msgType,																	//类型
-      NickName: "兔子只吃胡萝卜",														//微信名称
-      OpenId: "oS4HgskVQqtMvZ9IbB2d-k4GhcRA",											//openid
-      ProfilePhoto: this.data.serverInfo.profilePhoto,																//头像
+      NickName: "",														//微信名称
+      OpenId: this.openid,											//openid
+      ProfilePhoto: this.data.loginInfo.ProfilePhoto,																//头像
       Thumbnail: pro.thumbnail || null,																	//缩略图
-      UserCode: this.data.serverInfo.userCode,																	//客服code
-      UserName: this.data.serverInfo.userName,																	//客服name
+      UserCode: this.data.loginInfo.UserCode,																	//客服code
+      UserName: this.data.loginInfo.UserName,																	//客服name
       WxId: "gh_40c534b93a9f"
     }
-    // console.log(msg, this.data.chatData)
-    this.data.chatData.push(msg);
+    wx.$request({
+      url:"/WeMinProChatMessage/SendMsg",
+      data: msg
+    })
+    this.data.dataList.push(msg);
     this.setData({
-      chatData: this.data.chatData
+      dataList: this.data.dataList
     });
     //滚动到页面底部
     this.toBottom();
@@ -170,7 +169,7 @@ Page({
   */
   toBottom() {
     this.setData({
-      intoView: this.data.chatData.length - 1
+      intoView: this.data.dataList.length - 1
     })
   },
   /*
@@ -485,21 +484,77 @@ Page({
    * ========================================
   */
   /**
-   * 获取聊天记录
+   * 获取数据
   */
-  getData() {
-    //模拟信息获得
-    var data = this.modelData();
-    this.setData({
-      chatData:data
+  page: {
+    start: 0,
+    limit: 25
+  },
+  getData(dataReset = false) {
+    //数据重置
+    if (dataReset) {
+      this.setData({
+        dataList: [],
+      })
+      this.page.start = 0;
+    }
+    let _this = this;
+    wx.$request({
+      url: "/WeMinProChatMessage/GetChatList",
+      data: {
+        start: this.page.start,
+        limit: this.page.limit,
+        OpenId: this.openid
+      },
+      success(res) {
+        if (res.data.length < _this.page.limit) {
+          //数据以全部拉取完成
+          _this.setData({
+            pageOver: true
+          })
+        }
+        /**
+         * 这里需要整理数据
+        */
+        let meData = res.data;
+        let newDate = new Date();
+        for (let i = 0; i < meData.length; i++) {
+          let date = new Date(meData[i].CreateDate);
+          if (newDate.toDateString() === date.toDateString()) {
+            //表示为今天
+            meData[i].CreateDate = `${date.getHours()}:${date.getMinutes()}`;
+          } else {
+            //不为今天
+            meData[i].CreateDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+          }
+        }
+        /*数据更新*/
+        _this.setData({
+          dataList: res.data.concat(_this.data.dataList)
+        })
+        _this.page.start += _this.page.limit;
+      },
+      complete() {
+        wx.stopPullDownRefresh();
+      }
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var _this = this;
+    this.openid = options.openId
     //加载模拟数据
-    this.getData();
+    this.getData(true);
+    //暂时不得已的解决方法
+    getApp().onLoading = function(){
+      //获取登陆信息
+      _this.setData({
+        loginInfo: getApp().privateData.loginInfo
+      })
+    }
+    getApp().onLoading();
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -532,7 +587,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.getData();
   },
 
   /**

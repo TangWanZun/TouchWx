@@ -1,17 +1,81 @@
+import { CHAT_TYPE } from '../../library/sdk/config.js'
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    dataList:[]
+    dataList:[],
+    //图片数据
+    imgUrl: getApp().privateData.configUrl.imgUrl,
+    //获取聊天类型
+    CHAT_TYPE: CHAT_TYPE,
+    //分页功能
+    pageOver: false
   },
-
+  /**
+   * 获取数据
+  */
+  page: {
+    start: 0,
+    limit: 25
+  },
+  getData(dataReset = false) {
+    //数据重置
+    if (dataReset) {
+      this.setData({
+        dataList: [],
+        pageOver: false
+      })
+      this.page.start = 0;
+    }
+    //数据全部加载后阻止
+    if (this.data.pageOver) {
+      return;
+    }
+    let _this = this;
+    wx.$request({
+      url: "/WeMinProChatMessage/GetNeedReplyList",
+      data: {
+        start: this.page.start,
+        limit: this.page.limit,
+      },
+      success(res) {
+        if (res.data.length < _this.page.limit) {
+          //数据以全部拉取完成
+          _this.setData({
+            pageOver: true
+          })
+        }
+        /**
+         * 这里需要整理数据
+        */
+        let meData = res.data;
+        let newDate = new Date();
+        for (let i = 0; i < meData.length;i++){
+          let date = new Date(meData[i].CreateDate);
+          if (newDate.toDateString() === date.toDateString()){
+            //表示为今天
+            meData[i].CreateDate = `${date.getHours()}:${date.getMinutes()}`;
+          }else{
+            //不为今天
+            meData[i].CreateDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+          }
+        }
+        _this.setData({
+          dataList: _this.data.dataList.concat(res.data)
+        })
+        _this.page.start += _this.page.limit;
+      },
+      complete(){
+        wx.stopPullDownRefresh();
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.modelData()
+    this.getData()
   },
 
   /**
@@ -46,14 +110,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+    this.getData(true)
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+    this.getData()
   },
 
   /**

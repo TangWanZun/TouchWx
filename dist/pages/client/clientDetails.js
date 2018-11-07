@@ -6,6 +6,8 @@ Page({
    */
   data: {
     clientData:{
+      //用户openId
+      openId:null,
       //头像
       headImage:"/assets/icon/tx.png",
       //爱好
@@ -51,7 +53,7 @@ Page({
       title: options.clientId,
     })
     this.setData({
-      "clientData.headImage": options.img
+      "clientData.openId": options.openId
     })
   },
 

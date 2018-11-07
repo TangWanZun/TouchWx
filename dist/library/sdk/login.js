@@ -71,7 +71,9 @@ function saveUserInfo(res,obj={}){
       //保存到内存
       obj.success && obj.success(response);
     }
-  })
+  });
+  //用于运行全局回调无奈之举
+  getApp().onLoading();
 }
 //测试信息调取
 function loginTest() {

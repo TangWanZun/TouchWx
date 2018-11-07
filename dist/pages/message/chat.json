@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "小乔"
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "(离线)"
 }
