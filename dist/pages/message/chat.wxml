@@ -3,24 +3,32 @@
   <!-- 这个是当使用功能区的时候为了兼容苹果flex -->
   <!-- {{voiceBtn.functionUnfoldShow?"calc( 60vh - 105px )":"calc( 100vh - 105px )"}} -->
   <scroll-view  scroll-y="true" scroll-into-view="chat-{{intoView}}" class='page-con' style='height:calc( 100vh - 55px )'>
-    <view id='chat-{{index+1}}' class='page-chat-box {{item.FromType===CHAT_TYPE.CHAT_RIGHT?"page-chat-box-right":""}}' wx:for='{{dataList}}' wx:key="{{item.MsgId}}">
-      <view class='page-chat-img'><image src="{{item.ProfilePhoto?(imgUrl+item.ProfilePhoto):item.FromType===CHAT_TYPE.CHAT_RIGHT?'/assets/chat/kf_tx.svg':'/assets/chat/kh_tx.svg'}}"></image></view>
+    <view id='chat-{{index+1}}' class='page-chat-box {{item.isLeft?"":"page-chat-box-right"}}' wx:for='{{dataList}}' wx:key="{{item.MsgId}}">
+      <view class='page-chat-img'><image src="{{item.headImg}}"></image></view>
+      <!-- 内容 -->
       <view class='page-chat-body'>
-        <view class='page-chat-name'>{{item.FromType===CHAT_TYPE.CHAT_RIGHT?item.UserName:item.CardName}}</view>
+        <view class='page-chat-name'>{{item.name}}</view>
         <!-- 文本内容 -->
-        <view wx:if="{{item.MsgType===CHAT_TYPE.CHAT_TEXT}}" class='page-chat-con'>{{item.MsgData}}</view>
+        <view wx:if="{{item.msgType===CHAT_CONST.CHAT_TEXT}}" class='page-chat-con'>{{item.msgData}}</view>
         <!-- 图片内容 -->
-        <view wx:elif="{{item.MsgType===CHAT_TYPE.CHAT_IAMGE}}" class='page-chat-con-img' data-src="{{imgUrl+item.MediaOriginal}}" bindtap='showBigImage'><image mode="widthFix" src='{{imgUrl+item.Thumbnail}}'></image></view>
+        <view wx:elif="{{item.msgType===CHAT_CONST.CHAT_IAMGE}}" class='page-chat-con-img' data-src="{{item.msgData.mediaOriginal}}" bindtap='showBigImage'><image mode="widthFix" src='{{item.msgData.thumbnail}}'></image></view>
         <!-- 地理位置 -->
-        <view bindtap='openLocationFun' wx:elif="{{item.MsgType===CHAT_TYPE.CHAT_ADDS}}" data-name='{{item.AddressName}}' data-address='{{item.AddressDetails}}' data-latitude='{{item.Latitude}}' data-longitude='{{item.Longitude}}' class='page-chat-con-map'>
+        <view bindtap='openLocationFun' wx:elif="{{item.msgType===CHAT_CONST.CHAT_ADDS}}" data-name='{{item.msgData.addressDetails}}' data-address='{{item.msgData.addressName}}' data-latitude='{{item.msgData.latitude}}' data-longitude='{{item.msgData.longitude}}' class='page-chat-con-map'>
           <view  class='page-chat-con-map-head'>位置(点击查看)</view>
-          <view class='page-chat-con-map-body'>{{item.AddressDetails}}</view>
+          <view class='page-chat-con-map-body'>{{item.msgData.addressDetails}}</view>
         </view>
         <!-- 语音 -->
-        <view wx:elif="{{item.MsgType===CHAT_TYPE.CHAT_VOICE}}" data-msgid="{{index}}" data-src="{{item.Thumbnail}}" class='page-chat-con page-chat-con-audio' bindtap='playAudio'>
-          <view class='page-chat-con-audio-image {{audio.playMsgId===index?"page-chat-con-audio-play":""}} '><image src='/assets/chat/audio{{item.FromType===CHAT_TYPE.CHAT_RIGHT?"-b":""}}.svg'></image></view>
-          <view class='page-chat-con-audio-time'>{{item.Duration}}"</view>
+        <view wx:elif="{{item.msgType===CHAT_CONST.CHAT_VOICE}}" data-msgid="{{index}}" data-src="{{item.msgData.src}}" class='page-chat-con page-chat-con-audio' bindtap='playAudio'>
+          <view class='page-chat-con-audio-image {{audio.playMsgId===index?"page-chat-con-audio-play":""}} '><image src='/assets/chat/audio{{item.isLeft?"":"-b"}}.svg'></image></view>
+          <view class='page-chat-con-audio-time'>{{item.msgData.time}}"</view>
         </view>
+      </view>
+      <!-- 加载 -->
+      <view class='page-chat-loding' >
+        <!-- 加载中 -->
+        <image wx:if="{{item.state==CHAT_CONST.LOG_IN}}" class='page-chat-loding-rotate' src='/assets/chat/jz.svg'></image>
+        <!-- 加载失败 -->
+        <image wx:if="{{item.state==CHAT_CONST.LOG_FAIL}}" src='/assets/chat/sb.svg'></image>
       </view>
     </view>
   </scroll-view>

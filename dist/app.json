@@ -67,7 +67,7 @@
     "selectedColor": "#4eb4ff"
   },
   "networkTimeout": {
-    "request": 10000
+    "request": 60000
   },
   "theme": {
     "theme-color": "#39f"

@@ -97,7 +97,7 @@
 					"id": 9,
 					"name": "聊天框",
 					"pathName": "pages/message/chat",
-					"query": "openId=oS4HgsvcWpf3jL8ss_AO7JCShhq0"
+					"query": "openId=oS4HgsvcWpf3jL8ss_AO7JCShhq0&wxId=gh_40c534b93a9f"
 				},
 				{
 					"id": -1,

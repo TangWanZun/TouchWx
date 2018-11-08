@@ -15,7 +15,7 @@ const WORK_TYPE = {
   WORK_DQ: "A05"
 }
 //聊天文本类型
-const CHAT_TYPE = {
+const CHAT_CONST = {
   CHAT_TEXT: 'text',//文本消息
   CHAT_IAMGE: 'image',//图片消息
   CHAT_ADDS: 'location',//位置消息
@@ -23,5 +23,10 @@ const CHAT_TYPE = {
   CHAT_VIDEO: 'video',//视频信息
   CHAT_LEFT: 'Client',//客户
   CHAT_RIGHT: 'Server',//客服
+  CHAT:0,         //聊天信息
+  DATE:1,          //日期信息
+  LOG_IN: 2, //加载中
+  LOG_OUT: 3,//加载完成
+  LOG_FAIL: 4//加载失败
 }
-export { WORK_TYPE, CHAT_TYPE, configUrl}
+export { WORK_TYPE, CHAT_CONST, configUrl}

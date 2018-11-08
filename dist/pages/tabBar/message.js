@@ -1,4 +1,4 @@
-import { CHAT_TYPE } from '../../library/sdk/config.js'
+import { CHAT_CONST } from '../../library/sdk/config.js'
 Page({
   /**
    * 页面的初始数据
@@ -7,12 +7,12 @@ Page({
     dataList:[],
     //图片数据
     imgUrl: getApp().privateData.configUrl.imgUrl,
-    //获取聊天类型
-    CHAT_TYPE: CHAT_TYPE,
+    //获取聊天常量
+    CHAT_CONST: CHAT_CONST,
     //分页功能
     pageOver: false
   },
-  /**
+  /**^&^fdzsdfgx fAf s
    * 获取数据
   */
   page: {

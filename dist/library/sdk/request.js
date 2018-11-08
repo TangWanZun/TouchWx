@@ -75,7 +75,7 @@ function $request(para) {
       //隐藏加载loding
       wx.hideLoading();
       wx.hideNavigationBarLoading();
-      mepara.complete&&mepara.complete(response);
+      mepara.complete&&mepara.complete(response.data);
     }
   })
 }

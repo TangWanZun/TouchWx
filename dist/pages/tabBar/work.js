@@ -1,4 +1,4 @@
-import  sdk from "../../library/sdk.js"
+import  * as sdk from "../../library/sdk.js"
 Page({
   /**
    * 页面的初始数据

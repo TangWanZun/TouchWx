@@ -23,7 +23,7 @@
 .page-chat-box{
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items:stretch;
   padding:0px 15px 20px 15px;
 }
 .page-chat-box:first-child{
@@ -52,6 +52,24 @@
 .page-chat-box-right .page-chat-name{
   left:auto;
   right: 20px ;
+}
+/* loding框 */
+.page-chat-loding{
+  width: 20px;
+  height:60px;
+  padding-top:20px;
+  margin:0 -10px;
+  display: flex;
+  align-items: center;
+}
+.page-chat-loding>image{
+  width:20px;
+  height: 20px;
+}
+.page-chat-loding-rotate{
+    animation: listLoging 1s;
+  animation-iteration-count:infinite;
+  animation-timing-function:linear;
 }
 /*
 *===================================

@@ -1,4 +1,7 @@
-import {WORK_TYPE} from "./sdk/config"
-export default {
-  WORK_TYPE
+import { WORK_TYPE, CHAT_CONST } from "./sdk/config"
+import { GUID} from "./sdk/GUID"
+export {
+  CHAT_CONST,
+  WORK_TYPE,
+  GUID
 }
