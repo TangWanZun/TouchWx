@@ -1,7 +1,7 @@
 import { WORK_TYPE, CHAT_CONST } from "./sdk/config"
-import { GUID} from "./sdk/GUID"
+import * as util from "./sdk/util"
 export {
   CHAT_CONST,
   WORK_TYPE,
-  GUID
+  util
 }

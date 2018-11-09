@@ -1,4 +1,5 @@
-import {CHAT_CONST,GUID} from '../../library/sdk.js'
+import { CHAT_CONST, util} from '../../library/sdk.js'
+
 // pages/message/chat.js
 Page({
   /**
@@ -47,8 +48,10 @@ Page({
    * 全局变量非setData型
    * ========================================
   */
-  openid:null,
+  openId:null,
   wxId: null,
+  headImg:null,
+  cardName:null,
   //消息队列
   // messageQueue:[],
   /**========================================
@@ -132,7 +135,7 @@ Page({
   chatSend(pro) {
     //基本信息
     var msg = {
-      MsgId: GUID(),
+      MsgId: util.GUID(),
       AddressDetails: pro.addressDetails || null,															//地理位置详情
       AddressName: pro.addressName || null,							//地理位置名称
       CardName: null,																 //真实姓名
@@ -145,7 +148,7 @@ Page({
       MsgDate: new Date(),												//时间					
       MsgType: pro.msgType,																	//类型
       NickName: "",														//微信名称
-      OpenId: this.openid,											//openid
+      OpenId: this.openId,											//openid
       ProfilePhoto: this.data.loginInfo.ProfilePhoto,																//头像
       Thumbnail: pro.thumbnail || null,																	//缩略图
       UserCode: this.data.loginInfo.UserCode,																	//客服code
@@ -497,9 +500,9 @@ Page({
     //获取是不是客户
     var isLeft = msg.FromType === CHAT_CONST.CHAT_LEFT;
     //获取显示名称
-    var name = isLeft ? (msg.CardName || msg.NickName): msg.UserName ;
+    var name = isLeft ? this.cardName: msg.UserName ;
     //获取显示头像
-    var headImg = msg.ProfilePhoto ? (this.data.imgUrl + msg.ProfilePhoto) : isLeft ? '/assets/chat/kh_tx.svg' : '/assets/chat/kf_tx.svg' ;
+    var headImg = isLeft ? (this.headImg ? this.data.imgUrl + this.headImg : '/assets/chat/kh_tx.svg') : (msg.ProfilePhoto ? this.data.imgUrl + msg.ProfilePhoto:'/assets/chat/kf_tx.svg');
     //获取存放数据内容
     var msgData;
     switch (msg.MsgType){
@@ -553,6 +556,8 @@ Page({
       isLeft,
       //头像
       headImg,
+      //时间
+      msgDate:msg.MsgDate,
       //名称
       name,
       //类型
@@ -566,10 +571,15 @@ Page({
   /**
    * 轮询获取数据
   */
+  isDestroy:false,
   getMsgList(){
     var _this = this;
     var createDate;
     function fun(){
+      //状态被销毁
+      if (_this.isDestroy) {
+        return;
+      }
       wx.$request({
         url: "/WeMinProChatMessage/GetLastMsg",
         data: {
@@ -588,38 +598,47 @@ Page({
             createDate = res.Data.CreateDate;
             //更改信息状态
             var forList = res.Data.List;
+            //setData上的dataList
+            let dataDataList = _this.data.dataList;
             for(let i =0;i<forList.length;i++){
-              //来自于客户
-              if (forList[i].FromType == CHAT_CONST.CHAT_LEFT){
-                //防止信息重复
-                for (let j = _this.data.dataList.length - 1; j >= 0; j--) {
-                  if (msgId != _this.data.dataList[j].msgId) {
-                    _this.setData({
-                      "dataList": _this.data.dataList.concat(_this.getMsgData(forList[i]))
-                    });
-                    //到底部
-                    _this.toBottom();
-                    break;
+              let item = forList[i];
+              let msgId = item.MsgId;
+              //msgId重复
+              let index = util.find(dataDataList, "msgId", item.MsgId);
+              if (index>=0){
+                //来自于客户
+                if (forList[i].FromType == CHAT_CONST.CHAT_LEFT) {
+                  //重复信息去掉
+                  continue;
+                } else {
+                  //来自于客服
+                  //更新信息
+                  if (item.StatusReason) {//判断这条消息发送是否成功
+                    //失败
+                    dataDataList[index].state = CHAT_CONST.LOG_FAIL;
+                  } else {
+                    //成功
+                    dataDataList[index].state = CHAT_CONST.LOG_OUT;
                   }
+                  //更新到消息列表
+                  _this.setData({
+                    "dataList": dataDataList
+                  });
                 }
               }else{
-                //来自于自己客服
-                var msgId = forList[i].MsgId;
-                for (let j = _this.data.dataList.length-1; j >=0; j--) {
-                  if (msgId == _this.data.dataList[j].msgId) {
-                    if (forList[i].StatusReason) {
-                      _this.data.dataList[j].state = CHAT_CONST.LOG_FAIL;
-                    } else {
-                      _this.data.dataList[j].state = CHAT_CONST.LOG_OUT;
-                    }
-                    _this.setData({
-                      "dataList": _this.data.dataList
-                    });
-                    break;
-                  }
+                //msgId不重复
+                if (forList[i].FromType == CHAT_CONST.CHAT_LEFT && _this.openId !== item.OpenId) {
+                  //非当前用户
+                  continue;
                 }
+                //更新到消息列表
+                _this.setData({
+                  "dataList": dataDataList.concat(_this.getMsgData(item))
+                });
               }
             }
+            //到底部
+            _this.toBottom();
           }
           //轮询运行
           fun()
@@ -628,6 +647,7 @@ Page({
     }
     fun();
   },
+
   /**
    * 获取数据
   */
@@ -649,7 +669,7 @@ Page({
       data: {
         start: this.page.start,
         limit: this.page.limit,
-        OpenId: this.openid
+        OpenId: this.openId
       },
       success(res) {
         if (res.data.length < _this.page.limit) {
@@ -677,6 +697,8 @@ Page({
         if (dataReset) {
           //滚动到页面底部
           _this.toBottom();
+          //启动轮询
+          _this.getMsgList();
         }
       }
     })
@@ -686,23 +708,22 @@ Page({
    */
   onLoad: function (options) {
     var _this = this;
-    this.openid = options.openId;
+    this.openId = options.openId;
     this.wxId = options.wxId;
+    this.headImg = options.headImg;
+    this.cardName = options.cardName;
     //加载名称
     wx.setNavigationBarTitle({
       title: options.cardName
     })
     //加载数据
     this.getData(true);
-    //启动轮询
-    this.getMsgList();
     //暂时不得已的解决方法
     getApp().onLoading = function(){
       //获取登陆信息
       _this.setData({
         loginInfo: getApp().privateData.loginInfo
       })
-      
     }
     getApp().onLoading();
     
@@ -731,7 +752,8 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    console.log(1);
+    this.isDestroy = true;
   },
 
   /**

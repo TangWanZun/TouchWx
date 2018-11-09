@@ -13,6 +13,12 @@ Page({
     pageOver:false
   },
   /**
+   * 轮询在线人数
+  */
+  getOnline(){
+      
+  },
+  /**
    * 获取数据
   */
   page: {
