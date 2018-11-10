@@ -48,7 +48,7 @@ App({
     //登陆凭证
     Token:"",
     //用户信息
-    loginInfo:null,
+    loginInfo:undefined,
     //请求滞留池
     requestRetention:[],
     // url配置

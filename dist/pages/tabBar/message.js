@@ -1,4 +1,4 @@
-import { CHAT_CONST } from '../../library/sdk/config.js'
+import { CHAT_CONST, util } from '../../library/sdk.js'
 Page({
   /**
    * 页面的初始数据
@@ -12,8 +12,8 @@ Page({
     //分页功能
     pageOver: false
   },
-  /**^&^fdzsdfgx fAf s
-   * 获取数据
+  /**
+   * 获取数据(聊天列表)
   */
   page: {
     start: 0,
@@ -65,6 +65,10 @@ Page({
           dataList: _this.data.dataList.concat(res.data)
         })
         _this.page.start += _this.page.limit;
+        //启动轮询获取数据
+        if (dataReset){
+          _this.getMsgList()
+        }
       },
       complete(){
         wx.stopPullDownRefresh();
@@ -72,10 +76,79 @@ Page({
     })
   },
   /**
+   * 轮询获取数据
+  */
+  isDestroy: false,
+  getMsgList() {
+    var _this = this;
+    var createDate;
+    function fun() {
+      //状态被销毁
+      if (_this.isDestroy) {
+        return;
+      }
+      wx.$request({
+        url: "/WeMinProChatMessage/GetLastMsg",
+        data: {
+          Date: createDate,
+        },
+        success(res) {
+          console.log(res);
+        },
+        fail(res) {
+          console.log(res);
+        },
+        complete(res) {
+          //当存在返回值的时候,说明有信息池中存在数据
+          if (res.Data) {
+            //更新时间
+            createDate = res.Data.CreateDate;
+            //获取本地带回消息列表
+            let dataDataList = _this.data.dataList;
+            //遍历返回的消息池
+            var forList = res.Data.List;
+            //将最新的数据赋值到待回复的消息列表中
+            for(let i = 0;i<forList.length;i++){
+              let item = forList[i];
+              var index = util.find(dataDataList, "OpenId", item.OpenId)
+              if(index>0){
+                //如果最新消息池中与本地带回消息列表中存在同一个用户,则将直接赋值到用户上
+                dataDataList[index].MsgDate = item.MsgDate;
+                dataDataList[index].MsgType = item.MsgType;
+                dataDataList[index].MsgData = item.MsgData;
+                dataDataList[index].PendCount++;
+              }else{
+                //如果本地待会消息中没有最新消息池中的数据,则需要调用获取客户消息方法获取客户头像等,然后添加入本地带回消息中
+                //GetNewNeedReplyList需要接受一个参数是openid
+                wx.$request({
+                  url:"/WeiXinChatMessage/GetNewNeedReplyList",
+                  data:{
+                    bean: item.OpenId
+                  },
+                  success(res){
+                    //成功则将返回的信息添加一个新的本地带回消息
+                    dataDataList = dataDataList.concat(res.Data)
+                  }
+                })
+              }
+              //数据更新
+              _this.setData({
+                dataList: dataDataList
+              })
+            }
+          }
+          //轮询运行
+          fun()
+        }
+      })
+    }
+    fun();
+  },
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getData()
+    this.getData(true);
   },
 
   /**
@@ -89,7 +162,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    // this.getData();
   },
 
   /**

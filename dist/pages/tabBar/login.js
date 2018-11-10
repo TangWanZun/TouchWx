@@ -125,7 +125,7 @@ Page({
               });
             }
           }, 1000);
-          this.setData({
+          _this.setData({
             'codeObj.isCountDown': true,
             // 'codeObj.TIME_CONST': TIME_CONST,
           });
