@@ -47,35 +47,53 @@
       </view>
     </view>
     <view class='my-data-list app-item-div app-scroll-none'>
-      <view  class="my-data-item app-shadow-2">
+      <!-- <view  class="my-data-item app-shadow-2">
           <view class="my-data-item-title my-data-item-list">本月目标
             <span>（台）</span>
           </view>
           <view class="my-data-item-num my-data-item-list">3<span>/5</span></view>
-      </view>
+      </view> -->
       <view class="my-data-item  app-shadow-2">
-          <view class="my-data-item-title my-data-item-list">我的客户
+          <view class="my-data-item-title my-data-item-list">会员认证量
             <span>（位）</span>
           </view>
           <view class="my-data-item-num my-data-item-list">103</view>
       </view>
-      <view  class="my-data-item  app-shadow-2">
-        <view class="my-data-item-title my-data-item-list"> 活跃客户
+      <view class="my-data-item  app-shadow-2">
+          <view class="my-data-item-title my-data-item-list">用户转化率
+            <span>（%）</span>
+          </view>
+          <view class="my-data-item-num my-data-item-list">12.5</view>
+      </view>
+      <view class="my-data-item  app-shadow-2">
+          <view class="my-data-item-title my-data-item-list">用户转化率
+            <span>（%）</span>
+          </view>
+          <view class="my-data-item-num my-data-item-list">12.5</view>
+      </view>
+      <!-- <view  class="my-data-item  app-shadow-2">
+        <view class="my-data-item-title my-data-item-list"> 会员认证量
           <span>（位）</span>
         </view>
         <view class="my-data-item-num my-data-item-list">32</view>
-      </view>
+      </view> -->
       <view  class="my-data-item  app-shadow-2">
-        <view class="my-data-item-title my-data-item-list"> 当日接车
-          <span>（台）</span>
-        </view>
-        <view class="my-data-item-num my-data-item-list">3</view>
-      </view>
-      <view  class="my-data-item  app-shadow-2">
-        <view class="my-data-item-title my-data-item-list"> 当月产值
+        <view class="my-data-item-title my-data-item-list"> 在线交易产值
           <span>（元）</span>
         </view>
         <view class="my-data-item-num my-data-item-list">90000</view>
+      </view>
+      <view  class="my-data-item  app-shadow-2">
+        <view class="my-data-item-title my-data-item-list"> 活动参与率
+          <span>（%）</span>
+        </view>
+        <view class="my-data-item-num my-data-item-list">65</view>
+      </view>
+      <view  class="my-data-item  app-shadow-2">
+        <view class="my-data-item-title my-data-item-list"> 用户分享率
+          <span>（%）</span>
+        </view>
+        <view class="my-data-item-num my-data-item-list">77.9</view>
       </view>
     </view>
     <navigator url='/pages/tabBar/login' class="my-data-title">

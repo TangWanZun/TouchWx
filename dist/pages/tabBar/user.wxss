@@ -19,6 +19,9 @@
 /* 水平垂直居中 */
 /* 超出部分出省略号 */
 /* 多行文本超出部分省略号 */
+.page-body{
+  background-color: #f7f7f7;
+}
 .body {
   padding-top: 10px;
   background-color: #fafafa;
