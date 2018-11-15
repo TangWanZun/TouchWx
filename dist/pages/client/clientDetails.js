@@ -5,11 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
+    //图片数据
+    imgUrl: getApp().privateData.configUrl.imgUrl,
     clientData:{
       //用户openId
       openId:null,
+      //用户wxID
+      wxId:null,
       //头像
-      headImage:"/assets/icon/tx.png",
+      headImage:"",
       //爱好
       likeList: ["高尔夫","文学","自驾游","游泳","爬山"],
       //积分
@@ -27,7 +31,7 @@ Page({
       //服务顾问
       counselor:[
         { img: "http://5b0988e595225.cdn.sohucs.com/images/20171007/92f1ce0072f64e979a3545892f9b05fd.jpeg", name: "王小田", career: "销售顾问", index: "NO.00213" },
-        { img: "http://www.hyundai-service.com.cn/uploads/useruser/DSC_0359.jpg", name: "张良", career: "维修顾问", index: "NO.00412" },
+        { img: "http://up.qqjia.com/z/26/tu32813_1.jpg", name: "张良", career: "维修顾问", index: "NO.00412" },
         { img:"http://image.bitauto.com/dealer/news/2301039/7cb523f3-7be0-4752-b461-59737f7b2162.jpg", name:"李玉" , career:"售后顾问" , index:"NO.00213"},
       ],
       //绑定汽车
@@ -48,13 +52,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //测试使用
+    // console.log(options)
+    //更改名称
     wx.setNavigationBarTitle({
-      title: options.clientId,
+      title: options.cardName,
     })
     this.setData({
-      "clientData.openId": options.openId
+      "clientData.openId": options.openId,
+      "clientData.headImage": options.headImg,
+      "clientData.cardName": options.cardName,
+      "clientData.wxId": options.wxId,
     })
+    // //GetNewNeedReplyList需要接受一个参数是openid
+    // wx.$request({
+    //   url: "/WeiXinChatMessage/GetNewNeedReplyList",
+    //   data: {
+    //     bean: [options.openId]
+    //   },
+    //   success(res) {
+    //     console.log(res);
+    //   }
+    // })
   },
 
   /**

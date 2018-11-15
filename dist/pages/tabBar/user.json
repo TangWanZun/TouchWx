@@ -3,5 +3,5 @@
   "usingComponents": {
     "head-img": "/component/headImg"
   },
-  "navigationBarBackgroundColor":"#f7f7f7"
+  "navigationBarBackgroundColor":"#f9faf7"
 }

@@ -72,8 +72,8 @@ function saveUserInfo(res,obj={}){
       obj.success && obj.success(response);
     }
   });
-  //用于运行全局回调无奈之举
-  getApp().onLoading();
+  //当全部信息获取之后,调用加载滞留池中的方法
+  getApp().privateData.loadRetention.forEach(getApp().loadInfo);
 }
 //测试信息调取
 function loginTest() {

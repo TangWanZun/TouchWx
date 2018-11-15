@@ -5,7 +5,7 @@
       <view class='page-item-con'>
         <view class='page-item-con-con'>
           <view class='page-item-name'>{{item.CardName||item.NickName}}</view>
-          <view class='page-item-date'>{{item.CreateDate}}</view>
+          <view class='page-item-date'>{{item.MsgDate}}</view>
         </view>
         <view class='page-item-message' wx:if="{{item.MsgType==CHAT_CONST.CHAT_TEXT}}">{{item.MsgData}}</view>
         <view class='page-item-message' wx:elif="{{item.MsgType==CHAT_CONST.CHAT_IAMGE}}">[图片]</view>
@@ -13,7 +13,7 @@
         <view class='page-item-message' wx:elif="{{item.MsgType==CHAT_CONST.CHAT_VOICE}}">[语音]</view>
       </view>
     </navigator>
-    <view class="list-loging" wx:if="{{pageOver}}">数据加载完成</view>
-    <view class="list-loging" wx:else><view>数据加载中</view><image src='/assets/icon/jzz.svg'></image></view>
+    <!-- <view class="list-loging" wx:if="{{pageOver}}">数据加载完成</view> -->
+    <view class="list-loging" wx:if="{{!pageOver}}"><view>数据加载中</view><image src='/assets/icon/jzz.svg'></image></view>
   </view>
 </view>

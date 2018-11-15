@@ -1,4 +1,4 @@
-<view class='app-body'>
+   <view class='app-body'>
   <view class='userInfo'>
     <button open-type='getUserInfo' bindgetuserinfo="bindgetuserinfo">微信登陆获取</button>
   </view>

@@ -6,7 +6,7 @@
       <view class='header-top'>
         <!-- 头像 -->
         <view class='header-img'>
-          <image src='{{clientData.headImage}}'></image>
+          <image src='{{imgUrl+clientData.headImage}}'></image>
         </view>
         <!-- 爱好标签 -->
         <view class='header-likes'>
@@ -30,7 +30,7 @@
     </view>
     <!-- 背景图 -->
     <view class='header-bg'>
-      <image mode='aspectFill' src='{{clientData.headImage}}'></image>
+      <image mode='aspectFill' src='{{imgUrl+clientData.headImage}}'></image>
     </view>
   </view>
   <!-- 正文内容 -->
@@ -55,7 +55,7 @@
           <!-- 微信 -->
           <view wx:elif="{{item.conType==='WX'}}" class='panel'>
             <view class='panel-number'>sunshangxiang1</view>
-            <navigator  url='/pages/message/chat?openId={{clientData.openId}}' class='panel-icon'><image src='/assets/icon/WX.svg'></image></navigator>
+            <navigator  url='/pages/message/chat?openId={{clientData.openId}}&cardName={{clientData.cardName}}&wxId={{clientData.wxId}}&headImg={{clientData.headImage}}' class='panel-icon'><image src='/assets/icon/WX.svg'></image></navigator>
           </view>
         </view>
       </view>

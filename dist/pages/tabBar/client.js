@@ -1,4 +1,5 @@
-import {pinyinUtil} from "../../library/pinyin/pinyinUtil.js"
+// import {pinyinUtil} from "../../library/pinyin/pinyinUtil.js"
+import { util } from '../../library/sdk.js'
 Page({
 
   /**
@@ -9,14 +10,8 @@ Page({
     dataList:[],
     //图片数据
     imgUrl: getApp().privateData.configUrl.imgUrl,
-    //分页功能
+    //分页数据所有页面是否已经全部加载完成
     pageOver:false
-  },
-  /**
-   * 轮询在线人数
-  */
-  getOnline(){
-      
   },
   /**
    * 获取数据
@@ -63,6 +58,64 @@ Page({
     })
   },
   /**
+   * 轮询获取当前在线人数
+  */
+  //当前页面是否可见
+  pageShow:true,
+  //当前轮询是否在使用
+  onLineShow:false,
+  getOnline(){
+    var _this = this;
+    this.onLineShow = true;
+    let  count =0;
+    (function fun(){
+      if (!_this.pageShow){
+        _this.onLineShow = false;
+        return;
+      }
+      wx.$request({
+        url: "/WeMinProChatMessage/GetOnline",
+        data: {
+          Count: count
+        },
+        success(res) {
+          //当存在Data,表示这个数据是最新的
+          if (res.Data) {
+            //获取在线人数
+            count = res.Data.length;
+            //刷新标题,提示最近的客户人数
+            wx.setNavigationBarTitle({
+              title: `客户(${count})`
+            })
+            //遍历返回数据,查看有没有需要更新显示状态的
+            let resData = res.Data;
+            let dataList = _this.data.dataList;
+            for (let i = 0; i < resData.length;i++){
+              //找到相应的用户位置
+              var index = util.find(dataList, "OpenId", resData[i].OpenId);
+              if(index>=0){
+                //存在当前用户的时候,判断当前用户状态是否为离线,
+                if (!dataList[index].Online){
+                  //如果为离线则调整为在线状态
+                  dataList[index].Online = true;
+                  //更新列表
+                  _this.setData({
+                    dataList
+                  })
+                }
+              }
+            }
+          }
+          //轮询
+          fun()
+        },
+        fail(){
+          _this.onLineShow = false;
+        }
+      })
+    })()
+  },
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
@@ -107,14 +160,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    this.pageShow = true;
+    if (!this.onLineShow){
+      //更新在线人数
+      this.getOnline();
+    }
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+    this.pageShow = false;
   },
 
   /**

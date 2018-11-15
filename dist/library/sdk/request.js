@@ -30,7 +30,7 @@ function $request(para) {
     consoleError('url', 'url为必填项');
     return;
   }
-  console.log(privateData.loginInfo);
+  // console.log(privateData.loginInfo);
   //若是为非越权请求并且当前没有获得用户身份,则此请求需要进入请求滞留池中，等待获取用户身份
   if (!para.UV && typeof privateData.loginInfo === 'undefined'){
     privateData.requestRetention.push(para);

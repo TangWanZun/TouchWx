@@ -43,7 +43,7 @@
   height: 15vw;
   border-radius: 100%;
   overflow: hidden;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 .page-name{
 

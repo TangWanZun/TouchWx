@@ -3,7 +3,7 @@
     <view class="userCard-left">
       <view class="userCard-name">
         <view  class="userCard-name-text">{{loginInfo.UserName}}</view>
-        <!-- <navigator url='../user/myQr'><image src='/assets/icon/qr.svg'></image></navigator> -->
+        <navigator url='../user/myQr'><image src='/assets/icon/qr.svg'></image></navigator>
       </view>
       <view>
         <view class="userCard-section">{{loginInfo.DeptName}}</view>
@@ -14,7 +14,7 @@
       <view class="userCard-img">
         <head-img></head-img>
       </view>
-      <view class="userCard-index">{{loginInfo.UserCode}}</view>
+      <!-- <view class="userCard-index">{{loginInfo.UserCode}}</view> -->
     </view>
   </view>
   <view class="my-data">
@@ -78,7 +78,7 @@
         <view class="my-data-item-num my-data-item-list">32</view>
       </view> -->
       <view  class="my-data-item  app-shadow-2">
-        <view class="my-data-item-title my-data-item-list"> 在线交易产值
+        <view class="my-data-item-title my-data-item-list"> 交易产值
           <span>（元）</span>
         </view>
         <view class="my-data-item-num my-data-item-list">90000</view>
@@ -96,9 +96,9 @@
         <view class="my-data-item-num my-data-item-list">77.9</view>
       </view>
     </view>
-    <navigator url='/pages/tabBar/login' class="my-data-title">
+    <!-- <navigator url='/pages/tabBar/login' class="my-data-title">
       <view>注销登陆</view>
       <view class="my-data-title-icon"><image src='/assets/icon/right.svg'></image></view>
-    </navigator>
+    </navigator> -->
   </view>
 </view>

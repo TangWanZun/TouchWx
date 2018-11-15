@@ -2,10 +2,11 @@
   <view class='page-box'>
     <view class='page-head'>
       <view class='page-headimg'>
-        <open-data type="userAvatarUrl"></open-data>
+        <head-img id="headImg"></head-img>
+        <!-- <open-data type="userAvatarUrl"></open-data> -->
       </view>
-      <view class='page-name'><open-data type="userNickName"></open-data></view>
-      <view class='page-section app-main-bg'>客服部</view>
+      <view class='page-name'>{{loginInfo.UserName}}</view>
+      <view class='page-section app-main-bg'>{{loginInfo.DeptName}}</view>
     </view>
     <view class='page-body'>
       <view class='page-qr'>

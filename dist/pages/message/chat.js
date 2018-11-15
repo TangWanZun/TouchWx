@@ -571,83 +571,54 @@ Page({
   /**
    * 轮询获取数据
   */
-  isDestroy:false,
   getMsgList(){
     var _this = this;
-    var createDate;
-    function fun(){
-      //状态被销毁
-      if (_this.isDestroy) {
-        return;
-      }
-      wx.$request({
-        url: "/WeMinProChatMessage/GetLastMsg",
-        data: {
-          Date: createDate,
-        },
-        success(res) {
-          console.log(res);
-        },
-        fail(res) {
-          console.log(res);
-        },
-        complete(res) {
-          //当存在返回值的时候,说明有信息池中存在数据
-          if (res.Data) {
-            //更新时间
-            createDate = res.Data.CreateDate;
-            //更改信息状态
-            var forList = res.Data.List;
-            //setData上的dataList
-            let dataDataList = _this.data.dataList;
-            for(let i =0;i<forList.length;i++){
-              let item = forList[i];
-              let msgId = item.MsgId;
-              //msgId重复
-              let index = util.find(dataDataList, "msgId", item.MsgId);
-              if (index>=0){
-                //来自于客户
-                if (forList[i].FromType == CHAT_CONST.CHAT_LEFT) {
-                  //重复信息去掉
-                  continue;
-                } else {
-                  //来自于客服
-                  //更新信息
-                  if (item.StatusReason) {//判断这条消息发送是否成功
-                    //失败
-                    dataDataList[index].state = CHAT_CONST.LOG_FAIL;
-                  } else {
-                    //成功
-                    dataDataList[index].state = CHAT_CONST.LOG_OUT;
-                  }
-                  //更新到消息列表
-                  _this.setData({
-                    "dataList": dataDataList
-                  });
-                }
-              }else{
-                //msgId不重复
-                if (forList[i].FromType == CHAT_CONST.CHAT_LEFT && _this.openId !== item.OpenId) {
-                  //非当前用户
-                  continue;
-                }
-                //更新到消息列表
-                _this.setData({
-                  "dataList": dataDataList.concat(_this.getMsgData(item))
-                });
-              }
+    wx.$msgBroadcast.add('chat', function (msgList) {
+      //获取的返回的消息
+      var forList = msgList;
+      //setData上的dataList
+      let dataDataList = _this.data.dataList;
+      for (let i = 0; i < forList.length; i++) {
+        let item = forList[i];
+        let msgId = item.MsgId;
+        //msgId重复
+        let index = util.find(dataDataList, "msgId", item.MsgId);
+        if (index >= 0) {
+          //来自于客户
+          if (forList[i].FromType == CHAT_CONST.CHAT_LEFT) {
+            //重复信息去掉
+            continue;
+          } else {
+            //来自于客服
+            //更新信息
+            if (item.StatusReason) {//判断这条消息发送是否成功
+              //失败
+              dataDataList[index].state = CHAT_CONST.LOG_FAIL;
+            } else {
+              //成功
+              dataDataList[index].state = CHAT_CONST.LOG_OUT;
             }
-            //到底部
-            _this.toBottom();
+            //更新到消息列表
+            _this.setData({
+              "dataList": dataDataList
+            });
           }
-          //轮询运行
-          fun()
+        } else {
+          //msgId不重复
+          if (forList[i].FromType == CHAT_CONST.CHAT_LEFT && _this.openId !== item.OpenId) {
+            //非当前用户
+            continue;
+          }
+          //更新到消息列表
+          _this.setData({
+            "dataList": dataDataList.concat(_this.getMsgData(item))
+          });
         }
-      })
-    }
-    fun();
+      }
+      //到底部
+      _this.toBottom();
+    });
   },
-
   /**
    * 获取数据
   */
@@ -697,7 +668,7 @@ Page({
         if (dataReset) {
           //滚动到页面底部
           _this.toBottom();
-          //启动轮询
+          //启动消息广播收听者
           _this.getMsgList();
         }
       }
@@ -718,15 +689,10 @@ Page({
     })
     //加载数据
     this.getData(true);
-    //暂时不得已的解决方法
-    getApp().onLoading = function(){
-      //获取登陆信息
-      _this.setData({
-        loginInfo: getApp().privateData.loginInfo
-      })
-    }
-    getApp().onLoading();
-    
+    //获取登陆信息
+    _this.setData({
+      loginInfo: getApp().privateData.loginInfo
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -752,8 +718,8 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    console.log(1);
-    this.isDestroy = true;
+    // 删除当前页面消息广播收听者
+    wx.$msgBroadcast.remove('chat');
   },
 
   /**

@@ -19,15 +19,16 @@ Component({
    * 组件实例化
   */
   attached(){
-    this.setData({
-      loginInfo: getApp().privateData.loginInfo
+    var _this = this;
+    getApp().loadInfo(function(){
+      _this.setData({
+        loginInfo: getApp().privateData.loginInfo
+      })
     })
   },
-
   /**
    * 组件的方法列表
    */
   methods: {
-
   }
 })
