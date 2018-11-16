@@ -1,0 +1,54 @@
+/* component/dialog.wxss */
+.dialog-box{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9;
+}
+.dialog-model{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0px;
+  left:0px;
+}
+.dialog{
+  position: relative;
+  width:75vw;
+  background-color: white;
+  border-radius:0 0 5px 5px;
+  border-top:3px solid #4eb4ff;
+}
+.dialog-title{
+  font-size: 17px;
+  padding:5px 14px;
+}
+textarea{
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding:5px 10px;
+}
+.dialog-foot{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.dialog-foot>view{
+  margin-left: 10px;
+  padding:12px 25px;
+  transition: background-color 0.2s;
+}
+.dialog-foot>view:active{
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 2px;
+}
+.dialog-foot>view:first-child{
+  color: rgba(0,0,0,0.5);
+}
+.dialog-foot>view:last-child{
+  color: #4eb4ff;
+}

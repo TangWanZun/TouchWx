@@ -1,0 +1,38 @@
+<dialog bindconfirm="bindconfirm" select="{{dialogSelect}}"></dialog>
+<view class='app-box'>
+  <view class='page-head'>
+    <checkbox-group bindchange="checkAllChange">
+      <label class='page-check'>
+        <checkbox checked='{{checkAll}}'>全选</checkbox>
+      </label>
+    </checkbox-group>
+    <view class='page-buttom-box'>
+      <view class='app-buttom' bindtap='send'>提交</view>
+      <view class='app-buttom' bindtap='cancel'>取消</view>
+    </view>
+  </view>
+  <view class='page-query'>
+    <query-box bindinput="bindinput"></query-box>
+  </view>
+  <checkbox-group class='page-data-list' bindchange="checkChange">
+    <view class='page-item' wx:for="{{dataList}}" wx:key="{{index}}">
+      <view class='page-item-left'>
+        <image class='page-item-headimg' src='{{item.headImg}}'></image>
+        <!-- <view class='page-item-name'>关翠萍</view> -->
+      </view>
+      <view class='page-item-center'>
+        <view class='page-item-center-left'>
+          <view class='page-item-center-con'>
+            <view class='page-item-rescue'>{{item.cardName}}</view>
+            <view class='page-item-date'>报名时间:{{item.createDate}}</view>
+          </view>
+          <view class='page-item-activity'>{{item.activityTitle}}</view>
+          <view class='page-item-num'>报名人数：{{item.numberP}}</view>
+        </view>
+        <view class='page-item-center-right'>
+            <checkbox value='{{index}}' checked='{{item.check}}'></checkbox>
+        </view>
+      </view>
+    </view>
+  </checkbox-group>
+</view>

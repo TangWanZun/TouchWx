@@ -28,6 +28,16 @@
       "pages": [
         "chat"
       ]
+    },
+    {
+      "root": "pages/work",
+      "pages": [
+        "workRescue",
+        "workComplain",
+        "workMake",
+        "workActivity",
+        "workExpire"
+      ]
     }
   ],
   "window": {

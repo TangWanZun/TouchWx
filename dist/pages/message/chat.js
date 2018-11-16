@@ -493,6 +493,37 @@ Page({
    * ========================================
   */
   /**
+   *时间生成器,会根据两个时间间隔，来决定是否需要生成一个时间标签
+  */
+  dataGenerate(aTime, bTime){
+    //需要返回的时间
+    let dataString = "";
+    //获取当前时间
+    let newDate = new Date();
+    //首先判断如果aTIme是否为null
+    if (aTime){
+      let aNTime = util.dateTo(aTime).getTime();
+      let bNTime = util.dateTo(bTime).getTime()
+      //当两者时间间隔超过10分钟时,获取时间
+      if (bNTime - aNTime > 600000) {
+        dataString = util.dateParse(bTime);
+      }
+    }else{
+      //为null的时候必定为返回一个时间,为bTime的时间
+      dataString = util.dateParse(bTime);
+    }
+    if (dataString){
+      return {
+        //信息类型
+        dataType: CHAT_CONST.DATE,
+        date: dataString
+      }
+    }else{
+      return false
+    }
+    // console.log(util.dateTo(aTime), util.dateTo(bTime));
+  },
+  /**
    * 根据传进的内容生成聊天所需内容
   */
   getMsgData(msg,state){
@@ -609,7 +640,12 @@ Page({
             //非当前用户
             continue;
           }
-          //更新到消息列表
+          //判断当前传入的信息时间与列表中上个信息时间,有时间控制器来决定是否需要插入一个时间
+          let time = _this.dataGenerate(dataDataList.length === 0 ? null : dataDataList[dataDataList.length - 1].MsgDate,item.MsgDate);
+          if (time){
+            dataDataList.push(time);
+          }
+          //添加并更新更新到消息列表
           _this.setData({
             "dataList": dataDataList.concat(_this.getMsgData(item))
           });
@@ -655,6 +691,13 @@ Page({
         let meDataList = [];
         let meData = res.data;
         for (let i = 0; i < meData.length; i++) {
+          //由时间生成器来决定是不是需要生成一个时间
+          let time = _this.dataGenerate(i == 0 ? null : meData[i - 1].MsgDate, meData[i].MsgDate);
+          //当time存在,表示时间生成器决定生成一个时间,那就需要把这个时间插入的列表中
+          if(time){
+            meDataList.push(time);
+          }
+          //将获得数据经过处理生成为所需数据
           meDataList.push(_this.getMsgData(meData[i]));
         }
         /*数据更新*/

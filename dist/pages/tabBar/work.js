@@ -8,22 +8,27 @@ Page({
       {
         title: "救援",
         iconUrl:"/assets/workType/WORK_JY.svg",
+        url: "/pages/work/workRescue"
       },
       {
         title: "投诉",
         iconUrl: "/assets/workType/WORK_TS.svg",
+        url: "/pages/work/workComplain"
       },
       {
         title: "预约",
-        iconUrl: "/assets/workType/WORK_YY.svg",
+        iconUrl: "/assets/workType/WORK_YY.svg", 
+        url: "/pages/work/workMake"
       },
       {
         title: "活动",
-        iconUrl: "/assets/workType/WORK_HD.svg",
+        iconUrl: "/assets/workType/WORK_HD.svg", 
+        url: "/pages/work/workActivity"
       },
       {
         title: "到期",
-        iconUrl: "/assets/workType/WORK_DQ.svg",
+        iconUrl: "/assets/workType/WORK_DQ.svg", 
+        url: "/pages/work/workExpire"
       }
     ],
     workType:{},

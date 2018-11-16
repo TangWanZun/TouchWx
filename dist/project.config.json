@@ -11,7 +11,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.2.5",
+	"libVersion": "2.4.0",
 	"appid": "wx741745d2b71d095d",
 	"projectname": "touch-wx",
 	"svr": "",
@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 16,
 			"list": [
 				{
 					"id": -1,
@@ -110,6 +110,36 @@
 					"name": "登陆",
 					"pathName": "pages/tabBar/login",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "救援",
+					"pathName": "pages/work/workRescue",
+					"query": "openId=oS4HgsvcWpf3jL8ss_AO7JCShhq0&wxId=gh_40c534b93a9f"
+				},
+				{
+					"id": -1,
+					"name": "投诉建议",
+					"pathName": "pages/work/workComplain",
+					"query": "openId=oS4HgsvcWpf3jL8ss_AO7JCShhq0&wxId=gh_40c534b93a9f"
+				},
+				{
+					"id": -1,
+					"name": "预约服务",
+					"pathName": "pages/work/workMake",
+					"query": "openId=oS4HgsvcWpf3jL8ss_AO7JCShhq0&wxId=gh_40c534b93a9f"
+				},
+				{
+					"id": -1,
+					"name": "活动报名",
+					"pathName": "pages/work/workActivity",
+					"query": "openId=oS4HgsvcWpf3jL8ss_AO7JCShhq0&wxId=gh_40c534b93a9f"
+				},
+				{
+					"id": -1,
+					"name": "到期提醒",
+					"pathName": "pages/work/workExpire",
+					"query": "openId=oS4HgsvcWpf3jL8ss_AO7JCShhq0&wxId=gh_40c534b93a9f"
 				}
 			]
 		}

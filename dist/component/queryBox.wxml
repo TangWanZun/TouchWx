@@ -1,0 +1,10 @@
+<view class='query-box'>
+  <view class='query-content' wx:if="{{!isShowInput}}" bindtap='bindtap'>
+    <view class='query-icon'><image src='/assets/icon/select.svg'></image></view>
+    <view class='query-text'>查询</view>
+  </view>
+  <view class='query-content query-content-input' wx:else>
+    <input focus="{{isShowInput}}" bindblur="bindblur" bindinput="bindinput"></input>
+    <view class='query-icon'><image src='/assets/icon/select.svg'></image></view>
+  </view>
+</view>

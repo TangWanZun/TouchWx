@@ -1,17 +1,4 @@
-/*颜色*/
-.app-main-bg{
-  /* 主色 */
-  background-color: #4eb4ff !important;
-}
-.app-main-bg-5{
-  /* 主色 */
-  background-color: rgba(78,180,255,0.5);
-}
-/*app取消滚动条*/
-.app-scroll-none::-webkit-scrollbar{
-  width: 0;
-  height: 0;
-}
+
 /*
 * 通用样式
 */
@@ -72,6 +59,35 @@
   animation-timing-function:linear;
   opacity: 0.5;
 }
+/*
+*公共组件
+*/
+/*颜色*/
+.app-main-bg{
+  /* 主色 */
+  background-color: #4eb4ff !important;
+}
+.app-main-bg-5{
+  /* 主色 */
+  background-color: rgba(78,180,255,0.5);
+}
+/*app取消滚动条*/
+.app-scroll-none::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+}
+/* 按钮 */
+.app-buttom{
+  padding: 5px 15px;
+  border-radius: 2px;
+  color: white;
+  font-size: 13px;
+  background-color: #4eb4ff;
+}
+.app-buttom:active{
+  opacity: 0.5;
+}
+
 /* 1像素解决方案 */
 /*
  * 清除1px

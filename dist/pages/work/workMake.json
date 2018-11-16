@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "dialog": "/component/dialog",
+    "query-box": "/component/queryBox"
+  },
+  "navigationBarTitleText": "预约服务"
+}

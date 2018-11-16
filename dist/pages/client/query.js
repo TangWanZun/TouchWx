@@ -8,6 +8,8 @@ Page({
     dataList:[
     ],
     selectBodyShow:true,
+    //是否需要显示暂无信息
+    isSelect:false,
     //图片数据
     imgUrl: getApp().privateData.configUrl.imgUrl
   },
@@ -18,7 +20,8 @@ Page({
     let _this = this;
     if (event.detail.value.length===0){
       this.setData({
-        dataList: []
+        dataList: [],
+        isSelect: false
       })
     }else{
       wx.$request({
@@ -29,9 +32,9 @@ Page({
           limit: 25,
         },
         success(res) {
-          console.log(res)
           _this.setData({
-            dataList: res.data
+            dataList: res.data,
+            isSelect: res.data.length===0
           })
         }
       })

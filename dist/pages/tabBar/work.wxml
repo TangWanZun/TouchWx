@@ -1,6 +1,6 @@
 <view class="page-body">
   <view class='work-type-list app-scroll-none'>
-    <navigator class='work-type' wx:for="{{workTypeData}}" wx:key="{{item.title}}">
+    <navigator url='{{item.url}}' class='work-type' wx:for="{{workTypeData}}" wx:key="{{item.title}}">
       <view class='work-type-icon'><image src='{{item.iconUrl}}'></image></view>
       <view  class='work-type-title'>{{item.title}}</view>
     </navigator>

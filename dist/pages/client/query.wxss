@@ -56,3 +56,9 @@
 .select-body .select-item:last-child .select-name{
   border-bottom:none;
 }
+/* 暂无信息 */
+.select-none{
+  padding:20px;
+  text-align: center;
+  background-color: white;
+}
