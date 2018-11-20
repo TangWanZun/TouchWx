@@ -18,6 +18,8 @@ var msgBroadcast = {
     }
     function fun() {
       wx.$request({
+        //取消顶部的loading加载
+        loading:false,
         url: "/WeMinProChatMessage/GetLastMsg",
         data: {
           Date: msgBroadcast.createDate,

@@ -28,7 +28,7 @@
   min-height: 100vh;
 }
 /*底部加载数据*/
-.list-loging{
+.app-list-loging{
   color: rgba(0, 0, 0, 0.3);
   font-size: 12px;
   padding:20px 0;
@@ -38,11 +38,11 @@
   flex-wrap: nowrap;
   position: relative;
 }
-.list-loging>view{
+.app-list-loging>view{
   flex-shrink: 0;
   color: rgba(0, 0, 0, 0.3);
 }
-@keyframes listLoging{
+@keyframes appListLoging{
   0%{
     transform: rotate(0deg)
   }
@@ -50,11 +50,11 @@
     transform: rotate(359deg)
   }
 }
-.list-loging>image{
+.app-list-loging>image{
   margin-left: 5px;
   width:15px;
   height: 15px;
-  animation: listLoging 1s;
+  animation: appListLoging 1s;
   animation-iteration-count:infinite;
   animation-timing-function:linear;
   opacity: 0.5;

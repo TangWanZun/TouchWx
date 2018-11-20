@@ -3,5 +3,6 @@
     "dialog": "/component/dialog",
     "query-box": "/component/queryBox"
   },
-  "navigationBarTitleText": "救援服务"
+  "navigationBarTitleText": "救援服务",
+  "enablePullDownRefresh": true
 }

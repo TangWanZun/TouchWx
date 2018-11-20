@@ -1,6 +1,6 @@
+import { util } from '../../library/sdk.js'
 // pages/work/workRescue.js
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -10,7 +10,9 @@ Page({
     //全选是否被选中状态
     checkAll: false,
     //是否显示回复框
-    dialogSelect:false
+    dialogSelect:false,
+    //分页功能
+    pageOver: false
   },
   /**
    * 非需渲染属性
@@ -21,7 +23,11 @@ Page({
    * 查询框信息回调
   */
   bindinput(e){
-    console.log(e.detail.value);
+    let value = e.detail.value;
+    console.log(value);
+    if(value.length>0){
+      this.getData(true,e.detail.value);
+    }
   },
   /**
    * 点击提交按钮
@@ -119,21 +125,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.$request({
-      url:"/WeMinProPlatJson/GetList",
-      data:{
-        docType: 'workRescue',
-        actionType:'',
-        needTotal:true,
-        start:0,
-        limit:20,
-        query:'',
-      },
-      success(res){
-        console.log(res);
-      }
-    })
-    this.getModel()
+    this.getData(true)
   }, 
 
   /**
@@ -168,14 +160,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    this.getData(true)
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    this.getData();
   },
 
   /**
@@ -185,44 +177,65 @@ Page({
   
   },
   /**
-   * 数据模拟
+   * 数据获取
   */
-  getModel(){
-    this.setData({
-      dataList:[
-        {
-          cardName:"大乔",
-          rescueType:'救援类型',
-          headImg:"http://k2.jsqq.net/uploads/allimg/1711/17_171129092304_1.jpg",
-          note:"你好啊胜利大街法律框架阿斯兰的看法进来撒开地方撒地方了卡萨丁卢卡斯大家疯狂拉升代理费氨丁卢卡斯大家疯狂拉升代理费氨丁卢卡斯大家疯狂拉升代理费氨丁卢卡斯大家疯狂拉升代理费氨基酸看到了风景",
-          createDate:"2018/12/13",
-          check:false
-        },
-        {
-          cardName: "大乔",
-          rescueType: '救援类型',
-          headImg: "http://k2.jsqq.net/uploads/allimg/1711/17_171129092304_1.jpg",
-          createDate: "2018/12/13",
-          note: "利大街法律框架阿斯兰的看法进来撒开地方撒地方了利大街法律框架阿斯兰的看法进来撒开地方撒地方了",
-          check: false
-        },
-        {
-          cardName: "大乔",
-          rescueType: '救援类型',
-          headImg: "http://k2.jsqq.net/uploads/allimg/1711/17_171129092304_1.jpg",
-          createDate: "2018/12/13",
-          note: "利大街法律框架阿斯兰的看法进来撒开地方撒地方了",
-          check: false
-        },
-        {
-          cardName: "大乔",
-          rescueType: '救援类型',
-          headImg: "http://k2.jsqq.net/uploads/allimg/1711/17_171129092304_1.jpg",
-          createDate: "2018/12/13",
-          note: "",
-          check: false
+  page: {
+    start: 0,
+    limit: 5
+  },
+  getData(dataReset =false,query = ''){
+    var _this = this;
+    //数据重置
+    if (dataReset) {
+      this.setData({
+        dataList:[],
+        pageOver: false,
+        //全选状态关闭
+        checkAll:false
+      })
+      this.page.start = 0;
+      this.checkArray = [];
+    }
+    //数据全部加载后阻止进入此函数
+    if (this.data.pageOver) {
+      return;
+    }
+    wx.$request({
+      url: "/WeMinProPlatJson/GetList",
+      data: {
+        docType: 'workRescue',
+        actionType: '',
+        needTotal: false,
+        start: this.page.start,
+        limit: this.page.limit,
+        query
+      },
+      success(res) {
+        let dataDataList = _this.data.dataList;
+        //当获取的数据数量小于想要获取的数量的时候判断已经读取完毕
+        if (res.data.length < _this.page.limit) {
+          //将状态改成完成
+          _this.setData({
+            pageOver: true
+          });
         }
-      ]
+        /**
+         * 更改全部数据
+        */
+        res.data.forEach(function (item) {
+          item.CreateDate = util.dateParse(item.CreateDate);
+          item.check = false;
+        })
+        //成功则将返回的信息添加一个新的本地带回消息
+        dataDataList = dataDataList.concat(res.data);
+        _this.setData({
+          dataList: dataDataList
+        })
+        _this.page.start += _this.page.limit;
+      },
+      complete() {
+        wx.stopPullDownRefresh();
+      }
     })
   }
 })

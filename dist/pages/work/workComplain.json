@@ -3,5 +3,6 @@
     "dialog": "/component/dialog",
     "query-box": "/component/queryBox"
   },
-  "navigationBarTitleText": "投诉建议"
+  "navigationBarTitleText": "投诉建议",
+  "enablePullDownRefresh": true
 }

@@ -12,12 +12,35 @@
   align-items: center;
   justify-content: center;
   color:#828282;
-  padding:0 10px;
+  padding-left: 15px;
+  padding-right: 10px;
 }
-.query-icon{
+@keyframes queryIconTo{
+  0%{
+    transform: translateX(45vw);
+  }
+  100%{
+    transform: translateX(0);
+  }
+}
+.query-icon-to{
   width:20px;
   height: 20px;
   margin-right: 10px;
+  animation: queryIconTo 0.3s;
+}
+@keyframes queryIconIn{
+  0%{
+    transform: translateX(-45vw);
+  }
+  100%{
+    transform: translateX(0);
+  }
+}
+.query-icon-in{
+  width:20px;
+  height: 20px;
+  animation: queryIconIn 0.3s;
 }
 .query-text{
   font-size: 15px;

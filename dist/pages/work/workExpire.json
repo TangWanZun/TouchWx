@@ -3,5 +3,6 @@
     "dialog": "/component/dialog",
     "query-box": "/component/queryBox"
   },
-  "navigationBarTitleText": "到期提醒"
+  "navigationBarTitleText": "到期提醒",
+  "enablePullDownRefresh": true
 }

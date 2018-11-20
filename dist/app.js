@@ -13,6 +13,10 @@ App({
     this.privateData.configUrl = $config.configUrl;
     //运行
     login();
+    //在程序加载时,先展示消息红点,等到点击到消息页签的时候弹出来具体消息的条数
+    wx.showTabBarRedDot({
+      index:0
+    })
   },
   /**
    * 当小程序启动，或从后台进入前台显示，会触发 onShow

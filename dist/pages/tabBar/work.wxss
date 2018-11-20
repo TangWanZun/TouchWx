@@ -9,6 +9,7 @@
   top: 0px;
   left: 0px;
   width: 100vw;
+  z-index: 9;
 }
 /* .work-type-list::after{
   content: "";
@@ -56,12 +57,13 @@
   border-radius: 2px;
   transition: transform 0.1s;
   overflow: hidden;
-  border:1px solid rgba(0,0,0,0.03);
+  border:1px solid rgba(0,0,0,0.08);
 }
 .work-item-head{
-  font-size: 16px;
+  font-size: 13px;
   padding:5px 10px;
 }
+
 .work-item-body{
   padding:5px 10px;
 }
@@ -69,6 +71,7 @@
   /* border-top: 1px solid rgba(255,255,255,0.08); */
   border-top: 1px solid rgba(0,0,0,0.03);
   padding:5px 10px;
+  font-size: 12px;
 }
 .work-item-headimg{
   width: 25px;
@@ -76,6 +79,10 @@
   border-radius: 100%;
   margin-right: 10px;
   overflow: hidden;
+  flex-shrink: 0;
+}
+.work-item-name{
+  font-size: 14px;
 }
 /* 投诉建议 */
 /* .work-tsjy{
@@ -169,11 +176,12 @@
 .work-jyfw .work-item-body-con{
   padding-top: 10px;
   line-height: 20px;
+  font-size: 13px;
 }
 .work-jyfw span{
   display: inline-block;
-  width:15px;
-  height: 15px;
+  width:13px;
+  height: 13px;
 }
 .work-jyfw .work-item-foot{
   border-top: 1px solid rgba(255,255,255,0.1);

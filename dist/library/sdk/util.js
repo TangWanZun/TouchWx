@@ -15,7 +15,8 @@ function find(objArror, prNamn, value){
 function dateTo(dateString){
   var regEx = new RegExp("\\-", "gi");
   dateString = dateString.replace(regEx, "/");
-  return new Date(dateString);
+  //去掉最后的毫秒值,用于兼容苹果手机
+  return new Date(dateString.split('.')[0]);
 }
 /**
  * 服务器时间转本地时间
@@ -53,7 +54,7 @@ function dateParse(dateString){
   }
   if (newDate.toDateString() === date.toDateString()) {
     //表示为今天
-    returnDate = `${sxS}${hours}:${minu}`;
+    returnDate = `今天 ${sxS}${hours}:${minu}`;
   } else {
     let timeC = newDate.getTime() - date.getTime();
     //判断是不是昨天消息

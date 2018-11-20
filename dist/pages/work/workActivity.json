@@ -3,5 +3,6 @@
     "dialog": "/component/dialog",
     "query-box": "/component/queryBox"
   },
-  "navigationBarTitleText": "活动报名"
+  "navigationBarTitleText": "活动报名",
+  "enablePullDownRefresh": true
 }
