@@ -1,0 +1,45 @@
+/* pages/user/myDatum.wxss */
+.app-body{
+  padding:1px 0px;
+}
+/*文字*/
+.page-input-box{
+  margin:20px 0;
+}
+.page-input{
+  background-color: white;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  padding:0 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.page-input:first-child{
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+.page-input-left{
+  padding:15px 0;
+  font-size: 15px;
+  width:80px;
+  flex-shrink: 0;
+}
+.page-input-con{
+  flex-grow: 1;
+}
+.page-input-con>input{
+  font-size: 15px;
+}
+.page-input-right{
+  width:15px;
+  height: 15px;
+}
+/* 头像 */
+.page-head-img{
+  width:60px;
+  height: 60px;
+  padding:5px;
+}
+/*退出登录按钮*/
+.page-button{
+  padding:20px 15px;
+}

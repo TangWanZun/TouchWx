@@ -100,8 +100,8 @@
   margin-top: 20px;
 }
 .my-data .my-data-title {
-  font-size: 18px;
-  padding: 20px 15px;
+  font-size: 17px;
+  padding: 15px 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;

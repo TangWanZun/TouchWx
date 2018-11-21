@@ -96,9 +96,9 @@
         <view class="my-data-item-num my-data-item-list">77.9</view>
       </view>
     </view>
-    <!-- <navigator url='/pages/tabBar/login' class="my-data-title">
-      <view>注销登陆</view>
+    <navigator url='/pages/user/myDatum' class="my-data-title">
+      <view>个人资料</view>
       <view class="my-data-title-icon"><image src='/assets/icon/right.svg'></image></view>
-    </navigator> -->
+    </navigator>
   </view>
 </view>

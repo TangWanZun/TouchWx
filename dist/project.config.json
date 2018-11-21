@@ -14,11 +14,6 @@
 	"libVersion": "2.4.0",
 	"appid": "wx741745d2b71d095d",
 	"projectname": "touch-wx",
-	"svr": "",
-	"client": "",
-	"qcloudRoot": "",
-	"miniprogramRoot": "",
-	"pluginRoot": "",
 	"scripts": {},
 	"condition": {
 		"search": {
@@ -37,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 16,
+			"current": 17,
 			"list": [
 				{
 					"id": -1,
@@ -140,6 +135,12 @@
 					"name": "到期提醒",
 					"pathName": "pages/work/workExpire",
 					"query": "openId=oS4HgsvcWpf3jL8ss_AO7JCShhq0&wxId=gh_40c534b93a9f"
+				},
+				{
+					"id": -1,
+					"name": "个人资料",
+					"pathName": "pages/user/myDatum",
+					"query": ""
 				}
 			]
 		}
