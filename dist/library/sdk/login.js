@@ -3,9 +3,9 @@ function saveUserInfo(res,obj={}){
   // console.log("success", res);
   let privateData = getApp().privateData;
   //将Token保存到内存
-  privateData.Token = res.Data.Token;
+  privateData.Token = res.Token;
   //将个人信息保存到内存
-  privateData.loginInfo = res.Data.LoginInfo;
+  privateData.loginInfo = res.LoginInfo;
   //当用户连接上时，发送重新发送滞留消息
   privateData.requestRetention.forEach(wx.$request);
   //清空滞留消息
@@ -13,7 +13,7 @@ function saveUserInfo(res,obj={}){
   //保存Token信息持久化
   wx.setStorage({
     key: 'Token',
-    data: res.Data.Token,
+    data: res.Token,
     success(response) {
       //保存到内存
       obj.success && obj.success(response);

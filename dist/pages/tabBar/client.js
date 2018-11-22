@@ -41,14 +41,14 @@ Page({
         limit: this.page.limit,
       },
       success(res) {
-        if (res.data.length < _this.page.limit){
+        if (res.length < _this.page.limit){
           //数据以全部拉取完成
           _this.setData({
             pageOver:true
           })
         }        
         _this.setData({
-          dataList: _this.data.dataList.concat(res.data)
+          dataList: _this.data.dataList.concat(res)
         })
         _this.page.start += _this.page.limit;
       },
@@ -80,15 +80,15 @@ Page({
         },
         success(res) {
           //当存在Data,表示这个数据是最新的
-          if (res.Data) {
+          if (res) {
             //获取在线人数
-            count = res.Data.length;
+            count = res.length;
             //刷新标题,提示最近的客户人数
             wx.setNavigationBarTitle({
               title: `客户(${count})`
             })
             //遍历返回数据,查看有没有需要更新显示状态的
-            let resData = res.Data;
+            let resData = res;
             let dataList = _this.data.dataList;
             for (let i = 0; i < resData.length;i++){
               //找到相应的用户位置

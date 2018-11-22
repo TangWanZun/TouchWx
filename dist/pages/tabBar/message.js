@@ -72,7 +72,7 @@ Page({
         limit: this.page.limit,
       },
       success(res) {
-        if (res.data.length < _this.page.limit) {
+        if (res.length < _this.page.limit) {
           //数据以全部拉取完成
           _this.setData({
             pageOver: true
@@ -81,7 +81,7 @@ Page({
         /**
          * 这里需要整理数据
         */
-        let meData = res.data;
+        let meData = res;
         for (let i = 0; i < meData.length;i++){
           //转化时间为小程序时间
           meData[i].MsgDate = util.dateParse(meData[i].MsgDate);
@@ -91,7 +91,7 @@ Page({
         //当未读消息大于0为消息的右上角添加未读消息数量
         _this.refreshBadge()
         _this.setData({
-          dataList: _this.data.dataList.concat(res.data)
+          dataList: _this.data.dataList.concat(res)
         })
         _this.page.start += _this.page.limit;
         //启动轮询获取数据
@@ -146,16 +146,16 @@ Page({
             },
             success(res){
               //转化时间
-              for(let i = 0 ;i<res.Data.length;i++){
+              for(let i = 0 ;i<res.length;i++){
                 //转化时间
-                res.Data[i].MsgDate = util.dateParse(res.Data[i].MsgDate);
+                res[i].MsgDate = util.dateParse(res[i].MsgDate);
                 //更新红点个数
-                _this.pendCount += res.Data[i].PendCount;
+                _this.pendCount += res[i].PendCount;
               }
               //更新红点
               _this.refreshBadge();
               //成功则将返回的信息添加一个新的本地带回消息
-              dataDataList = dataDataList.concat(res.Data);
+              dataDataList = dataDataList.concat(res);
               //数据更新
               _this.setData({
                 dataList: dataDataList

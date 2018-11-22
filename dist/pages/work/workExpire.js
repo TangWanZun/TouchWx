@@ -213,7 +213,7 @@ Page({
       success(res) {
         let dataDataList = _this.data.dataList;
         //当获取的数据数量小于想要获取的数量的时候判断已经读取完毕
-        if (res.data.length < _this.page.limit) {
+        if (res.length < _this.page.limit) {
           //将状态改成完成
           _this.setData({
             pageOver: true
@@ -222,13 +222,13 @@ Page({
         /**
          * 更改全部数据
         */
-        res.data.forEach(function (item) {
+        res.forEach(function (item) {
           item.CreateDate = util.dateParse(item.CreateDate);
           item.MakeDate = util.dateParse(item.MakeDate);
           item.check = false;
         })
         //成功则将返回的信息添加一个新的本地带回消息
-        dataDataList = dataDataList.concat(res.data);
+        dataDataList = dataDataList.concat(res);
         _this.setData({
           dataList: dataDataList
         })

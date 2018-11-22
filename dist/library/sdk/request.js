@@ -67,7 +67,7 @@ function $request(para) {
       if (res.statusCode == 200 || res.statusCode == 500) {
         let result = res.data;
         if (result.success) {
-          mepara.success && mepara.success(result);
+          mepara.success && mepara.success(result.data);
         } else {
           //有时候success为false但是没有msg的回调,例如登录失败，这个时候需要在调用当前接口的位置下给予一个错误回调
           if (result.msg){
@@ -93,7 +93,7 @@ function $request(para) {
         wx.hideNavigationBarLoading();
       }
       wx.hideLoading();
-      mepara.complete&&mepara.complete(response.data);
+      mepara.complete&&mepara.complete(response.data.data);
     }
   })
 }

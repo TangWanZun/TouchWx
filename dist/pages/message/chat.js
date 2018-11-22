@@ -679,7 +679,7 @@ Page({
         OpenId: this.openId
       },
       success(res) {
-        if (res.data.length < _this.page.limit) {
+        if (res.length < _this.page.limit) {
           //数据以全部拉取完成
           _this.setData({
             pageOver: true
@@ -689,7 +689,7 @@ Page({
          * 这里需要整理数据
         */
         let meDataList = [];
-        let meData = res.data;
+        let meData = res;
         for (let i = 0; i < meData.length; i++) {
           //由时间生成器来决定是不是需要生成一个时间
           let time = _this.dataGenerate(i == 0 ? null : meData[i - 1].MsgDate, meData[i].MsgDate);

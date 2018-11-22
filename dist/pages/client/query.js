@@ -33,8 +33,8 @@ Page({
         },
         success(res) {
           _this.setData({
-            dataList: res.data,
-            isSelect: res.data.length===0
+            dataList: res,
+            isSelect: res.length===0
           })
         }
       })

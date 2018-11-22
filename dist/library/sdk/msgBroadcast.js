@@ -32,12 +32,12 @@ var msgBroadcast = {
         },
         complete(res) {
           //当存在返回值的时候,说明有信息池中存在数据
-          if (res.Data) {
+          if (res) {
             //更新时间
-            msgBroadcast.createDate = res.Data.CreateDate;
+            msgBroadcast.createDate = res.CreateDate;
             //将获取的消息分发给全部收听者
             for (let x in msgBroadcast.listenList){
-              msgBroadcast.listenList[x](res.Data.List);
+              msgBroadcast.listenList[x](res.List);
             }
           }
           //轮询运行

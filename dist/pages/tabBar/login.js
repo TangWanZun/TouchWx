@@ -105,7 +105,6 @@ Page({
         },
         // UV: true,
         success(res){
-          console.log(res);
           //开启倒计时
           var TIME_CONST = setInterval(function () {
             let obj = _this.data.codeObj;
@@ -159,7 +158,7 @@ Page({
       success(res) {
         console.log("success", res);
         //将个人信息保存到内存
-        getApp().privateData.loginInfo = res.Data;
+        getApp().privateData.loginInfo = res;
         //登陆成功
         wx.switchTab({
           url:"/pages/tabBar/message",
