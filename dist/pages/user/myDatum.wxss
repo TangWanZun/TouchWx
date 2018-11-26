@@ -29,6 +29,11 @@
 .page-input-con>input{
   font-size: 15px;
 }
+.page-input-con>picker{
+  width:100%;
+  height: 100%;
+  font-size: 15px;
+}
 .page-input-right{
   width:15px;
   height: 15px;
@@ -41,5 +46,9 @@
 }
 /*退出登录按钮*/
 .page-button{
-  padding:20px 15px;
+  padding:10px 15px;
+  padding-top:0px;
+}
+.page-button>button{
+  margin-top: 20px;
 }

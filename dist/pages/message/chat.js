@@ -503,7 +503,7 @@ Page({
     //首先判断如果aTIme是否为null
     if (aTime){
       let aNTime = util.dateTo(aTime).getTime();
-      let bNTime = util.dateTo(bTime).getTime()
+      let bNTime = util.dateTo(bTime).getTime();
       //当两者时间间隔超过10分钟时,获取时间
       if (bNTime - aNTime > 600000) {
         dataString = util.dateParse(bTime);
@@ -641,7 +641,7 @@ Page({
             continue;
           }
           //判断当前传入的信息时间与列表中上个信息时间,有时间控制器来决定是否需要插入一个时间
-          let time = _this.dataGenerate(dataDataList.length === 0 ? null : dataDataList[dataDataList.length - 1].MsgDate,item.MsgDate);
+          let time = _this.dataGenerate(dataDataList.length === 0 ? null : dataDataList[dataDataList.length - 1].msgDate,item.MsgDate);
           if (time){
             dataDataList.push(time);
           }

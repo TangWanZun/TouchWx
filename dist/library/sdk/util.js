@@ -63,7 +63,7 @@ function dateParse(dateString){
       //不为昨天也非今天
       returnDate = `昨天 ${sxS}${hours}:${minu}`;
     } else if (timeC<604800000){
-      let newDay = date.getDay()+1;
+      let newDay = date.getDay();
       let newDayString = '';
       switch (newDay){
         case 1: newDayString = '周一'; break;
@@ -72,7 +72,7 @@ function dateParse(dateString){
         case 4: newDayString = '周四'; break;
         case 5: newDayString = '周五'; break;
         case 6: newDayString = '周六'; break;
-        case 7: newDayString = '周日';break;
+        case 0: newDayString = '周日';break;
       }
       //为最近七天
       returnDate = `${newDayString} ${sxS}${hours}:${minu}`;

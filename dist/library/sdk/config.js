@@ -8,11 +8,11 @@ let configUrl = {
 }
 //工作类型
 const WORK_TYPE = {
-  WORK_JY: "A01",
-  WORK_TS: "A02",
-  WORK_YY: "A03",
-  WORK_HD: "A04",
-  WORK_DQ: "A05"
+  WORK_JY: "A01",//救援
+  WORK_TS: "A02",//投诉
+  WORK_YY: "A03",//预约
+  WORK_HD: "A04",//活动
+  WORK_DQ: "A05"//到期
 }
 //聊天文本类型
 const CHAT_CONST = {

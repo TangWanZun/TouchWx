@@ -44,13 +44,15 @@ function $request(para) {
     'content-type': 'application/x-www-form-urlencoded',
     'cookie': privateData.Token || Token
   };
+  let loadingShow = false;
   //判断当前用户数据不存在,则视为未登陆状态需要
   if (typeof privateData.loginInfo === 'undefined'){
       //在当前页面显示login
       wx.showLoading({
         title: '加载中',
         mask:true,
-      })
+      });
+      loadingShow = true;
   }else{
     //判断当前请求是否需要添加loading
     if (!mepara.loading) {
@@ -92,7 +94,10 @@ function $request(para) {
       if (!mepara.loading) {
         wx.hideNavigationBarLoading();
       }
-      wx.hideLoading();
+      if (loadingShow){
+        wx.hideLoading();
+        loadingShow = false;
+      }
       mepara.complete&&mepara.complete(response.data.data);
     }
   })

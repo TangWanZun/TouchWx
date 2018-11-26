@@ -5,7 +5,36 @@ Page({
    * 页面的初始数据
    */
   data: {
-    loginInfo:{}
+    loginInfo:{},
+    fromData:{
+      birthday:'',
+      nativePlace:'',
+      sex:''
+    },
+    sexArray:[
+      '男','女'
+    ]
+  },
+  /**
+   * 保存修改
+  */
+  send() {
+    wx.$request({
+      url: "/WeMinProPlatJson/Submit",
+      data: {
+        docType: 'workSend',
+        actionType: 'Send',
+        needTotal: false,
+        docjson: JSON.stringify({
+          
+        })
+      },
+      success(res) {
+        wx.showToast({
+          title: '修改以保存',
+        })
+      }
+    })
   },
   /**
    * 退出登录
@@ -21,6 +50,47 @@ Page({
           })
         }
       }
+    })
+  },
+  /**
+   * 头像
+  */
+  bingdHeadImg(){
+    wx.chooseImage({
+      count:1,
+      success: function(res) {
+        console.log(res);
+      },
+    })
+  },
+  /**
+   * 籍贯
+  */
+  bindNativePlace:function(e){
+    // console.log(e.detail.value);
+    let value = "";
+    e.detail.value.forEach(function(item){
+      value += item;
+    })
+    this.setData({
+      'fromData.nativePlace': value
+    })
+  },
+  /**
+   * 出生日
+  */
+  bindBirthday(e){
+    // console.log(e.detail.value);
+    this.setData({
+      'fromData.birthday': e.detail.value
+    })
+  },
+  /**
+   *  性别 
+  */
+  bindSex(e){
+    this.setData({
+      'fromData.sex': this.data.sexArray[e.detail.value]
     })
   },
   /**

@@ -122,56 +122,7 @@ image {
 .touchui-hover {
   background-color: #eee !important;
 }
-button {
-  font-size: 14px;
-  overflow: inherit;
-  color: #1f2d3d;
-  margin: 6px 0;
-}
-button[type="primary"] {
-  background-color: #39f;
-}
-button[type="primary"][loading] {
-  background-color: #39f;
-}
-button[type="primary"].button-hover {
-  color: #fff;
-  background-color: #0070e0;
-  opacity: 0.8;
-}
-button[type="primary"][plain] {
-  border-color: #39f;
-  color: #39f;
-}
-button[type="primary"][plain].button-hover {
-  color: #39f;
-  border-color: #39f;
-  opacity: 0.8;
-}
-button[type="primary"][size="mini"].button-hover {
-  border-color: #39f !important;
-}
-button[type="primary"][disabled] {
-  background-color: #85c2ff;
-}
-button[type="primary"][size="mini"] {
-  border-color: #39f !important;
-}
-button[type="primary"][size="mini"].button-hover {
-  border-color: #39f !important;
-}
-button[type="success"] {
-  background-color: #13ce66;
-}
-button[type="success"].button-hover {
-  color: #fff;
-  background-color: #10a954;
-  opacity: 0.8;
-}
-button[type="success"][plain] {
-  border-color: #13ce66;
-  color: #13ce66;
-}
+
 .ui-row-list {
   position: relative;
 }
