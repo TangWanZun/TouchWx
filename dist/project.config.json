@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 17,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -47,10 +47,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 2,
 					"name": "客户详情",
 					"pathName": "pages/client/clientDetails",
-					"query": "clientId=孙尚香"
+					"query": "cardName=郭赟&headImg=upload/WeChat/user_profilephoto/gh_40c534b93a9f/oS4HgsnZM77j4ePUMZwofxtPZ18s/0.jpg&openId=oS4HgsnZM77j4ePUMZwofxtPZ18s&wxId=gh_40c534b93a9f"
 				},
 				{
 					"id": -1,

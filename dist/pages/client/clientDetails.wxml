@@ -86,7 +86,7 @@
         <view class='content-card-title-right'></view>
       </view>
       <view class='content-card-body'>
-        <navigator url="clientDetails/carDetails?carID=1" class='car' wx:for="{{clientData.car}}" wx:key="{{key}}">
+        <navigator url="clientDetails/carDetails?carID=1" class='car' wx:for="{{clientData.car}}" wx:key="{{index}}">
           <view class='car-con'>
             <view class='car-img'><image src='/assets/carIcon/{{item.brand}}-i.svg'></image></view>
             <view class='car-model'>{{item.model}}</view>
@@ -96,18 +96,28 @@
         </navigator>
       </view>
     </view>
-    <view class='content-card'>
+    <view class='content-card' style='padding-bottom:40px'>
       <view class='content-card-title'>
         <view class='content-card-title-left'>用户画像</view>
-        <view class='content-card-title-right'>编辑信息</view>
+        <view class='content-card-title-right'>保存修改</view>
       </view>
       <view class='content-card-body'>
-        <view class='client' wx:for="{{clientData.portrayal}}" wx:key="{{key}}">
-          <view class='client-header' >
-            <view class='client-title'>{{item.title}}</view>
+        <picker mode="selector" data-key="{{index}}"  range="{{item.list}}" value="{{item.value}}" bindchange="selectCall" wx:for="{{clientData.portrayal}}" wx:key="{{index}}">
+          <view class='client'>
+              <view class='client-header' >
+                <view class='client-title'>{{item.title}}</view>
+              </view>
+              <view class='client-value'>{{item.list[item.value]}}</view>
+              <view class='client-right'><image src='/assets/icon/right.svg'></image></view>
           </view>
-          <view class='client-value'>{{item.value}}</view>
-        </view>
+        </picker>
+        <view class='client' >
+              <view class='client-header' >
+                <view class='client-title'>常去商圈</view>
+              </view>
+              <view class='client-value'><input cursor-spacing="30"></input></view>
+              <!-- <view class='client-right'><image src='/assets/icon/right.svg'></image></view> -->
+          </view>
       </view>
     </view>
   </view>

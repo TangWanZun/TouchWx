@@ -41,13 +41,23 @@ Page({
       ],
       //用户画像
       portrayal:[
-        { title: "职场类别", value: "金融白领" },
-        { title: "消费观念", value: "易接受新鲜事物" },
-        { title:"购买力",value:"稳健性"}
+        { title: "职场类别", value: 0, list: ["金融白领", "漂亮主妇", "自由职业", "技术牛人", "影视大咖", "职场达人", "园丁老师高级主管", "公务员", "时尚大咖"]},
+        { title: "消费观念", value: 0, list: ["陈旧", "开放型", "易接受新鲜事物"]},
+        { title: "购买力", value: 0, list: ["稳定型", "上升购买群体"] }, 
+        { title: "客户类别", value: 0, list: ["活跃客户", "忠诚客户", "流失客户", "投诉客户", "摇摆客户"]},
       ]
     }
   },
-
+  /**
+   * 用户画像选择回调
+  */
+  selectCall(e){
+    let selectDomKey = e.target.dataset.key;
+    let value = e.detail.value;
+    this.setData({
+      ["clientData.portrayal["+selectDomKey+"].value"]:value
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
