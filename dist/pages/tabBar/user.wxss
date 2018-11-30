@@ -79,7 +79,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   flex-shrink: 0;
   min-width: 70px;
 }
@@ -90,10 +90,16 @@
   overflow: hidden;
 }
 .userCard .userCard-right .userCard-index {
-  padding: 3px 10px;
   border-radius: 5px;
+  padding:5px;
+  margin-bottom: -10px;
+  margin-right: -10px;
   color: white;
-  background-color: #4eb4ff;
+  width: 35px;
+  height: 35px;
+}
+.userCard .userCard-right .userCard-index:active{
+  background-color: rgba(0, 0, 0, 0.1) ;
 }
 .my-data {
   background-color: white;

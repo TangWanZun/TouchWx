@@ -14,7 +14,9 @@
       <view class="userCard-img">
         <head-img></head-img>
       </view>
-      <!-- <view class="userCard-index">{{loginInfo.UserCode}}</view> -->
+      <view class="userCard-index" bindtap='scanCode'>
+        <image src='/assets/icon/sys.svg'></image>
+      </view>
     </view>
   </view>
   <view class="my-data">

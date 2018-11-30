@@ -12,6 +12,7 @@
       "pages": [
         "clientDetails",
         "clientDetails/carDetails",
+        "clientDetails/coupon",
         "query"
       ]
     },
