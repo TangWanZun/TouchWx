@@ -2,7 +2,7 @@
   <!-- 聊天内容 -->
   <!-- 这个是当使用功能区的时候为了兼容苹果flex -->
   <!-- {{voiceBtn.functionUnfoldShow?"calc( 60vh - 105px )":"calc( 100vh - 105px )"}} -->
-  <scroll-view  scroll-y="true" scroll-into-view="chat-{{intoView}}" class='page-con' style='height:calc( 100vh - 55px )'>
+  <scroll-view bindscrolltoupper="bindscrolltoupper"  scroll-y="true" scroll-into-view="chat-{{intoView}}" class='page-con' style='height:calc( 100vh - 55px )'>
     <view id='chat-{{index+1}}'  wx:for='{{dataList}}' wx:key="{{item.MsgId}}">
     <view wx:if="{{item.dataType===CHAT_CONST.DATE}}" class='page-chat-date'>{{item.date}}</view>
     <view wx:else class='page-chat-box {{item.isLeft?"":"page-chat-box-right"}}'>

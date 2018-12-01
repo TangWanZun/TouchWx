@@ -22,10 +22,14 @@
           <view class='header-botton-item-title'>积分</view>
           <view class='header-botton-item-number'>{{clientData.stored}}</view>
         </view>
-        <view class='header-botton-item'>
+        <navigator url='/pages/client/clientDetails/coupon' class='header-botton-item'>
           <view class='header-botton-item-title'>电子券</view>
           <view class='header-botton-item-number'>{{clientData.coupon}}张</view>
-        </view>
+        </navigator>
+        <!-- <view class='header-botton-item'>
+          <view class='header-botton-item-title'>电子券</view>
+          <view class='header-botton-item-number'>{{clientData.coupon}}张</view>
+        </view> -->
       </view>
     </view>
     <!-- 背景图 -->

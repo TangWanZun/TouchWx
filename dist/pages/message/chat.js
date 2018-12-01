@@ -145,7 +145,7 @@ Page({
       Longitude: pro.longitude || null,																//地理位置的精度
       MediaOriginal: pro.mediaOriginal || null,																//图片初始图
       MsgData: pro.data || null,		                          //聊天内容
-      MsgDate: new Date(),												//时间					
+      MsgDate: pro.msgDate||new Date(),												//时间					
       MsgType: pro.msgType,																	//类型
       NickName: "",														//微信名称
       OpenId: this.openId,											//openid
@@ -629,10 +629,7 @@ Page({
               //成功
               dataDataList[index].state = CHAT_CONST.LOG_OUT;
             }
-            //更新到消息列表
-            _this.setData({
-              "dataList": dataDataList
-            });
+            
           }
         } else {
           //msgId不重复
@@ -640,16 +637,18 @@ Page({
             //非当前用户
             continue;
           }
-          //判断当前传入的信息时间与列表中上个信息时间,有时间控制器来决定是否需要插入一个时间
-          let time = _this.dataGenerate(dataDataList.length === 0 ? null : dataDataList[dataDataList.length - 1].msgDate,item.MsgDate);
-          if (time){
-            dataDataList.push(time);
-          }
-          //添加并更新更新到消息列表
-          _this.setData({
-            "dataList": dataDataList.concat(_this.getMsgData(item))
-          });
+          //添加并到消息列表
+          dataDataList = dataDataList.concat(_this.getMsgData(item))
         }
+        //判断当前传入的信息时间与列表中上个信息时间,有时间控制器来决定是否需要插入一个时间
+        let time = _this.dataGenerate(dataDataList.length === 0 ? null : dataDataList[dataDataList.length - 1].msgDate, item.MsgDate);
+        if (time) {
+          dataDataList.push(time);
+        }
+        //更新到消息列表
+        _this.setData({
+          "dataList": dataDataList
+        });
       }
       //到底部
       _this.toBottom();
@@ -691,7 +690,7 @@ Page({
         let meDataList = [];
         let meData = res;
         for (let i = 0; i < meData.length; i++) {
-          //由时间生成器来决定是不是需要生成一个时间
+          //由时间生成器5来决定是不是需要生成一个时间
           let time = _this.dataGenerate(i == 0 ? null : meData[i - 1].MsgDate, meData[i].MsgDate);
           //当time存在,表示时间生成器决定生成一个时间,那就需要把这个时间插入的列表中
           if(time){
@@ -718,13 +717,19 @@ Page({
     })
   },
   /**
+   *  当页面距离顶部50时触发方法 
+  */
+  bindscrolltoupper:function(){
+    this.getData();
+  },
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var _this = this;
     this.openId = options.openId;
     this.wxId = options.wxId;
-    this.headImg = options.headImg;
+    this.headImg = options.headImg == 'null' ? null : options.headImg;
     this.cardName = options.cardName;
     //加载名称
     wx.setNavigationBarTitle({
@@ -764,12 +769,11 @@ Page({
     // 删除当前页面消息广播收听者
     wx.$msgBroadcast.remove('chat');
   },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.getData();
+    
   },
 
   /**

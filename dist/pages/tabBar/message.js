@@ -117,15 +117,16 @@ Page({
       for (let i = 0; i < forList.length; i++) {
         let item = forList[i];
         var index = util.find(dataDataList, "OpenId", item.OpenId)
-        if (index > 0) {
-          //判断如果当前信息是否为本机发送
-          if (item.CreateDept === _this.onMeId){
+        //只有当获取数据的时间大于当前消息列表(获取的时间是最新的时候)上的时间的时候，才将消息赋值上去
+        if (index >= 0 && util.dateTo(item.CreateDate) > util.dateTo(dataDataList[index].CreateDate)) {
+          //判断如果当前信息是客服发送
+          if (item.FromType === CHAT_CONST.CHAT_RIGHT){
             //减去消息右上角相应的数量
             _this.pendCount -= dataDataList[index].PendCount;
-            //为本机消息则去掉红点
+            //为客服消息则去掉红点
             dataDataList[index].PendCount = 0;
           }else{
-            //非本机信息添加一个红点
+            //客户信息添加一个红点
             dataDataList[index].PendCount++;
             //加上消息右上角相应的数量
             _this.pendCount++;

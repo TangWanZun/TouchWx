@@ -8,8 +8,8 @@
 }
 .page-item-img{
   flex-shrink: 0;
-  width:20vw;
-  height: 20vw;
+  width:70px;
+  height: 70px;
   padding:10px;
   position: relative;
 }

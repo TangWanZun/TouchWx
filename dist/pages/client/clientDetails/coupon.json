@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "卡券"
+  "navigationBarTitleText": "卡券",
+  "usingComponents": {
+    "llbox": "/component/llbox"
+  }
 }
