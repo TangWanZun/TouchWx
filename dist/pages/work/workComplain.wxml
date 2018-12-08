@@ -23,16 +23,17 @@
           <!-- <view class='page-item-name'>关翠萍</view> -->
         </view>
         <view class='page-item-center'>
-          <view class='page-item-center-left'>
-            <view class='page-item-center-con'>
-              <view class='page-item-rescue'>{{item.CardName}}</view>
-              <view class='page-item-date'>{{item.CreateDate}}</view>
-            </view>
-            <view class='page-item-note'>{{item.Note}}</view>
+          <view class='page-item-center-head'>
+            <view class='page-item-rescue'>{{item.CardName}}</view>
+            <view class='page-item-date'>{{item.CreateDate}}</view>
           </view>
-          <view class='page-item-center-right'>
+          <view class='page-item-center-body'>
+            <view class='page-item-note'>备注:{{item.Note}}</view>
+            <view class='page-item-phone' data-phone="{{item.Phone}}" bindtap='playPhone'><image src='/assets/icon/call.svg'></image></view>
+          </view>
+          <!-- <view class='page-item-center-right'>
               <checkbox value='{{index}}' checked='{{item.check}}'></checkbox>
-          </view>
+          </view> -->
         </view>
       </view>
     </view>

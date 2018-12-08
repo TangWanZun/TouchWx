@@ -136,21 +136,21 @@ Page({
     //基本信息
     var msg = {
       MsgId: util.GUID(),
-      AddressDetails: pro.addressDetails || null,															//地理位置详情
-      AddressName: pro.addressName || null,							//地理位置名称
-      CardName: null,																 //真实姓名
-      Duration: pro.duration || null,																	  //语音持续时间
+      AddressDetails: pro.addressDetails || '',															//地理位置详情
+      AddressName: pro.addressName || '',							//地理位置名称
+      CardName: '',																 //真实姓名
+      Duration: pro.duration || '',																	  //语音持续时间
       FromType: this.data.CHAT_CONST.CHAT_RIGHT,					//聊天人身份
-      Latitude: pro.latitude || null,																	//地理位置的维度
-      Longitude: pro.longitude || null,																//地理位置的精度
-      MediaOriginal: pro.mediaOriginal || null,																//图片初始图
-      MsgData: pro.data || null,		                          //聊天内容
+      Latitude: pro.latitude || '',																	//地理位置的维度
+      Longitude: pro.longitude || '',																//地理位置的精度
+      MediaOriginal: pro.mediaOriginal || '',																//图片初始图
+      MsgData: pro.data || '',		                          //聊天内容
       MsgDate: pro.msgDate||new Date(),												//时间					
       MsgType: pro.msgType,																	//类型
       NickName: "",														//微信名称
       OpenId: this.openId,											//openid
       ProfilePhoto: this.data.loginInfo.ProfilePhoto,																//头像
-      Thumbnail: pro.thumbnail || null,																	//缩略图
+      Thumbnail: pro.thumbnail || '',																	//缩略图
       UserCode: this.data.loginInfo.UserCode,																	//客服code
       UserName: this.data.loginInfo.UserName,																	//客服name
       WxId: this.wxId

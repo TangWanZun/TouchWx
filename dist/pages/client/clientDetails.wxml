@@ -100,7 +100,7 @@
         </navigator>
       </view>
     </view>
-    <view class='content-card' style='padding-bottom:40px'>
+    <!-- <view class='content-card' style='padding-bottom:40px'>
       <view class='content-card-title'>
         <view class='content-card-title-left'>用户画像</view>
         <view class='content-card-title-right'>保存修改</view>
@@ -120,8 +120,94 @@
                 <view class='client-title'>常去商圈</view>
               </view>
               <view class='client-value'><input cursor-spacing="30"></input></view>
-              <!-- <view class='client-right'><image src='/assets/icon/right.svg'></image></view> -->
           </view>
+      </view>
+    </view> -->
+    <view class='content-card' style='padding-bottom:40px'>
+      <view class='content-card-title'>
+        <view class='content-card-title-left'>用户信息</view>
+        <view class='content-card-title-right'>保存修改</view>
+      </view>
+      <view class='content-card-body'>
+        <!-- 性别 -->
+        <picker mode="selector" data-key="userInfor.sex.value" range="{{userInfor.sex.list}}" value="{{item.value}}" bindchange="inputCall" >
+          <view class='client'>
+              <view class='client-header' >
+                <view class='client-title'>性别</view>
+              </view>
+              <view class='client-value'>{{userInfor.sex.list[userInfor.sex.value]}}</view>
+              <view class='client-right'><image src='/assets/icon/right.svg'></image></view>
+          </view>
+        </picker>
+        <!-- 出生日 -->
+        <picker mode="date" data-key="userInfor.birthday" value="{{userInfor.birthday}}"  bindchange="inputCall">
+          <view class='client'>
+              <view class='client-header'>
+                <view class='client-title'>出生日</view>
+              </view>
+              <view class='client-value'>{{userInfor.birthday}}</view>
+              <view class='client-right'><image src='/assets/icon/right.svg'></image></view>
+          </view>
+        </picker>
+        <!-- 学历 -->
+        <picker mode="selector" data-key="userInfor.education.value" range="{{userInfor.education.list}}" value="{{item.value}}" bindchange="inputCall" >
+          <view class='client'>
+              <view class='client-header' >
+                <view class='client-title'>学历</view>
+              </view>
+              <view class='client-value'>{{userInfor.education.list[userInfor.education.value]}}</view>
+              <view class='client-right'><image src='/assets/icon/right.svg'></image></view>
+          </view>
+        </picker>
+        <view class='client'>
+            <view class='client-header' >
+              <view class='client-title'>职业</view>
+            </view>
+            <view class='client-value'><input data-key="userInfor.profession" cursor-spacing="30" bindinput='inputCall'></input></view>
+        </view>
+        <view class='client'>
+            <view class='client-header' >
+              <view class='client-title'>证件号</view>
+            </view>
+            <view class='client-value'><input data-key="userInfor.IDcard" cursor-spacing="30" type="idcard" bindinput='inputCall'></input></view>
+        </view>
+        <view class='client'>
+            <view class='client-header' >
+              <view class='client-title'>住址</view>
+            </view>
+            <view class='client-value'><input data-key="userInfor.address" cursor-spacing="30" bindinput='inputCall'></input></view>
+        </view>
+        <!-- 婚姻 -->
+        <picker mode="selector" data-key="userInfor.marriage.value" range="{{userInfor.marriage.list}}" value="{{item.value}}" bindchange="inputCall" >
+          <view class='client'>
+              <view class='client-header' >
+                <view class='client-title'>学历</view>
+              </view>
+              <view class='client-value'>{{userInfor.marriage.list[userInfor.marriage.value]}}</view>
+              <view class='client-right'><image src='/assets/icon/right.svg'></image></view>
+          </view>
+        </picker>
+        <!-- 子女情况 -->
+        <view class='client'>
+            <view class='client-header' >
+              <view class='client-title'>子女情况</view>
+            </view>
+            <view class='client-value'><input data-key="userInfor.childDes" cursor-spacing="30" bindinput='inputCall'></input></view>
+        </view>
+        <!-- 子女数量-->
+        <view class='client'>
+            <view class='client-header' >
+              <view class='client-title'>子女数量</view>
+            </view>
+            <view class='client-value'><input data-key="userInfor.childCount" type="number" cursor-spacing="30" bindinput='inputCall'></input></view>
+        </view>
+        <!--常去商圈 -->
+        <view class='client'>
+            <view class='client-header' >
+              <view class='client-title'>常去商圈</view>
+            </view>
+            <view class='client-value'><input data-key="userInfor.CBD" cursor-spacing="30" bindinput='inputCall'></input></view>
+        </view>
       </view>
     </view>
   </view>

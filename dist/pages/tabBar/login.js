@@ -1,5 +1,4 @@
 // pages/user/login.js
-// import login from '../../library/sdk/login.js'
 Page({
   /**
    * 页面的初始数据
@@ -142,7 +141,6 @@ Page({
    * 全部信息上传
   */
   login: function (res){
-    console.log(res);
     let logtype = res.currentTarget.dataset.logtype;
     wx.$request({
       url: '/WeMinProLogin/ReLogin',

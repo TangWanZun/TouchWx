@@ -1,4 +1,5 @@
 import  * as sdk from "../../library/sdk.js"
+import { util } from '../../library/sdk.js'
 Page({
   /**
    * 页面的初始数据
@@ -58,7 +59,26 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    let _this = this;
+    wx.$request({
+      url: "/WeMinProPlatJson/GetList",
+      data: {
+        docType: 'workData',
+        actionType: 'List',
+        needTotal: false,
+      },
+      success(res) {
+        //这里需要处理数据
+        for(let i =0;i<res.length;i++){
+          if (res[i].CreateDate) { res[i].CreateDate= util.dateParse(res[i].CreateDate) }
+          if (res[i].ReserveStartDate) { res[i].ReserveStartDate = util.toTime(res[i].ReserveStartDate) }
+          if (res[i].ReserveEndDate) { res[i].ReserveEndDate = util.toTime(res[i].ReserveEndDate)}
+        }
+        _this.setData({
+          dataList: res
+        })
+      }
+    })
   },
 
   /**

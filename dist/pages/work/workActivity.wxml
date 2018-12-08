@@ -23,17 +23,28 @@
           <!-- <view class='page-item-name'>关翠萍</view> -->
         </view>
         <view class='page-item-center'>
-          <view class='page-item-center-left'>
+          <view class='page-item-center-head'>
+            <view class='page-item-rescue'>{{item.CardName}}</view>
+            <view class='page-item-date'>{{item.CreateDate}}</view>
+          </view>
+          <view class='page-item-center-body'>
+            <view>
+              <view class='page-item-activity'>{{item.ActivityTitle}}</view>
+              <view class='page-item-num'>报名人数：{{item.NumberPeople}}</view>
+            </view>
+            <view class='page-item-phone' data-phone="{{item.Phone}}" bindtap='playPhone'><image src='/assets/icon/call.svg'></image></view>
+          </view>
+          <!-- <view class='page-item-center-left'>
             <view class='page-item-center-con'>
               <view class='page-item-rescue'>{{item.CardName}}</view>
               <view class='page-item-date'>报名时间:{{item.CreateDate}}</view>
             </view>
             <view class='page-item-activity'>{{item.ActivityTitle}}</view>
             <view class='page-item-num'>报名人数：{{item.NumberPeople}}</view>
-          </view>
-          <view class='page-item-center-right'>
+          </view> -->
+          <!-- <view class='page-item-center-right'>
               <checkbox value='{{index}}' checked='{{item.check}}'></checkbox>
-          </view>
+          </view> -->
         </view>
       </view>
       <view class="app-list-loging" wx:if="{{pageOver}}">数据加载完成</view>

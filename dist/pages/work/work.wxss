@@ -1,4 +1,11 @@
 /* pages/work/workRescue.wxss */
+/* 需要隐藏 */
+.page-head{
+  display: none !important;
+}
+.page-item-center-right>checkbox{
+  display: none !important;
+}
 .page-head{
   display: flex;
   justify-content: space-between;
@@ -54,17 +61,12 @@
   flex-grow: 1;
   margin-left: 10px;
   display: flex;
-  justify-content:space-between;
-  align-items: stretch;
-}
-.page-item-center-left{
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
   justify-content:flex-start;
   align-items: stretch;
+  flex-direction: column;
 }
-.page-item-center-con{
+/* 预约头部内容,包括名称  和时间 */
+.page-item-center-head{
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -77,6 +79,10 @@
 /* 预约时间 */
 .page-item-make-date{
   font-size: 13px;
+}
+.page-item-center-body{
+  display: flex;
+  justify-content: space-between;
 }
 .page-item-note{
   color: rgba(0, 0, 0, 0.5);
@@ -94,12 +100,16 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
-.page-item-center-right{
+/* 右侧现在使用的是拨打电话按钮 */
+.page-item-phone{
   flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  align-content: center;
+  width:45px;
+  height: 45px;
+  border-radius: 100%;
+  margin-right: 10px;
+  padding:5px;
 }
+
 /* 暂无工作 */
 .page-work-none{
   text-align: center;

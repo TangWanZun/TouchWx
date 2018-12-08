@@ -1,0 +1,147 @@
+.page-body{
+  padding-top:1px;
+  background-color: #f9faf7;
+  min-height: 100vh;
+}
+
+/* 客户卡片 */
+.page-client-card{
+  margin:0px 10px;
+  border-radius: 5px;
+  background-color: white;
+  padding:15px;
+}
+.page-client-row{
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+/* 电子券选择区域 */
+.page-Ecard-box{
+  height: 300px;
+  background-color: white;
+  margin-top: 20px;
+  padding:15px;
+}
+.page-Ecard-box-title{
+  font-size: 17px;
+  padding-left:10px;
+  border-left: 3px solid #4eb4ff;
+}
+.page-Ecard-list{
+  padding-top: 20px;
+}
+/* 单个卡券 */
+.page-Ecard{
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+  border-radius: 5px;
+  border:1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  padding:10px;
+}
+.page-Ecard-left{
+
+}
+.page-Ecard-money{
+  color:orange;
+  margin-right: 10px;
+}
+.page-Ecard-name{
+  font-size: 17px;
+  margin-bottom: 5px;
+}
+.page-Ecard-type{
+  font-size: 15px;
+}
+/* 底部消费详情 */
+.page-foot{
+  position: fixed;
+  bottom: 0px;
+  left:0px;
+  width:100vw;
+  height: 55px;
+  background-color: white;
+  border-top:1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content:space-between;
+  align-items: stretch;
+}
+/*左侧信息*/
+.page-foot-left{
+  padding:5px 0;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+/* 卡券抵扣 */
+.page-foot-deduction{
+  font-size: 12px;
+}
+/* 消费总计 */
+.page-foot-total{
+  font-size: 17px;
+}
+.page-foot-total>span{
+  color:orange;
+}
+/* 信息提交按钮 */
+.page-foot-send{
+  min-width:80px;
+  width:25vw;
+  /* background-color: red; */
+  background-image: linear-gradient(90deg, #FF8282  0%, #FF5858 100%);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*input  类型*/
+.input{
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  position: relative;
+  padding:20px 0 5px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.input-first{
+  padding-top:0px;
+}
+.input-header{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.input-icon{
+  width:20px;
+  height: 20px;
+  margin-right: 10px;
+  opacity: 0.5;
+}
+.input-title{
+  font-size: 15px;
+  width: 80px;
+}
+.input-value{
+  font-size: 15px;
+  flex-grow: 1;
+}
+.input-right{
+  flex-shrink: 0;
+  width:15px;
+  display: flex;
+  align-items: center;
+}
+.input-right>image{
+  width:15px;
+  height:15px;
+  display:block;
+}
+.input-in{
+  position: absolute;
+  height: 100%;
+}

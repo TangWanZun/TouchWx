@@ -12,7 +12,7 @@
   </view>
   <view class='page-input-box'>
     <view class='page-input'>
-      <view class='page-input-left'>员工编码</view>
+      <view class='page-input-left'>员工账号</view>
       <view class='page-input-con'>
         <input disabled="true" value='{{loginInfo.UserCodeAlias||loginInfo.UserCode}}'></input>
       </view>
@@ -41,7 +41,7 @@
       </view>
       <view class='page-input-right'><image src='/assets/icon/right.svg'></image></view>
     </view>
-    <picker mode="region" value="{{fromData.nativePlace}}"  bindchange="bindNativePlace">
+    <!-- <picker mode="region" value="{{fromData.nativePlace}}"  bindchange="bindNativePlace">
       <view class='page-input' style='border-top:none'>
         <view class='page-input-left'>籍贯</view>
         <view class='page-input-con'>
@@ -58,7 +58,7 @@
         </view>
         <view class='page-input-right'><image src='/assets/icon/right.svg'></image></view>
       </view>
-    </picker>
+    </picker> -->
     <picker mode="selector" range="{{sexArray}}"  bindchange="bindSex">
       <view class='page-input' style='border-top:none'>
         <view class='page-input-left'>性别</view>
@@ -84,16 +84,16 @@
       </view>
       <view class='page-input-right'></view>
     </view>
-        <view class='page-input'>
+    <!-- <view class='page-input'>
       <view class='page-input-left'>直属上级</view>
       <view class='page-input-con'>
         <input disabled="true"></input>
       </view>
       <view class='page-input-right'></view>
-    </view>
+    </view> -->
   </view>
   <view class='page-button'>
-    <button type='primary' bindtap='send'>保存修改</button>
+    <!-- <button type='primary' bindtap='send'>保存修改</button> -->
     <button type='warn' bindtap='button'>退出登录</button>
   </view>
 </view>

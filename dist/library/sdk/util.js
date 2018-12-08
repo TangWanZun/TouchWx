@@ -9,6 +9,19 @@ function find(objArror, prNamn, value){
   }
   return -1;
 }
+
+/*
+*	位数不足用0补足
+*   例子:  pad(100,4) = 0100
+*/
+function pad(num, n) {
+  var len = num.toString().length;
+  while (len < n) {
+    num = "0" + num;
+    len++;
+  }
+  return num;
+}
 /**
  * 服务器时间转为js Date对象实例
 */
@@ -17,6 +30,24 @@ function dateTo(dateString){
   dateString = dateString.replace(regEx, "/");
   //去掉最后的毫秒值,用于兼容苹果手机
   return new Date(dateString.split('.')[0]);
+}
+
+/**
+ * 服务器时间转为js时间 保留日期与时间
+*/
+function toDateTime(value) {
+  if (!value) { return }
+  let date = this.dateTo(value);
+  return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} ${pad(date.getHours(), 2)}:${pad(date.getMinutes(), 2)}`;
+}
+/**
+ * 服务器时间转为js时间 仅保留时间
+*/
+function toTime(value) {
+  // console.log(value);
+  if (!value) { return }
+  let date = this.dateTo(value);
+  return `${pad(date.getHours(), 2)}:${pad(date.getMinutes(), 2)}`;
 }
 /**
  * 服务器时间转本地时间
@@ -92,5 +123,5 @@ function GUID() {
   return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }
 export{
-  find, GUID, dateParse, dateTo
+  find, GUID, dateParse, dateTo, toDateTime, toTime
 }

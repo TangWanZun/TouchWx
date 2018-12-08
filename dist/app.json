@@ -21,7 +21,8 @@
       "pages": [
         "myData",
         "myQr",
-        "myDatum"
+        "myDatum",
+        "cardCustomer"
       ]
     },
     {

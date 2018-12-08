@@ -175,6 +175,14 @@ function createPage(pro){
       })
     },
     /**
+     * 点击拨打用户电话
+     */
+    playPhone(e){
+      wx.makePhoneCall({
+        phoneNumber: e.currentTarget.dataset.phone
+      })
+    },
+    /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
@@ -234,7 +242,7 @@ function createPage(pro){
     */
     page: {
       start: 0,
-      limit: 5
+      limit: 10
     },
     getData(dataReset = false, query = '') {
       var _this = this;

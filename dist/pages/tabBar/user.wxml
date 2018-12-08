@@ -28,18 +28,18 @@
       <view class="ui-row" style="">
         <view class="ui-col ui-col-6" style="flex: 0 0 50%;">
           <view class="ui-col-content">
-            <view class="my-data-item-title">总产值
-              <span>（元）</span>
+            <view class="my-data-item-title">{{formData[0].Name}}
+              <span>（{{formData[0].Unit}}）</span>
             </view>
-            <view class="my-data-item-num">1562000</view>
+            <view class="my-data-item-num">{{formData[0].Value}}</view>
           </view>
         </view>
         <view class="ui-col ui-col-6" style="flex: 0 0 50%;">
           <view class="ui-col-content">
             <view class="my-data-rangking">
               <view class='my-data-rangking-in'>
-                <view class="my-data-item-title">本月店内排名</view>
-                <view class="my-data-item-index">第<span>1</span>名</view></view>
+                <view class="my-data-item-title">{{formData[1].Name}}</view>
+                <view class="my-data-item-index"><span>{{formData[1].Value}}</span></view></view>
               </view>
               <view class="my-data-img">
                 <head-img></head-img>
@@ -55,47 +55,11 @@
           </view>
           <view class="my-data-item-num my-data-item-list">3<span>/5</span></view>
       </view> -->
-      <view class="my-data-item  app-shadow-2">
-          <view class="my-data-item-title my-data-item-list">会员认证量
-            <span>（位）</span>
+      <view class="my-data-item  app-shadow-2" wx:if="{{(index!=0)&&(index!=1)}}" wx:for="{{formData}}" wx:key="index">
+          <view class="my-data-item-title my-data-item-list">{{item.Name}} 
+            <span>（{{item.Unit}}）</span>
           </view>
-          <view class="my-data-item-num my-data-item-list">103</view>
-      </view>
-      <view class="my-data-item  app-shadow-2">
-          <view class="my-data-item-title my-data-item-list">用户转化率
-            <span>（%）</span>
-          </view>
-          <view class="my-data-item-num my-data-item-list">12.5</view>
-      </view>
-      <view class="my-data-item  app-shadow-2">
-          <view class="my-data-item-title my-data-item-list">用户转化率
-            <span>（%）</span>
-          </view>
-          <view class="my-data-item-num my-data-item-list">12.5</view>
-      </view>
-      <!-- <view  class="my-data-item  app-shadow-2">
-        <view class="my-data-item-title my-data-item-list"> 会员认证量
-          <span>（位）</span>
-        </view>
-        <view class="my-data-item-num my-data-item-list">32</view>
-      </view> -->
-      <view  class="my-data-item  app-shadow-2">
-        <view class="my-data-item-title my-data-item-list"> 交易产值
-          <span>（元）</span>
-        </view>
-        <view class="my-data-item-num my-data-item-list">90000</view>
-      </view>
-      <view  class="my-data-item  app-shadow-2">
-        <view class="my-data-item-title my-data-item-list"> 活动参与率
-          <span>（%）</span>
-        </view>
-        <view class="my-data-item-num my-data-item-list">65</view>
-      </view>
-      <view  class="my-data-item  app-shadow-2">
-        <view class="my-data-item-title my-data-item-list"> 用户分享率
-          <span>（%）</span>
-        </view>
-        <view class="my-data-item-num my-data-item-list">77.9</view>
+          <view class="my-data-item-num my-data-item-list">{{item.Value}}</view>
       </view>
     </view>
     <navigator url='/pages/user/myDatum' class="my-data-title">

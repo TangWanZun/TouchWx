@@ -4,7 +4,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  width:calc( 100vw - 100px );
+  width:calc( 100vw - 140px );
 }
 .page-item-num{
   font-size: 13px;

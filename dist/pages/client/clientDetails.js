@@ -45,7 +45,30 @@ Page({
         { title: "消费观念", value: 0, list: ["陈旧", "开放型", "易接受新鲜事物"]},
         { title: "购买力", value: 0, list: ["稳定型", "上升购买群体"] }, 
         { title: "客户类别", value: 0, list: ["活跃客户", "忠诚客户", "流失客户", "投诉客户", "摇摆客户"]},
-      ]
+      ],
+    },
+    //可修改的用户信息
+    userInfor: {
+      //生日
+      birthday: '1997-12-13',
+      // 性别
+      sex: { value: 0, list: ['男', '女'] },
+      //学历
+      education:{ value:5 ,list:['小学','初中','中专','高中','大专','本科','硕士','博士']},
+      //身份证件
+      IDcard:'',
+      //职业
+      profession:'',
+      //住址
+      address:'',
+      //婚姻状况
+      marriage:{ value:0 ,list:['已婚','未婚']},
+      //子女描述
+      childDes:'',
+      //子女数量
+      childCount:'',
+      //常去商圈
+      CBD:''
     }
   },
   /**
@@ -84,21 +107,30 @@ Page({
     //   }
     // })
   },
-
+  /**
+   * 拨打电话
+  */
+  makePhoneCall(e) {
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.dataset.panel,
+    })
+  },
+  /**
+   * 双向绑定事件回调
+   */
+  inputCall(e) {
+    let selectDomKey = e.target.dataset.key;
+    this.setData({
+      [selectDomKey]: e.detail.value
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
   
   },
-  /**
-   * 拨打电话
-  */
-  makePhoneCall(e){
-    wx.makePhoneCall({
-      phoneNumber: e.currentTarget.dataset.panel,
-    })
-  },
+
   /**
    * 生命周期函数--监听页面显示
    */

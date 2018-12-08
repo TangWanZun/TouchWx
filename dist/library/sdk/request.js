@@ -80,7 +80,7 @@ function $request(para) {
               showCancel: false
             })
           }
-          mepara.fail && mepara.fail(result);
+          mepara.fail && mepara.fail(result.data);
         }
       }
     },
