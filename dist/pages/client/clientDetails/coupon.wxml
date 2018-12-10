@@ -1,3 +1,6 @@
-<!--pages/client/clientDetails/coupon.wxml-->
-<text>pages/client/clientDetails/coupon.wxml</text>
-<llbox></llbox>
+<view>
+  <view style='height:100px' wx:for="{{formList}}" wx:key="{{index}}">
+    {{item.A}}
+  </view>
+</view>
+<llbox id='myLlbox'></llbox>

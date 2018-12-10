@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 19,
+			"current": 20,
 			"list": [
 				{
 					"id": -1,
@@ -150,9 +150,15 @@
 				},
 				{
 					"id": -1,
+					"name": "电子券",
+					"pathName": "pages/client/clientDetails/coupon",
+					"query": ""
+				},
+				{
+					"id": -1,
 					"name": "会员消费",
-					"pathName": "pages/user/cardCustomer",
-					"query": "id=198273891"
+					"pathName": "pages/user/work/cardCustomer",
+					"query": "id=13258"
 				}
 			]
 		}

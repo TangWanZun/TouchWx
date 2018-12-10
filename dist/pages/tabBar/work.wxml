@@ -17,7 +17,7 @@
         </view>
         <view class='work-item-body'>
           <view class='work-item-body-title'>
-            <view class='work-item-headimg'><image src='{{item.ProfilePhoto}}'></image></view>
+            <view class='work-item-headimg'><image src='{{imgUrl+item.ProfilePhoto}}'></image></view>
             <view class='work-item-name'>{{item.CardName}}</view>
           </view>
           <view class='work-item-car'>{{item.CarNum}}</view>
@@ -36,7 +36,7 @@
         </view>
         <view class='work-item-body'>
           <view class='work-item-body-title'>
-            <view class='work-item-headimg'><image src='{{item.ProfilePhoto}}'></image></view>
+            <view class='work-item-headimg'><image src='{{imgUrl+item.ProfilePhoto}}'></image></view>
             <view class='work-item-name'>{{item.CardName}}</view>
           </view>
           <view class='work-item-body-con'>
@@ -54,7 +54,7 @@
         </view>
         <view class='work-item-body'>
           <view class='work-item-body-con'>
-            <view class='work-item-headimg'><image src='{{item.ProfilePhoto}}'></image></view>
+            <view class='work-item-headimg'><image src='{{imgUrl+item.ProfilePhoto}}'></image></view>
             <view class='work-item-name'>{{item.CardName}}</view>
           </view>
           <view class='work-item-body-title'>
@@ -70,12 +70,12 @@
       <navigator wx:elif="{{item.DocType === workType.WORK_HD}}" class='work-item  work-hdbm'>
         <view class='work-item-head'>
           <view class='work-item-title'>{{item.Note}}</view>
-          <view class='work-item-bg'><image mode="aspectFill" src='{{item.Img}}'></image></view>
+          <view class='work-item-bg'><image mode="aspectFill" src='{{imgUrl+item.Img}}'></image></view>
         </view>
         <view class='work-item-body'>
           <view class='work-item-body-title'>活动报名</view>
           <view class='work-item-body-con'>
-            <view class='work-item-headimg'><image src='{{item.ProfilePhoto}}'></image></view>
+            <view class='work-item-headimg'><image src='{{imgUrl+item.ProfilePhoto}}'></image></view>
             <view class='work-item-name'>{{item.CardName}}</view>
           </view>
         </view>
@@ -88,7 +88,7 @@
         </view>
         <view class='work-item-body'>
           <view class='work-item-body-title'>
-            <view class='work-item-headimg'><image src='{{item.ProfilePhoto}}'></image></view>
+            <view class='work-item-headimg'><image src='{{imgUrl+item.ProfilePhoto}}'></image></view>
             <view class='work-item-name'>{{item.CardName}}</view>
           </view>
           <view class='work-item-body-con'>

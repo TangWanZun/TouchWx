@@ -1,10 +1,11 @@
 import  * as sdk from "../../library/sdk.js"
-import { util } from '../../library/sdk.js'
+import { util, configUrl } from '../../library/sdk.js'
 Page({
   /**
    * 页面的初始数据
    */
   data: {
+    imgUrl: configUrl.imgUrl,
     workTypeData:[
       {
         title: "救援",

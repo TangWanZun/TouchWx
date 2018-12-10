@@ -2,5 +2,6 @@
   "navigationBarTitleText": "卡券",
   "usingComponents": {
     "llbox": "/component/llbox"
-  }
+  },
+  "enablePullDownRefresh": true
 }

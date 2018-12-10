@@ -17,7 +17,7 @@ Page({
       success(res){
         //扫码返回成功跳转会员消费页面
         wx.navigateTo({
-          url: '/pages/user/cardCustomer?id=' + res.result
+          url: '/pages/user/work/cardCustomer?id=' + res.result
         });          
       },
       fail(){
