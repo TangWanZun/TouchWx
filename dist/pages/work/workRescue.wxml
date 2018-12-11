@@ -19,7 +19,7 @@
     <view wx:else>
       <view class='page-item' wx:for="{{dataList}}" wx:key="{{index}}">
         <view class='page-item-left'>
-          <image class='page-item-headimg' src='{{item.HeadImg}}'></image>
+          <image class='page-item-headimg' src='{{imgUrl+item.HeadImg}}'></image>
           <!-- <view class='page-item-name'>关翠萍</view> -->
         </view>
         <view class='page-item-center'>

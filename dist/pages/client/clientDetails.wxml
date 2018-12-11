@@ -181,7 +181,7 @@
         <picker mode="selector" data-key="userInfor.marriage.value" range="{{userInfor.marriage.list}}" value="{{item.value}}" bindchange="inputCall" >
           <view class='client'>
               <view class='client-header' >
-                <view class='client-title'>学历</view>
+                <view class='client-title'>婚姻状况</view>
               </view>
               <view class='client-value'>{{userInfor.marriage.list[userInfor.marriage.value]}}</view>
               <view class='client-right'><image src='/assets/icon/right.svg'></image></view>

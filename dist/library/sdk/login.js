@@ -24,7 +24,7 @@ function saveUserInfo(res,obj={}){
 }
 //测试信息调取
 function loginTest() {
-  var Token =  wx.getStorageSync('Token');
+  // var Token =  wx.getStorageSync('Token');
   // console.log(Token);
   //获取code
   wx.login({

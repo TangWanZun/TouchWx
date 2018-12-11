@@ -50,7 +50,59 @@ function toTime(value) {
   return `${pad(date.getHours(), 2)}:${pad(date.getMinutes(), 2)}`;
 }
 /**
- * 服务器时间转本地时间
+ * 服务器时间转为js时间 仅保留日期
+*/
+function toDate(value) {
+  // console.log(value);
+  if (!value) { return }
+  let date = this.dateTo(value);
+  return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+}
+/**
+ * js时间格式转服务器时间
+ */
+function jsToDateTime(value) {
+  if (!value) { return }
+  let date = new Date(value);
+  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}.000`;
+}
+/**
+ * 服务器时间转本地时间,只包括时间段
+ */
+function timeParse(dateString){
+  //获取当前时间
+  let newDate = new Date();
+  let date = this.dateTo(dateString);
+  //当分钟为个位数的时候,在前面添加一个0
+  let minu = date.getMinutes();
+  if (minu < 10) {
+    minu = `0${minu}`;
+  }
+  //判断是上午还是下午
+  let sxS = '上午';
+  let hours = date.getHours();
+  if (hours >= 0 && hours <= 5) {
+    sxS = '凌晨';
+  } else if (hours > 5 && hours <= 7) {
+    sxS = '早上';
+  } else if (hours > 7 && hours <= 11) {
+    sxS = '上午';
+  } else if (hours > 11 && hours <= 17) {
+    sxS = '下午';
+    if (hours > 12) {
+      hours -= 12;
+    }
+  } else if (hours > 17 && hours <= 21) {
+    sxS = '晚上';
+    hours -= 12;
+  } else if (hours > 21 && hours <= 23) {
+    sxS = '午夜';
+    hours -= 12;
+  }
+  return `${sxS}${hours}:${minu}`;
+}
+/**
+ * 服务器时间转本地时间(这个只适用于展示时间没有未来的)
 */
 function dateParse(dateString){
   //获取当前时间
@@ -123,5 +175,5 @@ function GUID() {
   return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }
 export{
-  find, GUID, dateParse, dateTo, toDateTime, toTime
+  find, GUID, dateParse, dateTo, toDateTime, toTime, timeParse, toDate, jsToDateTime
 }

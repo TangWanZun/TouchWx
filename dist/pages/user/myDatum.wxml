@@ -59,15 +59,19 @@
         <view class='page-input-right'><image src='/assets/icon/right.svg'></image></view>
       </view>
     </picker> -->
-    <picker mode="selector" range="{{sexArray}}"  bindchange="bindSex">
-      <view class='page-input' style='border-top:none'>
-        <view class='page-input-left'>性别</view>
-        <view class='page-input-con'>
-          {{fromData.sex}}
-        </view>
-        <view class='page-input-right'><image src='/assets/icon/right.svg'></image></view>
+    <view class='page-input' style='border-top:none'>
+      <view class='page-input-left'>性别</view>
+      <view class='page-input-con'>
+        <radio-group class="radio-group">
+          <label class="radio" style='margin-right:20px'>
+            <radio value="男" checked="{{true}}"/>男
+          </label>
+          <label class="radio">
+            <radio value="女" />女
+          </label>
+        </radio-group>
       </view>
-    </picker>
+    </view>
   </view>
   <view class='page-input-box'>
     <view class='page-input'>

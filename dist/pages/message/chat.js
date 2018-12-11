@@ -145,7 +145,7 @@ Page({
       Longitude: pro.longitude || '',																//地理位置的精度
       MediaOriginal: pro.mediaOriginal || '',																//图片初始图
       MsgData: pro.data || '',		                          //聊天内容
-      MsgDate: pro.msgDate||new Date(),												//时间					
+      MsgDate: pro.msgDate || util.jsToDateTime(new Date()),												//时间					
       MsgType: pro.msgType,																	//类型
       NickName: "",														//微信名称
       OpenId: this.openId,											//openid
@@ -622,14 +622,13 @@ Page({
           } else {
             //来自于客服
             //更新信息
-            if (item.StatusReason) {//判断这条消息发送是否成功
+            if (item.MsgStatus=='Fail') {//判断这条消息发送是否成功
               //失败
               dataDataList[index].state = CHAT_CONST.LOG_FAIL;
             } else {
               //成功
               dataDataList[index].state = CHAT_CONST.LOG_OUT;
             }
-            
           }
         } else {
           //msgId不重复
@@ -637,8 +636,12 @@ Page({
             //非当前用户
             continue;
           }
+          //添加当前状态
+          let state = _this.data.CHAT_CONST.LOG_OUT;
+          //当为fail为消息为失败
+          if (item.MsgStatus == 'Fail') { state = _this.data.CHAT_CONST.LOG_FAIL}
           //添加并到消息列表
-          dataDataList = dataDataList.concat(_this.getMsgData(item))
+          dataDataList = dataDataList.concat(_this.getMsgData(item, state))
         }
         //判断当前传入的信息时间与列表中上个信息时间,有时间控制器来决定是否需要插入一个时间
         let time = _this.dataGenerate(dataDataList.length === 0 ? null : dataDataList[dataDataList.length - 1].msgDate, item.MsgDate);

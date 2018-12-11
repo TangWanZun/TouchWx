@@ -1,13 +1,16 @@
 /**
+ * 
  * $WORK_TYPE:当前页面类型  必填
  * $alterData:获取数据后可以修改数据的回调参数，需要用return返回修改后的数据
 */
+import {configUrl } from '../../library/sdk.js'
 function createPage(pro){
   return {
   /**
    * 页面的初始数据
    */
     data: {
+      imgUrl: configUrl.imgUrl,
       dataList: [
       ],
       //全选是否被选中状态

@@ -15,11 +15,11 @@
     <query-box bindinput="bindinput"></query-box>
   </view>
   <checkbox-group class='page-data-list' bindchange="checkChange">
-    <view wx:if="{{dataList.length===0}}" class='.page-work-none'>暂无工作</view>
+    <view wx:if="{{dataList.length===0&&pageOver}}" class='.page-work-none'>暂无工作</view>
     <view wx:else>
       <view class='page-item' wx:for="{{dataList}}" wx:key="{{index}}">
         <view class='page-item-left'>
-          <image class='page-item-headimg' src='{{item.HeadImg}}'></image>
+          <image class='page-item-headimg' src='{{imgUrl+item.HeadImg}}'></image>
           <view class='page-item-rescue'>提醒类型</view>
         </view>
         <view class='page-item-center'>

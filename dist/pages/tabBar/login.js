@@ -159,7 +159,7 @@ Page({
         getApp().privateData.loginInfo = res;
         //登陆成功
         wx.switchTab({
-          url:"/pages/tabBar/message",
+          url:"/pages/tabBar/user",
         })
       },
       fail(res) {
