@@ -103,7 +103,7 @@ Component({
           $.requestPro.fail(res);
         },
         complete(res){
-          $.requestPro.complete(res)
+          $.requestPro.complete && $.requestPro.complete(res)
         }
       })
     }

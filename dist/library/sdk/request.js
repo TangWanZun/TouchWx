@@ -11,8 +11,7 @@
  * Boolean loading:是否需要显示头部loading加载环 默认为true
  * 
  */
-//获取cookie
-var Token = wx.getStorageSync('Token');
+
 
 function consoleError(property, src) {
   console.error(`wx.$request:${property}:${src}`);
@@ -41,10 +40,15 @@ function $request(para) {
     privateData.requestRetention.push(para);
     return;
   }
+  var Token = privateData.Token;
+  if (!privateData.Token){
+    //获取cookie
+    Token = wx.getStorageSync('Token');
+  }
   let defaultheader = {
     // 'content-type': 'application/json', // 默认值
     'content-type': 'application/x-www-form-urlencoded',
-    'cookie': privateData.Token || Token
+    'cookie': Token
   };
   let loadingShow = false;
   //判断当前用户数据不存在,则视为未登陆状态需要

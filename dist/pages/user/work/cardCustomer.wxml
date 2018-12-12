@@ -8,24 +8,12 @@
         </view>
         <view class='input-value'>{{userInfor.CardName}}</view>
     </view>
-    <view class='input'>
-        <view class='input-header' >
-          <view class='input-title'>车牌号</view>
-        </view>
-        <view class='input-value'>{{userInfor.CarNum}}</view>
-    </view>
-    <view class='input'>
-        <view class='input-header' >
-          <view class='input-title'>VIN</view>
-        </view>
-        <view class='input-value'>{{userInfor.VIN}}</view>
-    </view>
-    <picker mode="selector" data-key="userInfor.CardCode.value" range="{{userInfor.CardCode.list}}"  bindchange="inputCall" >
+    <picker mode="selector" data-key="userInfor.CardCode.value" data-name="CardCode" range-key='VIPCardNum' range="{{userInfor.CardCode.list}}"  bindchange="inputCall" >
       <view class='input'>
           <view class='input-header' >
-            <view class='input-title'>会员编号</view>
+            <view class='input-title'>会员卡</view>
           </view>
-          <view class='input-value'>{{userInfor.CardCode.list[userInfor.CardCode.value]}}</view>
+          <view class='input-value'>{{userInfor.CardCode.list[userInfor.CardCode.value].VIPCardNum}}</view>
           <view class='input-right'><image src='/assets/icon/right.svg'></image></view>
       </view>
     </picker>
@@ -38,6 +26,18 @@
           <view class='input-right'><image src='/assets/icon/right.svg'></image></view>
       </view>
     </picker>
+    <view class='input'>
+        <view class='input-header' >
+          <view class='input-title'>车牌号</view>
+        </view>
+        <view class='input-value'>{{userInfor.CarNum}}</view>
+    </view>
+    <view class='input'>
+        <view class='input-header' >
+          <view class='input-title'>VIN</view>
+        </view>
+        <view class='input-value'>{{userInfor.VIN}}</view>
+    </view>
   </view>
   <!--储值-->
   <view class='page-Ecard-box'>
@@ -69,7 +69,7 @@
   <view class='page-Ecard-box'>
     <view class='page-Ecard-box-head'>
       <view class='page-Ecard-box-title'>已选择电子券</view>
-      <view class='page-Ecard-box-head-right' bindtap='selectEcard'>选择电子券</view>
+      <view class='page-Ecard-box-head-right' bindtap='selectEcardShow'>选择电子券</view>
     </view>
     <view class='page-Ecard-list'>
       <view class='page-Ecard-list-none' wx:if="{{formData.length==0}}">
@@ -102,10 +102,40 @@
   <view class='page-foot'>
     <view class='page-foot-left'>
       <view class='page-foot-total'>消费总计: <span>￥{{consumeTotal}}</span> </view>
-      <view class='page-foot-deduction'>卡券抵扣:￥{{dedTotal}}</view>
+      <view class='page-foot-deduction'>电子券抵扣:￥{{dedTotal}}</view>
     </view>
     <view class='page-foot-send'>
       提交
     </view>
+  </view>
+  <!-- 选择电子券 -->
+  <view class='page-selectEcard {{selectEchatList?"page-selectEcard-show":""}}'>
+    <view class='page-selectEcard-head'>
+      <view class='page-selectEcard-head-left'>
+        <image src='/assets/icon/right.svg'></image>
+        <view>返回</view>
+      </view>
+      <view class='page-selectEcard-head-title'>卡券选择</view>
+      <view class='page-selectEcard-head-right' bindtap='selectEcardConfirm'>确定</view>
+    </view>
+    <scroll-view scroll-y bindscrolltolower="scrolltolower" class='page-selectEcard-body app-scroll-none'>
+      <checkbox-group class='page-data-list' bindchange="checkChange">
+        <view class='page-Ecard' wx:for="{{echatList}}" wx:key="{{index}}">
+          <view class='page-Ecard-left'>
+            <view class='page-Ecard-money'>
+              ￥{{item.Total}}
+            </view>
+            <view class='page-Ecard-con'>
+              <view class='page-Ecard-name'>{{item.Name}}</view>
+              <view class='page-Ecard-type'>抵扣类型:{{item.DocTypeName}}</view>
+            </view>
+          </view>
+          <view class='page-Ecard-right'>
+            <checkbox value='{{index}}' checked='{{item.check}}'></checkbox>
+          </view>
+        </view>
+        <llbox id='myLlbox'></llbox>
+      </checkbox-group>
+    </scroll-view>
   </view>
 </view>
