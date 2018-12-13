@@ -1,0 +1,1 @@
+  <web-view style='display:none' src="{{videoUrl}}"></web-view>

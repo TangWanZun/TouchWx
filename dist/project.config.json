@@ -11,7 +11,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.0",
+	"libVersion": "2.4.2",
 	"appid": "wx741745d2b71d095d",
 	"projectname": "touch-wx",
 	"scripts": {},

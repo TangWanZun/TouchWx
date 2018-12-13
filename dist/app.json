@@ -28,7 +28,8 @@
     {
       "root": "pages/message",
       "pages": [
-        "chat"
+        "chat",
+        "video"
       ]
     },
     {

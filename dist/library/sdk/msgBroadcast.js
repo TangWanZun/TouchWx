@@ -26,22 +26,23 @@ var msgBroadcast = {
         },
         success(res) {
           // console.log(res);
-        },
-        fail(res) {
-          // console.log(res);
-        },
-        complete(res) {
           //当存在返回值的时候,说明有信息池中存在数据
           if (res) {
             //更新时间
             msgBroadcast.createDate = res.CreateDate;
             //将获取的消息分发给全部收听者
-            for (let x in msgBroadcast.listenList){
+            for (let x in msgBroadcast.listenList) {
               msgBroadcast.listenList[x](res.List);
             }
           }
           //轮询运行
           fun()
+        },
+        fail(res) {
+          console.log(res);
+        },
+        complete(res) {
+
         }
       })
     }

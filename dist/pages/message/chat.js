@@ -42,7 +42,9 @@ Page({
     loginInfo:{},
     dataList: [
 
-    ]
+    ],
+    //当前视频播放路径
+    videoUrl:''
   },
   /**========================================
    * 全局变量非setData型
@@ -320,6 +322,34 @@ Page({
     })
   },
   /**
+   * 播放视频
+   */
+  playVideo(e){
+    //获取播放路径
+    var src = e.currentTarget.dataset.src;
+    wx.navigateTo({
+      url: "./video?videoUrl=" + src
+    })
+    // //设置播放路径
+    // this.setData({
+    //   videoUrl: src
+    // });
+    // let meVideo = wx.createVideoContext('meVideo',this);
+    // //全屏观看 竖着观看
+    // meVideo.requestFullScreen({
+    //   direction:0
+    // });
+    // // //播放视频
+    // // meVideo.play();
+  },
+  /**
+   * 视频播放器进入全屏与退出全屏
+   */
+  fullscreenchange(e){
+    let meVideo = wx.createVideoContext('meVideo', this);
+    meVideo.pause();
+  },
+  /**
    * 播放音频
   */
   playAudio(e) {
@@ -570,9 +600,18 @@ Page({
       case CHAT_CONST.CHAT_VOICE: {
         msgData = {
           //音频持续时间
-          time: msg.AddressDetails,
+          time: msg.Duration,
           //音频路径mp3
-          src: msg.Thumbnail,
+          src: this.data.imgUrl+ msg.Thumbnail,
+        }
+        break;
+      }
+      //视频消息
+      case CHAT_CONST.CHAT_VIDEO:{
+        msgData = {
+          //视频路径mp4格式
+          src: this.data.imgUrl + msg.MediaOriginal,
+          cover: this.data.imgUrl + msg.Thumbnail,
         }
         break;
       }
@@ -736,7 +775,7 @@ Page({
     this.cardName = options.cardName;
     //加载名称
     wx.setNavigationBarTitle({
-      title: options.cardName
+      title: (options.online=='true'?'':'[离线]')+options.cardName
     })
     //加载数据
     this.getData(true);

@@ -24,6 +24,15 @@
             <view class='page-chat-con-audio-image {{audio.playMsgId===index?"page-chat-con-audio-play":""}} '><image src='/assets/chat/audio{{item.isLeft?"":"-b"}}.svg'></image></view>
             <view class='page-chat-con-audio-time'>{{item.msgData.time}}"</view>
           </view>
+          <!-- 视频 -->
+          <view wx:elif="{{item.msgType===CHAT_CONST.CHAT_VIDEO}}"   class='page-chat-con page-chat-con-video' >
+            <view class='page-chat-con-video-cover'>
+              <image mode="widthFix" src='{{item.msgData.cover}}'></image>
+            </view>
+            <view class='page-chat-con-video-play' data-src="{{item.msgData.src}}" bindtap='playVideo'>
+              <image src='/assets/icon/bf.svg'></image>
+            </view>
+          </view>
         </view>
         <!-- 加载 -->
         <view class='page-chat-loding' >
@@ -80,4 +89,6 @@
       </view>
     </view> -->
   </view>
+  <!-- 这个是为了解决 video 不能再scroll-view中使用的方法 -->
+  <!-- <video id='meVideo' bindfullscreenchange="fullscreenchange" src='{{videoUrl}}'></video> -->
 </view>

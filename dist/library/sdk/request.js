@@ -12,7 +12,7 @@
  * 
  */
 
-
+var Token = wx.getStorageSync('Token');
 function consoleError(property, src) {
   console.error(`wx.$request:${property}:${src}`);
 }
@@ -40,16 +40,12 @@ function $request(para) {
     privateData.requestRetention.push(para);
     return;
   }
-  var Token = privateData.Token;
-  if (!privateData.Token){
-    //获取cookie
-    Token = wx.getStorageSync('Token');
-  }
   let defaultheader = {
     // 'content-type': 'application/json', // 默认值
-    'content-type': 'application/x-www-form-urlencoded',
-    'cookie': Token
+    'Content-type': 'application/x-www-form-urlencoded',
+    'Cookie': privateData.Token || Token
   };
+
   let loadingShow = false;
   //判断当前用户数据不存在,则视为未登陆状态需要
   if (typeof privateData.loginInfo === 'undefined') {
@@ -69,9 +65,14 @@ function $request(para) {
     url: `${privateData.configUrl.url}${mepara.url}`,
     data: mepara.data || {},
     header: defaultheader,
+    // header: {
+    //   'Content-type': 'application/x-www-form-urlencoded',
+    //   'Cookie': 'RedisSessionId=3f78daa1bc2142c8bce7c369c79f7b1d'
+    // },
     dataType: "json",
     method: mepara.method || 'POST',
     success: function(res) {
+      // console.log('rse',res);
       if (res.statusCode == 200 || res.statusCode == 500) {
         let result = res.data;
         if (result.success) {

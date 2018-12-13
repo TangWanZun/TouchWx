@@ -269,6 +269,41 @@
   background-color: #4eb4ff;
 }
 /*
+* 视频播放 默认为左
+*/
+.page-chat-con-video{
+ position: relative;
+}
+/* 视频封面 */
+.page-chat-con-video-cover{
+  width:50vw;
+}
+/* 播放按钮 */
+.page-chat-con-video-play{
+  position: absolute;
+  top: 50%;
+  left:50%;
+  width:60px;
+  height: 60px;
+  margin-left: -30px;
+  margin-top:-30px;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page-chat-con-video-play>image{
+  width:50%;
+}
+/*视频播放器*/
+#meVideo{
+  position: fixed;
+  left:-100vw;
+  top:-100vh;
+}
+/*
 * 为所有聊天框添加点击效果
 */
 .page-chat-con:active,.page-chat-con-map:active,.page-chat-con-img:active{
