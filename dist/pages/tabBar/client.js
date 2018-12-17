@@ -41,16 +41,16 @@ Page({
         limit: this.page.limit,
       },
       success(res) {
-        if (res.length < _this.page.limit){
-          //数据以全部拉取完成
-          _this.setData({
-            pageOver:true
-          })
-        }        
         _this.setData({
           dataList: _this.data.dataList.concat(res)
         })
         _this.page.start += _this.page.limit;
+        if (res.length < _this.page.limit) {
+          //数据以全部拉取完成
+          _this.setData({
+            pageOver: true
+          })
+        }   
       },
       complete() {
         wx.stopPullDownRefresh();

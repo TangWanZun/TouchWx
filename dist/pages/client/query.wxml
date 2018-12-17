@@ -9,7 +9,7 @@
     <view class='select-none' wx:if="{{isSelect}}">
       没有找到该用户
     </view>
-    <navigator url='/pages/client/clientDetails?clientId={{item.name}}&img={{item.img}}' class='select-item' wx:for="{{dataList}}" wx:key="{{key}}">
+    <navigator url='/pages/client/clientDetails?openId={{item.OpenId}}' class='select-item' wx:for="{{dataList}}" wx:key="{{key}}">
       <view class='select-img {{item.Online?"":"select-img-hidden"}}'>
         <image src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
       </view>

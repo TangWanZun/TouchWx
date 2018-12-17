@@ -10,7 +10,7 @@
   <!-- <view class='client-ltter' wx:for="{{dataList}}" wx:key="{{index}}"> -->
   <!-- <view class='client-title'>{{index}}</view> -->
   <view class='client-body app-scroll-none'>
-    <navigator url='/pages/client/clientDetails?cardName={{item.CardName||item.NickName}}&headImg={{item.ProfilePhoto}}&openId={{item.OpenId}}&wxId={{item.WxId}}' class='client-item' wx:for="{{dataList}}" wx:key="{{itemIndex}}">
+    <navigator url='/pages/client/clientDetails?openId={{item.OpenId}}' class='client-item' wx:for="{{dataList}}" wx:key="{{itemIndex}}">
       <view class='client-img {{item.Online?"":"client-img-hidden"}}'>
         <image binderror="binderror" src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
         <view class='client-online {{item.Online?"":"client-online-hidden"}}'></view>

@@ -7,6 +7,9 @@ Page({
   data: {
     //图片数据
     imgUrl: getApp().privateData.configUrl.imgUrl,
+    formData:{},
+    carList:[],
+    labelList:[],
     clientData:{
       //用户openId
       openId:null,
@@ -36,7 +39,7 @@ Page({
       ],
       //绑定汽车
       car:[
-        { brand: "bc", model: "奔驰S210 运动型", num: "京A12345" },
+        {brand: "bc", model: "奔驰S210 运动型", num: "京A12345" },
         {brand:"bjxd",model:"北京现代H321 商务",num:"京B12345"}
       ],
       //用户画像
@@ -47,6 +50,8 @@ Page({
         { title: "客户类别", value: 0, list: ["活跃客户", "忠诚客户", "流失客户", "投诉客户", "摇摆客户"]},
       ],
     },
+    //学历
+    education: { value: 0, list: [] },
     //可修改的用户信息
     userInfor: {
       //生日
@@ -85,27 +90,52 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(options)
-    //更改名称
-    wx.setNavigationBarTitle({
-      title: options.cardName,
+    var  _this = this;
+    //GetNewNeedReplyList需要接受一个参数是openid
+    wx.showLoading({
+      title: '正在加载数据',
+      mask:true,
     })
-    this.setData({
-      "clientData.openId": options.openId,
-      "clientData.headImage": options.headImg,
-      "clientData.cardName": options.cardName,
-      "clientData.wxId": options.wxId,
+    wx.$request({
+      url: "/WeMinProPlatJson/GetDataSet",
+      data: {
+        docType: 'client',
+        actionType: 'Info',
+        needTotal: false,
+        docid: options.openId
+      },
+      success(res) {
+        _this.setData({
+          formData: res.Table[0],
+          carList:res.Table1||[],
+          labelList:res.Table2||[]
+        })
+        //更改名称
+        wx.setNavigationBarTitle({
+          title: res.Table[0].CardName,
+        })
+      },
+      complete(){
+        wx.hideLoading();
+      }
     })
-    // //GetNewNeedReplyList需要接受一个参数是openid
-    // wx.$request({
-    //   url: "/WeiXinChatMessage/GetNewNeedReplyList",
-    //   data: {
-    //     bean: [options.openId]
-    //   },
-    //   success(res) {
-    //     console.log(res);
-    //   }
-    // })
+    //加载学历自定义表
+    wx.$request({
+      url: "/WeMinProPlatJson/GetList",
+      data: {
+        docType: 'combox',
+        actionType: 'Education',
+        needTotal: false,
+      },
+      success(res) {
+        console.log(res);
+        _this.setData({
+          'education.list':res
+        })
+      },
+      complete() {
+      }
+    })
   },
   /**
    * 拨打电话

@@ -6,25 +6,27 @@
       <view class='header-top'>
         <!-- 头像 -->
         <view class='header-img'>
-          <image src='{{imgUrl+clientData.headImage}}'></image>
+          <image src='{{imgUrl+formData.ProfilePhoto}}'></image>
         </view>
         <!-- 爱好标签 -->
-        <view class='header-likes'>
-          <view class='header-likes-item' wx:for="{{clientData.likeList}}" wx:key="{{key}}">{{item}}</view>
+        <view class='header-likes-box'>
+          <view class='header-likes'>
+            <view class='header-likes-item'wx:if="{{index<10}}" wx:for="{{labelList}}" wx:key="{{index}}">{{item.Name}}</view>
+          </view>
         </view>
       </view>
       <view class='header-botton'>
         <view class='header-botton-item'>
           <view class='header-botton-item-title'>储值</view>
-          <view class='header-botton-item-number'>￥{{clientData.integral}}</view>
+          <view class='header-botton-item-number'>￥{{formData.AvailableBalance}}</view>
         </view>
         <view class='header-botton-item'>
           <view class='header-botton-item-title'>积分</view>
-          <view class='header-botton-item-number'>{{clientData.stored}}</view>
+          <view class='header-botton-item-number'>{{formData.AvailableScore}}</view>
         </view>
         <navigator url='/pages/client/clientDetails/coupon' class='header-botton-item'>
           <view class='header-botton-item-title'>电子券</view>
-          <view class='header-botton-item-number'>{{clientData.coupon}}张</view>
+          <view class='header-botton-item-number'>{{formData.AvailableECard}}张</view>
         </navigator>
         <!-- <view class='header-botton-item'>
           <view class='header-botton-item-title'>电子券</view>
@@ -34,7 +36,7 @@
     </view>
     <!-- 背景图 -->
     <view class='header-bg'>
-      <image mode='aspectFill' src='{{imgUrl+clientData.headImage}}'></image>
+      <image mode='aspectFill' src='{{imgUrl+formData.ProfilePhoto}}'></image>
     </view>
   </view>
   <!-- 正文内容 -->
@@ -42,29 +44,24 @@
     <view class='content-card'>
       <view class='content-card-title'>
         <view class='content-card-title-left'>联系方式</view>
-        <view class='content-card-title-right'>更改联系方式</view>
+        <!-- <view class='content-card-title-right'>更改联系方式</view> -->
       </view>
       <view class='content-card-body'>
-        <view wx:for="{{clientData.contact}}" wx:key="{{key}}" class='panel-item'>
+        <view class='panel-item'>
           <!-- 拨打电话 -->
-          <view wx:if="{{item.conType==='panel'}}" class='panel' >
-            <view class='panel-number'>18953891019</view>
-            <view class='panel-icon' data-panel="18953891019" catchtap="makePhoneCall"><image src='/assets/icon/call.svg'></image></view>
+          <view class='panel' >
+            <view class='panel-number'>{{formData.Phone}}</view>
+            <view class='panel-icon' data-panel="{{formData.Phone}}" catchtap="makePhoneCall"><image src='/assets/icon/call.svg'></image></view>
           </view>
-          <!-- qq -->
-          <!-- <view wx:elif="{{item.conType==='QQ'}}" class='panel'>
-            <view class='panel-number'>997018562</view>
-            <view class='panel-icon'><image src='/assets/icon/QQ.svg'></image></view>
-          </view> -->
           <!-- 微信 -->
-          <view wx:elif="{{item.conType==='WX'}}" class='panel'>
-            <view class='panel-number'>sunshangxiang1</view>
-            <navigator  url='/pages/message/chat?openId={{clientData.openId}}&cardName={{clientData.cardName}}&wxId={{clientData.wxId}}&headImg={{clientData.headImage}}' class='panel-icon'><image src='/assets/icon/WX.svg'></image></navigator>
+          <view class='panel'>
+            <view class='panel-number'>{{formData.NickName}}</view>
+            <navigator  url='/pages/message/chat?openId={{formData.OpenId}}&cardName={{formData.CardName}}&wxId={{formData.WxId}}&headImg={{formData.ProfilePhoto}}' class='panel-icon'><image src='/assets/icon/WX.svg'></image></navigator>
           </view>
         </view>
       </view>
     </view>
-    <view class='content-card'>
+    <!-- <view class='content-card'>
       <view class='content-card-title'>
         <view class='content-card-title-left'>服务顾问</view>
         <view class='content-card-title-right'>更改顾问</view>
@@ -83,20 +80,20 @@
           </view>
         </view>
       </view>
-    </view>
+    </view> -->
     <view class='content-card'>
       <view class='content-card-title'>
         <view class='content-card-title-left'>绑定车辆</view>
         <view class='content-card-title-right'></view>
       </view>
       <view class='content-card-body'>
-        <navigator url="clientDetails/carDetails?carID=1" class='car' wx:for="{{clientData.car}}" wx:key="{{index}}">
+        <navigator url="clientDetails/carDetails?carID={{item.CarId}}" class='car' wx:for="{{carList}}" wx:key="{{index}}">
           <view class='car-con'>
-            <view class='car-img'><image src='/assets/carIcon/{{item.brand}}-i.svg'></image></view>
-            <view class='car-model'>{{item.model}}</view>
+            <!-- <view class='car-img'><image src='/assets/carIcon/{{item.brand}}-i.svg'></image></view> -->
+            <view class='car-model'>{{item.CarBrand}}</view>
           </view>
-          <view class='car-bg'><image mode='aspectFit' src='/assets/carIcon/{{item.brand}}.svg'></image></view>
-          <view class='car-number'>{{item.num}}</view>
+          <view class='car-bg'><image mode='aspectFit' src='/assets/icon/lc.svg'></image></view>
+          <view class='car-number'>{{item.CarNum}}</view>
         </navigator>
       </view>
     </view>
@@ -150,12 +147,12 @@
           </view>
         </picker>
         <!-- 学历 -->
-        <picker mode="selector" data-key="userInfor.education.value" range="{{userInfor.education.list}}" value="{{item.value}}" bindchange="inputCall" >
+        <picker mode="selector" data-key="education.value" range="{{education.list}}" range-key='Name' bindchange="inputCall" >
           <view class='client'>
               <view class='client-header' >
                 <view class='client-title'>学历</view>
               </view>
-              <view class='client-value'>{{userInfor.education.list[userInfor.education.value]}}</view>
+              <view class='client-value'>{{education.list[education.value].Name}}</view>
               <view class='client-right'><image src='/assets/icon/right.svg'></image></view>
           </view>
         </picker>

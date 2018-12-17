@@ -29,6 +29,8 @@
   align-items: flex-start;
   padding-top: 10px;
   padding-left: 15px;
+  position: relative;
+  height: 150px;
 }
 /* 头像 */
 .header-img{
@@ -40,16 +42,25 @@
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
 }
 /* 爱好组 */
-.header-likes{
+.header-likes-box{
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  width:100vw;
   height: 150px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.header-likes{
   display: flex;
   flex-direction: column-reverse;
   flex-wrap: wrap-reverse;
   align-items: flex-start;
   align-content: flex-start;
-  flex-grow: 1;
+  height: 150px;
 }
 .header-likes-item{
+  min-width: 0;
   padding:3px 15px;
   border-radius: 20px;
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
