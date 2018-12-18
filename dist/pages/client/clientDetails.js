@@ -122,11 +122,11 @@ Page({
         //这里需要对部分值进行处理
         var userInforData = {
           //生日
-          BirthDate: util.toDate(formData.BirthDate),
+          BirthDate: util.toDate(formData.BirthDate) || '-',
           // 性别
-          Sex: formData.Sex,
+          Sex: formData.Sex||'-',
           //学历
-          EducationCode: formData.EducationCode,
+          EducationCode: formData.EducationCode || '-',
           //身份证件
           IDCard: formData.IDCard,
           //职业
@@ -151,7 +151,7 @@ Page({
         })
         //更改名称
         wx.setNavigationBarTitle({
-          title: `${res.Table[0].CardName}`,
+          title: `${res.Table[0].CardName ? res.Table[0].CardName : res.Table[0].NickName}`,
         })
       },
       complete(){

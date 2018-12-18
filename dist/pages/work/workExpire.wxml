@@ -19,7 +19,7 @@
     <view wx:else>
       <view class='page-item' wx:for="{{dataList}}" wx:key="{{index}}">
         <view class='page-item-left'>
-          <image class='page-item-headimg' src='{{imgUrl+item.HeadImg}}'></image>
+          <image class='page-item-headimg'  src='{{item.HeadImg?imgUrl+item.HeadImg:"/assets/chat/kh_tx.svg"}}'></image>
           <view class='page-item-rescue'>提醒类型</view>
         </view>
         <view class='page-item-center'>

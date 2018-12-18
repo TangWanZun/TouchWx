@@ -1,6 +1,6 @@
 <view class='app-body'>
   <view class="page-bg" wx:if="{{carImgList.length>0}}" style="background-image:url({{imgUrl+carImgList[0].Orig}})"></view>
-  <view class="page-bg" wx:else style="background-image:url(/assets/bgCar.jpg)"></view>
+  <view class="page-bg" wx:else style="background-image:url(http://pic.baike.soso.com/p/20140226/20140226112838-1622274748.jpg)"></view>
   <view class="page-box app-scroll-none">
     <!-- 基本信息 -->
     <view class="page-basic app-shadow">
@@ -36,7 +36,7 @@
         <view class="page-mileage-con">
           <view>当前里程:{{dataList.CurrKM}}KM</view>
           <view>下次保养:{{dataList.MaintainDate}}</view>
-          <view>下次保养:{{dataList.InsuranceDate}}</view>
+          <view>保险到期:{{dataList.InsuranceDate}}</view>
         </view>
       </view>
     </view>
