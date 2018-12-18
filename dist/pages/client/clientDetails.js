@@ -1,4 +1,5 @@
 // pages/client/clientDetails.js
+import { util } from '../../library/sdk.js'
 Page({
 
   /**
@@ -51,21 +52,22 @@ Page({
       ],
     },
     //学历
-    education: { value: 0, list: [] },
+    education: [],
+    sexArr:['男','女'],
     //可修改的用户信息
     userInfor: {
       //生日
-      birthday: '1997-12-13',
+      BirthDate: '1997-12-13',
       // 性别
       sex: { value: 0, list: ['男', '女'] },
       //学历
-      education:{ value:5 ,list:['小学','初中','中专','高中','大专','本科','硕士','博士']},
+      education:'',
       //身份证件
-      IDcard:'',
+      IDCard:'',
       //职业
-      profession:'',
+      Profession:'',
       //住址
-      address:'',
+      AddressDetails:'',
       //婚姻状况
       marriage:{ value:0 ,list:['已婚','未婚']},
       //子女描述
@@ -74,7 +76,7 @@ Page({
       childCount:'',
       //常去商圈
       CBD:''
-    }
+    },
   },
   /**
    * 用户画像选择回调
@@ -105,14 +107,51 @@ Page({
         docid: options.openId
       },
       success(res) {
+        console.log(res);
+        let formData =  res.Table[0];
+        //修改学历
+        if (_this.data.education.length>0) {
+          //学历信息已经添加
+          for (let x of _this.data.education) {
+            if (x.Code == formData.EducationCode) {
+              formData.EducationCode = x.Name;
+              break;
+            }
+          }
+        }
+        //这里需要对部分值进行处理
+        var userInforData = {
+          //生日
+          BirthDate: util.toDate(formData.BirthDate),
+          // 性别
+          Sex: formData.Sex,
+          //学历
+          EducationCode: formData.EducationCode,
+          //身份证件
+          IDCard: formData.IDCard,
+          //职业
+          Profession: formData.Profession,
+          //住址
+          AddressDetails: formData.AddressDetails,
+          //婚姻状况
+          marriage: { value: 0, list: ['已婚', '未婚'] },
+          //子女描述
+          ChildrenDesc: formData.ChildrenDesc,
+          //子女数量
+          ChildrenCount: formData.ChildrenCount,
+          //常去商圈
+          OftenGoto: formData.OftenGoto
+        }
         _this.setData({
           formData: res.Table[0],
+          userInfor: userInforData,
           carList:res.Table1||[],
-          labelList:res.Table2||[]
+          labelList:res.Table2||[],
+          //对用户信息进行修改
         })
         //更改名称
         wx.setNavigationBarTitle({
-          title: res.Table[0].CardName,
+          title: `${res.Table[0].CardName}`,
         })
       },
       complete(){
@@ -128,9 +167,20 @@ Page({
         needTotal: false,
       },
       success(res) {
-        console.log(res);
+        // console.log(res);
+        //修改学历
+        if (_this.data.userInfor.EducationCode){
+          for (let x of res){
+            if(x.Code == _this.data.userInfor.EducationCode){
+              _this.setData({
+                'userInfor.EducationCode': x.Name
+              })
+              break;
+            }
+          }
+        }
         _this.setData({
-          'education.list':res
+          'education.list':res,
         })
       },
       complete() {
@@ -149,9 +199,8 @@ Page({
    * 双向绑定事件回调
    */
   inputCall(e) {
-    let selectDomKey = e.target.dataset.key;
     this.setData({
-      [selectDomKey]: e.detail.value
+      [e.target.dataset.key]: e.target.dataset.arr[e.detail.value]
     })
   },
   /**

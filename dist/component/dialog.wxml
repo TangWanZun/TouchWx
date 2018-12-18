@@ -2,7 +2,7 @@
   <view class='dialog-model' bindtap='hidden'></view>
   <view class='dialog'>
     <view class='dialog-title'>回复:</view>
-    <textarea value='{{valueHidden}}' placeholder="请输入模板消息" bindinput="textareaConfirm" focus="{{select}}"></textarea>
+    <textarea value='{{valueHidden}}' placeholder="请输入回复消息" bindinput="textareaConfirm" focus="{{select}}"></textarea>
     <view class='dialog-foot'>
       <view bindtap='hidden'>取消</view>
       <view bindtap='confirm'>确认</view>

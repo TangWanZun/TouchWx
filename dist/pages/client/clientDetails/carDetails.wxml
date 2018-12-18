@@ -1,30 +1,30 @@
 <view class='app-body'>
-  <view class="page-bg" style="background-image:{{formData.carImg}}">
-  </view>
+  <view class="page-bg" wx:if="{{carImgList.length>0}}" style="background-image:url({{imgUrl+carImgList[0].Orig}})"></view>
+  <view class="page-bg" wx:else style="background-image:url(/assets/bgCar.jpg)"></view>
   <view class="page-box app-scroll-none">
     <!-- 基本信息 -->
     <view class="page-basic app-shadow">
-      <view class="page-basic-name">京N12345</view>
-      <view class="page-basic-VIN">发送机号:JIDUN45268549851</view>
-      <view class="page-basic-VIN">VIN:JIDUN45268549851</view>
+      <view class="page-basic-name">{{dataList.CarNum}}</view>
+      <view class="page-basic-VIN">发送机号:{{dataList.EngineNo||'-'}}</view>
+      <view class="page-basic-VIN">VIN:{{dataList.VIN||'-'}}</view>
       <view class="page-basic-else">
         <view class="page-basic-else-item">
-          <view class="page-basic-else-item-title">颜色</view>
-          <view class="page-basic-else-item-con">米白色</view>
+          <view class="page-basic-else-item-title">品牌</view>
+          <view class="page-basic-else-item-con">{{dataList.CarBrand||'-'}}</view>
         </view>
         <view class="page-basic-else-item">
-          <view class="page-basic-else-item-title">车型</view>
-          <view class="page-basic-else-item-con">GLA200运动型</view>
+          <view class="page-basic-else-item-title">颜色</view>
+          <view class="page-basic-else-item-con">{{dataList.CarColor||'-'}}</view>
         </view>
       </view>
       <view class="page-basic-else">
         <view class="page-basic-else-item">
-          <view class="page-basic-else-item-title">颜色</view>
-          <view class="page-basic-else-item-con">米白色</view>
+          <view class="page-basic-else-item-title">车型</view>
+          <view class="page-basic-else-item-con">{{dataList.CarStyle||'-'}}</view>
         </view>
         <view class="page-basic-else-item">
-          <view class="page-basic-else-item-title">车型</view>
-          <view class="page-basic-else-item-con">GLA200运动型</view>
+          <view class="page-basic-else-item-title">车系</view>
+          <view class="page-basic-else-item-con">{{dataList.CarSer||'-'}}</view>
         </view>
       </view>
     </view>
@@ -34,22 +34,23 @@
           <image src='/assets/icon/ybp.svg'></image>
         </view>
         <view class="page-mileage-con">
-          <view>当前里程:100000KM</view>
-          <view>下次保养:2019-3-1</view>
-          <view>下次保养:2019-3-1</view>
+          <view>当前里程:{{dataList.CurrKM}}KM</view>
+          <view>下次保养:{{dataList.MaintainDate}}</view>
+          <view>下次保养:{{dataList.InsuranceDate}}</view>
         </view>
       </view>
     </view>
     <view class="page-record">
       <view class="page-record-header">爱车履历</view>
-      <view class="page-record-item">
+      <!-- <view class="page-record-item">
         <view class="page-record-axle">
           <view class="page-record-axle-l"></view>
           <view class="page-record-axle-o"></view>
         </view>
         <view class="page-record-time">2018-1-1</view>
         <view class="page-record-con">购买爱车,首次投保</view>
-      </view>
+      </view> -->
+      <llbox id='myLlbox'></llbox>
     </view>
   </view>
 </view>

@@ -51,7 +51,7 @@
   color: rgba(0, 0, 0, 0.5);
 }
 .page-basic-else-item-con{
-  font-size: 16px;
+  font-size: 13px;
   padding-top: 10px;
 }
 .page-mileage-box{
@@ -73,8 +73,8 @@
   align-items: center;
 }
 .page-mileage-img>image{
-  width:20vw;
-  height: 20vw;
+  width:60px;
+  height: 60px;
 }
 .page-mileage-con{
   padding-left:20px;

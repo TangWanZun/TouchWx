@@ -18,16 +18,16 @@
       <view class='header-botton'>
         <view class='header-botton-item'>
           <view class='header-botton-item-title'>储值</view>
-          <view class='header-botton-item-number'>￥{{formData.AvailableBalance}}</view>
+          <view class='header-botton-item-number'>￥{{formData.AvailableBalance||'-'}}</view>
         </view>
         <view class='header-botton-item'>
           <view class='header-botton-item-title'>积分</view>
-          <view class='header-botton-item-number'>{{formData.AvailableScore}}</view>
+          <view class='header-botton-item-number'>{{formData.AvailableScore||'-'}}</view>
         </view>
-        <navigator url='/pages/client/clientDetails/coupon' class='header-botton-item'>
+        <view class='header-botton-item'>
           <view class='header-botton-item-title'>电子券</view>
-          <view class='header-botton-item-number'>{{formData.AvailableECard}}张</view>
-        </navigator>
+          <view class='header-botton-item-number'>{{formData.AvailableECard||'-'}}张</view>
+        </view>
         <!-- <view class='header-botton-item'>
           <view class='header-botton-item-title'>电子券</view>
           <view class='header-botton-item-number'>{{clientData.coupon}}张</view>
@@ -50,7 +50,7 @@
         <view class='panel-item'>
           <!-- 拨打电话 -->
           <view class='panel' >
-            <view class='panel-number'>{{formData.Phone}}</view>
+            <view class='panel-number'>{{formData.Phone||'-'}}</view>
             <view class='panel-icon' data-panel="{{formData.Phone}}" catchtap="makePhoneCall"><image src='/assets/icon/call.svg'></image></view>
           </view>
           <!-- 微信 -->
@@ -87,10 +87,10 @@
         <view class='content-card-title-right'></view>
       </view>
       <view class='content-card-body'>
-        <navigator url="clientDetails/carDetails?carID={{item.CarId}}" class='car' wx:for="{{carList}}" wx:key="{{index}}">
+        <navigator url="clientDetails/carDetails?openId={{formData.OpenId}}&carId={{item.CarId}}" class='car' wx:for="{{carList}}" wx:key="{{index}}">
           <view class='car-con'>
             <!-- <view class='car-img'><image src='/assets/carIcon/{{item.brand}}-i.svg'></image></view> -->
-            <view class='car-model'>{{item.CarBrand}}</view>
+            <view class='car-model'>{{item.CarStyle}}</view>
           </view>
           <view class='car-bg'><image mode='aspectFit' src='/assets/icon/lc.svg'></image></view>
           <view class='car-number'>{{item.CarNum}}</view>
@@ -123,87 +123,87 @@
     <view class='content-card' style='padding-bottom:40px'>
       <view class='content-card-title'>
         <view class='content-card-title-left'>用户信息</view>
-        <view class='content-card-title-right'>保存修改</view>
+        <!-- <view class='content-card-title-right'>保存修改</view> -->
       </view>
       <view class='content-card-body'>
         <!-- 性别 -->
-        <picker mode="selector" data-key="userInfor.sex.value" range="{{userInfor.sex.list}}" value="{{item.value}}" bindchange="inputCall" >
+        <!-- <picker mode="selector" data-key="userInfor.Sex" data-arr="{{sexArr}}" range="{{sexArr}}" bindchange="inputCall" > -->
           <view class='client'>
               <view class='client-header' >
                 <view class='client-title'>性别</view>
               </view>
-              <view class='client-value'>{{userInfor.sex.list[userInfor.sex.value]}}</view>
-              <view class='client-right'><image src='/assets/icon/right.svg'></image></view>
+              <view class='client-value'>{{userInfor.Sex}}</view>
+              <!-- <view class='client-right'><image src='/assets/icon/right.svg'></image></view> -->
           </view>
-        </picker>
+        <!-- </picker> -->
         <!-- 出生日 -->
-        <picker mode="date" data-key="userInfor.birthday" value="{{userInfor.birthday}}"  bindchange="inputCall">
+        <!-- <picker mode="date" data-key="userInfor.BirthDate" value="{{userInfor.BirthDate}}"  bindchange="inputCall"> -->
           <view class='client'>
               <view class='client-header'>
                 <view class='client-title'>出生日</view>
               </view>
-              <view class='client-value'>{{userInfor.birthday}}</view>
-              <view class='client-right'><image src='/assets/icon/right.svg'></image></view>
+              <view class='client-value'>{{userInfor.BirthDate}}</view>
+              <!-- <view class='client-right'><image src='/assets/icon/right.svg'></image></view> -->
           </view>
-        </picker>
+        <!-- </picker> -->
         <!-- 学历 -->
-        <picker mode="selector" data-key="education.value" range="{{education.list}}" range-key='Name' bindchange="inputCall" >
+        <!-- <picker mode="selector" data-key="education.value" data-arr="{{education}}" range="{{education.list}}" range-key='Name' bindchange="inputCall" > -->
           <view class='client'>
               <view class='client-header' >
                 <view class='client-title'>学历</view>
               </view>
-              <view class='client-value'>{{education.list[education.value].Name}}</view>
-              <view class='client-right'><image src='/assets/icon/right.svg'></image></view>
+              <view class='client-value'>{{userInfor.EducationCode}}</view>
+              <!-- <view class='client-right'><image src='/assets/icon/right.svg'></image></view> -->
           </view>
-        </picker>
+        <!-- </picker> -->
         <view class='client'>
             <view class='client-header' >
               <view class='client-title'>职业</view>
             </view>
-            <view class='client-value'><input data-key="userInfor.profession" cursor-spacing="30" bindinput='inputCall'></input></view>
+            <view class='client-value'><input disabled="true"  data-key="userInfor.Profession" placeholder='未填写' value='{{userInfor.Profession}}' cursor-spacing="30" bindinput='inputCall'></input></view>
         </view>
         <view class='client'>
             <view class='client-header' >
               <view class='client-title'>证件号</view>
             </view>
-            <view class='client-value'><input data-key="userInfor.IDcard" cursor-spacing="30" type="idcard" bindinput='inputCall'></input></view>
+            <view class='client-value'><input disabled="true"  data-key="userInfor.IDCard" placeholder='未填写' value='{{userInfor.IDCard}}' cursor-spacing="30" type="idcard" bindinput='inputCall'></input></view>
         </view>
         <view class='client'>
             <view class='client-header' >
               <view class='client-title'>住址</view>
             </view>
-            <view class='client-value'><input data-key="userInfor.address" cursor-spacing="30" bindinput='inputCall'></input></view>
+            <view class='client-value'><input disabled="true"  data-key="userInfor.AddressDetails" placeholder='未填写' value='{{userInfor.AddressDetails}}' cursor-spacing="30" bindinput='inputCall'></input></view>
         </view>
         <!-- 婚姻 -->
-        <picker mode="selector" data-key="userInfor.marriage.value" range="{{userInfor.marriage.list}}" value="{{item.value}}" bindchange="inputCall" >
+        <!-- <picker mode="selector" data-key="userInfor.marriage.value" range="{{userInfor.marriage.list}}" value="{{item.value}}" bindchange="inputCall" > -->
           <view class='client'>
               <view class='client-header' >
                 <view class='client-title'>婚姻状况</view>
               </view>
               <view class='client-value'>{{userInfor.marriage.list[userInfor.marriage.value]}}</view>
-              <view class='client-right'><image src='/assets/icon/right.svg'></image></view>
+              <!-- <view class='client-right'><image src='/assets/icon/right.svg'></image></view> -->
           </view>
-        </picker>
+        <!-- </picker> -->
         <!-- 子女情况 -->
         <view class='client'>
             <view class='client-header' >
               <view class='client-title'>子女情况</view>
             </view>
-            <view class='client-value'><input data-key="userInfor.childDes" cursor-spacing="30" bindinput='inputCall'></input></view>
+            <view class='client-value'><input disabled="true"  data-key="userInfor.ChildrenDesc" placeholder='未填写' value='{{userInfor.ChildrenDesc}}'  cursor-spacing="30" bindinput='inputCall'></input></view>
         </view>
         <!-- 子女数量-->
         <view class='client'>
             <view class='client-header' >
               <view class='client-title'>子女数量</view>
             </view>
-            <view class='client-value'><input data-key="userInfor.childCount" type="number" cursor-spacing="30" bindinput='inputCall'></input></view>
+            <view class='client-value'><input disabled="true" data-key="userInfor.ChildrenCount" placeholder='未填写' value='{{userInfor.ChildrenCount}}'  type="number" cursor-spacing="30" bindinput='inputCall'></input></view>
         </view>
         <!--常去商圈 -->
         <view class='client'>
             <view class='client-header' >
               <view class='client-title'>常去商圈</view>
             </view>
-            <view class='client-value'><input data-key="userInfor.CBD" cursor-spacing="30" bindinput='inputCall'></input></view>
+            <view class='client-value'><input disabled="true"  data-key="userInfor.OftenGoto" placeholder='未填写' value='{{userInfor.OftenGoto}}'  cursor-spacing="30" bindinput='inputCall'></input></view>
         </view>
       </view>
     </view>

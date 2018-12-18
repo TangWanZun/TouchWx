@@ -1,11 +1,13 @@
 import { CHAT_CONST, util} from '../../library/sdk.js'
-
+import msgBroadcast from '../../library/sdk/msgBroadcast.js'
 // pages/message/chat.js
 Page({
   /**
    * 页面的初始数据
    */
   data: {
+    //是否显示回复框
+    dialogSelect: false,
     inputCon: {
       //输入框中是否存在内容
       isValue: false,
@@ -40,6 +42,7 @@ Page({
     intoView: "",
     //登陆数据
     loginInfo:{},
+    //本地数据
     dataList: [
 
     ],
@@ -78,6 +81,26 @@ Page({
    * 发送事件
    * ========================================
   */
+  /**
+   *  回复按钮 
+   */
+  replyData:{},
+  reply(e){
+    let data = this.data.dataList[e.target.dataset.index];
+    this.replyData = data;
+    //打开回复框
+    this.setData({
+      dialogSelect: true
+    })
+  },
+  /**
+   * 获取业务信息回调
+  */
+  bindconfirm(e) {
+    let obj = this.replyData;
+    obj.data = e.detail.value;
+    this.chatSend(obj);
+  },
   /**
    * 文本信息发送
   */
@@ -149,6 +172,7 @@ Page({
       MsgData: pro.data || '',		                          //聊天内容
       MsgDate: pro.msgDate || util.jsToDateTime(new Date()),												//时间					
       MsgType: pro.msgType,																	//类型
+      MsgFromType: this.data.CHAT_CONST.CHAT_NATIVE,    //业务类型
       NickName: "",														//微信名称
       OpenId: this.openId,											//openid
       ProfilePhoto: this.data.loginInfo.ProfilePhoto,																//头像
@@ -157,6 +181,59 @@ Page({
       UserName: this.data.loginInfo.UserName,																	//客服name
       WxId: this.wxId
     }
+    var fromData = {};
+    //评论回复
+    if (pro.msgFromType === this.data.CHAT_CONST.CHAT_DISCUSS){
+      fromData = {
+        //数据逻辑
+        'Id': pro.msgData.id,
+        'DocType': pro.msgData.docType,
+        'DocId': pro.msgData.docId,
+        'Content': pro.msgData.data,
+        'ReplyContent': pro.data,
+        //数据渲染
+        'MsgFromType': pro.msgFromType,
+        'Title': pro.msgData.title,
+        'Descrption': pro.msgData.descrption,
+        'Thumbnail': pro.msgData.img,
+        'RefMsgFromContent': pro.msgData.data,
+      };
+    } else if (pro.msgFromType === this.data.CHAT_CONST.CHAT_FEEDBACK){
+      //意见反馈
+      fromData = {
+        //数据逻辑
+        'Id': pro.msgData.id,
+        'FeedbackTypeName': pro.msgData.title,
+        'Phone': pro.msgData.phone,
+        'Content': pro.msgData.data,
+        'ReplyContent': pro.data,
+        //数据渲染
+        'MsgFromType': pro.msgFromType,
+        'Title': pro.msgData.title,
+        'RefMsgFromContent': pro.msgData.data,
+      };
+    } else if (pro.msgFromType === this.data.CHAT_CONST.CHAT_EVALUATE) {
+      //服务评价
+      fromData = {
+        //数据逻辑
+        'Id': pro.msgData.id,
+        'Score': pro.msgData.score*20,
+        'Content': pro.msgData.data,
+        'ReplyContent': pro.data,
+        //数据渲染
+        'MsgFromType': pro.msgFromType,
+        'SlpName': pro.msgData.slpName,
+        'ReserveName': pro.msgData.reserveName,
+        'ReserveDate': pro.msgData.reserveDate,
+        'CarNum': pro.msgData.carNum,
+        'RefMsgFromContent': pro.msgData.data,
+      };
+    }
+    //数据合并
+    for(let x in fromData){
+      msg[x] = fromData[x];
+    }
+    //信息封装
     var data = this.getMsgData(msg, this.data.CHAT_CONST.LOG_IN);
     //加载到本地
     this.data.dataList.push(data);
@@ -164,8 +241,12 @@ Page({
     //发送数据
     wx.$request({
       url:"/WeMinProChatMessage/SendMsg",
-      data: msg,
+      data:{
+        optType: pro.msgFromType||this.data.CHAT_CONST.CHAT_NATIVE,
+        bean: JSON.stringify(msg)    
+      },
     })
+    
     this.setData({
       dataList: this.data.dataList
     });
@@ -566,54 +647,101 @@ Page({
     var headImg = isLeft ? (this.headImg ? this.data.imgUrl + this.headImg : '/assets/chat/kh_tx.svg') : (msg.ProfilePhoto ? this.data.imgUrl + msg.ProfilePhoto:'/assets/chat/kf_tx.svg');
     //获取存放数据内容
     var msgData;
-    switch (msg.MsgType){
-      //文字
-      case CHAT_CONST.CHAT_TEXT:{
-        msgData = msg.MsgData
-        break;
-      }
-      //图片
-      case CHAT_CONST.CHAT_IAMGE:{
-        msgData = {
-          //缩略图
-          thumbnail: this.data.imgUrl+msg.Thumbnail,
-          //初始图
-          mediaOriginal: this.data.imgUrl+msg.MediaOriginal
+    //首先进行业务类型判断
+    if (msg.MsgFromType != CHAT_CONST.CHAT_NATIVE){
+      switch (msg.MsgFromType) {
+        // 业务  评价
+        case CHAT_CONST.CHAT_EVALUATE: {
+          msgData = {
+            id: msg.MsgFromId,
+            data: msg.MsgData,
+            dataTwo: msg.RefMsgFromContent,
+            phone: msg.Phone,
+            reserveName: msg.ReserveName,
+            reserveDate: util.toDate(msg.ReserveDate),
+            slpName: msg.SlpName,
+            carNum: msg.CarNum,
+            score:parseInt(msg.Score/20)
+          }
+          break;
         }
-        break;
-      }
-      //位置消息
-      case CHAT_CONST.CHAT_ADDS: {
-        msgData = {
-          //地理详细位置
-          addressDetails: msg.AddressDetails,
-          //地理名称
-          addressName: msg.AddressName,
-          //经度
-          longitude: msg.Longitude,
-          //纬度
-          latitude: msg.Latitude,
+        // 业务  信息反馈
+        case CHAT_CONST.CHAT_FEEDBACK: {
+          msgData = {
+            id: msg.MsgFromId,
+            data: msg.MsgData,
+            dataTwo: msg.RefMsgFromContent,
+            phone: msg.Phone,
+            title: msg.Title,
+          }
+          break;
         }
-        break;
-      }
-      //音频消息
-      case CHAT_CONST.CHAT_VOICE: {
-        msgData = {
-          //音频持续时间
-          time: msg.Duration,
-          //音频路径mp3
-          src: this.data.imgUrl+ msg.Thumbnail,
+        // 业务 评论回复
+        case CHAT_CONST.CHAT_DISCUSS: {
+          msgData = {
+            id: msg.MsgFromId,
+            data: msg.MsgData,
+            dataTwo: msg.RefMsgFromContent,
+            title: msg.Title,
+            img: msg.Thumbnail,
+            docType: msg.MsgRefDocType,
+            docId: msg.MsgRefDocId,
+            descrption: msg.Descrption
+          }
+          break;
         }
-        break;
       }
-      //视频消息
-      case CHAT_CONST.CHAT_VIDEO:{
-        msgData = {
-          //视频路径mp4格式
-          src: this.data.imgUrl + msg.MediaOriginal,
-          cover: this.data.imgUrl + msg.Thumbnail,
+    }else{
+      //为原生业务类型
+      switch (msg.MsgType) {
+        //文字
+        case CHAT_CONST.CHAT_TEXT: {
+          msgData = msg.MsgData
+          break;
         }
-        break;
+        //图片
+        case CHAT_CONST.CHAT_IAMGE: {
+          msgData = {
+            //缩略图
+            thumbnail: this.data.imgUrl + msg.Thumbnail,
+            //初始图
+            mediaOriginal: this.data.imgUrl + msg.MediaOriginal
+          }
+          break;
+        }
+        //位置消息
+        case CHAT_CONST.CHAT_ADDS: {
+          msgData = {
+            //地理详细位置
+            addressDetails: msg.AddressDetails,
+            //地理名称
+            addressName: msg.AddressName,
+            //经度
+            longitude: msg.Longitude,
+            //纬度
+            latitude: msg.Latitude,
+          }
+          break;
+        }
+        //音频消息
+        case CHAT_CONST.CHAT_VOICE: {
+          msgData = {
+            //音频持续时间
+            time: msg.Duration,
+            //音频路径mp3
+            src: this.data.imgUrl + msg.Thumbnail,
+          }
+          break;
+        }
+        //视频消息
+        case CHAT_CONST.CHAT_VIDEO: {
+          msgData = {
+            //视频路径mp4格式
+            src: this.data.imgUrl + msg.MediaOriginal,
+            cover: this.data.imgUrl + msg.Thumbnail,
+          }
+          break;
+        }
       }
     }
     //整理信息
@@ -628,10 +756,12 @@ Page({
       headImg,
       //时间
       msgDate:msg.MsgDate,
-      //名称
+      //业务类型 比如活动评论,意见反馈等   没有类型 的默认为Native 为原生消息
+      msgFromType: msg.MsgFromType,
       name,
       //类型
       msgType: msg.MsgType,
+      //活动  
       //数据内容
       msgData,
       //当前状态
@@ -768,6 +898,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //初始化消息广播
+    msgBroadcast.init();
     var _this = this;
     this.openId = options.openId;
     this.wxId = options.wxId;
@@ -788,7 +920,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**

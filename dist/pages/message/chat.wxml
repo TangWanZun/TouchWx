@@ -1,3 +1,4 @@
+<dialog bindconfirm="bindconfirm" select="{{dialogSelect}}"></dialog>
 <view class="app-body">
   <!-- 聊天内容 -->
   <!-- 这个是当使用功能区的时候为了兼容苹果flex -->
@@ -10,8 +11,67 @@
         <!-- 内容 -->
         <view class='page-chat-body'>
           <view class='page-chat-name'>{{item.name}}</view>
+          <!-- 首先判断是不是业务类型 -->
+          <!-- 服务评价 -->
+          <view wx:if="{{item.msgFromType===CHAT_CONST.CHAT_EVALUATE}}" class='page-chat-discuss'>
+            <view class='page-chat-discuss-title'>服务评价</view>
+            <view class="page-chat-discuss-com">
+              <view class='page-chat-discuss-com-item'>预约项目：{{item.msgData.reserveName}}</view>
+              <view class='page-chat-discuss-com-item'>预约时间：{{item.msgData.reserveDate}}</view>
+              <view class='page-chat-discuss-com-item'>车牌号：{{item.msgData.carNum}}</view>
+              <view class='page-chat-discuss-com-item' wx:if="{{item.msgData.slpName}}">服务顾问：{{item.msgData.slpName}}</view>
+              <view class='page-chat-discuss-com-item'>
+                满意度：
+                <view class='page-chat-discuss-star-box'>
+                  <div class="page-chat-discuss-star {{item.msgData.score>=1?'':'page-chat-discuss-star-hiden'}}"></div>
+                  <div class="page-chat-discuss-star {{item.msgData.score>=2?'':'page-chat-discuss-star-hiden'}}"></div>
+                  <div class="page-chat-discuss-star {{item.msgData.score>=3?'':'page-chat-discuss-star-hiden'}}"></div>
+                  <div class="page-chat-discuss-star {{item.msgData.score>=4?'':'page-chat-discuss-star-hiden'}}"></div>
+                  <div class="page-chat-discuss-star {{item.msgData.score>=5?'':'page-chat-discuss-star-hiden'}}"></div>
+                </view>
+              </view>
+              <view class='page-chat-discuss-com-item'>评语：{{item.isLeft?item.msgData.data:item.msgData.dataTwo}}</view>
+            </view>
+            <view wx:if="{{!item.isLeft}}" class='page-chat-discuss-foot'>
+              <pre>{{item.msgData.data}}</pre>
+            </view>
+            <view wx:else class='page-chat-discuss-foot'>
+              <view data-index="{{index}}" bindtap='reply'>回复</view>
+            </view>
+          </view>
+          <!-- 信息反馈 -->
+          <view wx:elif="{{item.msgFromType===CHAT_CONST.CHAT_FEEDBACK}}" class='page-chat-discuss'>
+            <view class='page-chat-discuss-title'>评论留言</view>
+            <view class="page-chat-discuss-com">
+              <view class='page-chat-discuss-com-item'>反馈类型：{{item.msgData.title}}</view>
+              <view class='page-chat-discuss-com-item'>联系方式：{{item.msgData.phone}}</view>
+              <view class='page-chat-discuss-com-item'>问题描述：{{item.isLeft?item.msgData.data:item.msgData.dataTwo}}</view>
+            </view>
+            <view wx:if="{{!item.isLeft}}" class='page-chat-discuss-foot'>
+              <pre>{{item.msgData.data}}</pre>
+            </view>
+            <view wx:else class='page-chat-discuss-foot'>
+              <view data-index="{{index}}" bindtap='reply'>回复</view>
+            </view>
+          </view>
+          <!-- 评论留言 -->
+          <view wx:elif="{{item.msgFromType===CHAT_CONST.CHAT_DISCUSS}}" class='page-chat-discuss'>
+            <view class='page-chat-discuss-title'>评论留言</view>
+            <view class="page-chat-discuss-img" style="background-image: url({{imgUrl}}{{item.msgData.img}});">
+              <view class="page-chat-discuss-head">{{item.msgData.title}}</view>
+            </view>
+            <view class="page-chat-discuss-com">
+              <pre>{{item.isLeft?item.msgData.data:item.msgData.dataTwo}}</pre>
+            </view>
+            <view wx:if="{{!item.isLeft}}" class='page-chat-discuss-foot'>
+              <pre>{{item.msgData.data}}</pre>
+            </view>
+            <view wx:else class='page-chat-discuss-foot'>
+              <view data-index="{{index}}" bindtap='reply'>回复</view>
+            </view>
+          </view>
           <!-- 文本内容 -->
-          <view wx:if="{{item.msgType===CHAT_CONST.CHAT_TEXT}}" class='page-chat-con'>{{item.msgData}}</view>
+          <view wx:elif="{{item.msgType===CHAT_CONST.CHAT_TEXT}}" class='page-chat-con'>{{item.msgData}}</view>
           <!-- 图片内容 -->
           <view wx:elif="{{item.msgType===CHAT_CONST.CHAT_IAMGE}}" class='page-chat-con-img' data-src="{{item.msgData.mediaOriginal}}" bindtap='showBigImage'><image mode="widthFix" src='{{item.msgData.thumbnail}}'></image></view>
           <!-- 地理位置 -->

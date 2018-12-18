@@ -23,6 +23,10 @@ const CHAT_CONST = {
   CHAT_VIDEO: 'video',//视频信息
   CHAT_LEFT: 'Client',//客户
   CHAT_RIGHT: 'Server',//客服
+  CHAT_EVALUATE: 'Evaluate',// 业务  评价
+  CHAT_FEEDBACK: 'Feedback',// 业务  信息反馈
+  CHAT_DISCUSS: 'Discuss',// 业务 留言
+  CHAT_NATIVE: 'Native',// 业务 原生消息
   CHAT:0,         //聊天信息
   DATE:1,          //日期信息
   LOG_IN: 2, //加载中

@@ -1,3 +1,6 @@
 {
-    "navigationBarTitleText": "绑定车辆"
+    "navigationBarTitleText": "绑定车辆",
+    "usingComponents": {
+      "llbox": "/component/llbox"
+    }
 }

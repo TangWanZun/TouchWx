@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "(离线)"
+  "navigationBarTitleText": "(离线)",
+  "usingComponents": {
+    "dialog": "/component/dialog"
+  }
 }
