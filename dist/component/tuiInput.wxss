@@ -28,6 +28,10 @@
   font-size: 15px;
   flex-grow: 1;
 }
+/* 当前值为空的时候 */
+.tuiInput-value-none{
+  color:rgb(128,128,128);
+ }
 .tuiInput-right{
   flex-shrink: 0;
   width:15px;

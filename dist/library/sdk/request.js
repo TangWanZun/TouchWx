@@ -13,104 +13,112 @@
  */
 
 var Token = wx.getStorageSync('Token');
+
 function consoleError(property, src) {
-  console.error(`wx.$request:${property}:${src}`);
+        console.error(`wx.$request:${property}:${src}`);
 }
 
 function $request(para) {
-  let privateData = getApp().privateData;
-  let mepara = {
-    url: para.url || undefined,
-    UV: para.UV || false,
-    //这里将其反过来是因为,如果传入值为false,则最终结构就变成了true
-    loading: (!para.loading) || false,
-    data: para.data || {},
-    success: para.success || function() {},
-    fail: para.fail || function() {},
-    complete: para.complete || function() {},
-  };
-  //判断url是否存在，不存在则报错
-  if (!mepara.url) {
-    consoleError('url', 'url为必填项');
-    return;
-  }
-  // console.log(privateData.loginInfo);
-  //若是为非越权请求并且当前没有获得用户身份,则此请求需要进入请求滞留池中，等待获取用户身份
-  if (!para.UV && typeof privateData.loginInfo === 'undefined') {
-    privateData.requestRetention.push(para);
-    return;
-  }
-  let defaultheader = {
-    // 'content-type': 'application/json', // 默认值
-    'Content-type': 'application/x-www-form-urlencoded',
-    'Cookie': privateData.Token || Token
-  };
-
-  let loadingShow = false;
-  //判断当前用户数据不存在,则视为未登陆状态需要
-  if (typeof privateData.loginInfo === 'undefined') {
-    //在当前页面显示login
-    wx.showLoading({
-      title: '加载中',
-      mask: true,
-    });
-    loadingShow = true;
-  } else {
-    //判断当前请求是否需要添加loading
-    if (!mepara.loading) {
-      wx.showNavigationBarLoading()
-    }
-  }
-  wx.request({
-    url: `${privateData.configUrl.url}${mepara.url}`,
-    data: mepara.data || {},
-    header: defaultheader,
-    // header: {
-    //   'Content-type': 'application/x-www-form-urlencoded',
-    //   'Cookie': 'RedisSessionId=3f78daa1bc2142c8bce7c369c79f7b1d'
-    // },
-    dataType: "json",
-    method: mepara.method || 'POST',
-    success: function(res) {
-      // console.log('rse',res);
-      if (res.statusCode == 200 || res.statusCode == 500) {
-        let result = res.data;
-        if (result.success) {
-          mepara.success && mepara.success(result.data);
-        } else {
-          //有时候success为false但是没有msg的回调,例如登录失败，这个时候需要在调用当前接口的位置下给予一个错误回调
-          if (result.msg) {
-            //正常情况下
-            wx.showModal({
-              title: "警告",
-              content: result.msg,
-              showCancel: false
-            })
-          }
-          mepara.fail && mepara.fail(result.data);
+        let privateData = getApp().privateData;
+        let mepara = {
+                url: para.url || undefined,
+                UV: para.UV || false,
+                //这里将其反过来是因为,如果传入值为false,则最终结构就变成了true
+                loading: (!para.loading) || false,
+                data: para.data || {},
+                success: para.success || function() {},
+                fail: para.fail || function() {},
+                //出现错误时 点击model的确定时进行的回调
+                failCall: para.failCall||function(){},
+                complete: para.complete || function() {},
+        };
+        //判断url是否存在，不存在则报错
+        if (!mepara.url) {
+                consoleError('url', 'url为必填项');
+                return;
         }
-      }
-    },
-    fail: function(response) {
-      // console.log(response);
-      // mepara.fail(response);
-    },
-    complete: function(response) {
-      //隐藏加载loding
-      //判断当前请求是否需要删除loading
-      if (!mepara.loading) {
-        wx.hideNavigationBarLoading();
-      }
-      if (loadingShow) {
-        wx.hideLoading();
-        loadingShow = false;
-      }
-      mepara.complete && mepara.complete(response.data.data);
-    }
-  })
+        // console.log(privateData.loginInfo);
+        //若是为非越权请求并且当前没有获得用户身份,则此请求需要进入请求滞留池中，等待获取用户身份
+        if (!para.UV && typeof privateData.loginInfo === 'undefined') {
+                privateData.requestRetention.push(para);
+                return;
+        }
+        let defaultheader = {
+                // 'content-type': 'application/json', // 默认值
+                'Content-type': 'application/x-www-form-urlencoded',
+                'Cookie': privateData.Token || Token
+        };
+
+        let loadingShow = false;
+        //判断当前用户数据不存在,则视为未登陆状态需要
+        if (typeof privateData.loginInfo === 'undefined') {
+                //在当前页面显示login
+                wx.showLoading({
+                        title: '加载中',
+                        mask: true,
+                });
+                loadingShow = true;
+        } else {
+                //判断当前请求是否需要添加loading
+                if (!mepara.loading) {
+                        wx.showNavigationBarLoading()
+                }
+        }
+        wx.request({
+                url: `${privateData.configUrl.url}${mepara.url}`,
+                data: mepara.data || {},
+                header: defaultheader,
+                // header: {
+                //   'Content-type': 'application/x-www-form-urlencoded',
+                //   'Cookie': 'RedisSessionId=3f78daa1bc2142c8bce7c369c79f7b1d'
+                // },
+                dataType: "json",
+                method: mepara.method || 'POST',
+                success: function(res) {
+                        // console.log('rse',res);
+                        if (res.statusCode == 200 || res.statusCode == 500) {
+                                let result = res.data;
+                                if (result.success) {
+                                        mepara.success && mepara.success(result.data);
+                                } else {
+                                        //有时候success为false但是没有msg的回调,例如登录失败，这个时候需要在调用当前接口的位置下给予一个错误回调
+                                        if (result.msg) {
+                                                //正常情况下
+                                                wx.showModal({
+                                                        title: "警告",
+                                                        content: result.msg,
+                                                        showCancel: false,
+                                                        success(res){
+                                                                if (res.confirm) {
+                                                                        mepara.failCall && mepara.failCall(result.data);
+                                                                } 
+                                                        }
+                                                })
+                                        }
+                                        mepara.fail && mepara.fail(result.data);
+                                }
+                        }
+                },
+                fail: function(response) {
+                        // console.log(response);
+                        // mepara.fail(response);
+                },
+                complete: function(response) {
+                        //隐藏加载loding
+                        //判断当前请求是否需要删除loading
+                        if (!mepara.loading) {
+                                wx.hideNavigationBarLoading();
+                        }
+                        if (loadingShow) {
+                                wx.hideLoading();
+                                loadingShow = false;
+                        }
+                        mepara.complete && mepara.complete(response.data.data);
+                }
+        })
 }
 
 export {
-  $request as
-  default
+        $request as
+        default
 }

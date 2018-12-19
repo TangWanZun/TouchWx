@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "客户详情"
+        "usingComponents": {
+                "tuiInput": "/component/tuiInput"
+        },
+        "navigationBarTitleText": "客户详情"
 }

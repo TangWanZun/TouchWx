@@ -1,14 +1,59 @@
 <view class='tuiInput-box'>
-  <view class='tuiInput'>
-      <view class='tuiInput-header' >
-        <view class='tuiInput-title'>
-          <slot name="left"></slot>
+        <!-- type 为input类型 -->
+        <view class='tuiInput' wx:if="{{type=='input'}}">
+                <view class='tuiInput-header'>
+                        <view class='tuiInput-title'>
+                                <slot name="left"></slot>
+                        </view>
+                </view>
+                <view class='tuiInput-value'>
+                        <input disabled='{{disabled}}'  cursor-spacing="30" type='{{inputType}}' value="{{value}}" bindinput='bindInput' placeholder='未填写'></input>
+                </view>
+                <view class='tuiInput-right'>
+                        <slot name="right"></slot>
+                </view>
         </view>
-      </view>
-      <view class='tuiInput-value'><input bindinput='bindInput' placeholder='未填写'></input></view>
-      <view class='tuiInput-right'>
-        <slot name="right"></slot>
-      </view>
-  </view>
-  <view class='tuiInput-minPx-top'></view>
+        <!-- type 为 select 类型 -->
+        <picker wx:elif="{{type=='select'}}" disabled='{{disabled}}'  mode="selector"  range-key='{{rangeName}}' value="{{selectIndex}}" range="{{range}}" bindchange="selectChange">
+               <view class='tuiInput' >
+                        <view class='tuiInput-header'>
+                                <view class='tuiInput-title'>
+                                        <slot name="left"></slot>
+                                </view>
+                        </view>
+                        <!-- 当前有值 -->
+                        <view class='tuiInput-value' wx:if="{{selectIndex>=0}}">
+                                {{range[selectIndex][rangeName]}}
+                        </view>
+                        <!-- 当前值为空 -->
+                        <view class='tuiInput-value tuiInput-value-none' wx:else>
+                                未填写
+                        </view>
+                        <view class='tuiInput-right' >
+                                <slot name="right"></slot>
+                        </view>
+                </view>
+        </picker>
+         <!-- type 为 date 类型 -->
+        <picker wx:elif="{{type=='date'}}" disabled='{{disabled}}'   mode="date"  value="{{dateValue}}"  bindchange="dateChange">
+               <view class='tuiInput' >
+                        <view class='tuiInput-header'>
+                                <view class='tuiInput-title'>
+                                        <slot name="left"></slot>
+                                </view>
+                        </view>
+                        <!-- 当前有值 -->
+                        <view class='tuiInput-value' wx:if="{{dateValue}}">
+                                {{dateValue}}
+                        </view>
+                        <!-- 当前值为空 -->
+                        <view class='tuiInput-value tuiInput-value-none' wx:else>
+                                未填写
+                        </view>
+                        <view class='tuiInput-right'>
+                                <slot name="right"></slot>
+                        </view>
+                </view>
+        </picker>
+        <view class='tuiInput-minPx-top'></view>
 </view>

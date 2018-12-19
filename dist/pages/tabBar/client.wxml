@@ -1,46 +1,53 @@
 <view class="page-body">
-  <!-- 查询栏 -->
-  <navigator url="/pages/client/query" class='select-box'>
-    <view class='select-content'>
-      <view class='select-icon'><image src='/assets/icon/select.svg'></image></view>
-      <view class='select-text'>查询</view>
-    </view>
-  </navigator>
-  <!-- 用户列表 -->
-  <!-- <view class='client-ltter' wx:for="{{dataList}}" wx:key="{{index}}"> -->
-  <!-- <view class='client-title'>{{index}}</view> -->
-  <view class='client-body app-scroll-none'>
-    <navigator url='/pages/client/clientDetails?openId={{item.OpenId}}' class='client-item' wx:for="{{dataList}}" wx:key="{{itemIndex}}">
-      <view class='client-img {{item.Online?"":"client-img-hidden"}}'>
-        <image binderror="binderror" src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
-        <view class='client-online {{item.Online?"":"client-online-hidden"}}'></view>
-      </view>
-      <view class='client-name'>
-        <view class='client-sex'><image src='/assets/icon/xb_{{m1.sex(item.Sex,item.NSex)}}.svg'></image></view>
-        <view class='client-name-text'>{{item.CardName?item.CardName:item.NickName}}</view>
-      </view>
-    </navigator>
-    <view class="app-list-loging" wx:if="{{pageOver}}">数据加载完成</view>
-    <view class="app-list-loging" wx:else><view>数据加载中</view><image src='/assets/icon/jzz.svg'></image></view>
-  </view>
-  <wxs module="m1">
-  var sex = function(a,b) {
-    if(a){
-      if(a=="男"){
-        return "nan"
-      }else if(a=="女"){
-        return "nv"
-      }
-    }else if(b){
-      if(b=="男"){
-        return "nan"
-      }else if(b=="女"){
-        return "nv"
-      }
-    }else{
-      return "wz"
-    }
-  }
-  module.exports.sex = sex;
-  </wxs>
+        <!-- 查询栏 -->
+        <navigator url="/pages/client/query" class='select-box'>
+                <view class='select-content'>
+                        <view class='select-icon'>
+                                <image src='/assets/icon/select.svg'></image>
+                        </view>
+                        <view class='select-text'>查询</view>
+                </view>
+        </navigator>
+        <!-- 用户列表 -->
+        <!-- <view class='client-ltter' wx:for="{{dataList}}" wx:key="{{index}}"> -->
+        <!-- <view class='client-title'>{{index}}</view> -->
+        <view class='client-body app-scroll-none'>
+                <navigator url='/pages/client/clientDetails?openId={{item.OpenId}}&online={{item.Online}}' class='client-item' wx:for="{{dataList}}" wx:key="{{itemIndex}}">
+                        <view class='client-img {{item.Online?"":"client-img-hidden"}}'>
+                                <image binderror="binderror" src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
+                                <view class='client-online {{item.Online?"":"client-online-hidden"}}'></view>
+                        </view>
+                        <view class='client-name'>
+                                <view class='client-sex'>
+                                        <image src='/assets/icon/xb_{{m1.sex(item.Sex,item.NSex)}}.svg'></image>
+                                </view>
+                                <view class='client-name-text'>{{item.CardName?item.CardName:item.NickName}}</view>
+                        </view>
+                </navigator>
+                <view class="app-list-loging" wx:if="{{pageOver}}">数据加载完成</view>
+                <view class="app-list-loging" wx:else>
+                        <view>数据加载中</view>
+                        <image src='/assets/icon/jzz.svg'></image>
+                </view>
+        </view>
+        <wxs module="m1">
+                var sex = function(a, b) {
+                        if (a) {
+                                if (a == "男") {
+                                        return "nan"
+                                } else if (a == "女") {
+                                        return "nv"
+                                }
+                        } else if (b) {
+                                if (b == "男") {
+                                        return "nan"
+                                } else if (b == "女") {
+                                        return "nv"
+                                }
+                        } else {
+                                return "wz"
+                        }
+                }
+                module.exports.sex = sex;
+        </wxs>
 </view>

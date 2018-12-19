@@ -1,261 +1,346 @@
-.page-body{
-  padding-top:1px;
-  background-color: #f9faf7;
-  min-height: 100vh;
+.page-body {
+        padding-top: 1px;
+        background-color: #f9faf7;
+        min-height: 100vh;
 }
 
+/* 资料卡片 */
+
+.page-client-info {
+        margin: 0px 10px;
+        margin-bottom: 15px;
+        margin-top: 30px;
+        border-radius: 5px;
+        background-color: white;
+        padding: 10px 15px;
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+}
+.page-client-info-img{
+        width:60px;
+        height: 60px;
+        border-radius: 100%;
+        border:1px solid rgba(0, 0, 0, 0.1);
+        background-color: white;
+        position: absolute;
+        top:-30px;
+        left:10px;
+}
+.page-client-info-text{
+        font-size: 12px;
+        padding: 0 5px;
+}
 /* 客户卡片 */
-.page-client-card{
-  margin:0px 10px;
-  border-radius: 5px;
-  background-color: white;
-  padding:15px;
-}
-.page-client-row{
-  display: flex;
-  justify-content: space-between;
-  font-size: 15px;
-  margin-bottom: 10px;
-}
-/* 电子券选择区域 */
-.page-Ecard-box{
-  background-color: white;
-  margin-top: 20px;
-  padding:15px;
-}
-.page-Ecard-box-head{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.page-Ecard-box-title{
-  font-size: 17px;
-  padding-left:10px;
-  border-left: 3px solid #4eb4ff;
-}
-.page-Ecard-box-head-right{
-  font-size: 15px;
-  color: #4eb4ff;
-}
-/* 未选择电子券 */
-.page-Ecard-list-none{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-.page-Ecard-list-none>image{
-  width:20vw;
-  height: 20vw;
-  opacity: 0.5;
-  margin-bottom: 10px;
-}
-.page-Ecard-list-none>span{
-  font-size: 15px;
-  color:rgba(0, 0, 0, 0.3);
-}
-.page-Ecard-list{
-  padding-top: 20px;
-  padding-bottom: 60px;
-}
-/* 单个卡券 */
-.page-Ecard{
-  display: flex;
-  justify-content:space-between;
-  align-items: stretch;
-  border-radius: 5px;
-  border:1px solid rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
-  padding:10px;
+
+.page-client-card {
+        margin: 0px 10px;
+        border-radius: 5px;
+        background-color: white;
+        padding: 15px;
 }
 
-.page-Ecard-left{
-  flex-grow: 1;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+.page-client-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 15px;
+        margin-bottom: 10px;
 }
-.page-Ecard-money{
-  color:orange;
-  margin-right: 10px;
+
+/* 电子券选择区域 */
+
+.page-Ecard-box {
+        background-color: white;
+        margin-top: 20px;
+        padding: 15px;
 }
-.page-Ecard-name{
-  font-size: 17px;
-  margin-bottom: 5px;
+
+.page-Ecard-box-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 }
-.page-Ecard-type{
-  font-size: 15px;
+
+.page-Ecard-box-title {
+        font-size: 17px;
+        padding-left: 10px;
+        border-left: 3px solid #4eb4ff;
 }
+
+.page-Ecard-box-head-right {
+        font-size: 15px;
+        color: #4eb4ff;
+}
+
+/* 未选择电子券 */
+
+.page-Ecard-list-none {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+}
+
+.page-Ecard-list-none>image {
+        width: 20vw;
+        height: 20vw;
+        opacity: 0.5;
+        margin-bottom: 10px;
+}
+
+.page-Ecard-list-none>span {
+        font-size: 15px;
+        color: rgba(0, 0, 0, 0.3);
+}
+
+.page-Ecard-list {
+        padding-top: 20px;
+        padding-bottom: 60px;
+}
+
+/* 单个卡券 */
+
+.page-Ecard {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        border-radius: 5px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        margin-bottom: 10px;
+        padding: 10px;
+}
+
+.page-Ecard-left {
+        flex-grow: 1;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+}
+
+.page-Ecard-money {
+        color: orange;
+        margin-right: 10px;
+}
+
+.page-Ecard-name {
+        font-size: 17px;
+        margin-bottom: 5px;
+}
+
+.page-Ecard-type {
+        font-size: 15px;
+}
+
 /* //右侧是用来放置对勾和填写数字的地方 */
-.page-Ecard-right{
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
+
+.page-Ecard-right {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
 }
-.page-Ecard-input-box{
-  width:70px;
-  height: 50px;
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  border-radius: 2px;
-  padding:0 10px;
-  padding-bottom: 5px;
+
+.page-Ecard-input-box {
+        width: 70px;
+        height: 50px;
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        border-radius: 2px;
+        padding: 0 10px;
+        padding-bottom: 5px;
 }
-.page-Ecard-input-text{
-  font-size: 12px;
-  color:rgba(0, 0, 0, 0.3);
-  padding-bottom: 5px;
+
+.page-Ecard-input-text {
+        font-size: 12px;
+        color: rgba(0, 0, 0, 0.3);
+        padding-bottom: 5px;
 }
-.page-Ecard-input{
-  font-size: 18px;
+
+.page-Ecard-input {
+        font-size: 18px;
 }
+
 /* 底部消费详情 */
-.page-foot{
-  position: fixed;
-  z-index: 2;
-  bottom: 0px;
-  left:0px;
-  width:100vw;
-  height: 55px;
-  background-color: white;
-  border-top:1px solid rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content:space-between;
-  align-items: stretch;
+
+.page-foot {
+        position: fixed;
+        z-index: 2;
+        bottom: 0px;
+        left: 0px;
+        width: 100vw;
+        height: 55px;
+        background-color: white;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
 }
+
 /*左侧信息*/
-.page-foot-left{
-  padding:5px 0;
-  padding-left: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+
+.page-foot-left {
+        padding: 5px 0;
+        padding-left: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 }
+
 /* 卡券抵扣 */
-.page-foot-deduction{
-  font-size: 12px;
+
+.page-foot-deduction {
+        font-size: 12px;
 }
+
 /* 消费总计 */
-.page-foot-total{
-  font-size: 17px;
+
+.page-foot-total {
+        font-size: 17px;
 }
-.page-foot-total>span{
-  color:orange;
+
+.page-foot-total>span {
+        color: orange;
 }
+
 /* 信息提交按钮 */
-.page-foot-send{
-  min-width:80px;
-  width:25vw;
-  /* background-color: red; */
-  background-image: linear-gradient(90deg, #FF8282  0%, #FF5858 100%);
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+.page-foot-send {
+        min-width: 80px;
+        width: 25vw;
+        /* background-color: red; */
+        background-image: linear-gradient(90deg, #ff8282 0%, #ff5858 100%);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 }
+
 /* 储值 */
+
 /* 储值的头部使用的是电子券的 */
-.page-stored-list{
-  padding:0 10px;
+
+.page-stored-list {
+        padding: 0 10px;
 }
+
 /*电子券选择窗口*/
-.page-selectEcard{
-  box-shadow:5px 0 10px 1px rgba(0, 0, 0, 0.1);
-  position: fixed;
-  top:0px;
-  left:0px;
-  width:100vw;
-  height: 100vh;
-  z-index: 3;
-  background-color: white;
-  transform: translateX(-110vw);
-  transition: transform 0.2s;
+
+.page-selectEcard {
+        box-shadow: 5px 0 10px 1px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100vw;
+        height: 100vh;
+        z-index: 3;
+        background-color: white;
+        transform: translateX(-110vw);
+        transition: transform 0.2s;
 }
-.page-selectEcard-show{
-  transform: translateX(0);
+
+.page-selectEcard-show {
+        transform: translateX(0);
 }
-.page-selectEcard-head{
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content:space-between;
-  align-items: center;
-  padding:10px 0;
-  font-size: 15px;
+
+.page-selectEcard-head {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        font-size: 15px;
 }
-.page-selectEcard-head-left{
-  flex-shrink: 0;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding:0 10px;
-  opacity: 0;
+
+.page-selectEcard-head-left {
+        flex-shrink: 0;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0 10px;
+        opacity: 0;
 }
-.page-selectEcard-head-left>image{
-  transform: rotate(180deg);
-  width:16px;
-  height: 16px;
+
+.page-selectEcard-head-left>image {
+        transform: rotate(180deg);
+        width: 16px;
+        height: 16px;
 }
-.page-selectEcard-head-title{
-  flex-grow: 1;
-  text-align: center;
+
+.page-selectEcard-head-title {
+        flex-grow: 1;
+        text-align: center;
 }
-.page-selectEcard-head-right{
-  flex-shrink: 0;
-  padding:0 15px;
+
+.page-selectEcard-head-right {
+        flex-shrink: 0;
+        padding: 0 15px;
 }
+
 /* 选择电子券内容 */
-.page-selectEcard-body{
-  box-sizing: border-box;
-  height: calc( 100vh - 41px );
+
+.page-selectEcard-body {
+        box-sizing: border-box;
+        height: calc(100vh - 41px);
 }
-.page-selectEcard-body .page-Ecard{
-  margin-left:10px;
-  margin-right:10px;
+
+.page-selectEcard-body .page-Ecard {
+        margin-left: 10px;
+        margin-right: 10px;
 }
-.page-selectEcard-body .page-Ecard:first-child{
-  margin-top: 10px;
+
+.page-selectEcard-body .page-Ecard:first-child {
+        margin-top: 10px;
 }
+
 /*input  类型*/
-.input{
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  position: relative;
-  padding:20px 0 5px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+.input {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        position: relative;
+        padding: 20px 0 5px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
-.input-first{
-  padding-top:0px;
+
+.input-first {
+        padding-top: 0px;
 }
-.input-header{
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+
+.input-header {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
 }
-.input-icon{
-  width:20px;
-  height: 20px;
-  margin-right: 10px;
-  opacity: 0.5;
+
+.input-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        opacity: 0.5;
 }
-.input-title{
-  font-size: 15px;
-  width: 80px;
+
+.input-title {
+        font-size: 15px;
+        width: 80px;
 }
-.input-value{
-  font-size: 15px;
-  flex-grow: 1;
+
+.input-value {
+        font-size: 15px;
+        flex-grow: 1;
 }
-.input-right{
-  flex-shrink: 0;
-  width:15px;
-  display: flex;
-  align-items: center;
+
+.input-right {
+        flex-shrink: 0;
+        width: 15px;
+        display: flex;
+        align-items: center;
 }
-.input-right>image{
-  width:15px;
-  height:15px;
-  display:block;
+
+.input-right>image {
+        width: 15px;
+        height: 15px;
+        display: block;
 }
-.input-in{
-  position: absolute;
-  height: 100%;
+
+.input-in {
+        position: absolute;
+        height: 100%;
 }

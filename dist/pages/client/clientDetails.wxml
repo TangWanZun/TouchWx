@@ -1,67 +1,71 @@
 <view class='body'>
-  <!-- 头部 -->
-  <view class='header'>
-    <!-- 头部内容 -->
-    <view class='header-center'>
-      <view class='header-top'>
-        <!-- 头像 -->
-        <view class='header-img'>
-          <image  src='{{formData.ProfilePhoto?imgUrl+formData.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
-        </view>
-        <!-- 爱好标签 -->
-        <view class='header-likes-box'>
-          <view class='header-likes'>
-            <view class='header-likes-item'wx:if="{{index<10}}" wx:for="{{labelList}}" wx:key="{{index}}">{{item.Name}}</view>
-          </view>
-        </view>
-      </view>
-      <view class='header-botton'>
-        <view class='header-botton-item'>
-          <view class='header-botton-item-title'>储值</view>
-          <view class='header-botton-item-number'>￥{{formData.AvailableBalance||'-'}}</view>
-        </view>
-        <view class='header-botton-item'>
-          <view class='header-botton-item-title'>积分</view>
-          <view class='header-botton-item-number'>{{formData.AvailableScore||'-'}}</view>
-        </view>
-        <view class='header-botton-item'>
-          <view class='header-botton-item-title'>电子券</view>
-          <view class='header-botton-item-number'>{{formData.AvailableECard||'-'}}张</view>
-        </view>
-        <!-- <view class='header-botton-item'>
+        <!-- 头部 -->
+        <view class='header'>
+                <!-- 头部内容 -->
+                <view class='header-center'>
+                        <view class='header-top'>
+                                <!-- 头像 -->
+                                <view class='header-img'>
+                                        <image src='{{formData.ProfilePhoto?imgUrl+formData.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
+                                </view>
+                                <!-- 爱好标签 -->
+                                <view class='header-likes-box'>
+                                        <view class='header-likes'>
+                                                <view class='header-likes-item' wx:if="{{index<10}}" wx:for="{{labelList}}" wx:key="{{index}}">{{item.Name}}</view>
+                                        </view>
+                                </view>
+                        </view>
+                        <view class='header-botton'>
+                                <view class='header-botton-item'>
+                                        <view class='header-botton-item-title'>储值</view>
+                                        <view class='header-botton-item-number'>￥{{formData.AvailableBalance||'-'}}</view>
+                                </view>
+                                <view class='header-botton-item'>
+                                        <view class='header-botton-item-title'>积分</view>
+                                        <view class='header-botton-item-number'>{{formData.AvailableScore||'-'}}</view>
+                                </view>
+                                <view class='header-botton-item'>
+                                        <view class='header-botton-item-title'>电子券</view>
+                                        <view class='header-botton-item-number'>{{formData.AvailableECard||'-'}}张</view>
+                                </view>
+                                <!-- <view class='header-botton-item'>
           <view class='header-botton-item-title'>电子券</view>
           <view class='header-botton-item-number'>{{clientData.coupon}}张</view>
         </view> -->
-      </view>
-    </view>
-    <!-- 背景图 -->
-    <view class='header-bg'>
-      <image mode='aspectFill'  src='{{formData.ProfilePhoto?imgUrl+formData.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
-    </view>
-  </view>
-  <!-- 正文内容 -->
-  <view class='content'>
-    <view class='content-card'>
-      <view class='content-card-title'>
-        <view class='content-card-title-left'>联系方式</view>
-        <!-- <view class='content-card-title-right'>更改联系方式</view> -->
-      </view>
-      <view class='content-card-body'>
-        <view class='panel-item'>
-          <!-- 拨打电话 -->
-          <view class='panel' >
-            <view class='panel-number'>{{formData.Phone||'-'}}</view>
-            <view class='panel-icon' data-panel="{{formData.Phone}}" catchtap="makePhoneCall"><image src='/assets/icon/call.svg'></image></view>
-          </view>
-          <!-- 微信 -->
-          <view class='panel'>
-            <view class='panel-number'>{{formData.NickName}}</view>
-            <navigator  url='/pages/message/chat?openId={{formData.OpenId}}&cardName={{formData.CardName}}&wxId={{formData.WxId}}&headImg={{formData.ProfilePhoto}}' class='panel-icon'><image src='/assets/icon/WX.svg'></image></navigator>
-          </view>
+                        </view>
+                </view>
+                <!-- 背景图 -->
+                <view class='header-bg'>
+                        <image mode='aspectFill' src='{{formData.ProfilePhoto?imgUrl+formData.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
+                </view>
         </view>
-      </view>
-    </view>
-    <!-- <view class='content-card'>
+        <!-- 正文内容 -->
+        <view class='content'>
+                <view class='content-card'>
+                        <view class='content-card-title'>
+                                <view class='content-card-title-left'>联系方式</view>
+                                <!-- <view class='content-card-title-right'>更改联系方式</view> -->
+                        </view>
+                        <view class='content-card-body'>
+                                <view class='panel-item'>
+                                        <!-- 拨打电话 -->
+                                        <view class='panel'>
+                                                <view class='panel-number'>{{formData.Phone||'-'}}</view>
+                                                <view class='panel-icon' data-panel="{{formData.Phone}}" catchtap="makePhoneCall">
+                                                        <image src='/assets/icon/call.svg'></image>
+                                                </view>
+                                        </view>
+                                        <!-- 微信 -->
+                                        <view class='panel'>
+                                                <view class='panel-number'>{{formData.NickName}}</view>
+                                                <navigator url='/pages/message/chat?openId={{formData.OpenId}}&cardName={{formData.CardName}}&wxId={{formData.WxId}}&headImg={{formData.ProfilePhoto}}&online={{online}}' class='panel-icon'>
+                                                        <image src='/assets/icon/WX.svg'></image>
+                                                </navigator>
+                                        </view>
+                                </view>
+                        </view>
+                </view>
+                <!-- <view class='content-card'>
       <view class='content-card-title'>
         <view class='content-card-title-left'>服务顾问</view>
         <view class='content-card-title-right'>更改顾问</view>
@@ -81,131 +85,70 @@
         </view>
       </view>
     </view> -->
-    <view class='content-card' wx:if="{{carList.length>0}}">
-      <view class='content-card-title'>
-        <view class='content-card-title-left'>绑定车辆</view>
-        <view class='content-card-title-right'></view>
-      </view>
-      <view class='content-card-body'>
-        <navigator url="clientDetails/carDetails?openId={{formData.OpenId}}&carId={{item.CarId}}" class='car' wx:for="{{carList}}" wx:key="{{index}}">
-          <view class='car-con'>
-            <!-- <view class='car-img'><image src='/assets/carIcon/{{item.brand}}-i.svg'></image></view> -->
-            <view class='car-model'>{{item.CarStyle}}</view>
-          </view>
-          <view class='car-bg'><image mode='aspectFit' src='/assets/icon/lc.svg'></image></view>
-          <view class='car-number'>{{item.CarNum}}</view>
-        </navigator>
-      </view>
-    </view>
-    <!-- <view class='content-card' style='padding-bottom:40px'>
-      <view class='content-card-title'>
-        <view class='content-card-title-left'>用户画像</view>
-        <view class='content-card-title-right'>保存修改</view>
-      </view>
-      <view class='content-card-body'>
-        <picker mode="selector" data-key="{{index}}"  range="{{item.list}}" value="{{item.value}}" bindchange="selectCall" wx:for="{{clientData.portrayal}}" wx:key="{{index}}">
-          <view class='client'>
-              <view class='client-header' >
-                <view class='client-title'>{{item.title}}</view>
-              </view>
-              <view class='client-value'>{{item.list[item.value]}}</view>
-              <view class='client-right'><image src='/assets/icon/right.svg'></image></view>
-          </view>
-        </picker>
-        <view class='client' >
-              <view class='client-header' >
-                <view class='client-title'>常去商圈</view>
-              </view>
-              <view class='client-value'><input cursor-spacing="30"></input></view>
-          </view>
-      </view>
-    </view> -->
-    <view class='content-card' style='padding-bottom:40px'>
-      <view class='content-card-title'>
-        <view class='content-card-title-left'>用户信息</view>
-        <!-- <view class='content-card-title-right'>保存修改</view> -->
-      </view>
-      <view class='content-card-body'>
-        <!-- 性别 -->
-        <!-- <picker mode="selector" data-key="userInfor.Sex" data-arr="{{sexArr}}" range="{{sexArr}}" bindchange="inputCall" > -->
-          <view class='client'>
-              <view class='client-header' >
-                <view class='client-title'>性别</view>
-              </view>
-              <view class='client-value'>{{userInfor.Sex}}</view>
-              <!-- <view class='client-right'><image src='/assets/icon/right.svg'></image></view> -->
-          </view>
-        <!-- </picker> -->
-        <!-- 出生日 -->
-        <!-- <picker mode="date" data-key="userInfor.BirthDate" value="{{userInfor.BirthDate}}"  bindchange="inputCall"> -->
-          <view class='client'>
-              <view class='client-header'>
-                <view class='client-title'>出生日</view>
-              </view>
-              <view class='client-value'>{{userInfor.BirthDate}}</view>
-              <!-- <view class='client-right'><image src='/assets/icon/right.svg'></image></view> -->
-          </view>
-        <!-- </picker> -->
-        <!-- 学历 -->
-        <!-- <picker mode="selector" data-key="education.value" data-arr="{{education}}" range="{{education.list}}" range-key='Name' bindchange="inputCall" > -->
-          <view class='client'>
-              <view class='client-header' >
-                <view class='client-title'>学历</view>
-              </view>
-              <view class='client-value'>{{userInfor.EducationCode}}</view>
-              <!-- <view class='client-right'><image src='/assets/icon/right.svg'></image></view> -->
-          </view>
-        <!-- </picker> -->
-        <view class='client'>
-            <view class='client-header' >
-              <view class='client-title'>职业</view>
-            </view>
-            <view class='client-value'><input disabled="true"  data-key="userInfor.Profession" placeholder='未填写' value='{{userInfor.Profession}}' cursor-spacing="30" bindinput='inputCall'></input></view>
+                <view class='content-card' wx:if="{{carList.length>0}}">
+                        <view class='content-card-title'>
+                                <view class='content-card-title-left'>绑定车辆</view>
+                                <view class='content-card-title-right'></view>
+                        </view>
+                        <view class='content-card-body'>
+                                <navigator url="clientDetails/carDetails?openId={{formData.OpenId}}&carId={{item.CarId}}" class='car' wx:for="{{carList}}" wx:key="{{index}}">
+                                        <view class='car-con'>
+                                                <!-- <view class='car-img'><image src='/assets/carIcon/{{item.brand}}-i.svg'></image></view> -->
+                                                <view class='car-model'>{{item.CarStyle}}</view>
+                                        </view>
+                                        <view class='car-bg'>
+                                                <image mode='aspectFit' src='/assets/icon/lc.svg'></image>
+                                        </view>
+                                        <view class='car-number'>{{item.CarNum}}</view>
+                                </navigator>
+                        </view>
+                </view>
+                <view class='content-card' style='padding-bottom:40px'>
+                        <view class='content-card-title'>
+                                <view class='content-card-title-left'>用户信息</view>
+                                <view class='content-card-title-right' bindtap='sendData'>保存修改</view>
+                        </view>
+                        <view class='content-card-body'>
+                                <!-- 性别 -->
+                                <tuiInput type="select" data-key="formData.Sex" range="{{sexRange}}" bindinput="fromInput" value="{{formData.Sex}}">
+                                        <view slot="left">性别</view>
+                                        <image slot="right" src='/assets/icon/right.svg'></image>
+                                </tuiInput>
+                                 <!-- 出生日 -->
+                                <tuiInput type="date" data-key="formData.BirthDate"  value="{{formData.BirthDate}}" bindinput="fromInput">
+                                        <view slot="left">出生日</view>
+                                        <image slot="right" src='/assets/icon/right.svg'></image>
+                                </tuiInput>
+                                <!-- 学历 -->
+                                <tuiInput type="select" data-key="formData.EducationCode" range="{{educationRange}}" bindinput="fromInput" value="{{formData.EducationCode}}">
+                                        <view slot="left">学历</view>
+                                        <image slot="right" src='/assets/icon/right.svg'></image>
+                                </tuiInput>
+                                <!-- 职业 -->
+                                <tuiInput data-key="formData.Profession" bindinput="fromInput" value="{{formData.Profession}}">
+                                        <view slot="left">职业</view>
+                                </tuiInput>
+                                <!-- 证件号 -->
+                                <tuiInput data-key="formData.IDCard"  input-type="idcard" bindinput="fromInput" value="{{formData.IDCard}}">
+                                        <view slot="left">证件号</view>
+                                </tuiInput>
+                                <!-- 住址 -->
+                                <tuiInput data-key="formData.AddressDetails"   bindinput="fromInput" value="{{formData.AddressDetails}}">
+                                        <view slot="left">住址</view>
+                                </tuiInput>
+                                <!-- 子女情况 -->
+                                <tuiInput data-key="formData.ChildrenDesc"  bindinput="fromInput" value="{{formData.ChildrenDesc}}">
+                                        <view slot="left">子女情况</view>
+                                </tuiInput>
+                                <!-- 子女数量-- -->
+                                <tuiInput data-key="formData.ChildrenCount" bindinput="fromInput" value="{{formData.ChildrenCount}}">
+                                        <view slot="left">子女数量</view>
+                                </tuiInput>
+                                <!-- 常去商圈 -->
+                                <tuiInput data-key="formData.OftenGoto" bindinput="fromInput" value="{{formData.OftenGoto}}">
+                                        <view slot="left">常去商圈</view>
+                                </tuiInput>
+                        </view>
+                </view>
         </view>
-        <view class='client'>
-            <view class='client-header' >
-              <view class='client-title'>证件号</view>
-            </view>
-            <view class='client-value'><input disabled="true"  data-key="userInfor.IDCard" placeholder='未填写' value='{{userInfor.IDCard}}' cursor-spacing="30" type="idcard" bindinput='inputCall'></input></view>
-        </view>
-        <view class='client'>
-            <view class='client-header' >
-              <view class='client-title'>住址</view>
-            </view>
-            <view class='client-value'><input disabled="true"  data-key="userInfor.AddressDetails" placeholder='未填写' value='{{userInfor.AddressDetails}}' cursor-spacing="30" bindinput='inputCall'></input></view>
-        </view>
-        <!-- 婚姻 -->
-        <!-- <picker mode="selector" data-key="userInfor.marriage.value" range="{{userInfor.marriage.list}}" value="{{item.value}}" bindchange="inputCall" > -->
-          <!-- <view class='client'>
-              <view class='client-header' >
-                <view class='client-title'>婚姻状况</view>
-              </view>
-              <view class='client-value'>{{userInfor.marriage.list[userInfor.marriage.value]}}</view> -->
-              <!-- <view class='client-right'><image src='/assets/icon/right.svg'></image></view> -->
-          <!-- </view> -->
-        <!-- </picker> -->
-        <!-- 子女情况 -->
-        <view class='client'>
-            <view class='client-header' >
-              <view class='client-title'>子女情况</view>
-            </view>
-            <view class='client-value'><input disabled="true"  data-key="userInfor.ChildrenDesc" placeholder='未填写' value='{{userInfor.ChildrenDesc}}'  cursor-spacing="30" bindinput='inputCall'></input></view>
-        </view>
-        <!-- 子女数量-->
-        <view class='client'>
-            <view class='client-header' >
-              <view class='client-title'>子女数量</view>
-            </view>
-            <view class='client-value'><input disabled="true" data-key="userInfor.ChildrenCount" placeholder='未填写' value='{{userInfor.ChildrenCount}}'  type="number" cursor-spacing="30" bindinput='inputCall'></input></view>
-        </view>
-        <!--常去商圈 -->
-        <view class='client'>
-            <view class='client-header' >
-              <view class='client-title'>常去商圈</view>
-            </view>
-            <view class='client-value'><input disabled="true"  data-key="userInfor.OftenGoto" placeholder='未填写' value='{{userInfor.OftenGoto}}'  cursor-spacing="30" bindinput='inputCall'></input></view>
-        </view>
-      </view>
-    </view>
-  </view>
 </view>

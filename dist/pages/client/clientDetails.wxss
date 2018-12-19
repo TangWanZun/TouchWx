@@ -109,6 +109,7 @@
 }
 /* 正文模块内容 */
 .content-card-body{
+        padding-top: 20px;
 }
 .content-card{
   margin-bottom: 15px;
