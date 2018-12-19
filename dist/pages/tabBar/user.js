@@ -12,18 +12,22 @@ Page({
   */
   scanCode(){
     let _this = this;
-    wx.scanCode({
-      scanType: ['qrCode'],
-      success(res){
-        //扫码返回成功跳转会员消费页面
-        wx.navigateTo({
-          url: '/pages/user/work/cardCustomer?id=' + res.result
-        });          
-      },
-      fail(){
+    //扫码返回成功跳转会员消费页面
+    wx.navigateTo({
+      url: '/pages/user/work/cardCustomer?id=123123123123'
+    });     
+    // wx.scanCode({
+    //   scanType: ['qrCode'],
+    //   success(res){
+    //     //扫码返回成功跳转会员消费页面
+    //     wx.navigateTo({
+    //       url: '/pages/user/work/cardCustomer?id=' + res.result
+    //     });          
+    //   },
+    //   fail(){
 
-      }
-    })
+    //   }
+    // })
   },
   /**
    * 生命周期函数--监听页面加载

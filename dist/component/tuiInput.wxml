@@ -1,0 +1,14 @@
+<view class='tuiInput-box'>
+  <view class='tuiInput'>
+      <view class='tuiInput-header' >
+        <view class='tuiInput-title'>
+          <slot name="left"></slot>
+        </view>
+      </view>
+      <view class='tuiInput-value'><input bindinput='bindInput' placeholder='未填写'></input></view>
+      <view class='tuiInput-right'>
+        <slot name="right"></slot>
+      </view>
+  </view>
+  <view class='tuiInput-minPx-top'></view>
+</view>

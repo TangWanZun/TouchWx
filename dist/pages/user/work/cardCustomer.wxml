@@ -1,5 +1,25 @@
 <!--pages/user/cardCustomer.wxml-->
 <view class='page-body'>
+  <view class='page-client-card app-shadow-3' style='margin-bottom:20px'>
+    <tuiInput>
+      <view slot="left">客户姓名</view>
+    </tuiInput>
+    <tuiInput>
+      <view slot="left">客户性别</view>
+      <image slot="right" src='/assets/icon/right.svg'></image>
+    </tuiInput>
+    <tuiInput>
+      <view slot="left">客户年龄</view>
+      <image slot="right" src='/assets/icon/right.svg'></image>
+    </tuiInput>
+    <tuiInput>
+      <view slot="left">客户生日</view>
+      <image slot="right" src='/assets/icon/right.svg'></image>
+    </tuiInput>
+    <tuiInput>
+      <view slot="left">客户姓名</view>
+    </tuiInput>
+  </view>
   <!-- 客户卡片 -->
   <view class='page-client-card app-shadow-3'>
     <view class='input input-first'>

@@ -2,6 +2,7 @@
   "navigationBarTitleText": "会员消费",
   "navigationBarBackgroundColor": "#f9faf7",
   "usingComponents": {
-    "llbox": "/component/llbox"
+    "llbox": "/component/llbox",
+    "tuiInput":"/component/tuiInput"
   }
 }

@@ -1,0 +1,50 @@
+.tuiInput-box{
+  padding-top:7px;
+  padding-bottom: 12px;
+}
+.tuiInput{
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  position: relative;
+  padding-bottom:6px;
+}
+.tuiInput-header{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.tuiInput-icon{
+  width:20px;
+  height: 20px;
+  margin-right: 10px;
+  opacity: 0.5;
+}
+.tuiInput-title{
+  font-size: 15px;
+  width: 80px;
+}
+.tuiInput-value{
+  font-size: 15px;
+  flex-grow: 1;
+}
+.tuiInput-right{
+  flex-shrink: 0;
+  width:15px;
+  display: flex;
+  align-items: center;
+}
+.tuiInput-right>image{
+  width:15px;
+  height:15px;
+  display:block;
+}
+.tuiInput-in{
+  position: absolute;
+  height: 100%;
+}
+/*细如发丝 */
+.tuiInput-minPx-top{
+  background-image: linear-gradient(180deg, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.3) 49%, rgba(0,0,0,0) 50%);
+  height: 1px;
+}
