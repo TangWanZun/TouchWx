@@ -6,7 +6,7 @@
       <view class='header-top'>
         <!-- 头像 -->
         <view class='header-img'>
-          <image src='{{imgUrl+formData.ProfilePhoto}}'></image>
+          <image  src='{{formData.ProfilePhoto?imgUrl+formData.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
         </view>
         <!-- 爱好标签 -->
         <view class='header-likes-box'>
@@ -36,7 +36,7 @@
     </view>
     <!-- 背景图 -->
     <view class='header-bg'>
-      <image mode='aspectFill' src='{{imgUrl+formData.ProfilePhoto}}'></image>
+      <image mode='aspectFill'  src='{{formData.ProfilePhoto?imgUrl+formData.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
     </view>
   </view>
   <!-- 正文内容 -->
