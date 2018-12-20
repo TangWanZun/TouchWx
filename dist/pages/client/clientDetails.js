@@ -15,6 +15,7 @@ Page({
                 labelList: [],
                 //是否在线
                 online:false,
+                openId:'',
                 //学历
                 educationRange: [],
                 //性别
@@ -74,7 +75,8 @@ Page({
                 var _this = this;
                 //加载是否在线
                 this.setData({
-                        online: options.online
+                        online: options.online,
+                        openId: options.openId
                 })
                 //GetNewNeedReplyList需要接受一个参数是openid
                 wx.showLoading({
@@ -118,6 +120,7 @@ Page({
                         },
                         complete() {
                                 wx.hideLoading();
+                                wx.stopPullDownRefresh();
                         }
                 })
 
@@ -181,7 +184,10 @@ Page({
          * 页面相关事件处理函数--监听用户下拉动作
          */
         onPullDownRefresh: function() {
-
+                this.onLoad({
+                        openId: this.data.openId,
+                        online: this.data.online,
+                })
         },
 
         /**

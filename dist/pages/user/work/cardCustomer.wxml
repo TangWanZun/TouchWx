@@ -1,9 +1,28 @@
+
+<!-- 这个是用来判断当当前的那张电子券是不是需要出现 -->
+<wxs module="isEcardShow">
+function isEcardShow(type,used){
+        if(type=='A01'){
+                return true;
+        }
+        else if(type=='A02'){
+                return used
+        }
+        else if(type=='A03'){
+                return !used
+        }
+}
+module.exports.fun = isEcardShow;
+</wxs>
 <!--pages/user/cardCustomer.wxml-->
 <view class='page-body'>
         <!-- 资料卡片 -->
         <view class='page-client-info app-shadow-3'>
-                <view class='page-client-info-img'></view>
-                <navigator  url='/pages/client/clientDetails?openId={{openId}}' class="page-client-info-text">查看用户信息</navigator> 
+                <view class='page-client-info-img'>
+                        <clientImg src="{{vipUser.ProfilePhoto}}"></clientImg>
+                </view>
+                <view class='page-client-info-name'>{{vipUser.CardName}}</view>
+                <navigator  url='/pages/client/clientDetails?openId={{openId}}&online=true' class="page-client-info-text">查看用户信息</navigator> 
         </view>
         <!-- 客户卡片 -->
         <view class='page-client-card app-shadow-3'>
@@ -26,17 +45,11 @@
                 <tuiInput  disabled="{{true}}"  value="{{formData.VIN}}">
                         <view slot="left">VIN</view>
                 </tuiInput>
-                <!-- <picker mode="selector" data-key="userInfor.DocType.value" range-key='value' range="{{userInfor.DocType.list}}" bindchange="inputCall">
-                        <view class='input'>
-                                <view class='input-header'>
-                                        <view class='input-title'>业务类型</view>
-                                </view>
-                                <view class='input-value'>{{userInfor.DocType.list[userInfor.DocType.value].value}}</view>
-                                <view class='input-right'>
-                                        <image src='/assets/icon/right.svg'></image>
-                                </view>
-                        </view>
-                </picker> -->
+                <!-- 业务类型 -->
+                <tuiInput type="select" data-key="formData.DocType"  range="{{docTypeRange}}" bindinput="inputSelect">
+                        <view slot="left">业务类型 </view>
+                        <image slot="right" src='/assets/icon/right.svg'></image>
+                </tuiInput>
         </view>
         <!--储值-->
         <view class='page-Ecard-box'>
@@ -44,59 +57,58 @@
                         <view class='page-Ecard-box-title'>储值卡与实收</view>
                 </view>
                 <view class='page-stored-list'>
-                        <view class='input'>
-                                <view class='input-header'>
-                                        <view class='input-title'>可用储值</view>
-                                </view>
-                                <view class='input-value'>{{userInfor.StoredTotal}}</view>
-                        </view>
-                        <view class='input'>
-                                <view class='input-header'>
-                                        <view class='input-title'>储值抵扣</view>
-                                </view>
-                                <view class='input-value'>
-                                        <input type='number' cursor-spacing="30" value='{{dedStored}}' data-key='dedStored' bindblur="totalBlur"></input>
-                                </view>
-                        </view>
-                        <view class='input'>
-                                <view class='input-header'>
-                                        <view class='input-title'>实收现款</view>
-                                </view>
-                                <view class='input-value'>
-                                        <input type='number' cursor-spacing="30" value='{{cashTotal}}' data-key='cashTotal' bindblur="totalBlur"></input>
-                                </view>
-                        </view>
+                        <!-- 可用储值 -->
+                        <tuiInput  disabled="{{true}}"  value="{{formData.AvailableBalance}}">
+                                <view slot="left">可用储值</view>
+                        </tuiInput>
+                        <!-- 储值抵扣 -->
+                        <tuiInput inputType="number"  data-key="formData.UseBalance" value="{{formData.UseBalance}}" bindinput="inputSelect">
+                                <view slot="left">储值抵扣</view>
+                        </tuiInput>
+                        <!-- 实收现款 -->
+                        <tuiInput  inputType="number"  data-key="formData.UseCash"   value="{{formData.UseCash}}"  bindinput="inputSelect">
+                                <view slot="left">实收现款</view>
+                        </tuiInput>
                 </view>
         </view>
         <!-- 卡券选择区域 -->
         <view class='page-Ecard-box'>
                 <view class='page-Ecard-box-head'>
-                        <view class='page-Ecard-box-title'>已选择电子券</view>
-                        <view class='page-Ecard-box-head-right' bindtap='selectEcardShow'>选择电子券</view>
+                        <view class='page-Ecard-box-title'>电子券</view>
+                </view>
+                <view class="page-Ecard-tap-box">
+                        <view class='page-Ecard-tap {{menuFixed ? "page-Ecard-tap-fixed":""}}' id='page-Ecard-tap'>
+                                <view class='page-Ecard-tap-item {{selectEchatType=="A01"?"page-Ecard-tap-item-show":""}}' data-key="A01" bindtap='ecardTypeSelect'>全部</view>
+                                <view class='page-Ecard-tap-item {{selectEchatType=="A02"?"page-Ecard-tap-item-show":""}}' data-key="A02" bindtap='ecardTypeSelect'>已选择</view>
+                                <view class='page-Ecard-tap-item {{selectEchatType=="A03"?"page-Ecard-tap-item-show":""}}' data-key="A03" bindtap='ecardTypeSelect'>未选择</view>
+                        </view>
                 </view>
                 <view class='page-Ecard-list'>
-                        <view class='page-Ecard-list-none' wx:if="{{formData.length==0}}">
+                        <view class='page-Ecard-list-none' wx:if="{{ecardList.length==0}}">
                                 <image src='/assets/icon/dzq.svg'></image>
-                                <span>未选择任何电子券</span>
+                                <span>暂无电子券</span>
                         </view>
-                        <view class='page-Ecard' wx:for="{{formData}}" wx:key="{{index}}">
+                        <view wx:if="{{isEcardShow.fun(selectEchatType,item.L1Used)}}" class='page-Ecard  {{item.L1Used?"page-Ecard-select":""}}' data-index="{{index}}" wx:for="{{ecardList}}" wx:key="{{index}}" bindtap='selectEcard'>
                                 <view class='page-Ecard-left'>
                                         <view class='page-Ecard-money'>
-                                                ￥{{item.Total}}
+                                                ￥{{item.L1Total}}
                                         </view>
                                         <view class='page-Ecard-con'>
-                                                <view class='page-Ecard-name'>{{item.Name}}</view>
-                                                <view class='page-Ecard-type'>抵扣类型:{{item.DocTypeName}}</view>
+                                                <view class='page-Ecard-name'>{{item.L1Name}}</view>
+                                                <view class='page-Ecard-type'>抵扣类型:{{item._eCardTypeName}}</view>
                                         </view>
                                 </view>
-                                <view class='page-Ecard-right' wx:if="{{item.DocType == 'A01'}}">
-                                        <view class='page-Ecard-input-box'>
+                                <view class='page-Ecard-right' wx:if="{{item.L1ECardType ==DEDUCTION_TYPE.NUMBER}}">
+                                        <view class='page-Ecard-input-box' catchtap="{{true}}">
+                                                <view class='page-Ecard-input-text'>扣减数量</view>
+                                                <input type='number' cursor-spacing="30" data-index="{{index}}" class='page-Ecard-input' value='{{item.L1LineQty}}' catchfocus="ecardTotalFocus" catchblur="ecardTotalBlur"></input>
+                                        </view>
+                                </view>
+                                <view class='page-Ecard-right' wx:elif="{{item.L1ECardType == DEDUCTION_TYPE.AMOUNT}}">
+                                        <view class='page-Ecard-input-box' catchtap="{{true}}">
                                                 <view class='page-Ecard-input-text'>使用金额</view>
-                                                <input type='number' cursor-spacing="30" data-index="{{index}}" class='page-Ecard-input' value='{{item.NewTotal}}' bindfocus="EcardTotalFocus" bindblur="EcardTotal"></input>
+                                                <input type='number' cursor-spacing="30" data-index="{{index}}" class='page-Ecard-input' value='{{item.L1LineTotal}}' catchfocus="ecardTotalFocus" catchblur="ecardTotalBlur"></input>
                                         </view>
-                                </view>
-                                <view class='page-Ecard-right' wx:elif="{{item.DocType == 'A02'}}">
-                                        已选择
                                 </view>
                         </view>
                 </view>
@@ -105,42 +117,12 @@
         <view class='page-foot'>
                 <view class='page-foot-left'>
                         <view class='page-foot-total'>消费总计:
-                                <span>￥{{consumeTotal}}</span>
+                                <span>￥{{formData.RctTotal}}</span>
                         </view>
-                        <view class='page-foot-deduction'>电子券抵扣:￥{{dedTotal}}</view>
+                        <view class='page-foot-deduction'>电子券抵扣:￥{{formData.UseECard}}</view>
                 </view>
-                <view class='page-foot-send'>
+                <view class='page-foot-send'  bindtap='sendData'>
                         提交
                 </view>
-        </view>
-        <!-- 选择电子券 -->
-        <view class='page-selectEcard {{selectEchatList?"page-selectEcard-show":""}}'>
-                <view class='page-selectEcard-head'>
-                        <view class='page-selectEcard-head-left'>
-                                <image src='/assets/icon/right.svg'></image>
-                                <view>返回</view>
-                        </view>
-                        <view class='page-selectEcard-head-title'>卡券选择</view>
-                        <view class='page-selectEcard-head-right' bindtap='selectEcardConfirm'>确定</view>
-                </view>
-                <scroll-view scroll-y bindscrolltolower="scrolltolower" class='page-selectEcard-body app-scroll-none'>
-                        <checkbox-group class='page-data-list' bindchange="checkChange">
-                                <view class='page-Ecard' wx:for="{{echatList}}" wx:key="{{index}}">
-                                        <view class='page-Ecard-left'>
-                                                <view class='page-Ecard-money'>
-                                                        ￥{{item.Total}}
-                                                </view>
-                                                <view class='page-Ecard-con'>
-                                                        <view class='page-Ecard-name'>{{item.Name}}</view>
-                                                        <view class='page-Ecard-type'>抵扣类型:{{item.DocTypeName}}</view>
-                                                </view>
-                                        </view>
-                                        <view class='page-Ecard-right'>
-                                                <checkbox value='{{index}}' checked='{{item.check}}'></checkbox>
-                                        </view>
-                                </view>
-                                <llbox id='myLlbox'></llbox>
-                        </checkbox-group>
-                </scroll-view>
         </view>
 </view>

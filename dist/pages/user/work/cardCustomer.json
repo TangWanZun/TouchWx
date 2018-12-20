@@ -3,6 +3,7 @@
   "navigationBarBackgroundColor": "#f9faf7",
   "usingComponents": {
     "llbox": "/component/llbox",
-    "tuiInput":"/component/tuiInput"
+    "tuiInput":"/component/tuiInput",
+    "clientImg":"/component/clientImg"
   }
 }

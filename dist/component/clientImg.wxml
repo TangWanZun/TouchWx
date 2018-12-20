@@ -1,0 +1,1 @@
+<image  src='{{src?imgUrl+src:"/assets/chat/kh_tx.svg"}}'></image>

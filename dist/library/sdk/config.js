@@ -33,4 +33,11 @@ const CHAT_CONST = {
   LOG_OUT: 3,//加载完成
   LOG_FAIL: 4//加载失败
 }
-export { WORK_TYPE, CHAT_CONST, configUrl}
+//聊天文本类型
+const  DEDUCTION_TYPE = {
+        //数量
+        NUMBER:'A01',
+        //金额
+        AMOUNT:'A02'
+}
+export { WORK_TYPE, CHAT_CONST, DEDUCTION_TYPE,configUrl}
