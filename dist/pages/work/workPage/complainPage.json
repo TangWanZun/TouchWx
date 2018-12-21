@@ -1,0 +1,6 @@
+{
+        "navigationBarTitleText": "救援单",
+        "usingComponents": {
+                "tuiInput": "/component/tuiInput"
+        }
+}

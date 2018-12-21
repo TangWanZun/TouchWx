@@ -1,0 +1,73 @@
+.page-body{
+        width:100vw;
+        height: calc( 100vh - 40px);
+        box-sizing:border-box;
+        background-color: #f9faf7;
+}
+/* 顶部栏 */
+.page-tap{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        background-color: white;
+}
+.page-tap-item{
+        text-align: center;
+        flex-grow: 1;
+        font-size: 13px;
+        border-bottom:1px solid rgba(0, 0, 0, 0.1);
+        transition: border-bottom 0.2s;
+        box-sizing: border-box;
+        height: 40px;
+        line-height: 40px;
+}
+.page-tap-item-show{
+        border-bottom:3px solid #4eb4ff;
+}
+/* 模块 */
+.page-module-box{
+        padding:10px 0;
+}
+.page-module{
+        width:95vw;
+        border-radius: 5px;
+        border:1px solid rgba(0, 0, 0, 0.1);
+        margin:0 auto;
+        padding:10px 15px;
+        background-color: white;
+}
+.page-module-title{
+        border-left: 3px solid #4eb4ff;
+        font-size: 15px;
+        padding-left: 5px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+}
+/* 图片模块 */
+.page-img-module{
+        border:1px solid rgba(0, 0, 0, 0.1);
+        margin:0 auto;
+        padding:10px 15px;
+        background-color: white;
+}
+.page-img-module-box{
+        margin-top: 10px;
+        width:100vw;
+        display: grid;
+        grid-template-columns: 30vw 30vw 30vw; 
+        grid-column-gap: 5px;
+        grid-row-gap: 5px;
+}
+.page-img-module-item{
+        height: 30vw;
+        border-radius: 2px;
+        border:1px solid rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+}
+/* 按钮 */
+.page-button{
+        margin-top: 15px;
+}
+button[type='primary']{
+        background-color: #4eb4ff;
+}
