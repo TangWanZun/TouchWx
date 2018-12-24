@@ -1,3 +1,4 @@
+import login  from './login.js';
 //此接口为常用接口,将通过app wx的方式进行挂载
 /**
  * para配置
@@ -29,7 +30,7 @@ function $request(para) {
                 success: para.success || function() {},
                 fail: para.fail || function() {},
                 //出现错误时 点击model的确定时进行的回调
-                failCall: para.failCall||function(){},
+                failCall: para.failCall || function() {},
                 complete: para.complete || function() {},
         };
         //判断url是否存在，不存在则报错
@@ -79,19 +80,27 @@ function $request(para) {
                         if (res.statusCode == 200 || res.statusCode == 500) {
                                 let result = res.data;
                                 if (result.success) {
+                                        //当当前用户登录失效时
+                                        if (result.code == 120){
+                                                //将当前信息加入队列
+                                                privateData.requestRetention.push(para);
+                                                //获取用户登录信息
+                                                login();
+                                                return;
+                                        }
                                         mepara.success && mepara.success(result.data);
                                 } else {
                                         //有时候success为false但是没有msg的回调,例如登录失败，这个时候需要在调用当前接口的位置下给予一个错误回调
                                         if (result.msg) {
                                                 //正常情况下
                                                 wx.showModal({
-                                                        title: "警告",
+                                                        title: "系统提示",
                                                         content: result.msg,
                                                         showCancel: false,
-                                                        success(res){
+                                                        success(res) {
                                                                 if (res.confirm) {
                                                                         mepara.failCall && mepara.failCall(result.data);
-                                                                } 
+                                                                }
                                                         }
                                                 })
                                         }

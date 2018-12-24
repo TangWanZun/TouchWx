@@ -40,7 +40,9 @@
                                 "workMake",
                                 "workActivity",
                                 "workExpire",
-                                "workPage/complainPage"
+                                "workPage/complainPage",
+                                "workPage/makePage",
+                                "workPage/activityPage"
                         ]
                 }
         ],

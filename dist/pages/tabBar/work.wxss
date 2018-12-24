@@ -45,6 +45,17 @@
   padding-top: 5px;
   padding-bottom: 20px;
 }
+/* 无工作展示 */
+.work-none-data{
+        padding:20px;
+        height: 200px;
+        text-align: center;
+        font-size: 15px;
+        color: rgba(0,0,0,0.5);
+}
+.work-none-data>image{
+        opacity: 0.2;
+}
 .work-item-box{
   box-sizing: border-box;
   /* width: 50%; */

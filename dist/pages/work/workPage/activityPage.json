@@ -1,5 +1,5 @@
 {
-        "navigationBarTitleText": "救援单",
+        "navigationBarTitleText": "活动报名",
         "usingComponents": {
                 "tuiInput": "/component/tuiInput",
                 "imgList": "/component/imgList"

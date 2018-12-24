@@ -1,0 +1,54 @@
+.imgList-box{
+        width:100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        /* grid-template-columns: 30vw 30vw 30vw; 
+        grid-column-gap:3px;
+        grid-row-gap: 3px; */
+        position: relative;
+        left:2px;
+}
+.imgList-item{
+        width:calc( ( 100% - 12px  ) / 3 );
+        height: 30vw;
+        margin-bottom: 4px;
+        margin-right: 4px;
+        border-radius: 2px;
+        border:1px solid rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+}
+/* 删除面板 */
+.imgList-delete-box{
+        position: absolute;
+        overflow: hidden;
+        width:0;
+        left: 0px;
+        top: -45px;
+        height: 40px;
+        background-color: rgba(0, 0, 0, 0.8);
+        border-radius: 5px 5px 0 0;
+        display: flex;
+        justify-content: flex-end;
+        align-items: stretch;
+        transition: width 0.3s;
+}
+.imgList-delete-box-show{
+        width:100%;
+}
+.imgList-delete-item{
+        font-size: 12px;
+        color: white;
+        line-height: 40px;
+        padding:0 40px;
+        background-color: rgba(255,255,255, 0.1)
+}
+.imgList-item-show{
+        border:2px solid #4eb4ff;
+}
+.imgList-delete-item:first-child{
+        background-color: rgb(255, 116, 116);
+}
+.imgList-delete-item:active{
+        background-color: rgba(0,0,0, 0.1)
+}

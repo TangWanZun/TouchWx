@@ -45,9 +45,6 @@
   overflow: hidden;
   margin-right: 10px;
 }
-.page-name{
-
-}
 .page-body{
   flex-grow: 1;
   display: flex;
@@ -61,4 +58,27 @@
   background-color: white;
   border:1px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+}
+/* 加载中 */
+@keyframes pageLoad {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(359deg);
+    }
+}
+.page-load{
+        width:100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+.page-load>image{
+        width:30px;
+        height: 30px;
+        animation: pageLoad 1s;
+        animation-iteration-count:infinite;
+        animation-timing-function: linear;
 }

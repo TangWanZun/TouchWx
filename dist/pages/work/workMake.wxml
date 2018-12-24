@@ -1,46 +1,51 @@
 <dialog bindconfirm="bindconfirm" select="{{dialogSelect}}"></dialog>
 <view class='app-box'>
-  <view class='page-head'>
-    <checkbox-group bindchange="checkAllChange">
-      <label class='page-check'>
-        <checkbox checked='{{checkAll}}'>全选</checkbox>
-      </label>
-    </checkbox-group>
-    <view class='page-buttom-box'>
-      <view class='app-buttom' bindtap='send'>提交</view>
-      <view class='app-buttom' bindtap='cancel'>取消</view>
-    </view>
-  </view>
-  <view class='page-query'>
-    <query-box bindinput="bindinput"></query-box>
-  </view>
-  <checkbox-group class='page-data-list' bindchange="checkChange">
-    <view wx:if="{{dataList.length===0&&pageOver}}" class='.page-work-none'>暂无工作</view>
-    <view wx:else>
-      <view class='page-item' wx:for="{{dataList}}" wx:key="{{index}}">
-        <view class='page-item-left'>
-          <image class='page-item-headimg'  src='{{item.HeadImg?imgUrl+item.HeadImg:"/assets/chat/kh_tx.svg"}}'></image>
-          <view class='page-item-rescue'>{{item.MakeType}}</view>
+        <view class='page-head'>
+                <checkbox-group bindchange="checkAllChange">
+                        <label class='page-check'>
+                                <checkbox checked='{{checkAll}}'>全选</checkbox>
+                        </label>
+                </checkbox-group>
+                <view class='page-buttom-box'>
+                        <view class='app-buttom' bindtap='send'>提交</view>
+                        <view class='app-buttom' bindtap='cancel'>取消</view>
+                </view>
         </view>
-        <view class='page-item-center'>
-          <view class='page-item-center-head'>
-            <view class='page-item-rescue'>{{item.CardName}}</view>
-            <view class='page-item-date'>{{item.CreateDate}}</view>
-          </view>
-          <view class='page-item-center-head page-item-make-date'>
-            预约时间:{{item.MakeDate}}
-          </view>
-          <view class='page-item-center-body'>
-            <view class='page-item-note'>备注:{{item.Note}}</view>
-            <view class='page-item-phone' data-phone="{{item.Phone}}" bindtap='playPhone'><image src='/assets/icon/call.svg'></image></view>
-          </view>
-          <!-- <view class='page-item-center-right'>
+        <view class='page-query'>
+                <query-box bindinput="bindinput"></query-box>
+        </view>
+        <checkbox-group class='page-data-list' bindchange="checkChange">
+                <view wx:if="{{dataList.length===0&&pageOver}}" class='.page-work-none'>暂无工作</view>
+                <view wx:else>
+                        <navigator url='/pages/work/workPage/makePage?Id={{item.Id}}' class='page-item' wx:for="{{dataList}}" wx:key="{{index}}">
+                                <view class='page-item-left'>
+                                        <image class='page-item-headimg' src='{{item.HeadImg?imgUrl+item.HeadImg:"/assets/chat/kh_tx.svg"}}'></image>
+                                        <view class='page-item-rescue'>{{item.MakeType}}</view>
+                                </view>
+                                <view class='page-item-center'>
+                                        <view class='page-item-center-head'>
+                                                <view class='page-item-rescue'>{{item.CardName}}</view>
+                                                <view class='page-item-date'>{{item.CreateDate}}</view>
+                                        </view>
+                                        <view class='page-item-center-head page-item-make-date'>
+                                                预约时间:{{item.MakeDate}}
+                                        </view>
+                                        <view class='page-item-center-body'>
+                                                <view class='page-item-note'>备注:{{item.Note}}</view>
+                                                <view class='page-item-phone' data-phone="{{item.Phone}}" catchtap='playPhone'>
+                                                        <image src='/assets/icon/call.svg'></image>
+                                                </view>
+                                        </view>
+                                        <!-- <view class='page-item-center-right'>
               <checkbox value='{{index}}' checked='{{item.check}}'></checkbox>
           </view> -->
-        </view>
-      </view>
-      <view class="app-list-loging" wx:if="{{pageOver}}">数据加载完成</view>
-      <view class="app-list-loging" wx:else><view>数据加载中</view><image src='/assets/icon/jzz.svg'></image></view>
-    </view>
-  </checkbox-group>
+                                </view>
+                        </navigator>
+                        <view class="app-list-loging" wx:if="{{pageOver}}">数据加载完成</view>
+                        <view class="app-list-loging" wx:else>
+                                <view>数据加载中</view>
+                                <image src='/assets/icon/jzz.svg'></image>
+                        </view>
+                </view>
+        </checkbox-group>
 </view>

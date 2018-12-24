@@ -292,6 +292,7 @@ Page({
                         'formData.VIN': dataList.VIN,
                         'formData.CarNum': dataList.CarNum,
                         'formData.AvailableBalance': dataList.AvailableBalance,
+                        'formData.CarId': dataList.CarId,
                         //消费总计      清空
                         'formData.RctTotal': 0,
                         //电子券抵扣      清空
@@ -315,6 +316,7 @@ Page({
                 let data = this.data.formData;
                 data.List =JSON.stringify(this.data.ecardList);
                 data.UnionGuidTemp = util.GUID();
+                data.UnionGuid = util.GUID();
                 console.log(data)
                 ///根据扫码信息获得会员信息
                 wx.$request({

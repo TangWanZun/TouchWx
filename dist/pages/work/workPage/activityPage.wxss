@@ -1,0 +1,26 @@
+@import './workPage.wxss';
+.page-module-box-none{
+        padding:0px;
+}
+.page-module-box-top{
+        position: relative;
+        margin-top:-70px;
+}
+/* 活动封面 */
+.page-fm{
+        width:100vw;
+        position: relative;
+}
+.page-fm-title{
+        position: absolute;
+        top:0px;
+        left:0px;
+        color:white;
+        font-size: 17px;
+        width:100vw;
+        padding:10px 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        background-image: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.01) 100%)
+}
