@@ -2,6 +2,15 @@
   width: 100vw;
   overflow: hidden;
 }
+/* 无数据 */
+.page-data-none{
+        height: 100px;
+       margin-top:100px;
+       margin-bottom: 50px;
+       text-align: center;
+       font-size: 15px;
+        opacity: 0.5;
+}
 .page-item{
   display: flex;
   justify-content: flex-start;

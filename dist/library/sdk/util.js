@@ -39,7 +39,7 @@ function toDateTime(value) {
         if (!value) {
                 return
         }
-        let date = this.dateTo(value);
+        let date = dateTo(value);
         return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} ${pad(date.getHours(), 2)}:${pad(date.getMinutes(), 2)}`;
 }
 /**
@@ -50,7 +50,7 @@ function toTime(value) {
         if (!value) {
                 return
         }
-        let date = this.dateTo(value);
+        let date = dateTo(value);
         return `${pad(date.getHours(), 2)}:${pad(date.getMinutes(), 2)}`;
 }
 /**
@@ -61,7 +61,7 @@ function toDate(value) {
         if (!value) {
                 return
         }
-        let date = this.dateTo(value);
+        let date = dateTo(value);
         return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
 }
 /**

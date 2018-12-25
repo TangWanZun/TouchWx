@@ -29,35 +29,6 @@ Page({
                                 Name: '女'
                         }
                 ],
-                //可修改的用户信息
-                userInfor: {
-                        //生日
-                        BirthDate: '1997-12-13',
-                        // 性别
-                        sex: {
-                                value: 0,
-                                list: ['男', '女']
-                        },
-                        //学历
-                        education: '',
-                        //身份证件
-                        IDCard: '',
-                        //职业
-                        Profession: '',
-                        //住址
-                        AddressDetails: '',
-                        //婚姻状况
-                        marriage: {
-                                value: 0,
-                                list: ['已婚', '未婚']
-                        },
-                        //子女描述
-                        childDes: '',
-                        //子女数量
-                        childCount: '',
-                        //常去商圈
-                        CBD: ''
-                },
         },
         /**
          * from表达input组件回调
@@ -66,7 +37,6 @@ Page({
                 this.setData({
                         [e.target.dataset.key]: e.detail.value
                 })
-                console.log(this.data.formData)
         },
         /**
          * 生命周期函数--监听页面加载

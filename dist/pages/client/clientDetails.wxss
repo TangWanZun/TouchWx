@@ -237,6 +237,14 @@
   height: 40vw;
   opacity: 0.2;
 }
+/* 是否为授权 */
+.car-auth{
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        width:60px;
+        height: 60px;
+}
 /* 用户画像 */
 .client{
   display: flex;

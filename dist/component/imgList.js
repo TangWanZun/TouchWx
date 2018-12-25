@@ -11,12 +11,12 @@ Component({
                         type: Array,
                         value: [],
                         observer(newVal, oldVal, changedPath) {
-                                console.log(newVal);
                                 let _imgList = [];
                                 let imgHtmlList = [];
+                                let _imgHeadUrl = this.data.imgHeadUrl;
                                 for(let x of newVal){
                                         //将原图分离出来,用于处理大图显示
-                                        _imgList.push(x[this.data.orig])
+                                        _imgList.push(_imgHeadUrl+x[this.data.orig])
                                         //添加图片删除选框
                                         x._del = false;
                                         imgHtmlList.push(x);
@@ -26,6 +26,13 @@ Component({
                                         imgHtmlList
                                 })
                         }
+                },
+                /**
+                 * 图片头部路径
+                 */
+                imgHeadUrl:{
+                        type:String,
+                        value:''
                 },
                 /**
                  * 缩略图 名称

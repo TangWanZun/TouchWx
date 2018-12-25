@@ -6,8 +6,8 @@
 <scroll-view  scroll-into-view="{{tapItemShow}}" scroll-with-animation="true" class='page-body' scroll-y="true"> 
         <view class='page-module-box page-module-box-none'  id='A01'>
                 <view class='page-fm'>
-                        <image mode="widthFix" src='{{imgUrl}}upload/Activity/Thum/A3/20181216122313_e9a1a74d80c64bd79a6b5f04047d4511.jpg'></image>
-                        <view class='page-fm-title'>12.20东山口外拍活动</view>
+                        <image mode="widthFix" src='{{imgUrl}}{{formData.ThumImg}}'></image>
+                        <view class='page-fm-title'>{{formData.Title}}</view>
                 </view>
         </view>
         <view class='page-module-box page-module-box-top'  id='A02'>
@@ -16,15 +16,15 @@
                                 基本信息
                         </view>
                         <!-- 编号 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
+                        <tuiInput  disabled="{{true}}"  value="{{formData.Id}}">
                                 <view slot="left">编号</view>
                         </tuiInput>
                         <!-- 报名日期 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
+                        <tuiInput  disabled="{{true}}"  value="{{formData.CreateDate}}">
                                 <view slot="left">报名日期</view>
                         </tuiInput>
                         <!-- 到店时间 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
+                        <tuiInput  disabled="{{true}}"  value="">
                                 <view slot="left">到店时间</view>
                         </tuiInput>
                         <!-- 客户姓名 -->
@@ -32,23 +32,23 @@
                                 <view slot="left">客户姓名</view>
                         </tuiInput>
                         <!-- 客户性别-->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
+                        <tuiInput  disabled="{{true}}"  value="{{formData.Sex}}">
                                 <view slot="left">客户性别</view>
                         </tuiInput>
                         <!-- 手机号 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
+                        <tuiInput  disabled="{{true}}"  value="{{formData.Phone}}">
                                 <view slot="left">手机号</view>
                         </tuiInput>
                         <!-- 会员编号 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
+                        <tuiInput  disabled="{{true}}"  value="{{formData.UsedVipCode}}">
                                 <view slot="left">会员编号</view>
                         </tuiInput>
                         <!-- 参加人数 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
+                        <tuiInput  disabled="{{true}}"  value="{{formData.SignUpQty}}">
                                 <view slot="left">参加人数</view>
                         </tuiInput>
                         <!-- 留言 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
+                        <tuiInput  disabled="{{true}}"  value="{{formData.SignUpNote}}">
                                 <view slot="left">留言</view>
                         </tuiInput>
                 </view>
@@ -59,16 +59,16 @@
                                 处理意见
                         </view>
                         <!-- 报名处理 -->
-                        <tuiInput    type="select" data-key="formData.DocType" value="A01" range="{{docTypeRange}}" bindinput="inputSelect" >
+                        <tuiInput    type="select" data-key="formData.DocStatus" value="{{formData.DocStatus}}" range="{{docTypeRange}}" bindinput="inputSelect" >
                                 <view slot="left">救援处理</view>
                                 <image slot="right" src='/assets/icon/right.svg'></image>
                         </tuiInput>
                         <!-- 备注 -->
-                        <tuiInput   value="{{formData.CardName}}">
+                        <tuiInput   data-key="formData.Note"  value="{{formData.Note}}"  bindinput="inputSelect" >
                                 <view slot="left">备注</view>
                         </tuiInput>
                         <view class='page-button'>
-                                <button  type='primary'>提交</button>
+                                <button  type='primary' bindtap='submit'>提交</button>
                         </view>
                 </view>
         </view>

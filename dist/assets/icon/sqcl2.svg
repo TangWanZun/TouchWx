@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="128px" height="128px" viewBox="0 0 128 128" enable-background="new 0 0 128 128" xml:space="preserve">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-15.775" y1="109.225" x2="108.475" y2="-15.025" gradientTransform="matrix(1 0 0 -1 0 128)">
+	<stop  offset="0" style="stop-color:#7F7F7F"/>
+	<stop  offset="0.4405" style="stop-color:#9C9C9C"/>
+	<stop  offset="1" style="stop-color:#C6C6C6"/>
+</linearGradient>
+<polygon fill="url(#SVGID_1_)" points="-0.6,3.6 123.7,127.8 93.3,158.2 -31,34 "/>
+<text transform="matrix(0.7071 0.7071 -0.7071 0.7071 8.0605 53.7153)" fill="#FFFFFF" font-family="'MicrosoftYaHei'" font-size="24.3829px">授权车辆</text>
+</svg>

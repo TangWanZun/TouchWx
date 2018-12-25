@@ -106,7 +106,7 @@ Component({
          */
         data: {
                 //当type为select时, 当前的展示的索引值
-                selectIndex:-1,
+                selectIndex:0,
                 dateValue:'',
         },
 

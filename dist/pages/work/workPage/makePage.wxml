@@ -2,6 +2,32 @@
         <view class='page-tap-item  page-tap-item-show' data-key="A01" bindtap='tapItemSelect'>基本</view>
         <view class='page-tap-item page-tap-item-show' data-key="A03" bindtap='tapItemSelect'>处理</view>
 </view>
+<wxs module="m1">
+function reserveType(val){
+        switch(val){
+                case 'A01':return '保养预约'
+                case 'A02':return '维修预约'
+                case 'A03':return '装饰代办'
+                case 'A04':return '上门预约'
+        }
+}
+function AssType(val){
+            switch(val){
+                case 'B01':return '首次保养'
+                case 'B02':return '定期保养'
+                case 'B03':return '常规维修'
+                case 'B04':return '事故维修'
+                case 'B05':return '免费检测'
+                case 'B06':return '厂家召回'
+                case 'B07':return '装饰'
+                case 'B08':return '代办'
+                case 'B09':return '保养'
+                case 'B10':return '维修'
+            }
+}
+module.exports.reserveType = reserveType;
+module.exports.AssType = AssType;
+</wxs>
 <scroll-view  scroll-into-view="{{tapItemShow}}" scroll-with-animation="true" class='page-body' scroll-y="true"> 
         <view class='page-module-box'  id='A01'>
                 <view class='page-module app-shadow-3'>
@@ -9,63 +35,67 @@
                                 基本信息
                         </view>
                         <!-- 编号 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
+                        <tuiInput  disabled="{{true}}"  value="{{formData.Id}}">
                                 <view slot="left">编号</view>
                         </tuiInput>
                         <!-- 预约类型 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
+                        <tuiInput  disabled="{{true}}"  value="{{m1.reserveType(formData.ReserveType)}}">
                                 <view slot="left">预约类型</view>
                         </tuiInput>
                         <!-- 分类 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
+                        <tuiInput  disabled="{{true}}"  value="{{m1.AssType(formData.AssType)}}">
                                 <view slot="left">分类</view>
                         </tuiInput>
                         <!-- 客户名称 -->
                         <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
                                 <view slot="left">客户名称</view>
                         </tuiInput>
+                        <!-- 客户性别 -->
+                        <tuiInput  disabled="{{true}}"  value="{{formData.Sex}}">
+                                <view slot="left">客户性别</view>
+                        </tuiInput>
                         <!-- 创建日期-->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
+                        <tuiInput  disabled="{{true}}"  value="{{formData.CreateDate}}">
                                 <view slot="left">创建日期</view>
                         </tuiInput>
                         <!-- 预约日期 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
+                        <tuiInput  disabled="{{true}}"  value="{{formData.ReserveDate}}">
                                 <view slot="left">预约日期</view>
                         </tuiInput>
                         <!-- 时间段 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
+                        <tuiInput  disabled="{{true}}"  value="{{formData.ReserveTime}}">
                                 <view slot="left">时间段</view>
                         </tuiInput>
                         <!-- 预约项目-->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
+                        <tuiInput  disabled="{{true}}"  value="{{formData.ReserveItem}}">
                                 <view slot="left">预约项目</view>
                         </tuiInput>
                         <!-- 客户性别 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
+                        <!-- <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
                                 <view slot="left">客户性别</view>
-                        </tuiInput>
+                        </tuiInput> -->
                         <!-- 手机号 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
+                        <tuiInput  disabled="{{true}}"  value="{{formData.Phone}}">
                                 <view slot="left">手机号</view>
                         </tuiInput>
                         <!-- 车牌号 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
+                        <tuiInput  disabled="{{true}}"  value="{{formData.CarNum}}">
                                 <view slot="left">车牌号</view>
                         </tuiInput>
                         <!-- VIN -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
+                        <tuiInput  disabled="{{true}}"  value="{{formData.VIN}}">
                                 <view slot="left">VIN</view>
                         </tuiInput>
                          <!-- 公里数-->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
+                        <tuiInput  disabled="{{true}}"  value="{{formData.CurrKM}}">
                                 <view slot="left">公里数</view>
                         </tuiInput>
                          <!-- 位置-->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
+                        <tuiInput  disabled="{{true}}"  value="{{formData.Location}}">
                                 <view slot="left">位置</view>
                         </tuiInput>
                         <!-- 预约备注-->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
+                        <tuiInput  disabled="{{true}}"  value="{{formData.ReserveNote}}">
                                 <view slot="left">预约备注</view>
                         </tuiInput>
                 </view>
@@ -76,25 +106,21 @@
                                 处理意见
                         </view>
                         <!-- 预约处理 -->
-                        <tuiInput    type="select" data-key="formData.DocType" value="A01" range="{{docTypeRange}}" bindinput="inputSelect" >
+                        <tuiInput    type="select" data-key="formData.DocStatus" value="{{formData.DocStatus}}" range="{{docTypeRange}}" bindinput="inputSelect" >
                                 <view slot="left">预约处理</view>
                                 <image slot="right" src='/assets/icon/right.svg'></image>
                         </tuiInput>
-                        <!-- 拖车信息 -->
-                        <tuiInput  value="{{formData.CardName}}">
-                                <view slot="left">拖车信息</view>
-                        </tuiInput>
                         <!-- 接待顾问 -->
-                         <tuiInput    type="select" data-key="formData.DocType" value="A01" range="{{docTypeRange}}" bindinput="inputSelect" >
+                         <tuiInput    type="select" data-key="formData.OhemId" value="{{formData.OhemId}}" range="{{reserveRange}}" bindinput="inputSelect" >
                                 <view slot="left">接待顾问</view>
                                 <image slot="right" src='/assets/icon/right.svg'></image>
                         </tuiInput>
                         <!-- 备注 -->
-                        <tuiInput   value="{{formData.CardName}}">
+                        <tuiInput data-key="formData.Note"   value="{{formData.Note}}"  bindinput="inputSelect">
                                 <view slot="left">备注</view>
                         </tuiInput>
                         <view class='page-button'>
-                                <button  type='primary'>提交</button>
+                                <button  type='primary' bindtap='submit'>提交</button>
                         </view>
                 </view>
         </view>

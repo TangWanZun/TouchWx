@@ -12,6 +12,10 @@
         <!-- <view class='client-ltter' wx:for="{{dataList}}" wx:key="{{index}}"> -->
         <!-- <view class='client-title'>{{index}}</view> -->
         <view class='client-body app-scroll-none'>
+                <view wx:if="{{dataList.length==0&&pageOver}}" class='client-none-data'>
+                        <image src='/assets/icon/kh.svg'></image>
+                        暂无客户
+                </view>
                 <navigator url='/pages/client/clientDetails?openId={{item.OpenId}}&online={{item.Online}}' class='client-item' wx:for="{{dataList}}" wx:key="{{itemIndex}}">
                         <view class='client-img {{item.Online?"":"client-img-hidden"}}'>
                                 <image binderror="binderror" src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
@@ -24,8 +28,7 @@
                                 <view class='client-name-text'>{{item.CardName?item.CardName:item.NickName}}</view>
                         </view>
                 </navigator>
-                <view class="app-list-loging" wx:if="{{pageOver}}">数据加载完成</view>
-                <view class="app-list-loging" wx:else>
+                <view class="app-list-loging" wx:if="{{!pageOver}}">
                         <view>数据加载中</view>
                         <image src='/assets/icon/jzz.svg'></image>
                 </view>

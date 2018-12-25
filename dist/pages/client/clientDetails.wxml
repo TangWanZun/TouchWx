@@ -58,7 +58,7 @@
                                         <!-- 微信 -->
                                         <view class='panel'>
                                                 <view class='panel-number'>{{formData.NickName}}</view>
-                                                <navigator url='/pages/message/chat?openId={{formData.OpenId}}&cardName={{formData.CardName}}&wxId={{formData.WxId}}&headImg={{formData.ProfilePhoto}}&online={{online}}' class='panel-icon'>
+                                                <navigator url='/pages/message/chat?openId={{formData.OpenId}}&cardName={{formData.CardName||formData.NickName}}&wxId={{formData.WxId}}&headImg={{formData.ProfilePhoto}}&online={{online}}' class='panel-icon'>
                                                         <image src='/assets/icon/WX.svg'></image>
                                                 </navigator>
                                         </view>
@@ -100,6 +100,7 @@
                                                 <image mode='aspectFit' src='/assets/icon/lc.svg'></image>
                                         </view>
                                         <view class='car-number'>{{item.CarNum}}</view>
+                                        <view wx:if="{{item.Auth}}" class='car-auth'><image src='/assets/icon/sqcl2.svg'></image></view>
                                 </navigator>
                         </view>
                 </view>

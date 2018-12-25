@@ -4,6 +4,6 @@
                 <view class='imgList-delete-item' bindtap='noneDeleteImg'>取消</view>
         </view>
         <view wx:for="{{imgHtmlList}}" wx:key="index" data-index="{{index}}" bindtouchstart='imgTouchStart' bindtouchend='imgTouchEnd'  bindtap='showImg' class='imgList-item {{item._del?"imgList-item-show":""}}'>
-                <image mode='aspectFill' src='{{item[thum]}}'></image>
+                <image mode='aspectFill' src='{{imgHeadUrl+item[thum]}}'></image>
         </view>
 </view>

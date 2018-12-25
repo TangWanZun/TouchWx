@@ -17,7 +17,7 @@
         <checkbox-group class='page-data-list' bindchange="checkChange">
                 <view wx:if="{{dataList.length===0&&pageOver}}" class='.page-work-none'>暂无工作</view>
                 <view wx:else>
-                        <navigator url='/pages/work/workPage/complainPage?Id={{item.Id}}' class='page-item' wx:for="{{dataList}}" wx:key="{{index}}">
+                        <navigator url='/pages/work/workPage/complainPage?id={{item.Id}}' class='page-item' wx:for="{{dataList}}" wx:key="{{index}}">
                                 <view class='page-item-left'>
                                         <image class='page-item-headimg' src='{{item.HeadImg?imgUrl+item.HeadImg:"/assets/chat/kh_tx.svg"}}'></image>
                                         <!-- <view class='page-item-name'>关翠萍</view> -->
