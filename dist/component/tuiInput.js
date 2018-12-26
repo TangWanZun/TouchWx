@@ -61,6 +61,15 @@ Component({
                         value:false
                 },
                 /**
+                 *      当type为select的时候
+                 *      当value传入为空时,默认显示索引值
+                 *      默认值为空
+                 */
+                selectIndex:{
+                        type:Number,
+                        value:-1
+                },
+                /**
                  * 当type为select的时候 对应 picker 中的 range-key
                  * 默认是根据服务器自定义表的一贯使用方式编写
                  */
@@ -105,8 +114,6 @@ Component({
          * 组件的初始数据
          */
         data: {
-                //当type为select时, 当前的展示的索引值
-                selectIndex:0,
                 dateValue:'',
         },
 
