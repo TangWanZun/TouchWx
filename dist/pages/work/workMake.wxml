@@ -19,7 +19,7 @@
                 <view wx:else>
                         <navigator url='/pages/work/workPage/makePage?Id={{item.Id}}' class='page-item' wx:for="{{dataList}}" wx:key="{{index}}">
                                 <view class='page-item-left'>
-                                        <image class='page-item-headimg' src='{{item.HeadImg?imgUrl+item.HeadImg:"/assets/chat/kh_tx.svg"}}'></image>
+                                        <image class='page-item-headimg' src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
                                         <view class='page-item-rescue'>{{item.MakeType}}</view>
                                 </view>
                                 <view class='page-item-center'>

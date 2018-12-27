@@ -63,11 +63,14 @@
   height: 50px;
   /* position: relative; */
 }
-.client-img>image{
-  border-radius: 100%;
+.image{
+        width:100%;
+        height: 100%;
+        border-radius: 100%;
+        overflow: hidden;
 }
 /* 离线头像 */
-.client-img-hidden>image{
+.client-img-hidden>.image{
   opacity: 0.3;
 }
 /*在线离线标识符*/

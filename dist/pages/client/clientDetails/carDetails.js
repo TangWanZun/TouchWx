@@ -11,7 +11,6 @@ Page({
                 //图片数据
                 imgUrl: getApp().privateData.configUrl.imgUrl,
                 formData: {
-                        carImg: 'url(http://img4.cache.netease.com/photo/0008/2016-04-29/BLQM14CK296H0008.jpg)',
                 },
                 dataList: {},
                 carRecord: [],
@@ -32,8 +31,8 @@ Page({
                 wx.$request({
                         url: "/WeMinProPlatJson/GetDataSet",
                         data: {
-                                docType: 'client',
-                                actionType: 'CarContent',
+                                docType: 'Ocrd',
+                                actionType: 'CarDetails',
                                 needTotal: false,
                                 docid: options.openId,
                                 p1: options.carId
@@ -53,8 +52,8 @@ Page({
                 this.myLlbox.init({
                         url: "/WeMinProPlatJson/GetList",
                         data: {
-                                docType: 'client',
-                                actionType: 'CarRecord',
+                                docType: 'Ocrd',
+                                actionType: 'CarRecordList',
                                 needTotal: false,
                         },
                         success(res) {

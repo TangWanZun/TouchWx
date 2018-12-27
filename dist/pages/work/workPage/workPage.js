@@ -47,8 +47,6 @@ function createPage(pro={}) {
                  */
                 onLoad: function (options) {
                         pro.onLoad && pro.onLoad(this, options)
-                        //虚拟数据加载
-                        this.loadData()
                 },
 
                 /**
@@ -99,32 +97,6 @@ function createPage(pro={}) {
                 onShareAppMessage: function () {
 
                 },
-                /**
-                 * 虚拟数据加载
-                 */
-                loadData() {
-                        //图片
-                        let formData = {
-                                List: [{
-                                        Orig: "http://img2.imgtn.bdimg.com/it/u=882635319,3027004931&fm=200&gp=0.jpg",
-                                        Thum: "http://img2.imgtn.bdimg.com/it/u=882635319,3027004931&fm=200&gp=0.jpg"
-                                },
-                                {
-                                        Orig: "http://img5.imgtn.bdimg.com/it/u=3208608655,3218271704&fm=26&gp=0.jpg",
-                                        Thum: "http://img5.imgtn.bdimg.com/it/u=3208608655,3218271704&fm=26&gp=0.jpg"
-                                }, {
-                                        Orig: "http://img4.imgtn.bdimg.com/it/u=2420797096,726777144&fm=26&gp=0.jpg",
-                                        Thum: "http://img4.imgtn.bdimg.com/it/u=2420797096,726777144&fm=26&gp=0.jpg"
-                                }, {
-                                        Orig: "http://img0.imgtn.bdimg.com/it/u=2453105483,4215695987&fm=26&gp=0.jpg",
-                                        Thum: "http://img0.imgtn.bdimg.com/it/u=2453105483,4215695987&fm=26&gp=0.jpg"
-                                }
-                                ]
-                        };
-                        this.setData({
-                                formData
-                        })
-                }
         }
         //如果传递了data,就将data合并
         if (pro.data) {

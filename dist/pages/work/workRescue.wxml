@@ -19,7 +19,7 @@
                 <view wx:else>
                         <navigator url='/pages/work/workPage/complainPage?id={{item.Id}}' class='page-item' wx:for="{{dataList}}" wx:key="{{index}}">
                                 <view class='page-item-left'>
-                                        <image class='page-item-headimg' src='{{item.HeadImg?imgUrl+item.HeadImg:"/assets/chat/kh_tx.svg"}}'></image>
+                                        <image class='page-item-headimg' src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
                                         <!-- <view class='page-item-name'>关翠萍</view> -->
                                 </view>
                                 <view class='page-item-center'>

@@ -1,6 +1,7 @@
 {
         "usingComponents": {
-                "tuiInput": "/component/tuiInput"
+                "tuiInput": "/component/tuiInput",
+                "clientImg": "/component/clientImg"
         },
         "enablePullDownRefresh": true,
         "navigationBarTitleText": "客户详情"

@@ -269,7 +269,7 @@ function createPage(pro) {
                         wx.$request({
                                 url: "/WeMinProPlatJson/GetList",
                                 data: {
-                                        docType: 'workData',
+                                        docType: 'WorkData',
                                         actionType: pro.$WORK_TYPE,
                                         needTotal: false,
                                         start: this.page.start,

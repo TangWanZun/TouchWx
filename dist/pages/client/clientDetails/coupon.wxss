@@ -1,1 +1,65 @@
 /* pages/client/clientDetails/coupon.wxss */
+.datalist{
+        padding:0 20px;
+}
+
+.item{
+        border-radius: 5px;
+        border:1px solid rgba(0,0,0,0.1);
+        background-color: white;
+        border-left: 5px solid #4eb4ff ;
+        overflow: hidden;
+}
+/* 头部 */
+.item-head{
+        display: flex;
+        justify-content:flex-start;
+        align-items: stretch;
+}
+.item-head-left{
+        flex-shrink: 0;
+        min-width:80px;
+        padding:0 5px;
+        border-right: 1px dashed rgba(0,0,0,0.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 17px;
+        font-weight: bold;
+}
+.item-head-right{
+        padding:5px;
+}
+.item-head-title{
+        font-size: 15px;
+        text-align: center;
+        margin-bottom: 10px;
+}
+.item-head-con{
+        font-size: 15px;
+        color: rgba(0,0,0,0.5);
+}
+/* 详细明夹层 */
+.sandwich{
+        box-sizing: border-box;
+        border-top: 1px solid rgba(0,0,0,0.1);
+        font-size: 15px;
+        max-height: 0px;
+        transition: 0.2s;
+        overflow: auto;
+}
+.sandwich>text{
+        display: block;
+        padding: 5px;
+}
+.sandwich-show{
+        max-height: 200px;
+}
+/* 底部 */
+.item-foot{
+        background-color: rgba(0,0,0,0.1);
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+        padding:5px 10px;
+}

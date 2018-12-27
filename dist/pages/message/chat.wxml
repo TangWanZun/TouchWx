@@ -90,7 +90,7 @@
               <image mode="widthFix" src='{{item.msgData.cover}}'></image>
             </view>
             <view class='page-chat-con-video-play' data-src="{{item.msgData.src}}" bindtap='playVideo'>
-              <image src='/assets/icon/bf.svg'></image>
+              <image src='/assets/chat/bf.svg'></image>
             </view>
           </view>
         </view>

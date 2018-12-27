@@ -11,11 +11,12 @@ Page(createPage({
                 wx.showLoading({
                         title: '数据加载中',
                 })
+                //专属顾问
                 wx.$request({
                         url: "/WeMinProPlatJson/GetList",
                         data: {
-                                docType: 'workData',
-                                actionType: 'Reserve',
+                                docType: 'WorkData',
+                                actionType: 'ReserveOhemList', 
                                 needTotal: false,
                         },
                         success(res) {
@@ -39,11 +40,12 @@ Page(createPage({
                                 wx.hideLoading();
                         }
                 })
+                //预约详情
                 wx.$request({
                         url: "/WeMinProPlatJson/GetList",
                         data: {
-                                docType: 'workData',
-                                actionType: 'OrderPage',
+                                docType: 'WorkData',
+                                actionType: 'ReserveDetails',
                                 docid: options.id,
                                 needTotal: false,
                         },

@@ -1,9 +1,9 @@
-import * as sdk from "../../library/sdk.js"
 import {
         util,
         configUrl,
         toDate,
-        timeParse
+        timeParse,
+        WORK_TYPE
 } from '../../library/sdk.js'
 Page({
         /**
@@ -54,15 +54,15 @@ Page({
                 wx.$request({
                         url: "/WeMinProPlatJson/GetList",
                         data: {
-                                docType: 'workData',
-                                actionType: 'List',
+                                docType: 'WorkData',
+                                actionType: 'WorkList',
                                 needTotal: false,
                         },
                         success(res) {
                                 //这里需要处理数据
                                 for (let i = 0; i < res.length; i++) {
                                         //这里是预约,预约的时间使用的是end 和 start的时间
-                                        if (res[i].DocType == 'A03') {
+                                        if (res[i].DocType == WORK_TYPE.WORK_YY) {
                                                 if (res[i].CreateDate) {
                                                         res[i].CreateDate = util.toDate(res[i].ReserveEndDate)
                                                 }
@@ -95,7 +95,7 @@ Page({
          */
         onLoad: function(options) {
                 this.setData({
-                        workType: sdk.WORK_TYPE
+                        workType: WORK_TYPE
                 })
         },
 

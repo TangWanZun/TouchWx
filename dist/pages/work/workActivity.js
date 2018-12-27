@@ -1,7 +1,7 @@
 import createPage from './work.js'
 import { util, WORK_TYPE } from '../../library/sdk.js'
 Page(createPage({
-  $WORK_TYPE: WORK_TYPE.WORK_HD,
+  $WORK_TYPE: WORK_TYPE.WORK_HD+'List',
   //修改获取的数据
   $alterData: function (res) {
     res.forEach(function (item) {

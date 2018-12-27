@@ -50,8 +50,8 @@ Page({
                 wx.$request({
                         url: "/WeMinProPlatJson/GetList",
                         data: {
-                                docType: 'main',
-                                actionType: 'myData',
+                                docType: 'Main',
+                                actionType: 'ReportList',
                                 needTotal: false,
                         },
                         success(res) {

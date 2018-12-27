@@ -31,6 +31,14 @@ Page({
                 ],
         },
         /**
+         * 预览头像
+         */
+        previewImage(){
+                wx.previewImage({
+                        urls: [this.data.imgUrl + this.data.formData.ProfilePhoto],
+                })
+        },
+        /**
          * from表达input组件回调
          */
         fromInput(e){
@@ -57,7 +65,7 @@ Page({
                 wx.$request({
                         url: "/WeMinProPlatJson/GetList",
                         data: {
-                                docType: 'combox',
+                                docType: 'Combobx',
                                 actionType: 'Education',
                                 needTotal: false,
                         },
@@ -72,8 +80,8 @@ Page({
                 wx.$request({
                         url: "/WeMinProPlatJson/GetDataSet",
                         data: {
-                                docType: 'client',
-                                actionType: 'Info',
+                                docType: 'Ocrd',
+                                actionType: 'OcrdDetails',
                                 needTotal: false,
                                 docid: options.openId
                         },

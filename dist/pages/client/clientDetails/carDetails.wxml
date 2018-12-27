@@ -11,8 +11,8 @@
                 <view class="page-basic app-shadow">
                         <view class='page-auth' wx:if="{{dataList.Auth}}"><image src='/assets/icon/sqcl.svg'></image></view>
                         <view class="page-basic-name">{{dataList.CarNum}}</view>
-                        <view class="page-basic-VIN">发送机号:{{dataList.EngineNo||'-'}}</view>
                         <view class="page-basic-VIN">VIN:{{dataList.VIN||'-'}}</view>
+                        <view class="page-basic-VIN">发送机号:{{dataList.EngineNo||'-'}}</view>
                         <view class="page-basic-else">
                                 <view class="page-basic-else-item">
                                         <view class="page-basic-else-item-title">品牌</view>

@@ -5,8 +5,8 @@
                 <view class='header-center'>
                         <view class='header-top'>
                                 <!-- 头像 -->
-                                <view class='header-img'>
-                                        <image src='{{formData.ProfilePhoto?imgUrl+formData.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
+                                <view class='header-img' bindtap='previewImage'>
+                                        <clientImg  src="{{formData.ProfilePhoto}}"></clientImg>
                                 </view>
                                 <!-- 爱好标签 -->
                                 <view class='header-likes-box'>
@@ -24,10 +24,10 @@
                                         <view class='header-botton-item-title'>积分</view>
                                         <view class='header-botton-item-number'>{{formData.AvailableScore||'-'}}</view>
                                 </view>
-                                <view class='header-botton-item'>
+                                <navigator url='./clientDetails/coupon?openId={{formData.OpenId}}' class='header-botton-item'>
                                         <view class='header-botton-item-title'>电子券</view>
                                         <view class='header-botton-item-number'>{{formData.AvailableECard||'-'}}张</view>
-                                </view>
+                                </navigator>
                                 <!-- <view class='header-botton-item'>
           <view class='header-botton-item-title'>电子券</view>
           <view class='header-botton-item-number'>{{clientData.coupon}}张</view>
@@ -36,7 +36,8 @@
                 </view>
                 <!-- 背景图 -->
                 <view class='header-bg'>
-                        <image mode='aspectFill' src='{{formData.ProfilePhoto?imgUrl+formData.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
+                        <clientImg mode='aspectFill'  src="{{formData.ProfilePhoto}}"></clientImg>
+                        <!-- <image mode='aspectFill' src='{{formData.ProfilePhoto?imgUrl+formData.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image> -->
                 </view>
         </view>
         <!-- 正文内容 -->

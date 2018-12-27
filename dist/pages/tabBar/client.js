@@ -151,12 +151,6 @@ Page({
                 this.getData();
         },
         /**
-         *  图片出现错误 
-         */
-        binderror(e) {
-                console.log(e);
-        },
-        /**
          * 生命周期函数--监听页面初次渲染完成
          */
         onReady: function() {

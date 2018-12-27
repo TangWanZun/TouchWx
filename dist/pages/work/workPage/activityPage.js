@@ -18,8 +18,8 @@ Page(createPage({
                 wx.$request({
                         url: "/WeMinProPlatJson/GetList",
                         data: {
-                                docType: 'workData',
-                                actionType: 'ActivityPage',
+                                docType: 'WorkData',
+                                actionType: 'ActSignUpDetails',
                                 docid: options.id,
                                 needTotal: false,
                         },

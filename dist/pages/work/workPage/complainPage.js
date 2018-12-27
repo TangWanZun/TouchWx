@@ -16,8 +16,8 @@ Page(createPage({
                 wx.$request({
                         url: "/WeMinProPlatJson/GetDataSet",
                         data: {
-                                docType: 'workData',
-                                actionType: 'ComplainPage',
+                                docType: 'WorkData',
+                                actionType: 'RescueDetails',
                                 docid: options.id,
                                 needTotal: false,
                         },

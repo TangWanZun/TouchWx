@@ -18,7 +18,9 @@
                 </view>
                 <navigator url='/pages/client/clientDetails?openId={{item.OpenId}}&online={{item.Online}}' class='client-item' wx:for="{{dataList}}" wx:key="{{itemIndex}}">
                         <view class='client-img {{item.Online?"":"client-img-hidden"}}'>
-                                <image binderror="binderror" src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
+                                <view class="image">
+                                        <clientImg  src="{{item.ProfilePhoto}}"></clientImg>
+                                </view>
                                 <view class='client-online {{item.Online?"":"client-online-hidden"}}'></view>
                         </view>
                         <view class='client-name'>

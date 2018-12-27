@@ -3,4 +3,27 @@
     {{item.A}}
   </view>
 </view>
+<view class='datalist'>
+        <view class='item app-shadow' bindtap='tapItem'>
+                <view class='item-head'>
+                        <view class='item-head-left'>￥80000</view>
+                        <view class='item-head-right'>
+                                <view class='item-head-title'>GLA-A保</view>
+                                <view class='item-head-con'>限定购买新车使用</view>
+                        </view>
+                </view>
+                <!-- 详细说明 -->
+                <view class='sandwich app-scroll-none {{isShow?"sandwich-show":""}}'>
+                        <text>1、仅限GLA车型使用 
+                                2、有效期3年
+                                3、仅到店消费时抵扣使用
+                                3、仅到店消费时抵扣使用
+                        </text>
+                </view>
+                <view class='item-foot'>
+                        <view>点击查看说明</view>
+                        <view>208/12/17-2021/12/17</view>
+                </view>
+        </view>
+</view>
 <llbox id='myLlbox'></llbox>
