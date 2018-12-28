@@ -1,0 +1,7 @@
+{
+        "navigationBarTitleText": "储值记录",
+        "usingComponents": {
+                "llbox": "/component/llbox"
+        },
+        "enablePullDownRefresh": true
+}

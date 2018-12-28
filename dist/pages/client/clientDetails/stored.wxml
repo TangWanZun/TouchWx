@@ -1,0 +1,22 @@
+<!-- 顶部提示 -->
+<view class='head'>
+        <view class='head-item'>
+                <view class="head-title">可用储值</view>
+                <view class="head-con">￥{{formData.AvailableBalance||0}}</view>
+        </view>
+        <view class='head-item'>
+                <view class="head-title">累计储值</view>
+                <view class="head-con">￥{{formData.HistoryBalance||0}}</view>
+        </view>
+</view>
+<view class='datalist'>
+        <view class='dataList-title'>储值历史</view>
+        <view wx:for="{{formList}}" wx:key="{{index}}" data-index="{{index}}" class='item {{item.IsAdd?"item-up":"item-down"}}' bindtap='tapItem'>
+                <view class='item-head'>
+                        <view>{{item.Name}}</view>
+                        <view>{{item.IsAdd?"+":""}}{{item.Num}}</view>
+                </view>
+                <view class='item-foot'>{{item._date}}</view>
+        </view>
+</view>
+<llbox id='myLlbox'></llbox>

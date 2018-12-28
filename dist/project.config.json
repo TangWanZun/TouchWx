@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 19,
+			"current": 25,
 			"list": [
 				{
 					"id": -1,
@@ -143,10 +143,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 18,
 					"name": "卡券",
 					"pathName": "pages/client/clientDetails/coupon",
-					"query": ""
+					"query": "openId=oS4HgsqzdCuEsHbuy1xMUxbtsTSA"
 				},
 				{
 					"id": 19,
@@ -177,6 +177,18 @@
 					"name": "活动报名单页",
 					"pathName": "pages/work/workPage/activityPage",
 					"query": "id=19"
+				},
+				{
+					"id": -1,
+					"name": "储值记录",
+					"pathName": "pages/client/clientDetails/stored",
+					"query": "openId=oS4HgsqzdCuEsHbuy1xMUxbtsTSA"
+				},
+				{
+					"id": -1,
+					"name": "积分记录",
+					"pathName": "pages/client/clientDetails/integral",
+					"query": "openId=oS4HgsqzdCuEsHbuy1xMUxbtsTSA"
 				}
 			]
 		}

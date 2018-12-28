@@ -1,5 +1,5 @@
 // pages/client/clientDetails/coupon.js
-import { toDate} from '../../../library/sdk/util.js'
+import { toDateTime } from '../../../library/sdk/util.js'
 Page({
 
         /**
@@ -7,16 +7,15 @@ Page({
          */
         data: {
                 formList: [],
-                isShow:false,
-                //顶部选择
-                selectTopType:'A01',
+                formData:{},
+                isShow: false,
                 //客户openId
-                openId:''
+                openId: ''
         },
         /**
          * 顶部选择转化
          */
-        topTypeSelect(e){
+        topTypeSelect(e) {
                 this.setData({
                         selectTopType: e.currentTarget.dataset.key
                 })
@@ -30,7 +29,7 @@ Page({
         /**
          *      点击每个券,用来打开或者收起说明
          */
-        tapItem(e){
+        tapItem(e) {
                 let index = e.currentTarget.dataset.index;
                 this.setData({
                         [`formList[${index}]._isShow`]: !this.data.formList[index]._isShow
@@ -39,7 +38,7 @@ Page({
         /**
          * 生命周期函数--监听页面加载
          */
-        onLoad: function(options) {
+        onLoad: function (options) {
                 this.setData({
                         openId: options.openId
                 })
@@ -51,49 +50,49 @@ Page({
         /**
          * 生命周期函数--监听页面初次渲染完成
          */
-        onReady: function() {
+        onReady: function () {
 
         },
 
         /**
          * 生命周期函数--监听页面显示
          */
-        onShow: function() {
+        onShow: function () {
 
         },
 
         /**
          * 生命周期函数--监听页面隐藏
          */
-        onHide: function() {
+        onHide: function () {
 
         },
 
         /**
          * 生命周期函数--监听页面卸载
          */
-        onUnload: function() {
+        onUnload: function () {
 
         },
 
         /**
          * 页面相关事件处理函数--监听用户下拉动作
          */
-        onPullDownRefresh: function() {
+        onPullDownRefresh: function () {
                 this.getData();
         },
 
         /**
          * 页面上拉触底事件的处理函数
          */
-        onReachBottom: function() {
+        onReachBottom: function () {
                 this.myLlbox.request();
         },
 
         /**
          * 用户点击右上角分享
          */
-        onShareAppMessage: function() {
+        onShareAppMessage: function () {
         },
         /**
          * 获取数据
@@ -101,29 +100,41 @@ Page({
         getData() {
                 //首先清空数据
                 this.setData({
-                        formList:[]
+                        formList: []
                 })
-                //根据当前类型选择加载actionType
-                let actionType = '';
-                switch (this.data.selectTopType){
-                        case 'A01': actionType = 'ECardAvailable'; break;
-                        case 'A02': actionType = 'ECardUsed'; break;
-                        case 'A03': actionType ='ECardExpired' ;break;
-                }
                 var _this = this;
+                //获取可用积分与累计积分
+                wx.$request({
+                        url: "/WeMinProPlatJson/GetList",
+                        data: {
+                                docType: 'Ocrd',
+                                actionType: 'BalanceSum',
+                                needTotal: false,
+                                docId: this.data.openId
+                        },
+                        success(res) {
+                                _this.setData({
+                                        formData: res[0] || []
+                                })
+                        },
+                        complete(res) {
+                                wx.stopPullDownRefresh();
+                        }
+                });
+                //获取储值历史
                 this.myLlbox.init({
                         url: "/WeMinProPlatJson/GetList",
                         data: {
                                 docType: 'Ocrd',
-                                actionType: actionType,
+                                actionType: 'BalanceList',
                                 needTotal: false,
                                 docId: this.data.openId
                         },
                         success(res) {
                                 //对数据进行处理
-                                for(let x of res){
+                                for (let x of res) {
                                         x._isShow = false;
-                                        x._date = `${toDate(x.StartDate)}-${toDate(x.EndDate)}`
+                                        x._date = toDateTime(x.Date)
                                 }
                                 _this.setData({
                                         formList: _this.data.formList.concat(res)

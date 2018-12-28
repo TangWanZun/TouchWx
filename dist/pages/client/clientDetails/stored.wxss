@@ -1,0 +1,58 @@
+/* pages/client/clientDetails/coupon.wxss */
+
+/* 页面头部 */
+.head{
+        display: flex;
+        justify-content: flex-start;
+        padding: 10px 20px;
+        padding-bottom: 20px;
+}
+.head-item{
+        width: 50%;
+        padding-bottom: 5px;
+}
+.head-title{
+        font-size: 13px;
+        color: rgba(0,0,0,0.5);
+}
+.head-con{
+        font-size: 20px;
+}
+/* 数据列表 */
+.datalist{
+        padding:0 10px;
+}
+.dataList-title{
+        padding-bottom: 10px;
+}
+/* 单个项目 */
+.item{
+        border-radius: 5px;
+        background-color: white;
+        border-top: 1px solid rgba(0,0,0,0.1) ;
+        border-right: 1px solid rgba(0,0,0,0.1) ;
+        overflow: hidden;
+}
+.item-up{
+        border-left: 5px solid #47e76f ;
+}
+.item-down{
+        border-left: 5px solid #ff4e4e ;
+}
+.item:last-child{
+        border-bottom:1px solid rgba(0,0,0,0.1) ;
+}
+/* 头部 */
+.item-head{
+        display: flex;
+        justify-content: space-between;
+        padding:10px 15px;
+        padding-bottom: 0px;
+}
+/* 底部 */
+.item-foot{
+        text-align: right;
+        color:rgba(0,0,0,0.5);
+        font-size: 13px;
+        padding:10px 15px;
+}

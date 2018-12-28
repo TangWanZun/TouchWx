@@ -16,14 +16,14 @@
                                 </view>
                         </view>
                         <view class='header-botton'>
-                                <view class='header-botton-item'>
+                                <navigator url='./clientDetails/stored?openId={{formData.OpenId}}' class='header-botton-item'>
                                         <view class='header-botton-item-title'>储值</view>
                                         <view class='header-botton-item-number'>￥{{formData.AvailableBalance||'-'}}</view>
-                                </view>
-                                <view class='header-botton-item'>
+                                </navigator>
+                                <navigator url='./clientDetails/integral?openId={{formData.OpenId}}' url= class='header-botton-item'>
                                         <view class='header-botton-item-title'>积分</view>
                                         <view class='header-botton-item-number'>{{formData.AvailableScore||'-'}}</view>
-                                </view>
+                                </navigator>
                                 <navigator url='./clientDetails/coupon?openId={{formData.OpenId}}' class='header-botton-item'>
                                         <view class='header-botton-item-title'>电子券</view>
                                         <view class='header-botton-item-number'>{{formData.AvailableECard||'-'}}张</view>

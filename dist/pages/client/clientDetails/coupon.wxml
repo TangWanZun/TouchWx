@@ -1,28 +1,24 @@
-<view>
-  <view style='height:100px' wx:for="{{formList}}" wx:key="{{index}}">
-    {{item.A}}
-  </view>
-</view>
 <view class='datalist'>
-        <view class='item app-shadow' bindtap='tapItem'>
+        <view class='page-tap {{menuFixed ? "page-tap-fixed":""}}' id='page-tap'>
+                <view class='page-tap-item {{selectTopType=="A01"?"page-tap-item-show":""}}' data-key="A01" bindtap='topTypeSelect'>待使用</view>
+                <view class='page-tap-item {{selectTopType=="A02"?"page-tap-item-show":""}}' data-key="A02" bindtap='topTypeSelect'>已使用</view>
+                <view class='page-tap-item {{selectTopType=="A03"?"page-tap-item-show":""}}' data-key="A03" bindtap='topTypeSelect'>过期</view>
+        </view>
+        <view wx:for="{{formList}}" wx:key="{{index}}" data-index="{{index}}" class='item' bindtap='tapItem'>
                 <view class='item-head'>
-                        <view class='item-head-left'>￥80000</view>
+                        <view class='item-head-left'>￥{{item.Price}}</view>
                         <view class='item-head-right'>
-                                <view class='item-head-title'>GLA-A保</view>
-                                <view class='item-head-con'>限定购买新车使用</view>
+                                <view class='item-head-title'>{{item.ECardName}}</view>
+                                <view class='item-head-con'>{{item.Note}}</view>
                         </view>
                 </view>
                 <!-- 详细说明 -->
-                <view class='sandwich app-scroll-none {{isShow?"sandwich-show":""}}'>
-                        <text>1、仅限GLA车型使用 
-                                2、有效期3年
-                                3、仅到店消费时抵扣使用
-                                3、仅到店消费时抵扣使用
-                        </text>
+                <view class='sandwich app-scroll-none {{item._isShow?"sandwich-show":""}}'>
+                        <text>{{item.Instruction}}</text>
                 </view>
                 <view class='item-foot'>
-                        <view>点击查看说明</view>
-                        <view>208/12/17-2021/12/17</view>
+                        <view> {{item._isShow?"点击关闭说明":"点击查看说明"}}</view>
+                        <view>{{item._date}}</view>
                 </view>
         </view>
 </view>

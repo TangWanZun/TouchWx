@@ -13,7 +13,9 @@
                                 "clientDetails",
                                 "clientDetails/carDetails",
                                 "clientDetails/coupon",
-                                "query"
+                                "query",
+                                "clientDetails/stored",
+                                "clientDetails/integral"
                         ]
                 },
                 {

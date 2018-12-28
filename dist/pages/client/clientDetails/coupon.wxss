@@ -1,15 +1,45 @@
 /* pages/client/clientDetails/coupon.wxss */
 .datalist{
         padding:0 20px;
+        padding-top: 60px;
 }
-
+/* 顶部栏 */
+.page-tap{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        background-color: white;
+        position: fixed;
+        top:0px;
+        left:0;
+        right:0;
+}
+.page-tap-item{
+        text-align: center;
+        flex-grow: 1;
+        font-size: 13px;
+        border-bottom:1px solid rgba(0, 0, 0, 0.1);
+        transition: border-bottom 0.2s;
+        box-sizing: border-box;
+        height: 40px;
+        line-height: 40px;
+}
+.page-tap-item-show{
+        border-bottom:3px solid #4eb4ff;
+}
+/* 单个项目 */
 .item{
         border-radius: 5px;
         border:1px solid rgba(0,0,0,0.1);
         background-color: white;
         border-left: 5px solid #4eb4ff ;
         overflow: hidden;
+        margin-bottom: 15px;
 }
+.item:last-child{
+        margin-bottom: 0px;
+}
+
 /* 头部 */
 .item-head{
         display: flex;

@@ -9,6 +9,7 @@ Page({
          */
         data: {
                 dataList: [],
+                storageData:[],
                 //图片数据
                 imgUrl: getApp().privateData.configUrl.imgUrl,
                 //获取聊天常量
@@ -68,6 +69,7 @@ Page({
                         return;
                 }
                 let _this = this;
+
                 wx.$request({
                         url: "/WeMinProChatMessage/GetNeedReplyList",
                         data: {
@@ -96,6 +98,8 @@ Page({
                                 _this.setData({
                                         dataList: _this.data.dataList.concat(res)
                                 })
+                                // 与数据池中进行合并
+                                _this.dataMerge()
                                 _this.page.start += _this.page.limit;
                                 //启动轮询获取数据
                                 callback && callback();
@@ -164,6 +168,8 @@ Page({
                                                         _this.setData({
                                                                 dataList: dataDataList
                                                         })
+                                                        //将数据缓存
+                                                        _this.dataSetStorage();
                                                 }
                                         })
                                 }
@@ -171,6 +177,8 @@ Page({
                                 _this.setData({
                                         dataList: dataDataList
                                 })
+                                //将数据缓存
+                                _this.dataSetStorage();
                         }
                 })
         },
@@ -189,13 +197,69 @@ Page({
                 getApp().loadInfo(function() {
                         _this.onMeId = getApp().privateData.loginInfo.DeptCode
                 })
+                //读取缓存信息
+                _this.dataGetStorage();
         },
-
+        /**
+         * 将信息列表缓存到物理硬盘上
+         */
+        dataSetStorage(){
+                wx.setStorage({
+                        key: 'msgList',
+                        data: this.data.dataList,
+                })
+                //并将数据暂时更新到变量中,用于之后的与数据池合并
+                //因为，为了保证性能,从物理硬盘中读取数据只是在启动的时候，加载一次
+                //接下来就会用storageData替代
+                this.setData({
+                        storageData: this.data.dataList
+                })
+        },
+        /**
+         * 读取存储的信息列表
+         */
+        dataGetStorage() {
+                var _this = this;
+                wx.getStorage({
+                        key: 'msgList',
+                        success: function (res) {
+                                let data = res.data;
+                                _this.setData({
+                                        storageData:data
+                                })
+                                // 与数据池中进行合并
+                                _this.dataMerge()
+                        },
+                        //无论因为什么原因读取失败都将忽略
+                        fail(res) {
+                                console.log(res)
+                        }
+                })
+        },
+        /**
+         * 进行数据合并(数据池与缓存进行合并)
+         */
+        dataMerge(){
+                let dataList = this.data.dataList;
+                let storageData = this.data.storageData;
+                //循环读取数据池函数
+                for(let item of dataList){
+                        let index = util.find(storageData, "OpenId", item.OpenId);
+                        if(index>=0){
+                                //当数据池中存在的OpendId的也在缓存中存在时,以数据池为主
+                                storageData[index] = item;
+                        }
+                }
+                this.setData({
+                        dataList: storageData,
+                        storageData: storageData
+                })
+        },
         /**
          * 生命周期函数--监听页面初次渲染完成
          */
         onReady: function() {
-
+                
         },
 
         /**
