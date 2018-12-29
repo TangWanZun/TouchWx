@@ -11,20 +11,35 @@ Page({
                 imgUrl: configUrl.imgUrl,
                 loginInfo: {},
                 qrImg:'',
+                //是否为绑定顾问
+                canAttribute:true
         },
-
+        /**
+         * 数据加载
+         */
+        getData(refresh=false){
+                //是否强制刷新refresh
+                wx.$request({
+                        url: '/WeMinProUserMain/GetSelfOrShareQrCode',
+                        data:{
+                                refresh: refresh
+                        },
+                        success: (res) => {
+                                this.setData({
+                                        qrImg: `${this.data.imgUrl}${res.QRCodeImg}?t=${new Date()}`,
+                                        canAttribute: res.CanAttribute,
+                                })
+                        },
+                        complete() {
+                                wx.stopPullDownRefresh();
+                        }
+                })
+        },
         /**
          * 生命周期函数--监听页面加载
          */
         onLoad: function(options) {
-                wx.$request({
-                        url:'/WeMinProUserMain/GetSelfOrShareQrCode',
-                        success:(res)=>{
-                                this.setData({
-                                        qrImg: res.QRCodeImg
-                                })
-                        }
-                })
+                this.getData();
         },
 
         /**
@@ -54,14 +69,14 @@ Page({
          * 生命周期函数--监听页面卸载
          */
         onUnload: function() {
-
+                
         },
 
         /**
          * 页面相关事件处理函数--监听用户下拉动作
          */
         onPullDownRefresh: function() {
-
+                this.getData(true);
         },
 
         /**

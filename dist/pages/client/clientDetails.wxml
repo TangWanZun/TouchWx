@@ -9,24 +9,24 @@
                                         <clientImg  src="{{formData.ProfilePhoto}}"></clientImg>
                                 </view>
                                 <!-- 爱好标签 -->
-                                <view class='header-likes-box'>
+                                <navigator url='./clientDetails/label?openId={{formData.OpenId}}'  class='header-likes-box'>
                                         <view class='header-likes'>
                                                 <view class='header-likes-item' wx:if="{{index<10}}" wx:for="{{labelList}}" wx:key="{{index}}">{{item.Name}}</view>
                                         </view>
-                                </view>
+                                </navigator>
                         </view>
-                        <view class='header-botton'>
+                        <view class='header-botton' wx:if="{{formData.IsRegister}}">
                                 <navigator url='./clientDetails/stored?openId={{formData.OpenId}}' class='header-botton-item'>
                                         <view class='header-botton-item-title'>储值</view>
-                                        <view class='header-botton-item-number'>￥{{formData.AvailableBalance||'-'}}</view>
+                                        <view class='header-botton-item-number'>￥{{formData.AvailableBalance||'0'}}</view>
                                 </navigator>
                                 <navigator url='./clientDetails/integral?openId={{formData.OpenId}}' url= class='header-botton-item'>
                                         <view class='header-botton-item-title'>积分</view>
-                                        <view class='header-botton-item-number'>{{formData.AvailableScore||'-'}}</view>
+                                        <view class='header-botton-item-number'>{{formData.AvailableScore||'0'}}</view>
                                 </navigator>
                                 <navigator url='./clientDetails/coupon?openId={{formData.OpenId}}' class='header-botton-item'>
                                         <view class='header-botton-item-title'>电子券</view>
-                                        <view class='header-botton-item-number'>{{formData.AvailableECard||'-'}}张</view>
+                                        <view class='header-botton-item-number'>{{formData.AvailableECard||'0'}}张</view>
                                 </navigator>
                                 <!-- <view class='header-botton-item'>
           <view class='header-botton-item-title'>电子券</view>
@@ -105,7 +105,7 @@
                                 </navigator>
                         </view>
                 </view>
-                <view class='content-card' style='padding-bottom:40px'>
+                <view class='content-card' style='padding-bottom:40px' wx:if="{{formData.IsRegister}}">
                         <view class='content-card-title'>
                                 <view class='content-card-title-left'>用户信息</view>
                                 <view class='content-card-title-right' bindtap='sendData'>保存修改</view>

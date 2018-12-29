@@ -16,6 +16,80 @@ Page({
                 CHAT_CONST: CHAT_CONST,
                 //分页功能
                 pageOver: false,
+                //出现删除标志的index
+                delIndex:-1
+        },
+        /**
+         * 页面点击事件
+         */
+        bodyTap(){
+                //当点击任意一个地方的时候，是需要将删除模式取消的
+                if (this.data.delIndex!=-1){
+                        this.setData({
+                                delIndex: -1
+                        })
+                }
+        },
+        /**
+         * 长按事件属性
+         */
+        //当前是否触发了长按
+        itemLong: false,
+        //时间数，用于中断时间
+        itemTime: 0,
+        /**
+         * 点击信息触摸开始
+         */
+        itemTouchStart(e){
+                this.itemTime = setTimeout(() => {
+                        //更改状态
+                        this.itemLong = true;
+                        console.log('长按触发');
+                        this.setData({
+                                delIndex: e.currentTarget.dataset.index
+                        })
+                        //震动
+                        wx.vibrateShort();
+                }, 500);
+        },
+        /**
+         * 点击信息触摸结束
+         */
+        itemTouchEnd(){
+                if (!this.itemLong) {
+                        //当前不是长按状态下,取消长按事件
+                        clearTimeout(this.itemTime);
+                }
+        },
+        /**
+         *点击信息
+         */
+        itemTouchTap(e){
+                //如果当前已经触发了长按,则当前事件失效,并且取消当前单击事件
+                if (this.itemLong) {
+                        this.itemLong=false
+                        return
+                }
+                wx.navigateTo({
+                        url: e.currentTarget.dataset.url
+                })
+        },
+        /**
+         *删除当前信息
+         */
+        delItem(e){
+                let index = e.currentTarget.dataset.index;
+                console.log(index);
+                this.data.dataList.splice(index, 1)
+                this.setData({
+                        dataList: this.data.dataList,
+                        //更新虚拟缓存
+                        storageData: this.data.dataList,
+                        //重置删除标记
+                        delIndex:-1
+                })
+                //更新真实缓存
+                this.dataSetStorage()
         },
         /**
          * 获取数据(聊天列表)
@@ -248,6 +322,8 @@ Page({
                         if(index>=0){
                                 //当数据池中存在的OpendId的也在缓存中存在时,以数据池为主
                                 storageData[index] = item;
+                        }else{
+                                storageData.push(item)
                         }
                 }
                 this.setData({
@@ -255,6 +331,7 @@ Page({
                         storageData: storageData
                 })
         },
+
         /**
          * 生命周期函数--监听页面初次渲染完成
          */

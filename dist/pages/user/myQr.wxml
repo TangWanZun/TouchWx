@@ -10,11 +10,12 @@
                 </view>
                 <view class='page-body'>
                         <view class='page-qr'>
-                                <image wx:if="{{qrImg}}" src="{{imgUrl+qrImg}}"></image>
+                                <image wx:if="{{qrImg}}" src="{{qrImg}}"></image>
                                 <view wx:else class='page-load'>
                                         <image src='/assets/icon/jzz.svg'></image>
                                 </view>
                         </view>
+                        <view class='page-canAttribute' wx:if="{{!canAttribute}}">非绑定顾问</view>
                 </view>
         </view>
 </view>

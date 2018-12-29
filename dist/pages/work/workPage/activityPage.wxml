@@ -60,7 +60,7 @@
                         </view>
                         <!-- 报名处理 -->
                         <tuiInput    type="select" data-key="formData.DocStatus" value="{{formData.DocStatus}}" range="{{docTypeRange}}" bindinput="inputSelect" >
-                                <view slot="left">救援处理</view>
+                                <view slot="left">报名处理</view>
                                 <image slot="right" src='/assets/icon/right.svg'></image>
                         </tuiInput>
                         <!-- 备注 -->

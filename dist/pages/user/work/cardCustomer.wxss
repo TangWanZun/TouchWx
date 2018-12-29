@@ -137,7 +137,7 @@
         min-height: 100vh;
 }
 
-/* 单个卡券 */
+/* 单个电子券 */
 
 .page-Ecard {
         display: flex;
@@ -149,7 +149,7 @@
         padding: 10px;
         transition: 0.2s;
 }
-/* 单个卡券被选择 */
+/* 单个电子券被选择 */
 .page-Ecard-select{
         background-color: rgba(78, 180, 255,0.3);
         box-shadow: 0 0 5px 1px rgba(78, 180, 255, 0.2);
@@ -230,7 +230,7 @@
         justify-content: space-between;
 }
 
-/* 卡券抵扣 */
+/* 电子券抵扣 */
 
 .page-foot-deduction {
         font-size: 12px;

@@ -5,7 +5,7 @@ Page({
          * 页面的初始数据
          */
         data: {
-                //当前卡券选择类型
+                //当前电子券选择类型
                 //A01 全部      A02 已选择       A03 未选择
                 selectEchatType:'A01',
                 //openId
@@ -106,7 +106,7 @@ Page({
                 })
         },
         /**
-         * 获取卡券信息
+         * 获取电子券信息
          */
         getecardList(vipCode) {
                 var _this = this;
@@ -117,7 +117,7 @@ Page({
                         },
                         success(res) {
                                 console.log(res);
-                                //对卡券信息进行处理
+                                //对电子券信息进行处理
                                 res.forEach(function(item) {
                                         //添加当前是否被选中
                                         //默认为没有选中
@@ -230,7 +230,7 @@ Page({
                         key = 'L1Total';
                         keyLine = 'L1LineTotal';
                 }
-                //判断当前卡券是否需要被选取  默认为不选择,    
+                //判断当前电子券是否需要被选取  默认为不选择,    
                 let isSelect = false;
                 //这里的input是number类型
                 if (!value || value < 0) {
@@ -239,12 +239,12 @@ Page({
                 } else if (value > item[key]*1) {
                         //若是当前输入的金额大于电子券金额,则默认为电子券金额
                         value = item[key];
-                        //当输入的值最终大于0的时候,表示默认选择这个卡券
+                        //当输入的值最终大于0的时候,表示默认选择这个电子券
                         isSelect = true;
                 } else {
                         //当正好符合输入要求
                         //否则需要更新对应formData的NewTotal，这里不需要使用setData,因为不需要更新到视图上
-                        //当输入的值最终大于0的时候,表示默认选择这个卡券
+                        //当输入的值最终大于0的时候,表示默认选择这个电子券
                         isSelect = true;
                 }
                 //*1 是为了让字符串变成数字

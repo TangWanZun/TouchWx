@@ -26,9 +26,33 @@ Page({
                 })
         },
         /**
+         * 加载数据
+         */
+        getData(){
+                let _this = this;
+                wx.$request({
+                        url: "/WeMinProPlatJson/GetList",
+                        data: {
+                                docType: 'Main',
+                                actionType: 'ReportList',
+                                needTotal: false,
+                        },
+                        success(res) {
+                                _this.setData({
+                                        formData: res
+                                })
+                        },
+                        complete(){
+                                wx.stopPullDownRefresh();
+                        }
+                })
+        },
+        /**
          * 生命周期函数--监听页面加载
          */
-        onLoad: function(options) {},
+        onLoad: function(options) {
+                this.getData()
+        },
 
         /**
          * 生命周期函数--监听页面初次渲染完成
@@ -46,20 +70,6 @@ Page({
          * 生命周期函数--监听页面显示
          */
         onShow: function() {
-                let _this = this;
-                wx.$request({
-                        url: "/WeMinProPlatJson/GetList",
-                        data: {
-                                docType: 'Main',
-                                actionType: 'ReportList',
-                                needTotal: false,
-                        },
-                        success(res) {
-                                _this.setData({
-                                        formData: res
-                                })
-                        }
-                })
         },
 
         /**
@@ -80,7 +90,7 @@ Page({
          * 页面相关事件处理函数--监听用户下拉动作
          */
         onPullDownRefresh: function() {
-
+                this.getData()
         },
 
         /**

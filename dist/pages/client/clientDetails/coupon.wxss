@@ -3,6 +3,10 @@
         padding:0 20px;
         padding-top: 60px;
 }
+/* 保证核销按钮不会遮挡页面 */
+.foot{
+        height: 10vw;
+}
 /* 顶部栏 */
 .page-tap{
         display: flex;
@@ -92,4 +96,24 @@
         justify-content: space-between;
         font-size: 13px;
         padding:5px 10px;
+}
+/* 核销操作 */
+.operation{
+        position: fixed;
+        right: 5vw;
+        bottom: 5vw;
+        font-size: 14px;
+        color: white;
+        width:15vw;
+        height: 15vw;
+        background-color: #4eb4ff;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid rgba(0,0,0,0.1);
+        transition:transform 0.2s;
+}
+.operation:active{
+        transform:scale(0.95);
 }

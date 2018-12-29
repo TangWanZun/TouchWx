@@ -73,7 +73,6 @@
 
 .work-item {
         min-height: 80px;
-        background-color: white;
         border-radius: 2px;
         transition: transform 0.1s;
         overflow: hidden;
@@ -199,7 +198,6 @@
 /* 救援服务 */
 
 .work-jyfw {
-        /* background-color: #00bcd4; */
         background-color: #ff7043;
 }
 

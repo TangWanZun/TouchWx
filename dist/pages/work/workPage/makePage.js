@@ -20,7 +20,6 @@ Page(createPage({
                                 needTotal: false,
                         },
                         success(res) {
-                                console.log(res);
                                 //进行更改
                                 let _reserveRange = [{
                                         Code:'',

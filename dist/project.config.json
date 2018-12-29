@@ -143,19 +143,13 @@
 					"query": ""
 				},
 				{
-					"id": 18,
-					"name": "卡券",
-					"pathName": "pages/client/clientDetails/coupon",
-					"query": "openId=oS4HgsqzdCuEsHbuy1xMUxbtsTSA"
-				},
-				{
 					"id": 19,
 					"name": "电子券",
 					"pathName": "pages/client/clientDetails/coupon",
 					"query": "openId=oS4HgsqzdCuEsHbuy1xMUxbtsTSA"
 				},
 				{
-					"id": 20,
+					"id": 19,
 					"name": "会员消费",
 					"pathName": "pages/user/work/cardCustomer",
 					"query": "openId=oS4HgskVQqtMvZ9IbB2d-k4GhcRA"
@@ -189,6 +183,12 @@
 					"name": "积分记录",
 					"pathName": "pages/client/clientDetails/integral",
 					"query": "openId=oS4HgsqzdCuEsHbuy1xMUxbtsTSA"
+				},
+				{
+					"id": -1,
+					"name": "用户标签",
+					"pathName": "pages/client/clientDetails/label",
+					"query": "openId=oS4HgskVQqtMvZ9IbB2d-k4GhcRA"
 				}
 			]
 		}

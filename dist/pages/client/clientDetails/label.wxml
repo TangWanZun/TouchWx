@@ -1,0 +1,6 @@
+<view class='dataList'>
+        <view wx:for="{{formList}}" wx:key="{{index}}" class='item'>
+                <view class='item-title'>{{item.Name}}</view>
+                <view class='item-count'>{{item.Count}}</view>
+        </view>
+</view>

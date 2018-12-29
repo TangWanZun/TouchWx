@@ -50,6 +50,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 .page-qr{
   width: 50vw;
@@ -58,6 +59,14 @@
   background-color: white;
   border:1px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+}
+/* 是否为绑定顾问 */
+.page-canAttribute{
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+        font-size: 13px;
+        color:#4eb4ff;
 }
 /* 加载中 */
 @keyframes pageLoad {

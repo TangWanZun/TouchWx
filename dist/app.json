@@ -15,7 +15,8 @@
                                 "clientDetails/coupon",
                                 "query",
                                 "clientDetails/stored",
-                                "clientDetails/integral"
+                                "clientDetails/integral",
+                                "clientDetails/label"
                         ]
                 },
                 {

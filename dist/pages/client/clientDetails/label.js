@@ -1,19 +1,29 @@
-// pages/message/video.js
+// pages/client/clientDetails/label.js
 Page({
 
         /**
          * 页面的初始数据
          */
         data: {
-                videoUrl: ""
+                formList:[]
         },
-
         /**
          * 生命周期函数--监听页面加载
          */
         onLoad: function (options) {
-                this.setData({
-                        videoUrl: options.videoUrl
+                wx.$request({
+                        url: "/WeMinProPlatJson/GetList",
+                        data:{
+                                docType: 'Ocrd',
+                                actionType: 'LabelList',
+                                needTotal: false,
+                                docid: options.openId
+                        },
+                        success:(res)=>{
+                                this.setData({
+                                        formList:res||[]
+                                })
+                        }
                 })
         },
 
@@ -21,17 +31,14 @@ Page({
          * 生命周期函数--监听页面初次渲染完成
          */
         onReady: function () {
+
         },
 
         /**
          * 生命周期函数--监听页面显示
          */
         onShow: function () {
-                setTimeout(() => {
-                        wx.setNavigationBarTitle({
-                                title: '视频',
-                        })
-                }, 1000)
+
         },
 
         /**
