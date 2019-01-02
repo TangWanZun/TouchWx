@@ -43,6 +43,7 @@ Page(createPage({
                                 title: '数据提交中',
                         })
                         let _formData = this.data.formData;
+                        let _this = this;
                         wx.$request({
                                 url: "/WeMinProActivitySignUp/Submit",
                                 data: {
@@ -54,6 +55,12 @@ Page(createPage({
                                 },
                                 success(res) {
                                         console.log(res);
+                                        wx.showToast({
+                                                title: '提交成功',
+                                        })
+                                        _this.setData({
+                                                sendDataDisabled: true
+                                        })
                                 },
                                 complete() {
                                         wx.hideLoading();

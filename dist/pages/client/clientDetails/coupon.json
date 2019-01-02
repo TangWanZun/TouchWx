@@ -3,5 +3,6 @@
   "usingComponents": {
     "llbox": "/component/llbox"
   },
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#f9faf7"
 }

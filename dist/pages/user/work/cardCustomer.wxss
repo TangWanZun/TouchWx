@@ -257,8 +257,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        transition: filter 0.3s;
 }
-
+/* 按钮注销 */
+.page-foot-send-none {
+        filter: grayscale(100%);
+}
 /* 储值 */
 
 /* 储值的头部使用的是电子券的 */

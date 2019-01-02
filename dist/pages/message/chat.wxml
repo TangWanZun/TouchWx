@@ -41,14 +41,14 @@
           </view>
           <!-- 信息反馈 -->
           <view wx:elif="{{item.msgFromType===CHAT_CONST.CHAT_FEEDBACK}}" class='page-chat-discuss'>
-            <view class='page-chat-discuss-title'>评论留言</view>
+            <view class='page-chat-discuss-title'>信息反馈</view>
             <view class="page-chat-discuss-com">
               <view class='page-chat-discuss-com-item'>反馈类型：{{item.msgData.title}}</view>
               <view class='page-chat-discuss-com-item'>联系方式：{{item.msgData.phone}}</view>
               <view class='page-chat-discuss-com-item'>问题描述：{{item.isLeft?item.msgData.data:item.msgData.dataTwo}}</view>
             </view>
             <view wx:if="{{!item.isLeft}}" class='page-chat-discuss-foot'>
-              <pre>{{item.msgData.data}}</pre>
+              <pre>“{{item.msgData.data}}”</pre>
             </view>
             <view wx:else class='page-chat-discuss-foot'>
               <view data-index="{{index}}" bindtap='reply'>回复</view>
@@ -61,7 +61,8 @@
               <view class="page-chat-discuss-head">{{item.msgData.title}}</view>
             </view>
             <view class="page-chat-discuss-com">
-              <pre>{{item.isLeft?item.msgData.data:item.msgData.dataTwo}}</pre>
+              <pre wx:if="{{item.isLeft}}">{{item.msgData.data}}</pre>
+              <pre wx:else>“{{item.msgData.dataTwo}}”</pre>
             </view>
             <view wx:if="{{!item.isLeft}}" class='page-chat-discuss-foot'>
               <pre>{{item.msgData.data}}</pre>

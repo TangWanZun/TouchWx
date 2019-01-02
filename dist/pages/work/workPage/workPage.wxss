@@ -70,7 +70,11 @@
 }
 button[type='primary']{
         background-color: #4eb4ff !important;
+        transition: background-color 0.3s;
 }
 button[type='primary']:active{
         opacity: 0.8;
+}
+button[disabled]{
+        background-color: #c0c0c0 !important;
 }

@@ -199,6 +199,7 @@
 
 .work-jyfw {
         background-color: #ff7043;
+        border-radius: 2px;
 }
 
 .work-jyfw view {

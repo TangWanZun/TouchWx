@@ -23,6 +23,8 @@ function createPage(pro={}) {
                         },
                         ],
                         formData: {},
+                        //提交按钮是否被注销
+                        sendDataDisabled: false
                 },
                 /**
                  * tap选择

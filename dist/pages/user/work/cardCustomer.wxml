@@ -121,7 +121,7 @@ module.exports.fun = isEcardShow;
                         </view>
                         <view class='page-foot-deduction'>电子券抵扣:￥{{formData.UseECard}}</view>
                 </view>
-                <view class='page-foot-send'  bindtap='sendData'>
+                <view class='page-foot-send {{sendDataDisabled?"page-foot-send-none":""}}'  bindtap='sendData'>
                         提交
                 </view>
         </view>

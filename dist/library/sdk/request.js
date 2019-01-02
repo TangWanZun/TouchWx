@@ -30,7 +30,7 @@ function $request(para) {
                 success: para.success || function() {},
                 fail: para.fail || function() {},
                 //出现错误时 点击model的确定时进行的回调
-                failCall: para.failCall || function() {},
+                failCall: para.failCall || undefined,
                 complete: para.complete || function() {},
         };
         //判断url是否存在，不存在则报错
@@ -92,17 +92,25 @@ function $request(para) {
                                 } else {
                                         //有时候success为false但是没有msg的回调,例如登录失败，这个时候需要在调用当前接口的位置下给予一个错误回调
                                         if (result.msg) {
-                                                //正常情况下
-                                                wx.showModal({
-                                                        title: "系统提示",
-                                                        content: result.msg,
-                                                        showCancel: false,
-                                                        success(res) {
-                                                                if (res.confirm) {
-                                                                        mepara.failCall && mepara.failCall(result.data);
+                                                //当存在failCall时候,启动错误回调
+                                                if (mepara.failCall){
+                                                        wx.showModal({
+                                                                title: "系统提示",
+                                                                content: result.msg,
+                                                                showCancel: false,
+                                                                success(res) {
+                                                                        if (res.confirm) {
+                                                                                mepara.failCall(result.data);
+                                                                        }
                                                                 }
-                                                        }
-                                                })
+                                                        })
+                                                }else{
+                                                        //正常情况下
+                                                        wx.showToast({
+                                                                title: result.msg,
+                                                                icon: 'none'
+                                                        })
+                                                }
                                         }
                                         mepara.fail && mepara.fail(result.data);
                                 }

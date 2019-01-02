@@ -88,7 +88,7 @@
                                 <view slot="left">备注</view>
                         </tuiInput>
                         <view class='page-button'>
-                                <button  type='primary' bindtap='submit'>提交</button>
+                                <button disabled='{{sendDataDisabled}}'  type='primary' bindtap='submit'>提交</button>
                         </view>
                 </view>
         </view>

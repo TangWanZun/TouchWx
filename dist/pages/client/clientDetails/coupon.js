@@ -99,10 +99,15 @@ Page({
          * 获取数据
          */
         getData() {
+                let inActionType = this.data.selectTopType;
+                if (this.data.selectTopType != inActionType) {
+                        return
+                }
                 //首先清空数据
                 this.setData({
                         formList:[]
                 })
+                formList: []
                 //根据当前类型选择加载actionType
                 let actionType = '';
                 switch (this.data.selectTopType){
@@ -120,6 +125,7 @@ Page({
                                 docId: this.data.openId
                         },
                         success(res) {
+
                                 //对数据进行处理
                                 for(let x of res){
                                         x._isShow = false;

@@ -6,7 +6,7 @@
         </view>
         <view wx:for="{{formList}}" wx:key="{{index}}" data-index="{{index}}" class='item' bindtap='tapItem'>
                 <view class='item-head'>
-                        <view class='item-head-left'>￥{{item.Price}}</view>
+                        <view class='item-head-left'>{{item.ECardUnit}}</view>
                         <view class='item-head-right'>
                                 <view class='item-head-title'>{{item.ECardName}}</view>
                                 <view class='item-head-con'>{{item.Note}}</view>
@@ -21,9 +21,9 @@
                         <view>{{item._date}}</view>
                 </view>
         </view>
+        <llbox id='myLlbox'></llbox>
+        <navigator url='/pages/user/work/cardCustomer?openId={{openId}}' class='operation app-shadow-3'>
+                核销
+        </navigator>
+        <view class='foot'></view>
 </view>
-<llbox id='myLlbox'></llbox>
-<navigator url='/pages/user/work/cardCustomer?openId={{openId}}' class='operation app-shadow-3'>
-        核销
-</navigator>
-<view class='foot'></view>

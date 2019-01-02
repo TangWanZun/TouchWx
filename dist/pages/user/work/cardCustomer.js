@@ -65,7 +65,9 @@ Page({
                 //电子券数量
                 ecardList:[],
                 //当前电子券类型选择是否吸顶
-                menuFixed:false
+                menuFixed:false,
+                //提交按钮是否被注销
+                sendDataDisabled:false
         },
         /**
          * form回调
@@ -309,6 +311,8 @@ Page({
          * 数据提交
          */
         sendData(){
+                //当提交按钮被注销掉时候,按钮无效
+                if (this.data.sendDataDisabled){return}
                 wx.showLoading({
                         title: '数据获取中',
                         mask: true
@@ -322,8 +326,15 @@ Page({
                 wx.$request({
                         url: "/WeMinProVip/ConsumeRelease",
                         data,
-                        success(res) {
+                        success:(res)=>{
                                 console.log(res)
+                                wx.showToast({
+                                        title: '提交成功',
+                                })
+                                //提交成功会将提交按钮注销掉
+                                this.setData({
+                                        sendDataDisabled:true
+                                })
                         },
                         complete() {
                                 wx.hideLoading()

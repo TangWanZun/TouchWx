@@ -2,6 +2,8 @@
 .datalist{
         padding:0 20px;
         padding-top: 60px;
+        min-height: 100vh;
+        background-color: #f9faf7;
 }
 /* 保证核销按钮不会遮挡页面 */
 .foot{
@@ -36,6 +38,7 @@
         border-radius: 5px;
         border:1px solid rgba(0,0,0,0.1);
         background-color: white;
+        /* border-left: 5px solid #ff4e4e ; */
         border-left: 5px solid #4eb4ff ;
         overflow: hidden;
         margin-bottom: 15px;
