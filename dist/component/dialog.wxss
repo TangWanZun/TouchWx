@@ -24,8 +24,11 @@
   border-top:3px solid #4eb4ff;
 }
 .dialog-title{
-  font-size: 17px;
+  font-size: 15px;
   padding:5px 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 textarea{
   border-top: 1px solid rgba(0,0,0,0.1);

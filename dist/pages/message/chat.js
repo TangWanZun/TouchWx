@@ -11,6 +11,8 @@ Page({
         data: {
                 //是否显示回复框
                 dialogSelect: false,
+                //弹出log框标题
+                dialogTitle:'',
                 inputCon: {
                         //输入框中是否存在内容
                         isValue: false,
@@ -87,13 +89,13 @@ Page({
         /**
          *  回复按钮 
          */
-        replyData: {},
         reply(e) {
                 let data = this.data.dataList[e.target.dataset.index];
                 this.replyData = data;
                 //打开回复框
                 this.setData({
-                        dialogSelect: true
+                        dialogSelect: true,
+                        dialogTitle: e.currentTarget.dataset.title
                 })
         },
         /**
@@ -466,8 +468,8 @@ Page({
                 wx.openLocation({
                         latitude: data.latitude * 1,
                         longitude: data.longitude * 1,
-                        name: data.name,
-                        address: data.address
+                        name: data.name||'',
+                        address: data.address||''
                 })
         },
         /**
@@ -658,8 +660,8 @@ Page({
                                         {
                                                 msgData = {
                                                         id: msg.MsgFromId,
-                                                        data: msg.MsgData,
-                                                        dataTwo: msg.RefMsgFromContent,
+                                                        data: msg.MsgData||'',
+                                                        dataTwo: msg.RefMsgFromContent || '',
                                                         phone: msg.Phone,
                                                         reserveName: msg.ReserveName,
                                                         reserveDate: util.toDate(msg.ReserveDate),
@@ -674,8 +676,8 @@ Page({
                                         {
                                                 msgData = {
                                                         id: msg.MsgFromId,
-                                                        data: msg.MsgData,
-                                                        dataTwo: msg.RefMsgFromContent,
+                                                        data: msg.MsgData || '',
+                                                        dataTwo: msg.RefMsgFromContent || '',
                                                         phone: msg.Phone,
                                                         title: msg.Title,
                                                 }
@@ -686,8 +688,8 @@ Page({
                                         {
                                                 msgData = {
                                                         id: msg.MsgFromId,
-                                                        data: msg.MsgData,
-                                                        dataTwo: msg.RefMsgFromContent,
+                                                        data: msg.MsgData || '',
+                                                        dataTwo: msg.RefMsgFromContent || '',
                                                         title: msg.Title,
                                                         img: msg.Thumbnail,
                                                         docType: msg.MsgRefDocType,

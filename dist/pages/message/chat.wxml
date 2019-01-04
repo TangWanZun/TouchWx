@@ -1,139 +1,146 @@
-<dialog bindconfirm="bindconfirm" select="{{dialogSelect}}"></dialog>
+<dialog bindconfirm="bindconfirm" select="{{dialogSelect}}" title="{{dialogTitle}}"></dialog>
 <view class="app-body">
-  <!-- 聊天内容 -->
-  <!-- 这个是当使用功能区的时候为了兼容苹果flex -->
-  <!-- {{voiceBtn.functionUnfoldShow?"calc( 60vh - 105px )":"calc( 100vh - 105px )"}} -->
-  <scroll-view bindscrolltoupper="bindscrolltoupper"  scroll-y="true" scroll-into-view="chat-{{intoView}}" class='page-con' style='height:calc( 100vh - 55px )'>
-    <view id='chat-{{index+1}}'  wx:for='{{dataList}}' wx:key="{{item.MsgId}}">
-    <view wx:if="{{item.dataType===CHAT_CONST.DATE}}" class='page-chat-date'>{{item.date}}</view>
-    <view wx:else class='page-chat-box {{item.isLeft?"":"page-chat-box-right"}}'>
-      <view class='page-chat-img'><image src="{{item.headImg}}"></image></view>
-        <!-- 内容 -->
-        <view class='page-chat-body'>
-          <view class='page-chat-name'>{{item.name}}</view>
-          <!-- 首先判断是不是业务类型 -->
-          <!-- 服务评价 -->
-          <view wx:if="{{item.msgFromType===CHAT_CONST.CHAT_EVALUATE}}" class='page-chat-discuss'>
-            <view class='page-chat-discuss-title'>服务评价</view>
-            <view class="page-chat-discuss-com">
-              <view class='page-chat-discuss-com-item'>预约项目：{{item.msgData.reserveName}}</view>
-              <view class='page-chat-discuss-com-item'>预约时间：{{item.msgData.reserveDate}}</view>
-              <view class='page-chat-discuss-com-item'>车牌号：{{item.msgData.carNum}}</view>
-              <view class='page-chat-discuss-com-item' wx:if="{{item.msgData.slpName}}">服务顾问：{{item.msgData.slpName}}</view>
-              <view class='page-chat-discuss-com-item'>
-                满意度：
-                <view class='page-chat-discuss-star-box'>
-                  <div class="page-chat-discuss-star {{item.msgData.score>=1?'':'page-chat-discuss-star-hiden'}}"></div>
-                  <div class="page-chat-discuss-star {{item.msgData.score>=2?'':'page-chat-discuss-star-hiden'}}"></div>
-                  <div class="page-chat-discuss-star {{item.msgData.score>=3?'':'page-chat-discuss-star-hiden'}}"></div>
-                  <div class="page-chat-discuss-star {{item.msgData.score>=4?'':'page-chat-discuss-star-hiden'}}"></div>
-                  <div class="page-chat-discuss-star {{item.msgData.score>=5?'':'page-chat-discuss-star-hiden'}}"></div>
+        <!-- 聊天内容 -->
+        <!-- 这个是当使用功能区的时候为了兼容苹果flex -->
+        <!-- {{voiceBtn.functionUnfoldShow?"calc( 60vh - 105px )":"calc( 100vh - 105px )"}} -->
+        <scroll-view bindscrolltoupper="bindscrolltoupper" scroll-y="true" scroll-into-view="chat-{{intoView}}" class='page-con' style='height:calc( 100vh - 55px )'>
+                <view id='chat-{{index+1}}' wx:for='{{dataList}}' wx:key="{{item.MsgId}}">
+                        <view wx:if="{{item.dataType===CHAT_CONST.DATE}}" class='page-chat-date'>{{item.date}}</view>
+                        <view wx:else class='page-chat-box {{item.isLeft?"":"page-chat-box-right"}}'>
+                                <view class='page-chat-img'>
+                                        <image src="{{item.headImg}}"></image>
+                                </view>
+                                <!-- 内容 -->
+                                <view class='page-chat-body'>
+                                        <view class='page-chat-name'>{{item.name}}</view>
+                                        <!-- 首先判断是不是业务类型 -->
+                                        <!-- 服务评价 -->
+                                        <view wx:if="{{item.msgFromType===CHAT_CONST.CHAT_EVALUATE}}" class='page-chat-discuss'>
+                                                <view class='page-chat-discuss-title'>服务评价</view>
+                                                <view class="page-chat-discuss-com">
+                                                        <view class='page-chat-discuss-com-item'>预约项目：{{item.msgData.reserveName}}</view>
+                                                        <view class='page-chat-discuss-com-item'>预约时间：{{item.msgData.reserveDate}}</view>
+                                                        <view class='page-chat-discuss-com-item'>车牌号：{{item.msgData.carNum}}</view>
+                                                        <view class='page-chat-discuss-com-item' wx:if="{{item.msgData.slpName}}">服务顾问：{{item.msgData.slpName}}</view>
+                                                        <view class='page-chat-discuss-com-item'>
+                                                                满意度：
+                                                                <view class='page-chat-discuss-star-box'>
+                                                                        <div class="page-chat-discuss-star {{item.msgData.score>=1?'':'page-chat-discuss-star-hiden'}}"></div>
+                                                                        <div class="page-chat-discuss-star {{item.msgData.score>=2?'':'page-chat-discuss-star-hiden'}}"></div>
+                                                                        <div class="page-chat-discuss-star {{item.msgData.score>=3?'':'page-chat-discuss-star-hiden'}}"></div>
+                                                                        <div class="page-chat-discuss-star {{item.msgData.score>=4?'':'page-chat-discuss-star-hiden'}}"></div>
+                                                                        <div class="page-chat-discuss-star {{item.msgData.score>=5?'':'page-chat-discuss-star-hiden'}}"></div>
+                                                                </view>
+                                                        </view>
+                                                        <view class='page-chat-discuss-com-item'>评语：{{item.isLeft?item.msgData.data:item.msgData.dataTwo}}</view>
+                                                </view>
+                                                <view wx:if="{{!item.isLeft}}" class='page-chat-discuss-foot'>
+                                                        <pre>{{item.msgData.data}}</pre>
+                                                </view>
+                                                <view wx:else class='page-chat-discuss-foot'>
+                                                        <view data-title="{{item.msgData.reserveName}} {{item.msgData.data}}" data-index="{{index}}" bindtap='reply'>回复</view>
+                                                </view>
+                                        </view>
+                                        <!-- 信息反馈 -->
+                                        <view wx:elif="{{item.msgFromType===CHAT_CONST.CHAT_FEEDBACK}}" class='page-chat-discuss'>
+                                                <view class='page-chat-discuss-title'>信息反馈</view>
+                                                <view class="page-chat-discuss-com">
+                                                        <view class='page-chat-discuss-com-item'>反馈类型：{{item.msgData.title}}</view>
+                                                        <view class='page-chat-discuss-com-item'>联系方式：{{item.msgData.phone}}</view>
+                                                        <view class='page-chat-discuss-com-item'>问题描述：{{item.isLeft?item.msgData.data:item.msgData.dataTwo}}</view>
+                                                </view>
+                                                <view wx:if="{{!item.isLeft}}" class='page-chat-discuss-foot'>
+                                                        <pre>“{{item.msgData.data}}”</pre>
+                                                </view>
+                                                <view wx:else class='page-chat-discuss-foot'>
+                                                        <view data-title="{{item.msgData.title}} {{item.msgData.data}}" data-index="{{index}}" bindtap='reply'>回复</view>
+                                                </view>
+                                        </view>
+                                        <!-- 评论留言 -->
+                                        <view wx:elif="{{item.msgFromType===CHAT_CONST.CHAT_DISCUSS}}" class='page-chat-discuss'>
+                                                <view class='page-chat-discuss-title'>评论留言</view>
+                                                <view class="page-chat-discuss-img" style="background-image: url({{imgUrl}}{{item.msgData.img}});">
+                                                        <view class="page-chat-discuss-head">{{item.msgData.title}}</view>
+                                                </view>
+                                                <view class="page-chat-discuss-com">
+                                                        <pre wx:if="{{item.isLeft}}">{{item.msgData.data}}</pre>
+                                                        <pre wx:else>“{{item.msgData.dataTwo}}”</pre>
+                                                </view>
+                                                <view wx:if="{{!item.isLeft}}" class='page-chat-discuss-foot'>
+                                                        <pre>{{item.msgData.data}}</pre>
+                                                </view>
+                                                <view wx:else class='page-chat-discuss-foot'>
+                                                        <view data-title="{{item.msgData.data}}" data-index="{{index}}" bindtap='reply'>回复</view>
+                                                </view>
+                                        </view>
+                                        <!-- 文本内容 -->
+                                        <view wx:elif="{{item.msgType===CHAT_CONST.CHAT_TEXT}}" class='page-chat-con'>{{item.msgData}}</view>
+                                        <!-- 图片内容 -->
+                                        <view wx:elif="{{item.msgType===CHAT_CONST.CHAT_IAMGE}}" class='page-chat-con-img' data-src="{{item.msgData.mediaOriginal}}" bindtap='showBigImage'>
+                                                <image mode="widthFix" src='{{item.msgData.thumbnail}}'></image>
+                                        </view>
+                                        <!-- 地理位置 -->
+                                        <view bindtap='openLocationFun' wx:elif="{{item.msgType===CHAT_CONST.CHAT_ADDS}}" data-name='{{item.msgData.addressDetails}}' data-address='{{item.msgData.addressName}}' data-latitude='{{item.msgData.latitude}}' data-longitude='{{item.msgData.longitude}}'
+                                                class='page-chat-con-map'>
+                                                <view class='page-chat-con-map-head'>位置(点击查看)</view>
+                                                <view class='page-chat-con-map-body'>{{item.msgData.addressDetails}}</view>
+                                        </view>
+                                        <!-- 语音 -->
+                                        <view wx:elif="{{item.msgType===CHAT_CONST.CHAT_VOICE}}" data-msgid="{{index}}" data-src="{{item.msgData.src}}" class='page-chat-con page-chat-con-audio' bindtap='playAudio'>
+                                                <view class='page-chat-con-audio-image {{audio.playMsgId===index?"page-chat-con-audio-play":""}} '>
+                                                        <image src='/assets/chat/audio{{item.isLeft?"":"-b"}}.svg'></image>
+                                                </view>
+                                                <view class='page-chat-con-audio-time'>{{item.msgData.time}}"</view>
+                                        </view>
+                                        <!-- 视频 -->
+                                        <view wx:elif="{{item.msgType===CHAT_CONST.CHAT_VIDEO}}" class='page-chat-con page-chat-con-video'>
+                                                <view class='page-chat-con-video-cover'>
+                                                        <image mode="widthFix" src='{{item.msgData.cover}}'></image>
+                                                </view>
+                                                <view class='page-chat-con-video-play' data-src="{{item.msgData.src}}" bindtap='playVideo'>
+                                                        <image src='/assets/chat/bf.svg'></image>
+                                                </view>
+                                        </view>
+                                </view>
+                                <!-- 加载 -->
+                                <view class='page-chat-loding'>
+                                        <!-- 加载中 -->
+                                        <image wx:if="{{item.state==CHAT_CONST.LOG_IN}}" class='page-chat-loding-rotate' src='/assets/chat/jz.svg'></image>
+                                        <!-- 加载失败 -->
+                                        <image wx:if="{{item.state==CHAT_CONST.LOG_FAIL}}" src='/assets/chat/sb.svg'></image>
+                                </view>
+                        </view>
                 </view>
-              </view>
-              <view class='page-chat-discuss-com-item'>评语：{{item.isLeft?item.msgData.data:item.msgData.dataTwo}}</view>
-            </view>
-            <view wx:if="{{!item.isLeft}}" class='page-chat-discuss-foot'>
-              <pre>{{item.msgData.data}}</pre>
-            </view>
-            <view wx:else class='page-chat-discuss-foot'>
-              <view data-index="{{index}}" bindtap='reply'>回复</view>
-            </view>
-          </view>
-          <!-- 信息反馈 -->
-          <view wx:elif="{{item.msgFromType===CHAT_CONST.CHAT_FEEDBACK}}" class='page-chat-discuss'>
-            <view class='page-chat-discuss-title'>信息反馈</view>
-            <view class="page-chat-discuss-com">
-              <view class='page-chat-discuss-com-item'>反馈类型：{{item.msgData.title}}</view>
-              <view class='page-chat-discuss-com-item'>联系方式：{{item.msgData.phone}}</view>
-              <view class='page-chat-discuss-com-item'>问题描述：{{item.isLeft?item.msgData.data:item.msgData.dataTwo}}</view>
-            </view>
-            <view wx:if="{{!item.isLeft}}" class='page-chat-discuss-foot'>
-              <pre>“{{item.msgData.data}}”</pre>
-            </view>
-            <view wx:else class='page-chat-discuss-foot'>
-              <view data-index="{{index}}" bindtap='reply'>回复</view>
-            </view>
-          </view>
-          <!-- 评论留言 -->
-          <view wx:elif="{{item.msgFromType===CHAT_CONST.CHAT_DISCUSS}}" class='page-chat-discuss'>
-            <view class='page-chat-discuss-title'>评论留言</view>
-            <view class="page-chat-discuss-img" style="background-image: url({{imgUrl}}{{item.msgData.img}});">
-              <view class="page-chat-discuss-head">{{item.msgData.title}}</view>
-            </view>
-            <view class="page-chat-discuss-com">
-              <pre wx:if="{{item.isLeft}}">{{item.msgData.data}}</pre>
-              <pre wx:else>“{{item.msgData.dataTwo}}”</pre>
-            </view>
-            <view wx:if="{{!item.isLeft}}" class='page-chat-discuss-foot'>
-              <pre>{{item.msgData.data}}</pre>
-            </view>
-            <view wx:else class='page-chat-discuss-foot'>
-              <view data-index="{{index}}" bindtap='reply'>回复</view>
-            </view>
-          </view>
-          <!-- 文本内容 -->
-          <view wx:elif="{{item.msgType===CHAT_CONST.CHAT_TEXT}}" class='page-chat-con'>{{item.msgData}}</view>
-          <!-- 图片内容 -->
-          <view wx:elif="{{item.msgType===CHAT_CONST.CHAT_IAMGE}}" class='page-chat-con-img' data-src="{{item.msgData.mediaOriginal}}" bindtap='showBigImage'><image mode="widthFix" src='{{item.msgData.thumbnail}}'></image></view>
-          <!-- 地理位置 -->
-          <view bindtap='openLocationFun' wx:elif="{{item.msgType===CHAT_CONST.CHAT_ADDS}}" data-name='{{item.msgData.addressDetails}}' data-address='{{item.msgData.addressName}}' data-latitude='{{item.msgData.latitude}}' data-longitude='{{item.msgData.longitude}}' class='page-chat-con-map'>
-            <view  class='page-chat-con-map-head'>位置(点击查看)</view>
-            <view class='page-chat-con-map-body'>{{item.msgData.addressDetails}}</view>
-          </view>
-          <!-- 语音 -->
-          <view wx:elif="{{item.msgType===CHAT_CONST.CHAT_VOICE}}" data-msgid="{{index}}" data-src="{{item.msgData.src}}" class='page-chat-con page-chat-con-audio' bindtap='playAudio'>
-            <view class='page-chat-con-audio-image {{audio.playMsgId===index?"page-chat-con-audio-play":""}} '><image src='/assets/chat/audio{{item.isLeft?"":"-b"}}.svg'></image></view>
-            <view class='page-chat-con-audio-time'>{{item.msgData.time}}"</view>
-          </view>
-          <!-- 视频 -->
-          <view wx:elif="{{item.msgType===CHAT_CONST.CHAT_VIDEO}}"   class='page-chat-con page-chat-con-video' >
-            <view class='page-chat-con-video-cover'>
-              <image mode="widthFix" src='{{item.msgData.cover}}'></image>
-            </view>
-            <view class='page-chat-con-video-play' data-src="{{item.msgData.src}}" bindtap='playVideo'>
-              <image src='/assets/chat/bf.svg'></image>
-            </view>
-          </view>
-        </view>
-        <!-- 加载 -->
-        <view class='page-chat-loding' >
-          <!-- 加载中 -->
-          <image wx:if="{{item.state==CHAT_CONST.LOG_IN}}" class='page-chat-loding-rotate' src='/assets/chat/jz.svg'></image>
-          <!-- 加载失败 -->
-          <image wx:if="{{item.state==CHAT_CONST.LOG_FAIL}}" src='/assets/chat/sb.svg'></image>
-        </view>
-      </view>
-    </view>
-  </scroll-view>
-  <!-- 底部栏 -->
-  <view class='page-foot'>
-    <!-- 聊天框区域 -->
-    <view class='page-input-box'>
-      <view class='page-input app-center'>
-        <input bindconfirm="sendText" value="{{inputCon.value}}" confirm-type="send" confirm-hold="true" cursor-spacing="20" bindinput="bindInput"></input>
-      </view>
-      <view class='page-send app-center {{inputCon.isValue?"app-main-bg":""}}' bindtap='sendText'>发送</view>
-    </view>
-    <!-- 功能区 -->
-    <!-- <view class='page-funtion'> -->
-      <!-- 语音 -->
-      <!-- <view class='page-funtion-item page-funtion-item-audio' bindtouchstart='voiceInShow'>
+        </scroll-view>
+        <!-- 底部栏 -->
+        <view class='page-foot'>
+                <!-- 聊天框区域 -->
+                <view class='page-input-box'>
+                        <view class='page-input app-center'>
+                                <input bindconfirm="sendText" value="{{inputCon.value}}" confirm-type="send" confirm-hold="true" cursor-spacing="20" bindinput="bindInput"></input>
+                        </view>
+                        <view class='page-send app-center {{inputCon.isValue?"app-main-bg":""}}' bindtap='sendText'>发送</view>
+                </view>
+                <!-- 功能区 -->
+                <!-- <view class='page-funtion'> -->
+                <!-- 语音 -->
+                <!-- <view class='page-funtion-item page-funtion-item-audio' bindtouchstart='voiceInShow'>
         <image src='/assets/chat/yy{{voiceBtn.functionUnfoldShow?"_show":""}}.svg'></image>
       </view> -->
-      <!-- 图库 -->
-      <!-- <view class='page-funtion-item' bindtap='chooseImageFun'>
+                <!-- 图库 -->
+                <!-- <view class='page-funtion-item' bindtap='chooseImageFun'>
         <image src='/assets/chat/tp.svg'></image>
       </view> -->
-      <!-- 拍照 -->
-      <!-- <view class='page-funtion-item' bindtap='chooseCameraFun'>
+                <!-- 拍照 -->
+                <!-- <view class='page-funtion-item' bindtap='chooseCameraFun'>
         <image src='/assets/chat/zx.svg'></image>
       </view> -->
-      <!-- <view class='page-funtion-item' bindtap='chooseLocationFun'>
+                <!-- <view class='page-funtion-item' bindtap='chooseLocationFun'>
         <image src='/assets/chat/wz.svg'></image>
       </view>
     </view> -->
-    <!-- 功能展开区列如语音 -->
-    <!-- <view class='page-function-unfold {{voiceBtn.functionUnfoldShow?"page-function-unfold-show":""}} app-center'>
+                <!-- 功能展开区列如语音 -->
+                <!-- <view class='page-function-unfold {{voiceBtn.functionUnfoldShow?"page-function-unfold-show":""}} app-center'>
       <view class='page-voice-hint'>
         {{voiceBtn.hint}}
       </view>
@@ -149,7 +156,7 @@
         <image class='page-voice-cancel-image' src='/assets/chat/sc.svg'></image>
       </view>
     </view> -->
-  </view>
-  <!-- 这个是为了解决 video 不能再scroll-view中使用的方法 -->
-  <!-- <video id='meVideo' bindfullscreenchange="fullscreenchange" src='{{videoUrl}}'></video> -->
+        </view>
+        <!-- 这个是为了解决 video 不能再scroll-view中使用的方法 -->
+        <!-- <video id='meVideo' bindfullscreenchange="fullscreenchange" src='{{videoUrl}}'></video> -->
 </view>

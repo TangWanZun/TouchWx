@@ -36,12 +36,13 @@ Page({
         //当前是否触发了长按
         itemLong: false,
         //时间数，用于中断时间
-        itemTime: 0,
+        itemTime: [],
         /**
          * 点击信息触摸开始
          */
         itemTouchStart(e){
-                this.itemTime = setTimeout(() => {
+                console.log(1);
+                let tiem = setTimeout(() => {
                         //更改状态
                         this.itemLong = true;
                         console.log('长按触发');
@@ -51,14 +52,26 @@ Page({
                         //震动
                         wx.vibrateShort();
                 }, 500);
+                this.itemTime.push(tiem);
         },
         /**
          * 点击信息触摸结束
          */
-        itemTouchEnd(){
+        itemTouchEnd(e){
                 if (!this.itemLong) {
                         //当前不是长按状态下,取消长按事件
-                        clearTimeout(this.itemTime);
+                        this.itemTime.forEach(function(item){
+                                clearTimeout(item);
+                        })
+                        this.itemTime.length=0;
+                        //运行事件
+                        wx.navigateTo({
+                                url: e.currentTarget.dataset.url
+                        })
+                }else{
+                        //当前是长按状态
+                        //重置状态
+                        this.itemLong = false
                 }
         },
         /**
@@ -66,13 +79,13 @@ Page({
          */
         itemTouchTap(e){
                 //如果当前已经触发了长按,则当前事件失效,并且取消当前单击事件
-                if (this.itemLong) {
-                        this.itemLong=false
-                        return
-                }
-                wx.navigateTo({
-                        url: e.currentTarget.dataset.url
-                })
+                // if (this.itemLong) {
+                //         this.itemLong=false
+                //         return
+                // }
+                // wx.navigateTo({
+                //         url: e.currentTarget.dataset.url
+                // })
         },
         /**
          *删除当前信息
@@ -169,9 +182,11 @@ Page({
                                 }
                                 //当未读消息大于0为消息的右上角添加未读消息数量
                                 _this.refreshBadge()
-                                _this.setData({
-                                        dataList: _this.data.dataList.concat(res)
-                                })
+                                //数据更新但不更新视图 用来解决页面更新抖动问题
+                                _this.data.dataList = _this.data.dataList.concat(res)
+                                // _this.setData({
+                                //         dataList: _this.data.dataList.concat(res)
+                                // })
                                 // 与数据池中进行合并
                                 _this.dataMerge()
                                 _this.page.start += _this.page.limit;
@@ -238,7 +253,8 @@ Page({
                                                         _this.refreshBadge();
                                                         //成功则将返回的信息添加一个新的本地带回消息
                                                         dataDataList = dataDataList.concat(res);
-                                                        //数据更新
+                                                        //数据更新 
+                                                        // _this.data.dataList = dataDataList;
                                                         _this.setData({
                                                                 dataList: dataDataList
                                                         })
@@ -247,7 +263,8 @@ Page({
                                                 }
                                         })
                                 }
-                                //数据更新
+                                //数据更新 
+                                // _this.data.dataList = dataDataList;
                                 _this.setData({
                                         dataList: dataDataList
                                 })

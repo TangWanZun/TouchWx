@@ -4,7 +4,7 @@
                         <image src='/assets/icon/xx.svg'></image>
                         暂无消息
                 </view>
-                <view  bindtouchstart='itemTouchStart' bindtouchend='itemTouchEnd' bindtap='itemTouchTap' data-index="{{index}}" data-url="/pages/message/chat?openId={{item.OpenId}}&cardName={{item.CardName||item.NickName}}&wxId={{item.WxId}}&headImg={{item.ProfilePhoto}}&online={{item.Online}}" class='page-item' wx:for="{{dataList}}" wx:key="{{item.id}}">
+                <view  bindtouchstart='itemTouchStart' bindtouchend='itemTouchEnd'  data-index="{{index}}" data-url="/pages/message/chat?openId={{item.OpenId}}&cardName={{item.CardName||item.NickName}}&wxId={{item.WxId}}&headImg={{item.ProfilePhoto}}&online={{item.Online}}" class='page-item' wx:for="{{dataList}}" wx:key="{{item.id}}">
                         <view class='page-item-img {{item.Online?"":"page-item-img-Noline"}}'>
                                 <view class='page-item-img-image'>
                                         <image src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
@@ -23,7 +23,7 @@
                                 <view class='page-item-message' wx:elif="{{item.MsgType==CHAT_CONST.CHAT_VIDEO}}">[视频]</view>
                         </view>
                         <view class='page-item-del {{delIndex==index?"page-item-del-show":""}} '>
-                                <view data-index="{{index}}" class='page-item-del-in ' catchtap='delItem'>
+                                <view data-index="{{index}}" class='page-item-del-in ' catchtouchstart='delItem'>
                                         <image src='/assets/icon/sc.svg'></image>
                                 </view>
                         </view>

@@ -1,7 +1,7 @@
 <view class='dialog-box' style='display:{{select?"flex":"none"}}'>
   <view class='dialog-model' bindtap='hidden'></view>
   <view class='dialog'>
-    <view class='dialog-title'>回复:</view>
+    <view class='dialog-title'>回复：{{title}}</view>
     <textarea value='{{valueHidden}}' placeholder="请输入回复消息" bindinput="textareaConfirm" focus="{{select}}"></textarea>
     <view class='dialog-foot'>
       <view bindtap='hidden'>取消</view>
