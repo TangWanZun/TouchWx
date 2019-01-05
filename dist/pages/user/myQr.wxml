@@ -15,7 +15,10 @@
                                         <image src='/assets/icon/jzz.svg'></image>
                                 </view>
                         </view>
-                        <view class='page-canAttribute' wx:if="{{!canAttribute}}">非绑定顾问</view>
                 </view>
+        </view>
+        <view class='page-canAttribute'>
+                <view class='page-can-item page-can-item-ok'>分享关注</view>
+                <view class='page-can-item {{canAttribute?"page-can-item-ok":" page-can-item-no"}} '>专属顾问</view>
         </view>
 </view>

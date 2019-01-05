@@ -49,7 +49,8 @@ Page({
                         complete() {}
                 })
                 //加载爱车履历
-                this.myLlbox.init({
+                // this.myLlbox.init({
+                wx.$request({
                         url: "/WeMinProPlatJson/GetList",
                         data: {
                                 docType: 'Ocrd',
@@ -57,13 +58,18 @@ Page({
                                 needTotal: false,
                         },
                         success(res) {
-                                //这里爱车履历因为是不存在的所以说，这里的爱车履历没有使用是空的
+                                // 这里需要对数据进行处理
+                                let arr = [res[0]];
+                                for (let i = 1; i < res.length; i++) {
+                                        if (arr[arr.length - 1].PeriodYear == res[i].PeriodYear) {
+                                                arr[arr.length - 1].L1ItemName += `,${res[i].L1ItemName}`;
+                                        } else {
+                                                arr.push(res[i])
+                                        }
+                                }
                                 _this.setData({
-                                        carRecord: _this.data.carRecord.concat(res)
+                                        carRecord: arr
                                 })
-                        },
-                        complete(res) {
-                                wx.stopPullDownRefresh();
                         }
                 });
         },
@@ -100,7 +106,7 @@ Page({
          * 页面相关事件处理函数--监听用户下拉动作
          */
         onPullDownRefresh: function() {
-                this.myLlbox.request();
+                // this.myLlbox.request();
         },
 
         /**

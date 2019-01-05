@@ -15,7 +15,6 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  overflow: hidden;
 }
 .page-head{
   display: flex;
@@ -60,13 +59,47 @@
   border:1px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
 }
-/* 是否为绑定顾问 */
+/* 标识 */
 .page-canAttribute{
         position: absolute;
-        right: 15px;
-        bottom: 15px;
         font-size: 13px;
-        color:#4eb4ff;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        bottom: 10px;
+        left:0px;
+        color:rgba(0, 0, 0, 0.5);
+        padding-bottom: 10px;
+}
+.page-can-item{
+        display: flex;
+        align-items: center;
+}
+.page-can-item-ok::before{
+        content: "✓";
+        display: block;
+        width:15px;
+        height: 15px;
+        border-radius: 100%;
+        background-color: green;
+        margin-right: 10px;
+        line-height: 15px;
+        text-align: center;
+        color: white;
+        font-size: 12px;
+}
+.page-can-item-no::before{
+        content: "X";
+        display: block;
+        width:15px;
+        height: 15px;
+        border-radius: 100%;
+        background-color: red;
+        margin-right: 10px;
+        line-height: 15px;
+        text-align: center;
+        color: white;
+        font-size: 12px;
 }
 /* 加载中 */
 @keyframes pageLoad {

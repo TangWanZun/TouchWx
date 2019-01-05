@@ -1,6 +1,41 @@
 <view class='dataList'>
-        <view wx:for="{{formList}}" wx:key="{{index}}" class='item'>
+        <view class='top-box'>
+                <view class='top-input-box'>
+                        <input value='{{topInputValue}}' bindinput='inputSelect' placeholder-class='top-input-pla' placeholder='请输入标签,当输入多个时以逗号进行分割'></input>
+                        <view class='top-button' bindtap='addLabel'>添加标签</view>
+                </view>
+        </view>
+        <view wx:for="{{formList}}" wx:key="{{index}}" class='item {{item._del?"item-del":""}}' data-index="{{index}}" bindtap='itemClick'>
                 <view class='item-title'>{{item.Name}}</view>
                 <view class='item-count'>{{item.Count||''}}</view>
+        </view>
+        <!-- 标签库按钮 -->
+        <view class='label-lib' bindtap='labelLibClick'>
+                <image src='/assets/icon/bqk.svg'></image>
+        </view>
+        <!-- 标签库页面 -->
+        <view class='label-lib-box {{labelLibShow?"label-lib-box-show":""}}'>
+                <!-- 关闭按钮 -->
+                <view class='label-lib-box-close' bindtap='labelLibClick'>X</view>
+                <!-- 添加标签按钮 -->
+                <view class='label-lib-box-add {{addCount>0?"label-lib-box-add-show":""}}' bindtap='libToAdd'>+</view>
+                <!-- 左侧 -->
+                <view class='label-left app-scroll-none'>
+                        <view bindtap='labelLeftClick' data-index="{{index}}" wx:for="{{labelLeftList}}" wx:key="{{index}}" class='label-left-item {{index==labelLeftIndex?"label-left-item-show":""}}'>{{item.Name}}</view>
+                </view>
+                <!-- 右侧内容 -->
+                <scroll-view scroll-y="true" class='label-right app-scroll-none' bindscrolltolower="bindscrolltolower">
+                        <view class='label-right-item-box'>
+                                <view wx:for="{{labelRightList}}" wx:key="{{index}}" class='item {{item._add?"item-add":""}}' data-index="{{index}}" bindtap='labelRightClick'>
+                                        <view class='item-title'>{{item.LabelTag}}</view>
+                                </view>
+                        </view>
+                        <llbox id='myLlbox'></llbox>
+                        <!-- <view class='label-right-top'></view> -->
+                </scroll-view>
+        </view>
+        <!-- 删除按钮 -->
+        <view bindtap='delLabel' class='del-btn {{delCount>0?"del-btn-show":""}}'>
+                <image src='/assets/icon/sc.svg'></image>
         </view>
 </view>

@@ -9,7 +9,9 @@
         <view class="page-box app-scroll-none">
                 <!-- 基本信息 -->
                 <view class="page-basic app-shadow">
-                        <view class='page-auth' wx:if="{{dataList.Auth}}"><image src='/assets/icon/sqcl.svg'></image></view>
+                        <view class='page-auth' wx:if="{{dataList.Auth}}">
+                                <image src='/assets/icon/sqcl.svg'></image>
+                        </view>
                         <view class="page-basic-name">{{dataList.CarNum}}</view>
                         <view class="page-basic-VIN">VIN:{{dataList.VIN||'-'}}</view>
                         <view class="page-basic-VIN">发送机号:{{dataList.EngineNo||'-'}}</view>
@@ -47,16 +49,15 @@
                         </view>
                 </view>
                 <view class="page-record">
-                        <view class="page-record-header">爱车履历</view>
-                        <!-- <view class="page-record-item">
-        <view class="page-record-axle">
-          <view class="page-record-axle-l"></view>
-          <view class="page-record-axle-o"></view>
-        </view>
-        <view class="page-record-time">2018-1-1</view>
-        <view class="page-record-con">购买爱车,首次投保</view>
-      </view> -->
-                        <llbox id='myLlbox'></llbox>
+                        <view class="page-record-header">保养周期</view>
+                        <div class="page-record-item" wx:for="{{carRecord}}" wx:key="{{index}}">
+                                <div class="page-record-axle">
+                                        <div class="page-record-axle-l"></div>
+                                        <div class="page-record-axle-o"></div>
+                                </div>
+                                <div class="page-record-time">第{{item.PeriodYear}}年</div>
+                                <div class="page-record-con">{{item.L1ItemName}}</div>
+                        </div>
                 </view>
         </view>
 </view>

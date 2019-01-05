@@ -22,8 +22,5 @@
                 </view>
         </view>
         <llbox id='myLlbox'></llbox>
-        <navigator url='/pages/user/work/cardCustomer?openId={{openId}}' class='operation app-shadow-3'>
-                核销
-        </navigator>
         <view class='foot'></view>
 </view>

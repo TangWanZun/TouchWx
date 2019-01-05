@@ -29,14 +29,16 @@ Page({
                                 Name: '女'
                         }
                 ],
+                //是否来自与会员消费页面
+                formPage:false
         },
         /**
          * 预览头像
          */
         previewImage(){
-                wx.previewImage({
-                        urls: [this.data.imgUrl + this.data.formData.ProfilePhoto],
-                })
+                // wx.previewImage({
+                //         urls: [this.data.imgUrl + this.data.formData.ProfilePhoto],
+                // })
         },
         /**
          * from表达input组件回调
@@ -54,7 +56,9 @@ Page({
                 //加载是否在线
                 this.setData({
                         online: options.online,
-                        openId: options.openId
+                        openId: options.openId,
+                        //是否来自会员消费
+                        formPage: options.formPage||false
                 })
                 //GetNewNeedReplyList需要接受一个参数是openid
                 wx.showLoading({

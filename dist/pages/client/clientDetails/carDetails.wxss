@@ -8,14 +8,12 @@
 
 .page-box {
         width: 100vw;
-        height: 100vh;
-        overflow: auto;
-        top: 0px;
-        left: 0px;
-        margin-top: 60vw;
-        position: absolute;
+        margin-top: -20px;
+        z-index: 9;
 }
+
 /* 基本信息 */
+
 .page-basic {
         background-color: rgba(255, 255, 255, 1);
         padding: 5px;
@@ -25,14 +23,17 @@
         margin: 0 10px;
         border-radius: 10px 10px 0 0;
 }
+
 /* 授权标识 */
-.page-auth{
+
+.page-auth {
         position: absolute;
-        width:60px;
+        width: 60px;
         height: 60px;
-        left:0px;
-        top:0px;
+        left: 0px;
+        top: 0px;
 }
+
 .page-basic-name {
         text-align: center;
         font-size: 18px;
@@ -117,17 +118,17 @@
 }
 
 .page-record-header {
-        padding: 20px 15px;
+        padding: 10px 15px;
         font-size: 17px;
 }
 
 .page-record-item {
-        position: relative;
-        min-height: 80px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding-left: 35px;
+      position: relative;
+      min-height: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;      
+      padding-left: 30px;
 }
 
 .page-record-axle {
@@ -139,13 +140,13 @@
 }
 
 .page-record-axle-o {
-        width: 20px;
-        height: 20px;
+        width: 16px;
+        height: 16px;
         background-color: white;
         border: 2px solid #6465f1;
         border-radius: 100%;
-        margin-left: -10px;
-        margin-top: -10px;
+        margin-left: -8px;
+        margin-top: -8px;
         left: 50%;
         top: 50%;
         position: absolute;
@@ -161,8 +162,9 @@
 }
 
 .page-record-time {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         font-size: 15px;
+        color: rgba(0, 0, 0, 0.5);
 }
 
 .page-record-con {

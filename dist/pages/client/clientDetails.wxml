@@ -12,6 +12,7 @@
                                 <navigator url='./clientDetails/label?openId={{formData.OpenId}}'  class='header-likes-box'>
                                         <view class='header-likes'>
                                                 <view class='header-likes-item' wx:if="{{index<10}}" wx:for="{{labelList}}" wx:key="{{index}}">{{item.Name}}</view>
+                                                <view class='header-likes-item'>更多...</view>
                                         </view>
                                 </navigator>
                         </view>
@@ -42,6 +43,10 @@
         </view>
         <!-- 正文内容 -->
         <view class='content'>
+                <!-- 核销    之后还会有积分核销 -->
+                <view  wx:if="{{!formPage&&formData.IsRegister}}"  class='content-cancel-box'>
+                        <navigator hover-class="none" url='/pages/user/work/cardCustomer?openId={{openId}}' class='content-cancel  app-shadow-2'>核销</navigator>
+                </view>
                 <view class='content-card'>
                         <view class='content-card-title'>
                                 <view class='content-card-title-left'>联系方式</view>
