@@ -118,7 +118,7 @@ Page({
                                 vipCode
                         },
                         success(res) {
-                                console.log(res);
+                                // console.log(res);
                                 //对电子券信息进行处理
                                 res.forEach(function(item) {
                                         //添加当前是否被选中
@@ -336,7 +336,7 @@ Page({
                                 })
                         },
                         complete() {
-                                wx.hideLoading()
+                                // wx.hideLoading()
                         }
                 })
         },
@@ -405,7 +405,7 @@ Page({
                 var query = wx.createSelectorQuery()
                 query.select('#page-Ecard-tap').boundingClientRect()
                 query.exec(function (res) {
-                        console.log(res[0].top);
+                        // console.log(res[0].top);
                         _this.menuTop = res[0].top;
                 })
         },

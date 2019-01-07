@@ -1,5 +1,16 @@
+<view class='page-bg'>
+        <view class='page-bg-2'></view>
+        <view class='page-bg-1'></view>
+        <view class='page-bg-3'>
+                <image mode="widthFix" src='/assets/icon/dd.svg'></image>
+        </view>
+        <view class='page-bg-4'>
+                <image mode="widthFix" src='/assets/icon/dd.svg'></image>
+        </view>
+</view>
 <view class="page-body">
-        <view class="userCard app-shadow-2">
+        <!-- <view class="userCard app-shadow-2"> -->
+        <view class="userCard">
                 <view class="userCard-left">
                         <view class="userCard-name">
                                 <view class="userCard-name-text">{{loginInfo.UserName}}</view>
@@ -29,7 +40,7 @@
                         </view>
                 </navigator> -->
                 <view  class="my-data-title">
-                        <view>我的数据</view>
+                        <view style='color:white'>我的数据</view>
                         <view class="my-data-title-icon">
                                 <!-- <image src='/assets/icon/right.svg'></image> -->
                         </view>

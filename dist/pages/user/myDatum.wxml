@@ -1,47 +1,52 @@
 <view class='app-body'>
-  <view class='page-input-box'>
-    <view class='page-input' bindtap='bingdHeadImg'>
-      <view class='page-input-left'>员工照片</view>
-      <view class='page-input-con'>
-        <view class='page-head-img'>
-          <head-img></head-img>
+        <view class='page-input-box'>
+                <!-- <view class='page-input' bindtap='bingdHeadImg'> -->
+                <view class='page-input'>
+                        <view class='page-input-left'>员工照片</view>
+                        <view class='page-input-con'>
+                                <view class='page-head-img'>
+                                        <head-img></head-img>
+                                </view>
+                        </view>
+                        <view class='page-input-right'>
+                                <!-- <image src='/assets/icon/right.svg'></image> -->
+                        </view>
+                </view>
         </view>
-      </view>
-      <view class='page-input-right'><image src='/assets/icon/right.svg'></image></view>
-    </view>
-  </view>
-  <view class='page-input-box'>
-    <view class='page-input'>
-      <view class='page-input-left'>员工账号</view>
-      <view class='page-input-con'>
-        <input disabled="true" value='{{loginInfo.UserCodeAlias||loginInfo.UserCode}}'></input>
-      </view>
-      <view class='page-input-right'></view>
-    </view>
-    <view class='page-input'>
-      <view class='page-input-left'>员工姓名</view>
-      <view class='page-input-con'>
-        <input value='{{loginInfo.UserName}}'></input>
-      </view>
-      <view class='page-input-right'></view>
-    </view>
-  </view>
-  <view class='page-input-box'>
-    <view class='page-input'>
-      <view class='page-input-left'>身份证号</view>
-      <view class='page-input-con'>
-        <input type="idcard"></input>
-      </view>
-      <view class='page-input-right'></view>
-    </view>
-    <view class='page-input'>
-      <view class='page-input-left'>手机号</view>
-      <view class='page-input-con'>
-        <input tyle="number" disabled="true" value='{{loginInfo.Phone}}'></input>
-      </view>
-      <view class='page-input-right'><image src='/assets/icon/right.svg'></image></view>
-    </view>
-    <!-- <picker mode="region" value="{{fromData.nativePlace}}"  bindchange="bindNativePlace">
+        <view class='page-input-box'>
+                <view class='page-input'>
+                        <view class='page-input-left'>员工账号</view>
+                        <view class='page-input-con'>
+                                <input disabled="true" value='{{loginInfo.UserCodeAlias||loginInfo.UserCode}}'></input>
+                        </view>
+                        <view class='page-input-right'></view>
+                </view>
+                <view class='page-input'>
+                        <view class='page-input-left'>员工姓名</view>
+                        <view class='page-input-con'>
+                                <input value='{{loginInfo.UserName}}'></input>
+                        </view>
+                        <view class='page-input-right'></view>
+                </view>
+        </view>
+        <view class='page-input-box'>
+                <view class='page-input'>
+                        <view class='page-input-left'>身份证号</view>
+                        <view class='page-input-con'>
+                                <input type="idcard"  disabled="true"></input>
+                        </view>
+                        <view class='page-input-right'></view>
+                </view>
+                <view class='page-input'>
+                        <view class='page-input-left'>手机号</view>
+                        <view class='page-input-con'>
+                                <input tyle="number" disabled="true" value='{{loginInfo.Phone}}'></input>
+                        </view>
+                        <view class='page-input-right'>
+                                <!-- <image src='/assets/icon/right.svg'></image> -->
+                        </view>
+                </view>
+                <!-- <picker mode="region" value="{{fromData.nativePlace}}"  bindchange="bindNativePlace">
       <view class='page-input' style='border-top:none'>
         <view class='page-input-left'>籍贯</view>
         <view class='page-input-con'>
@@ -59,45 +64,45 @@
         <view class='page-input-right'><image src='/assets/icon/right.svg'></image></view>
       </view>
     </picker> -->
-    <view class='page-input' style='border-top:none'>
-      <view class='page-input-left'>性别</view>
-      <view class='page-input-con'>
-        <radio-group class="radio-group">
-          <label class="radio" style='margin-right:20px'>
-            <radio value="男" checked="{{true}}"/>男
-          </label>
-          <label class="radio">
-            <radio value="女" />女
-          </label>
-        </radio-group>
-      </view>
-    </view>
-  </view>
-  <view class='page-input-box'>
-    <view class='page-input'>
-      <view class='page-input-left'>员工部门</view>
-      <view class='page-input-con'>
-        <input disabled="true" value='{{loginInfo.DeptName}}'></input>
-      </view>
-      <view class='page-input-right'></view>
-    </view>
-    <view class='page-input'>
-      <view class='page-input-left'>员工职位</view>
-      <view class='page-input-con'>
-        <input disabled="true" value='{{loginInfo.DeptName}}'></input>
-      </view>
-      <view class='page-input-right'></view>
-    </view>
-    <!-- <view class='page-input'>
+                <view class='page-input' style='border-top:none'>
+                        <view class='page-input-left'>性别</view>
+                        <view class='page-input-con'>
+                                <radio-group  disabled="true" class="radio-group">
+                                        <label class="radio" style='margin-right:20px'>
+                                                <radio   value="男" checked="{{true}}" />男
+                                        </label>
+                                        <label class="radio">
+                                                <radio value="女" />女
+                                        </label>
+                                </radio-group>
+                        </view>
+                </view>
+        </view>
+        <view class='page-input-box'>
+                <view class='page-input'>
+                        <view class='page-input-left'>员工部门</view>
+                        <view class='page-input-con'>
+                                <input disabled="true" value='{{loginInfo.DeptName}}'></input>
+                        </view>
+                        <view class='page-input-right'></view>
+                </view>
+                <view class='page-input'>
+                        <view class='page-input-left'>员工职位</view>
+                        <view class='page-input-con'>
+                                <input disabled="true" value='{{loginInfo.DeptName}}'></input>
+                        </view>
+                        <view class='page-input-right'></view>
+                </view>
+                <!-- <view class='page-input'>
       <view class='page-input-left'>直属上级</view>
       <view class='page-input-con'>
         <input disabled="true"></input>
       </view>
       <view class='page-input-right'></view>
     </view> -->
-  </view>
-  <view class='page-button'>
-    <!-- <button type='primary' bindtap='send'>保存修改</button> -->
-    <button type='warn' bindtap='button'>退出登录</button>
-  </view>
+        </view>
+        <view class='page-button'>
+                <!-- <button type='primary' bindtap='send'>保存修改</button> -->
+                <button type='warn' bindtap='button'>退出登录</button>
+        </view>
 </view>

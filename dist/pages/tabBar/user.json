@@ -3,7 +3,8 @@
   "usingComponents": {
     "head-img": "/component/headImg"
   },
-  "navigationBarBackgroundColor":"#f9faf7",
+  "navigationBarBackgroundColor":"#2f63f4",
   "enablePullDownRefresh": true,
-  "backgroundColor":"#f9faf7"
+  "backgroundColor":"#2f63f4",
+  "navigationBarTextStyle":"white"
 }

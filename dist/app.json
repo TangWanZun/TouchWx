@@ -83,12 +83,10 @@
                         }
                 ],
                 "color": "#bcbcbc",
-                "selectedColor": "#4eb4ff"
+                "selectedColor": "#256cfa",
+                "backgroundColor":"#ffffff"
         },
         "networkTimeout": {
                 "request": 60000
-        },
-        "theme": {
-                "theme-color": "#39f"
         }
 }

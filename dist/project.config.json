@@ -11,7 +11,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.2",
+	"libVersion": "2.4.3",
 	"appid": "wx741745d2b71d095d",
 	"projectname": "touch-wx",
 	"scripts": {},
@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 26,
 			"list": [
 				{
 					"id": -1,
@@ -189,6 +189,12 @@
 					"name": "用户标签",
 					"pathName": "pages/client/clientDetails/label",
 					"query": "openId=oS4HgskVQqtMvZ9IbB2d-k4GhcRA"
+				},
+				{
+					"id": 26,
+					"name": "模拟更新",
+					"pathName": "pages/tabBar/user",
+					"query": ""
 				}
 			]
 		}

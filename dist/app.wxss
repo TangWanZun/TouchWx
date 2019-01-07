@@ -65,7 +65,7 @@
 /*颜色*/
 .app-main-bg{
   /* 主色 */
-  background-color: #4eb4ff !important;
+  background-color: #256cfa !important;
 }
 .app-main-bg-5{
   /* 主色 */
