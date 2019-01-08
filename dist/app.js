@@ -17,6 +17,7 @@ App({
                 wx.showTabBarRedDot({
                         index: 0
                 })
+
         },
         /**
          * 当小程序启动，或从后台进入前台显示，会触发 onShow
@@ -112,6 +113,8 @@ App({
                 //加载滞留池
                 loadRetention: [],
                 // url配置
-                configUrl: {}
+                configUrl: {},
+                //当前用户权限
+                UXList:[]
         }
 })

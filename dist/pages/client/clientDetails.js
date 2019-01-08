@@ -2,6 +2,7 @@
 import {
         util
 } from '../../library/sdk.js'
+import { UX_TYPE} from "../../library/sdk/config.js"
 Page({
 
         /**
@@ -30,7 +31,10 @@ Page({
                         }
                 ],
                 //是否来自与会员消费页面
-                formPage:false
+                formPage:false,
+                UX_TYPE: UX_TYPE,
+                //是否存在核销权限
+                hx_UX: UX_TYPE.NO_UX
         },
         /**
          * 预览头像
@@ -58,7 +62,9 @@ Page({
                         online: options.online,
                         openId: options.openId,
                         //是否来自会员消费
-                        formPage: options.formPage||false
+                        formPage: options.formPage||false,
+                        //加载核销权限
+                        hx_UX: getApp().privateData.UXList.ConsumeECard
                 })
                 //GetNewNeedReplyList需要接受一个参数是openid
                 wx.showLoading({
@@ -80,6 +86,7 @@ Page({
                         },
                         complete() { }
                 })
+
                 //加载相应数据
                 wx.$request({
                         url: "/WeMinProPlatJson/GetDataSet",

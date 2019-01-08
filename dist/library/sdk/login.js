@@ -19,8 +19,28 @@ function saveUserInfo(res, obj = {}) {
                         obj.success && obj.success(response);
                 }
         });
-        //当全部信息获取之后,调用加载滞留池中的方法
-        getApp().privateData.loadRetention.forEach(getApp().loadInfo);
+        //加载权限
+        wx.$request({
+                url: "/WeMinProPlatJson/GetList",
+                data: {
+                        docType: 'Main',
+                        actionType: 'Permission',
+                        needTotal: false,
+                },
+                success(res) {
+                        let list = [];
+                        //对配置信息进行处理
+                        for(let x of res){
+                                list[x.ActionType] = x.Permission;
+                        }
+                        //将配置信息保存
+                        privateData.UXList = list
+                },
+                complete(res){
+                        //当全部信息获取之后,调用加载滞留池中的方法
+                        getApp().privateData.loadRetention.forEach(getApp().loadInfo);
+                }
+        })
 }
 //测试信息调取
 function loginTest() {

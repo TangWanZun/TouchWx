@@ -33,7 +33,10 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
+        align-content: flex-start;
         padding:60px 15px 80px 15px;
+        background-color: #f9faf7;
+        min-height: 100vh;
 }
 .item{
         padding:5px 15px;
@@ -44,6 +47,7 @@
         align-items: center;
         font-size: 15px;
         transition:0.3s;
+        background-color: white;
 }
 .item-del{
         box-shadow: 0 0 5px 1px rgba(255, 0, 0, 0.3);

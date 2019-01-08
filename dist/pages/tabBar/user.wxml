@@ -27,7 +27,7 @@
                         <view class="userCard-img">
                                 <head-img></head-img>
                         </view>
-                        <view class="userCard-index" bindtap='scanCode'>
+                        <view wx:if="{{hx_UX==UX_TYPE.ON_UX}}" class="userCard-index" bindtap='scanCode'>
                                 <image src='/assets/icon/sys.svg'></image>
                         </view>
                 </view>

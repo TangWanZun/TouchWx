@@ -40,9 +40,17 @@ const DEDUCTION_TYPE = {
         //金额
         AMOUNT: 'A02'
 }
+//权限控制
+const UX_TYPE = {
+        //有权限
+        ON_UX: 'A01',
+        //无权限
+        NO_UX: 'A02'
+}
 export {
         WORK_TYPE,
         CHAT_CONST,
         DEDUCTION_TYPE,
+        UX_TYPE,
         configUrl
 }

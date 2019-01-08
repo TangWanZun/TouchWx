@@ -1,3 +1,4 @@
+import { UX_TYPE} from "../../library/sdk/config.js"
 Page({
 
         /**
@@ -5,7 +6,10 @@ Page({
          */
         data: {
                 loginInfo: {},
-                formData: []
+                formData: [],
+                UX_TYPE: UX_TYPE,
+                //是否存在核销权限
+                hx_UX: UX_TYPE.NO_UX
         },
         /**
          * 打开手机扫码
@@ -59,9 +63,11 @@ Page({
          */
         onReady: function() {
                 var _this = this;
+                let appPrivateData = getApp().privateData;
                 getApp().loadInfo(function() {
                         _this.setData({
-                                loginInfo: getApp().privateData.loginInfo
+                                loginInfo: appPrivateData.loginInfo,
+                                hx_UX: appPrivateData.UXList.ConsumeECard
                         })
                 })
         },
