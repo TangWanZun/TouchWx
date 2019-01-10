@@ -9,7 +9,6 @@ Page({
          */
         data: {
                 dataList: [],
-                storageData:[],
                 //图片数据
                 imgUrl: getApp().privateData.configUrl.imgUrl,
                 //获取聊天常量
@@ -19,6 +18,10 @@ Page({
                 //出现删除标志的index
                 delIndex:-1
         },
+        /**
+         * 本地虚拟缓存
+         */
+        storageData:[],
         /**
          * 页面点击事件
          */
@@ -41,11 +44,15 @@ Page({
          * 点击信息触摸开始
          */
         itemTouchStart(e){
-                console.log(1);
+                // console.log(e);
+                //这里是表示，只允许首个手指进入会触发事件
+                // if (e.changedTouches[0].identifier!=0){return}
+                //在安卓机上，如果在长按状态下下拉刷新，会导致触摸结束事件未触发，itemLong未被重置
+                if (this.itemTime.length != 0) { this.itemLong=false}
                 let tiem = setTimeout(() => {
                         //更改状态
                         this.itemLong = true;
-                        console.log('长按触发');
+                        // console.log('长按触发');
                         this.setData({
                                 delIndex: e.currentTarget.dataset.index
                         })
@@ -58,21 +65,25 @@ Page({
          * 点击信息触摸结束
          */
         itemTouchEnd(e){
-                if (!this.itemLong) {
+                // console.log(e);
+                //保证只有在触发了touchStart的情况下才可以触发此事件
+                if (this.itemTime.length == 0) {return}
+                if (this.itemLong) {
+                        //当前是长按状态
+                        //重置状态
+                        this.itemLong = false
+                }else{
                         //当前不是长按状态下,取消长按事件
-                        this.itemTime.forEach(function(item){
+                        this.itemTime.forEach(function (item) {
                                 clearTimeout(item);
                         })
-                        this.itemTime.length=0;
                         //运行事件
                         wx.navigateTo({
                                 url: e.currentTarget.dataset.url
                         })
-                }else{
-                        //当前是长按状态
-                        //重置状态
-                        this.itemLong = false
                 }
+                //清空延时缓存
+                this.itemTime.length = 0;
         },
         /**
          *点击信息
@@ -92,15 +103,15 @@ Page({
          */
         delItem(e){
                 let index = e.currentTarget.dataset.index;
-                console.log(index);
+                // console.log(index);
                 this.data.dataList.splice(index, 1)
                 this.setData({
                         dataList: this.data.dataList,
-                        //更新虚拟缓存
-                        storageData: this.data.dataList,
                         //重置删除标记
                         delIndex:-1
                 })
+                //更新虚拟缓存
+                this.storageData=this.data.dataList;
                 //更新真实缓存
                 this.dataSetStorage()
         },
@@ -146,8 +157,8 @@ Page({
                         }
                         //如果当前存在为红点为0的数据,则将这些数据添加到列表的前面
                         this.setData({
-                                dataList: PendCountList,
                                 pageOver: false,
+                                dataList: PendCountList,
                         })
                         this.page.start = 0;
                 }
@@ -302,9 +313,7 @@ Page({
                 //并将数据暂时更新到变量中,用于之后的与数据池合并
                 //因为，为了保证性能,从物理硬盘中读取数据只是在启动的时候，加载一次
                 //接下来就会用storageData替代
-                this.setData({
-                        storageData: this.data.dataList
-                })
+                this.storageData=this.data.dataList
         },
         /**
          * 读取存储的信息列表
@@ -315,9 +324,7 @@ Page({
                         key: 'msgList',
                         success: function (res) {
                                 let data = res.data;
-                                _this.setData({
-                                        storageData:data
-                                })
+                                _this.storageData=data
                                 // 与数据池中进行合并
                                 _this.dataMerge()
                         },
@@ -332,7 +339,7 @@ Page({
          */
         dataMerge(){
                 let dataList = this.data.dataList;
-                let storageData = this.data.storageData;
+                let storageData = this.storageData;
                 //循环读取数据池函数
                 for(let item of dataList){
                         let index = util.find(storageData, "OpenId", item.OpenId);
@@ -343,9 +350,9 @@ Page({
                                 storageData.push(item)
                         }
                 }
+                this.storageData=storageData;
                 this.setData({
-                        dataList: storageData,
-                        storageData: storageData
+                        dataList: storageData
                 })
         },
 
@@ -376,7 +383,6 @@ Page({
          * 生命周期函数--监听页面卸载
          */
         onUnload: function() {
-                console.log(1);
         },
 
         /**

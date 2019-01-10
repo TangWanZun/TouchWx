@@ -74,14 +74,14 @@
                                                 </view>
                                         </view>
                                         <!-- 文本内容 -->
-                                        <view wx:elif="{{item.msgType===CHAT_CONST.CHAT_TEXT}}" class='page-chat-con'>{{item.msgData}}</view>
+                                        <view wx:elif="{{item.msgType===CHAT_CONST.CHAT_TEXT}}" class='page-chat-con' hover-class='page-chat-con-active'>{{item.msgData}}</view>
                                         <!-- 图片内容 -->
-                                        <view wx:elif="{{item.msgType===CHAT_CONST.CHAT_IAMGE}}" class='page-chat-con-img' data-src="{{item.msgData.mediaOriginal}}" bindtap='showBigImage'>
+                                        <view wx:elif="{{item.msgType===CHAT_CONST.CHAT_IAMGE}}" class='page-chat-con-img' hover-class='page-chat-con-active' data-src="{{item.msgData.mediaOriginal}}" bindtap='showBigImage'>
                                                 <image mode="widthFix" src='{{item.msgData.thumbnail}}'></image>
                                         </view>
                                         <!-- 地理位置 -->
                                         <view bindtap='openLocationFun' wx:elif="{{item.msgType===CHAT_CONST.CHAT_ADDS}}" data-name='{{item.msgData.addressDetails}}' data-address='{{item.msgData.addressName}}' data-latitude='{{item.msgData.latitude}}' data-longitude='{{item.msgData.longitude}}'
-                                                class='page-chat-con-map'>
+                                                class='page-chat-con-map' hover-class='page-chat-con-active'>
                                                 <view class='page-chat-con-map-head'>位置(点击查看)</view>
                                                 <view class='page-chat-con-map-body'>{{item.msgData.addressDetails}}</view>
                                         </view>

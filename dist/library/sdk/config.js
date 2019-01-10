@@ -43,14 +43,20 @@ const DEDUCTION_TYPE = {
 //权限控制
 const UX_TYPE = {
         //有权限
-        ON_UX: 'A01',
+        ON_UX: 'A02',
         //无权限
-        NO_UX: 'A02'
+        NO_UX: 'A01'
+}
+//权限控制
+const UX_NAME = {
+        //用来进行用户核销权限
+        A01: 'Consume',
 }
 export {
         WORK_TYPE,
         CHAT_CONST,
         DEDUCTION_TYPE,
         UX_TYPE,
+        UX_NAME,
         configUrl
 }

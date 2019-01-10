@@ -19,6 +19,7 @@
   /* flex-grow: 1; */
   /* height: 100%; */
   overflow:auto;
+        -webkit-overflow-scrolling: touch;
 }
 .page-chat-box{
   display: flex;
@@ -372,7 +373,7 @@
 /*
 * 为所有聊天框添加点击效果
 */
-.page-chat-con:active,.page-chat-con-map:active,.page-chat-con-img:active{
+.page-chat-con-active{
   transition:opacity  0.1;
   opacity: 0.5;
 }

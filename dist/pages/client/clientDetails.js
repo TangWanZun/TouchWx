@@ -2,7 +2,7 @@
 import {
         util
 } from '../../library/sdk.js'
-import { UX_TYPE} from "../../library/sdk/config.js"
+import { UX_TYPE, UX_NAME} from "../../library/sdk/config.js"
 Page({
 
         /**
@@ -64,7 +64,7 @@ Page({
                         //是否来自会员消费
                         formPage: options.formPage||false,
                         //加载核销权限
-                        hx_UX: getApp().privateData.UXList.ConsumeECard
+                        hx_UX: getApp().privateData.UXList[UX_NAME.A01]
                 })
                 //GetNewNeedReplyList需要接受一个参数是openid
                 wx.showLoading({

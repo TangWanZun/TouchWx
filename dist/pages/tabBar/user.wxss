@@ -162,6 +162,7 @@
   flex-wrap:wrap;
   overflow: auto;
   padding:20px 10px;
+  -webkit-overflow-scrolling: touch;
 }
 /* .my-data-list::after{
   content: "";
@@ -182,6 +183,17 @@
 }
 .ui-col-content{
         color: white;
+}
+/* 我的数据  */
+.ui-row{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+}
+.ui-col{
+        flex-shrink: 0;
+        flex-grow: 1;
+        width:50%;
 }
 .my-data .my-data-item-title {
   font-size: 13px;

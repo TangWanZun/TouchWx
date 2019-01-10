@@ -1,4 +1,4 @@
-import { UX_TYPE} from "../../library/sdk/config.js"
+import { UX_TYPE, UX_NAME} from "../../library/sdk/config.js"
 Page({
 
         /**
@@ -67,7 +67,7 @@ Page({
                 getApp().loadInfo(function() {
                         _this.setData({
                                 loginInfo: appPrivateData.loginInfo,
-                                hx_UX: appPrivateData.UXList.ConsumeECard
+                                hx_UX: appPrivateData.UXList[UX_NAME.A01]
                         })
                 })
         },

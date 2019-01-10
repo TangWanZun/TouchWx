@@ -38,7 +38,7 @@
   right:-20vw;
   width:40vw;
   height: 40vw;
-  background-color: #4eb4ff;
+  background-color: #256cfa;
   transform: rotate(45deg);
   display: flex;
   justify-content: center;
@@ -68,7 +68,7 @@
   padding-left: 10px;
   font-size: 20px;
   font-weight: bold;
-  border-left: 3px solid #4eb4ff;
+  border-left: 3px solid #256cfa;
 }
 .login-con-body{
   flex-grow: 1;
@@ -88,7 +88,7 @@
   transition:border-bottom 0.5s;
 }
 .page-input-con:hover{
-  border-bottom: 1px solid #4eb4ff;
+  border-bottom: 1px solid #256cfa;
 }
 .page-ground{
   display: flex;
@@ -102,7 +102,7 @@
   margin-left: 10px;
   text-align: center;
   color: white;
-  background-color: #4eb4ff;
+  background-color: #256cfa;
   transition: 0.2s;
   font-size: 15px;
   width: 80px;
@@ -114,7 +114,7 @@
 
 .page-login{
   color: white;
-  background-color: #4eb4ff;
+  background-color: #256cfa;
   border-radius: 50px;
   text-align: center;
   /* padding:10px 0; */
@@ -139,7 +139,7 @@
 /* .login-rts{
   border-style: solid;
   border-width: 25vw 0px 0 25vw;
-  border-color: #4eb4ff transparent  transparent;
+  border-color: #256cfa transparent  transparent;
   width: 0px;
   height: 0px;
   position: absolute;

@@ -11,6 +11,7 @@
         left: 0px;
         width: 100vw;
         z-index: 9;
+        -webkit-overflow-scrolling: touch;
 }
 
 /* .work-type-list::after{

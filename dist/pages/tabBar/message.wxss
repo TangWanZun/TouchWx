@@ -21,7 +21,7 @@
         align-items: stretch;
         position: relative;
 }
-.page-item:active {
+.page-item-active {
         background-color: rgba(0, 0, 0, 0.1);
 }
 .page-item:last-child .page-item-con {

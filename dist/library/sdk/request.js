@@ -108,7 +108,8 @@ function $request(para) {
                                                         //正常情况下
                                                         wx.showToast({
                                                                 title: result.msg,
-                                                                icon: 'none'
+                                                                icon: 'none',
+                                                                duration:2500
                                                         })
                                                 }
                                         }

@@ -47,7 +47,7 @@
                 </view>
                 <view class='my-data-con'>
                         <view class="ui-row" style="">
-                                <view class="ui-col ui-col-6" style="flex: 0 0 50%;">
+                                <view class="ui-col" >
                                         <view class="ui-col-content">
                                                 <view class="my-data-item-title">{{formData[0].Name}}
                                                         <span>（{{formData[0].Unit}}）</span>
@@ -55,7 +55,7 @@
                                                 <view class="my-data-item-num">{{formData[0].Value}}</view>
                                         </view>
                                 </view>
-                                <view class="ui-col ui-col-6" style="flex: 0 0 50%;">
+                                <view class="ui-col" >
                                         <view class="ui-col-content">
                                                 <view class="my-data-rangking">
                                                         <view class='my-data-rangking-in'>

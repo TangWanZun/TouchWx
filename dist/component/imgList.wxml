@@ -3,6 +3,7 @@
                 <view class='imgList-delete-item' bindtap='deleteImg'>删除</view>
                 <view class='imgList-delete-item' bindtap='noneDeleteImg'>取消</view>
         </view>
+        <view class="imgList-nonedata" wx:if="{{imgHtmlList.length==0}}">暂无图片</view>
         <view wx:for="{{imgHtmlList}}" wx:key="index" data-index="{{index}}" bindtouchstart='imgTouchStart' bindtouchend='imgTouchEnd'  bindtap='showImg' class='imgList-item {{item._del?"imgList-item-show":""}}'>
                 <image mode='aspectFill' src='{{imgHeadUrl+item[thum]}}'></image>
         </view>

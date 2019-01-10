@@ -34,6 +34,7 @@
         flex-wrap: wrap;
         justify-content: space-around;
         align-content: flex-start;
+        align-items: flex-start;
         padding:60px 15px 80px 15px;
         background-color: #f9faf7;
         min-height: 100vh;

@@ -18,6 +18,11 @@
         border:1px solid rgba(0, 0, 0, 0.08);
         overflow: hidden;
 }
+/* 暂无图片 */
+.imgList-nonedata{
+        font-size: 15px;
+        color:rgba(0, 0, 0, 0.5);
+}
 /* 删除面板 */
 .imgList-delete-box{
         position: absolute;

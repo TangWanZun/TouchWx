@@ -104,6 +104,10 @@ Page({
                                 },
                                 // UV: true,
                                 success(res) {
+                                        wx.showToast({
+                                                icon:"none",
+                                                title:'验证码发送成功'
+                                        })
                                         //开启倒计时
                                         var TIME_CONST = setInterval(function() {
                                                 let obj = _this.data.codeObj;
