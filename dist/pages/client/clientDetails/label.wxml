@@ -13,6 +13,10 @@
         <view class='label-lib' bindtap='labelLibClick'>
                 <image src='/assets/icon/bqk.svg'></image>
         </view>
+        <!-- 保存按钮 -->
+        <view class='send-click' bindtap='sendClick'>
+                <image src='/assets/icon/bc.svg'></image>
+        </view>
         <!-- 标签库页面 -->
         <view class='label-lib-box {{labelLibShow?"label-lib-box-show":""}}'>
                 <!-- 关闭按钮 -->

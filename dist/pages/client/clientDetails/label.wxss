@@ -79,6 +79,19 @@
 .del-btn-show{
         transform: translateY(0px);
 }
+/* 保存按钮 */
+.send-click{
+        position: fixed;
+        right:80px;
+        bottom: 20px;
+        width:50px;
+        height: 50px;
+        border-radius: 100%;
+        background-color: #4eb4ff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
 /* 标签库 按钮*/
 .label-lib{
         position: fixed;
@@ -92,7 +105,7 @@
         justify-content: center;
         align-items: center;
 }
-.label-lib>image{
+.label-lib>image,.send-click>image{
         width:50%;
         height: 50%;
 }

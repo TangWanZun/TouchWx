@@ -85,6 +85,25 @@ Page({
                 })
         },
         /**
+         * 保存按钮
+         */
+        sendClick(){
+                //加载相应数据
+                wx.$request({
+                        url: "/WeMinProPlatJson/Submit",
+                        data: {
+                                docType: 'Ocrd',
+                                actionType: 'SubmitLabel',
+                                docjson: JSON.stringify({ List: this.data.formList})
+                        },
+                        success(res) {
+                                wx.showToast({
+                                        title: '保存修改成功'
+                                })
+                        }
+                })
+        },
+        /**
          * 点击标签库按钮
          */
         labelLibClick(){

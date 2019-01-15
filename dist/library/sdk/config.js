@@ -1,10 +1,10 @@
 const wxid = "gh_88faf4d66bc0";
-const host = "https://www.sap-unis.com/";
+const host = "https://evip.rocar.net/";
 let configUrl = {
         wxid,
         host,
         url: `${host}wx/${wxid}`,
-        imgUrl: `${host}pc/`
+        imgUrl: `${host}`
 }
 //工作类型
 const WORK_TYPE = {

@@ -327,22 +327,26 @@ Page({
                                 wx.getSetting({
                                         success(res) {
                                                 if (!res.authSetting['scope.record']) {
+                                                        //openSetting
+                                                        /**
+                                                         * 10月10日起新提交的版本，用户在小程序、小游戏中需要点击行为后，才可以跳转打开设置页，管理授权信息。
+                                                         */
                                                         //未授权
-                                                        wx.showModal({
-                                                                title: '使用录音需要授权',
-                                                                content: '是否前往授权',
-                                                                showCancel: true,
-                                                                cancelText: '取消',
-                                                                confirmText: '前往授权',
-                                                                success(res) {
-                                                                        if (res.confirm) {
-                                                                                wx.openSetting();
-                                                                        }
-                                                                },
-                                                                complete(res) {
-                                                                        _record.isError = false;
-                                                                }
-                                                        })
+                                                        // wx.showModal({
+                                                        //         title: '使用录音需要授权',
+                                                        //         content: '是否前往授权',
+                                                        //         showCancel: true,
+                                                        //         cancelText: '取消',
+                                                        //         confirmText: '前往授权',
+                                                        //         success(res) {
+                                                        //                 if (res.confirm) {
+                                                        //                         wx.openSetting();
+                                                        //                 }
+                                                        //         },
+                                                        //         complete(res) {
+                                                        //                 _record.isError = false;
+                                                        //         }
+                                                        // })
                                                 }
                                         }
                                 })
@@ -497,19 +501,23 @@ Page({
                                 wx.getSetting({
                                         success(res) {
                                                 if (!res.authSetting['scope.userLocation']) {
+                                                        //openSetting
+                                                        /**
+                                                         * 10月10日起新提交的版本，用户在小程序、小游戏中需要点击行为后，才可以跳转打开设置页，管理授权信息。
+                                                         */
                                                         //未授权
-                                                        wx.showModal({
-                                                                title: '位置信息需要授权',
-                                                                content: '是否前往授权',
-                                                                showCancel: true,
-                                                                cancelText: '取消',
-                                                                confirmText: '前往授权',
-                                                                success(res) {
-                                                                        if (res.confirm) {
-                                                                                wx.openSetting();
-                                                                        }
-                                                                }
-                                                        })
+                                                        // wx.showModal({
+                                                        //         title: '位置信息需要授权',
+                                                        //         content: '是否前往授权',
+                                                        //         showCancel: true,
+                                                        //         cancelText: '取消',
+                                                        //         confirmText: '前往授权',
+                                                        //         success(res) {
+                                                        //                 if (res.confirm) {
+                                                        //                         wx.openSetting();
+                                                        //                 }
+                                                        //         }
+                                                        // })
                                                 }
                                         }
                                 })
