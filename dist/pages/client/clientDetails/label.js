@@ -6,6 +6,7 @@ Page({
          */
         data: {
                 formList:[],
+                openId:'',
                 topInputValue:'',
                 //当前删除的个数
                 delCount: 0,
@@ -94,6 +95,7 @@ Page({
                         data: {
                                 docType: 'Ocrd',
                                 actionType: 'SubmitLabel',
+                                docid: this.data.openId,
                                 docjson: JSON.stringify({ List: this.data.formList})
                         },
                         success(res) {
@@ -170,7 +172,7 @@ Page({
                         this.setData({
                                 formList: this.data.formList.concat({
                                         Name: labelName,
-                                        Count:null,
+                                        Count:0,
                                         _del:false
                                 })
                         })
@@ -218,6 +220,9 @@ Page({
          * 生命周期函数--监听页面加载
          */
         onLoad: function (options) {
+                this.setData({
+                        openId: options.openId
+                })
                 //获取自定义组件
                 this.myLlbox = this.selectComponent('#myLlbox');
                 //获取用户标签

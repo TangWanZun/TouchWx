@@ -4,6 +4,8 @@
         top: 0px;
         left: 0px;
         width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.05);
 }
 .page-bg-1{
         width:150vw;
@@ -48,7 +50,6 @@
 }
 .body {
   padding-top: 10px;
-  background-color: #fcfceb;
   min-height: 100vh;
 }
 .userCard {
@@ -126,7 +127,7 @@
   height: 35px;
 }
 .userCard .userCard-right .userCard-index:active{
-  background-color: rgba(0, 0, 0, 0.1) ;
+  background-color: rgb(0,0,0,0.1) ;
 }
 .my-data {
   /* background-color: white; */
@@ -178,7 +179,7 @@
   flex-shrink: 0;
   /* margin-right: 10px; */
   margin-bottom: 10px;
-  border:1px solid rgba(0, 0, 0, 0.05);
+  border:1px solid rgba(0, 0, 0, 0.1);
   background-color: white;
 }
 .ui-col-content{
