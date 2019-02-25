@@ -291,6 +291,7 @@ Page({
          */
         audioStop() {
                 var audio = this.createAudio();
+                audio.stop();
                 audio.isPlay = false;
                 //将播放ID设置为-1 取消闪动
                 this.setData({
@@ -962,6 +963,8 @@ Page({
         onUnload: function() {
                 // 删除当前页面消息广播收听者
                 wx.$msgBroadcast.remove('chat');
+                //停止音乐播放
+                this.createAudio().stop();
         },
         /**
          * 页面相关事件处理函数--监听用户下拉动作

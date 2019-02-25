@@ -33,7 +33,7 @@
                 <view class='page-input'>
                         <view class='page-input-left'>身份证号</view>
                         <view class='page-input-con'>
-                                <input type="idcard"  disabled="true"></input>
+                                <input type="idcard" disabled="true"></input>
                         </view>
                         <view class='page-input-right'></view>
                 </view>
@@ -64,19 +64,28 @@
         <view class='page-input-right'><image src='/assets/icon/right.svg'></image></view>
       </view>
     </picker> -->
-                <view class='page-input' style='border-top:none'>
+                <view class='page-input'>
                         <view class='page-input-left'>性别</view>
                         <view class='page-input-con'>
-                                <radio-group  disabled="true" class="radio-group">
+                                <input tyle="number" disabled="true" value='{{loginInfo.Sex}}'></input>
+                        </view>
+                        <view class='page-input-right'>
+                                <!-- <image src='/assets/icon/right.svg'></image> -->
+                        </view>
+                </view>
+                <!-- <view class='page-input' style='border-top:none'>
+                        <view class='page-input-left'>性别</view>
+                        <view class='page-input-con'>
+                                <radio-group disabled="true" class="radio-group">
                                         <label class="radio" style='margin-right:20px'>
-                                                <radio   value="男" checked="{{true}}" />男
+                                                <radio value="男" checked="{{true}}" />男
                                         </label>
                                         <label class="radio">
                                                 <radio value="女" />女
                                         </label>
                                 </radio-group>
                         </view>
-                </view>
+                </view> -->
         </view>
         <view class='page-input-box'>
                 <view class='page-input'>
