@@ -33,14 +33,14 @@
                 <view class='page-input'>
                         <view class='page-input-left'>身份证号</view>
                         <view class='page-input-con'>
-                                <input type="idcard" disabled="true"></input>
+                                <input type="idcard" disabled="true" value='{{"暂无"}}'></input>
                         </view>
                         <view class='page-input-right'></view>
                 </view>
                 <view class='page-input'>
                         <view class='page-input-left'>手机号</view>
                         <view class='page-input-con'>
-                                <input tyle="number" disabled="true" value='{{loginInfo.Phone}}'></input>
+                                <input tyle="number" disabled="true" value='{{loginInfo.Phone||"暂无"}}'></input>
                         </view>
                         <view class='page-input-right'>
                                 <!-- <image src='/assets/icon/right.svg'></image> -->
@@ -64,15 +64,14 @@
         <view class='page-input-right'><image src='/assets/icon/right.svg'></image></view>
       </view>
     </picker> -->
-                <view class='page-input'>
+                <!-- <view class='page-input'>
                         <view class='page-input-left'>性别</view>
                         <view class='page-input-con'>
                                 <input tyle="number" disabled="true" value='{{loginInfo.Sex}}'></input>
                         </view>
                         <view class='page-input-right'>
-                                <!-- <image src='/assets/icon/right.svg'></image> -->
                         </view>
-                </view>
+                </view> -->
                 <!-- <view class='page-input' style='border-top:none'>
                         <view class='page-input-left'>性别</view>
                         <view class='page-input-con'>
@@ -91,14 +90,14 @@
                 <view class='page-input'>
                         <view class='page-input-left'>员工部门</view>
                         <view class='page-input-con'>
-                                <input disabled="true" value='{{loginInfo.DeptName}}'></input>
+                                <input disabled="true" value='{{loginInfo.DeptName||"暂无"}}'></input>
                         </view>
                         <view class='page-input-right'></view>
                 </view>
                 <view class='page-input'>
                         <view class='page-input-left'>员工职位</view>
                         <view class='page-input-con'>
-                                <input disabled="true" value='{{loginInfo.DeptName}}'></input>
+                                <input disabled="true" value='{{loginInfo.DeptName||"暂无"}}'></input>
                         </view>
                         <view class='page-input-right'></view>
                 </view>
