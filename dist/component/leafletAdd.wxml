@@ -1,0 +1,15 @@
+<view class="updata-img" >
+        <view class="updata-img-title">{{title}}</view>
+        <view class="updata-img-body" bindtap='uploadImg'>
+                <image class="idImg" mode='aspectFit' wx:if="{{idImg}}" src="{{idImg}}" catchtap='previewImage'></image>
+                <view class='bgImg' wx:else>
+                    <image wx:if="{{uploadType=='sfCard'}}" mode="widthFix"  src='/assets/img/sfz.png'></image>
+                    <image wx:elif="{{uploadType=='jsCard'}}" mode="widthFix"  src='/assets/img/jsz.png'></image>
+                    <image wx:elif="{{uploadType=='xsCard'}}" mode="widthFix"  src='/assets/img/xsz.png'></image>
+                </view>
+                <!-- 图片是否上传中 -->
+                <view class="inLoad" wx:if="{{isLoad}}">上传中</view>
+                <!-- 删除按钮 -->
+                <view wx:if="{{idImg&&!isLoad}}" class="item-del" catchtap='delItem'></view>
+        </view>
+</view>

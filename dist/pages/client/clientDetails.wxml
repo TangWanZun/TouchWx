@@ -157,6 +157,14 @@
                                         <view slot="left">常去商圈</view>
                                 </tuiInput>
                         </view>
+                        <view class='content-card-title'>
+                                <view class='content-card-title-left'>用户上传证件</view>
+                        </view>
+                        <view class='content-card-body'>
+                                <leafletAdd upload-type="sfCard"></leafletAdd>
+                                <view style='margin-bottom:10px'></view>
+                                <leafletAdd upload-type="jsCard"></leafletAdd>
+                        </view>
                 </view>
         </view>
 </view>

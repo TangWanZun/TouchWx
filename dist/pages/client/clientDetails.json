@@ -1,7 +1,8 @@
 {
         "usingComponents": {
                 "tuiInput": "/component/tuiInput",
-                "clientImg": "/component/clientImg"
+                "clientImg": "/component/clientImg",
+                "leafletAdd": "/component/leafletAdd"
         },
         "enablePullDownRefresh": true,
         "navigationBarTitleText": "客户详情"
