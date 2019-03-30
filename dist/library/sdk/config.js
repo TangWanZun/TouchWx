@@ -1,6 +1,6 @@
-const wxid = "gh_88faf4d66bc0";
-const host = "https://evip.rocar.net/";
-// const host = "http://vip.sap-unis.com/";
+const wxid = "gh_4e97c0fa0704";
+// const host = "https://evip.rocar.net/";
+const host = "http://vip.sap-unis.com/";
 let configUrl = {
     wxid,
     host,
