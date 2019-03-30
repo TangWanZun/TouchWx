@@ -87,7 +87,26 @@
 .app-buttom:active{
   opacity: 0.5;
 }
-
+/*
+*   小loding
+*/
+@keyframes appLoad {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(359deg);
+    }
+}
+.app-load{
+  background-size: 100% 100%;
+  width:20px;
+  height: 20px;
+  background-image: url(./assets/icon/jzz.svg);
+  animation: appLoad 1s;
+  animation-iteration-count:infinite;
+  animation-timing-function: linear;
+}
 /* 1像素解决方案 */
 /*
  * 清除1px

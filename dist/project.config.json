@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -57,7 +57,8 @@
 					"id": 3,
 					"name": "客户绑定车辆",
 					"pathName": "pages/client/clientDetails/carDetails",
-					"query": "carId=25&openId=oS4HgskVQqtMvZ9IbB2d-k4GhcRA"
+					"query": "openId=ov2NLwL5aSB46gRvP8Ec3sXgMSYk&carId=8147",
+					"scene": null
 				},
 				{
 					"id": -1,

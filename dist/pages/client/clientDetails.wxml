@@ -112,7 +112,7 @@
                         </view>
                 </view>
                 <view class='content-card' style='padding-bottom:40px' wx:if="{{formData.IsRegister}}">
-                        <view class='content-card-title'>
+                        <view  class='content-card-title {{menuFixed?"content-card-title-fixed":""}}'>
                                 <view class='content-card-title-left'>用户信息</view>
                                 <view class='content-card-title-right' bindtap='sendData'>保存修改</view>
                         </view>
@@ -156,14 +156,9 @@
                                 <tuiInput data-key="formData.OftenGoto" bindinput="fromInput" value="{{formData.OftenGoto}}">
                                         <view slot="left">常去商圈</view>
                                 </tuiInput>
-                        </view>
-                        <view class='content-card-title'>
-                                <view class='content-card-title-left'>用户上传证件</view>
-                        </view>
-                        <view class='content-card-body'>
-                                <leafletAdd upload-type="sfCard"></leafletAdd>
+                                <leafletAdd upload-type="sfCard" img-url="{{idCardImg}}" data-key="idCardImg" bindinput="leafletAddInput"></leafletAdd>
                                 <view style='margin-bottom:10px'></view>
-                                <leafletAdd upload-type="jsCard"></leafletAdd>
+                                <leafletAdd upload-type="jsCard" img-url="{{drLicImg}}" data-key="drLicImg" bindinput="leafletAddInput"></leafletAdd>
                         </view>
                 </view>
         </view>

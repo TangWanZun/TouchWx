@@ -14,7 +14,7 @@
                 </view>
                 <!-- 详细说明 -->
                 <view class='sandwich app-scroll-none {{item._isShow?"sandwich-show":""}}'>
-                        <text>{{item.Instruction}}</text>
+                        <text>{{item.Instruction?item.Instruction:"暂无说明"}}</text>
                 </view>
                 <view class='item-foot'>
                         <view> {{item._isShow?"点击关闭说明":"点击查看说明"}}</view>

@@ -121,7 +121,12 @@
         padding: 10px 15px;
         font-size: 17px;
 }
-
+/* 暂无保养记录 */
+.page-record-none-data{
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.5);
+    padding-left: 15px;
+}
 .page-record-item {
       position: relative;
       min-height: 60px;

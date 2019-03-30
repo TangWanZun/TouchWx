@@ -307,8 +307,8 @@ Page({
          */
         dataSetStorage(){
                 wx.setStorage({
-                        key: 'msgList',
-                        data: this.data.dataList,
+                    key: 'msgList',
+                    data: this.data.dataList,
                 })
                 //并将数据暂时更新到变量中,用于之后的与数据池合并
                 //因为，为了保证性能,从物理硬盘中读取数据只是在启动的时候，加载一次

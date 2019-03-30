@@ -48,8 +48,9 @@
                                 </view>
                         </view>
                 </view>
-                <view class="page-record">
+                <view class="page-record" >
                         <view class="page-record-header">保养周期</view>
+                        <view class='page-record-none-data' wx:if="carRecord.length==0">暂无保养记录</view>
                         <div class="page-record-item" wx:for="{{carRecord}}" wx:key="{{index}}">
                                 <div class="page-record-axle">
                                         <div class="page-record-axle-l"></div>
