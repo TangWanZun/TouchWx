@@ -10,7 +10,7 @@
         </view>
 </view>
 <view class='datalist'>
-        <view class='dataList-title'>储值历史</view>
+        <view class='dataList-title'>积分历史</view>
         <view wx:for="{{formList}}" wx:key="{{index}}" data-index="{{index}}" class='item {{item.IsAdd?"item-up":"item-down"}}' bindtap='tapItem'>
                 <view class='item-head'>
                         <view>{{item.Name}}</view>

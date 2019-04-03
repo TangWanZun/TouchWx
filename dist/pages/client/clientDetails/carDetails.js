@@ -13,16 +13,66 @@ Page({
         formData: {},
         dataList: {},
         carRecord: [],
-        carImgList: []
+        carImgList: [],
+        //行驶证信息（后台维护）
+        xsCardImg: {
+            orig: '',
+            thum: ''
+        },
+        //行驶证信息（客户维护）
+        xsCardImgUser: {
+            orig: '',
+            thum: ''
+        },
+       
     },
     /**
      * 加载组件
      */
     myLlbox: {},
     /**
+     *页面加载数据
+     */
+    optionsCookie: {},
+    /**
+     * 用户上传证件回调
+     */
+    //是否为刚刚生成页面
+    isLoadNew:true,
+    leafletAddInput(e) {
+        if (this.isLoadNew){
+            this.isLoadNew = false;
+            return;
+        }
+        //这个不需要进行展示了，所以不使用setdata
+        this.data[e.target.dataset.key] = e.detail;
+        //这里调用上传数据
+        //加载绑定车辆数据
+        wx.$request({
+            url: "/WeMinProPlatJson/Submit",
+            data: {
+                docType: 'Ocrd',
+                actionType: 'SubmitOCar',
+                docId: this.optionsCookie.carId,
+                docJson:JSON.stringify({
+                    'VehicleLicOrigImg1': e.detail.orig,
+                    'VehicleLicThumImg1': e.detail.thum
+                })
+            },
+            success(res) {
+                wx.showToast({
+                    title: '修改成功',
+                })
+            }
+        })
+    },
+    
+    /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        //缓存页面加载数据
+        this.optionsCookie = options;
         //获取自定义组件
         this.myLlbox = this.selectComponent('#myLlbox');
         var _this = this;
@@ -37,15 +87,28 @@ Page({
                 p1: options.carId
             },
             success(res) {
+                let resItem = res.Table[0]||{};
                 //数据修改
-                res.Table[0].MaintainDate = res.Table[0].MaintainDate ? util.toDate(res.Table[0].MaintainDate) : '暂无信息';
-                res.Table[0].InsuranceDate = res.Table[0].InsuranceDate ? util.toDate(res.Table[0].InsuranceDate) : '暂无信息';
+                resItem.MaintainDate = resItem.MaintainDate ? util.toDate(resItem.MaintainDate) : '暂无信息';
+                resItem.InsuranceDate = resItem.InsuranceDate ? util.toDate(resItem.InsuranceDate) : '暂无信息';
                 _this.setData({
-                    dataList: res.Table[0],
-                    carImgList: res.Table1 || []
+                    dataList: resItem,
+                    carImgList: res.Table1 || [],
+                    //获取行驶证图片（客户上传）
+                    xsCardImgUser:{
+                        orig: resItem.VehicleLicOrigImg||'',
+                        thum: resItem.VehicleLicThumImg || ''
+                    },
+                    //获取行驶证图片（后台维护）
+                    xsCardImg: {
+                        orig: resItem.VehicleLicOrigImg1 || '',
+                        thum: resItem.VehicleLicThumImg1 || ''
+                    }
                 })
             },
-            complete() {}
+            complete() {
+                wx.stopPullDownRefresh();
+            }
         })
         //加载爱车履历
         // this.myLlbox.init({
@@ -105,7 +168,8 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function() {
-        // this.myLlbox.request();
+        this.isLoadNew = true;
+        this.onLoad(this.optionsCookie);
     },
 
     /**

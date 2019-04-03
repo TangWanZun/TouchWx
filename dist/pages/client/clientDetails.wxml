@@ -111,7 +111,7 @@
                                 </navigator>
                         </view>
                 </view>
-                <view class='content-card' style='padding-bottom:40px' wx:if="{{formData.IsRegister}}">
+                <view class='content-card' style='padding-bottom:20px' wx:if="{{formData.IsRegister}}">
                         <view  class='content-card-title {{menuFixed?"content-card-title-fixed":""}}'>
                                 <view class='content-card-title-left'>用户信息</view>
                                 <view class='content-card-title-right' bindtap='sendData'>保存修改</view>
@@ -159,6 +159,17 @@
                                 <leafletAdd upload-type="sfCard" img-url="{{idCardImg}}" data-key="idCardImg" bindinput="leafletAddInput"></leafletAdd>
                                 <view style='margin-bottom:10px'></view>
                                 <leafletAdd upload-type="jsCard" img-url="{{drLicImg}}" data-key="drLicImg" bindinput="leafletAddInput"></leafletAdd>
+                        </view>
+                </view>
+                <view class='content-card' style='padding-bottom:40px' wx:if="{{formData.IsRegister}}">
+                        <view  class='content-card-title {{menuFixed?"content-card-title-fixed":""}}'>
+                                <view class='content-card-title-left'>客户上传证件</view>
+                                <!-- <view class='content-card-title-right' bindtap='sendData'>保存修改</view> -->
+                        </view>
+                        <view class='content-card-body'>
+                                <leafletAdd upload-type="sfCard" disabled="true" img-url="{{idCardImgUser}}"></leafletAdd>
+                                <view style='margin-bottom:10px'></view>
+                                <leafletAdd upload-type="jsCard"  disabled="true" img-url="{{drLicImgUser}}"></leafletAdd>
                         </view>
                 </view>
         </view>

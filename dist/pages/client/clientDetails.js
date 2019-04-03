@@ -47,6 +47,16 @@ Page({
             orig: '',
             thum: ''
         },
+        //身份证照片信息（用户上传）
+        idCardImgUser: {
+            orig: '',
+            thum: ''
+        },
+        //驾驶证信息（用户上传）
+        drLicImgUser: {
+            orig: '',
+            thum: ''
+        },
         //图钉是否启用
         menuFixed: false
     },
@@ -131,6 +141,16 @@ Page({
                     drLicImg: {
                         orig: res.Table[0].DrLicOrigImg1 || '',
                         thum: res.Table[0].DrLicThumImg1 || ''
+                    },
+                    //身份证照片信息(用户上传)
+                    idCardImgUser: {
+                        orig: res.Table[0].IdCardOrigImg || '',
+                        thum: res.Table[0].IdCardThumImg || ''
+                    },
+                    //驾驶证信息(用户上传)
+                    drLicImgUser: {
+                        orig: res.Table[0].DrLicOrigImg || '',
+                        thum: res.Table[0].DrLicThumImg || ''
                     }
                 })
                 //更改名称
@@ -165,7 +185,7 @@ Page({
             this.GUID = util.GUID();
         }
         //添加GUID
-        data.UnionGuidTemp1 = this.GUID;
+        data.UnionGuidTemp = this.GUID;
         //车主身份证(后台维护)  原图
         data.IdCardOrigImg1 = this.data.idCardImg.orig;
         //车主身份证(后台维护)  缩略图

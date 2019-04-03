@@ -63,9 +63,9 @@ Component({
                     return;
                 }
                 //当传递值为空的时候
-                if (val.orig==''||val.thum==''){
-                    orig ='';
-                    thum ='';
+                if (val.orig == '' || val.thum == '') {
+                    orig = '';
+                    thum = '';
                 }
                 //当真实图片地址改变的时候,同步更改展示图片，并将图片信息事件传出
                 this.setData({
@@ -90,6 +90,13 @@ Component({
         thum: {
             type: String,
             value: "Thum"
+        },
+        /**
+         * 启动禁止上传和修改
+         */
+        disabled:{
+            type:Boolean,
+            value:false
         }
     },
     /**
@@ -118,6 +125,7 @@ Component({
          * 点击上传图片
          */
         uploadImg() {
+            if (this.data.disabled)return;
             wx.chooseImage({
                 count: 1,
                 success: res => {
@@ -130,30 +138,42 @@ Component({
                     this.setData({
                         isLoad: true
                     })
-                    setTimeout(() => {
-                        this.setData({
-                            isLoad: false,
-                            imgUrl: {
-                                orig: '/wxapp/img/bjxdysld.jpg',
-                                thum: '/wxapp/img/bjxdysld.jpg'
-                            }
-                        })
-                    }, 300)
-                    // wx.uploadFile({
-                    //     url: 'https://example.weixin.qq.com/upload', // 仅为示例，非真实的接口地址
-                    //     filePath: res.tempFilePaths[0],
-                    //     name: 'file',
-                    //     formData: {
-                    //         user: 'test'
-                    //     },
-                    //     success:res=> {
-                    //         console.log(res);
-                    //         // const data = res.data
-                    //         this.setData({
-                    //             isLoad: false
-                    //         })
-                    //     }
-                    // })
+                    // setTimeout(() => {
+                    //     this.setData({
+                    //         isLoad: false,
+                    //         imgUrl: {
+                    //             orig: '/wxapp/img/bjxdysld.jpg',
+                    //             thum: '/wxapp/img/bjxdysld.jpg'
+                    //         }
+                    //     })
+                    // }, 300)
+                    let privateData = getApp().privateData;
+                    wx.uploadFile({
+                        url: `${configUrl.url}/WeMinProIntegrated/UploadFile`,
+                        filePath: res.tempFilePaths[0],
+                        header: {
+                            // 'content-type': 'application/json', // 默认值
+                            // 'Content-type': 'multipart/form-data',
+                            // 'Content-type': 'application/x-www-form-urlencoded',
+                            'Cookie': privateData.Token
+                        },
+                        name: 'file',
+                        formData: {
+                            docType: this.data.doctype
+                        },
+                        success: res => {
+                            console.log(res.data);
+                            let data = JSON.parse(res.data)
+                            // const data = res.data
+                            this.setData({
+                                isLoad: false,
+                                imgUrl: {
+                                    orig: data.data.orig,
+                                    thum: data.data.thum
+                                }
+                            })
+                        }
+                    })
                 },
             })
         },

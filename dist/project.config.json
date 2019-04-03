@@ -11,8 +11,8 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.2",
-	"appid": "wx334450ff9ab82891",
+	"libVersion": "2.6.4",
+	"appid": "wx741745d2b71d095d",
 	"projectname": "touch-wx",
 	"scripts": {},
 	"condition": {
@@ -50,14 +50,14 @@
 					"id": 2,
 					"name": "客户详情",
 					"pathName": "pages/client/clientDetails",
-					"query": "openId=ov2NLwL5aSB46gRvP8Ec3sXgMSYk&online=false",
+					"query": "openId=oD6Vgv8RbPapvkvUB-3E2iAaWvVQ&online=true",
 					"scene": null
 				},
 				{
 					"id": 3,
 					"name": "客户绑定车辆",
 					"pathName": "pages/client/clientDetails/carDetails",
-					"query": "openId=ov2NLwL5aSB46gRvP8Ec3sXgMSYk&carId=8147",
+					"query": "openId=oD6Vgv8RbPapvkvUB-3E2iAaWvVQ&carId=51686",
 					"scene": null
 				},
 				{

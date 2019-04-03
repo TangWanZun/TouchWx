@@ -1,64 +1,74 @@
 <view class='app-body'>
-        <swiper wx:if="{{carImgList.length>0}}" class='page-bg' circular="true">
-                <swiper-item class="page-bg" wx:for="{{carImgList}}" wx:key="{{index}}" style="background-image:url({{imgUrl+item.Orig}})">
-                </swiper-item>
-        </swiper>
-        <view class="page-bg" wx:else>
-                <image src='/assets/car.jpg'></image>
+    <swiper wx:if="{{carImgList.length>0}}" class='page-bg' circular="true">
+        <swiper-item class="page-bg" wx:for="{{carImgList}}" wx:key="{{index}}" style="background-image:url({{imgUrl+item.Orig}})">
+        </swiper-item>
+    </swiper>
+    <view class="page-bg" wx:else>
+        <image src='/assets/car.jpg'></image>
+    </view>
+    <view class="page-box app-scroll-none">
+        <!-- 基本信息 -->
+        <view class="page-basic app-shadow">
+            <view class='page-auth' wx:if="{{dataList.Auth}}">
+                <image src='/assets/icon/sqcl.svg'></image>
+            </view>
+            <view class="page-basic-name">{{dataList.CarNum}}</view>
+            <view class="page-basic-VIN">VIN:{{dataList.VIN||'-'}}</view>
+            <view class="page-basic-VIN">发送机号:{{dataList.EngineNo||'-'}}</view>
+            <view class="page-basic-else">
+                <view class="page-basic-else-item">
+                    <view class="page-basic-else-item-title">品牌</view>
+                    <view class="page-basic-else-item-con">{{dataList.CarBrand||'-'}}</view>
+                </view>
+                <view class="page-basic-else-item">
+                    <view class="page-basic-else-item-title">颜色</view>
+                    <view class="page-basic-else-item-con">{{dataList.OutColorName||'-'}}</view>
+                </view>
+            </view>
+            <view class="page-basic-else">
+                <view class="page-basic-else-item">
+                    <view class="page-basic-else-item-title">车型</view>
+                    <view class="page-basic-else-item-con">{{dataList.CarStyle||'-'}}</view>
+                </view>
+                <view class="page-basic-else-item">
+                    <view class="page-basic-else-item-title">车系</view>
+                    <view class="page-basic-else-item-con">{{dataList.CarSer||'-'}}</view>
+                </view>
+            </view>
         </view>
-        <view class="page-box app-scroll-none">
-                <!-- 基本信息 -->
-                <view class="page-basic app-shadow">
-                        <view class='page-auth' wx:if="{{dataList.Auth}}">
-                                <image src='/assets/icon/sqcl.svg'></image>
-                        </view>
-                        <view class="page-basic-name">{{dataList.CarNum}}</view>
-                        <view class="page-basic-VIN">VIN:{{dataList.VIN||'-'}}</view>
-                        <view class="page-basic-VIN">发送机号:{{dataList.EngineNo||'-'}}</view>
-                        <view class="page-basic-else">
-                                <view class="page-basic-else-item">
-                                        <view class="page-basic-else-item-title">品牌</view>
-                                        <view class="page-basic-else-item-con">{{dataList.CarBrand||'-'}}</view>
-                                </view>
-                                <view class="page-basic-else-item">
-                                        <view class="page-basic-else-item-title">颜色</view>
-                                        <view class="page-basic-else-item-con">{{dataList.CarColor||'-'}}</view>
-                                </view>
-                        </view>
-                        <view class="page-basic-else">
-                                <view class="page-basic-else-item">
-                                        <view class="page-basic-else-item-title">车型</view>
-                                        <view class="page-basic-else-item-con">{{dataList.CarStyle||'-'}}</view>
-                                </view>
-                                <view class="page-basic-else-item">
-                                        <view class="page-basic-else-item-title">车系</view>
-                                        <view class="page-basic-else-item-con">{{dataList.CarSer||'-'}}</view>
-                                </view>
-                        </view>
+        <view class='page-mileage-box app-shadow'>
+            <view class="page-mileage">
+                <view class="page-mileage-img">
+                    <image src='/assets/icon/ybp.svg'></image>
                 </view>
-                <view class='page-mileage-box app-shadow'>
-                        <view class="page-mileage">
-                                <view class="page-mileage-img">
-                                        <image src='/assets/icon/ybp.svg'></image>
-                                </view>
-                                <view class="page-mileage-con">
-                                        <view>当前里程:{{dataList.CurrKM}}KM</view>
-                                        <view>下次保养:{{dataList.MaintainDate}}</view>
-                                        <view>保险到期:{{dataList.InsuranceDate}}</view>
-                                </view>
-                        </view>
+                <view class="page-mileage-con">
+                    <view>当前里程:{{dataList.CurrKM}}KM</view>
+                    <view>下次保养:{{dataList.MaintainDate}}</view>
+                    <view>保险到期:{{dataList.InsuranceDate}}</view>
                 </view>
-                <view class="page-record" >
-                        <view class="page-record-header">保养周期</view>
-                        <view class='page-record-none-data' wx:if="carRecord.length==0">暂无保养记录</view>
-                        <div class="page-record-item" wx:for="{{carRecord}}" wx:key="{{index}}">
-                                <div class="page-record-axle">
-                                        <div class="page-record-axle-l"></div>
-                                        <div class="page-record-axle-o"></div>
-                                </div>
-                                <div class="page-record-time">第{{item.PeriodYear}}年</div>
-                                <div class="page-record-con">{{item.L1ItemName}}</div>
-                        </div>
-                </view>
+            </view>
         </view>
+        <!-- 添加行驶证信息后台维护 -->
+        <view class='page-leaflet app-shadow'>
+            <view class="page-leaflet-title">后台维护</view>
+            <leafletAdd upload-type="xsCard" img-url="{{xsCardImg}}" data-key="xsCardImg" bindinput="leafletAddInput"></leafletAdd>
+        </view>
+        <!-- 添加行驶证信息客户上传 -->
+        <view class='page-leaflet app-shadow'>
+            <view class="page-leaflet-title">客户上传</view>
+            <leafletAdd upload-type="xsCard" disabled="true" img-url="{{xsCardImgUser}}"></leafletAdd>
+        </view>
+        <view class="page-record">
+            <view class="page-record-header">保养周期</view>
+            <view class='page-record-none-data' wx:if="carRecord.length==0">暂无保养记录</view>
+            <div class="page-record-item" wx:for="{{carRecord}}" wx:key="{{index}}">
+                <div class="page-record-axle">
+                    <div class="page-record-axle-l"></div>
+                    <div class="page-record-axle-o"></div>
+                </div>
+                <div class="page-record-time">第{{item.PeriodYear}}年</div>
+                <div class="page-record-con">{{item.L1ItemName}}</div>
+            </div>
+        </view>
+    </view>
 </view>
