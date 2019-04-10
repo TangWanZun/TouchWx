@@ -80,7 +80,7 @@
                                 </view>
                         </navigator>
                         <!-- 活动报名 -->
-                        <navigator url="/pages/work/workPage/activityPage?id={{item.id}}" wx:elif="{{item.DocType === workType.WORK_HD}}" class='work-item  work-hdbm'>
+                        <navigator url="/pages/work/workPage/activityPage?id={{item.DocId}}" wx:elif="{{item.DocType === workType.WORK_HD}}" class='work-item  work-hdbm'>
                                 <view class='work-item-head'>
                                         <view class='work-item-title'>{{item.Note}}</view>
                                         <view class='work-item-bg'>
