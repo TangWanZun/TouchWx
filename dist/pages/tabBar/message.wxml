@@ -9,7 +9,7 @@
                                 <view class='page-item-img-image'>
                                         <image src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
                                 </view>
-                                <view wx:if="{{item.PendCount!==0}}" class='page-item-badge'>{{item.PendCount}}</view>
+                                <view wx:if="{{item.PendCount!==0&&item.Online}}" class='page-item-badge'>{{item.PendCount}}</view>
                         </view>
                         <view class='page-item-con'>
                                 <view class='page-item-con-con'>

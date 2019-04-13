@@ -263,6 +263,8 @@ Page({
                                 //转化时间
                                 res[i].MsgDate = util.dateParse(res[i].MsgDate);
                                 //更新红点个数
+                                //只有在登录的用户才会计入红点中
+                                // if (res[i].Online){}
                                 _this.pendCount += res[i].PendCount;
                             }
                             //更新红点
