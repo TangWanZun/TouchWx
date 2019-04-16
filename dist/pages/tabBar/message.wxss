@@ -1,129 +1,141 @@
 .page-list {
-        width: 100vw;
-        overflow: hidden;
-        min-height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    min-height: 100vh;
 }
 
 /* 无数据 */
 
 .page-data-none {
-        height: 100px;
-        margin-top: 100px;
-        margin-bottom: 50px;
-        text-align: center;
-        font-size: 15px;
-        opacity: 0.5;
+    height: 100px;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 15px;
+    opacity: 0.5;
 }
 
 .page-item {
-        display: flex;
-        justify-content: flex-start;
-        align-items: stretch;
-        position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    position: relative;
 }
+
 .page-item-active {
-        background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
 }
+
 .page-item:last-child .page-item-con {
-        border-bottom: none;
+    border-bottom: none;
 }
 
 .page-item-img {
-        flex-shrink: 0;
-        width: 70px;
-        height: 70px;
-        padding: 10px;
-        position: relative;
+    flex-shrink: 0;
+    width: 70px;
+    height: 70px;
+    padding: 10px;
+    position: relative;
 }
 
 .page-item-img-image {
-        width: 100%;
-        height: 100%;
-        border-radius: 100%;
-        overflow: hidden;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    overflow: hidden;
 }
 
 /* 离线的图片变灰 */
 
 .page-item-img-Noline {
-        filter: grayscale(100%);
-        opacity: 0.5;
+    filter: grayscale(100%);
+    opacity: 0.5;
 }
 
 .page-item-img>.page-item-badge {
-        font-size: 10px;
-        color: white;
-        padding: 0 5px;
-        min-width: 20px;
-        height: 20px;
-        line-height: 20px;
-        border-radius: 30px;
-        background-color: red;
-        position: absolute;
-        bottom: 5px;
-        right: 5px;
-        text-align: center;
+    font-size: 10px;
+    color: white;
+    padding: 0 5px;
+    min-width: 20px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 30px;
+    background-color: red;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    text-align: center;
 }
 
 .page-item-con {
-        flex-grow: 1;
-        padding-right: 15px;
-        max-width: 80vw;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
+    flex-grow: 1;
+    padding-right: 15px;
+    max-width: 80vw;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
 .page-item-con-con {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
 .page-item-name {
-        font-size: 17px;
+    font-size: 17px;
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .page-item-date {
-        font-size: 13px;
-        color: rgba(0, 0, 0, 0.5);
+    font-size: 13px;
+    flex-shrink: 0;
+    color: rgba(0, 0, 0, 0.5);
 }
 
 .page-item-message {
-        font-size: 15px;
-        color: rgba(0, 0, 0, 0.7);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        width: 100%;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.7);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
 }
+
 /* 删除按钮 */
-.page-item-del{
-        position: absolute;
-        height: 100%;
-        right: 0px;
-        bottom: 0px;
-        padding-right: 15px;
-        display: flex;
-        align-items: center;        
-        transform:translateX(100px);
-        transition: transform 0.2s;
+
+.page-item-del {
+    position: absolute;
+    height: 100%;
+    right: 0px;
+    bottom: 0px;
+    padding-right: 15px;
+    display: flex;
+    align-items: center;
+    transform: translateX(100px);
+    transition: transform 0.2s;
 }
-.page-item-del-show{
-        transform:translateX(0);
+
+.page-item-del-show {
+    transform: translateX(0);
 }
-.page-item-del-in{
-        width:60px;
-        height: 60px;
-        border-radius: 100%;
-        background-color: rgb(255, 27, 27);
-        display: flex;
-        justify-content: center;
-        align-items: center;
+
+.page-item-del-in {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-color: rgb(255, 27, 27);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.page-item-del-in>Image{
-        width:40%;
+
+.page-item-del-in>Image {
+    width: 40%;
 }

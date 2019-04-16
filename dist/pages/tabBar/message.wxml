@@ -4,7 +4,8 @@
                         <image src='/assets/icon/xx.svg'></image>
                         暂无消息
                 </view>
-                <view  bindtouchstart='itemTouchStart' bindtouchend='itemTouchEnd'  data-index="{{index}}" data-url="/pages/message/chat?openId={{item.OpenId}}&cardName={{item.CardName||item.NickName}}&wxId={{item.WxId}}&headImg={{item.ProfilePhoto}}&online={{item.Online}}" class='page-item' hover-class="page-item-active" wx:for="{{dataList}}" wx:key="{{item.id}}">
+                <!-- <view bindtap='itemTouchTap'  bindtouchstart='itemTouchStart' bindtouchend='itemTouchEnd'  data-index="{{index}}" data-url="/pages/message/chat?openId={{item.OpenId}}&cardName={{item.CardName||item.NickName}}&wxId={{item.WxId}}&headImg={{item.ProfilePhoto}}&online={{item.Online}}" class='page-item' hover-class="page-item-active" wx:for="{{dataList}}" wx:key="{{item.id}}"> -->
+                <view bindtap='itemTouchTap'  bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd"  data-index="{{index}}" data-url="/pages/message/chat?openId={{item.OpenId}}&cardName={{item.CardName||item.NickName}}&wxId={{item.WxId}}&headImg={{item.ProfilePhoto}}&online={{item.Online}}" class='page-item' hover-class="page-item-active" wx:for="{{dataList}}" wx:key="{{item.id}}">
                         <view class='page-item-img {{item.Online?"":"page-item-img-Noline"}}'>
                                 <view class='page-item-img-image'>
                                         <image src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>

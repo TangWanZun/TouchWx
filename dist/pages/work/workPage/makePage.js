@@ -79,7 +79,7 @@ Page(createPage({
                                         Id: _formData.Id,
                                         DocStatus: _formData.DocStatus,
                                         Note: _formData.Note,
-                                        OhemId: _formData.OhemId,
+                                        OhemId: _formData.OhemId||0,
                                         UnionGuidTemp: GUID(),
                                         UnionGuid: _formData.UnionGuid
                                 },

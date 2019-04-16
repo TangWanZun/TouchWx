@@ -2,7 +2,6 @@ import {
         util,
         configUrl,
         toDate,
-        timeParse,
         WORK_TYPE
 } from '../../library/sdk.js'
 Page({
@@ -63,7 +62,7 @@ Page({
                                 for (let i = 0; i < res.length; i++) {
                                         //这里是预约,预约的时间使用的是end 和 start的时间
                                         if (res[i].CreateDate) {
-                                                res[i].CreateDate = util.toDate(res[i].CreateDate) + ' ' + util.timeParse(res[i].CreateDate)
+                                            res[i].CreateDate = util.toDate(res[i].CreateDate) + ' ' + util.dateParseTime(res[i].CreateDate)
                                         }
                                         if (res[i].ReserveStartDate) {
                                                 res[i].ReserveStartDate = util.toTime(res[i].ReserveStartDate)

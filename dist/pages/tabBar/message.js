@@ -17,7 +17,7 @@ Page({
         //分页功能
         pageOver: false,
         //出现删除标志的index
-        delIndex: -1
+        delIndex: -1,
     },
     /**
      * 本地虚拟缓存
@@ -42,66 +42,43 @@ Page({
     //时间数，用于中断时间
     itemTime: [],
     /**
-     * 点击信息触摸开始
+     * 点击信息
      */
-    itemTouchStart(e) {
-        // console.log(e);
-        //这里是表示，只允许首个手指进入会触发事件
-        // if (e.changedTouches[0].identifier!=0){return}
-        //在安卓机上，如果在长按状态下下拉刷新，会导致触摸结束事件未触发，itemLong未被重置
-        if (this.itemTime.length != 0) {
-            this.itemLong = false
-        }
-        let tiem = setTimeout(() => {
-            //更改状态
-            this.itemLong = true;
-            // console.log('长按触发');
+    itemTouchTap(e){
+        //运行事件
+        wx.navigateTo({
+            url: e.currentTarget.dataset.url
+        })
+    },
+    
+    // ListTouch触摸开始
+    ListTouchStart(e) {
+        this.setData({
+            ListTouchStart: e.touches[0].pageX
+        })
+    },
+
+    // ListTouch计算方向
+    ListTouchMove(e) {
+        this.setData({
+            ListTouchDirection: e.touches[0].pageX - this.data.ListTouchStart > 0 ? 'right' :'left'
+        })
+    },
+
+    // ListTouch计算滚动
+    ListTouchEnd(e) {
+        if (this.data.ListTouchDirection == 'left') {
             this.setData({
                 delIndex: e.currentTarget.dataset.index
             })
-            //震动
-            wx.vibrateShort();
-        }, 500);
-        this.itemTime.push(tiem);
-    },
-    /**
-     * 点击信息触摸结束
-     */
-    itemTouchEnd(e) {
-        // console.log(e);
-        //保证只有在触发了touchStart的情况下才可以触发此事件
-        if (this.itemTime.length == 0) {
-            return
-        }
-        if (this.itemLong) {
-            //当前是长按状态
-            //重置状态
-            this.itemLong = false
         } else {
-            //当前不是长按状态下,取消长按事件
-            this.itemTime.forEach(function(item) {
-                clearTimeout(item);
-            })
-            //运行事件
-            wx.navigateTo({
-                url: e.currentTarget.dataset.url
+            this.setData({
+                delIndex: -1
             })
         }
-        //清空延时缓存
-        this.itemTime.length = 0;
-    },
-    /**
-     *点击信息
-     */
-    itemTouchTap(e) {
-        //如果当前已经触发了长按,则当前事件失效,并且取消当前单击事件
-        // if (this.itemLong) {
-        //         this.itemLong=false
-        //         return
-        // }
-        // wx.navigateTo({
-        //         url: e.currentTarget.dataset.url
-        // })
+        this.setData({
+            ListTouchDirection: null
+        })
     },
     /**
      *删除当前信息
@@ -194,7 +171,10 @@ Page({
                     //转化时间为小程序时间
                     meData[i].MsgDate = util.dateParse(meData[i].MsgDate);
                     //计算全部未读消息数量
-                    _this.pendCount += meData[i].PendCount;
+                    //只有在登录的用户才会计入红点中
+                    if (meData[i].Online){
+                        _this.pendCount += meData[i].PendCount;
+                    }
                 }
                 //当未读消息大于0为消息的右上角添加未读消息数量
                 _this.refreshBadge()
@@ -264,8 +244,9 @@ Page({
                                 res[i].MsgDate = util.dateParse(res[i].MsgDate);
                                 //更新红点个数
                                 //只有在登录的用户才会计入红点中
-                                // if (res[i].Online){}
-                                _this.pendCount += res[i].PendCount;
+                                if (res[i].Online){
+                                    _this.pendCount += res[i].PendCount;
+                                }
                             }
                             //更新红点
                             _this.refreshBadge();
@@ -304,10 +285,10 @@ Page({
         });
         //加载个人信息
         getApp().loadInfo(function() {
-            _this.onMeId = getApp().privateData.loginInfo.DeptCode
+            _this.onMeId = getApp().privateData.loginInfo.DeptCode;
+            //读取缓存信息
+            _this.dataGetStorage();
         })
-        //读取缓存信息
-        _this.dataGetStorage();
     },
     /**
      * 将信息列表缓存到物理硬盘上
