@@ -42,7 +42,7 @@
                     <image src='/assets/icon/ybp.svg'></image>
                 </view>
                 <view class="page-mileage-con">
-                    <view>当前里程:{{dataList.CurrKM}}KM</view>
+                    <view>当前里程:{{dataList.CurrKM?dataList.CurrKM+'KM':'暂无信息'}}</view>
                     <view>下次保养:{{dataList.MaintainDate}}</view>
                     <view>保险到期:{{dataList.InsuranceDate}}</view>
                 </view>

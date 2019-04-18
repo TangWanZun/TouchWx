@@ -42,27 +42,27 @@
 /* 今日工作 */
 
 .work-list-title {
-        font-size: 18px;
-        padding-left: 15px;
-        padding-top: 85px;
+    font-size: 18px;
+    padding-left: 15px;
+    padding-top: 85px;
 }
 
 .work-list {
-        column-count: 2;
-        column-gap: 10px;
-        margin: 0 15px;
-        padding-top: 5px;
-        padding-bottom: 20px;
+    column-count: 2;
+    column-gap: 10px;
+    margin: 0 15px;
+    padding-top: 5px;
+    padding-bottom: 20px;
 }
 
 /* 无工作展示 */
 
 .work-none-data {
-        margin-top: 20px;
-        height: 100px;
-        text-align: center;
-        font-size: 15px;
-        opacity: 0.5;
+    margin-top: 20px;
+    height: 100px;
+    text-align: center;
+    font-size: 15px;
+    opacity: 0.5;
 }
 
 .work-item-box {

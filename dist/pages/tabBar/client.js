@@ -1,4 +1,4 @@
-// import {pinyinUtil} from "../../library/pinyin/pinyinUtil.js"
+import {pinyinUtil} from "../../library/pinyin/pinyinUtil.js"
 import {
         util
 } from '../../library/sdk.js'

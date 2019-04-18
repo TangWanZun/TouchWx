@@ -11,7 +11,6 @@ App({
         wx.$request = $request;
         //挂载configUrl
         this.privateData.configUrl = $config.configUrl;
-        
         //在程序加载时,先展示消息红点,等到点击到消息页签的时候弹出来具体消息的条数
         wx.showTabBarRedDot({
             index: 0

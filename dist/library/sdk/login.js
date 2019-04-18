@@ -60,6 +60,7 @@ function loginTest() {
                     saveUserInfo(res);
                 },
                 fail(res) {
+                    console.log('系统错误',res)
                     wx.showModal({
                         title: '登录以过期',
                         content: '点击确定重新登录',
