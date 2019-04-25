@@ -61,7 +61,7 @@ Page({
     // ListTouch计算方向
     ListTouchMove(e) {
         this.setData({
-            ListTouchDirection: e.touches[0].pageX - this.data.ListTouchStart > 0 ? 'right' :'left'
+            ListTouchDirection: e.touches[0].pageX - this.data.ListTouchStart > 20 ? 'right' :'left'
         })
     },
 

@@ -20,6 +20,11 @@
     justify-content: flex-start;
     align-items: stretch;
     position: relative;
+    transition: 0.2s;
+}
+/* 当左滑启动删除模式的时候 */
+.page-item-show{
+    transform:translateX(-100px);
 }
 
 .page-item-active {
@@ -122,9 +127,9 @@
     transition: transform 0.2s;
 }
 
-.page-item-del-show {
+/* .page-item-del-show {
     transform: translateX(0);
-}
+} */
 
 .page-item-del-in {
     width: 60px;

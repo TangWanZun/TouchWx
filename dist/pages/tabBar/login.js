@@ -154,6 +154,9 @@ Page({
                         Iv: res.detail.iv,
                         EncryptedData: res.detail.encryptedData
                 })
+                wx.showLoading({
+                    title: '正在登录',
+                })
                 wx.$request({
                         url: '/WeMinProLogin/ReLogin',
                         data: {
@@ -176,7 +179,10 @@ Page({
                         },
                         fail(res) {
                                 console.log("fail", res)
-                        }
+                        },
+                    complete(){
+                        wx.hideLoading();
+                    }
                 })
         },
         /**
