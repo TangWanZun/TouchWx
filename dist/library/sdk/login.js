@@ -24,7 +24,7 @@ function saveUserInfo(res, obj = {}) {
     //加载权限
     wx.$request({
         url: "/WeMinProPlatJson/GetList",
-        NRR:true,
+        NRR: true,
         data: {
             docType: 'Main',
             actionType: 'Permission',
@@ -51,7 +51,7 @@ let loginObj = {
     //启动获取登录状态
     init() {
         //获取登录状态只能启动一次
-        if (loginObj.isLogin)return
+        if (loginObj.isLogin) return
         //启动登录状态
         loginObj.isLogin = true
         // var Token =  wx.getStorageSync('Token');
@@ -71,24 +71,34 @@ let loginObj = {
                     },
                     fail(res) {
                         console.log('系统错误', res)
-                        wx.showModal({
-                            title: '尚未登录',
-                            content: '点击确定重新登录',
-                            showCancel: false,
-                            success(resin) {
-                                if (resin.confirm) {
-                                    //记录当前登录状态
-                                    saveUserInfo(res, {
-                                        success: function() {
-                                            // 进入登陆页
-                                            wx.reLaunch({
-                                                url: "/pages/tabBar/login"
-                                            })
-                                        }
-                                    })
-                                }
+                        //出现问题，暂停全部loading
+                        wx.hideLoading()
+                        saveUserInfo(res.data, {
+                            success: function() {
+                                // 进入登陆页
+                                wx.reLaunch({
+                                    url: "/pages/tabBar/login"
+                                })
                             }
                         })
+                        // wx.showModal({
+                        //     title: '尚未登录',
+                        //     content: '点击确定重新登录',
+                        //     showCancel: false,
+                        //     success(resin) {
+                        //         if (resin.confirm) {
+                        //             //记录当前登录状态
+                        //             saveUserInfo(res.data, {
+                        //                 success: function() {
+                        //                     // 进入登陆页
+                        //                     wx.reLaunch({
+                        //                         url: "/pages/tabBar/login"
+                        //                     })
+                        //                 }
+                        //             })
+                        //         }
+                        //     }
+                        // })
                     }
                 })
             }

@@ -1,4 +1,5 @@
 // pages/user/login.js
+// import login from '../user/login.js';
 Page({
     /**
      * 页面的初始数据
@@ -163,14 +164,14 @@ Page({
      */
     login: function(res) {
         let logtype = res.currentTarget.dataset.logtype;
-        console.log({
-            UserCode: logtype === "code" ? this.formData.user : "",
-            Psw: logtype === "code" ? this.formData.pass : "",
-            Phone: logtype === "phone" ? this.formData.phone : "",
-            VerifCode: logtype === "phone" ? this.formData.code : "",
-            Iv: res.detail.iv,
-            EncryptedData: res.detail.encryptedData
-        })
+        // console.log({
+        //     UserCode: logtype === "code" ? this.formData.user : "",
+        //     Psw: logtype === "code" ? this.formData.pass : "",
+        //     Phone: logtype === "phone" ? this.formData.phone : "",
+        //     VerifCode: logtype === "phone" ? this.formData.code : "",
+        //     Iv: res.detail.iv,
+        //     EncryptedData: res.detail.encryptedData
+        // })
         wx.showLoading({
             title: '正在登录',
             mask: true

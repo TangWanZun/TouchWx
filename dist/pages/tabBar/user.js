@@ -39,7 +39,7 @@ Page({
     getData() {
         let _this = this;
         wx.showLoading({
-            title: '数据获取中',
+            title: '数据加载中',
             mask:true
         })
         wx.$request({
