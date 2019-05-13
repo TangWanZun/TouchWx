@@ -1,6 +1,6 @@
 <!--index.wxml-->
-<view class='app-body app-main-bg'>
-  <view class="container app-shadow-2">
+<view class='app-body'>
+    <!-- <view class="container app-shadow-2">
     <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
   </view>
   <view class='page-card-box'>
@@ -22,5 +22,59 @@
       <view class='page-card page-card-min app-shadow-2'></view>
       <view class='page-card page-card-min app-shadow-2'></view>
     </view>
-  </view>
+  </view> -->
+    <!-- 顶部图片 -->
+    <view class='header'>
+        <image mode='widthFix' src='/assets/bg/header.jpg'></image>
+    </view>
+    <!-- 客户基盘 -->
+    <view class="item">
+        <view class='title'>
+            <view class='title-content'>客户基盘</view>
+        </view>
+        <view class='kujp-1 kujp-item'>
+            <view class='kujp-number'>12000</view>
+            <view class='kujp-text'>档案数量</view>
+        </view>
+        <view class='kujp-2'>
+            <view class='kujp-item'>
+                <view class='kujp-number'>12000</view>
+                <view class='kujp-text'>活跃客户</view>
+            </view>
+            <view class='kujp-item'>
+                <view class='kujp-number'>12000</view>
+                <view class='kujp-text'>摇摆客户</view>
+            </view>
+            <view class='kujp-item'>
+                <view class='kujp-number'>12000</view>
+                <view class='kujp-text'>流失客户</view>
+            </view>
+            <view class='kujp-item'>
+                <view class='kujp-number'>12000</view>
+                <view class='kujp-text'>潜在客户</view>
+            </view>
+        </view>
+        <!-- 会员数量占比 -->
+        <view class='title-c' style='margin-top:20px;'>
+            <view class='title-c-content'>
+                <text >会员\n 数量/占比</text>
+            </view>
+        </view>
+        <view class='chart-1'>
+            <ec-canvas ec="{{ ec1 }}"></ec-canvas>
+        </view>
+        <!-- 产值 数量占比 -->
+        <view class='title-c' style='margin-top:20px;'>
+            <view class='title-c-content'>
+                <text >产值\n 数量/占比</text>
+            </view>
+        </view>
+        <view class='chart-1'>
+            <ec-canvas ec="{{ ec2 }}"></ec-canvas>
+        </view>
+        <!-- 客户流量分析 -->
+        <!-- <view class='title' style="margin-top:20px">
+            <view class='title-content'>客户流量分析</view>
+        </view> -->
+    </view>
 </view>

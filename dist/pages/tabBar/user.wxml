@@ -42,7 +42,6 @@
                 <view  class="my-data-title">
                         <view style='color:white'>我的数据</view>
                         <view class="my-data-title-icon">
-                                <!-- <image src='/assets/icon/right.svg'></image> -->
                         </view>
                 </view>
                 <view class='my-data-con'>
@@ -86,6 +85,12 @@
                                 <view class="my-data-item-num my-data-item-list">{{item.Value}}</view>
                         </view>
                 </view>
+                <navigator url="../user/myData" class="my-data-title" style='border-bottom:1px solid rgba(0,0,0,0.05)'>
+                        <view>运营报告</view>
+                        <view class="my-data-title-icon">
+                                <image src='/assets/icon/right.svg'></image>
+                        </view>
+                </navigator>
                 <navigator url='/pages/user/myDatum' class="my-data-title">
                         <view>个人资料</view>
                         <view class="my-data-title-icon">

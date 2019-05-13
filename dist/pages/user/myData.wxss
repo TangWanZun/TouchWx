@@ -1,8 +1,10 @@
 /**index.wxss**/
-.app-body{
-  padding-top: 20px;
+
+.app-body {
+    background-color: #171052;
 }
-.container {
+
+/* .container {
   height: 50vh;
   margin:0 10px;
   background-color: white;
@@ -20,7 +22,6 @@
   align-items: stretch;
   padding:10px 10px;
 }
-/* 定制目标 */
 .page-target{
   width: calc( ( 100vw - 30px ) / 2 )
 }
@@ -37,7 +38,6 @@
 .page-card-body{
   font-size: 15px;
   padding-top:10px;
-  /* font-weight: bold; */
 }
 .page-card-body-title{
   font-size: 13px;
@@ -65,4 +65,104 @@
 }
 .page-card-min:last-child{
   margin-top: 10px;
+} */
+
+/* 顶部图片 */
+
+.header {
+    font-size: 18px;
+    color: white;
+}
+
+.item {
+    padding: 25px 0;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+}
+
+.title-content {
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+}
+
+/* 次级标题 */
+
+.title-c {
+    display: flex;
+    justify-content: center;
+}
+
+.title-c-content {
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    --color: white;
+    padding:5px 10px;
+    padding-top: 0px;
+    background: linear-gradient(var(--color), var(--color)) left top,
+                linear-gradient(var(--color), var(--color)) left top,
+                linear-gradient(var(--color), var(--color)) right bottom,
+                linear-gradient(var(--color), var(--color)) right bottom;
+    background-repeat: no-repeat;
+    background-size: 1px 15px, 15px 1px;
+}
+
+/* 客户基盘 */
+
+.kujp-item {
+    --color: #574ed2;
+    --color2: #241a60;
+    background: linear-gradient(var(--color) 0, var(--color) 75%, var(--color2) 75%, var(--color2) 100%) left top,
+                linear-gradient(90deg, var(--color) 0, var(--color) 75%, var(--color2) 75%, var(--color2) 100%) left top,
+                linear-gradient(var(--color) 0, var(--color) 75%, var(--color2) 75%, var(--color2) 100%) right top,
+                linear-gradient(-90deg, var(--color) 0, var(--color) 75%, var(--color2) 75%, var(--color2) 100%) right top,
+                linear-gradient(0deg, var(--color) 0, var(--color) 75%, var(--color2) 75%, var(--color2) 100%) left bottom,
+                linear-gradient(90deg, var(--color) 0, var(--color) 75%, var(--color2) 75%, var(--color2) 100%) left bottom,
+                linear-gradient(0deg, var(--color) 0, var(--color) 75%, var(--color2) 75%, var(--color2) 100%) right bottom,
+                linear-gradient(270deg, var(--color) 0, var(--color) 75%, var(--color2) 75%, var(--color2) 100%) right bottom;
+    background-repeat: no-repeat;
+    background-size: 1px 25px, 25px 1px;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.kujp-1 {
+    width: 60vw;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.kujp-number {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #dfb248;
+}
+
+.kujp-text {
+    color: #888add;
+    font-size: 15px;
+}
+
+/* 四个在一起的 */
+
+.kujp-2 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.kujp-2>view {
+    width: calc(50% - 40px);
+    margin: 15px 20px;
+}
+
+/* 会员数量占比 */
+.chart-1{
+    width: 100vw;
+    height: 70vw;
 }

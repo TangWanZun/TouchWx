@@ -15,6 +15,8 @@
 	"appid": "wx741745d2b71d095d",
 	"projectname": "touch-wx",
 	"scripts": {},
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
