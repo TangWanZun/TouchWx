@@ -34,7 +34,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 8,
 			"list": [
 				{
 					"id": -1,
@@ -87,10 +87,11 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "我的数据",
+					"id": 8,
+					"name": "运行报告",
 					"pathName": "pages/user/myData",
-					"query": ""
+					"query": "",
+					"scene": null
 				},
 				{
 					"id": 9,

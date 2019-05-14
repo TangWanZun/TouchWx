@@ -156,6 +156,7 @@ Page({
     //     }
     //   },
     data: {
+        bg1:'/assets/bg/di.png',
         // 会员数量占比
         ec1: {
             onInit: initChart1
@@ -163,7 +164,112 @@ Page({
         // 产值数量占比
         ec2: {
             onInit: initChart2
-        }
+        },
+        //客户活跃次数
+        kuhyList:[
+            {
+                item:{
+                    name:'线上流量人数/次数',
+                    value:"3000/10000",
+                    backgroundcolor:"#107e4e"
+                },
+                list:[
+                    {
+                        item:{
+                            name:'客户在线注册/认证',
+                            value:"300/60",
+                            backgroundcolor: "#25b485"
+                        }
+                    },
+                    {
+                        item: {
+                            name: '在线沟通人数/次数',
+                            value: "100/200",
+                            backgroundcolor: "#20a77a"
+                        }
+                    },
+                    {
+                        item: {
+                            name: '在线业务提醒人数/次数',
+                            value: "100/200",
+                            backgroundcolor: "#1c9a6f"
+                        }
+                    },
+                    {
+                        item: {
+                            name: '在线预约人数/次数',
+                            value: "30/150",
+                            backgroundcolor: "#198e65"
+                        }
+                    },
+                    {
+                        item: {
+                            name:'资讯阅读/转发人数/次数',
+                            value: "30/150/200",
+                            backgroundcolor: "#15825a"
+                        }
+                    },
+                    {
+                        item: {
+                            name: '活动发布次数/参与人数',
+                            value: "30/150",
+                            backgroundcolor: "#11754f"
+                        }
+                    },
+                    {
+                        item: {
+                            name: '卡券发放人数/次数',
+                            value: "30/150",
+                            backgroundcolor: "#0d6945"
+                        }
+                    },
+                    {
+                        item: {
+                            name: '推荐人数/次数',
+                            value: "50/100",
+                            backgroundcolor: "#095e3c"
+                        }
+                    },
+                    {
+                        item: {
+                            name: '商城浏览人数/次数',
+                            value: "300/600",
+                            backgroundcolor: "#065231"
+                        }
+                    },
+                ]
+            },
+            {
+                item: {
+                    name: '线下流量人数/次数',
+                    value: "300/60",
+                    backgroundcolor: "#453eb0"
+                },
+                list: [
+                    {
+                        item: {
+                            name: '电话招揽人数/次数',
+                            value: "300/60",
+                            backgroundcolor: "#4942aa"
+                        }
+                    },
+                    {
+                        item: {
+                            name: '到店业务人数/次数',
+                            value: "100/200",
+                            backgroundcolor: "#38329a"
+                        }
+                    },
+                    {
+                        item: {
+                            name: '卡券核销人数/次数',
+                            value: "30/150",
+                            backgroundcolor: "#2c258d"
+                        }
+                    }
+                ]
+            }
+        ]
     },
     onReady() {
         // setTimeout(function () {

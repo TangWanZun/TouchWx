@@ -2,6 +2,8 @@
 
 .app-body {
     background-color: #171052;
+    background-size: contain;
+    /* background-image: url('/assets/bg/di.png'); */
 }
 
 /* .container {
@@ -81,6 +83,12 @@
 .title {
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.title>image {
+    width: 15vw;
+    margin: 0 15px;
 }
 
 .title-content {
@@ -101,7 +109,7 @@
     font-size: 16px;
     text-align: center;
     --color: white;
-    padding:5px 10px;
+    padding: 5px 10px;
     padding-top: 0px;
     background: linear-gradient(var(--color), var(--color)) left top,
                 linear-gradient(var(--color), var(--color)) left top,
@@ -162,7 +170,268 @@
 }
 
 /* 会员数量占比 */
-.chart-1{
+
+.chart-1 {
     width: 100vw;
     height: 70vw;
 }
+
+/* 客户流量分析图 */
+
+.llfx-image {
+    margin: 15vw 10vw;
+    position: relative;
+}
+
+/* 流量分析图的项目 */
+
+.llfx-item {
+    position: absolute;
+    font-size: 13px;
+}
+
+.llfx-item::before {
+    content: "· ";
+}
+
+/* 新车首保 */
+
+.llfx-xcsb {
+    color: #f68d8f;
+    top: 0;
+    left: -7vw;
+}
+
+/* 流失召回 */
+
+.llfx-lszh {
+    color: #3981be;
+    top: 2vw;
+    left: 20vw;
+}
+
+/* 他店流入 */
+
+.llfx-tdlr {
+    color: #4dd299;
+    left: 30vw;
+    top: 7vw;
+}
+
+/* 新增量 */
+
+.llfx-xzl {
+    color: #d8554f;
+    right: 3vw;
+    top: 25vw;
+}
+
+/* 期初 */
+
+.llfx-qc {
+    color: #4797f1;
+    top: 28vw;
+    left: 14vw;
+}
+
+/* 期末 */
+
+.llfx-qm {
+    color: #4797f1;
+    top: 30vw;
+    left: 40vw;
+}
+
+/* 价格流失 */
+
+.llfx-jgls {
+    color: #eac55b;
+    bottom: 30vw;
+    right: 25vw;
+}
+
+/* 位置流失 */
+
+.llfx-wzls {
+    color: #c63bb7;
+    bottom: 15vw;
+    right: 30vw;
+}
+
+/* 其他流失 */
+
+.llfx-qtls {
+    color: #1fadc9;
+    bottom: 0vw;
+    right: 23vw;
+}
+/* 流量分析 */
+.llfx2-item{
+    position: absolute;
+    color: white;
+    border-radius: 20px;
+    padding:5px 10px;
+    font-size: 13px;
+}
+/* 总流量 */
+.llfx-zll{
+    font-size: 18px;
+    top:14.5vw;
+    left: 20vw;
+    width: 55vw;
+    text-align: center;
+}
+/* 新车到店 */
+.llfx-xcdd{
+    background-color: #a6138f;
+    top:-5vw;
+    left: 16vw;
+}
+/* 老车回厂 */
+.llfx-lchc{
+    background-color: #d23aba;
+    top:-5vw;
+    right: 16vw;
+}
+/* 业务招揽 */
+.llfx-ywzl{
+    background-color: #32b37a;
+    top:38vw;
+    left: 8vw;
+}
+/* 活动引流 */
+.llfx-hdyl{
+    background-color: #0ca562;
+    top:51vw;
+    left: 8vw;
+}
+/* 卡券保流 */
+.llfx-kqbl{
+    background-color: #107e4e;
+    top:66vw;
+    left: 8vw;
+}
+/* 自然进店 */
+.llfx-zrjd{
+    background-color: #105b3a;
+    top:80vw;
+    left: 8vw;
+}
+/* 低产值 */
+.llfx-dcz{
+    background-color: #8047d7;
+    top:38vw;
+    right: 8vw;
+}
+/* 中产值 */
+.llfx-zcz{
+    background-color: #5920b0;
+    top:59vw;
+    right: 8vw;
+}
+/* 高产值 */
+.llfx-gcz{
+    background-color: #481497;
+    top:80vw;
+    right: 8vw;
+}
+
+/* 树形结构 */
+view{
+    --treeWidth:10px;
+}
+.tree-box{
+    padding:0 15px;
+}
+
+.tree-list{
+    padding-left: var(--treeWidth);
+    position: relative;
+    /* border-left: 1px solid #5850d5; */
+}
+
+.tree-list::after{
+    content:"";
+    position: absolute;
+    height: 1px;
+    width: var(--treeWidth);
+    background-color: #5850d5;
+    top:50%;
+    left: calc( var(--treeWidth) * -1 ) ;
+}
+.tree-item-box{
+    position: relative;
+    padding:10px 0px;
+    display: flex;
+    align-items: center;
+}
+.tree-item-box::before{
+    content:"";
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background-color: #5850d5;
+    top:0;
+    left:calc( var(--treeWidth) * -1 ) ;
+}
+.tree-item{
+    border-radius: 5px;
+    padding:5px;
+    position: relative;
+    font-size: 13px;
+    text-align: center;
+    min-width: 150px;
+}
+.tree-item::after{
+    content:"";
+    position: absolute;
+    height: 1px;
+    width: var(--treeWidth);
+    background-color: #5850d5;
+    top:50%;
+    left:calc( var(--treeWidth) * -1 ) ;
+}
+
+.tree-item-text{
+    color:#fff51b;
+}
+.tree-item-title{
+    color:rgba(255, 255, 255, 0.6);
+}
+.tree-root{
+    margin-top:0px !important;
+    margin-bottom: 0px !important;
+    font-size: 13px;
+}
+.tree-root::after{
+    content:"";
+    background-color: rgba(0, 0, 0, 0);
+}
+.tree-root::before{
+    content:"";
+    background-color: rgba(0, 0, 0, 0);
+}
+/* 有子元素的 */
+.tree-item-list{
+    margin-right: var(--treeWidth);
+}
+.tree-item-box:first-child::before{
+    content:"";
+    height: 50%;
+    top:50%;
+}
+.tree-item-box:last-child::before{
+    content:"";
+    height: 50%;
+    bottom:50%;
+}
+
+/* 客户活跃次数 */
+.kuhycs-color{
+    border-radius: 0;
+    color: white;
+    background-image: linear-gradient(0deg, #107d4e 0%, #453fb0 100%);
+    padding:15px 5px;
+}
+
+
