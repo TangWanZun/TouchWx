@@ -2,6 +2,7 @@
     "enablePullDownRefresh": true,
     "navigationBarTitleText": "客户",
     "usingComponents": {
-        "clientImg": "/component/clientImg"
+        "clientImg": "/component/clientImg",
+        "tab-bar": "/custom-tab-bar/index"
     }
 }

@@ -15,8 +15,12 @@ Page({
         //图片数据
         imgUrl: getApp().privateData.configUrl.imgUrl,
         formData: {},
+        //汽车列表
         carList: [],
+        //用户信息
         labelList: [],
+        //服务顾问
+        clientList: [],
         //是否在线
         online: false,
         openId: '',
@@ -58,7 +62,8 @@ Page({
             thum: ''
         },
         //图钉是否启用
-        menuFixed: false
+        menuFixed: false,
+        UXList:getApp().privateData.UXList
     },
     /**
      * 预览头像
@@ -96,6 +101,7 @@ Page({
             formPage: options.formPage || false,
             //加载核销权限
             hx_UX: getApp().privateData.UXList[UX_NAME.A01]
+
         })
         //GetNewNeedReplyList需要接受一个参数是openid
         wx.showLoading({
@@ -132,6 +138,7 @@ Page({
                     formData: res.Table[0],
                     carList: res.Table1 || [],
                     labelList: res.Table2 || [],
+                    clientList: res.Table3 || [],
                     //身份证照片信息(后台维护)
                     idCardImg: {
                         orig: res.Table[0].IdCardOrigImg1 || '',

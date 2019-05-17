@@ -25,7 +25,7 @@
                                         <view class='header-botton-item-title'>积分</view>
                                         <view class='header-botton-item-number'>{{formData.AvailableScore||'0'}}</view>
                                 </navigator>
-                                <navigator url='./clientDetails/coupon?openId={{formData.OpenId}}' class='header-botton-item'>
+                                <navigator wx:if="{{UXList['A01']}}" url='./clientDetails/coupon?openId={{formData.OpenId}}' class='header-botton-item' >
                                         <view class='header-botton-item-title'>电子券</view>
                                         <view class='header-botton-item-number'>{{formData.AvailableECard||'0'}}张</view>
                                 </navigator>
@@ -72,26 +72,26 @@
                                 </view>
                         </view>
                 </view>
-                <!-- <view class='content-card'>
-      <view class='content-card-title'>
-        <view class='content-card-title-left'>服务顾问</view>
-        <view class='content-card-title-right'>更改顾问</view>
-      </view>
-      <view class='content-card-body'>
-        <view class='counselor-list app-scroll-none'>
-          <view class='counselor app-shadow-2' wx:for="{{clientData.counselor}}" wx:key="{{key}}">
-            <view class='counselor-img'><image src='{{item.img}}' mode='aspectFill'></image></view>
-            <view class='counselor-right'>
-              <view class='counselor-name'>{{item.name}}</view>
-              <view>
-                <view class='counselor-career'>{{item.career}}</view>
-                <view class='counselor-index'>{{item.index}}</view>
-              </view>
-            </view>
-          </view>
-        </view>
-      </view>
-    </view> -->
+                <view class='content-card' wx:if="{{clientList.length>0}}">
+                    <view class='content-card-title'>
+                        <view class='content-card-title-left'>服务顾问</view>
+                        <!-- <view class='content-card-title-right'>更改顾问</view> -->
+                    </view>
+                    <view class='content-card-body'>
+                        <view class='counselor-list app-scroll-none'>
+                        <view class='counselor app-shadow-2' wx:for="{{clientList}}" wx:key="{{key}}">
+                            <view class='counselor-img'><clientImg  src="{{item.ProfilePhoto}}"></clientImg></view>
+                            <view class='counselor-right'>
+                            <view class='counselor-name'>{{item.Name}}</view>
+                            <view>
+                                <view class='counselor-index'>{{item.PositionName}}</view>
+                                <view class='counselor-career'>{{item.Phone}}</view>
+                            </view>
+                            </view>
+                        </view>
+                        </view>
+                    </view>
+                </view>
                 <view class='content-card' wx:if="{{carList.length>0}}">
                         <view class='content-card-title'>
                                 <view class='content-card-title-left'>绑定车辆</view>

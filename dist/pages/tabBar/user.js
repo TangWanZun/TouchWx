@@ -4,7 +4,6 @@ import {
 } from "../../library/sdk/config.js"
 import login from '../../library/sdk/login.js'
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -13,7 +12,7 @@ Page({
         formData: [],
         UX_TYPE: UX_TYPE,
         //是否存在核销权限
-        hx_UX: UX_TYPE.NO_UX
+        hx_UX: UX_TYPE.NO_UX,
     },
     /**
      * 打开手机扫码
@@ -64,7 +63,13 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        this.getData();
+        let app =  getApp();
+        //查看是否存在data缓存
+        if (app.tabBarPageCache.user){
+            this.setData(Object.assign(this.data, app.tabBarPageCache.user))
+        }else{
+            this.getData();
+        }
         //这里会出现抢线程的问题，比如app的跳转早于这个页面
         let privateData = getApp().privateData;
         if (typeof privateData.loginInfo === 'undefined') {
@@ -82,9 +87,15 @@ Page({
         getApp().loadInfo(function() {
             _this.setData({
                 loginInfo: appPrivateData.loginInfo,
-                hx_UX: appPrivateData.UXList[UX_NAME.A01]
+                // hx_UX: appPrivateData.UXList[UX_NAME.A01]
             })
         })
+        // if (typeof this.getTabBar === 'function' &&
+        //     this.getTabBar()) {
+        //     this.getTabBar().setData({
+        //         selected: 3
+        //     })
+        // }
     },
 
     /**
@@ -103,7 +114,8 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function() {
-
+        let app = getApp();
+        app.setTabBarPageCache('user', this.data);
     },
 
     /**

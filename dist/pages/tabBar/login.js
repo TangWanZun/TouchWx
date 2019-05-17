@@ -192,7 +192,8 @@ Page({
                 //将个人信息保存到内存
                 getApp().privateData.loginInfo = res;
                 //登陆成功
-                wx.switchTab({
+                // redirectTo switchTab
+                wx.redirectTo({
                     url: "/pages/tabBar/user",
                 })
             },

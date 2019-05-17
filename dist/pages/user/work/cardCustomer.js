@@ -379,7 +379,8 @@ Page({
             },
             failCall() {
                 //出现问题,则跳到首页
-                wx.switchTab({
+                // redirectTo switchTab
+                wx.redirectTo({
                     url: '/pages/tabBar/user'
                 })
             },

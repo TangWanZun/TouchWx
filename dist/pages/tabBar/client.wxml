@@ -34,6 +34,7 @@
                         <view>数据加载中</view>
                         <image src='/assets/icon/jzz.svg'></image>
                 </view>
+                <view style='height:50px;width:100vw'></view>
         </view>
         <wxs module="m1">
                 var sex = function(a, b) {
@@ -56,3 +57,4 @@
                 module.exports.sex = sex;
         </wxs>
 </view>
+<tab-bar selected="WeMinProClient"></tab-bar>

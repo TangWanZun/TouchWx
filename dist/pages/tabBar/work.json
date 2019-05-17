@@ -1,4 +1,7 @@
 {
   "enablePullDownRefresh": true,
+    "usingComponents": {
+        "tab-bar": "/custom-tab-bar/index"
+    },
   "navigationBarTitleText": "工作"
 }

@@ -1,3 +1,8 @@
+.page-body{
+    background-color: white;
+    min-height: 100vh;
+}
+
 /* 工作类别 */
 
 .work-type-list {

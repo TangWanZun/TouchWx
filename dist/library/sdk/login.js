@@ -22,6 +22,28 @@ function saveUserInfo(res, obj = {}) {
         }
     });
     //加载权限
+    // wx.$request({
+    //     url: "/WeMinProPlatJson/GetList",
+    //     NRR: true,
+    //     data: {
+    //         docType: 'Main',
+    //         actionType: 'Permission',
+    //         needTotal: false,
+    //     },
+    //     success(res) {
+    //         let list = [];
+    //         //对配置信息进行处理
+    //         for (let x of res) {
+    //             list[x.ActionType] = x.Permission;
+    //         }
+    //         //将配置信息保存
+    //         privateData.UXList = list
+    //     },
+    //     complete(res) {
+    //         //当全部信息获取之后,调用加载滞留池中的方法
+    //         getApp().privateData.loadRetention.forEach(getApp().loadInfo);
+    //     }
+    // })
     wx.$request({
         url: "/WeMinProPlatJson/GetList",
         NRR: true,
@@ -33,11 +55,25 @@ function saveUserInfo(res, obj = {}) {
         success(res) {
             let list = [];
             //对配置信息进行处理
-            for (let x of res) {
-                list[x.ActionType] = x.Permission;
-            }
+            // for (let x of res) {
+            //     list[x.ActionType] = x.Permission;
+            // }
             //将配置信息保存
-            privateData.UXList = list
+            privateData.UXList = [{
+                "MenuId": "WeMinProClient",
+                    "ActionList": {}
+                },
+                {
+                    "MenuId": "WeMinProUser",
+                    "ActionList": {}
+                },
+                {
+                    "MenuId": "WeMinProWork",
+                    "ActionList": {
+                        "ConsumeRelease": true
+                    }
+                }
+            ]
         },
         complete(res) {
             //当全部信息获取之后,调用加载滞留池中的方法

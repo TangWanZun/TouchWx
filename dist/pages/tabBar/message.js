@@ -61,7 +61,7 @@ Page({
     // ListTouch计算方向
     ListTouchMove(e) {
         this.setData({
-            ListTouchDirection: e.touches[0].pageX - this.data.ListTouchStart > 20 ? 'right' :'left'
+            ListTouchDirection: e.touches[0].pageX - this.data.ListTouchStart < -100 ? 'left' :'right'
         })
     },
 
@@ -276,19 +276,25 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        var _this = this;
-        //初始化消息广播
-        msgBroadcast.init();
-        this.getData(true, function() {
-            //运行数据轮询获取
-            _this.getMsgList()
-        });
-        //加载个人信息
-        getApp().loadInfo(function() {
-            _this.onMeId = getApp().privateData.loginInfo.DeptCode;
-            //读取缓存信息
-            _this.dataGetStorage();
-        })
+        let app = getApp();
+        //查看是否存在data缓存
+        if (app.tabBarPageCache.message) {
+            this.setData(Object.assign(this.data, app.tabBarPageCache.message))
+        } else {
+            var _this = this;
+            //初始化消息广播
+            msgBroadcast.init();
+            this.getData(true, function () {
+                //运行数据轮询获取
+                _this.getMsgList()
+            });
+            //加载个人信息
+            getApp().loadInfo(function () {
+                _this.onMeId = getApp().privateData.loginInfo.DeptCode;
+                //读取缓存信息
+                _this.dataGetStorage();
+            })
+        }
     },
     /**
      * 将信息列表缓存到物理硬盘上
@@ -372,7 +378,10 @@ Page({
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function() {},
+    onUnload: function() {
+        let app = getApp();
+        app.setTabBarPageCache('message', this.data);
+    },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作

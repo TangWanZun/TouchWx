@@ -3,7 +3,6 @@ import {
         util
 } from '../../library/sdk.js'
 Page({
-
         /**
          * 页面的初始数据
          */
@@ -148,7 +147,15 @@ Page({
                 //   dataList: newObj
                 // })
                 //获取全部用户
-                this.getData();
+                let app = getApp();
+                //查看是否存在data缓存
+                if (app.tabBarPageCache.client) {
+                    this.setData(Object.assign(this.data, app.tabBarPageCache.client))
+                } else {
+                    this.getData();
+                    //更新在线人数
+                    this.getOnline();
+                }
         },
         /**
          * 生命周期函数--监听页面初次渲染完成
@@ -161,25 +168,26 @@ Page({
          * 生命周期函数--监听页面显示
          */
         onShow: function() {
-                this.pageShow = true;
-                if (!this.onLineShow) {
-                        //更新在线人数
-                        this.getOnline();
-                }
+                // this.pageShow = true;
+                // if (!this.onLineShow) {
+                //         //更新在线人数
+                //         this.getOnline();
+                // }
         },
 
         /**
          * 生命周期函数--监听页面隐藏
          */
         onHide: function() {
-                this.pageShow = false;
+                // this.pageShow = false;
         },
 
         /**
          * 生命周期函数--监听页面卸载
          */
         onUnload: function() {
-
+            let app = getApp();
+            app.setTabBarPageCache('client', this.data);
         },
 
         /**

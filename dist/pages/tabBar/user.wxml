@@ -1,101 +1,103 @@
 <view class='page-bg'>
-        <view class='page-bg-2'></view>
-        <view class='page-bg-1'></view>
-        <view class='page-bg-3'>
-                <image mode="widthFix" src='/assets/icon/dd.svg'></image>
-        </view>
-        <view class='page-bg-4'>
-                <image mode="widthFix" src='/assets/icon/dd.svg'></image>
-        </view>
+    <view class='page-bg-2'></view>
+    <view class='page-bg-1'></view>
+    <view class='page-bg-3'>
+        <image mode="widthFix" src='/assets/icon/dd.svg'></image>
+    </view>
+    <view class='page-bg-4'>
+        <image mode="widthFix" src='/assets/icon/dd.svg'></image>
+    </view>
 </view>
 <view class="page-body">
-        <!-- <view class="userCard app-shadow-2"> -->
-        <view class="userCard">
-                <view class="userCard-left">
-                        <view class="userCard-name">
-                                <view class="userCard-name-text">{{loginInfo.UserName}}</view>
-                                <navigator url='../user/myQr'>
-                                        <image src='/assets/icon/qr.svg'></image>
-                                </navigator>
-                        </view>
-                        <view>
-                                <view class="userCard-section">{{loginInfo.DeptName}}</view>
-                                <view class="userCard-company">{{loginInfo.CmpName}}</view>
-                        </view>
-                </view>
-                <view class="userCard-right">
-                        <view class="userCard-img">
-                                <head-img></head-img>
-                        </view>
-                        <view wx:if="{{hx_UX==UX_TYPE.ON_UX}}" class="userCard-index" bindtap='scanCode'>
-                                <image src='/assets/icon/sys.svg'></image>
-                        </view>
-                </view>
+    <!-- <view class="userCard app-shadow-2"> -->
+    <view class="userCard">
+        <view class="userCard-left">
+            <view class="userCard-name">
+                <view class="userCard-name-text">{{loginInfo.UserName}}</view>
+                <navigator url='../user/myQr'>
+                    <image src='/assets/icon/qr.svg'></image>
+                </navigator>
+            </view>
+            <view>
+                <view class="userCard-section">{{loginInfo.DeptName}}</view>
+                <view class="userCard-company">{{loginInfo.CmpName}}</view>
+            </view>
         </view>
-        <view class="my-data">
-                <!-- <navigator url="../user/myData" class="my-data-title">
+        <view class="userCard-right">
+            <view class="userCard-img">
+                <head-img></head-img>
+            </view>
+            <!-- <view wx:if="{{hx_UX==UX_TYPE.ON_UX}}" class="userCard-index" bindtap='scanCode'>
+                                <image src='/assets/icon/sys.svg'></image>
+                        </view> -->
+        </view>
+    </view>
+    <view class="my-data">
+        <!-- <navigator url="../user/myData" class="my-data-title">
                         <view>我的数据</view>
                         <view class="my-data-title-icon">
                                 <image src='/assets/icon/right.svg'></image>
                         </view>
                 </navigator> -->
-                <view  class="my-data-title">
-                        <view style='color:white'>我的数据</view>
-                        <view class="my-data-title-icon">
+        <view class="my-data-title">
+            <view style='color:white'>我的数据</view>
+            <view class="my-data-title-icon">
+            </view>
+        </view>
+        <view class='my-data-con'>
+            <view class="ui-row" style="">
+                <view class="ui-col">
+                    <view class="ui-col-content">
+                        <view class="my-data-item-title">{{formData[0].Name}}
+                            <span>（{{formData[0].Unit}}）</span>
                         </view>
+                        <view class="my-data-item-num">{{formData[0].Value}}</view>
+                    </view>
                 </view>
-                <view class='my-data-con'>
-                        <view class="ui-row" style="">
-                                <view class="ui-col" >
-                                        <view class="ui-col-content">
-                                                <view class="my-data-item-title">{{formData[0].Name}}
-                                                        <span>（{{formData[0].Unit}}）</span>
-                                                </view>
-                                                <view class="my-data-item-num">{{formData[0].Value}}</view>
-                                        </view>
+                <view class="ui-col">
+                    <view class="ui-col-content">
+                        <view class="my-data-rangking">
+                            <view class='my-data-rangking-in'>
+                                <view class="my-data-item-title">{{formData[1].Name}}</view>
+                                <view class="my-data-item-index">
+                                    <span>{{formData[1].Value}}</span>
                                 </view>
-                                <view class="ui-col" >
-                                        <view class="ui-col-content">
-                                                <view class="my-data-rangking">
-                                                        <view class='my-data-rangking-in'>
-                                                                <view class="my-data-item-title">{{formData[1].Name}}</view>
-                                                                <view class="my-data-item-index">
-                                                                        <span>{{formData[1].Value}}</span>
-                                                                </view>
-                                                        </view>
-                                                </view>
-                                                <view class="my-data-img">
-                                                        <head-img></head-img>
-                                                </view>
-                                        </view>
-                                </view>
+                            </view>
                         </view>
+                        <view class="my-data-img">
+                            <head-img></head-img>
+                        </view>
+                    </view>
                 </view>
-                <view class='my-data-list app-item-div app-scroll-none'>
-                        <!-- <view  class="my-data-item app-shadow-2">
+            </view>
+        </view>
+        <view class='my-data-list app-item-div app-scroll-none'>
+            <!-- <view  class="my-data-item app-shadow-2">
           <view class="my-data-item-title my-data-item-list">本月目标
             <span>（台）</span>
           </view>
           <view class="my-data-item-num my-data-item-list">3<span>/5</span></view>
       </view> -->
-                        <view class="my-data-item  app-shadow-2" wx:if="{{(index!=0)&&(index!=1)}}" wx:for="{{formData}}" wx:key="index">
-                                <view class="my-data-item-title my-data-item-list">{{item.Name}}
-                                        <span>（{{item.Unit}}）</span>
-                                </view>
-                                <view class="my-data-item-num my-data-item-list">{{item.Value}}</view>
-                        </view>
+            <view class="my-data-item  app-shadow-2" wx:if="{{(index!=0)&&(index!=1)}}" wx:for="{{formData}}" wx:key="index">
+                <view class="my-data-item-title my-data-item-list">{{item.Name}}
+                    <span>（{{item.Unit}}）</span>
                 </view>
-                <navigator url="../user/myData" class="my-data-title" style='border-bottom:1px solid rgba(0,0,0,0.05)'>
-                        <view>运营报告</view>
-                        <view class="my-data-title-icon">
-                                <image src='/assets/icon/right.svg'></image>
-                        </view>
-                </navigator>
-                <navigator url='/pages/user/myDatum' class="my-data-title">
-                        <view>个人资料</view>
-                        <view class="my-data-title-icon">
-                                <image src='/assets/icon/right.svg'></image>
-                        </view>
-                </navigator>
+                <view class="my-data-item-num my-data-item-list">{{item.Value}}</view>
+            </view>
         </view>
+        <navigator url="../user/myData" class="my-data-title" style='border-bottom:1px solid rgba(0,0,0,0.05)'>
+            <view>运营报告</view>
+            <view class="my-data-title-icon">
+                <image src='/assets/icon/right.svg'></image>
+            </view>
+        </navigator>
+        <navigator url='/pages/user/myDatum' class="my-data-title">
+            <view>个人资料</view>
+            <view class="my-data-title-icon">
+                <image src='/assets/icon/right.svg'></image>
+            </view>
+        </navigator>
+    </view>
+    <view style='height:50px;width:100vw'></view>
 </view>
+<tab-bar selected="WeMinProUser" name="haha"></tab-bar>

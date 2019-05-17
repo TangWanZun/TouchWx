@@ -14,7 +14,10 @@ App({
         //在程序加载时,先展示消息红点,等到点击到消息页签的时候弹出来具体消息的条数
         wx.showTabBarRedDot({
             index: 0
-        })
+        });
+        setTimeout(()=>{
+
+        },500)
     },
     /**
      * 当小程序启动，或从后台进入前台显示，会触发 onShow
@@ -114,6 +117,19 @@ App({
         // url配置
         configUrl: {},
         //当前用户权限
-        UXList: []
+        UXList: [],
+    },
+    /**
+     * 这里放置的是，已经打开过的tabBar页面的data数据缓存
+     * 防止tabBar页面跳转的时候，需要重新加载数据
+     */
+    tabBarPageCache:{
+
+    },
+    /**
+     * 设置缓存
+     */
+    setTabBarPageCache(tabBarName,data){
+        this.tabBarPageCache[tabBarName] = data;
     }
 })

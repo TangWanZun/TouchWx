@@ -11,8 +11,8 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.6",
-	"appid": "wx741745d2b71d095d",
+	"libVersion": "2.7.0",
+	"appid": "wx334450ff9ab82891",
 	"projectname": "touch-wx",
 	"scripts": {},
 	"simulatorType": "wechat",
@@ -34,7 +34,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,

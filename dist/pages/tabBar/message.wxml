@@ -35,5 +35,7 @@
             <view>数据加载中</view>
             <image src='/assets/icon/jzz.svg'></image>
         </view>
+        <view style='height:50px;width:100vw'></view>
     </view>
 </view>
+<tab-bar selected="WeMinProMessage"></tab-bar>

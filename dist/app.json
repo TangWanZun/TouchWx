@@ -55,37 +55,7 @@
         "navigationBarTitleText": "TouchUI",
         "navigationBarTextStyle": "black"
     },
-    "tabBar": {
-        "list": [
-            {
-                "pagePath": "pages/tabBar/message",
-                "text": "消息",
-                "iconPath": "assets/tabBar/message.png",
-                "selectedIconPath": "assets/tabBar/message-select.png"
-            },
-            {
-                "pagePath": "pages/tabBar/client",
-                "text": "客户",
-                "iconPath": "assets/tabBar/client.png",
-                "selectedIconPath": "assets/tabBar/client-select.png"
-            },
-            {
-                "pagePath": "pages/tabBar/work",
-                "text": "工作",
-                "iconPath": "assets/tabBar/work.png",
-                "selectedIconPath": "assets/tabBar/work-select.png"
-            },
-            {
-                "pagePath": "pages/tabBar/user",
-                "text": "我的",
-                "iconPath": "assets/tabBar/user.png",
-                "selectedIconPath": "assets/tabBar/user-select.png"
-            }
-        ],
-        "color": "#bcbcbc",
-        "selectedColor": "#256cfa",
-        "backgroundColor": "#ffffff"
-    },
+    
     "networkTimeout": {
         "request": 60000
     },
