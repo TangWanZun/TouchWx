@@ -57,4 +57,4 @@
                 module.exports.sex = sex;
         </wxs>
 </view>
-<tab-bar selected="WeMinProClient"></tab-bar>
+<tab-bar selected="{{UX_CONST.WeMinProClient}}"></tab-bar>

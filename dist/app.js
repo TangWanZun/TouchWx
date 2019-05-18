@@ -1,6 +1,7 @@
 import $request from 'library/sdk/request.js'
 import * as $config from 'library/sdk/config.js'
 import login from 'library/sdk/login.js'
+import { UX_CONST,getUX} from './library/sdk/UX_CONST.js'
 App({
 
     /**
@@ -9,8 +10,12 @@ App({
     onLaunch: function() {
         //挂载$request接口
         wx.$request = $request;
+        //挂载权限系统
+        wx.$UX = UX_CONST;
+        wx.$getUX = getUX;
         //挂载configUrl
         this.privateData.configUrl = $config.configUrl;
+
         //在程序加载时,先展示消息红点,等到点击到消息页签的时候弹出来具体消息的条数
         wx.showTabBarRedDot({
             index: 0

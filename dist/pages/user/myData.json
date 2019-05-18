@@ -1,8 +1,5 @@
 {
   "navigationBarTitleText": "我的数据",
-  "usingComponents": {
-    "ec-canvas": "../../library/ec-canvas/ec-canvas"
-  },
   "navigationBarBackgroundColor":"#4eb4ff",
   "navigationBarTextStyle":"white",
   "backgroundColor":"#4eb4ff",

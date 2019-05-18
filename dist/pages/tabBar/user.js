@@ -1,18 +1,16 @@
-import {
-    UX_TYPE,
-    UX_NAME
-} from "../../library/sdk/config.js"
 import login from '../../library/sdk/login.js'
 Page({
     /**
      * 页面的初始数据
      */
     data: {
+        UX_CONST:wx.$UX,
         loginInfo: {},
         formData: [],
-        UX_TYPE: UX_TYPE,
-        //是否存在核销权限
-        hx_UX: UX_TYPE.NO_UX,
+        //运营报告权限
+        ux_cooReport:false,
+        //核销权限
+        ux_consumeRelease:false
     },
     /**
      * 打开手机扫码
@@ -84,24 +82,28 @@ Page({
     onReady: function() {
         var _this = this;
         let appPrivateData = getApp().privateData;
+        //判断是否存在运营报告权限
         getApp().loadInfo(function() {
             _this.setData({
                 loginInfo: appPrivateData.loginInfo,
-                // hx_UX: appPrivateData.UXList[UX_NAME.A01]
+                // ux_cooReport: appPrivateData.UXList[wx.$UX.WeMinProCooReport],
+                // ux_consumeRelease: appPrivateData.UXList[wx.$UX.WeMinProClient]?appPrivateData.UXList[wx.$UX.WeMinProClient][wx.$UX.ConsumeRelease]:false,
             })
         })
-        // if (typeof this.getTabBar === 'function' &&
-        //     this.getTabBar()) {
-        //     this.getTabBar().setData({
-        //         selected: 3
-        //     })
-        // }
+        wx.$getUX(wx.$UX.ConsumeRelease)
+            .then(res => {
+                this.setData({
+                    ux_consumeRelease: res
+                })
+            })
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {},
+    onShow: function() {
+
+    },
 
     /**
      * 生命周期函数--监听页面隐藏

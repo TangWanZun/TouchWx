@@ -27,9 +27,9 @@
             <view class="userCard-img">
                 <head-img></head-img>
             </view>
-            <!-- <view wx:if="{{hx_UX==UX_TYPE.ON_UX}}" class="userCard-index" bindtap='scanCode'>
-                                <image src='/assets/icon/sys.svg'></image>
-                        </view> -->
+            <view wx:if="{{ux_consumeRelease}}" class="userCard-index" bindtap='scanCode'>
+                <image src='/assets/icon/sys.svg'></image>
+            </view>
         </view>
     </view>
     <view class="my-data">
@@ -85,7 +85,7 @@
                 <view class="my-data-item-num my-data-item-list">{{item.Value}}</view>
             </view>
         </view>
-        <navigator url="../user/myData" class="my-data-title" style='border-bottom:1px solid rgba(0,0,0,0.05)'>
+        <navigator wx:if="{{ux_cooReport}}" url="../user/myData" class="my-data-title" style='border-bottom:1px solid rgba(0,0,0,0.05)'>
             <view>运营报告</view>
             <view class="my-data-title-icon">
                 <image src='/assets/icon/right.svg'></image>
@@ -100,4 +100,4 @@
     </view>
     <view style='height:50px;width:100vw'></view>
 </view>
-<tab-bar selected="WeMinProUser" name="haha"></tab-bar>
+<tab-bar selected="{{UX_CONST.WeMinProUser}}" ></tab-bar>

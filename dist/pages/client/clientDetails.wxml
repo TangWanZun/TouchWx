@@ -44,7 +44,7 @@
         <!-- 正文内容 -->
         <view class='content'>
                 <!-- 核销    之后还会有积分核销 -->
-                <navigator wx:if="{{!formPage&&formData.IsRegister&&(hx_UX==UX_TYPE.ON_UX)}}" hover-class="none" url='/pages/user/work/cardCustomer?openId={{openId}}' class=' app-shadow-2 content-cancel  app-shadow-2'>
+                <navigator wx:if="{{!formPage&&formData.IsRegister&&ux_consumeRelease}}" hover-class="none" url='/pages/user/work/cardCustomer?openId={{openId}}' class=' app-shadow-2 content-cancel  app-shadow-2'>
                         <image src='/assets/icon/hx.svg'></image>
                         核销
                 </navigator>

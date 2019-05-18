@@ -9,6 +9,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        UX_CONST: wx.$UX,
         dataList: [],
         //图片数据
         imgUrl: getApp().privateData.configUrl.imgUrl,

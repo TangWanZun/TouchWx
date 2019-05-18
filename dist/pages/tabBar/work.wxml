@@ -121,4 +121,4 @@
     </view>
     <view style='height:50px;width:100vw'></view>
 </view>
-<tab-bar selected="WeMinProWork"></tab-bar>
+<tab-bar selected="{{UX_CONST.WeMinProWork}}"></tab-bar>

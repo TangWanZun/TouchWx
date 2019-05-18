@@ -45,35 +45,17 @@ function saveUserInfo(res, obj = {}) {
     //     }
     // })
     wx.$request({
-        url: "/WeMinProPlatJson/GetList",
+        url: "/WeMinProLogin/GetMenuActs",
         NRR: true,
-        data: {
-            docType: 'Main',
-            actionType: 'Permission',
-            needTotal: false,
-        },
         success(res) {
-            let list = [];
+            let obj = {};
             //对配置信息进行处理
-            // for (let x of res) {
-            //     list[x.ActionType] = x.Permission;
-            // }
+            for (let x of res) {
+                obj[x.MenuId] = x.Actions;
+            }
+            // console.log(obj);
             //将配置信息保存
-            privateData.UXList = [{
-                "MenuId": "WeMinProClient",
-                    "ActionList": {}
-                },
-                {
-                    "MenuId": "WeMinProUser",
-                    "ActionList": {}
-                },
-                {
-                    "MenuId": "WeMinProWork",
-                    "ActionList": {
-                        "ConsumeRelease": true
-                    }
-                }
-            ]
+            privateData.UXList = obj||{}
         },
         complete(res) {
             //当全部信息获取之后,调用加载滞留池中的方法

@@ -2,16 +2,18 @@
 import {
     util
 } from '../../library/sdk.js'
-import {
-    UX_TYPE,
-    UX_NAME
-} from "../../library/sdk/config.js"
+// import {
+//     UX_TYPE,
+//     UX_NAME
+// } from "../../library/sdk/config.js"
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        //核销
+        ux_consumeRelease: false,
         //图片数据
         imgUrl: getApp().privateData.configUrl.imgUrl,
         formData: {},
@@ -38,9 +40,9 @@ Page({
         ],
         //是否来自与会员消费页面
         formPage: false,
-        UX_TYPE: UX_TYPE,
+        // UX_TYPE: UX_TYPE,
         //是否存在核销权限
-        hx_UX: UX_TYPE.NO_UX,
+        // hx_UX: UX_TYPE.NO_UX,
         //身份证照片信息
         idCardImg: {
             orig: '',
@@ -63,7 +65,7 @@ Page({
         },
         //图钉是否启用
         menuFixed: false,
-        UXList:getApp().privateData.UXList
+        UXList: getApp().privateData.UXList
     },
     /**
      * 预览头像
@@ -100,7 +102,7 @@ Page({
             //是否来自会员消费
             formPage: options.formPage || false,
             //加载核销权限
-            hx_UX: getApp().privateData.UXList[UX_NAME.A01]
+            // hx_UX: getApp().privateData.UXList[UX_NAME.A01]
 
         })
         //GetNewNeedReplyList需要接受一个参数是openid
@@ -217,6 +219,12 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function() {
+        wx.$getUX(wx.$UX.ConsumeRelease)
+            .then(res => {
+                this.setData({
+                    ux_consumeRelease: res
+                })
+            })
     },
     /**
      * 生命周期函数--监听页面显示

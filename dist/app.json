@@ -4,7 +4,8 @@
         "pages/tabBar/message",
         "pages/tabBar/client",
         "pages/tabBar/work",
-        "pages/tabBar/login"
+        "pages/tabBar/login",
+        "pages/tabBar/cooReport"
     ],
     "subPackages": [
         {
@@ -55,7 +56,6 @@
         "navigationBarTitleText": "TouchUI",
         "navigationBarTextStyle": "black"
     },
-    
     "networkTimeout": {
         "request": 60000
     },

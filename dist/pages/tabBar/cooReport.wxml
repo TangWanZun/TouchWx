@@ -1,0 +1,122 @@
+<!--index.wxml-->
+<view class='app-body' style="background-image:url({{bg1}})">
+    <!-- 顶部图片 -->
+    <view class='header'>
+        <image mode='widthFix' src='/assets/bg/header.jpg'></image>
+    </view>
+    <!-- 客户基盘 -->
+    <view class="item">
+        <view class='title'>
+            <image mode='widthFix' src='/assets/bg/zuo.png'></image>
+            <view class='title-content'>客户基盘</view>
+            <image mode='widthFix' src='/assets/bg/you.png'></image>
+        </view>
+        <view class='kujp-1 kujp-item'>
+            <view class='kujp-number'>12000</view>
+            <view class='kujp-text'>档案数量</view>
+        </view>
+        <view class='kujp-2'>
+            <view class='kujp-item'>
+                <view class='kujp-number'>12000</view>
+                <view class='kujp-text'>活跃客户</view>
+            </view>
+            <view class='kujp-item'>
+                <view class='kujp-number'>12000</view>
+                <view class='kujp-text'>摇摆客户</view>
+            </view>
+            <view class='kujp-item'>
+                <view class='kujp-number'>12000</view>
+                <view class='kujp-text'>流失客户</view>
+            </view>
+            <view class='kujp-item'>
+                <view class='kujp-number'>12000</view>
+                <view class='kujp-text'>潜在客户</view>
+            </view>
+        </view>
+        <!-- 会员数量占比 -->
+        <view class='title-c' style='margin-top:20px;'>
+            <view class='title-c-content'>
+                <text>会员\n 数量/占比</text>
+            </view>
+        </view>
+        <view class='chart-1'>
+            <ec-canvas ec="{{ ec1 }}"></ec-canvas>
+        </view>
+        <!-- 产值 数量占比 -->
+        <view class='title-c' style='margin-top:20px;'>
+            <view class='title-c-content'>
+                <text>产值\n 数量/占比</text>
+            </view>
+        </view>
+        <view class='chart-1'>
+            <ec-canvas ec="{{ ec2 }}"></ec-canvas>
+        </view>
+        <!-- 客户流量分析 -->
+        <view class='title'>
+            <image mode='widthFix' src='/assets/bg/zuo.png'></image>
+            <view class='title-content'>客户流量分析</view>
+            <image mode='widthFix' src='/assets/bg/you.png'></image>
+        </view>
+        <view class='llfx-image'>
+            <image mode='widthFix' src='/assets/bg/zj.png'></image>
+            <view class="llfx-item llfx-xcsb">新车首保：200</view>
+            <view class="llfx-item llfx-lszh">流失召回：300</view>
+            <view class="llfx-item llfx-tdlr">他店流入：400</view>
+            <view class="llfx-item llfx-xzl">新增量：-100</view>
+            <view class="llfx-item llfx-qc">期初：1000</view>
+            <view class="llfx-item llfx-qm">期末：900</view>
+            <view class="llfx-item llfx-jgls">价格流失：200</view>
+            <view class="llfx-item llfx-wzls">位置流失：400</view>
+            <view class="llfx-item llfx-qtls">其他流失：200</view>
+        </view>
+        <!-- 流量分析-->
+        <view class='title-c' style='margin-top:20px;'>
+            <view class='title-c-content'>
+                <text>流量分析</text>
+            </view>
+        </view>
+        <view class='llfx-image' style='margin:13vw 2vw;'>
+            <image mode='widthFix' src='/assets/bg/llfx.png'></image>
+            <view class="llfx2-item llfx-zll">总流量：800</view>
+            <view class="llfx2-item llfx-xcdd">新车到店：500</view>
+            <view class="llfx2-item llfx-lchc">老车回厂：300</view>
+            <view class="llfx2-item llfx-ywzl">业务招揽：100</view>
+            <view class="llfx2-item llfx-hdyl">活动引流：200</view>
+            <view class="llfx2-item llfx-kqbl">卡券保流：200</view>
+            <view class="llfx2-item llfx-zrjd">自然进店：200</view>
+            <view class="llfx2-item llfx-dcz">低产值{{'<'}}0.4万：200</view>
+            <view class="llfx2-item llfx-zcz">0.4万{{'<'}}中产值 {{'<'}}1万：200</view>
+            <view class="llfx2-item llfx-gcz">1万{{'<'}}高产值：200</view>
+        </view>
+        <!-- 客户活动分析 -->
+        <view class='title'>
+            <image mode='widthFix' src='/assets/bg/zuo.png'></image>
+            <view class='title-content'>客户活动分析</view>
+            <image mode='widthFix' src='/assets/bg/you.png'></image>
+        </view>
+        <view class='tree-box'>
+            <view class='tree-item-box  tree-root'>
+                <view class='tree-item-list tree-root kuhycs-color' style='writing-mode:tb-rl'>
+                    客户活跃次数
+                </view>
+                <view class='tree-list'>
+                    <view class='tree-item-box' wx:for="{{kuhyList}}" wx:key="{{index}}">
+                        <view class='tree-item tree-item-list' style="background-color:{{item.item.backgroundcolor}}">
+                            <view class='tree-item-text'>{{item.item.value}}</view>
+                            <view class='tree-item-title'>{{item.item.name}}</view>
+                        </view>
+                        <view class='tree-list' wx:if="{{item.list}}">
+                            <view class='tree-item-box' wx:for="{{item.list}}" wx:for-index="itemIndex" wx:for-item="itemItem" wx:key="{{itemIndex}}">
+                                <view class='tree-item' style="background-color:{{itemItem.item.backgroundcolor}}">
+                                    <view class='tree-item-text'>{{itemItem.item.value}}</view>
+                                    <view class='tree-item-title'>{{itemItem.item.name}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<tab-bar selected="{{UX_CONST.WeMinProCooReport}}" ></tab-bar>

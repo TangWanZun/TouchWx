@@ -9,6 +9,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        UX_CONST: wx.$UX,
         imgUrl: configUrl.imgUrl,
         //是否加载完毕
         isOver: false,

@@ -1,0 +1,12 @@
+{
+    "navigationBarTitleText": "运营报告",
+    "usingComponents": {
+        "tab-bar": "/custom-tab-bar/index",
+        "ec-canvas": "../../library/ec-canvas/ec-canvas"
+    },
+    "navigationBarBackgroundColor": "#2f63f4",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#2f63f4",
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "custom"
+}

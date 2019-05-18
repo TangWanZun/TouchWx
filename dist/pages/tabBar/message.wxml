@@ -38,4 +38,4 @@
         <view style='height:50px;width:100vw'></view>
     </view>
 </view>
-<tab-bar selected="WeMinProMessage"></tab-bar>
+<tab-bar selected="{{UX_CONST.WeMinProMessage}}"></tab-bar>
