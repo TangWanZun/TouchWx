@@ -1,0 +1,18 @@
+/* pages/user/cmpScopeFilter.wxss */
+.page-body{
+    padding:0 15px 120px 15px;
+}
+.item{
+    font-size: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.button{
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    width: 45vw;
+    padding:10px;
+}

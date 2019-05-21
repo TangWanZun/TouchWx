@@ -5,9 +5,18 @@
                         <view class='top-button' bindtap='addLabel'>添加标签</view>
                 </view>
         </view>
-        <view wx:for="{{formList}}" wx:key="{{index}}" class='item {{item._del?"item-del":""}}' data-index="{{index}}" bindtap='itemClick'>
+        <!-- <view wx:for="{{formList}}" wx:key="{{index}}" class='item {{item._del?"item-del":""}}' data-index="{{index}}" bindtap='itemClick'>
                 <view class='item-title'>{{item.Name}}</view>
                 <view class='item-count'>{{item.Count||''}}</view>
+        </view> -->
+        <view class='tab-label' wx:for="{{labelMap}}" wx:for-item="tabItem" wx:for-index="tabIndex" wx:key="{{tabIndex}}">
+            <view class='tab-label-title'>{{tabItem.tabName}}</view>
+            <view class='tab-label-list'>
+                <view wx:for="{{tabItem.list}}" wx:key="{{index}}" class='item {{item._del?"item-del":""}}' data-index="{{index}}" data-tab="{{item.LabelTagGroupCode}}" bindtap='itemClick'>
+                        <view class='item-title'>{{item.Name}}</view>
+                        <view class='item-count'>{{item.Count||''}}</view>
+                </view>
+            </view>
         </view>
         <!-- 标签库按钮 -->
         <view class='label-lib' bindtap='labelLibClick'>
@@ -20,7 +29,9 @@
         <!-- 标签库页面 -->
         <view class='label-lib-box {{labelLibShow?"label-lib-box-show":""}}'>
                 <!-- 关闭按钮 -->
-                <view class='label-lib-box-close' bindtap='labelLibClick'>X</view>
+                <view class='label-lib-box-close' bindtap='labelLibClick'>
+                    <image src='/assets/icon/close.svg'></image>
+                </view>
                 <!-- 添加标签按钮 -->
                 <view class='label-lib-box-add {{addCount>0?"label-lib-box-add-show":""}}' bindtap='libToAdd'>+</view>
                 <!-- 左侧 -->
@@ -30,7 +41,7 @@
                 <!-- 右侧内容 -->
                 <scroll-view scroll-y="true" class='label-right app-scroll-none' bindscrolltolower="bindscrolltolower">
                         <view class='label-right-item-box'>
-                                <view wx:for="{{labelRightList}}" wx:key="{{index}}" class='item {{item._add?"item-add":""}}' data-index="{{index}}" bindtap='labelRightClick'>
+                                <view wx:for="{{labelRightList}}" wx:key="{{index}}" class='item item-label {{item._add?"item-add":""}}' data-index="{{index}}" bindtap='labelRightClick'>
                                         <view class='item-title'>{{item.LabelTag}}</view>
                                 </view>
                         </view>

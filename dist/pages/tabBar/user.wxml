@@ -85,8 +85,14 @@
                 <view class="my-data-item-num my-data-item-list">{{item.Value}}</view>
             </view>
         </view>
-        <navigator wx:if="{{ux_cooReport}}" url="../user/myData" class="my-data-title" style='border-bottom:1px solid rgba(0,0,0,0.05)'>
+        <!-- <navigator wx:if="{{ux_cooReport}}" url="../user/myData" class="my-data-title" style='border-bottom:1px solid rgba(0,0,0,0.05)'>
             <view>运营报告</view>
+            <view class="my-data-title-icon">
+                <image src='/assets/icon/right.svg'></image>
+            </view>
+        </navigator> -->
+        <navigator wx:if="{{ux_cmpScopeFilter}}" url='/pages/user/cmpScopeFilter' class="my-data-title">
+            <view>业务权限归属</view>
             <view class="my-data-title-icon">
                 <image src='/assets/icon/right.svg'></image>
             </view>

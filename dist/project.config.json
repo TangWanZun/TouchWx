@@ -34,7 +34,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 25,
 			"list": [
 				{
 					"id": -1,
@@ -193,13 +193,21 @@
 					"id": 25,
 					"name": "用户标签",
 					"pathName": "pages/client/clientDetails/label",
-					"query": "openId=ov2NLwAz1hTiaIJXQj-xbiiTKq2s"
+					"query": "openId=oD6Vgv8RbPapvkvUB-3E2iAaWvVQ",
+					"scene": null
 				},
 				{
 					"id": 26,
 					"name": "模拟更新",
 					"pathName": "pages/tabBar/user",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "业务权限归属",
+					"pathName": "pages/user/cmpScopeFilter",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

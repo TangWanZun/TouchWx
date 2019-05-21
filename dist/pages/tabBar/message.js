@@ -366,7 +366,9 @@ Page({
     onShow: function() {
         // this.getData();
         //更新消息红点
-        this.refreshBadge()
+        this.refreshBadge();
+        //初始化消息广播
+        msgBroadcast.init();
     },
 
     /**

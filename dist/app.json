@@ -26,7 +26,8 @@
                 "myData",
                 "myQr",
                 "myDatum",
-                "work/cardCustomer"
+                "work/cardCustomer",
+                "cmpScopeFilter"
             ]
         },
         {

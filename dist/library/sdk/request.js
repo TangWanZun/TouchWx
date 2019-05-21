@@ -135,9 +135,9 @@ function $request(para) {
                 }
             }
         },
-        fail: function(response) {
-            // console.log(response);
-            // mepara.fail(response);
+        fail: function(error) {
+            console.log(error);
+            mepara.fail(error);
         },
         complete: function(response) {
             //隐藏加载loding

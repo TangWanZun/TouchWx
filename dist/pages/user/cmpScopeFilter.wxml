@@ -1,0 +1,11 @@
+<view class='page-body'>
+    <checkbox-group >
+        <label class='item' wx:for="{{formList}}" wx:key="{{item.CmpCode}}" data-index="{{index}}" data-isauth="{{item.IsAuth}}" bindtap='changeCheck'>
+            <checkbox value="{{index}}" checked="{{item.IsAuth}}" />{{item.CmpName}}
+        </label>
+    </checkbox-group>
+    <view class='button'>
+        <button style='margin-bottom:10px;' bindtap='reset'>重置</button>
+        <button type="primary" bindtap='submit'>保存</button>
+    </view>
+</view>

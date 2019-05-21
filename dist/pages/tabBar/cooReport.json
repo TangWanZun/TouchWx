@@ -4,9 +4,9 @@
         "tab-bar": "/custom-tab-bar/index",
         "ec-canvas": "../../library/ec-canvas/ec-canvas"
     },
-    "navigationBarBackgroundColor": "#2f63f4",
+    "navigationBarBackgroundColor": "#171052",
     "enablePullDownRefresh": true,
-    "backgroundColor": "#2f63f4",
+    "backgroundColor": "#171052",
     "navigationBarTextStyle": "white",
     "navigationStyle": "custom"
 }

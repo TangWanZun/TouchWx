@@ -8,7 +8,7 @@ Page({
         loginInfo: {},
         formData: [],
         //运营报告权限
-        ux_cooReport:false,
+        // ux_cooReport:false,
         //核销权限
         ux_consumeRelease:false
     },
@@ -82,18 +82,17 @@ Page({
     onReady: function() {
         var _this = this;
         let appPrivateData = getApp().privateData;
-        //判断是否存在运营报告权限
         getApp().loadInfo(function() {
             _this.setData({
                 loginInfo: appPrivateData.loginInfo,
-                // ux_cooReport: appPrivateData.UXList[wx.$UX.WeMinProCooReport],
-                // ux_consumeRelease: appPrivateData.UXList[wx.$UX.WeMinProClient]?appPrivateData.UXList[wx.$UX.WeMinProClient][wx.$UX.ConsumeRelease]:false,
             })
         })
-        wx.$getUX(wx.$UX.ConsumeRelease)
+        //获取相关权限
+        Promise.all([wx.$getUX(wx.$UX.ConsumeRelease), wx.$getUX(wx.$UX.CmpScopeFilter)])
             .then(res => {
                 this.setData({
-                    ux_consumeRelease: res
+                    ux_consumeRelease: res[0],
+                    ux_cmpScopeFilter:res[1]
                 })
             })
     },

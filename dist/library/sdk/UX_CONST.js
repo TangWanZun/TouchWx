@@ -10,7 +10,9 @@ export const UX_CONST = {
     //运营报告
     "WeMinProCooReport": "WeMinProCooReport",
     //核销权限
-    "ConsumeRelease":"WeMinProOcrd.ConsumeRelease"
+    "ConsumeRelease":"WeMinProOcrd.ConsumeRelease",
+    //业务权限范围
+    "CmpScopeFilter": "WeMinProUserMain.CmpScopeFilter"
 }
 /**
  * 获取权限信息
@@ -25,12 +27,17 @@ export const getUX = function(UX){
             for(let i=0;i<dataList.length;i++){
                 let item = res[dataList[i]];
                 if (item){
+                    //表示还有下一层
                     res = item;
-                }else{
+                } else if (typeof item =="undefined"){
+                    //表示传递的权限中没有UX这一项 ，那么默认就是true
+                    res = true;
+                }else {
+                    //表示权限为 false
                     res = false;
                 }
             }
-            resolve(res?true:false)
+            resolve(res?true:false);
         })
     })
 }

@@ -948,13 +948,16 @@ Page({
         /**
          * 生命周期函数--监听页面显示
          */
-        onShow: function() {},
+        onShow: function() {
+            //初始化消息广播
+            msgBroadcast.init();
+        },
 
         /**
          * 生命周期函数--监听页面隐藏
          */
         onHide: function() {
-                this.audioStop()
+            this.audioStop()
         },
 
         /**
