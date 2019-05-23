@@ -25,7 +25,7 @@
                                         <view class='header-botton-item-title'>积分</view>
                                         <view class='header-botton-item-number'>{{formData.AvailableScore||'0'}}</view>
                                 </navigator>
-                                <navigator wx:if="{{UXList['A01']}}" url='./clientDetails/coupon?openId={{formData.OpenId}}' class='header-botton-item' >
+                                <navigator url='./clientDetails/coupon?openId={{formData.OpenId}}' class='header-botton-item' >
                                         <view class='header-botton-item-title'>电子券</view>
                                         <view class='header-botton-item-number'>{{formData.AvailableECard||'0'}}张</view>
                                 </navigator>

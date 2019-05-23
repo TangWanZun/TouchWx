@@ -12,7 +12,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.0",
-	"appid": "wx334450ff9ab82891",
+	"appid": "wx741745d2b71d095d",
 	"projectname": "touch-wx",
 	"scripts": {},
 	"simulatorType": "wechat",
@@ -34,7 +34,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 25,
+			"current": 18,
 			"list": [
 				{
 					"id": -1,
@@ -148,10 +148,11 @@
 					"query": ""
 				},
 				{
-					"id": 19,
+					"id": 18,
 					"name": "电子券",
 					"pathName": "pages/client/clientDetails/coupon",
-					"query": "openId=oS4HgsqzdCuEsHbuy1xMUxbtsTSA"
+					"query": "openId=oS4HgsqzdCuEsHbuy1xMUxbtsTSA",
+					"scene": null
 				},
 				{
 					"id": 19,

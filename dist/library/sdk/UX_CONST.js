@@ -12,7 +12,15 @@ export const UX_CONST = {
     //核销权限
     "ConsumeRelease":"WeMinProOcrd.ConsumeRelease",
     //业务权限范围
-    "CmpScopeFilter": "WeMinProUserMain.CmpScopeFilter"
+    "CmpScopeFilter": "WeMinProUserMain.CmpScopeFilter",
+    //预约单权限
+    "WeiXinReserve": "WeMinProWorker.WeiXinReserve",
+    //救援单权限
+    "WeiXinRescue": "WeMinProWorker.WeiXinRescue",
+    //活动报名权限
+    "WeiXinActivitySignUp": "WeMinProWorker.WeiXinActivitySignUp",
+    //到期提醒权限
+    "TimedReport":"WeMinProWorker.TimedReport",
 }
 /**
  * 获取权限信息
