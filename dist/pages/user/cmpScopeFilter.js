@@ -1,4 +1,5 @@
 // pages/user/cmpScopeFilter.js
+import { CMP_CAR} from "../../library/sdk/config.js"
 Page({
 
     /**
@@ -9,7 +10,7 @@ Page({
         formList: []
     },
 
-    /**
+    /*
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
@@ -38,9 +39,7 @@ Page({
                 needTotal: false
             },
             success: (res) => {
-                this.setData({
-                    formList: res || []
-                })
+
                 //将上传数据的默认的不选中
                 //因为  微信小程序中 只会返回选中的值
                 // for(let item of res){
@@ -49,6 +48,38 @@ Page({
                 //     })
                 //     this.submitList.push(pushItem)
                 // }
+
+                let dataList = {};
+                for (let i in res){
+                    let item = res[i];
+                    //不存在父节点的为根节点
+                    if (!item.GroupCode){
+                        dataList[item.CmpCode] = Object.assign(dataList[item.CmpCode]||{},{
+                            CmpCode: item.CmpCode,
+                            CmpName: item.CmpName,
+                            list: {}
+                        })
+                        continue
+                    }
+                    //表示存在父节点的公司
+                    if (!dataList[item.GroupCode]){
+                        //没有当前公司的父公司的时候创建一个父公司
+                        dataList[item.GroupCode] = {
+                            CmpCode: item.GroupCode,
+                            list:{}
+                        };
+                    }
+                    let childList = dataList[item.GroupCode].list;
+                    if (!childList[item.BrandType]){
+                        //当不存在这个系列的时候
+                        childList[item.BrandType] = [];
+                    }
+                    childList[item.BrandType].push(item);
+                }
+                console.log(dataList)
+                this.setData({
+                    formList: dataList
+                })
             },
             complete() {
                 if (refresh) {

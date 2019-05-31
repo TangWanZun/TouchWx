@@ -46,6 +46,11 @@ const DEDUCTION_TYPE = {
     //金额
     AMOUNT: 'A02'
 }
+//公司汽车类型
+export const CMP_CAR={
+    'A01':'奔驰车',
+    'A02':"中级车"
+}
 export {
     WORK_TYPE,
     CHAT_CONST,

@@ -1,18 +1,23 @@
 /* pages/user/cmpScopeFilter.wxss */
 .page-body{
-    padding:0 15px 120px 15px;
+    padding:0 0 70px 0;
 }
 .item{
     font-size: 15px;
-    margin-bottom: 15px;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding:10px 0;
+    padding-left: 20px;
+}
+.item-con{
     display: flex;
     align-items: center;
 }
-
 .button{
     position: fixed;
     left: 0px;
     bottom: 0px;
-    width: 45vw;
-    padding:10px;
+    width: 100vw;
+    padding:0;
 }
