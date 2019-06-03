@@ -39,11 +39,17 @@
                                 <image src='/assets/icon/right.svg'></image>
                         </view>
                 </navigator> -->
-        <view class="my-data-title">
+        <navigator wx:if="{{ux_cmpScopeFilter}}" url='/pages/user/cmpScopeFilter' class="my-data-title">
+            <view style='color:white'>数据权限归属</view>
+            <view class="my-data-title-icon app-filter-btow">
+                <image src='/assets/icon/right.svg'></image>
+            </view>
+        </navigator>
+        <!-- <view class="my-data-title">
             <view style='color:white'>我的数据</view>
             <view class="my-data-title-icon">
             </view>
-        </view>
+        </view> -->
         <view class='my-data-con'>
             <view class="ui-row" style="">
                 <view class="ui-col">
@@ -91,12 +97,7 @@
                 <image src='/assets/icon/right.svg'></image>
             </view>
         </navigator> -->
-        <navigator wx:if="{{ux_cmpScopeFilter}}" url='/pages/user/cmpScopeFilter' class="my-data-title">
-            <view>业务权限归属</view>
-            <view class="my-data-title-icon">
-                <image src='/assets/icon/right.svg'></image>
-            </view>
-        </navigator>
+
         <navigator url='/pages/user/myDatum' class="my-data-title">
             <view>个人资料</view>
             <view class="my-data-title-icon">
@@ -106,4 +107,4 @@
     </view>
     <view style='height:50px;width:100vw'></view>
 </view>
-<tab-bar selected="{{UX_CONST.WeMinProUser}}" ></tab-bar>
+<tab-bar selected="{{UX_CONST.WeMinProUser}}"></tab-bar>

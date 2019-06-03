@@ -59,16 +59,58 @@
             <leafletAdd upload-type="xsCard" disabled="true" img-url="{{xsCardImgUser}}"></leafletAdd>
         </view>
         <view class="page-record">
-            <view class="page-record-header">保养周期</view>
-            <view class='page-record-none-data' wx:if="carRecord.length==0">暂无保养记录</view>
-            <div class="page-record-item" wx:for="{{carRecord}}" wx:key="{{index}}">
-                <div class="page-record-axle">
-                    <div class="page-record-axle-l"></div>
-                    <div class="page-record-axle-o"></div>
-                </div>
-                <div class="page-record-time">第{{item.PeriodYear}}年</div>
-                <div class="page-record-con">{{item.L1ItemName}}</div>
-            </div>
+            <view class="page-record-header">车辆履历</view>
+            <view class="app-list-loging" wx:if="{{carRecordListOnLoad}}">
+                    <view>数据加载中</view>
+                    <image src='/assets/icon/jzz.svg'></image>
+            </view>
+            <view class='page-record-none-data' wx:elif="{{carRecord.length==0}}">暂无履历记录</view>
+            <view class="page-record-item" wx:for="{{carRecord}}" wx:key="{{index}}">
+                <view class="page-record-axle">
+                    <view class="page-record-axle-l"></view>
+                    <view class="page-record-axle-o"></view>
+                </view>
+                <view class="page-record-item-header"> 
+                    <view class="page-record-time"> {{item.DocDate}}</view>
+                    <view class="page-record-item-show" data-index="{{index}}" bindtap='recordShow'>
+                        <text wx:if="{{item._show}}">关闭详情</text>
+                        <text wx:else>展开详情</text>
+                    </view>
+                </view>
+                <view class="page-record-con">
+                    <view>WIP单号：{{item.WIP}}</view>
+                    <view>接待顾问：{{item.SlpName}}</view>
+                    <view>服务业务：{{item.PayType}}</view>
+                    <view>结算金额：￥{{item.DocTotal}}</view>
+                </view>
+                <view class='page-record-infor' wx:if="{{item._show}}">
+                    <view class='page-record-title'>工项明细</view>
+                    <view class='page-record-row'>
+                        <view class='page-record-col  page-record-col-name'>工项</view>
+                        <view class='page-record-col  page-record-col-qty'>数量</view>
+                        <view class='page-record-col  page-record-col-total'>总价</view>
+                    </view>
+                    <view class='page-record-row' wx:for="{{item._list_1}}" wx:for-item="listItem" wx:for-index="listIndex" wx:key="{{listIndex}}">
+                        <view class='page-record-col  page-record-col-name'>{{listItem.ItemName}}</view>
+                        <view class='page-record-col  page-record-col-qty'>{{listItem.Qty}}</view>
+                        <view class='page-record-col  page-record-col-total'>￥{{listItem.GSTotal}}</view>
+                    </view>
+                </view>
+                <view class='page-record-infor' wx:if="{{item._show}}">
+                    <view class='page-record-title'>配件明细</view>
+                    <view class='page-record-row'>
+                        <view class='page-record-col  page-record-col-name'>配件</view>
+                        <view class='page-record-col  page-record-col-qty'>数量</view>
+                        <view class='page-record-col  page-record-col-total'>总价</view>
+                    </view>
+                    <view class='page-record-row' wx:for="{{item._list_2}}" wx:for-item="listItem" wx:for-index="listIndex" wx:key="{{listIndex}}">
+                        <view class='page-record-col  page-record-col-name'>{{listItem.ItemName}}</view>
+                        <view class='page-record-col  page-record-col-qty'>{{listItem.Qty}}</view>
+                        <view class='page-record-col  page-record-col-total'>￥{{listItem.PJTotal}}</view>
+                    </view>
+                </view>
+            </view>
+            <!-- <llbox id='myLlbox'></llbox> -->
         </view>
     </view>
 </view>

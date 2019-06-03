@@ -33,12 +33,14 @@ Page({
     /**
      * 加载数据
      */
-    getData() {
+    getData(isLoad=true) {
         let _this = this;
-        wx.showLoading({
-            title: '数据加载中',
-            mask:true
-        })
+        if (isLoad){
+            wx.showLoading({
+                title: '数据加载中',
+                mask: true
+            })
+        }
         wx.$request({
             url: "/WeMinProPlatJson/GetList",
             data: {
@@ -53,7 +55,7 @@ Page({
             },
             complete() {
                 wx.stopPullDownRefresh();
-                wx.hideLoading()
+                if (isLoad) { wx.hideLoading()}
             }
         })
     },

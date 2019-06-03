@@ -148,7 +148,6 @@
 .my-data-title-icon{
   width:20px;
   height: 20px;
-  opacity: 0.5;
 }
 .my-data .my-data-rangking {
   position: relative;

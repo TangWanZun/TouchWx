@@ -7,7 +7,8 @@ Page({
      */
     data: {
         //获取的数据
-        formList: []
+        formList: [],
+        CMP_CAR: CMP_CAR
     },
 
     /*
@@ -57,6 +58,7 @@ Page({
                         dataList[item.CmpCode] = Object.assign(dataList[item.CmpCode]||{},{
                             CmpCode: item.CmpCode,
                             CmpName: item.CmpName,
+                            IsAuth: item.IsAuth,
                             list: {}
                         })
                         continue
@@ -70,13 +72,24 @@ Page({
                         };
                     }
                     let childList = dataList[item.GroupCode].list;
+                    //对系列进行分类
                     if (!childList[item.BrandType]){
                         //当不存在这个系列的时候
-                        childList[item.BrandType] = [];
+                        childList[item.BrandType] = {
+                            //默认为选中状态
+                            IsAuth:1,
+                            //是否已经收起来了
+                            _isShow:true,
+                            list:[]
+                        };
                     }
-                    childList[item.BrandType].push(item);
+                    if (!item.IsAuth){
+                        //当有一个子项为不存在的时候
+                        childList[item.BrandType].IsAuth = 0;
+                    }
+                    childList[item.BrandType].list.push(item);
                 }
-                console.log(dataList)
+                // console.log(dataList)
                 this.setData({
                     formList: dataList
                 })
@@ -86,6 +99,14 @@ Page({
                     wx.hideLoading();
                 } else {
                     wx.stopPullDownRefresh();
+                }
+                //控制首页页面刷新
+                var pages = getCurrentPages();
+                if (pages.length > 1) {
+                    //上一个页面实例对象 
+                    var prePage = pages[pages.length - 2];
+                    //关键在这里,这里面是触发上个界面的方法 
+                    prePage.getData(false) 
                 }
             }
         })
@@ -120,10 +141,129 @@ Page({
         })
     },
     /**
+     * 点击父公司的钩子
+     */
+    changeRootCheck(e){
+        //公司根
+        let root = e.currentTarget.dataset.root;
+        //当前类型
+        let rootObj = this.data.formList[root];
+        //改变当前的钩子的点击
+        let check = rootObj.IsAuth = !(rootObj.IsAuth);
+        let checkList = rootObj.list;
+        //当前为点击选中了  
+        //将子模块全选
+        for (let i in checkList) {
+            this.changeCarTypeCheck({
+                currentTarget:{
+                    dataset:{
+                        root: root,
+                        cartype: i
+                    }
+                }
+            })
+            checkList[i].IsAuth = 1;
+        }
+        
+    },
+    /**
+     * 点击汽车类型的钩子
+     */
+    changeCarTypeCheck(e){
+        //公司根
+        let root = e.currentTarget.dataset.root;
+        //汽车类型
+        let cartype = e.currentTarget.dataset.cartype;
+        //当前类型
+        let carTypeObj = this.data.formList[root].list[cartype];
+        //改变当前的钩子的点击
+        let check = carTypeObj.IsAuth = !(carTypeObj.IsAuth);
+        let checkList = carTypeObj.list;
+        for (let i in checkList){
+            checkList[i].IsAuth = check;
+        }
+        // 更新数据
+        this.setData({
+            [`formList.${root}.list.${cartype}`]: carTypeObj
+        })
+    },
+    /**
+     * 点击汽车类型右侧的打开
+     */
+    tapRightImage(e){
+        //公司根
+        let root = e.currentTarget.dataset.root;
+        //汽车类型
+        let cartype = e.currentTarget.dataset.cartype;
+        //当前类型
+        let carTypeObj = this.data.formList[root].list[cartype];
+
+
+        this.setData({
+            [`formList.${root}.list.${cartype}._isShow`]: !carTypeObj._isShow
+        })
+    },
+    /**
+     * 用来监控每个车类型下下面的全部打勾的
+     */
+    cartypeBindChange(e){
+        //获取全部打勾的公司
+        let valueList = e.detail.value;
+        //公司根
+        let root = e.currentTarget.dataset.root;
+        //汽车类型
+        let cartype = e.currentTarget.dataset.cartype;
+        //获取当前汽车类型下的全部数据
+        let list = this.data.formList[root].list[cartype].list;
+        if (valueList.length == list.length){
+            //表示该汽车类型下的全部公司都已经打勾了
+            //则该类型也是需要打勾的
+            this.setData({
+                [`formList.${root}.list.${cartype}.IsAuth`]:1
+            })
+        }else{
+            this.setData({
+                [`formList.${root}.list.${cartype}.IsAuth`]: 0
+            })
+        }
+    },
+    /**
+     * 点击cmp
+     */
+    cmpBindChange(e){
+        //公司根
+        let root = e.currentTarget.dataset.root;
+        //汽车类型
+        let cartype = e.currentTarget.dataset.cartype;
+        // 公司索引
+        let index = e.currentTarget.dataset.index;
+        this.setData({
+            [`formList.${root}.list.${cartype}.list[${index}].IsAuth`]: !this.data.formList[root].list[cartype].list[index].IsAuth
+        })
+    },
+    /**
      * 保存
      */
     submit() {
-        console.log(this.data.formList);
+        // console.log(this.data.formList);
+        let formList = this.data.formList;
+        let list = []
+        //root
+        for (let i in formList){
+            list.push({
+                CmpCode: formList[i].CmpCode,
+                CmpName: formList[i].CmpName,
+                IsAuth: 1
+            })
+            //汽车类型
+            for (let j in formList[i].list){
+                //公司
+                for(let item of formList[i].list[j].list){
+                    list.push(item)
+                }
+            }
+        }
+        // console.log(list)
         //需要对上传数据进行处理
         wx.$request({
             url: '/WeMinProPlatJson/Submit',
@@ -131,7 +271,7 @@ Page({
                 docType: 'Main',
                 actionType: 'SubmitCsf',
                 docJson: JSON.stringify({
-                    'List': this.data.formList,
+                    'List': list
                 })
             },
             success: (res) => {
@@ -148,7 +288,7 @@ Page({
      */
     changeCheck(e) {
         this.setData({
-            [`formList[${e.currentTarget.dataset.index}].IsAuth`]: !e.currentTarget.dataset.isauth
+            [`formList[${e.currentcurrentTarget.dataset.index}].IsAuth`]: !e.currentcurrentTarget.dataset.isauth
         })
     },
     /**

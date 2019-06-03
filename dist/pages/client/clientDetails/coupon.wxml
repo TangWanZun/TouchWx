@@ -1,10 +1,10 @@
 <view class='datalist'>
-        <view class='page-tap {{menuFixed ? "page-tap-fixed":""}}' id='page-tap'>
-                <view class='page-tap-item {{selectTopType=="A01"?"page-tap-item-show":""}}' data-key="A01" bindtap='topTypeSelect'>待使用</view>
-                <view class='page-tap-item {{selectTopType=="A02"?"page-tap-item-show":""}}' data-key="A02" bindtap='topTypeSelect'>已使用</view>
-                <view class='page-tap-item {{selectTopType=="A03"?"page-tap-item-show":""}}' data-key="A03" bindtap='topTypeSelect'>过期</view>
-        </view>
-        <!-- <view wx:for="{{formList}}" wx:key="{{index}}" data-index="{{index}}" class='item' bindtap='tapItem'>
+    <view class='page-tap {{menuFixed ? "page-tap-fixed":""}}' id='page-tap'>
+        <view class='page-tap-item {{selectTopType=="A01"?"page-tap-item-show":""}}' data-key="A01" bindtap='topTypeSelect'>待使用</view>
+        <view class='page-tap-item {{selectTopType=="A02"?"page-tap-item-show":""}}' data-key="A02" bindtap='topTypeSelect'>已使用</view>
+        <view class='page-tap-item {{selectTopType=="A03"?"page-tap-item-show":""}}' data-key="A03" bindtap='topTypeSelect'>过期</view>
+    </view>
+    <!-- <view wx:for="{{formList}}" wx:key="{{index}}" data-index="{{index}}" class='item' bindtap='tapItem'>
                 <view class='item-head'>
                         <view class='item-head-left'>{{item.ECardUnit}}</view>
                         <view class='item-head-right'>
@@ -20,81 +20,89 @@
                         <view>{{item._date}}</view>
                 </view>
         </view> -->
-        <view
-          class="item {{m1.ECardColor(selectTopType=='A03'?'GQ':item.ECardColor)}}"
-          wx:for="{{formList}}"
-          wx:key="{{index}}"
-          data-index="{{index}}"
-          bindtap='tapItem'
-        >
-          <view class="item-content">
+    <view class="item {{m1.ECardColor(selectTopType=='A03'?'GQ':item.ECardColor)}}" wx:for="{{formList}}" wx:key="{{index}}" data-index="{{index}}" bindtap='tapItem'>
+        <view class="item-content">
             <view class="item-left">
-              <view class="item-left-name">{{m1.EcardName(item.ECardColor)}}</view>
-              <view class="item-left-content">
-                {{item.ECardUnit}}
-              </view>
-              <view class="item-gqdata" wx:if="{{item.ECardARemind>0}}">
-                {{item.ECardARemind}}天后过期
-              </view>
+                <view class="item-left-name">{{m1.EcardName(item.ECardColor)}}</view>
+                <view class="item-left-content">
+                    {{item.ECardUnit}}
+                </view>
+                <view class="item-gqdata" wx:if="{{item.ECardARemind>0}}">
+                    {{item.ECardARemind}}天后过期
+                </view>
             </view>
             <view class="item-blod">
-              <view class="page-blod-head">
-                <view class="page-rauid"></view>
-                <view class="page-grow"></view>
-                <view class="page-rauid"></view>
-              </view>
-              <view class="page-blod-foot">
-                <view class="page-rauid"></view>
-                <view class="page-grow"></view>
-                <view class="page-rauid"></view>
-              </view>
+                <view class="page-blod-head">
+                    <view class="page-rauid"></view>
+                    <view class="page-grow"></view>
+                    <view class="page-rauid"></view>
+                </view>
+                <view class="page-blod-foot">
+                    <view class="page-rauid"></view>
+                    <view class="page-grow"></view>
+                    <view class="page-rauid"></view>
+                </view>
             </view>
             <view class="item-right">
-              <view class="item-name">{{item.ECardName}}</view>
-              <view class="item-flex">
-                <view class="item-text">{{item.CarNum}}</view>
-                <view class="item-text">{{item.PackageName}}</view>
-              </view>
-              <view class="item-text">{{item.Note}}</view>
-              <view class="item-date">{{item._date}}</view>
-              <view class="item-gz">使用规则</view>
+                <view class="item-name">{{item.ECardName}}</view>
+                <view class="item-flex">
+                    <view class="item-text">{{item.CarNum}}</view>
+                    <view class="item-text">{{item.PackageName}}</view>
+                </view>
+                <view class="item-flex">
+                    <view class="item-text">{{item.ReleaseDeptName}}</view>
+                    <view class="item-text">{{item.ReleasePerson}}</view>
+                </view>
+                <view class="item-text">{{item.Note}}</view>
+                <view class="item-date">{{item._date}}</view>
+                <view class="item-gz">备注信息</view>
             </view>
-          </view>
-          <view class="item-sandwich  {{!item._isShow||'item-sandwich-show'}}">
-            <view class="item-sandwich-content app-scroll-none">
-              <view class="item-sandwich-title">使用规则</view>
-              <pre class="item-sandwich-text" v-html="item.Instruction"></pre>
-            </view>
-          </view>
         </view>
-        <llbox id='myLlbox'></llbox>
-        <view class='foot'></view>
+        <view class="item-sandwich  {{!item._isShow||'item-sandwich-show'}}">
+            <view class="item-sandwich-content app-scroll-none">
+                <view class="item-sandwich-title">发放备注：</view>
+                <view style="font-size:15px;margin-bottom:10px;">
+                    {{item.Comments}}
+                </view>
+                <view class="item-sandwich-title">使用规则：</view>
+                <pre class="item-sandwich-text" v-html="item.Instruction"></pre>
+            </view>
+        </view>
+    </view>
+    <llbox id='myLlbox'></llbox>
+    <view class='foot'></view>
 </view>
 <wxs module="m1">
-        //卡券名称
-        module.exports.EcardName = function(name){
-            switch (name){
-                case 0 :return '终身券'
-                case 1 :return '购买券'
-                case 2 :return '赠送券'
-            }
+    //卡券名称
+    module.exports.EcardName = function(name) {
+        switch (name) {
+            case 0:
+                return '终身券'
+            case 1:
+                return '购买券'
+            case 2:
+                return '赠送券'
         }
-        // 卡券颜色
-        module.exports.ECardColor = function (val) {
-            // 默认为黄色
-            switch (val) {
-                case 'GQ':{
-                //过期
-                return  'item-GQ'
+    }
+    // 卡券颜色
+    module.exports.ECardColor = function(val) {
+        // 默认为黄色
+        switch (val) {
+            case 'GQ':
+                {
+                    //过期
+                    return 'item-GQ'
                 }
-                case 0: {
-                //红色的
-                return  'item-0'
+            case 0:
+                {
+                    //红色的
+                    return 'item-0'
                 }
-                case 2: {
-                //蓝色的
-                return  'item-2'
+            case 2:
+                {
+                    //蓝色的
+                    return 'item-2'
                 }
-            }
         }
+    }
 </wxs>

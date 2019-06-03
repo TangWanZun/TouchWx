@@ -14,10 +14,37 @@
     display: flex;
     align-items: center;
 }
+.item-text{
+    flex-grow: 1;
+}
+.item-right{ 
+    width:40vw;
+    height: 20px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 15px;
+}
+.item-right>image{
+    transform: rotate(-90deg);
+    transition: 0.3s;
+    width:20px;
+    height: 20px;
+}
+.item-right-show>image{
+    transform: rotate(90deg);
+}
 .button{
     position: fixed;
     left: 0px;
     bottom: 0px;
     width: 100vw;
     padding:0;
+    display: flex;
+}
+.button>button{
+    flex-grow: 1;
+}
+.button>button[type="primary"]{
+    background-color: #2f63f4;
 }

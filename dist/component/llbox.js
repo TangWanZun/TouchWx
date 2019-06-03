@@ -27,7 +27,9 @@ Component({
     //是否为第一次加载数据,
     firstLoad:true,
     //是否为空数据
-    isNoneData:false
+    isNoneData:false,
+    //是否正在查询数据中
+    isOnLoad:false
   },
   created(){
     // console.log($)
@@ -43,7 +45,7 @@ Component({
       this.setData({
         pageOver: false,
         firstLoad:true,
-        isNoneData:false
+        isNoneData:false,
       });
       //判断是否存在参数url,不存在这直接报错
       if(!pro.url){console.error('llbox:错误,必须传入参数url');return}
@@ -62,8 +64,13 @@ Component({
     //使用获取信息
     request() {
       //当全部数据获取完成的时候,将不再运行此方法
-      if (this.data.pageOver){return}
+      //当正在查询数据的时候不运行此方法   防止出现重复数据
+        if (this.data.pageOver || this.data.isOnLoad){return}
       let _this = this;
+      //更改为正在获取数据中
+      this.setData({
+          isOnLoad: true
+      })
       //拼装传递的data值
       $.requestPro.data;
       let data = [];
@@ -104,6 +111,10 @@ Component({
         },
         complete(res){
           $.requestPro.complete && $.requestPro.complete(res)
+          //表示已经获取成功数据
+            _this.setData({
+                isOnLoad: false
+            })
         }
       })
     }

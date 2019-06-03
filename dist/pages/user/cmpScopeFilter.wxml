@@ -4,23 +4,31 @@
             <checkbox value="{{index}}" checked="{{item.IsAuth}}" />{{item.CmpName}}
         </label>
     </checkbox-group> -->
-    <view class="item" wx:for="{{formList}}" wx:key="{{item.CmpCode}}">
-        <label class='item-con'>
-            <checkbox  />{{item.CmpName}}
-        </label>
+    <view wx:for="{{formList}}" wx:key="{{item.CmpCode}}">
+        <!-- <label class='item-con' data-root="{{item.CmpCode}}" bindtap='changeRootCheck'>
+            {{item.CmpName}}
+        </label> -->
         <view class="item" wx:for="{{item.list}}" wx:for-item="typeItem" wx:for-index="typeIndex" wx:key="{{typeIndex}}">
-            <label class='item-con'>
-                <checkbox  />{{typeIndex}}
-            </label>
-            <view class='item' wx:for="{{typeItem}}" wx:for-item="childItem" wx:for-index="childIndex" wx:key="{{childItem.CmpCode}}">
-                <label class='item-con'>
-                    <checkbox  />{{childItem.CmpName}}
-                </label>
+            <view class='item-con' data-root="{{item.CmpCode}}" data-cartype="{{typeIndex}}" bindtap='changeCarTypeCheck'>
+                <checkbox color="#2f63f4" checked="{{typeItem.IsAuth}}" />
+                <view class='item-text'>{{CMP_CAR[typeIndex]}}</view>
+                <view class='item-right  {{typeItem._isShow?"item-right-show":""}}' data-root="{{item.CmpCode}}" data-cartype="{{typeIndex}}" catchtap='tapRightImage'>
+                    <image src='/assets/icon/right.svg'></image>
+                </view>
+            </view>
+            <view wx:if="{{typeItem._isShow}}">
+                <checkbox-group data-root="{{item.CmpCode}}" data-cartype="{{typeIndex}}" bindchange="cartypeBindChange">
+                    <view class='item' wx:for="{{typeItem.list}}" wx:for-item="childItem" wx:for-index="childIndex" wx:key="{{childItem.CmpCode}}">
+                        <label class='item-con' data-root="{{item.CmpCode}}" data-cartype="{{typeIndex}}"  data-index="{{childIndex}}"  bindtap="cmpBindChange">
+                            <checkbox color="#2f63f4" value="{{childIndex}}" checked="{{childItem.IsAuth}}" />{{childItem.CmpName}}
+                        </label>
+                    </view>
+                </checkbox-group>
             </view>
         </view>
     </view>
     <view class='button'>
-        <!-- <button style='margin-bottom:10px;' bindtap='reset'>重置</button> -->
-        <button type="primary" bindtap='submit'>保存</button>
+        <button bindtap='reset'>重置</button>
+        <button style='width:50vw' type="primary" bindtap='submit'>保存</button>
     </view>
 </view>

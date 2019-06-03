@@ -2,7 +2,7 @@
     "navigationBarTitleText": "绑定车辆",
     "enablePullDownRefresh": true,
     "usingComponents": {
-      "llbox": "/component/llbox",
+        "llbox": "/component/llbox",
       "leafletAdd": "/component/leafletAdd"
     }
 }

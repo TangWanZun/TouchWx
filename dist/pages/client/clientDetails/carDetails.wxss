@@ -151,9 +151,8 @@
         border: 2px solid #6465f1;
         border-radius: 100%;
         margin-left: -8px;
-        margin-top: -8px;
         left: 50%;
-        top: 50%;
+        top: 0;
         position: absolute;
 }
 
@@ -165,17 +164,68 @@
         left: 50%;
         position: absolute;
 }
+/* 头部  用来展示  时间和展开详情 */
+.page-record-item-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
 .page-record-time {
         margin-bottom: 5px;
         font-size: 15px;
-        color: rgba(0, 0, 0, 0.5);
+        color: #6465f1;
 }
-
+.page-record-item-show{
+    font-size: 15px;
+    padding-right: 15px;
+}
 .page-record-con {
-        font-size: 15px;
-}
+    font-size: 15px;
+        margin-bottom: 5px;
 
+}
+.page-record-con> view {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: rgba(0, 0, 0, 0.6);
+}
+.page-record-infor{
+    /* border-top:1px solid rgba(0, 0, 0, 0.1); */
+    border-bottom:1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+.page-record-title{
+    font-size: 15px;
+    border-bottom:1px solid rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+.page-record-row{
+    display: flex;
+    align-items: stretch;
+}
+.page-record-col{
+    font-size: 15px;
+    border-bottom:1px solid rgba(0, 0, 0, 0.1);
+}
+/* 名称 */
+.page-record-col-name{
+    flex-grow: 1;
+    border-right:1px solid rgba(0, 0, 0, 0.1);
+}
+/* 数量 */
+.page-record-col-qty{
+    width: 50px;
+    flex-shrink: 0;
+    text-align: center;
+    border-right:1px solid rgba(0, 0, 0, 0.1);
+
+}
+/* 金额 */
+.page-record-col-total{
+    width: 100px;
+    flex-shrink: 0;
+}
 /* 行驶证信息 */
 .page-leaflet{
     margin:0 10px;

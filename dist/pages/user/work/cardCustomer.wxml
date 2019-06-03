@@ -95,7 +95,7 @@ module.exports.fun = isEcardShow;
                                         </view>
                                         <view class='page-Ecard-con'>
                                                 <view class='page-Ecard-name'>{{item.L1Name}}</view>
-                                                <view class='page-Ecard-type'>抵扣类型:{{item._eCardTypeName}}</view>
+                                                <view class='page-Ecard-type'>抵扣类型:{{item._eCardTypeName}} <text wx:if="{{item.L1ECardType ==DEDUCTION_TYPE.NUMBER}}">({{item.L1Qty}}张)</text></view>
                                         </view>
                                 </view>
                                 <view class='page-Ecard-right' wx:if="{{item.L1ECardType ==DEDUCTION_TYPE.NUMBER}}">
