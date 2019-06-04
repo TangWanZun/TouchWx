@@ -1,5 +1,6 @@
 // pages/user/login.js
 // import login from '../user/login.js';
+import login from '../../library/sdk/login.js'
 Page({
     /**
      * 页面的初始数据
@@ -188,13 +189,18 @@ Page({
             },
             // UV: true,
             success(res) {
-                console.log("success", res);
+                // console.log("success", res);
                 //将个人信息保存到内存
                 getApp().privateData.loginInfo = res;
                 //登陆成功
                 // redirectTo switchTab
-                wx.redirectTo({
-                    url: "/pages/tabBar/user",
+                //重新获取权限数据
+                login.getUX({
+                    complete(){
+                        wx.redirectTo({
+                            url: "/pages/tabBar/user",
+                        })
+                    }
                 })
             },
             fail(res) {

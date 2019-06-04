@@ -100,14 +100,7 @@ Page({
                 } else {
                     wx.stopPullDownRefresh();
                 }
-                //控制首页页面刷新
-                var pages = getCurrentPages();
-                if (pages.length > 1) {
-                    //上一个页面实例对象 
-                    var prePage = pages[pages.length - 2];
-                    //关键在这里,这里面是触发上个界面的方法 
-                    prePage.getData(false) 
-                }
+
             }
         })
     },
@@ -316,7 +309,14 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function() {
-
+        //控制首页页面刷新
+        var pages = getCurrentPages();
+        if (pages.length > 1) {
+            //上一个页面实例对象 
+            var prePage = pages[pages.length - 2];
+            //关键在这里,这里面是触发上个界面的方法 
+            prePage.getData()
+        }
     },
 
     /**

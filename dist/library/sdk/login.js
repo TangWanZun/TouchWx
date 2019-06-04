@@ -22,6 +22,7 @@ function saveUserInfo(res, obj = {}) {
         }
     });
     //加载权限
+    loginObj.getUX()
     // wx.$request({
     //     url: "/WeMinProPlatJson/GetList",
     //     NRR: true,
@@ -44,24 +45,7 @@ function saveUserInfo(res, obj = {}) {
     //         getApp().privateData.loadRetention.forEach(getApp().loadInfo);
     //     }
     // })
-    wx.$request({
-        url: "/WeMinProLogin/GetMenuActs",
-        NRR: true,
-        success(res) {
-            let obj = {};
-            //对配置信息进行处理
-            for (let x of res) {
-                obj[x.MenuId] = x.Actions;
-            }
-            // console.log(obj);
-            //将配置信息保存
-            privateData.UXList = obj||{}
-        },
-        complete(res) {
-            //当全部信息获取之后,调用加载滞留池中的方法
-            getApp().privateData.loadRetention.forEach(getApp().loadInfo);
-        }
-    })
+    
 }
 let loginObj = {
     //是否在获取登录状态中
@@ -121,13 +105,41 @@ let loginObj = {
                 })
             }
         });
+    },
+    //单独获取登录权限
+    getUX({
+        success=undefined,
+        complete = undefined
+    }={}){
+        let privateData = getApp().privateData;
+        wx.$request({
+            url: "/WeMinProLogin/GetMenuActs",
+            NRR: true,
+            success(res) {
+                let obj = {};
+                //对配置信息进行处理
+                for (let x of res) {
+                    obj[x.MenuId] = x.Actions;
+                }
+                // console.log(obj);
+                //将配置信息保存
+                privateData.UXList = obj || {};
+                //获取登录权限成功
+                success&&success()
+            },
+            complete(res) {
+                //当全部信息获取之后,调用加载滞留池中的方法
+                getApp().privateData.loadRetention.forEach(getApp().loadInfo);
+                complete && complete();
+            }
+        })
     }
 }
 //测试信息调取
-function loginTest() {
-    loginObj.init();
-}
+// function loginTest() {
+//     loginObj.init();
+// }
 export {
-    loginTest as
+    loginObj as
     default
 }

@@ -29,7 +29,7 @@ App({
      */
     onShow: function(options) {
         //运行
-        login();
+        login.init();
         // console.log(wx.getSystemInfoSync());
         // 每次登陆系统都需要对小程序进行检测，查看是否需要更新
         const updateManager = wx.getUpdateManager()
@@ -88,6 +88,27 @@ App({
      */
     onLoading() {
 
+    },
+    /**
+     * 系统初始化
+     * 用于退出登录的时候，全部数据都要清空
+     */
+    clearApp(blackCall){
+        let _this = this;
+        //清空全部缓存   同步版本
+        wx.clearStorage({
+            complete(){
+                //清空登录凭证
+                // _this.privateData.Token = "";
+                //清空用户信息
+                // _this.privateData.loginInfo = undefined;
+                 _this.privateData.UXList = [];
+                //清空tabBar页面缓存
+                _this.tabBarPageCache = {}
+                //调用回调函数
+                blackCall()
+            }
+        })
     },
     /**
      * 自定义加载完成运行

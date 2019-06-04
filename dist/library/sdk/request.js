@@ -102,7 +102,7 @@ function $request(para) {
                         //但是因为这里数据登录失效的，不属于错误也不属于正确  所以complete是不能执行的
                         isComplete = false
                         //获取用户登录信息
-                        login();
+                        login.init();
                         return;
                     }
                     mepara.success && mepara.success(result.data);

@@ -33,14 +33,12 @@ Page({
     /**
      * 加载数据
      */
-    getData(isLoad=true) {
+    getData() {
         let _this = this;
-        if (isLoad){
-            wx.showLoading({
-                title: '数据加载中',
-                mask: true
-            })
-        }
+        wx.showLoading({
+            title: '数据加载中',
+            mask: true
+        })
         wx.$request({
             url: "/WeMinProPlatJson/GetList",
             data: {
@@ -55,7 +53,7 @@ Page({
             },
             complete() {
                 wx.stopPullDownRefresh();
-                if (isLoad) { wx.hideLoading()}
+                wx.hideLoading()
             }
         })
     },
@@ -74,7 +72,7 @@ Page({
         let privateData = getApp().privateData;
         if (typeof privateData.loginInfo === 'undefined') {
             //运行
-            login();
+            login.init();
         }
     },
 

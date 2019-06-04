@@ -1,4 +1,5 @@
 // pages/user/myDatum.js
+let app = getApp()
 Page({
 
   /**
@@ -45,9 +46,12 @@ Page({
       content:"",
       success(res){
         if (res.confirm) {
-          wx.reLaunch({
-            url: '/pages/tabBar/login'
-          })
+            //清空全部缓存数据
+            app.clearApp(()=>{
+                wx.reLaunch({
+                    url: '/pages/tabBar/login'
+                })
+            })
         }
       }
     })
@@ -98,9 +102,9 @@ Page({
    */
   onLoad: function (options) {
     var _this = this;
-    getApp().loadInfo(function () {
+      app.loadInfo(function () {
       _this.setData({
-        loginInfo: getApp().privateData.loginInfo
+          loginInfo: app.privateData.loginInfo
       })
     })
   },
