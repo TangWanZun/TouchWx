@@ -5,7 +5,8 @@
         "pages/tabBar/client",
         "pages/tabBar/work",
         "pages/tabBar/login",
-        "pages/tabBar/cooReport"
+        "pages/tabBar/cooReport",
+        "pages/test"
     ],
     "subPackages": [
         {
