@@ -51,6 +51,13 @@ export const CMP_CAR={
     'A01':'奔驰车',
     'A02':"中级车"
 }
+//公司区域
+export const CMP_REGION = {
+    'A01': '东区',
+    'A02': '西区',
+    'A03': '南区',
+    'A04':'北区',
+}
 export {
     WORK_TYPE,
     CHAT_CONST,
