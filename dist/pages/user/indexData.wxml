@@ -1,0 +1,9 @@
+<view class='page-body'>
+    <view class='header'>
+        <view></view>
+        <view class='header-qx'>
+            <image src='/assets/icon/qxpz.svg'></image>
+            数据权限归属修改
+        </view>
+    </view>
+</view>

@@ -84,12 +84,12 @@
           </view>
           <view class="my-data-item-num my-data-item-list">3<span>/5</span></view>
       </view> -->
-            <view class="my-data-item  app-shadow-2" wx:if="{{(index!=0)&&(index!=1)}}" wx:for="{{formData}}" wx:key="index">
+            <navigator url='/pages/user/indexData' class="my-data-item  app-shadow-2" wx:if="{{(index!=0)&&(index!=1)}}" wx:for="{{formData}}" wx:key="index">
                 <view class="my-data-item-title my-data-item-list">{{item.Name}}
                     <span>（{{item.Unit}}）</span>
                 </view>
                 <view class="my-data-item-num my-data-item-list">{{item.Value}}</view>
-            </view>
+            </navigator>
         </view>
         <!-- <navigator wx:if="{{ux_cooReport}}" url="../user/myData" class="my-data-title" style='border-bottom:1px solid rgba(0,0,0,0.05)'>
             <view>运营报告</view>
@@ -97,7 +97,6 @@
                 <image src='/assets/icon/right.svg'></image>
             </view>
         </navigator> -->
-
         <navigator url='/pages/user/myDatum' class="my-data-title">
             <view>个人资料</view>
             <view class="my-data-title-icon">

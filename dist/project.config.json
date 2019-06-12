@@ -213,8 +213,8 @@
 				},
 				{
 					"id": -1,
-					"name": "测试页面",
-					"pathName": "pages/test",
+					"name": "指标详情",
+					"pathName": "pages/user/indexData",
 					"query": "",
 					"scene": null
 				}

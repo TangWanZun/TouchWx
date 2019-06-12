@@ -28,7 +28,8 @@
                 "myQr",
                 "myDatum",
                 "work/cardCustomer",
-                "cmpScopeFilter"
+                "cmpScopeFilter",
+                "indexData"
             ]
         },
         {

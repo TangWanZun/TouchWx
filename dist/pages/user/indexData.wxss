@@ -1,0 +1,15 @@
+/* pages/user/indexData.wxss */
+.header{
+    display: flex;
+    justify-content: flex-end;
+    padding:10px 15px;
+}
+.header-qx{
+    display: flex;
+    color: #2f63f4;
+    font-size: 15px;
+}
+.header-qx>image{
+    width:20px;
+    height: 20px;
+}

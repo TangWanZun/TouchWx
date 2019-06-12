@@ -1,13 +1,25 @@
 <view class='page-body'>
-    <!-- <checkbox-group >
-        <label class='item' wx:for="{{formList.G0.list}}" wx:key="{{item.CmpCode}}" data-index="{{index}}" data-isauth="{{item.IsAuth}}" bindtap='changeCheck'>
-            <checkbox value="{{index}}" checked="{{item.IsAuth}}" />{{item.CmpName}}
+    <view class="header">
+        <label class='header-check'>
+            <!-- <checkbox/>全选当前公司 -->
         </label>
-    </checkbox-group> -->
-    <view wx:for="{{formList}}" wx:key="{{item.CmpCode}}">
-        <!-- <label class='item-con' data-root="{{item.CmpCode}}" bindtap='changeRootCheck'>
-            {{item.CmpName}}
-        </label> -->
+        <view class='header-sx' bindtap='showSideEdge'>
+            筛选
+            <image src='/assets/icon/sx.svg'></image>
+        </view>
+    </view>
+    <checkbox-group>
+        <view class='item' wx:if="{{item._isShow}}"  wx:for="{{formList}}" wx:key="{{item.CmpCode}}" data-index="{{index}}" data-isauth="{{item.IsAuth}}" bindtap='changeCheck'>
+            <label >
+                <checkbox value="{{index}}" checked="{{item.IsAuth}}" />{{item.CmpName}}
+            </label>
+        </view>
+    </checkbox-group>
+    <view class='button'>
+        <button bindtap='reset'>重置</button>
+        <button style='width:50vw' type="primary" bindtap='submit'>保存</button>
+    </view>
+    <!-- <view wx:for="{{formList}}" wx:key="{{item.CmpCode}}">
         <view class="item" wx:for="{{item.list}}" wx:for-item="typeItem" wx:for-index="typeIndex" wx:key="{{typeIndex}}">
             <view class='item-con' data-root="{{item.CmpCode}}" data-cartype="{{typeIndex}}" bindtap='changeCarTypeCheck'>
                 <checkbox color="#2f63f4" checked="{{typeItem.IsAuth}}" />
@@ -19,7 +31,7 @@
             <view wx:if="{{typeItem._isShow}}">
                 <checkbox-group data-root="{{item.CmpCode}}" data-cartype="{{typeIndex}}" bindchange="cartypeBindChange">
                     <view class='item' wx:for="{{typeItem.list}}" wx:for-item="childItem" wx:for-index="childIndex" wx:key="{{childItem.CmpCode}}">
-                        <label class='item-con' data-root="{{item.CmpCode}}" data-cartype="{{typeIndex}}"  data-index="{{childIndex}}"  bindtap="cmpBindChange">
+                        <label class='item-con' data-root="{{item.CmpCode}}" data-cartype="{{typeIndex}}" data-index="{{childIndex}}" bindtap="cmpBindChange">
                             <checkbox color="#2f63f4" value="{{childIndex}}" checked="{{childItem.IsAuth}}" />{{childItem.CmpName}}
                         </label>
                     </view>
@@ -27,8 +39,44 @@
             </view>
         </view>
     </view>
-    <view class='button'>
-        <button bindtap='reset'>重置</button>
-        <button style='width:50vw' type="primary" bindtap='submit'>保存</button>
+     -->
+</view>
+<!-- 侧边栏 -->
+<view class='side-edge' wx:if="{{sideEdgeShow}}">
+    <view class='side-modal' bindtap='closeSideEdge'></view>
+    <view class='side-body'>
+        <view class='side-body-header'>
+            筛选
+        </view>
+        <view class='side-body-main'>
+            <view class='side-body-main-item'>
+                <view class='side-body-main-title'>汽车类型</view>
+                <view class='side-body-main-con'>
+                    <view 
+                        wx:for="{{selectItem.BrandType}}" wx:key="{{index}}" 
+                        class='side-body-main-con-item {{item._isSelect?"side-body-main-con-item-select":""}}' 
+                        data-type="BrandType" data-index="{{index}}" bindtap='selectClick'>
+                        <image src='/assets/icon/scj.svg' wx:if="{{item._isSelect}}"></image>
+                        {{item.name}}
+                    </view>
+                </view>
+            </view>
+            <view class='side-body-main-item'>
+                <view class='side-body-main-title'>公司区域</view>
+                <view class='side-body-main-con'>
+                    <view 
+                        wx:for="{{selectItem.RegionType}}" wx:key="{{index}}" 
+                        class='side-body-main-con-item {{item._isSelect?"side-body-main-con-item-select":""}}' 
+                        data-type="RegionType" data-index="{{index}}" bindtap='selectClick'>
+                        <image src='/assets/icon/scj.svg' wx:if="{{item._isSelect}}"></image>
+                        {{item.name}}
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class='side-body-footer'>
+            <button bindtap='sideEdgeReset'>重置</button>
+            <button style='width:40vw' type="primary" bindtap='closeSideEdge'>确定</button>
+        </view>
     </view>
 </view>

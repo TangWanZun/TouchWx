@@ -173,7 +173,9 @@
   flex-shrink: 0;
 } */
 .my-data .my-data-item {
-  width: 45vw;
+  display: block;
+  width: 36vw;
+  max-width: 36vw;
   padding:15px;
   border-radius: 10px;
   flex-shrink: 0;
