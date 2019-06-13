@@ -1,9 +1,53 @@
 <view class='page-body'>
     <view class='header'>
-        <view></view>
-        <view class='header-qx'>
+        <view class='header-switch'>
+            <view class='header-switch-text {{!isQY?"header-switch-text-select":""}} '>单店</view>
+            <switch color="#2f63f4" bindchange="switchChange"></switch>
+            <view class='header-switch-text {{isQY?"header-switch-text-select":""}}'>区域</view>
+        </view>
+        <navigator url='/pages/user/cmpScopeFilter' class='header-qx'>
             <image src='/assets/icon/qxpz.svg'></image>
             数据权限归属修改
+        </navigator>
+    </view>
+    <view class='main'>
+        <!-- 单店表格 -->
+        <view class='table' wx:if="{{!isQY}}">
+            <view class='col col-header'>
+                <view class='row row-1'>排名</view>
+                <view class='row row-2'>店名</view>
+                <view class='row row-3'>指标量</view>
+            </view>
+            <view class='col' wx:for="{{15}}" wx:key="{{index}}">
+                <view class='row row-1'>
+                    <view class='row-con'>1</view>
+                </view>
+                <view class='row row-2'>
+                    <view class='row-con'>甘肃鹏龙金城汽车销售服务有限责任公司</view>
+                </view>
+                <view class='row row-3'>
+                    <view class='row-con'>2300</view>
+                </view>
+            </view>
+        </view>
+        <!-- 区域表格 -->
+        <view class='table' wx:else>
+            <view class='col col-header'>
+                <view class='row row-1'>排名</view>
+                <view class='row row-2'>区域</view>
+                <view class='row row-3'>指标量</view>
+            </view>
+            <view class='col' wx:for="{{4}}" wx:key="{{index}}">
+                <view class='row row-1'>
+                    <view class='row-con'>1</view>
+                </view>
+                <view class='row row-2'>
+                    <view class='row-con'>北区</view>
+                </view>
+                <view class='row row-3'>
+                    <view class='row-con'>2300</view>
+                </view>
+            </view>
         </view>
     </view>
 </view>

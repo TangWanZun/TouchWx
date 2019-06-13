@@ -1,8 +1,26 @@
 /* pages/user/indexData.wxss */
 .header{
     display: flex;
-    justify-content: flex-end;
+    justify-content:space-between;
+    align-items: center;
     padding:10px 15px;
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100vw;
+    background-color: white;
+}
+.header-switch{
+    display: flex;
+    align-items: center;
+}
+.header-switch-text{
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.4);
+}
+.header-switch-text-select{
+    color: #2f63f4;
+    font-weight: bold;
 }
 .header-qx{
     display: flex;
@@ -12,4 +30,51 @@
 .header-qx>image{
     width:20px;
     height: 20px;
+}
+
+.main{
+
+}
+.table{
+    border-top:1px solid rgba(0, 0, 0, 0.1);
+    width:100vw;
+    padding-top: 83px;
+}
+.col{
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    width:100vw;
+}
+.col-header{
+    position: fixed;
+    top:52px;
+    left:0px;
+    background-color: white;
+    border-top:1px solid rgba(0, 0, 0, 0.1);
+}
+.row{
+    font-size: 15px;
+    text-align: center;
+    padding:5px 0px;
+}
+.row-con{
+    display: inline-block;
+    text-align: left;
+}
+/* 排名 */
+.row-1{
+    width: 80px;
+    flex-shrink: 0;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+/* 店名称 */
+.row-2{
+    flex-grow:1;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+/* 指标 */
+.row-3{
+    flex-shrink: 0;
+    width:100px;
 }

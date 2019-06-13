@@ -5,7 +5,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        //当前是否为区域模式
+        isQY:false
     },
 
     /**
@@ -14,7 +15,20 @@ Page({
     onLoad: function (options) {
 
     },
-
+    /**
+     * 获取数据
+     */
+    getData (){
+        
+    },
+    /**
+     * switch改变
+     */
+    switchChange(e){
+        this.setData({
+            isQY: e.detail.value
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
