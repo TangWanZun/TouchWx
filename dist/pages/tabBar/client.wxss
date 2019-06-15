@@ -63,11 +63,19 @@
   height: 50px;
   /* position: relative; */
 }
+/* 认证 */
+.client-yc{
+  position: absolute;
+  width:15px;
+  height: 15px;
+  bottom: 8px;
+  left: 50px;
+}
 .image{
-        width:100%;
-        height: 100%;
-        border-radius: 100%;
-        overflow: hidden;
+    width:100%;
+    height: 100%;
+    border-radius: 100%;
+    overflow: hidden;
 }
 /* 离线头像 */
 .client-img-hidden>.image{

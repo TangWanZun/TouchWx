@@ -1,7 +1,7 @@
 /* pages/user/indexData.wxss */
 .header{
     display: flex;
-    justify-content:space-between;
+    justify-content:flex-end;
     align-items: center;
     padding:10px 15px;
     position: fixed;
@@ -10,7 +10,7 @@
     width: 100vw;
     background-color: white;
 }
-.header-switch{
+/* .header-switch{
     display: flex;
     align-items: center;
 }
@@ -21,7 +21,7 @@
 .header-switch-text-select{
     color: #2f63f4;
     font-weight: bold;
-}
+} */
 .header-qx{
     display: flex;
     color: #2f63f4;
@@ -38,7 +38,7 @@
 .table{
     border-top:1px solid rgba(0, 0, 0, 0.1);
     width:100vw;
-    padding-top: 83px;
+    padding-top: 75px;
 }
 .col{
     display: flex;
@@ -48,7 +48,7 @@
 }
 .col-header{
     position: fixed;
-    top:52px;
+    top:40px;
     left:0px;
     background-color: white;
     border-top:1px solid rgba(0, 0, 0, 0.1);
@@ -66,7 +66,6 @@
 .row-1{
     width: 80px;
     flex-shrink: 0;
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 /* 店名称 */
 .row-2{
@@ -77,4 +76,18 @@
 .row-3{
     flex-shrink: 0;
     width:100px;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* 车型 */
+.row-cx{
+    padding-left: 5px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #2f63f4;
+}
+.row-qy{
+    padding-left: 20px;
+    font-size: 15px;
+    color: #2f63f4;
 }

@@ -21,6 +21,7 @@
                                 <view class="image">
                                         <clientImg  src="{{item.ProfilePhoto}}"></clientImg>
                                 </view>
+                                <view wx:if="{{item.IsAttest}}" class='client-yc'><image src='/assets/icon/yc.svg'></image></view>
                                 <view class='client-online {{item.Online?"":"client-online-hidden"}}'></view>
                         </view>
                         <view class='client-name'>

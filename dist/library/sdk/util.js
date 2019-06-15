@@ -1,4 +1,38 @@
 /**
+ * 将二维对象数组 根据其属性值  转化成树
+ */
+export const arrToTree =  function ({
+    objArr = [],
+    attrArr = [],
+    listName = '_list',
+    nullName = null
+} = {}) {
+    let rootObj = {};
+    //循环全部对象
+    for (let i = 0; i < objArr.length; i++) {
+        let item = objArr[i];
+        let itemRoute = rootObj;
+        for (let j = 0; j < attrArr.length - 1; j++) {
+            let arrName = item[attrArr[j]] || nullName;
+            if (!itemRoute[arrName]) {
+                itemRoute[arrName] = {
+                    [listName]:{}
+                };
+            }
+            itemRoute = itemRoute[arrName][listName];
+        }
+        let endArrtName = item[attrArr[attrArr.length - 1]] || nullName
+        if (!itemRoute[endArrtName]) {
+            itemRoute[endArrtName] = {
+                [listName]: []
+            };
+        }
+        itemRoute[endArrtName][listName].push(item)
+    }
+    return rootObj
+}
+
+/**
  * objArror对象数组第一个出现属性等于prname的对象索引
  */
 function find(objArror, prNamn, value) {
