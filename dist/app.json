@@ -18,7 +18,8 @@
                 "query",
                 "clientDetails/stored",
                 "clientDetails/integral",
-                "clientDetails/label"
+                "clientDetails/label",
+                "clientDetails/carModify"
             ]
         },
         {

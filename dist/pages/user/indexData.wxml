@@ -7,7 +7,7 @@
         </view> -->
         <navigator url='/pages/user/cmpScopeFilter' class='header-qx'>
             <image src='/assets/icon/qxpz.svg'></image>
-            数据权限归属修改
+            数据权限范围
         </navigator>
     </view>
     <view class='main'>
@@ -18,11 +18,14 @@
                 <view class='row row-3'>指标量</view>
                 <view class='row row-1'>排名</view>
             </view>
+            <view class='col' wx:if="{{isLoadingOver&&!formData._list}}">
+                <view class='row row-2' >暂无数据</view>
+            </view>
             <!-- 车型 -->
             <view wx:for="{{formData}}" wx:key="{{index}}">
                 <view class='col'>
                     <view class='row row-cx'>
-                        <view class='row-con'>{{CMP_CAR[index]}}</view>
+                        <view class='row-con'>{{CMP_CAR[index]||'未指定'}}</view>
                     </view>
                 </view>
                 <!-- 区域 -->
@@ -38,10 +41,10 @@
                                 <view class='row-con'>{{eItem.CmpName}}</view>
                             </view>
                             <view class='row row-3'>
-                                <view class='row-con'>2300</view>
+                                <view class='row-con'>{{eItem.Value}}</view>
                             </view>
                             <view class='row row-1'>
-                                <view class='row-con'>1</view>
+                                <view class='row-con'>{{eItem.Index}}</view>
                             </view>
                         </view>
                     </view>

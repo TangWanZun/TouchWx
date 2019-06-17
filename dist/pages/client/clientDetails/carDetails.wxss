@@ -33,6 +33,14 @@
         left: 0px;
         top: 0px;
 }
+/* 修改按钮 */
+.page-modify{
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        right: 5px;
+        top: 5px;
+}
 
 .page-basic-name {
         text-align: center;

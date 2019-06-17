@@ -40,7 +40,7 @@
                         </view>
                 </navigator> -->
         <navigator wx:if="{{ux_cmpScopeFilter}}" url='/pages/user/cmpScopeFilter' class="my-data-title">
-            <view style='color:white'>数据权限归属</view>
+            <view style='color:white'>数据权限范围</view>
             <view class="my-data-title-icon app-filter-btow">
                 <image src='/assets/icon/right.svg'></image>
             </view>

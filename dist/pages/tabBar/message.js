@@ -45,13 +45,13 @@ Page({
     /**
      * 点击信息
      */
-    itemTouchTap(e){
+    itemTouchTap(e) {
         //运行事件
         wx.navigateTo({
             url: e.currentTarget.dataset.url
         })
     },
-    
+
     // ListTouch触摸开始
     ListTouchStart(e) {
         this.setData({
@@ -62,7 +62,7 @@ Page({
     // ListTouch计算方向
     ListTouchMove(e) {
         this.setData({
-            ListTouchDirection: e.touches[0].pageX - this.data.ListTouchStart < -100 ? 'left' :'right'
+            ListTouchDirection: e.touches[0].pageX - this.data.ListTouchStart < -100 ? 'left' : 'right'
         })
     },
 
@@ -173,8 +173,10 @@ Page({
                     meData[i].MsgDate = util.dateParse(meData[i].MsgDate);
                     //计算全部未读消息数量
                     //只有在登录的用户才会计入红点中
-                    if (meData[i].Online){
+                    if (meData[i].Online) {
                         _this.pendCount += meData[i].PendCount;
+                    }else{
+                        meData[i].Online = 0;
                     }
                 }
                 //当未读消息大于0为消息的右上角添加未读消息数量
@@ -182,7 +184,7 @@ Page({
                 //数据更新但不更新视图 用来解决页面更新抖动问题
                 _this.data.dataList = _this.data.dataList.concat(res)
                 // _this.setData({
-                //         dataList: _this.data.dataList.concat(res)
+                //     dataList: _this.data.dataList
                 // })
                 // 与数据池中进行合并
                 _this.dataMerge()
@@ -233,35 +235,7 @@ Page({
                 } else {
                     //如果本地待会消息中没有最新消息池中的数据,则需要调用获取客户消息方法获取客户头像等,然后添加入本地带回消息中
                     // GetNewNeedReplyList需要接受一个参数是openid
-                    wx.$request({
-                        url: "/WeMinProChatMessage/GetNewNeedReplyList",
-                        data: {
-                            bean: item.OpenId
-                        },
-                        success(res) {
-                            //转化时间
-                            for (let i = 0; i < res.length; i++) {
-                                //转化时间
-                                res[i].MsgDate = util.dateParse(res[i].MsgDate);
-                                //更新红点个数
-                                //只有在登录的用户才会计入红点中
-                                if (res[i].Online){
-                                    _this.pendCount += res[i].PendCount;
-                                }
-                            }
-                            //更新红点
-                            _this.refreshBadge();
-                            //成功则将返回的信息添加一个新的本地带回消息
-                            dataDataList = dataDataList.concat(res);
-                            //数据更新 
-                            // _this.data.dataList = dataDataList;
-                            _this.setData({
-                                dataList: dataDataList
-                            })
-                            //将数据缓存
-                            _this.dataSetStorage();
-                        }
-                    })
+                    _this.upDateMessage([item.OpenId]);
                 }
                 //数据更新 
                 // _this.data.dataList = dataDataList;
@@ -285,12 +259,12 @@ Page({
             var _this = this;
             //初始化消息广播
             msgBroadcast.init();
-            this.getData(true, function () {
+            this.getData(true, function() {
                 //运行数据轮询获取
                 _this.getMsgList()
             });
             //加载个人信息
-            getApp().loadInfo(function () {
+            getApp().loadInfo(function() {
                 _this.onMeId = getApp().privateData.loginInfo.DeptCode;
                 //读取缓存信息
                 _this.dataGetStorage();
@@ -334,25 +308,104 @@ Page({
     /**
      * 进行数据合并(数据池与缓存进行合并)
      */
+
+    dataMergeList: [],
     dataMerge() {
+        //这里 因为  获取 缓存信息  与  获取实际数据池信息 都是异步的 ，所以必须保证两个
+        // 数据 都完成的时候才可以进行下面的计算
+        this.dataMergeList.push(true);
+        //这里表示只有这个函数被调用了至少两次的时候才会生效
+        if (this.dataMergeList.length < 2) return
+        //实际操作
         let dataList = this.data.dataList;
         let storageData = this.storageData;
+        //合并数据池
+        let list = dataList;
+        //表示需要更新的消息
+        let upDateList = [];
         //循环读取数据池函数
-        for (let item of dataList) {
-            let index = util.find(storageData, "OpenId", item.OpenId);
+        for (let item of storageData) {
+            let index = util.find(dataList, "OpenId", item.OpenId);
             if (index >= 0) {
                 //当数据池中存在的OpendId的也在缓存中存在时,以数据池为主
-                storageData[index] = item;
+                // list.push(dataList[index]);
             } else {
-                storageData.push(item)
+                //当数据池中不存在这个消息但是缓存中这个消息存在的时候，这个时候需要注意一件事情
+                //就是如果这个消息有红点 说明 这个消息需要更新一下了，因为在数据池中不存在的消息
+                //就一定不会存在红点的
+                if (item.PendCount) {
+                    //将这个需要更新数据的openid提取出来
+                    upDateList.push(item.OpenId)
+                }
+                list.push(item);
             }
         }
+        //当全部循环结束的时候，我们要对需要更新的数据进行重新获取数据
+        if (upDateList.length>0)this.upDateMessage(upDateList)
+        // console.log('dataList', dataList)
+        // console.log('storageData', storageData)
         this.storageData = storageData;
         this.setData({
-            dataList: storageData
+            dataList: list
         })
     },
-
+    /**
+     * 获取消息的最新数据
+     */
+    upDateMessage(opendIdList) {
+        let _this = this;
+        wx.$request({
+            url: "/WeMinProChatMessage/GetNewNeedReplyList",
+            headerType:'application/json',
+            data: {
+                bean: opendIdList
+            },
+            success(res) {
+                //获取本地带回消息列表
+                let dataDataList = _this.data.dataList;
+                // console.log(res);
+                //转化时间
+                for (let i = 0; i < res.length; i++) {
+                    let item = res[i];
+                    //转化时间
+                    item.MsgDate = util.dateParse(item.MsgDate);
+                    //成功则判断当前信息数据中是否存在消息列表中，
+                    let index = util.find(dataDataList, "OpenId", item.OpenId);
+                    if (index>=0){
+                        //存在的话更新列表
+                        //更新红点个数
+                        //只有在登录的用户才会计入红点中
+                        if (item.Online) {
+                            _this.pendCount = item.PendCount - dataDataList[index].PendCount;
+                        }else{
+                            item.PendCount = 0;
+                        }
+                        dataDataList[index] = item;
+                    }else{
+                        //不存在的话直接添加到信息列表中
+                        //更新红点个数
+                        //只有在登录的用户才会计入红点中
+                        if (item.Online) {
+                            _this.pendCount += item.PendCount;
+                        }else{
+                            item.PendCount = 0;
+                        }
+                        dataDataList.push(item)
+                    }
+                }
+                //更新红点
+                // _this.refreshBadge();
+                // dataDataList = dataDataList.concat(res);
+                //数据更新 
+                // _this.data.dataList = dataDataList;
+                _this.setData({
+                    dataList: dataDataList
+                })
+                //将数据缓存
+                _this.dataSetStorage();
+            }
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -363,7 +416,7 @@ Page({
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {
+    onShow: function () {
         // this.getData();
         //更新消息红点
         this.refreshBadge();
@@ -374,9 +427,7 @@ Page({
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function() {
-
-    },
+    onHide: function() {},
 
     /**
      * 生命周期函数--监听页面卸载

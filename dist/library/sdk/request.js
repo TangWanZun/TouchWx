@@ -27,6 +27,7 @@ function $request(para) {
     let privateData = getApp().privateData;
     let mepara = {
         url: para.url || undefined,
+        headerType: para.headerType||"application/x-www-form-urlencoded",
         UV: para.UV || false,
         //当失败的时候，是否不将信息加入队列
         NRR: para.NRR || false,
@@ -52,7 +53,7 @@ function $request(para) {
     }
     let defaultheader = {
         // 'content-type': 'application/json', // 默认值
-        'Content-type': 'application/x-www-form-urlencoded',
+        'Content-type': mepara.headerType,
         'Cookie': privateData.Token || Token
     };
 

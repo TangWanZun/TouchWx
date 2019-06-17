@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "汽车信息修改",
+    "usingComponents": {
+        "tui-input": "/component/tuiInput"
+    }
+} 

@@ -65,7 +65,9 @@
                     {{item.Comments}}
                 </view>
                 <view class="item-sandwich-title">使用规则：</view>
-                <pre class="item-sandwich-text" v-html="item.Instruction"></pre>
+                <text style="font-size:15px;">
+                    {{item.Instruction}}
+                </text>
             </view>
         </view>
     </view>

@@ -12,7 +12,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.1",
-	"appid": "wx334450ff9ab82891",
+	"appid": "wx741745d2b71d095d",
 	"projectname": "touch-wx",
 	"scripts": {},
 	"simulatorType": "wechat",
@@ -34,7 +34,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 28,
+			"current": 18,
 			"list": [
 				{
 					"id": -1,
@@ -52,7 +52,7 @@
 					"id": 2,
 					"name": "客户详情",
 					"pathName": "pages/client/clientDetails",
-					"query": "openId=oD6Vgv8RbPapvkvUB-3E2iAaWvVQ&online=true",
+					"query": "openId=oUb4k5v7Vz3Wmqr6KgDfHpxTEr8M",
 					"scene": null
 				},
 				{
@@ -151,7 +151,7 @@
 					"id": 18,
 					"name": "电子券",
 					"pathName": "pages/client/clientDetails/coupon",
-					"query": "openId=oS4HgsqzdCuEsHbuy1xMUxbtsTSA",
+					"query": "openId=oUb4k5v7Vz3Wmqr6KgDfHpxTEr8M",
 					"scene": null
 				},
 				{
@@ -216,6 +216,13 @@
 					"name": "指标详情",
 					"pathName": "pages/user/indexData",
 					"query": "id=B03",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "汽车信息修改",
+					"pathName": "pages/client/clientDetails/carModify",
+					"query": "",
 					"scene": null
 				}
 			]

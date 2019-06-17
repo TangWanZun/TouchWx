@@ -1,0 +1,115 @@
+<view class='page-tap' id='page-tap'>
+    <view class='page-tap-item  page-tap-item-show' data-key="A01" bindtap='tapItemSelect'>车体信息</view>
+    <view class='page-tap-item page-tap-item-show ' data-key="A02" bindtap='tapItemSelect'>日期信息</view>
+    <view class='page-tap-item page-tap-item-show' data-key="A03" bindtap='tapItemSelect'>贷款信息</view>
+</view>
+<scroll-view scroll-into-view="{{tapItemShow}}" scroll-with-animation="true" class='page-body' scroll-y="true">
+    <view class='page-module-box' id='A01'>
+        <view class='page-module app-shadow-3'>
+            <view class='page-module-title'>
+                车体信息
+            </view>
+            <!-- 编号 -->
+            <tui-input disabled="{{true}}" value="{{formData.Id}}">
+                <view slot="left">编号</view>
+            </tui-input>
+            <!-- 建档日期 -->
+            <tui-input disabled="{{true}}" value="{{formData.CreateDate}}">
+                <view slot="left">建档日期</view>
+            </tui-input>
+            <!-- 车牌号 -->
+            <tui-input disabled="{{true}}" value="{{formData.CardName}}">
+                <view slot="left">车牌号</view>
+            </tui-input>
+            <!-- VIN -->
+            <tui-input disabled="{{true}}" value="{{formData.IsHurt}}">
+                <view slot="left">VIN</view>
+            </tui-input>
+            <!-- 发动机号 -->
+            <tui-input disabled="{{true}}" value="{{formData.Sex}}">
+                <view slot="left">发动机号</view>
+            </tui-input>
+            <!-- 品牌 -->
+            <tui-input disabled="{{true}}" value="{{formData.Phone}}">
+                <view slot="left">品牌</view>
+            </tui-input>
+            <!-- 车系 -->
+            <tui-input disabled="{{true}}" value="{{formData.CarNum}}">
+                <view slot="left">车系</view>
+            </tui-input>
+            <!-- 车型 -->
+            <tui-input disabled="{{true}}" value="{{formData.CarStyleName}}">
+                <view slot="left">车型</view>
+            </tui-input>
+             <!-- 拖车信息 -->
+            <tui-input data-key="formData.ResCarInfo" value="{{formData.ResCarInfo}}" bindinput="inputSelect">
+                <view slot="left">车身颜色</view>
+            </tui-input>
+            <!-- 拖车电话 -->
+            <tui-input data-key="formData.ResCarPhone" input-type="number" value="{{formData.ResCarPhone}}" bindinput="inputSelect">
+                <view slot="left">内饰颜色</view>
+            </tui-input>
+            <!-- 备注 -->
+            <tui-input data-key="formData.Note" value="{{formData.Note}}" bindinput="inputSelect">
+                <view slot="left">公里数</view>
+            </tui-input>
+        </view>
+    </view>
+    <!-- <view class='page-module-box' id='A02'>
+        <view class='page-img-module app-shadow-3'>
+            <view class='page-module-title'>
+                图片
+                <span>(长按删除)</span>
+            </view>
+            <view class='page-img-module-box'>
+                <imgList imgHeadUrl="{{imgUrl}}" thum="L1Thum" orig="L1Orig" list="{{formData.List}}"> </imgList>
+            </view>
+        </view>
+    </view> -->
+    <view class='page-module-box' id='A02'>
+        <view class='page-module app-shadow-3'>
+            <view class='page-module-title'>
+                日期信息
+            </view>
+            <tui-input type="date" data-key="formData.ResCarInfo" value="{{formData.ResCarInfo}}" bindinput="inputSelect">
+                <view slot="left">购车日期</view>
+                <image slot="right" src='/assets/icon/right.svg'></image>
+            </tui-input>
+            <tui-input type="date" data-key="formData.ResCarInfo" value="{{formData.ResCarInfo}}" bindinput="inputSelect">
+                <view slot="left">保养日期</view>
+                <image slot="right" src='/assets/icon/right.svg'></image>
+            </tui-input>
+            <tui-input type="date" data-key="formData.ResCarInfo" value="{{formData.ResCarInfo}}" bindinput="inputSelect">
+                <view slot="left">投保日期</view>
+                <image slot="right" src='/assets/icon/right.svg'></image>
+            </tui-input>
+            <tui-input type="date" data-key="formData.ResCarInfo" value="{{formData.ResCarInfo}}" bindinput="inputSelect">
+                <view slot="left">年检日期</view>
+                <image slot="right" src='/assets/icon/right.svg'></image>
+            </tui-input>
+           
+            <!-- <view class='page-button'>
+                <button disabled='{{sendDataDisabled}}' type='primary' bindtap='submit'>提交</button>
+            </view> -->
+        </view>
+    </view>
+    <view class='page-module-box' id='A03'>
+        <view class='page-module app-shadow-3'>
+            <view class='page-module-title'>
+                贷款信息
+            </view>
+            <tui-input data-key="formData.ResCarInfo" value="{{formData.ResCarInfo}}" bindinput="inputSelect">
+                <view slot="left">贷款金额</view>
+            </tui-input>
+            <tui-input data-key="formData.ResCarInfo" value="{{formData.ResCarInfo}}" bindinput="inputSelect">
+                <view slot="left">贷款分期</view>
+            </tui-input>
+            <tui-input data-key="formData.ResCarInfo" value="{{formData.ResCarInfo}}" bindinput="inputSelect">
+                <view slot="left">按揭银行</view>
+            </tui-input>
+            <!-- <view class='page-button'>
+                <button disabled='{{sendDataDisabled}}' type='primary' bindtap='submit'>提交</button>
+            </view> -->
+        </view>
+    </view>
+</scroll-view>
