@@ -1,14 +1,14 @@
 <view class='page-body'>
     <view class="header">
-        <label class='header-check'>
-            <!-- <checkbox/>全选当前公司 -->
+        <label class='header-check' bindtap='allCheck'>
+            <checkbox checked='{{grounpSelect}}' />全选当前公司
         </label>
         <view class='header-sx' bindtap='showSideEdge'>
             筛选
             <image src='/assets/icon/sx.svg'></image>
         </view>
     </view>
-    <checkbox-group>
+    <checkbox-group bindchange="groupChange">
         <view class='item' wx:if="{{item._isShow}}"  wx:for="{{formList}}" wx:key="{{item.CmpCode}}" data-index="{{index}}" data-isauth="{{item.IsAuth}}" bindtap='changeCheck'>
             <label >
                 <checkbox value="{{index}}" checked="{{item.IsAuth}}" />{{item.CmpName}}

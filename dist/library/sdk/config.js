@@ -1,10 +1,10 @@
 //正式
 // appId wx741745d2b71d095d
-const wxid = "gh_88faf4d66bc0";
-const host = "https://evip.rocar.net/";
+// const wxid = "gh_88faf4d66bc0";
+// const host = "https://evip.rocar.net/";
 //测试
-// const wxid = "gh_a8db42819a59";
-// const host = "https://vip.sap-unis.com/wxpc/";
+const wxid = "gh_a8db42819a59";
+const host = "https://vip.sap-unis.com/wxpc/";
 // wx334450ff9ab82891
 let configUrl = {
     wxid,
@@ -57,6 +57,17 @@ export const CMP_REGION = {
     'A02': '西区',
     'A03': '南区',
     'A04':'北区',
+}
+//客户铭牌 位置
+export const  NAMEPLATE={
+    'A01':{
+        name:'逸蓝卡',
+        src:"/assets/icon/ylk.svg"
+    },
+    'A02':{
+        name: '厂家ISP',
+        src: "/assets/icon/isp.svg"
+    }
 }
 export {
     WORK_TYPE,

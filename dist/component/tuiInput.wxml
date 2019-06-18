@@ -1,4 +1,4 @@
-<view class='tuiInput-box'>
+<view class='tuiInput-box {{disabled?"tuiInput-disabled":""}}'>
         <!-- type 为input类型 -->
         <view class='tuiInput' wx:if="{{type=='input'}}">
                 <view class='tuiInput-header'>

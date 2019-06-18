@@ -2,6 +2,10 @@
   padding-top:7px;
   padding-bottom: 12px;
 }
+/* 禁用 */
+.tuiInput-disabled{
+    opacity: 0.6;
+}
 .tuiInput{
   display: flex;
   justify-content: space-between;
@@ -49,6 +53,6 @@
 }
 /*细如发丝 */
 .tuiInput-minPx-top{
-  background-image: linear-gradient(180deg, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.3) 49%, rgba(0,0,0,0) 50%);
+  background-image: linear-gradient(180deg, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.5) 49%, rgba(0,0,0,0) 50%);
   height: 1px;
 }

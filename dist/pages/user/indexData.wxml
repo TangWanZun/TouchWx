@@ -18,7 +18,7 @@
                 <view class='row row-3'>指标量</view>
                 <view class='row row-1'>排名</view>
             </view>
-            <view class='col' wx:if="{{isLoadingOver&&!formData._list}}">
+            <view class='col' wx:if="{{isOver}}">
                 <view class='row row-2' >暂无数据</view>
             </view>
             <!-- 车型 -->

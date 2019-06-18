@@ -2,10 +2,9 @@
 import {
     util
 } from '../../library/sdk.js'
-// import {
-//     UX_TYPE,
-//     UX_NAME
-// } from "../../library/sdk/config.js"
+import {
+    NAMEPLATE
+} from "../../library/sdk/config.js"
 Page({
 
     /**
@@ -23,6 +22,9 @@ Page({
         labelList: [],
         //服务顾问
         clientList: [],
+        //铭牌列表
+        nameplateList:[],
+        NAMEPLATE,
         //是否在线
         online: false,
         openId: '',
@@ -141,6 +143,7 @@ Page({
                     carList: res.Table1 || [],
                     labelList: res.Table2 || [],
                     clientList: res.Table3 || [],
+                    nameplateList: res.Table4||[],
                     //身份证照片信息(后台维护)
                     idCardImg: {
                         orig: res.Table[0].IdCardOrigImg1 || '',

@@ -22,6 +22,10 @@ Page({
         },
         //侧边栏是否出现
         sideEdgeShow: false,
+        //展示的公司的数量
+        showCount:0,
+        //全选是否被选中
+        grounpSelect:false
     },
 
     /*
@@ -60,6 +64,45 @@ Page({
             'selectItem.BrandType': CMP_CAR_OBJ,
             'selectItem.RegionType': CMP_REGION_OBJ,
         })
+    },
+    /**
+     * 点击 全选公司
+     */
+    allCheck(e){
+        let list = this.data.formList;
+        if (this.data.grounpSelect){
+            //取消全选
+            for(let item of list){
+                if (item._isShow){
+                    item.IsAuth = 0;
+                }
+            }
+        }else{
+            //启动全选
+            for (let item of list) {
+                if (item._isShow) {
+                    item.IsAuth = 1;
+                }
+            }
+        }
+        this.setData({
+            formList:list,
+            grounpSelect:!this.data.grounpSelect
+        })
+    },
+    /**
+     * 多选项组改变
+     */
+    groupChange(e){
+        if (e.detail.value.length >= this.data.showCount){
+            this.setData({
+                grounpSelect:true
+            })
+        }else{
+            this.setData({
+                grounpSelect: false
+            })
+        }
     },
     /**
      * 多选单项改变
@@ -105,12 +148,15 @@ Page({
                 }
             }
         }
+        //全部显示的公司数量
+        let showCount = 0;
         //设置需要检验的属性
         let attr = ['BrandType', 'RegionType'];
         //遍历全部的公司信息
         for (let cmp of cmpList) {
             //首先将这个公司默认为展示
             cmp._isShow = true;
+            showCount++;
             //将全部公司默认为选中
             cmp.IsAuth = true;
             for (let attrItem of attr) {
@@ -119,6 +165,7 @@ Page({
                 if (selectOutObj[attrItem][cmp[attrItem] || 'A00']) {
                     //这个属性 的值在排除项中  所以说这公司是需要排除的
                     cmp._isShow = false;
+                    showCount--;
                     cmp.IsAuth = false;
                     //退出循环
                     break
@@ -127,7 +174,9 @@ Page({
         }
         //更新到视图上
         this.setData({
-            formList: cmpList
+            formList: cmpList,
+            showCount,
+            grounpSelect:true
         })
         // console.log(cmpList)
     },
@@ -189,15 +238,19 @@ Page({
             },
             success: (res) => {
                 let submitList = [];
+                let isAuthCount = 0;
                 for (let item of res) {
                     let pushItem = Object.assign(item, {
                         //是否展示
                         _isShow: true
                     })
+                    if (item.IsAuth) isAuthCount++;
                     submitList.push(pushItem)
                 }
                 this.setData({
                     formList: submitList,
+                    showCount: submitList.length,
+                    grounpSelect: isAuthCount == submitList.length
                 })
             },
             complete() {

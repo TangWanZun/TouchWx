@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="43px" height="43px" viewBox="0 0 43 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50 (54983) - http://www.bohemiancoding.com/sketch -->
+    <title>标签-1 copy 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#F6DF78" offset="0%"></stop>
+            <stop stop-color="#BD721D" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#FFE2B9" offset="4.34654986%"></stop>
+            <stop stop-color="#966039" offset="100%"></stop>
+        </linearGradient>
+        <radialGradient cx="56.8544745%" cy="30.7855603%" fx="56.8544745%" fy="30.7855603%" r="69.2144397%" id="radialGradient-3">
+            <stop stop-color="#FAEF9E" offset="0%"></stop>
+            <stop stop-color="#BC5C0B" offset="100%"></stop>
+        </radialGradient>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="3.061617e-15%" id="linearGradient-4">
+            <stop stop-color="#FFE2B9" stop-opacity="0.209607111" offset="0%"></stop>
+            <stop stop-color="#A84610" offset="100%"></stop>
+        </linearGradient>
+        <text id="text-5" font-family="Arial-Black, Arial Black" font-size="13" font-weight="700" fill="#FFE8CE">
+            <tspan x="10" y="28">ISP</tspan>
+        </text>
+        <filter x="-2.0%" y="-8.3%" width="104.0%" height="111.1%" filterUnits="objectBoundingBox" id="filter-6">
+            <feOffset dx="0" dy="-1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feColorMatrix values="0 0 0 0 0.630208333   0 0 0 0 0.350672961   0 0 0 0 0.0223298249  0 0 0 1 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="标签-1-copy-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-41-Copy">
+            <circle id="Oval-29" stroke="url(#linearGradient-2)" fill="url(#linearGradient-1)" cx="21.5" cy="21.5" r="21"></circle>
+            <circle id="Oval-30" stroke="url(#linearGradient-4)" fill="url(#radialGradient-3)" cx="21.5" cy="21.5" r="18.5"></circle>
+            <g id="ISP" fill="#FFE8CE" fill-opacity="1">
+                <use filter="url(#filter-6)" xlink:href="#text-5"></use>
+                <use xlink:href="#text-5"></use>
+            </g>
+            <circle id="Oval-31" stroke="#FFE2B9" cx="21.5" cy="21.5" r="14.5"></circle>
+            <polygon id="Star-3" fill="#FFE2B9" points="23 38.6583592 22.381966 39 22.5 38.2763932 22 37.763932 22.690983 37.6583592 23 37 23.309017 37.6583592 24 37.763932 23.5 38.2763932 23.618034 39"></polygon>
+            <polygon id="Star-3-Copy-4" fill="#FFE2B9" points="29 36.6583592 28.381966 37 28.5 36.2763932 28 35.763932 28.690983 35.6583592 29 35 29.309017 35.6583592 30 35.763932 29.5 36.2763932 29.618034 37"></polygon>
+            <polygon id="Star-3-Copy-5" fill="#FFE2B9" points="33 33.6583592 32.381966 34 32.5 33.2763932 32 32.763932 32.690983 32.6583592 33 32 33.309017 32.6583592 34 32.763932 33.5 33.2763932 33.618034 34"></polygon>
+            <polygon id="Star-3-Copy-6" fill="#FFE2B9" points="36 29.6583592 35.381966 30 35.5 29.2763932 35 28.763932 35.690983 28.6583592 36 28 36.309017 28.6583592 37 28.763932 36.5 29.2763932 36.618034 30"></polygon>
+            <polygon id="Star-3-Copy-7" fill="#FFE2B9" points="38 23.6583592 37.381966 24 37.5 23.2763932 37 22.763932 37.690983 22.6583592 38 22 38.309017 22.6583592 39 22.763932 38.5 23.2763932 38.618034 24"></polygon>
+            <polygon id="Star-3-Copy-8" fill="#FFE2B9" points="37 15.6583592 36.381966 16 36.5 15.2763932 36 14.763932 36.690983 14.6583592 37 14 37.309017 14.6583592 38 14.763932 37.5 15.2763932 37.618034 16"></polygon>
+            <polygon id="Star-3-Copy-9" fill="#FFE2B9" points="33 11.6583592 32.381966 12 32.5 11.2763932 32 10.763932 32.690983 10.6583592 33 10 33.309017 10.6583592 34 10.763932 33.5 11.2763932 33.618034 12"></polygon>
+            <polygon id="Star-3-Copy-10" fill="#FFE2B9" points="29 7.65835921 28.381966 8 28.5 7.2763932 28 6.76393202 28.690983 6.65835921 29 6 29.309017 6.65835921 30 6.76393202 29.5 7.2763932 29.618034 8"></polygon>
+            <polygon id="Star-3-Copy-11" fill="#FFE2B9" points="23 5.65835921 22.381966 6 22.5 5.2763932 22 4.76393202 22.690983 4.65835921 23 4 23.309017 4.65835921 24 4.76393202 23.5 5.2763932 23.618034 6"></polygon>
+            <polygon id="Star-3-Copy-12" fill="#FFE2B9" points="17 6.65835921 16.381966 7 16.5 6.2763932 16 5.76393202 16.690983 5.65835921 17 5 17.309017 5.65835921 18 5.76393202 17.5 6.2763932 17.618034 7"></polygon>
+            <polygon id="Star-3-Copy-13" fill="#FFE2B9" points="12 8.65835921 11.381966 9 11.5 8.2763932 11 7.76393202 11.690983 7.65835921 12 7 12.309017 7.65835921 13 7.76393202 12.5 8.2763932 12.618034 9"></polygon>
+            <polygon id="Star-3-Copy-14" fill="#FFE2B9" points="8 12.6583592 7.38196601 13 7.5 12.2763932 7 11.763932 7.69098301 11.6583592 8 11 8.30901699 11.6583592 9 11.763932 8.5 12.2763932 8.61803399 13"></polygon>
+            <polygon id="Star-3-Copy-15" fill="#FFE2B9" points="5 18.6583592 4.38196601 19 4.5 18.2763932 4 17.763932 4.69098301 17.6583592 5 17 5.30901699 17.6583592 6 17.763932 5.5 18.2763932 5.61803399 19"></polygon>
+            <polygon id="Star-3-Copy-16" fill="#FFE2B9" points="5 24.6583592 4.38196601 25 4.5 24.2763932 4 23.763932 4.69098301 23.6583592 5 23 5.30901699 23.6583592 6 23.763932 5.5 24.2763932 5.61803399 25"></polygon>
+            <polygon id="Star-3-Copy" fill="#FFE2B9" points="17 37.6583592 16.381966 38 16.5 37.2763932 16 36.763932 16.690983 36.6583592 17 36 17.309017 36.6583592 18 36.763932 17.5 37.2763932 17.618034 38"></polygon>
+            <polygon id="Star-3-Copy-2" fill="#FFE2B9" points="12 34.6583592 11.381966 35 11.5 34.2763932 11 33.763932 11.690983 33.6583592 12 33 12.309017 33.6583592 13 33.763932 12.5 34.2763932 12.618034 35"></polygon>
+            <polygon id="Star-3-Copy-3" fill="#FFE2B9" points="8 30.6583592 7.38196601 31 7.5 30.2763932 7 29.763932 7.69098301 29.6583592 8 29 8.30901699 29.6583592 9 29.763932 8.5 30.2763932 8.61803399 31"></polygon>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,16 @@
+<!--pages/client/carStyleSelect.wxml-->
+<view class='header'>
+    <query-box bindinput="queryInput"></query-box>
+</view>
+<view class='body'>
+    <view class='list'>
+        <view class='item' wx:for="{{formList}}" wx:key="{{item.Rown}}" data-index="{{index}}" bindtap='onTapItem'>
+            <view class='item-top'>
+                <view>{{item.CarBrandName}}</view>
+                <view>{{item.CarSerName}}</view>
+            </view>
+            <view>{{item.Name}}</view>
+        </view>
+    </view>
+    <llbox id='myLlbox'></llbox>
+</view>

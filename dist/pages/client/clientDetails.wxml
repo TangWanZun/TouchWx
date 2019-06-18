@@ -15,6 +15,7 @@
                                                 <view class='header-likes-item' wx:if="{{index<10}}" wx:for="{{labelList}}" wx:key="{{index}}">{{item.Name}}</view>
                                         </view>
                                 </navigator>
+                                
                         </view>
                         <view class='header-botton' wx:if="{{formData.IsRegister}}">
                                 <navigator url='./clientDetails/stored?openId={{formData.OpenId}}' class='header-botton-item'>
@@ -33,6 +34,11 @@
           <view class='header-botton-item-title'>电子券</view>
           <view class='header-botton-item-number'>{{clientData.coupon}}张</view>
         </view> -->
+                        </view>
+                        <!-- 铭牌 -->
+                        <view class='nameplate'>
+                            <view wx:if="{{formData.IsAttest}}" class='nameplate-item'><image src='/assets/icon/yc.svg'></image></view>
+                            <view wx:for="{{nameplateList}}" wx:key="{{index}}" class='nameplate-item'><image src='{{NAMEPLATE[item.Code].src}}'></image></view>
                         </view>
                 </view>
                 <!-- 背景图 -->

@@ -40,12 +40,12 @@ Page({
          * 生命周期函数--监听页面加载
          */
         onLoad: function(options) {
-                this.setData({
-                        openId: options.openId
-                })
-                //获取自定义组件
-                this.myLlbox = this.selectComponent('#myLlbox');
-                this.getData();
+            this.setData({
+                    openId: options.openId
+            })
+            //获取自定义组件
+            this.myLlbox = this.selectComponent('#myLlbox');
+            this.getData();
         },
 
         /**

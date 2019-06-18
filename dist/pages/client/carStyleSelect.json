@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "车型选择",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "query-box": "/component/queryBox",
+        "llbox": "/component/llbox"
+    }
+}

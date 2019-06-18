@@ -19,7 +19,8 @@
                 "clientDetails/stored",
                 "clientDetails/integral",
                 "clientDetails/label",
-                "clientDetails/carModify"
+                "clientDetails/carModify",
+                "carStyleSelect"
             ]
         },
         {
