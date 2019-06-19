@@ -72,7 +72,10 @@ Page({
                 docJson: JSON.stringify(this.data.formData),
             },
             success(res) {
-                console.log(res)
+                console.log(res);
+                wx.showToast({
+                    title: '信息修改成功',
+                })
             },
             complete(){
                 wx.hideLoading()
