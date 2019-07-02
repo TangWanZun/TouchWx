@@ -302,6 +302,8 @@ Page({
             //无论因为什么原因读取失败都将忽略
             fail(res) {
                 console.log(res)
+                //当没有数据的时候，也将走错误，但是这个时候也是需要数据合并的
+                _this.dataMerge();
             }
         })
     },
@@ -441,6 +443,7 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function() {
+        console.log('下拉');
         this.getData(true)
     },
 
@@ -448,6 +451,7 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function() {
+        console.log('触底');
         this.getData()
     },
 

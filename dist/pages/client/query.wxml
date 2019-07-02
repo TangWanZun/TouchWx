@@ -1,21 +1,27 @@
 <view class="app-body">
-  <!-- 查询栏 -->
-  <view  class='select-box'>
-    <view class='select-content'>
-      <input bindinput="queryInput" placeholder="请输入查询客户" focus="true" confirm-type="search"></input>
+    <!-- 查询栏 -->
+    <view class='select-box'>
+        <view class='select-content'>
+            <input bindinput="queryInput" placeholder="请输入查询客户" focus="true" confirm-type="search"></input>
+        </view>
     </view>
-  </view>
-  <view class='select-body {{selectBodyShow?"select-body-show":""}}'>
-    <view class='select-none' wx:if="{{isSelect}}">
-      没有找到该用户
+    <view class='select-body {{selectBodyShow?"select-body-show":""}}'>
+        <view class='select-none' wx:if="{{isSelect}}">
+            没有找到该用户
+        </view>
+        <view class="app-list-loging" wx:if="{{isLoading}}">
+            <view>数据加载中</view>
+            <image src='/assets/icon/jzz.svg'></image>
+        </view>
+        <navigator url='/pages/client/clientDetails?openId={{item.OpenId}}' class='select-item' wx:for="{{dataList}}" wx:key="{{key}}">
+            <view class='select-img {{item.Online?"":"select-img-hidden"}}'>
+                <image src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
+            </view>
+            <view wx:if="{{item.IsAttest}}" class='client-yc'>
+                <image src='/assets/icon/yc.svg'></image>
+            </view>
+            <view class='select-name'>{{item.CardName?item.CardName:item.NickName}}</view>
+        </navigator>
     </view>
-    <navigator url='/pages/client/clientDetails?openId={{item.OpenId}}' class='select-item' wx:for="{{dataList}}" wx:key="{{key}}">
-      <view class='select-img {{item.Online?"":"select-img-hidden"}}'>
-        <image src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
-      </view>
-      <view wx:if="{{item.IsAttest}}" class='client-yc'><image src='/assets/icon/yc.svg'></image></view>
-      <view class='select-name'>{{item.CardName?item.CardName:item.NickName}}</view>
-    </navigator>
-  </view>
 
 </view>
