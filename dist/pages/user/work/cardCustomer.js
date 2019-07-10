@@ -124,7 +124,7 @@ Page({
             },
             success(res) {
                 // console.log(res);
-                res = [{ "L1ECardId": 22679, "L1Name": "A保（测试）,2022.04.30", "L1ECardType": "A01", "L1Total": 1000.000000, "L1Qty": 2.000000, "L1LineQty": 0.000000, "L1LineTotal": 1000.000000, "L1TransType": "赠送卡券" }, { "L1ECardId": 22779, "L1Name": "终身卡券测试,2029.04.25", "L1ECardType": "A01", "L1Total": 0.000000, "L1Qty": 1.000000, "L1LineQty": 0.000000, "L1LineTotal": 0.000000, "L1TransType": "赠送卡券" }]
+                // res = [{ "L1ECardId": 22679, "L1Name": "A保（测试）,2022.04.30", "L1ECardType": "A01", "L1Total": 1000.000000, "L1Qty": 2.000000, "L1LineQty": 0.000000, "L1LineTotal": 1000.000000, "L1TransType": "赠送卡券" }, { "L1ECardId": 22779, "L1Name": "终身卡券测试,2029.04.25", "L1ECardType": "A01", "L1Total": 0.000000, "L1Qty": 1.000000, "L1LineQty": 0.000000, "L1LineTotal": 0.000000, "L1TransType": "赠送卡券" }]
                 //对电子券信息进行处理
                 res.forEach(function(item) {
                     //添加当前是否被选中
