@@ -13,7 +13,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.7.1",
 	"appid": "wx741745d2b71d095d",
-	"projectname": "touch-wx",
+	"projectname": "dist",
 	"scripts": {},
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
