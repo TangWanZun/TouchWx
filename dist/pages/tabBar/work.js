@@ -55,7 +55,9 @@ Page({
         ],
         workType: {},
         //数据列表
-        dataList: []
+        dataList: [],
+        //工作报表
+        reportList:[]
     },
     /**
      * 加载数据
@@ -94,6 +96,19 @@ Page({
             },
             complete() {
                 wx.stopPullDownRefresh();
+            }
+        })
+        wx.$request({
+            url: "/WeMinProPlatJson/GetDataSet",
+            data: {
+                docType: 'WorkData',
+                actionType: 'ReportList',
+                needTotal: false,
+            },
+            success(res) {
+                _this.setData({
+                    reportList:res.Table||[]
+                })
             }
         })
     },

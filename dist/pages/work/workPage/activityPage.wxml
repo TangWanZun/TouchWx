@@ -45,7 +45,11 @@
                         </tuiInput>
                         <!-- 参加人数 -->
                         <tuiInput  disabled="{{true}}"  value="{{formData.SignUpQty}}">
-                                <view slot="left">参加人数</view>
+                                <view slot="left">成人人数</view>
+                        </tuiInput>
+                        <!-- 参加人数 -->
+                        <tuiInput  disabled="{{true}}"  value="{{formData.Children}}">
+                                <view slot="left">儿童人数</view>
                         </tuiInput>
                         <!-- 留言 -->
                         <tuiInput  disabled="{{true}}"  value="{{formData.SignUpNote}}">
