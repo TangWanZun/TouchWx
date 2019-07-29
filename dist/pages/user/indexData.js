@@ -19,17 +19,22 @@ Page({
         CMP_CAR,
         CMP_REGION,
         //是否显示暂无数据
-        isOver:false
+        isOver: false,
+        //获取全部数据的个数，已经去除了 为0的数据
+        noEmtyLength: 0
     },
     id: '',
+    //当前指标是否需要计算总量
+    total: false,
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
+    onLoad: function (options) {
         this.id = options.id;
+        this.total = !!parseInt(options.total);
         this.getData();
         wx.setNavigationBarTitle({
-            title: "指标-"+options.name
+            title: "指标-" + options.name
         })
     },
     /**
@@ -40,7 +45,7 @@ Page({
             title: '数据加载中',
         })
         this.setData({
-            isOver:false
+            isOver: false
         })
         wx.$request({
             url: "/WeMinProPlatJson/GetList",
@@ -50,19 +55,60 @@ Page({
                 docId: this.id,
                 needTotal: false,
             },
-            success:res=>{
+            success: res => {
+                let _this = this;
+                // 获取全部值为0的个数
+                let emtyNum = 0;
                 let formData = arrToTree({
-                    objArr:res,
+                    objArr: res,
                     attrArr: ['BrandType', 'RegionType'],
-                    nullName: 'A00'
+                    nullName: 'A00',
+                    callback({ item, itemParent }) {
+                        //需要总计的进行计算
+                        if (_this.total) {
+                            if (!itemParent._value) {
+                                // 当item的父元素中不存在_value的时候，为其赋值为0
+                                itemParent._value = 0;
+                            }
+                            itemParent._value += parseFloat(item.Value);
+                        }
+                        //设置颜色
+                        if (item.Index == 1 || item.Index == 2 || item.Index == 3) {
+                            item._color = 'green';
+                        } else if (parseFloat(item.Value) == 0) {
+                            item._color = 'red';
+                            emtyNum++;
+                        }
+                    }
                 });
+                this.setData({
+                    noEmtyLength: res.length - emtyNum
+                })
                 // console.log(formData);
-                if (JSON.stringify(formData)=="{}"){
+                //需要总计的进行计算
+                if (this.total) {
+                    //这里需要把全部区域的数据取出来
+                    let qyArr = [];
+                    for (let x in formData) {
+                        for (let y in formData[x]._list) {
+                            qyArr.push(formData[x]._list[y]);
+                        }
+                    }
+                    //对其进行排序
+                    qyArr.sort(function (a, b) {
+                        return b._value - a._value;
+                    })
+                    //添加标签
+                    for (let i = 0; i < qyArr.length; i++) {
+                        qyArr[i]._index = i + 1;
+                    }
+                }
+                if (JSON.stringify(formData) == "{}") {
                     //空数据
                     this.setData({
                         isOver: true
                     })
-                }else{
+                } else {
                     this.setData({
                         isOver: false
                     })
@@ -70,14 +116,14 @@ Page({
                 this.setData({
                     formData
                 })
-                
+
             },
-            fail:()=>{
+            fail: () => {
                 this.setData({
                     isOver: true
                 })
             },
-            complete:()=> {
+            complete: () => {
                 wx.stopPullDownRefresh();
                 wx.hideLoading()
             }
@@ -96,49 +142,49 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function() {
+    onReady: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {
+    onShow: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function() {
+    onHide: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function() {
+    onUnload: function () {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
         this.getData();
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function() {
+    onReachBottom: function () {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function() {
+    onShareAppMessage: function () {
 
     }
 })

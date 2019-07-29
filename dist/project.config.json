@@ -34,7 +34,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 28,
 			"list": [
 				{
 					"id": -1,
@@ -215,7 +215,7 @@
 					"id": 28,
 					"name": "指标详情",
 					"pathName": "pages/user/indexData",
-					"query": "id=B03",
+					"query": "id=B03&name=注册会员",
 					"scene": null
 				},
 				{

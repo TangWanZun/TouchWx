@@ -4,6 +4,7 @@
 export const arrToTree =  function ({
     objArr = [],
     attrArr = [],
+    callback=undefined,
     listName = '_list',
     nullName = null
 } = {}) {
@@ -27,6 +28,12 @@ export const arrToTree =  function ({
                 [listName]: []
             };
         }
+        callback && callback({
+            //当前数据
+            item,
+            //item的父元素
+            itemParent:itemRoute[endArrtName]
+        })
         itemRoute[endArrtName][listName].push(item)
     }
     return rootObj

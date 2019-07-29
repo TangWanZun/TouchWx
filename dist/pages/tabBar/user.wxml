@@ -84,7 +84,7 @@
           </view>
           <view class="my-data-item-num my-data-item-list">3<span>/5</span></view>
       </view> -->
-            <navigator url='/pages/user/indexData?id={{item.Code}}&name={{item.Name}}' class="my-data-item  app-shadow-2" wx:if="{{(index!=0)&&(index!=1)}}" wx:for="{{formData}}" wx:key="index">
+            <navigator url='/pages/user/indexData?id={{item.Code}}&name={{item.Name}}&total={{item.Total}}' class="my-data-item  app-shadow-2" wx:if="{{(index!=0)&&(index!=1)}}" wx:for="{{formData}}" wx:key="index">
                 <view class="my-data-item-title my-data-item-list">{{item.Name}}
                     <span>（{{item.Unit}}）</span>
                 </view>

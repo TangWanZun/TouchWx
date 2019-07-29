@@ -46,6 +46,13 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     width:100vw;
 }
+/* 设置颜色 */
+.col_green view{
+    color: green;
+}
+.col_red view{
+    color: red;
+}
 .col-header{
     position: fixed;
     top:40px;

@@ -31,12 +31,18 @@
                 <!-- 区域 -->
                 <view wx:for="{{item._list}}" wx:for-index="rIndex" wx:for-item="rItem" wx:key="rIndex">
                     <view class='col'>
-                        <view class='row  row-qy'>
+                        <view class='row  row-qy row-2' style='text-align:left'>
                             <view class='row-con'>{{CMP_REGION[rIndex]||'未指定'}}</view>
+                        </view>
+                        <view class='row  row-qy row-3' style='padding-left:0'>
+                            <view class='row-con'>{{rItem._value}}</view>
+                        </view>
+                        <view class='row  row-qy row-1' style='padding-left:0'>
+                            <view class='row-con'>{{rItem._index}}</view>
                         </view>
                     </view>
                     <view wx:for="{{rItem._list}}" wx:for-index="eIndex" wx:for-item="eItem" wx:key="eIndex">
-                        <view class='col'>
+                        <view class='col col_{{eItem._color}} {{m1.red(noEmtyLength,eItem.Index)}}'>
                             <view class='row row-2'>
                                 <view class='row-con'>{{eItem.CmpName}}</view>
                             </view>
@@ -72,3 +78,11 @@
         </view> -->
     </view>
 </view>
+<wxs module="m1">
+        var red = function(length, index) {
+                if(index==length||index==length-1||index==length-2){
+                    return "col_red"
+                }
+        }
+        module.exports.red = red;
+</wxs>
