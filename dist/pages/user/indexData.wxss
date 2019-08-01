@@ -47,10 +47,10 @@
     width:100vw;
 }
 /* 设置颜色 */
-.col_green view{
+.col_green .row-3,.col_green .row-1{
     color: green;
 }
-.col_red view{
+.col_red .row-3,.col_red .row-1{
     color: red;
 }
 .col-header{
@@ -91,10 +91,10 @@
     padding-left: 5px;
     font-size: 17px;
     font-weight: bold;
-    color: #2f63f4;
+    /* color: #2f63f4; */
 }
 .row-qy{
     padding-left: 20px;
     font-size: 15px;
-    color: #2f63f4;
+    /* color: #2f63f4; */
 }

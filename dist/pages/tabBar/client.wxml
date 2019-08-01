@@ -21,7 +21,6 @@
                                 <view class="image">
                                         <clientImg  src="{{item.ProfilePhoto}}"></clientImg>
                                 </view>
-                                <view wx:if="{{item.IsAttest}}" class='client-yc'><image src='/assets/icon/yc.svg'></image></view>
                                 <view class='client-online {{item.Online?"":"client-online-hidden"}}'></view>
                         </view>
                         <view class='client-name'>
@@ -29,6 +28,7 @@
                                         <image src='/assets/icon/xb_{{m1.sex(item.Sex,item.NSex)}}.svg'></image>
                                 </view>
                                 <view class='client-name-text'>{{item.CardName?item.CardName:item.NickName}}</view>
+                                <view wx:if="{{item.IsAttest}}" class='client-yc'><image src='/assets/icon/yc.svg'></image></view>
                         </view>
                 </navigator>
                 <view class="app-list-loging" wx:if="{{!pageOver}}">

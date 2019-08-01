@@ -41,8 +41,8 @@
                             <view class='row-con'>{{rItem._index}}</view>
                         </view>
                     </view>
-                    <view wx:for="{{rItem._list}}" wx:for-index="eIndex" wx:for-item="eItem" wx:key="eIndex">
-                        <view class='col col_{{eItem._color}} {{m1.red(noEmtyLength,eItem.Index)}}'>
+                    <view wx:for="{{rItem._list}}" wx:for-index="eIndex" wx:for-item="eItem" wx:key="eIndex" wx:if="{{!eItem._hidden}}">
+                        <view class='col col_{{eItem._color}} {{m1.green(noEmtyLength,eItem.Index)}}'>
                             <view class='row row-2'>
                                 <view class='row-con'>{{eItem.CmpName}}</view>
                             </view>
@@ -79,10 +79,10 @@
     </view>
 </view>
 <wxs module="m1">
-        var red = function(length, index) {
+        var green = function(length, index) {
                 if(index==length||index==length-1||index==length-2){
-                    return "col_red"
+                    return "col_green"
                 }
         }
-        module.exports.red = red;
+        module.exports.green = green;
 </wxs>

@@ -1,182 +1,207 @@
 <view class='body'>
-        <!-- 头部 -->
-        <view class='header'>
-                <!-- 头部内容 -->
-                <view class='header-center'>
-                        <view class='header-top'>
-                                <!-- 头像 -->
-                                <view class='header-img' bindtap='previewImage'>
-                                        <clientImg  src="{{formData.ProfilePhoto}}"></clientImg>
-                                </view>
-                                <!-- 爱好标签 -->
-                                <navigator url='./clientDetails/label?openId={{formData.OpenId}}'  class='header-likes-box'>
-                                        <view class='header-likes'>
-                                                <view class='header-likes-item'>更多...</view>
-                                                <view class='header-likes-item' wx:if="{{index<10}}" wx:for="{{labelList}}" wx:key="{{index}}">{{item.Name}}</view>
-                                        </view>
-                                </navigator>
-                                
-                        </view>
-                        <view class='header-botton' wx:if="{{formData.IsRegister}}">
-                                <navigator url='./clientDetails/stored?openId={{formData.OpenId}}' class='header-botton-item'>
-                                        <view class='header-botton-item-title'>储值</view>
-                                        <view class='header-botton-item-number'>￥{{formData.AvailableBalance||'0'}}</view>
-                                </navigator>
-                                <navigator url='./clientDetails/integral?openId={{formData.OpenId}}' url= class='header-botton-item'>
-                                        <view class='header-botton-item-title'>积分</view>
-                                        <view class='header-botton-item-number'>{{formData.AvailableScore||'0'}}</view>
-                                </navigator>
-                                <navigator url='./clientDetails/coupon?openId={{formData.OpenId}}' class='header-botton-item' >
-                                        <view class='header-botton-item-title'>电子券</view>
-                                        <view class='header-botton-item-number'>{{formData.AvailableECard||'0'}}张</view>
-                                </navigator>
-                                <!-- <view class='header-botton-item'>
+    <!-- 头部 -->
+    <view class='header'>
+        <!-- 头部内容 -->
+        <view class='header-center'>
+            <view class='header-top'>
+                <!-- 头像 -->
+                <view class='header-img' bindtap='previewImage'>
+                    <clientImg src="{{formData.ProfilePhoto}}"></clientImg>
+                </view>
+                <!-- 爱好标签 -->
+                <navigator url='./clientDetails/label?openId={{formData.OpenId}}' class='header-likes-box'>
+                    <view class='header-likes'>
+                        <view class='header-likes-item'>更多...</view>
+                        <view class='header-likes-item' wx:if="{{index<10}}" wx:for="{{labelList}}" wx:key="{{index}}">{{item.Name}}</view>
+                    </view>
+                </navigator>
+
+            </view>
+            <view class='header-botton' wx:if="{{formData.IsRegister}}">
+                <navigator url='./clientDetails/stored?openId={{formData.OpenId}}' class='header-botton-item'>
+                    <view class='header-botton-item-title'>储值</view>
+                    <view class='header-botton-item-number'>￥{{formData.AvailableBalance||'0'}}</view>
+                </navigator>
+                <navigator url='./clientDetails/integral?openId={{formData.OpenId}}' class='header-botton-item'>
+                    <view class='header-botton-item-title'>积分</view>
+                    <view class='header-botton-item-number'>{{formData.AvailableScore||'0'}}</view>
+                </navigator>
+                <navigator url='./clientDetails/coupon?openId={{formData.OpenId}}' class='header-botton-item'>
+                    <view class='header-botton-item-title'>电子券</view>
+                    <view class='header-botton-item-number'>{{formData.AvailableECard||'0'}}张</view>
+                </navigator>
+                <!-- <view class='header-botton-item'>
           <view class='header-botton-item-title'>电子券</view>
           <view class='header-botton-item-number'>{{clientData.coupon}}张</view>
         </view> -->
-                        </view>
-                        <!-- 铭牌 -->
-                        <view class='nameplate'>
-                            <view wx:if="{{formData.IsAttest}}" class='nameplate-item'><image src='/assets/icon/yc.svg'></image></view>
-                            <view wx:for="{{nameplateList}}" wx:key="{{index}}" class='nameplate-item'><image src='{{NAMEPLATE[item.Code].src}}'></image></view>
-                        </view>
+            </view>
+            <!-- 铭牌 -->
+            <!-- <view class='nameplate'>
+                <view wx:if="{{formData.IsAttest}}" class='nameplate-item'>
+                    <image src='/assets/icon/yc.svg'></image>
                 </view>
-                <!-- 背景图 -->
-                <view class='header-bg'>
-                        <clientImg mode='aspectFill'  src="{{formData.ProfilePhoto}}"></clientImg>
-                        <!-- <image mode='aspectFill' src='{{formData.ProfilePhoto?imgUrl+formData.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image> -->
+                <view wx:for="{{nameplateList}}" wx:key="{{index}}" class='nameplate-item'>
+                    <image src='{{NAMEPLATE[item.Code].src}}'></image>
                 </view>
+            </view> -->
         </view>
-        <!-- 正文内容 -->
-        <view class='content'>
-                <!-- 核销    之后还会有积分核销 -->
-                <navigator wx:if="{{!formPage&&formData.IsRegister&&ux_consumeRelease}}" hover-class="none" url='/pages/user/work/cardCustomer?openId={{openId}}' class=' app-shadow-2 content-cancel  app-shadow-2'>
-                        <image src='/assets/icon/hx.svg'></image>
-                        核销
-                </navigator>
-                <view class='content-card'>
-                        <view class='content-card-title'>
-                                <view class='content-card-title-left'>联系方式</view>
-                                <!-- <view class='content-card-title-right'>更改联系方式</view> -->
-                        </view>
-                        <view class='content-card-body'>
-                                <view class='panel-item'>
-                                        <!-- 拨打电话 -->
-                                        <view class='panel'>
-                                                <view class='panel-number'>{{formData.Phone||'-'}}</view>
-                                                <view class='panel-icon' data-panel="{{formData.Phone}}" catchtap="makePhoneCall">
-                                                        <image src='/assets/icon/call.svg'></image>
-                                                </view>
-                                        </view>
-                                        <!-- 微信 -->
-                                        <view class='panel'>
-                                                <view class='panel-number'>{{formData.NickName}}</view>
-                                                <navigator hover-class="none" url='/pages/message/chat?openId={{formData.OpenId}}&cardName={{formData.CardName||formData.NickName}}&wxId={{formData.WxId}}&headImg={{formData.ProfilePhoto}}&online={{online}}' class='panel-icon'>
-                                                        <image src='/assets/icon/WX.svg'></image>
-                                                </navigator>
-                                        </view>
-                                </view>
-                        </view>
-                </view>
-                <view class='content-card' wx:if="{{clientList.length>0}}">
-                    <view class='content-card-title'>
-                        <view class='content-card-title-left'>服务顾问</view>
-                        <!-- <view class='content-card-title-right'>更改顾问</view> -->
+        <!-- 背景图 -->
+        <view class='header-bg'>
+            <clientImg mode='aspectFill' src="{{formData.ProfilePhoto}}"></clientImg>
+            <!-- <image mode='aspectFill' src='{{formData.ProfilePhoto?imgUrl+formData.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image> -->
+        </view>
+    </view>
+    <!-- 正文内容 -->
+    <view class='content'>
+        <!-- 核销    之后还会有积分核销 -->
+        <navigator wx:if="{{!formPage&&formData.IsRegister&&ux_consumeRelease}}" hover-class="none" url='/pages/user/work/cardCustomer?openId={{openId}}' class=' app-shadow-2 content-cancel  app-shadow-2'>
+            <image src='/assets/icon/hx.svg'></image>
+            核销
+        </navigator>
+        <view class='content-card' wx:if="{{nameplateList.length>0||formData.IsAttest}}">
+            <view class='content-card-title'>
+                <view class='content-card-title-left'>客户铭牌</view>
+                <!-- <view class='content-card-title-right'>查看全部</view> -->
+            </view>
+            <view class='content-card-body'>
+                <view class='nameplate-list-white'></view>
+                <view class='nameplate-list app-scroll-none'>
+                    <view wx:if="{{formData.IsAttest}}" class='nameplate-item'>
+                        <image src='/assets/icon/yc.svg'></image>
                     </view>
-                    <view class='content-card-body'>
-                        <view class='counselor-list app-scroll-none'>
-                        <view class='counselor app-shadow-2' wx:for="{{clientList}}" wx:key="{{key}}">
-                            <view class='counselor-img'><clientImg  src="{{item.ProfilePhoto}}"></clientImg></view>
-                            <view class='counselor-right'>
+                    <view wx:for="{{nameplateList}}" wx:key="{{index}}" class='nameplate-item' data-index="{{index}}" bindlongpress="nameplateShow">
+                        <image src='{{imgUrl+item.ImgUrl}}'></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class='content-card'>
+            <view class='content-card-title'>
+                <view class='content-card-title-left'>联系方式</view>
+                <!-- <view class='content-card-title-right'>更改联系方式</view> -->
+            </view>
+            <view class='content-card-body'>
+                <view class='panel-item'>
+                    <!-- 拨打电话 -->
+                    <view class='panel'>
+                        <view class='panel-number'>{{formData.Phone||'-'}}</view>
+                        <view class='panel-icon' data-panel="{{formData.Phone}}" catchtap="makePhoneCall">
+                            <image src='/assets/icon/call.svg'></image>
+                        </view>
+                    </view>
+                    <!-- 微信 -->
+                    <view class='panel'>
+                        <view class='panel-number'>{{formData.NickName}}</view>
+                        <navigator hover-class="none" url='/pages/message/chat?openId={{formData.OpenId}}&cardName={{formData.CardName||formData.NickName}}&wxId={{formData.WxId}}&headImg={{formData.ProfilePhoto}}&online={{online}}' class='panel-icon'>
+                            <image src='/assets/icon/WX.svg'></image>
+                        </navigator>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class='content-card' wx:if="{{clientList.length>0}}">
+            <view class='content-card-title'>
+                <view class='content-card-title-left'>服务顾问</view>
+                <!-- <view class='content-card-title-right'>更改顾问</view> -->
+            </view>
+            <view class='content-card-body'>
+                <view class='counselor-list app-scroll-none'>
+                    <view class='counselor app-shadow-2' wx:for="{{clientList}}" wx:key="{{key}}">
+                        <view class='counselor-img'>
+                            <clientImg src="{{item.ProfilePhoto}}"></clientImg>
+                        </view>
+                        <view class='counselor-right'>
                             <view class='counselor-name'>{{item.Name}}</view>
                             <view>
                                 <view class='counselor-index'>{{item.PositionName}}</view>
                                 <view class='counselor-career'>{{item.Phone}}</view>
                             </view>
-                            </view>
-                        </view>
                         </view>
                     </view>
                 </view>
-                <view class='content-card' wx:if="{{carList.length>0}}">
-                        <view class='content-card-title'>
-                                <view class='content-card-title-left'>绑定车辆</view>
-                                <view class='content-card-title-right'></view>
-                        </view>
-                        <view class='content-card-body'>
-                                <navigator url="clientDetails/carDetails?openId={{formData.OpenId}}&carId={{item.CarId}}" class='car' wx:for="{{carList}}" wx:key="{{index}}">
-                                        <view class='car-con'>
-                                                <!-- <view class='car-img'><image src='/assets/carIcon/{{item.brand}}-i.svg'></image></view> -->
-                                                <view class='car-model'>{{item.CarStyle}}</view>
-                                        </view>
-                                        <view class='car-bg'>
-                                                <image mode='aspectFit' src='/assets/icon/lc.svg'></image>
-                                        </view>
-                                        <view class='car-number'>{{item.CarNum}}</view>
-                                        <view wx:if="{{item.Auth}}" class='car-auth'><image src='/assets/icon/sqcl2.svg'></image></view>
-                                </navigator>
-                        </view>
-                </view>
-                <view class='content-card' style='padding-bottom:20px' wx:if="{{formData.IsRegister}}">
-                        <view  class='content-card-title {{menuFixed?"content-card-title-fixed":""}}'>
-                                <view class='content-card-title-left'>用户信息</view>
-                                <view class='content-card-title-right' bindtap='sendData'>保存修改</view>
-                        </view>
-                        <view class='content-card-body'>
-                                <!-- 性别 -->
-                                <tuiInput type="select" data-key="formData.Sex" range="{{sexRange}}" bindinput="fromInput" value="{{formData.Sex}}">
-                                        <view slot="left">性别</view>
-                                        <image slot="right" src='/assets/icon/right.svg'></image>
-                                </tuiInput>
-                                 <!-- 出生日 -->
-                                <tuiInput type="date" data-key="formData.BirthDate"  value="{{formData.BirthDate}}" bindinput="fromInput">
-                                        <view slot="left">出生日</view>
-                                        <image slot="right" src='/assets/icon/right.svg'></image>
-                                </tuiInput>
-                                <!-- 学历 -->
-                                <tuiInput type="select" data-key="formData.EducationCode" range="{{educationRange}}" bindinput="fromInput" value="{{formData.EducationCode}}">
-                                        <view slot="left">学历</view>
-                                        <image slot="right" src='/assets/icon/right.svg'></image>
-                                </tuiInput>
-                                <!-- 职业 -->
-                                <tuiInput data-key="formData.Profession" bindinput="fromInput" value="{{formData.Profession}}">
-                                        <view slot="left">职业</view>
-                                </tuiInput>
-                                <!-- 证件号 -->
-                                <tuiInput data-key="formData.IDCard"  input-type="idcard" bindinput="fromInput" value="{{formData.IDCard}}">
-                                        <view slot="left">证件号</view>
-                                </tuiInput>
-                                <!-- 住址 -->
-                                <tuiInput data-key="formData.AddressDetails"   bindinput="fromInput" value="{{formData.AddressDetails}}">
-                                        <view slot="left">住址</view>
-                                </tuiInput>
-                                <!-- 子女情况 -->
-                                <tuiInput data-key="formData.ChildrenDesc"  bindinput="fromInput" value="{{formData.ChildrenDesc}}">
-                                        <view slot="left">子女情况</view>
-                                </tuiInput>
-                                <!-- 子女数量-- -->
-                                <tuiInput data-key="formData.ChildrenCount" bindinput="fromInput" value="{{formData.ChildrenCount}}">
-                                        <view slot="left">子女数量</view>
-                                </tuiInput>
-                                <!-- 常去商圈 -->
-                                <tuiInput data-key="formData.OftenGoto" bindinput="fromInput" value="{{formData.OftenGoto}}">
-                                        <view slot="left">常去商圈</view>
-                                </tuiInput>
-                                <leafletAdd upload-type="sfCard" img-url="{{idCardImg}}" data-key="idCardImg" bindinput="leafletAddInput"></leafletAdd>
-                                <view style='margin-bottom:10px'></view>
-                                <leafletAdd upload-type="jsCard" img-url="{{drLicImg}}" data-key="drLicImg" bindinput="leafletAddInput"></leafletAdd>
-                        </view>
-                </view>
-                <view class='content-card' style='padding-bottom:40px' wx:if="{{formData.IsRegister}}">
-                        <view  class='content-card-title {{menuFixed?"content-card-title-fixed":""}}'>
-                                <view class='content-card-title-left'>客户上传证件</view>
-                                <!-- <view class='content-card-title-right' bindtap='sendData'>保存修改</view> -->
-                        </view>
-                        <view class='content-card-body'>
-                                <leafletAdd upload-type="sfCard" disabled="true" img-url="{{idCardImgUser}}"></leafletAdd>
-                                <view style='margin-bottom:10px'></view>
-                                <leafletAdd upload-type="jsCard"  disabled="true" img-url="{{drLicImgUser}}"></leafletAdd>
-                        </view>
-                </view>
+            </view>
         </view>
+        <view class='content-card' wx:if="{{carList.length>0}}">
+            <view class='content-card-title'>
+                <view class='content-card-title-left'>绑定车辆</view>
+                <view class='content-card-title-right'></view>
+            </view>
+            <view class='content-card-body'>
+                <navigator url="clientDetails/carDetails?openId={{formData.OpenId}}&carId={{item.CarId}}" class='car' wx:for="{{carList}}" wx:key="{{index}}">
+                    <view class='car-con'>
+                        <!-- <view class='car-img'><image src='/assets/carIcon/{{item.brand}}-i.svg'></image></view> -->
+                        <view class='car-model'>{{item.CarStyle}}</view>
+                    </view>
+                    <view class='car-bg'>
+                        <image mode='aspectFit' src='/assets/icon/lc.svg'></image>
+                    </view>
+                    <view class='car-number'>{{item.CarNum}}</view>
+                    <view wx:if="{{item.Auth}}" class='car-auth'>
+                        <image src='/assets/icon/sqcl2.svg'></image>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+        <view class='content-card' style='padding-bottom:20px' wx:if="{{formData.IsRegister}}">
+            <view class='content-card-title {{menuFixed?"content-card-title-fixed":""}}'>
+                <view class='content-card-title-left'>用户信息</view>
+                <view class='content-card-title-right' bindtap='sendData'>保存修改</view>
+            </view>
+            <view class='content-card-body'>
+                <!-- 性别 -->
+                <tuiInput type="select" data-key="formData.Sex" range="{{sexRange}}" bindinput="fromInput" value="{{formData.Sex}}">
+                    <view slot="left">性别</view>
+                    <image slot="right" src='/assets/icon/right.svg'></image>
+                </tuiInput>
+                <!-- 出生日 -->
+                <tuiInput type="date" data-key="formData.BirthDate" value="{{formData.BirthDate}}" bindinput="fromInput">
+                    <view slot="left">出生日</view>
+                    <image slot="right" src='/assets/icon/right.svg'></image>
+                </tuiInput>
+                <!-- 学历 -->
+                <tuiInput type="select" data-key="formData.EducationCode" range="{{educationRange}}" bindinput="fromInput" value="{{formData.EducationCode}}">
+                    <view slot="left">学历</view>
+                    <image slot="right" src='/assets/icon/right.svg'></image>
+                </tuiInput>
+                <!-- 职业 -->
+                <tuiInput data-key="formData.Profession" bindinput="fromInput" value="{{formData.Profession}}">
+                    <view slot="left">职业</view>
+                </tuiInput>
+                <!-- 证件号 -->
+                <tuiInput data-key="formData.IDCard" input-type="idcard" bindinput="fromInput" value="{{formData.IDCard}}">
+                    <view slot="left">证件号</view>
+                </tuiInput>
+                <!-- 住址 -->
+                <tuiInput data-key="formData.AddressDetails" bindinput="fromInput" value="{{formData.AddressDetails}}">
+                    <view slot="left">住址</view>
+                </tuiInput>
+                <!-- 子女情况 -->
+                <tuiInput data-key="formData.ChildrenDesc" bindinput="fromInput" value="{{formData.ChildrenDesc}}">
+                    <view slot="left">子女情况</view>
+                </tuiInput>
+                <!-- 子女数量-- -->
+                <tuiInput data-key="formData.ChildrenCount" bindinput="fromInput" value="{{formData.ChildrenCount}}">
+                    <view slot="left">子女数量</view>
+                </tuiInput>
+                <!-- 常去商圈 -->
+                <tuiInput data-key="formData.OftenGoto" bindinput="fromInput" value="{{formData.OftenGoto}}">
+                    <view slot="left">常去商圈</view>
+                </tuiInput>
+                <leafletAdd upload-type="sfCard" img-url="{{idCardImg}}" data-key="idCardImg" bindinput="leafletAddInput"></leafletAdd>
+                <view style='margin-bottom:10px'></view>
+                <leafletAdd upload-type="jsCard" img-url="{{drLicImg}}" data-key="drLicImg" bindinput="leafletAddInput"></leafletAdd>
+            </view>
+        </view>
+        <view class='content-card' style='padding-bottom:40px' wx:if="{{formData.IsRegister}}">
+            <view class='content-card-title {{menuFixed?"content-card-title-fixed":""}}'>
+                <view class='content-card-title-left'>客户上传证件</view>
+                <!-- <view class='content-card-title-right' bindtap='sendData'>保存修改</view> -->
+            </view>
+            <view class='content-card-body'>
+                <leafletAdd upload-type="sfCard" disabled="true" img-url="{{idCardImgUser}}"></leafletAdd>
+                <view style='margin-bottom:10px'></view>
+                <leafletAdd upload-type="jsCard" disabled="true" img-url="{{drLicImgUser}}"></leafletAdd>
+            </view>
+        </view>
+    </view>
 </view>

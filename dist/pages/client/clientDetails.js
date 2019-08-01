@@ -23,7 +23,7 @@ Page({
         //服务顾问
         clientList: [],
         //铭牌列表
-        nameplateList:[],
+        nameplateList: [],
         NAMEPLATE,
         //是否在线
         online: false,
@@ -86,11 +86,21 @@ Page({
         })
     },
     /**
+     * 长按客户铭牌 展示客户铭牌名称
+     */
+    nameplateShow(e) {
+        wx.showToast({
+            title: this.data.nameplateList[e.currentTarget.dataset.index].Name,
+            icon: 'none'
+        })
+    },
+    /**
      * 用户上传证件回调
      */
     leafletAddInput(e) {
         //这个不需要进行展示了，所以不使用setdata
         this.data[e.target.dataset.key] = e.detail
+
     },
     /**
      * 生命周期函数--监听页面加载
@@ -138,37 +148,43 @@ Page({
                 docid: options.openId
             },
             success(res) {
+                let userData = res.Table[0];
                 _this.setData({
-                    formData: res.Table[0],
+                    formData: userData,
                     carList: res.Table1 || [],
                     labelList: res.Table2 || [],
                     clientList: res.Table3 || [],
-                    nameplateList: res.Table4||[],
-                    //身份证照片信息(后台维护)
-                    idCardImg: {
-                        orig: res.Table[0].IdCardOrigImg1 || '',
-                        thum: res.Table[0].IdCardThumImg1 || ''
-                    },
-                    //驾驶证信息(后台维护)
-                    drLicImg: {
-                        orig: res.Table[0].DrLicOrigImg1 || '',
-                        thum: res.Table[0].DrLicThumImg1 || ''
-                    },
-                    //身份证照片信息(用户上传)
-                    idCardImgUser: {
-                        orig: res.Table[0].IdCardOrigImg || '',
-                        thum: res.Table[0].IdCardThumImg || ''
-                    },
-                    //驾驶证信息(用户上传)
-                    drLicImgUser: {
-                        orig: res.Table[0].DrLicOrigImg || '',
-                        thum: res.Table[0].DrLicThumImg || ''
-                    }
+                    nameplateList: res.Table4 || [],
                 })
-                //更改名称
-                wx.setNavigationBarTitle({
-                    title: `${res.Table[0].CardName ? res.Table[0].CardName : res.Table[0].NickName}`,
-                })
+                if (userData) {
+                    _this.setData({
+                        //身份证照片信息(后台维护)
+                        idCardImg: {
+                            orig: userData.IdCardOrigImg1 || '',
+                            thum: userData.IdCardThumImg1 || ''
+                        },
+                        //驾驶证信息(后台维护)
+                        drLicImg: {
+                            orig: userData.DrLicOrigImg1 || '',
+                            thum: userData.DrLicThumImg1 || ''
+                        },
+                        //身份证照片信息(用户上传)
+                        idCardImgUser: {
+                            orig: userData.IdCardOrigImg || '',
+                            thum: userData.IdCardThumImg || ''
+                        },
+                        //驾驶证信息(用户上传)
+                        drLicImgUser: {
+                            orig: userData.DrLicOrigImg || '',
+                            thum: userData.DrLicThumImg || ''
+                        }
+                    })
+                    //更改名称
+                    wx.setNavigationBarTitle({
+                        title: `${userData.CardName ? userData.CardName : userData.NickName}`,
+                    })
+                }
+
             },
             complete() {
                 wx.hideLoading();

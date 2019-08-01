@@ -69,6 +69,21 @@ export const  NAMEPLATE={
         src: "/assets/icon/isp.svg"
     }
 }
+//指标类型
+export const INDEX_TYPE = {
+    //相加
+    'SUM': {
+        code: 'SUM',
+    },
+    //使用存储过程中传递的总计
+    'TOTAL':{
+        code:'TOTAL'
+    },
+    //什么都不计算
+    'NONE':{
+        code:'NONE',
+    }
+}
 export {
     WORK_TYPE,
     CHAT_CONST,

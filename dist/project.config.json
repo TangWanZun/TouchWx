@@ -215,7 +215,7 @@
 					"id": 28,
 					"name": "指标详情",
 					"pathName": "pages/user/indexData",
-					"query": "id=B03&name=注册会员",
+					"query": "id=B04&name=注册转化率&total=0",
 					"scene": null
 				},
 				{

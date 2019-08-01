@@ -4,7 +4,8 @@ import {
 } from "../../library/sdk/util.js"
 import {
     CMP_CAR,
-    CMP_REGION
+    CMP_REGION,
+    INDEX_TYPE
 } from "../../library/sdk/config.js"
 
 Page({
@@ -24,14 +25,14 @@ Page({
         noEmtyLength: 0
     },
     id: '',
-    //当前指标是否需要计算总量
-    total: false,
+    //当前指标的指标类型
+    indexType: false,
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
+    onLoad: function(options) {
         this.id = options.id;
-        this.total = !!parseInt(options.total);
+        this.indexType = options.indexType || INDEX_TYPE.NONE.code;
         this.getData();
         wx.setNavigationBarTitle({
             title: "指标-" + options.name
@@ -63,20 +64,28 @@ Page({
                     objArr: res,
                     attrArr: ['BrandType', 'RegionType'],
                     nullName: 'A00',
-                    callback({ item, itemParent }) {
+                    callback({
+                        item,
+                        itemParent
+                    }) {
                         //需要总计的进行计算
-                        if (_this.total) {
+                        if (_this.indexType == INDEX_TYPE.SUM.code) {
                             if (!itemParent._value) {
                                 // 当item的父元素中不存在_value的时候，为其赋值为0
                                 itemParent._value = 0;
                             }
                             itemParent._value += parseFloat(item.Value);
+                        } else if (_this.indexType == INDEX_TYPE.TOTAL.code && item.CmpName == 'TOTAL') {
+                            //使用数据库提供的总计进行计算
+                            itemParent._value = item.Value;
+                            itemParent._index = item.Index;
+                            item._hidden = true;
                         }
                         //设置颜色
                         if (item.Index == 1 || item.Index == 2 || item.Index == 3) {
-                            item._color = 'green';
-                        } else if (parseFloat(item.Value) == 0) {
                             item._color = 'red';
+                        } else if (parseFloat(item.Value) == 0) {
+                            item._color = 'green';
                             emtyNum++;
                         }
                     }
@@ -86,7 +95,7 @@ Page({
                 })
                 // console.log(formData);
                 //需要总计的进行计算
-                if (this.total) {
+                if (this.indexType == INDEX_TYPE.SUM.code) {
                     //这里需要把全部区域的数据取出来
                     let qyArr = [];
                     for (let x in formData) {
@@ -95,7 +104,7 @@ Page({
                         }
                     }
                     //对其进行排序
-                    qyArr.sort(function (a, b) {
+                    qyArr.sort(function(a, b) {
                         return b._value - a._value;
                     })
                     //添加标签
@@ -142,49 +151,49 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {
+    onReady: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
+    onShow: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {
+    onHide: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
+    onUnload: function() {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
+    onPullDownRefresh: function() {
         this.getData();
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () {
+    onReachBottom: function() {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () {
+    onShareAppMessage: function() {
 
     }
 })
