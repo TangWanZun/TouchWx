@@ -48,10 +48,10 @@
 /* 认证 */
 .client-yc{
   position: absolute;
-  width:15px;
-  height: 15px;
-  bottom: 8px;
-  left: 50px;
+  width:28px;
+  height: 28px;
+  top: 18px;
+  right: 10px;
 }
 /* 离线头像 */
 .select-img-hidden>image{

@@ -12,8 +12,8 @@
     <view style='width:100vw;height:80px;'></view>
     <view class='work-list-body app-scroll-none' wx:if="{{reportList.length>0}}">
         <view class="work-list-body-item  app-shadow-2" wx:for="{{reportList}}" wx:key="{{index}}">
-            <view class="work-list-body-item-title ">{{item.Name}}<span>（{{item.Unit}}）</span></view>
-            <view class="work-list-body-item-num ">{{item.Value}}</view>
+            <view class="work-list-body-item-title ">{{item.Name}}</view>
+            <view class="work-list-body-item-num ">{{item.Value}} <span>{{item.Unit}}</span></view>
         </view>
     </view>
     <view class='work-list-title' style="padding-top:10px;">
