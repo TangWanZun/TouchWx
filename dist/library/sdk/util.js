@@ -1,4 +1,10 @@
 /**
+ *  将微信中的vw转化成为px
+ */
+export const vw2px = function (rate){
+  return rate * wx.getSystemInfoSync().windowWidth / 100
+}
+/**
  * 将二维对象数组 根据其属性值  转化成树
  */
 export const arrToTree =  function ({

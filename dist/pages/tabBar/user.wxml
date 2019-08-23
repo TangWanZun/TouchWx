@@ -97,6 +97,12 @@
                 <image src='/assets/icon/right.svg'></image>
             </view>
         </navigator> -->
+        <navigator url='/pages/user/welfareCore' class="my-data-title">
+            <view>福利中心</view>
+            <view class="my-data-title-icon">
+                <image src='/assets/icon/right.svg'></image>
+            </view>
+        </navigator>
         <navigator url='/pages/user/myDatum' class="my-data-title">
             <view>个人资料</view>
             <view class="my-data-title-icon">

@@ -189,7 +189,21 @@ Page({
             },
             // UV: true,
             success(res) {
-                // console.log("success", res);
+                console.log("success", res);
+                //表示当前用户没有注册
+                if (!res.IsRegister){
+                  wx.showModal({
+                    title: "系统提示",
+                    content: "当前用户未注册",
+                    showCancel: false,
+                    // success(res) {
+                    //     if (res.confirm) {
+                    //         mepara.failCall(result.data);
+                    //     }
+                    // }
+                  })
+                  return
+                }
                 //将个人信息保存到内存
                 getApp().privateData.loginInfo = res;
                 //登陆成功

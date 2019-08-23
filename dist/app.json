@@ -1,68 +1,70 @@
 {
-    "pages": [
-        "pages/tabBar/user",
-        "pages/tabBar/message",
-        "pages/tabBar/client",
-        "pages/tabBar/work",
-        "pages/tabBar/login",
-        "pages/tabBar/cooReport",
-        "pages/test"
-    ],
-    "subPackages": [
-        {
-            "root": "pages/client",
-            "pages": [
-                "clientDetails",
-                "clientDetails/carDetails",
-                "clientDetails/coupon",
-                "query",
-                "clientDetails/stored",
-                "clientDetails/integral",
-                "clientDetails/label",
-                "clientDetails/carModify",
-                "carStyleSelect"
-            ]
-        },
-        {
-            "root": "pages/user",
-            "pages": [
-                "myData",
-                "myQr",
-                "myDatum",
-                "work/cardCustomer",
-                "cmpScopeFilter",
-                "indexData"
-            ]
-        },
-        {
-            "root": "pages/message",
-            "pages": [
-                "chat",
-                "video"
-            ]
-        },
-        {
-            "root": "pages/work",
-            "pages": [
-                "workRescue",
-                "workComplain",
-                "workMake",
-                "workActivity",
-                "workExpire",
-                "workPage/complainPage",
-                "workPage/makePage",
-                "workPage/activityPage"
-            ]
-        }
-    ],
-    "window": {
-        "backgroundTextStyle": "dark",
-        "navigationBarBackgroundColor": "#ffffff",
-        "navigationBarTitleText": "TouchUI",
-        "navigationBarTextStyle": "black"
+  "pages": [
+    "pages/tabBar/user",
+    "pages/tabBar/message",
+    "pages/tabBar/client",
+    "pages/tabBar/work",
+    "pages/tabBar/login",
+    "pages/tabBar/cooReport",
+    "pages/test"
+  ],
+  "subPackages": [
+    {
+      "root": "pages/client",
+      "pages": [
+        "clientDetails",
+        "clientDetails/carDetails",
+        "clientDetails/coupon",
+        "query",
+        "clientDetails/stored",
+        "clientDetails/integral",
+        "clientDetails/label",
+        "clientDetails/carModify",
+        "carStyleSelect"
+      ]
     },
-    "networkTimeout": {
-        "request": 60000
+    {
+      "root": "pages/user",
+      "pages": [
+        "myData",
+        "myQr",
+        "myDatum",
+        "work/cardCustomer",
+        "cmpScopeFilter",
+        "indexData",
+        "welfareCore",
+        "welfareCoreInfo"
+      ]
     },
-    "sitemapLocation": "sitemap.json"
+    {
+      "root": "pages/message",
+      "pages": [
+        "chat",
+        "video"
+      ]
+    },
+    {
+      "root": "pages/work",
+      "pages": [
+        "workRescue",
+        "workComplain",
+        "workMake",
+        "workActivity",
+        "workExpire",
+        "workPage/complainPage",
+        "workPage/makePage",
+        "workPage/activityPage"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "TouchUI",
+    "navigationBarTextStyle": "black"
+  },
+  "networkTimeout": {
+    "request": 60000
+  },
+  "sitemapLocation": "sitemap.json"
 }

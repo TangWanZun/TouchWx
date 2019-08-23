@@ -1,0 +1,158 @@
+/* 顶部栏二维码 */
+
+.header {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background-color: white;
+  z-index: 2;
+  padding: 5px 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* 选择栏 */
+
+.picker-box {
+  flex-grow: 1;
+  width: 1px;
+}
+
+.picker {
+  padding: 5px 10px;
+  background-color: white;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 二维码生成 */
+
+.qr-box {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.qr {
+  width: 80vw;
+  min-height: 200px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5vw 0;
+}
+
+.carList {
+  min-height: 100vh;
+  padding: 50px 15px 5px 15px;
+}
+
+.carList .card-item {
+  padding: 10px 12px;
+  -webkit-mask-position: center;
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-image: url(https://evip.rocar.net/wxapp/img/wxMin/ECardBox.png);
+  mask-position: center;
+  mask-size: 100% 100%;
+  mask-image: url(https://evip.rocar.net/wxapp/img/wxMin/ECardBox.png);
+  background-size: 100% 100%;
+  background-image: url(https://evip.rocar.net/wxapp/img/wxMin/ECard.png);
+  margin-bottom: 15px;
+  display: block;
+  color: black;
+}
+
+.carList .card-item:active {
+  opacity: 0.8;
+}
+
+.carList .card-item .card-content {
+  border-radius: 5px;
+  min-height: 125px;
+  padding: 5px;
+  border: 1px dotted rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.carList .card-item .card-content .card-item-left {
+  color: white;
+  font-size: 10vw;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  width: 0;
+  margin-right: 10px;
+}
+
+.carList .card-item .card-content .card-item-left > span {
+  font-size: 20px;
+}
+
+.carList .card-item .card-content .card-item-center {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.carList .card-item .card-content .card-item-center .card-item-name {
+  font-size: 13px;
+  width: 40px;
+  text-align: center;
+  margin-right: 10px;
+  color: white;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.carList .card-item .card-content .card-item-right {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 10px 0;
+  padding-right: 13px;
+  padding-top: 20px;
+}
+
+.carList .card-item .card-content .card-item-right .card-item-text {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: right;
+  font-size: 9px;
+  color: white;
+}
+
+.carList .card-item .card-content .card-item-right .card-item-text:last-child {
+  text-decoration: underline;
+}
+
+.carList .card-item .card-content .card-item-right .card-item-btn {
+  background-color: white;
+  padding: 3px 30px;
+  border-radius: 3px;
+  font-size: 14px;
+  box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  margin-top: 12px;
+}

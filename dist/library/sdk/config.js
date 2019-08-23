@@ -2,15 +2,19 @@
 // appId wx741745d2b71d095d
 const wxid = "gh_88faf4d66bc0";
 const host = "https://evip.rocar.net/";
+const pehost = "https://evip.rocar.net/wxapp/#/"
 //测试
 // const wxid = "gh_a8db42819a59";
 // const host = "https://vip.sap-unis.com/wxpc/";
+// const pehost = "https://vip.sap-unis.com/wxapp/#/"
 // wx334450ff9ab82891
 let configUrl = {
     wxid,
     host,
     url: `${host}wx/${wxid}`,
-    imgUrl: `${host}`
+    imgUrl: `${host}`,
+    //手机端页面位置
+    peUrl: `${pehost}`
 }
 //工作类型
 const WORK_TYPE = {

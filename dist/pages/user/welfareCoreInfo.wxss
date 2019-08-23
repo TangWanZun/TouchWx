@@ -1,0 +1,90 @@
+.myCar-box {
+  min-height: 100vh;
+  background-color: white;
+}
+.header {
+  padding:10px 25px 0px 25px;
+}
+.card-content {
+  padding: 10px 20px 20px 20px;
+}
+.card-content .card-content-item {
+  border-bottom: 1px solid #244067;
+  padding: 10px 0;
+  font-size: 15px;
+}
+.card-content .card-content-item-qr{
+  display: flex;
+  justify-content: center;
+}
+.card-content .card-content-item:last-child {
+  border-bottom: 0;
+}
+.card-content .card-content-title {
+  font-size: 15px;
+  position: relative;
+  text-align: center;
+}
+.card-content .card-content-title > span {
+  background-color: white;
+  z-index: 2;
+  position: relative;
+  padding: 0 5px;
+  font-weight: bold;
+}
+.card-content .card-content-title::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40vw;
+  margin-left: -20vw;
+  height: 2px;
+  background-color: black;
+  border-radius: 10px;
+}
+.card-content .card-content-text {
+  font-size: 13px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin-bottom: 20px;
+}
+.btn-box {
+  position: fixed;
+  width: 100vw;
+  bottom: 0px;
+  left: 0px;
+  padding: 10px 20px;
+}
+.card-item {
+  padding: 10px 12px;
+  -webkit-mask-position: center;
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-image: url(https://evip.rocar.net/wxapp/img/wxMin/ECardBox.png);
+  mask-position: center;
+  mask-size: 100% 100%;
+  mask-image: url(https://evip.rocar.net/wxapp/img/wxMin/ECardBox.png);
+  background-size: 100% 100%;
+  background-image: url(https://evip.rocar.net/wxapp/img/wxMin/ECard.png);
+  margin-bottom: 15px;
+  display: block;
+  color: black;
+}
+.card-item .card-content {
+  border-radius: 5px;
+  min-height: 125px;
+  padding: 5px;
+  border: 1px dotted rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 15vw;
+}
+.card-item .card-content > span {
+  font-size: 5vw;
+}
+.card-item .card-content > view {
+  font-size: 13px;
+  writing-mode: tb-rl;
+}

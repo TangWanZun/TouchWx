@@ -8,10 +8,11 @@
 		"es6": true,
 		"postcss": false,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"checkSiteMap": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.7.1",
+	"libVersion": "2.8.0",
 	"appid": "wx741745d2b71d095d",
 	"projectname": "dist",
 	"scripts": {},
@@ -34,7 +35,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 28,
+			"current": 32,
 			"list": [
 				{
 					"id": -1,
@@ -230,6 +231,20 @@
 					"name": "车型选择",
 					"pathName": "pages/client/carStyleSelect",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "福利中心页面",
+					"pathName": "pages/user/welfareCore",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 32,
+					"name": "福利中心卡券详情",
+					"pathName": "pages/user/welfareCoreInfo",
+					"query": "id=936",
 					"scene": null
 				}
 			]

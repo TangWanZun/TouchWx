@@ -1,0 +1,34 @@
+<view wx:if="{{formData.ImgUrl}}" class="header-img">
+  <image mode="widthFix" src="{{imgRootUrl+formData.ImgUrl}}"></image>
+</view>
+<view wx:else class="header">
+  <view class="card-item" style="background-color:{{formData.ECardColor}}">
+    <view class="card-content" wx:if="{{formData.CardType=='A02'}}">
+      <span>￥</span>
+      {{formData.Price}}
+      <view>优惠券</view>
+    </view>
+    <view class="card-content" wx:elif="{{formData.CardType=='A01'}}">
+      <span>张</span>
+      1
+      <view>优惠券</view>
+    </view>
+  </view>
+</view>
+<view class="card-content">
+  <view class="card-content-item">
+    <!-- <view class="card-content-title">
+          <span>商品名称</span>
+        </view>-->
+    {{formData.Name}}
+  </view>
+  <view class="card-content-item" style="font-size:12px;">
+    领券有效期：{{formData.Date}}
+  </view>
+  <view class="card-content-item card-content-item-qr">
+    <canvas class='canvas' style="width:{{qrcodeWidth}}px; height:{{qrcodeWidth}}px;" canvas-id='canvas' bindlongtap='save'></canvas>
+  </view>
+  <view class="card-content-item" wx:if="{{formData.Instruction}}">
+    <text class="card-content-text">{{formData.Instruction}}</text>
+  </view>
+</view>
