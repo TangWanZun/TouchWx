@@ -33,7 +33,8 @@
         "cmpScopeFilter",
         "indexData",
         "welfareCore",
-        "welfareCoreInfo"
+        "welfareCoreInfo",
+        "sweepCode"
       ]
     },
     {

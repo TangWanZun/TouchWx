@@ -1,0 +1,87 @@
+/* pages/user/sweepCode.wxss */
+.page-body{
+ min-height: 100vh;
+ background-color: #f3f3f3;
+ padding:0px 5vw;
+}
+/* 卡片 */
+.page-card{
+  border-radius: 10px;
+  background-color: #244ef2;
+  overflow: hidden;
+  position: relative;
+  padding:15px 20px;
+}
+/* 用于背景 */
+.page-card-bg{
+  background-color: #3063f2;
+  position: absolute;
+  width:200vw;
+  height: 200vw;
+  border-radius: 100%;
+  left:-100vw;
+  top:-155vw;
+}
+
+/* 卡片的主要内容展示 */
+.page-card-body{
+  position: relative;
+  z-index: 2;
+}
+.page-card-body-top{
+  display: flex;
+  align-items: center;
+}
+.page-card-body-top>image{
+  width:15vw;
+  height: 15vw;
+  border-radius: 100%;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+}
+.page-card-body-name{
+  margin-left: 10px;
+  font-size: 17px;
+  color: white;
+}
+.page-card-body-con{
+  display: flex;
+  flex-wrap: wrap;
+}
+.page-card-body-con>view{
+  color:white;
+  font-size: 13px;
+  width:50%;
+  margin-top: 10px;
+}
+/* 主要操作功能 */
+.content{
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 10px;
+}
+.content-item{
+  background-color: white;
+  border-radius: 10px;
+  width:30vw;
+  height:30vw;
+  border-right: 1px solid #f3f3f3;
+  border-bottom: 1px solid #f3f3f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.content-item:active{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.content-item:nth-child(3n){
+  border-right: 0;
+}
+.content-item>image{
+  width:13vw;
+  height: 13vw;
+  margin-bottom: 10px;
+}
+.content-text{
+  font-size: 13px;
+}

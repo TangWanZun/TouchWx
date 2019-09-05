@@ -13,7 +13,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.8.1",
-	"appid": "wx334450ff9ab82891",
+	"appid": "wx741745d2b71d095d",
 	"projectname": "dist",
 	"scripts": {},
 	"simulatorType": "wechat",
@@ -35,7 +35,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 32,
+			"current": 33,
 			"list": [
 				{
 					"id": -1,
@@ -245,6 +245,13 @@
 					"name": "福利中心卡券详情",
 					"pathName": "pages/user/welfareCoreInfo",
 					"query": "id=936",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "扫码入口",
+					"pathName": "pages/user/sweepCode",
+					"query": "",
 					"scene": null
 				}
 			]

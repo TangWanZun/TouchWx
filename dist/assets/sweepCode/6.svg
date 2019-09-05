@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50 (54983) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 9</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="公司信息-2-copy-7" transform="translate(-563.000000, -897.000000)">
+            <g id="Group-9" transform="translate(563.000000, 897.000000)">
+                <circle id="Oval-3-Copy-12" fill="#EC6547" cx="50" cy="50" r="50"></circle>
+                <g id="Group-8" transform="translate(53.000000, 50.500000) rotate(40.000000) translate(-53.000000, -50.500000) translate(37.000000, 27.000000)" stroke="#FFFFFF" stroke-width="4">
+                    <path d="M19.9722146,24.1909728 L19.9722146,20 C19.9722146,17.2385763 17.7336384,15 14.9722146,15 L5,15 C2.23857625,15 -3.38176876e-16,17.2385763 0,20 L0,41.3130453 C3.38176876e-16,44.074469 2.23857625,46.3130453 5,46.3130453 L14.9722146,46.3130453 C17.7336384,46.3130453 19.9722146,44.074469 19.9722146,41.3130453 L19.9722146,37.2116257" id="Path-40"></path>
+                    <path d="M31.9722146,9.19097281 L31.9722146,5 C31.9722146,2.23857625 29.7336384,3.80913106e-16 26.9722146,8.8817842e-16 L17,0 C14.2385763,5.07265313e-16 12,2.23857625 12,5 L12,26.3130453 C12,29.074469 14.2385763,31.3130453 17,31.3130453 L26.9722146,31.3130453 C29.7336384,31.3130453 31.9722146,29.074469 31.9722146,26.3130453 L31.9722146,22.2116257" id="Path-40" transform="translate(21.986107, 15.656523) scale(-1, 1) translate(-21.986107, -15.656523) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
