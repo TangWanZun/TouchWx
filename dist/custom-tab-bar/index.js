@@ -11,27 +11,39 @@ Component({
         meSelected: 0,
         selectedColor: "#256cfa",
         list:{
-            [wx.$UX. WeMinProMessage]: {
-                "pagePath": "/pages/tabBar/message",
-                "text": "消息",
-                "iconPath": "/assets/tabBar/message.png",
-                "selectedIconPath": "/assets/tabBar/message-select.png",
-                isShow: false
+            "a": {
+              "pagePath": "/pages/tabBar/index",
+              "text": "首页",
+              // "iconPath": "/assets/tabBar/message.png",
+              // "selectedIconPath": "/assets/tabBar/message-select.png",
+              "iconPath": "/assets/tabBar/index.png",
+              "selectedIconPath": "/assets/tabBar/index-select.png",
+              isShow: true
             },
-            [wx.$UX.WeMinProClient]: {
-                "pagePath": "/pages/tabBar/client",
-                "text": "客户",
-                "iconPath": "/assets/tabBar/client.png",
-                "selectedIconPath": "/assets/tabBar/client-select.png",
-                isShow: false
-            },
+            
+            // [wx.$UX.WeMinProClient]: {
+            //     "pagePath": "/pages/tabBar/client",
+            //     "text": "客户",
+            //     "iconPath": "/assets/tabBar/client.png",
+            //     "selectedIconPath": "/assets/tabBar/client-select.png",
+            //     isShow: false
+            // },
             [wx.$UX.WeMinProWork]: {
                 "pagePath": "/pages/tabBar/work",
                 "text": "工作",
                 "iconPath": "/assets/tabBar/work.png",
                 "selectedIconPath": "/assets/tabBar/work-select.png",
-                isShow: false
+              isShow: true
             },
+          [wx.$UX.WeMinProMessage]: {
+            "pagePath": "/pages/tabBar/message",
+            "text": "客户",
+            // "iconPath": "/assets/tabBar/message.png",
+            // "selectedIconPath": "/assets/tabBar/message-select.png",
+            "iconPath": "/assets/tabBar/client.png",
+            "selectedIconPath": "/assets/tabBar/client-select.png",
+            isShow: true
+          },
             [wx.$UX.WeMinProCooReport]: {
                 "pagePath": "/pages/tabBar/cooReport",
                 "text": "报告",
@@ -44,7 +56,7 @@ Component({
                 "text": "我的",
                 "iconPath": "/assets/tabBar/user.png",
                 "selectedIconPath": "/assets/tabBar/user-select.png",
-                isShow: false
+              isShow: true
             },
         },
         // list: [{

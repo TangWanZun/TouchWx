@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="36px" viewBox="0 0 40 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50 (54983) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="我的卡券-copy-5" transform="translate(-633.000000, -436.000000)" stroke="#2F63F4">
+            <g id="Group" transform="translate(633.000000, 437.000000)">
+                <rect id="Rectangle-4" fill="#D8D8D8" x="0.5" y="15.5" width="39" height="1"></rect>
+                <path d="M10.7635778,0 L6,0 C4.34314575,3.04359188e-16 3,1.34314575 3,3 L3,7.83741206" id="Path-4" stroke-width="2"></path>
+                <path d="M10.7635778,26 L6,26 C4.34314575,26 3,27.3431458 3,29 L3,33.8374121" id="Path-4-Copy-2" stroke-width="2" transform="translate(6.881789, 29.918706) scale(1, -1) translate(-6.881789, -29.918706) "></path>
+                <path d="M36.7635778,0 L32,0 C30.3431458,3.04359188e-16 29,1.34314575 29,3 L29,7.83741206" id="Path-4-Copy" stroke-width="2" transform="translate(32.881789, 3.918706) scale(-1, 1) translate(-32.881789, -3.918706) "></path>
+                <path d="M36.7635778,26 L32,26 C30.3431458,26 29,27.3431458 29,29 L29,33.8374121" id="Path-4-Copy-3" stroke-width="2" transform="translate(32.881789, 29.918706) scale(-1, -1) translate(-32.881789, -29.918706) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

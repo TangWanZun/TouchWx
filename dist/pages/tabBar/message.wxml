@@ -1,41 +1,57 @@
 <view class="page-body" bindtouchstart='bodyTap'>
-    <view class='page-list'>
-        <view class='page-data-none' wx:if="{{dataList.length==0&&pageOver}}">
-            <image src='/assets/icon/xx.svg'></image>
-            暂无消息
+  <view class="page-header">
+    <!-- 查询栏 -->
+    <navigator url="/pages/client/query" class='select-box'>
+      <view class='select-content'>
+        <view class='select-icon'>
+          <image src='/assets/icon/select.svg'></image>
         </view>
-        <!-- <view bindtap='itemTouchTap'  bindtouchstart='itemTouchStart' bindtouchend='itemTouchEnd'  data-index="{{index}}" data-url="/pages/message/chat?openId={{item.OpenId}}&cardName={{item.CardName||item.NickName}}&wxId={{item.WxId}}&headImg={{item.ProfilePhoto}}&online={{item.Online}}" class='page-item' hover-class="page-item-active" wx:for="{{dataList}}" wx:key="{{item.id}}"> -->
-        <view bindtap='itemTouchTap' bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-index="{{index}}" data-url="/pages/message/chat?openId={{item.OpenId}}&cardName={{item.CardName||item.NickName}}&wxId={{item.WxId}}&headImg={{item.ProfilePhoto}}&online={{item.Online}}"
-            class='page-item {{delIndex==index?"page-item-show":""}}' hover-class="page-item-active" wx:for="{{dataList}}" wx:key="{{item.id}}">
-            <view class='page-item-img {{item.Online?"":"page-item-img-Noline"}}'>
-                <view class='page-item-img-image'>
-                    <image src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
-                </view>
-                <view wx:if="{{item.PendCount!==0&&item.Online}}" class='page-item-badge'>{{item.PendCount}}</view>
-            </view>
-            <view class='page-item-con'>
-                <view class='page-item-con-con'>
-                    <view class='page-item-name'>{{item.CardName||item.NickName}}</view>
-                    <view class='page-item-date'>{{item.MsgDate}}</view>
-                </view>
-                <view class='page-item-message' wx:if="{{item.MsgType==CHAT_CONST.CHAT_TEXT}}">{{item.MsgData}}</view>
-                <view class='page-item-message' wx:elif="{{item.MsgType==CHAT_CONST.CHAT_IAMGE}}">[图片]</view>
-                <view class='page-item-message' wx:elif="{{item.MsgType==CHAT_CONST.CHAT_ADDS}}">[位置]</view>
-                <view class='page-item-message' wx:elif="{{item.MsgType==CHAT_CONST.CHAT_VOICE}}">[语音]</view>
-                <view class='page-item-message' wx:elif="{{item.MsgType==CHAT_CONST.CHAT_VIDEO}}">[视频]</view>
-            </view>
-            <view class='page-item-del {{delIndex==index?"page-item-del-show":""}} '>
-                <view data-index="{{index}}" class='page-item-del-in ' catchtouchstart='delItem'>
-                    <image src='/assets/icon/sc.svg'></image>
-                </view>
-            </view>
-        </view>
-        <!-- <view class="app-list-loging" wx:if="{{pageOver}}">数据加载完成</view> -->
-        <view class="app-list-loging" wx:if="{{!pageOver}}">
-            <view>数据加载中</view>
-            <image src='/assets/icon/jzz.svg'></image>
-        </view>
-        <view style='height:50px;width:100vw'></view>
+        <view class='select-text'>查询</view>
+      </view>
+    </navigator>
+    <!-- 进入客户页面 -->
+    <navigator url="/pages/tabBar/client" class='page-txl'>
+      <image src="/assets/icon/txl.svg"></image>
+    </navigator>
+  </view>
+
+  <view class='page-list'>
+    <view class='page-data-none' wx:if="{{dataList.length==0&&pageOver}}">
+      <image src='/assets/icon/xx.svg'></image>
+      暂无消息
     </view>
+    <!-- <view bindtap='itemTouchTap'  bindtouchstart='itemTouchStart' bindtouchend='itemTouchEnd'  data-index="{{index}}" data-url="/pages/message/chat?openId={{item.OpenId}}&cardName={{item.CardName||item.NickName}}&wxId={{item.WxId}}&headImg={{item.ProfilePhoto}}&online={{item.Online}}" class='page-item' hover-class="page-item-active" wx:for="{{dataList}}" wx:key="{{item.id}}"> -->
+    <view bindtap='itemTouchTap' bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-index="{{index}}" data-url="/pages/message/chat?openId={{item.OpenId}}&cardName={{item.CardName||item.NickName}}&wxId={{item.WxId}}&headImg={{item.ProfilePhoto}}&online={{item.Online}}"
+      class='page-item {{delIndex==index?"page-item-show":""}}' hover-class="page-item-active" wx:for="{{dataList}}" wx:key="{{item.id}}">
+      <view class='page-item-img {{item.Online?"":"page-item-img-Noline"}}'>
+        <view class='page-item-img-image'>
+          <image src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
+        </view>
+        <view wx:if="{{item.PendCount!==0&&item.Online}}" class='page-item-badge'>{{item.PendCount}}</view>
+      </view>
+      <view class='page-item-con'>
+        <view class='page-item-con-con'>
+          <view class='page-item-name'>{{item.CardName||item.NickName}}</view>
+          <view class='page-item-date'>{{item.MsgDate}}</view>
+        </view>
+        <view class='page-item-message' wx:if="{{item.MsgType==CHAT_CONST.CHAT_TEXT}}">{{item.MsgData}}</view>
+        <view class='page-item-message' wx:elif="{{item.MsgType==CHAT_CONST.CHAT_IAMGE}}">[图片]</view>
+        <view class='page-item-message' wx:elif="{{item.MsgType==CHAT_CONST.CHAT_ADDS}}">[位置]</view>
+        <view class='page-item-message' wx:elif="{{item.MsgType==CHAT_CONST.CHAT_VOICE}}">[语音]</view>
+        <view class='page-item-message' wx:elif="{{item.MsgType==CHAT_CONST.CHAT_VIDEO}}">[视频]</view>
+      </view>
+      <view class='page-item-del {{delIndex==index?"page-item-del-show":""}} '>
+        <view data-index="{{index}}" class='page-item-del-in ' catchtouchstart='delItem'>
+          <image src='/assets/icon/sc.svg'></image>
+        </view>
+      </view>
+    </view>
+    <!-- <view class="app-list-loging" wx:if="{{pageOver}}">数据加载完成</view> -->
+    <view class="app-list-loging" wx:if="{{!pageOver}}">
+      <view>数据加载中</view>
+      <image src='/assets/icon/jzz.svg'></image>
+    </view>
+    <view style='height:50px;width:100vw'></view>
+  </view>
 </view>
 <tab-bar selected="{{UX_CONST.WeMinProMessage}}"></tab-bar>

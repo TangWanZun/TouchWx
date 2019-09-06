@@ -1,0 +1,21 @@
+<!--pages/tabBar/index.wxml-->
+<view class="page-body">
+  <view class="page-header">
+    <view class="page-header-con">
+      <image class="page-header-logo" mode="widthFix" src="/assets/bg/logo.png"></image>
+    </view>
+  </view>
+  <!-- 主要内容 -->
+  <view class="page-main">
+    <!-- 最重要的搜索框 -->
+    <view class="page-query">
+      <view class="page-query-con">
+        <input class="page-query-input"></input>
+        <view class="page-query-icon" bindtap="scanCode">
+          <image src="/assets/icon/sm.svg"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<tab-bar selected="a"></tab-bar>

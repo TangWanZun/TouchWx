@@ -1,0 +1,118 @@
+/* pages/tabBar/index.wxss */
+.page-body{
+  min-height: 100vh;
+  background-color: #f2f2f2;
+}
+/* 顶部栏 */
+.page-header{
+  background-color: #2f63f4;
+  height: 40vh;
+  padding-top: 15vh;
+  position: relative;
+  overflow: hidden;
+}
+@keyframes headerRoute1{
+  0%{
+    transform: rotate(0deg) translateY(0);
+  }
+  50%{
+    transform: rotate(180deg) translateY(-10px);
+  }
+  100%{
+    transform: rotate(359deg) translateY(0);
+  }
+}
+@keyframes headerRoute2{
+  0%{
+    transform: rotate(45deg) translateY(0);
+  }
+  50%{
+    transform: rotate(225deg) translateY(-10px);
+  }
+  100%{
+    transform: rotate(44deg) translateY(0);
+  }
+}
+.page-header::after{
+  content: "";
+  position: absolute;
+  background-color: #f2f2f2;
+  width: 300vw;
+  height: 300vw;
+  border-radius: 43%;
+  margin-left: -150vw;
+  left:35%;
+  bottom: -292vw;
+  animation: headerRoute1 16s linear;
+  animation-iteration-count:infinite;
+  opacity: 0.3;
+}
+.page-header::before{
+  content: "";
+  position: absolute;
+  background-color: #f2f2f2;
+  width: 300vw;
+  height: 300vw;
+  border-radius: 45%;
+  margin-left: -150vw;
+  left:70%;
+  bottom: -292vw;
+  animation: headerRoute2 15s linear;
+  animation-iteration-count:infinite;
+  opacity:0.3;
+}
+/* logo */
+.page-header-logo{
+  width: 80vw;
+  margin:0 auto;
+  position: relative;
+  z-index: 2;
+}
+/* 主要内容 */
+.page-main{
+  height: 200px;
+  margin-top: -30px;
+  padding:0 15px;
+  position: relative;
+}
+/* 搜索框 */
+.page-query{
+  height: 50px;
+  border-radius: 18px;
+  box-shadow: 0 0 10px 1px rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+.page-query-con{
+  position: relative;
+  height: 50px;
+  width: 100%;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0 5px 10px 1px rgba(0,0,0, 0.1);
+  /* border:1px solid rgba(0, 0, 0, 0.1); */
+  display: flex;
+  align-items: center;
+  padding-right: 15px;
+}
+.page-query-input{
+ flex-grow: 1;
+ height: 50px;
+ font-size: 15px;
+ padding:0 15px;
+}
+.page-query-icon{
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page-query-icon:active{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.page-query-icon>image{
+  width:24px;
+  height: 24px;
+}
