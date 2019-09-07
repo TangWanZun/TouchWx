@@ -66,14 +66,14 @@ Page({
         if (app.tabBarPageCache.user){
             this.setData(Object.assign(this.data, app.tabBarPageCache.user))
         }else{
-            this.getData();
+            // this.getData();
         }
         //这里会出现抢线程的问题，比如app的跳转早于这个页面
-        let privateData = getApp().privateData;
-        if (typeof privateData.loginInfo === 'undefined') {
-            //运行
-            login.init();
-        }
+        // let privateData = getApp().privateData;
+        // if (typeof privateData.loginInfo === 'undefined') {
+        //     //运行
+        //     login.init();
+        // }
     },
 
     /**
@@ -123,7 +123,7 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function() {
-        this.getData()
+        // this.getData()
     },
 
     /**

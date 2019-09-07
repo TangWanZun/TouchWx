@@ -3,5 +3,6 @@
     "tab-bar": "/custom-tab-bar/index"
   },
   "navigationStyle":"custom",
-  "backgroundColor":"#2f63f4"
+  "backgroundColor":"#2f63f4",
+  "enablePullDownRefresh":true
 } 

@@ -1,76 +1,89 @@
 /* 背景 */
-.page-bg{
-        position: fixed;
-        top: 0px;
-        left: 0px;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.05);
+
+.page-bg {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.05);
 }
-.page-bg-1{
-        width:150vw;
-        height: 150vw;
-        border-radius: 100%;
-        background-color: #2f63f4;
-        position: absolute;
-        left:-50vw;
-        top: -75vw;
+
+.page-bg-1 {
+  width: 150vw;
+  height: 150vw;
+  border-radius: 100%;
+  background-color: #2f63f4;
+  position: absolute;
+  left: -50vw;
+  top: -75vw;
 }
-.page-bg-2{
-        width:300vw;
-        height: 150vw;
-        border-radius: 100%;
-        background-color: #244df4;
-        position: absolute;
-        left:0vw;
-        top: -60vw;
+
+.page-bg-2 {
+  width: 300vw;
+  height: 150vw;
+  border-radius: 100%;
+  background-color: #244df4;
+  position: absolute;
+  left: 0vw;
+  top: -60vw;
 }
-.page-bg-3{
-        width:25vw;
-        position: absolute;
-        left: 20px;
-        top: 00px;
-        opacity: 0.1;
+
+.page-bg-3 {
+  width: 25vw;
+  position: absolute;
+  left: 20px;
+  top: 00px;
+  opacity: 0.1;
 }
-.page-bg-4{
-        width:25vw;
-        position: absolute;
-        right: 20px;
-        top: 60vw;
-        opacity: 0.1;
+
+.page-bg-4 {
+  width: 25vw;
+  position: absolute;
+  right: 20px;
+  top: 60vw;
+  opacity: 0.1;
 }
+
 /* 垂直居中 */
+
 /* 水平居中 */
+
 /* 水平垂直居中 */
+
 /* 超出部分出省略号 */
+
 /* 多行文本超出部分省略号 */
-.page-body{
-        position: relative;
+
+.page-body {
+  position: relative;
   /* background-color: #f9faf7; */
 }
+
 .body {
   padding-top: 10px;
   min-height: 100vh;
 }
+
 .userCard {
-  /* background-color: white; */
-  /* background-color: rgba(255,255,255, 0.1); */
+  /* background-color: white; *//* background-color: rgba(255,255,255, 0.1); */
   color: white;
   margin: 0 15px;
   border-radius: 5px;
   /* padding: 15px; */
   display: flex;
   justify-content: space-between;
-  /* min-height: 160px; */
-  /* border:1px solid rgba(0, 0, 0, 0.05); */
+  /* min-height: 160px; *//* border:1px solid rgba(0, 0, 0, 0.05); */
 }
+
 .userCard .userCard-left {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
-  width:100px;
+  width: 100px;
 }
+
 .userCard .userCard-left .userCard-name {
   font-size: 18px;
   font-weight: bold;
@@ -79,29 +92,34 @@
   align-items: center;
   margin-bottom: 20px;
 }
-.userCard-name-text{
+
+.userCard-name-text {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.userCard-name image{
+
+.userCard-name image {
   margin-left: 15px;
   margin-right: 15px;
-  width:20px;
+  width: 20px;
   height: 20px;
 }
+
 .userCard .userCard-left .userCard-section {
   font-size: 17px;
   /* margin-bottom: 5px; */
 }
+
 .userCard .userCard-left .userCard-company {
   font-size: 15px;
-  color: rgba(255,255,255, 0.5);
-  width:100%;
+  color: rgba(255, 255, 255, 0.5);
+  width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 .userCard .userCard-right {
   display: flex;
   flex-direction: column;
@@ -110,6 +128,7 @@
   flex-shrink: 0;
   min-width: 70px;
 }
+
 .userCard .userCard-right .userCard-img {
   width: 70px;
   height: 70px;
@@ -117,54 +136,64 @@
   overflow: hidden;
   /* border:3px solid white; */
 }
+
 .userCard .userCard-right .userCard-index {
   border-radius: 5px;
-  padding:5px;
+  padding: 5px;
   margin-bottom: -10px;
   margin-right: -10px;
   color: white;
   width: 35px;
   height: 35px;
 }
-.userCard .userCard-right .userCard-index:active{
-  background-color: rgb(0,0,0,0.1) ;
+
+.userCard .userCard-right .userCard-index:active {
+  background-color: rgb(0, 0, 0, 0.1);
 }
+
 .my-data {
   /* background-color: white; */
   margin-top: 20px;
 }
+
 .my-data .my-data-title {
   font-size: 17px;
   padding: 15px 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  /* background-color: white; */
 }
-.my-data-con{
+
+.my-data-con {
   padding: 0 15px;
 }
 
-.my-data-title-icon{
-  width:20px;
+.my-data-title-icon {
+  width: 20px;
   height: 20px;
 }
+
 .my-data .my-data-rangking {
   position: relative;
 }
-.my-data-rangking-in{
+
+.my-data-rangking-in {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
 }
-.my-data-list{
+
+.my-data-list {
   display: flex;
-  justify-content:space-around;
-  flex-wrap:wrap;
+  justify-content: space-around;
+  flex-wrap: wrap;
   overflow: auto;
-  padding:20px 10px;
+  padding: 20px 10px;
   -webkit-overflow-scrolling: touch;
 }
+
 /* .my-data-list::after{
   content: "";
   display: block;
@@ -172,63 +201,77 @@
   height: 10px;
   flex-shrink: 0;
 } */
+
 .my-data .my-data-item {
   display: block;
   width: 36vw;
   max-width: 36vw;
-  padding:15px;
+  padding: 15px;
   border-radius: 10px;
   flex-shrink: 0;
   /* margin-right: 10px; */
   margin-bottom: 10px;
-  border:1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: white;
 }
-.ui-col-content{
-        color: white;
+
+.ui-col-content {
+  color: white;
 }
+
 /* 我的数据  */
-.ui-row{
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
+
+.ui-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
-.ui-col{
-        flex-shrink: 0;
-        flex-grow: 1;
-        width:50%;
+
+.ui-col {
+  flex-shrink: 0;
+  flex-grow: 1;
+  width: 50%;
 }
+
 .my-data .my-data-item-title {
   font-size: 13px;
   margin-bottom: 5px;
   color: rgba(0, 0, 0, 0.8);
   /* color: rgba(255,255,255, 0.8) */
 }
+
 .my-data .my-data-item-title > span {
   color: rgba(0, 0, 0, 0.5);
   /* color: rgba(255,255,255, 0.5); */
 }
-.ui-col-content .my-data-item-title{
-        color: rgba(255,255,255, 0.8)
+
+.ui-col-content .my-data-item-title {
+  color: rgba(255, 255, 255, 0.8);
 }
-.ui-col-content .my-data-item-title> span{
-        color: rgba(255,255,255, 0.5);
+
+.ui-col-content .my-data-item-title> span {
+  color: rgba(255, 255, 255, 0.5);
 }
+
 .my-data .my-data-item-index {
   font-size: 17px;
   font-weight: bold;
   margin-left: 10px;
 }
+
 .my-data .my-data-item-index > span {
   color: white;
 }
+
 .my-data .my-data-item-num {
   font-size: 20px;
   font-weight: bold;
 }
-.my-data .my-data-item-num >span{
+
+.my-data .my-data-item-num >span {
   font-size: 18px;
 }
+
 .my-data .my-data-img {
   width: 35px;
   height: 35px;
@@ -237,16 +280,20 @@
   overflow: hidden;
   position: relative;
 }
-.my-data .my-data-img image{
-        border-radius: 100%;
+
+.my-data .my-data-img image {
+  border-radius: 100%;
 }
+
 .my-data .my-data-item-list {
   text-align: center;
 }
+
 .item-list {
   background-color: white;
   padding: 0 15px;
 }
+
 .item-list .item {
   padding: 15px 15px;
   display: flex;
@@ -255,8 +302,9 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.03);
   position: relative;
 }
-.item-list .item::after{
-  content:'';
+
+.item-list .item::after {
+  content: '';
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNTM4OTY1NDQyOTkyIiBjbGFzcz0iaWNvbiIgc3R5bGU9IiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjE5MTMiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNDgiIGhlaWdodD0iNDgiPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PC9zdHlsZT48L2RlZnM+PHBhdGggZD0iTTY5MS44NDMgNDY5LjMzMzk5OTk5YzAgOC4zODYtMy4zMzEgMTYuNDI5LTkuMjYyIDIyLjM1NzAwMDAxbC0yOTYuNDQ4IDI5Ni40NDljLTEyLjM0OCAxMi4zNDgtMzIuMzY4IDEyLjM0OC00NC43MTUgMC0xMi4zNDgtMTIuMzQ4LTEyLjM0OC0zMi4zNjcgMC00NC43MTVsMjc0LjA5MDk5OTk5LTI3NC4wOS0yNzQuMDkwOTk5OTktMjc0LjA5Yy0xMi4zNDgtMTIuMzQ4LTEyLjM0OC0zMi4zNjcgMC00NC43MTVzMzIuMzY3LTEyLjM0OCA0NC43MTUgMGwyOTYuNDQ4IDI5Ni40NDdjNS45MyA1LjkyOSA5LjI2MiAxMy45NzMgOS4yNjIgMjIuMzU2OTk5OTl6IiBwLWlkPSIxOTE0IiBmaWxsPSIjMmMyYzJjIj48L3BhdGg+PC9zdmc+');
   position: absolute;
   top: 0;
@@ -268,14 +316,17 @@
   background-repeat: no-repeat;
   opacity: 0.5;
 }
+
 .item-list .item:last-child {
   border: 0;
 }
+
 .item-list .item .icon {
   margin-right: 10px;
 }
+
 .item-list .item .text {
   font-size: 18px;
 }
-/*添加目标*/
 
+/*添加目标*/

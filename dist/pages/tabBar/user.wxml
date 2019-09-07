@@ -9,7 +9,6 @@
     </view>
 </view>
 <view class="page-body">
-    <!-- <view class="userCard app-shadow-2"> -->
     <view class="userCard">
         <view class="userCard-left">
             <view class="userCard-name">
@@ -27,30 +26,19 @@
             <view class="userCard-img">
                 <head-img></head-img>
             </view>
-            <view wx:if="{{ux_consumeRelease}}" class="userCard-index" bindtap='scanCode'>
+            <!-- <view wx:if="{{ux_consumeRelease}}" class="userCard-index" bindtap='scanCode'>
                 <image src='/assets/icon/sys.svg'></image>
-            </view>
+            </view> -->
         </view>
     </view>
     <view class="my-data">
-        <!-- <navigator url="../user/myData" class="my-data-title">
-                        <view>我的数据</view>
-                        <view class="my-data-title-icon">
-                                <image src='/assets/icon/right.svg'></image>
-                        </view>
-                </navigator> -->
         <navigator wx:if="{{ux_cmpScopeFilter}}" url='/pages/user/cmpScopeFilter' class="my-data-title">
             <view style='color:white'>数据权限范围</view>
             <view class="my-data-title-icon app-filter-btow">
                 <image src='/assets/icon/right.svg'></image>
             </view>
         </navigator>
-        <!-- <view class="my-data-title">
-            <view style='color:white'>我的数据</view>
-            <view class="my-data-title-icon">
-            </view>
-        </view> -->
-        <view class='my-data-con'>
+        <!-- <view class='my-data-con'>
             <view class="ui-row" style="">
                 <view class="ui-col">
                     <view class="ui-col-content">
@@ -76,33 +64,27 @@
                     </view>
                 </view>
             </view>
-        </view>
-        <view class='my-data-list app-item-div app-scroll-none'>
-            <!-- <view  class="my-data-item app-shadow-2">
-          <view class="my-data-item-title my-data-item-list">本月目标
-            <span>（台）</span>
-          </view>
-          <view class="my-data-item-num my-data-item-list">3<span>/5</span></view>
-      </view> -->
+        </view> -->
+        <!-- <view class='my-data-list app-item-div app-scroll-none'>
             <navigator url='/pages/user/indexData?id={{item.Code}}&name={{item.Name}}&indexType={{item.IndexType}}' class="my-data-item  app-shadow-2" wx:if="{{(index!=0)&&(index!=1)}}" wx:for="{{formData}}" wx:key="index">
                 <view class="my-data-item-title my-data-item-list">{{item.Name}}
                     <span>（{{item.Unit}}）</span>
                 </view>
                 <view class="my-data-item-num my-data-item-list">{{item.Value}}</view>
             </navigator>
-        </view>
+        </view> -->
         <!-- <navigator wx:if="{{ux_cooReport}}" url="../user/myData" class="my-data-title" style='border-bottom:1px solid rgba(0,0,0,0.05)'>
             <view>运营报告</view>
             <view class="my-data-title-icon">
                 <image src='/assets/icon/right.svg'></image>
             </view>
         </navigator> -->
-        <navigator url='/pages/user/welfareCore' class="my-data-title">
+        <!-- <navigator url='/pages/user/welfareCore' class="my-data-title">
             <view>福利中心</view>
             <view class="my-data-title-icon">
                 <image src='/assets/icon/right.svg'></image>
             </view>
-        </navigator>
+        </navigator> -->
         <navigator url='/pages/user/myDatum' class="my-data-title">
             <view>个人资料</view>
             <view class="my-data-title-icon">

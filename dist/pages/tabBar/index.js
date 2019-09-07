@@ -1,20 +1,46 @@
 // pages/tabBar/index.js
+import login from '../../library/sdk/login.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    formData: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    //这里会出现抢线程的问题，比如app的跳转早于这个页面
+    let privateData = getApp().privateData;
+    if (typeof privateData.loginInfo === 'undefined') {
+      //运行
+      login.init();
+    }
+    try {
+      var value = wx.getStorageSync('indexData')
+      if (value) {
+        this.setData({
+          formData: value
+        });
+      } else {
+        this.getData(true);
+      }
+    } catch (e) {
+      console.log(`获取首页指标信息错误：${e}`)
+      this.getData(true);
+    }
   },
-
+  /**
+   * 点击搜索按钮
+   */
+  toQuery(){
+    wx.navigateTo({
+      url: '/pages/client/query'
+    });
+  },
   /**
    * 点击扫码按钮
    */
@@ -33,7 +59,39 @@ Page({
       }
     })
   },
-
+  /**
+   * 加载数据
+   */
+  getData(isLoad = false) {
+    let _this = this;
+    if (isLoad) {
+      wx.showLoading({
+        title: '数据加载中',
+        mask: true
+      })
+    }
+    wx.$request({
+      url: "/WeMinProPlatJson/GetList",
+      data: {
+        docType: 'Main',
+        actionType: 'ReportList',
+        needTotal: false,
+      },
+      success(res) {
+        _this.setData({
+          formData: res
+        });
+        wx.setStorage({
+          key: "indexData",
+          data: res
+        })
+      },
+      complete() {
+        wx.stopPullDownRefresh();
+        isLoad && wx.hideLoading()
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -66,7 +124,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.getData();
   },
 
   /**

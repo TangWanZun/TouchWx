@@ -1,10 +1,25 @@
-<!--miniprogram/custom-tab-bar/index.wxml-->
+<!-- 背景色 -->
+<cover-view class="tab-bar-bg">
+  <cover-view class="tab-bar-border"></cover-view>
+</cover-view>
+<!-- 底部栏 -->
 <cover-view class="tab-bar">
-    <cover-view class="tab-bar-border"></cover-view>
-    <cover-view wx:for="{{list}}" wx:if="{{item.isShow}}" wx:key="index" data-index="{{index}}" class="tab-bar-item">
-        <cover-view   data-path="{{item.pagePath}}"  bindtap="switchTab">
-            <cover-image src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></cover-image>
-            <cover-view style="color: {{selected === index ? selectedColor : color}}">{{item.text}}</cover-view>
-        </cover-view>
+  <cover-view wx:for="{{list}}" wx:if="{{item.isShow}}" wx:key="index" data-index="{{index}}" class="{{item.isApp?'tab-bar-app':'tab-bar-item'}}">
+    <!-- app应用按钮 -->
+    <cover-image bindtap="appShow" wx:if="{{item.isApp}}" src="/assets/tabBar/app.png"></cover-image>
+    <!-- 普通按钮 -->
+    <cover-view wx:else data-path="{{item.pagePath}}" bindtap="switchTab">
+      <cover-image src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></cover-image>
+      <cover-view style="color: {{selected === index ? selectedColor : color}}">{{item.text}}</cover-view>
     </cover-view>
+  </cover-view>
+</cover-view>
+<!-- 全部应用列表 -->
+<cover-view class="tab-app {{isAppShow?'tab-app-show':''}}">
+  这里放置全部的应用信息
+</cover-view>
+<!-- 关闭抽屉按钮 -->
+<cover-view class="tab-app-close {{isAppShow?'tab-app-close-show':''}}" bindtap="closeApp">
+  <cover-view class="tab-app-close-item tab-app-close-item-1"></cover-view>
+  <cover-view class="tab-app-close-item tab-app-close-item-2"></cover-view>
 </cover-view>

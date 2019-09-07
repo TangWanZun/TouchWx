@@ -1,17 +1,15 @@
-.tab-bar {
+/* 背景色 */
+.tab-bar-bg{
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   height: 48px;
   background: white;
-  display: flex;
-  padding-bottom: env(safe-area-inset-bottom);
-  z-index: 9;
 }
 
 .tab-bar-border {
-  background-color: rgba(0, 0, 0, 0.33);
+  background-color: rgba(0, 0, 0, 0.1);
   position: absolute;
   left: 0;
   top: 0;
@@ -21,6 +19,17 @@
   display: flex;
   justify-content: space-between;
 }
+/* 底部栏 */
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 68px;
+  display: flex;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
 
 .tab-bar-item {
   flex: 1;
@@ -29,6 +38,8 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  bottom: -10px;
 }
 
 .tab-bar-item cover-image {
@@ -38,4 +49,74 @@
 
 .tab-bar-item cover-view {
   font-size: 10px;
+}
+
+/* 这个是特殊的app按钮 */
+.tab-bar-app{
+  width:52px;
+  height: 52px;
+  border-radius: 100%;
+  background-color: white;
+  box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.1);
+  border:1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tab-bar-app:active{
+  background-color: rgb(247, 247, 247);
+}
+.tab-bar-app cover-image{
+  width:34px;
+  height: 34px;
+}
+/* 全部应用列表 */
+.tab-app{
+  position: fixed;
+  top: 0px;
+  left:0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255,255,255, 0.9);
+  transform: translateY(-100vh);
+  transition: 0.1s transform;
+}
+.tab-app-show{
+  transform: translateY(0);
+}
+/* 关闭应用抽屉 */
+.tab-app-close{
+  position: fixed; 
+  left:50%;
+  bottom: 15px;
+  margin-left: -26px;
+  width:52px;
+  height: 52px;
+  background-color: #2f63f4;
+  border-radius: 100%;
+  transform: translateY(80px);
+  transition: 0.2s transform;
+}
+.tab-app-close:active{
+  opacity: 0.8;
+}
+.tab-app-close-item{
+  border-radius: 10px;
+  width:30px;
+  height: 2px;
+  background-color: white;
+  position: absolute;
+  left:50%;
+  top:50%;
+  margin-left: -15px;
+  margin-top: -1px;
+}
+.tab-app-close-item-1{
+  transform: rotate(45deg);
+}
+.tab-app-close-item-2{
+  transform: rotate(-45deg);
+}
+.tab-app-close-show{
+  transform: translateY(0);
 }

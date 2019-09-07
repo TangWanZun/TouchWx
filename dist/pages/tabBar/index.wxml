@@ -10,11 +10,75 @@
     <!-- 最重要的搜索框 -->
     <view class="page-query">
       <view class="page-query-con">
-        <input class="page-query-input"></input>
+        <view class="page-query-input" disabled="true" bindtap="toQuery" placeholder="暂只支持客户搜索">暂只支持客户搜索</view>
         <view class="page-query-icon" bindtap="scanCode">
           <image src="/assets/icon/sm.svg"></image>
         </view>
       </view>
+    </view>
+    <!-- 快捷入口 -->
+    <view class="page-kjrk app-shadow-3">
+      <navigator url='/pages/user/welfareCore' class="page-kjrk-item">
+        <image src="/assets/app/flzx.svg"></image>
+        <view>
+          福利中心
+        </view>
+      </navigator>
+      <navigator url='/pages/user/myQr' class="page-kjrk-item">
+        <image src="/assets/app/khzl.svg"></image>
+        <view>
+          二维码
+        </view>
+      </navigator>
+      <navigator url='/pages/user/cmpScopeFilter' class="page-kjrk-item">
+        <image src="/assets/app/sjqx.svg"></image>
+        <view>
+          数据权限
+        </view>
+      </navigator>
+    </view>
+    <!-- 系统升级公告 -->
+    <view class="page-xtgg app-shadow-3">
+      <image src="/assets/icon/gg.svg"></image>
+      <view>
+        系统升级：卡券发放批量
+      </view>
+    </view>
+    <!-- 指标信息 -->
+    <!-- <view class='my-data-con'>
+      <view class="ui-row" style="">
+        <view class="ui-col">
+          <view class="ui-col-content">
+            <view class="my-data-item-title">{{formData[0].Name}}
+              <span>（{{formData[0].Unit}}）</span>
+            </view>
+            <view class="my-data-item-num">{{formData[0].Value}}</view>
+          </view>
+        </view>
+        <view class="ui-col">
+          <view class="ui-col-content">
+            <view class="my-data-rangking">
+              <view class='my-data-rangking-in'>
+                <view class="my-data-item-title">{{formData[1].Name}}</view>
+                <view class="my-data-item-index">
+                  <span>{{formData[1].Value}}</span>
+                </view>
+              </view>
+            </view>
+            <view class="my-data-img">
+              <head-img></head-img>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view> -->
+    <view class='my-data-list'>
+      <navigator url='/pages/user/indexData?id={{item.Code}}&name={{item.Name}}&indexType={{item.IndexType}}' class="my-data-item  app-shadow-2" wx:if="{{(index!=0)&&(index!=1)}}" wx:for="{{formData}}" wx:key="index">
+        <view class="my-data-item-title my-data-item-list">{{item.Name}}
+          <span>（{{item.Unit}}）</span>
+        </view>
+        <view class="my-data-item-num my-data-item-list">{{item.Value}}</view>
+      </navigator>
     </view>
   </view>
 </view>
