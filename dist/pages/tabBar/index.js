@@ -6,13 +6,27 @@ Page({
    * 页面的初始数据
    */
   data: {
-    formData: []
+    formData: [],
+    loginWidth: 0,
+    loginHeight:0,
+    loginTop:0,
+    headerTop:0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let systemInfo = getApp().privateData.systemInfo;
+    let boundInfo = getApp().privateData.boundInfo;
+    // console.log(systemInfo,boundInfo)
+    let width = boundInfo.left - 30;
+    this.setData({
+      loginWidth: width,
+      loginHeight: width*0.128,
+      loginTop: boundInfo.top+2,
+      headerTop: boundInfo.bottom+10
+    })
     //这里会出现抢线程的问题，比如app的跳转早于这个页面
     let privateData = getApp().privateData;
     if (typeof privateData.loginInfo === 'undefined') {
@@ -36,7 +50,7 @@ Page({
   /**
    * 点击搜索按钮
    */
-  toQuery(){
+  toQuery() {
     wx.navigateTo({
       url: '/pages/client/query'
     });

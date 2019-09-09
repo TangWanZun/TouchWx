@@ -1,17 +1,26 @@
+
 import {
   find
 } from "../library/sdk/util.js"
 Component({
   properties: {
+    //当前的选择项目
     selected: {
       type: String,
       value: '',
+    },
+    //当前页面是否自定义顶部栏
+    isTitle:{
+      type:Boolean,
+      value:false
     }
   },
   data: {
     color: "#bcbcbc",
     meSelected: 0,
     selectedColor: "#256cfa",
+    //安全高度
+    appHeaderHeight: 0,
     list: {
       "a": {
         "pagePath": "/pages/tabBar/index",
@@ -71,6 +80,12 @@ Component({
    * 组件生命周期函数-在组件布局完成后执行)
    */
   ready() {
+    let systemInfo = getApp().privateData.systemInfo;
+    let boundInfo = getApp().privateData.boundInfo;
+    // console.log(boundInfo)
+    this.setData({
+      appHeaderHeight:boundInfo.bottom
+    })
     // let appPrivateData = getApp().privateData;
     // getApp().loadInfo(() => {
     //   let tabList = this.data.list;
@@ -103,6 +118,11 @@ Component({
     switchTab(e) {
       const data = e.currentTarget.dataset
       const url = data.path
+      console.log();
+      if (this.data.selected==data.index){
+        //表示为当前页面
+        return
+      }
       // redirectTo
       wx.redirectTo({
         url

@@ -9,8 +9,7 @@
 
 .page-header {
   background-color: #2f63f4;
-  height: 40vh;
-  padding-top: 15vh;
+  height: 20vh;
   position: relative;
   overflow: hidden;
 }
@@ -76,10 +75,12 @@
 /* logo */
 
 .page-header-logo {
-  width: 80vw;
-  margin: 0 auto;
-  position: relative;
+  position: absolute;
+  top:3vw;
+  left:15px;
+  width:75vw;
   z-index: 2;
+  transition: 0.1s;
 }
 
 /* 主要内容 */
@@ -207,8 +208,8 @@
 }
 .my-data-list .my-data-item {
   display: block;
-  width: 36vw;
-  max-width: 36vw;
+  width: calc( ( 100vw - 110px ) / 2 );
+  /* max-width: 36vw; */
   padding: 15px;
   border-radius: 10px;
   flex-shrink: 0;

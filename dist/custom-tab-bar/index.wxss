@@ -42,12 +42,12 @@
   bottom: -10px;
 }
 
-.tab-bar-item cover-image {
+.tab-bar-item image {
   width: 27px;
   height: 27px;
 }
 
-.tab-bar-item cover-view {
+.tab-bar-item view {
   font-size: 10px;
 }
 
@@ -66,7 +66,7 @@
 .tab-bar-app:active{
   background-color: rgb(247, 247, 247);
 }
-.tab-bar-app cover-image{
+.tab-bar-app image{
   width:34px;
   height: 34px;
 }
@@ -77,16 +77,51 @@
   left:0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(255,255,255, 0.9);
+  background-color: rgba(255,255,255, 1);
   transform: translateY(-100vh);
   transition: 0.1s transform;
+  z-index: 9;
 }
 .tab-app-show{
   transform: translateY(0);
 }
+.tab-app-body{
+  /* height: calc( 100% - 80px ); */
+  overflow: auto;
+}
+.tab-app-body-item{
+  padding:0 15px;
+  padding-bottom: 15px;
+}
+.tab-app-body-title{
+  font-size: 15px;
+}
+.tab-app-body-con{
+  display: flex;
+  flex-wrap: wrap;
+}
+/* 单个应用 */
+.tab-app-body-con-item{
+  width:calc(( 100vw - 30px ) / 4 );
+  padding:10px 0;
+  border-radius: 5px;
+}
+.tab-app-body-con-item:active{
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.tab-app-body-con-item>image{
+  margin:0 auto;
+  width:50px;
+  height: 50px;
+}
+.tab-app-body-con-item>view{
+  font-size: 13px;
+  text-align: center;
+}
 /* 关闭应用抽屉 */
 .tab-app-close{
   position: fixed; 
+  z-index: 10;
   left:50%;
   bottom: 15px;
   margin-left: -26px;
