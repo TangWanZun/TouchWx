@@ -37,12 +37,12 @@
       </navigator>
     </view>
     <!-- 系统升级公告 -->
-    <view class="page-xtgg app-shadow-3">
+    <navigator url="/pages/user/aboutInfo" class="page-xtgg app-shadow-3">
       <image src="/assets/icon/gg.svg"></image>
       <view>
-        系统升级：卡券发放批量
+        系统升级：2.0.0系统上线
       </view>
-    </view>
+    </navigator>
     <!-- 指标信息 -->
     <!-- <view class='my-data-con'>
       <view class="ui-row" style="">
@@ -81,4 +81,4 @@
     </view>
   </view>
 </view>
-<tab-bar selected="a" isTitle="{{true}}"></tab-bar>
+<!-- <tab-bar selected="a" isTitle="{{true}}"></tab-bar> -->

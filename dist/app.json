@@ -1,12 +1,6 @@
 {
   "pages": [
-    "pages/tabBar/index",
-    "pages/tabBar/user",
-    "pages/tabBar/message",
-    "pages/tabBar/client",
-    "pages/tabBar/work",
-    "pages/tabBar/login",
-    "pages/tabBar/cooReport",
+    "custom-tab-bar/index",
     "pages/test"
   ],
   "subPackages": [
@@ -35,7 +29,9 @@
         "indexData",
         "welfareCore",
         "welfareCoreInfo",
-        "sweepCode"
+        "sweepCode",
+        "about",
+        "aboutInfo"
       ]
     },
     {

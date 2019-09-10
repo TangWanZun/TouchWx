@@ -1,3 +1,11 @@
+<!-- 首页 -->
+<index-view wx:if="{{selected=='INDEX'}}"></index-view>
+<!-- 工作 -->
+<work-view wx:elif="{{selected=='WORK'}}"></work-view>
+<!-- 消息（客户） -->
+<message-view wx:elif="{{selected=='MESSAGE'}}"></message-view>
+<!-- 我的 -->
+<user-view wx:elif="{{selected=='USER'}}"></user-view>
 <!-- 背景色 -->
 <view class="tab-bar-bg">
   <view class="tab-bar-border"></view>
@@ -15,15 +23,33 @@
   </view>
 </view>
 <!-- 全部应用列表 -->
-<view class="tab-app {{isAppShow?'tab-app-show':''}}" style="padding-top:{{isTitle?appHeaderHeight:'0'}}px">
+<view class="tab-app {{isAppShow?'tab-app-show':''}}" style="padding-top:{{appHeaderHeight}}px">
   <view class="tab-app-body" style="height: calc( 100% - 80px );">
-    <view class="tab-app-body-item" wx:for="{{4}}" wx:key="{{index}}">
+    <!-- <view class="tab-app-body-item" wx:for="{{4}}" wx:key="{{index}}">
       <view class="tab-app-body-title">微信数据</view>
       <view class="tab-app-body-con">
         <view class="tab-app-body-con-item" wx:for="{{10}}" wx:key="{{index}}">
           <image src="/assets/app/flzx.svg"></image>
           <view>福利中心</view>
         </view>
+      </view>
+    </view> -->
+     <view class="tab-app-body-item">
+      <view class="tab-app-body-title">应用功能</view>
+      <view class="tab-app-body-con">
+        <navigator url="{{item.url}}" class="tab-app-body-con-item" wx:for="{{funAppList}}" wx:key="{{index}}" wx:if="{{item._show}}">
+          <image src="{{item.imgUrl}}"></image>
+          <view>{{item.name}}</view>
+        </navigator>
+      </view>
+    </view>
+    <view class="tab-app-body-item">
+      <view class="tab-app-body-title">业务功能</view>
+      <view class="tab-app-body-con">
+        <navigator url="{{item.url}}" class="tab-app-body-con-item" wx:for="{{appList}}" wx:key="{{index}}" wx:if="{{item._show}}">
+          <image src="{{item.imgUrl}}"></image>
+          <view>{{item.name}}</view>
+        </navigator>
       </view>
     </view>
   </view>

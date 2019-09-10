@@ -1,4 +1,10 @@
 {
-    "component": true,
-    "usingComponents": {}
+    "usingComponents": {
+      "index-view":"../pages/tabBar/index",
+      "work-view":"../pages/tabBar/work",
+      "message-view":"../pages/tabBar/message",
+      "user-view":"../pages/tabBar/user"
+    },
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "white"
 }

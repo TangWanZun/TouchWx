@@ -8,7 +8,7 @@
         <image mode="widthFix" src='/assets/icon/dd.svg'></image>
     </view>
 </view>
-<view class="page-body">
+<view class="page-body" style="padding-top:{{pageHeight}}px">
     <view class="userCard">
         <view class="userCard-left">
             <view class="userCard-name">
@@ -32,12 +32,7 @@
         </view>
     </view>
     <view class="my-data">
-        <navigator wx:if="{{ux_cmpScopeFilter}}" url='/pages/user/cmpScopeFilter' class="my-data-title">
-            <view style='color:white'>数据权限范围</view>
-            <view class="my-data-title-icon app-filter-btow">
-                <image src='/assets/icon/right.svg'></image>
-            </view>
-        </navigator>
+        
         <!-- <view class='my-data-con'>
             <view class="ui-row" style="">
                 <view class="ui-col">
@@ -85,8 +80,23 @@
                 <image src='/assets/icon/right.svg'></image>
             </view>
         </navigator> -->
+        <navigator url='/pages/user/cmpScopeFilter' class="my-data-title">
+            <image class="my-data-title-image" src="/assets/icon/txqx.svg"></image>
+            <view class="my-data-title-con">数据权限范围</view>
+            <view class="my-data-title-icon app-filter-btow">
+                <image src='/assets/icon/right.svg'></image>
+            </view>
+        </navigator>
         <navigator url='/pages/user/myDatum' class="my-data-title">
-            <view>个人资料</view>
+            <image class="my-data-title-image" src="/assets/icon/grzl.svg"></image>
+            <view class="my-data-title-con">个人资料</view>
+            <view class="my-data-title-icon">
+                <image src='/assets/icon/right.svg'></image>
+            </view>
+        </navigator>
+        <navigator url='/pages/user/about' class="my-data-title">
+            <image class="my-data-title-image" src="/assets/icon/gywm.svg"></image>
+            <view class="my-data-title-con">关于</view>
             <view class="my-data-title-icon">
                 <image src='/assets/icon/right.svg'></image>
             </view>
@@ -94,4 +104,4 @@
     </view>
     <view style='height:50px;width:100vw'></view>
 </view>
-<tab-bar selected="{{UX_CONST.WeMinProUser}}"></tab-bar>
+<!-- <tab-bar selected="{{UX_CONST.WeMinProUser}}"></tab-bar> -->

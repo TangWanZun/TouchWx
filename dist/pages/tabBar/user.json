@@ -1,11 +1,11 @@
 {
   "navigationBarTitleText": "我的",
   "usingComponents": {
-    "head-img": "/component/headImg",
-    "tab-bar": "/custom-tab-bar/index"
+    "head-img": "/component/headImg"
   },
   "navigationBarBackgroundColor":"#2f63f4",
   "enablePullDownRefresh": true,
   "backgroundColor":"#2f63f4",
-  "navigationBarTextStyle":"white"
+  "navigationBarTextStyle":"white",
+  "component": true
 }

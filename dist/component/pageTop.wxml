@@ -1,0 +1,13 @@
+<view class='page-bg'>
+  <view class='page-bg-2'></view>
+  <view class='page-bg-1'></view>
+  <view class='page-bg-3'>
+    <image mode="widthFix" src='/assets/icon/dd.svg'></image>
+  </view>
+  <view class='page-bg-4'>
+    <image mode="widthFix" src='/assets/icon/dd.svg'></image>
+  </view>
+</view>
+<view class="page-header" style="height:{{pageHeight}}px;padding-top:{{pageTop}}px">
+  {{title}}
+</view>

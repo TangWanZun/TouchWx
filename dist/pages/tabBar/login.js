@@ -164,6 +164,8 @@ Page({
      * 全部信息上传
      */
     login: function(res) {
+      // console.log(JSON.stringify(res))
+      // console.log( res)
         let logtype = res.currentTarget.dataset.logtype;
         // console.log({
         //     UserCode: logtype === "code" ? this.formData.user : "",

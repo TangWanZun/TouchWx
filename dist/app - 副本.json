@@ -1,92 +1,75 @@
 {
-	"pages": [
-		"pages/tabBar/user",
-		"pages/tabBar/message",
-		"pages/tabBar/client",
-		"pages/tabBar/work",
-		"pages/tabBar/login"
-	],
-	"subPackages": [{
-			"root": "pages/client",
-			"pages": [
-				"clientDetails",
-				"clientDetails/carDetails",
-				"clientDetails/coupon",
-				"query",
-				"clientDetails/stored",
-				"clientDetails/integral",
-				"clientDetails/label"
-			]
-		},
-		{
-			"root": "pages/user",
-			"pages": [
-				"myData",
-				"myQr",
-				"myDatum",
-				"work/cardCustomer"
-			]
-		},
-		{
-			"root": "pages/message",
-			"pages": [
-				"chat",
-				"video"
-			]
-		},
-		{
-			"root": "pages/work",
-			"pages": [
-				"workRescue",
-				"workComplain",
-				"workMake",
-				"workActivity",
-				"workExpire",
-				"workPage/complainPage",
-				"workPage/makePage",
-				"workPage/activityPage"
-			]
-		}
-	],
-	"window": {
-		"backgroundTextStyle": "dark",
-		"navigationBarBackgroundColor": "#ffffff",
-		"navigationBarTitleText": "TouchUI",
-		"navigationBarTextStyle": "black"
-	},
-	"tabBar": {
-		"list": [{
-				"pagePath": "pages/tabBar/message",
-				"text": "消息",
-				"iconPath": "assets/tabBar/message.png",
-				"selectedIconPath": "assets/tabBar/message-select.png"
-			},
-			{
-				"pagePath": "pages/tabBar/client",
-				"text": "客户",
-				"iconPath": "assets/tabBar/client.png",
-				"selectedIconPath": "assets/tabBar/client-select.png"
-			},
-			{
-				"pagePath": "pages/tabBar/work",
-				"text": "工作",
-				"iconPath": "assets/tabBar/work.png",
-				"selectedIconPath": "assets/tabBar/work-select.png"
-			},
-			{
-				"pagePath": "pages/tabBar/user",
-				"text": "我的",
-				"iconPath": "assets/tabBar/user.png",
-				"selectedIconPath": "assets/tabBar/user-select.png"
-			}
-		],
-		"color": "#bcbcbc",
-		"selectedColor": "#256cfa",
-		"backgroundColor": "#ffffff",
-		"custom": true
-	},
-	"networkTimeout": {
-		"request": 60000
-	},
-	"sitemapLocation": "sitemap.json"
+  "pages": [
+    "custom-tab-bar/index",
+    "pages/tabBar/index",
+    "pages/tabBar/user",
+    "pages/tabBar/message",
+    "pages/tabBar/client",
+    "pages/tabBar/work",
+    "pages/tabBar/login",
+    "pages/tabBar/cooReport",
+    "pages/test"
+  ],
+  "subPackages": [
+    {
+      "root": "pages/client",
+      "pages": [
+        "clientDetails",
+        "clientDetails/carDetails",
+        "clientDetails/coupon",
+        "query",
+        "clientDetails/stored",
+        "clientDetails/integral",
+        "clientDetails/label",
+        "clientDetails/carModify",
+        "carStyleSelect"
+      ]
+    },
+    {
+      "root": "pages/user",
+      "pages": [
+        "myData",
+        "myQr",
+        "myDatum",
+        "work/cardCustomer",
+        "cmpScopeFilter",
+        "indexData",
+        "welfareCore",
+        "welfareCoreInfo",
+        "sweepCode",
+        "about",
+        "aboutInfo"
+      ]
+    },
+    {
+      "root": "pages/message",
+      "pages": [
+        "chat",
+        "video"
+      ]
+    },
+    {
+      "root": "pages/work",
+      "pages": [
+        "workRescue",
+        "workComplain",
+        "workMake",
+        "workActivity",
+        "workExpire",
+        "workPage/complainPage",
+        "workPage/makePage",
+        "workPage/activityPage"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "TouchUI",
+    "navigationBarTextStyle": "black"
+  },
+  "networkTimeout": {
+    "request": 60000
+  },
+  "sitemapLocation": "sitemap.json"
 }

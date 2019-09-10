@@ -1,4 +1,5 @@
 <view class="page-body" bindtouchstart='bodyTap'>
+  <page-top title="客户"></page-top>
   <view class="page-header">
     <!-- 查询栏 -->
     <navigator url="/pages/client/query" class='select-box'>
@@ -54,4 +55,3 @@
     <view style='height:50px;width:100vw'></view>
   </view>
 </view>
-<tab-bar selected="{{UX_CONST.WeMinProMessage}}"></tab-bar>

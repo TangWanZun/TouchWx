@@ -1,3 +1,5 @@
+import {upDateApp} from "./UX_CONST.js"
+
 //保存用户信息
 function saveUserInfo(res, obj = {}) {
     // console.log("success", res);
@@ -124,6 +126,8 @@ let loginObj = {
                 // console.log(obj);
                 //将配置信息保存
                 privateData.UXList = obj || {};
+                //更新用户登录APP权限
+                upDateApp(obj)
                 //获取登录权限成功
                 success&&success()
             },

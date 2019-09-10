@@ -1,4 +1,76 @@
+/**
+ * 功能应用面板信息
+ */
+export const FunApps = {
+  //我的二维码
+  "QRcode": {
+    _show: true,
+    imgUrl: '/assets/app/khzl.svg',
+    name: '我的二维码',
+    url: '/pages/user/myQr'
+  },
+  //数据权限
+  "cmpScopeFilter": {
+    _show: true,
+    imgUrl: '/assets/app/sjqx.svg',
+    name: '数据权限',
+    url: '/pages/user/cmpScopeFilter'
+  },
+}
+/**
+ * 业务应用面板信息
+ */
+export const Apps = {
+  //活动报名
+  "WeMinProActivitySignUp":{
+    _show:false,
+    imgUrl:'/assets/app/WORK_HD.svg',
+    name:'活动报名',
+    url:'/pages/work/workActivity'
+  },
+  //救援单
+  "WeMinProRescue": {
+    _show: false,
+    imgUrl: '/assets/app/WORK_JY.svg',
+    name: '救援服务',
+    url: '/pages/work/workRescue'
+  },
+  //预约单
+  "WeMinProReserve": {
+    _show: false,
+    imgUrl: '/assets/app/WORK_YY.svg',
+    name: '预约服务',
+    url: '/pages/work/workMake'
+  },
+  //福利中心
+  "WeMinProECardRules":{
+    _show: false,
+    imgUrl: '/assets/app/flzx.svg',
+    name: '福利中心',
+    url: '/pages/user/welfareCore'
+  }
+}
+/**
+ * 更新权限app，并且将数据保存到缓存中
+ */
+export const upDateApp = function(uxList){
+  // console.log(uxList)
+  for (let x in Apps){
+    if (uxList[x]){
+      //表示存在当前app功能权限
+      Apps[x]._show = true;
+    }
+  }
+}
+
 export const UX_CONST = {
+    /**
+     * 最新的权限信息
+     */
+    
+    /**
+     * 原来的权限信息
+     */
     //信息权限
     "WeMinProMessage": "WeMinProChat",
     //客户页面

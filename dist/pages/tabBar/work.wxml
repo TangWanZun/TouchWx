@@ -1,5 +1,6 @@
 <view class="page-body">
-    <view class='work-type-list app-scroll-none'>
+  <page-top title="工作"></page-top>
+  <!-- <view class='work-type-list app-scroll-none'>
         <navigator url='{{item.url}}' class='work-type' wx:for="{{workTypeData}}" wx:key="{{item.title}}"
             wx:if="{{ux[item.uxName]}}"
         >
@@ -8,126 +9,128 @@
             </view>
             <view class='work-type-title'>{{item.title}}</view>
         </navigator>
+    </view> -->
+  <!-- <view style='width:100vw;height:80px;'></view> -->
+  <view class='work-list-body app-scroll-none' wx:if="{{reportList.length>0}}">
+    <view class="work-list-body-item  app-shadow-2" wx:for="{{reportList}}" wx:key="{{index}}">
+      <view class="work-list-body-item-title ">{{item.Name}}</view>
+      <view class="work-list-body-item-num ">{{item.Value}}
+        <span>{{item.Unit}}</span>
+      </view>
     </view>
-    <view style='width:100vw;height:80px;'></view>
-    <view class='work-list-body app-scroll-none' wx:if="{{reportList.length>0}}">
-        <view class="work-list-body-item  app-shadow-2" wx:for="{{reportList}}" wx:key="{{index}}">
-            <view class="work-list-body-item-title ">{{item.Name}}</view>
-            <view class="work-list-body-item-num ">{{item.Value}} <span>{{item.Unit}}</span></view>
+  </view>
+  <view class='work-list-title' style="padding-top:10px;">
+    今日工作
+  </view>
+  <view class='work-none-data' wx:if="{{dataList.length==0&&isOver}}">
+    <image src='/assets/icon/gz.svg'></image>本日暂无工作</view>
+  <view class='work-list'>
+    <view class='work-item-box ' wx:for="{{dataList}}" wx:key="{{item.id}}">
+      <!-- 救援服务 -->
+      <view wx:if="{{item.DocType === workType.WORK_JY&&ux.ux_weiXinRescue}}" class='work-jyfw'>
+        <navigator url="/pages/work/workPage/complainPage?id={{item.DocId}}" class='work-item'>
+          <view class='work-item-head'>
+            紧急救援
+          </view>
+          <view class='work-item-body'>
+            <view class='work-item-body-title'>
+              <view class='work-item-headimg'>
+                <image src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
+              </view>
+              <view class='work-item-name'>{{item.CardName}}</view>
+            </view>
+            <view class='work-item-car'>{{item.CarNum}}</view>
+            <view class='work-item-body-con'>
+              <span>
+                <image src='/assets/icon/dz.svg'></image>
+              </span>{{item.Note}}
+            </view>
+          </view>
+          <view class='work-item-foot'>
+            {{item.CreateDate}}
+          </view>
+        </navigator>
+      </view>
+      <!-- 投诉建议 -->
+      <view wx:elif="{{item.DocType === workType.WORK_TS}}" class='work-item  work-tsjy'>
+        <view class='work-item-head'>
+          投诉建议
         </view>
-    </view>
-    <view class='work-list-title' style="padding-top:10px;">
-        今日工作
-    </view>
-    <view class='work-none-data' wx:if="{{dataList.length==0&&isOver}}">
-        <image src='/assets/icon/gz.svg'></image>本日暂无工作</view>
-    <view class='work-list'>
-        <view class='work-item-box ' wx:for="{{dataList}}" wx:key="{{item.id}}">
-            <!-- 救援服务 -->
-            <view wx:if="{{item.DocType === workType.WORK_JY&&ux.ux_weiXinRescue}}" class='work-jyfw'>
-                <navigator url="/pages/work/workPage/complainPage?id={{item.DocId}}" class='work-item'>
-                    <view class='work-item-head'>
-                        紧急救援
-                    </view>
-                    <view class='work-item-body'>
-                        <view class='work-item-body-title'>
-                            <view class='work-item-headimg'>
-                                <image src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
-                            </view>
-                            <view class='work-item-name'>{{item.CardName}}</view>
-                        </view>
-                        <view class='work-item-car'>{{item.CarNum}}</view>
-                        <view class='work-item-body-con'>
-                            <span>
-                                <image src='/assets/icon/dz.svg'></image>
-                            </span>{{item.Note}}
-                        </view>
-                    </view>
-                    <view class='work-item-foot'>
-                        {{item.CreateDate}}
-                    </view>
-                </navigator>
+        <view class='work-item-body'>
+          <view class='work-item-body-title'>
+            <view class='work-item-headimg'>
+              <image src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
             </view>
-            <!-- 投诉建议 -->
-            <view wx:elif="{{item.DocType === workType.WORK_TS}}" class='work-item  work-tsjy'>
-                <view class='work-item-head'>
-                    投诉建议
-                </view>
-                <view class='work-item-body'>
-                    <view class='work-item-body-title'>
-                        <view class='work-item-headimg'>
-                            <image src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
-                        </view>
-                        <view class='work-item-name'>{{item.CardName}}</view>
-                    </view>
-                    <view class='work-item-body-con'>
-                        {{item.Note}}
-                    </view>
-                </view>
-                <view class='work-item-foot'>
-                    {{item.CreateDate}}
-                </view>
-            </view>
-            <!-- 服务预约 -->
-            <navigator url="/pages/work/workPage/makePage?id={{item.DocId}}" wx:elif="{{item.DocType === workType.WORK_YY&&ux.ux_weiXinReserve}}" class='work-item work-fwyy'>
-                <view class='work-item-head'>
-                    {{item.Note}}
-                </view>
-                <view class='work-item-body'>
-                    <view class='work-item-body-con'>
-                        <view class='work-item-headimg'>
-                            <image src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
-                        </view>
-                        <view class='work-item-name'>{{item.CardName}}</view>
-                    </view>
-                    <view class='work-item-body-title'>
-                        {{item.CarNum||'暂无车牌'}}
-                    </view>
-                </view>
-                <view class='work-item-foot'>
-                    <view>{{item.CreateDate}}</view>
-                    <view>{{item.ReserveStartDate}} - {{item.ReserveEndDate}}</view>
-                </view>
-            </navigator>
-            <!-- 活动报名 -->
-            <navigator url="/pages/work/workPage/activityPage?id={{item.DocId}}" wx:elif="{{item.DocType === workType.WORK_HD&&ux.ux_weiXinActivitySignUp}}" class='work-item  work-hdbm'>
-                <view class='work-item-head'>
-                    <view class='work-item-title'>{{item.Note}}</view>
-                    <view class='work-item-bg'>
-                        <image mode="aspectFill" src='{{imgUrl+item.Img}}'></image>
-                    </view>
-                </view>
-                <view class='work-item-body'>
-                    <view class='work-item-body-title'>活动报名</view>
-                    <view class='work-item-body-con'>
-                        <view class='work-item-headimg'>
-                            <image src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
-                        </view>
-                        <view class='work-item-name'>{{item.CardName}}</view>
-                    </view>
-                </view>
-                <view class='work-item-foot'>{{item.CreateDate}}</view>
-            </navigator>
-            <!-- 到期提醒 -->
-            <view wx:elif="{{item.DocType === workType.WORK_DQ&&ux.ux_timedReport}}" class='work-item  work-dqtx'>
-                <view class='work-item-head'>
-                    到期提醒
-                </view>
-                <view class='work-item-body'>
-                    <view class='work-item-body-title'>
-                        <view class='work-item-headimg'>
-                            <image src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
-                        </view>
-                        <view class='work-item-name'>{{item.CardName}}</view>
-                    </view>
-                    <view class='work-item-body-con'>
-                        {{item.Note}}
-                    </view>
-                </view>
-                <view class='work-item-foot'>{{item.CreateDate}}</view>
-            </view>
+            <view class='work-item-name'>{{item.CardName}}</view>
+          </view>
+          <view class='work-item-body-con'>
+            {{item.Note}}
+          </view>
         </view>
+        <view class='work-item-foot'>
+          {{item.CreateDate}}
+        </view>
+      </view>
+      <!-- 服务预约 -->
+      <navigator url="/pages/work/workPage/makePage?id={{item.DocId}}" wx:elif="{{item.DocType === workType.WORK_YY&&ux.ux_weiXinReserve}}" class='work-item work-fwyy'>
+        <view class='work-item-head'>
+          {{item.Note}}
+        </view>
+        <view class='work-item-body'>
+          <view class='work-item-body-con'>
+            <view class='work-item-headimg'>
+              <image src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
+            </view>
+            <view class='work-item-name'>{{item.CardName}}</view>
+          </view>
+          <view class='work-item-body-title'>
+            {{item.CarNum||'暂无车牌'}}
+          </view>
+        </view>
+        <view class='work-item-foot'>
+          <view>{{item.CreateDate}}</view>
+          <view>{{item.ReserveStartDate}} - {{item.ReserveEndDate}}</view>
+        </view>
+      </navigator>
+      <!-- 活动报名 -->
+      <navigator url="/pages/work/workPage/activityPage?id={{item.DocId}}" wx:elif="{{item.DocType === workType.WORK_HD&&ux.ux_weiXinActivitySignUp}}" class='work-item  work-hdbm'>
+        <view class='work-item-head'>
+          <view class='work-item-title'>{{item.Note}}</view>
+          <view class='work-item-bg'>
+            <image mode="aspectFill" src='{{imgUrl+item.Img}}'></image>
+          </view>
+        </view>
+        <view class='work-item-body'>
+          <view class='work-item-body-title'>活动报名</view>
+          <view class='work-item-body-con'>
+            <view class='work-item-headimg'>
+              <image src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
+            </view>
+            <view class='work-item-name'>{{item.CardName}}</view>
+          </view>
+        </view>
+        <view class='work-item-foot'>{{item.CreateDate}}</view>
+      </navigator>
+      <!-- 到期提醒 -->
+      <view wx:elif="{{item.DocType === workType.WORK_DQ&&ux.ux_timedReport}}" class='work-item  work-dqtx'>
+        <view class='work-item-head'>
+          到期提醒
+        </view>
+        <view class='work-item-body'>
+          <view class='work-item-body-title'>
+            <view class='work-item-headimg'>
+              <image src='{{item.ProfilePhoto?imgUrl+item.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image>
+            </view>
+            <view class='work-item-name'>{{item.CardName}}</view>
+          </view>
+          <view class='work-item-body-con'>
+            {{item.Note}}
+          </view>
+        </view>
+        <view class='work-item-foot'>{{item.CreateDate}}</view>
+      </view>
     </view>
-    <view style='height:50px;width:100vw'></view>
+  </view>
+  <view style='height:50px;width:100vw'></view>
 </view>
-<tab-bar selected="{{UX_CONST.WeMinProWork}}"></tab-bar>
+<!-- <tab-bar selected="{{UX_CONST.WeMinProWork}}"></tab-bar> -->

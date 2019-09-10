@@ -1,0 +1,60 @@
+.page-header{
+  position: relative;
+  color: white;
+  font-weight: bold;
+  padding-left: 15px;
+  display: flex;
+  align-items: center;
+}
+.page-bg {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 20vh;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.page-bg-1 {
+  width: 150vw;
+  height: 150vw;
+  border-radius: 100%;
+  background-color: #2f63f4;
+  position: absolute;
+  left: -50vw;
+  top: -75vw;
+}
+
+.page-bg-2 {
+  width: 300vw;
+  height: 150vw;
+  border-radius: 100%;
+  background-color: #244df4;
+  position: absolute;
+  left: 0vw;
+  top: -60vw;
+}
+
+.page-bg-3 {
+  width: 25vw;
+  position: absolute;
+  left: 20px;
+  top: 00px;
+  opacity: 0.1;
+}
+
+.page-bg-4 {
+  width: 25vw;
+  position: absolute;
+  right: 20px;
+  top: 60vw;
+  opacity: 0.1;
+}
+.page-header{
+  position: relative;
+  color: white;
+  font-weight: bold;
+  font-size: 17px;
+  padding-left: 15px;
+}

@@ -1,14 +1,16 @@
 /* 顶部 */
 
 .page-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 9;
+  /* position: fixed; */
+  /* top: 0; */
+  /* left: 0; */
+  /* width: 100%; */
+  /* z-index: 9; */
+  position: relative;
   display: flex;
   align-items: center;
   padding-right: 15px;
+  background-color: white;
 }
 /* 通讯录 */
 .page-txl{
@@ -48,11 +50,11 @@
 }
 
 .page-list {
+  position: relative;
   width: 100vw;
-  overflow: hidden;
-  min-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
   background-color: white;
-  padding-top: 50px;
 }
 
 /* 无数据 */
