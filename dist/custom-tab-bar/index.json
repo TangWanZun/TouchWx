@@ -6,5 +6,7 @@
       "user-view":"../pages/tabBar/user"
     },
     "navigationStyle": "custom",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh":true,
+    "backgroundColor":"#2f63f4"
 }

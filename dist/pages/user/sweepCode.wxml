@@ -4,20 +4,28 @@
     <!-- 用于主要信息展示 -->
     <view class="page-card-body">
       <view class="page-card-body-top">
-        <image src="https://evip.rocar.net/upload/WeChat/user_profilephoto/gh_603baca73145/oE8EqwB1HG2uR8LwHnGuXAtvgbpo/0.jpg">
+        <image src="{{formData.Headimgurl}}">
         </image>
-        <view class="page-card-body-name">张三/男</view>
+        <view class="page-card-body-name">{{formData.CardName}}/{{formData.Sex}}</view>
       </view>
       <view class="page-card-body-con">
-        <view>手机号：18953895642</view>
-        <view>车牌号：京A12345</view>
-        <view>微信昵称：张三</view>
+        <view>手机号：{{formData.Phone}}</view>
+        <view>车牌号：{{formData.CarNum}}</view>
+        <view>微信昵称：{{formData.NickName}}</view>
       </view>
     </view>
     <!-- 用于背景 -->
     <view class="page-card-bg"></view>
   </view>
   <view class="content">
+    <view bindtap="toPage" data-url="/pages/client/clientDetails?openId={{openId}}&online={{onLine}}" class="content-item">
+      <image src="/assets/sweepCode/5.svg"></image>
+      <view class="content-text">用户档案</view>
+    </view>
+    <view bindtap="toPage" data-url='/pages/user/work/cardCustomer?openId={{openId}}' class="content-item">
+      <image src="/assets/sweepCode/1.svg"></image>
+      <view class="content-text">业务卡券核销</view>
+    </view>
     <view wx:for="{{dataList}}" wx:key="{{item.Name}}" class="content-item">
       <image src="{{item.ImgUrl}}"></image>
       <view class="content-text">{{item.Name}}</view>

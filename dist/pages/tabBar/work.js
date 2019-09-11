@@ -10,7 +10,7 @@ Component({
   /**
    * 接受的外部样式
    */
-  externalClasses:[
+  externalClasses: [
     "app-scroll-none",
     "app-shadow-2"
   ],
@@ -49,7 +49,20 @@ Component({
    * 在组件实例进入也买你节点树的时候的更新
    */
   attached() {
-    this.getData();
+    let app = getApp();
+    //查看是否存在data缓存
+    if (app.tabBarPageCache.work) {
+      this.setData(Object.assign(this.data, app.tabBarPageCache.work))
+    } else {
+      this.getData();
+    }
+  },
+  /**
+   * 组件被移除的时候
+   */
+  detached() {
+    let app = getApp();
+    app.setTabBarPageCache('work', this.data);
   },
   /**
    * 组件的方法列表
@@ -108,6 +121,12 @@ Component({
         }
       })
     },
+    /**
+     * 下拉刷新
+     */
+    onPullDownRefresh() {
+      this.getData()
+    }
   }
 })
 // Page({

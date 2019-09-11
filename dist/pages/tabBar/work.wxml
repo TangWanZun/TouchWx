@@ -131,6 +131,10 @@
       </view>
     </view>
   </view>
+  <view class="app-list-loging" wx:if="{{!isOver}}">
+    <view>数据加载中</view>
+    <image src='/assets/icon/jzz.svg'></image>
+  </view>
   <view style='height:50px;width:100vw'></view>
 </view>
 <!-- <tab-bar selected="{{UX_CONST.WeMinProWork}}"></tab-bar> -->

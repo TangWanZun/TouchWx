@@ -110,6 +110,12 @@ Component({
         }
       })
     },
+    /**
+     * 下拉刷新
+     */
+    onPullDownRefresh(){
+      this.getData(true)
+    }
   }
 })
 // Page({

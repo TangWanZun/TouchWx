@@ -40,7 +40,14 @@ Component({
   /**
    * 组件的方法列表
    */
-  methods: {}
+  methods: {
+    /**
+     * 下拉刷新
+     */
+    onPullDownRefresh() {
+      wx.stopPullDownRefresh();
+    },
+  }
 })
 // Page({
 //     /**

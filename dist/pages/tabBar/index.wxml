@@ -17,16 +17,16 @@
     </view>
     <!-- 快捷入口 -->
     <view class="page-kjrk app-shadow-3">
-      <navigator url='/pages/user/welfareCore' class="page-kjrk-item">
+      <!-- <navigator url='/pages/user/welfareCore' class="page-kjrk-item">
         <image src="/assets/app/flzx.svg"></image>
         <view>
           福利中心
         </view>
-      </navigator>
+      </navigator> -->
       <navigator url='/pages/user/myQr' class="page-kjrk-item">
         <image src="/assets/app/khzl.svg"></image>
         <view>
-          二维码
+          我的二维码
         </view>
       </navigator>
       <navigator url='/pages/user/cmpScopeFilter' class="page-kjrk-item">

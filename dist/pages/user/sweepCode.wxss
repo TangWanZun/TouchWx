@@ -53,6 +53,9 @@
   width:50%;
   margin-top: 10px;
 }
+.page-card-body-con>view:last-child{
+  width:100%;
+}
 /* 主要操作功能 */
 .content{
   display: flex;

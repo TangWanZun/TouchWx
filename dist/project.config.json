@@ -35,7 +35,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 34,
+			"current": 33,
 			"list": [
 				{
 					"id": -1,
@@ -248,10 +248,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 33,
 					"name": "扫码入口",
 					"pathName": "pages/user/sweepCode",
-					"query": "",
+					"query": "openId=oNnFQ1WqevN1RWXJs6VonfWl9izo",
 					"scene": null
 				},
 				{

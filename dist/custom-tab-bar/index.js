@@ -5,7 +5,7 @@ import {
 import {
   find
 } from "../library/sdk/util.js"
-
+import login from '../library/sdk/login.js'
 Page({
 
   /**
@@ -166,14 +166,14 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
+    
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.selectComponent(`#${this.data.selected}`).onPullDownRefresh();
   },
 
   /**
