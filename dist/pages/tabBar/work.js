@@ -126,7 +126,7 @@ Component({
      */
     onPullDownRefresh() {
       this.getData()
-    }
+    },
   }
 })
 // Page({

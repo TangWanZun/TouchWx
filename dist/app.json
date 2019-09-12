@@ -1,7 +1,9 @@
 {
   "pages": [
     "custom-tab-bar/index",
-    "pages/test"
+    "pages/test",
+    "pages/tabBar/login",
+    "pages/tabBar/client"
   ],
   "subPackages": [
     {

@@ -16,15 +16,21 @@
     <!-- app应用按钮 -->
     <image bindtap="appShow" wx:if="{{item.isApp}}" src="/assets/tabBar/app.png"></image>
     <!-- 普通按钮 -->
-    <view wx:else data-path="{{item.pagePath}}" data-index="{{index}}" bindtap="switchTab">
+    <view wx:else data-path="{{item.pagePath}}" data-index="{{index}}" bindtap="switchTab" class="tab-bar-item-bind">
       <image src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></image>
       <view style="color: {{selected === index ? selectedColor : color}}">{{item.text}}</view>
+      <view class="tab-bar-item-bind-show">
+      
+      </view>
     </view>
   </view>
 </view>
 <!-- 全部应用列表 -->
-<view class="tab-app {{isAppShow?'tab-app-show':''}}" style="padding-top:{{appHeaderHeight}}px">
-  <view class="tab-app-body" style="height: calc( 100% - 80px );">
+<view class="tab-app {{isAppShow?'tab-app-show':''}}">
+  <view class="tab-app-header" style="padding-top:{{appHeader.top}}px;">
+    <view class="tab-app-btn" style="height:{{appHeader.height}}px;">自定义首页应用</view>
+  </view>
+  <view class="tab-app-body" style="height: calc( 100% - 90px );">
     <!-- <view class="tab-app-body-item" wx:for="{{4}}" wx:key="{{index}}">
       <view class="tab-app-body-title">微信数据</view>
       <view class="tab-app-body-con">

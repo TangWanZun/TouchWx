@@ -1,8 +1,8 @@
 {
-    "enablePullDownRefresh": true,
-    "navigationBarTitleText": "客户",
-    "usingComponents": {
-        "clientImg": "/component/clientImg",
-        "tab-bar": "/custom-tab-bar/index"
-    }
-}
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "通讯录",
+  "usingComponents": {
+    "clientImg": "/component/clientImg",
+    "tab-bar": "/custom-tab-bar/index"
+  }
+} 

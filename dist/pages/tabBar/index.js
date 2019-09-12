@@ -1,6 +1,11 @@
 // pages/tabBar/index.js
 // import login from '../../library/sdk/login.js'
 // component/dialog.js
+import {
+  FunApps,
+  Apps
+} from "../../library/sdk/UX_CONST.js";
+let AllApps = Object.assign({}, FunApps, Apps);
 Component({
   /**
    * 组件的属性列表
@@ -18,39 +23,67 @@ Component({
     loginHeight: 0,
     loginTop: 0,
     headerTop: 0,
+    //首页快捷入口应用
+    appsList: ["QRcode", "cmpScopeFilter", "WeMinProActivitySignUp", "WeMinProReserve"],
+    //全部应用
+    allApps: AllApps
   },
   /**
    * 在组件实例进入也买你节点树的时候的更新
    */
   attached() {
-    let systemInfo = getApp().privateData.systemInfo;
-    let boundInfo = getApp().privateData.boundInfo;
-    // console.log(systemInfo,boundInfo)
-    let width = boundInfo.left - 30;
-    this.setData({
-      loginWidth: width,
-      loginHeight: width * 0.128,
-      loginTop: boundInfo.top + 2,
-      headerTop: boundInfo.bottom + 10
-    })
-    try {
-      var value = wx.getStorageSync('indexData')
-      if (value) {
-        this.setData({
-          formData: value
-        });
-      } else {
+    let app = getApp();
+    //查看是否存在data缓存
+    if (app.tabBarPageCache.index) {
+      //独取缓存信息
+      this.setData(Object.assign(this.data, app.tabBarPageCache.index))
+    } else {
+      //使用原信息
+      let systemInfo = getApp().privateData.systemInfo;
+      let boundInfo = getApp().privateData.boundInfo;
+      // console.log(systemInfo,boundInfo)
+      let width = boundInfo.left - 30;
+      this.setData({
+        loginWidth: width,
+        loginHeight: width * 0.128,
+        loginTop: boundInfo.top + 2,
+        headerTop: boundInfo.bottom + 10
+      })
+      // this.getData(true);
+      //这里是因为，首页的指标信息 加载速度太慢 ， 所以也会进行持久化
+      try {
+        var value = wx.getStorageSync('indexData')
+        if (value) {
+          this.setData({
+            formData: value
+          });
+        } else {
+          this.getData(true);
+        }
+      } catch (e) {
+        console.log(`获取首页指标信息错误：${e}`)
         this.getData(true);
       }
-    } catch (e) {
-      console.log(`获取首页指标信息错误：${e}`)
-      this.getData(true);
     }
+  },
+  /**
+   * 组件被移除的时候
+   */
+  detached() {
+    let app = getApp();
+    //将当前页面的信息记录到缓存中去
+    app.setTabBarPageCache('index', this.data);
   },
   /**
    * 组件的方法列表
    */
   methods: {
+    /**
+     * 获取快捷入口的app应用
+     */
+    getApps() {
+
+    },
     /**
      * 点击搜索按钮
      */
@@ -113,7 +146,7 @@ Component({
     /**
      * 下拉刷新
      */
-    onPullDownRefresh(){
+    onPullDownRefresh() {
       this.getData(true)
     }
   }

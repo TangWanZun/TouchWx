@@ -1,11 +1,28 @@
+/* 头部数据 */
 .page-header{
-  position: relative;
+  position: fixed;
+  top:0;
+  left:0;
+  width:100vw;
   color: white;
   font-weight: bold;
   padding-left: 15px;
+  font-size: 17px;
   display: flex;
   align-items: center;
+  z-index: 9;
+  overflow: hidden;
 }
+.page-header-title{
+  position: relative;
+}
+/* 主体 */
+.page-body{
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 70px;
+}
+/* 背景 */
 .page-bg {
   position: absolute;
   top: 0px;
@@ -50,11 +67,4 @@
   right: 20px;
   top: 60vw;
   opacity: 0.1;
-}
-.page-header{
-  position: relative;
-  color: white;
-  font-weight: bold;
-  font-size: 17px;
-  padding-left: 15px;
 }

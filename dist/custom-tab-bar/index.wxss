@@ -36,15 +36,35 @@
   text-align: center;
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  align-items: flex-end;
   position: relative;
-  bottom: -10px;
+}
+.tab-bar-item-bind{
+  height: 47px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding-top: 4px;
+}
+.tab-bar-item-bind-show{
+  position: absolute;
+  top: 50%;
+  left:0%;
+  width: calc( ( 100vw - 52px ) / 4 );
+  height: calc( ( 100vw - 52px ) / 4 );
+  margin-top: calc( ( 52px - 100vw ) / 8 );
+  border-radius: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  transition: 0.3s;
+}
+.tab-bar-item-bind:active > .tab-bar-item-bind-show{
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .tab-bar-item image {
   width: 27px;
   height: 27px;
+  margin:0 auto;
 }
 
 .tab-bar-item view {
@@ -69,6 +89,21 @@
 .tab-bar-app image{
   width:34px;
   height: 34px;
+}
+/* 应用列表按钮 */
+.tab-app-header{
+  margin-bottom: 10px;
+  padding-left: 10pt;
+}
+.tab-app-btn{
+  border-radius: 20px;
+  background-color: #7e9ef5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+  width: 130px;
 }
 /* 全部应用列表 */
 .tab-app{

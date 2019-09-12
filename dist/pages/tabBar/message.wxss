@@ -51,7 +51,7 @@
 }
 
 .page-list {
-  position: relative;
+  /* position: relative; */
   width: 100vw;
   overflow-y: auto;
   overflow-x: hidden;

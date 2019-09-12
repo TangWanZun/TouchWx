@@ -17,8 +17,8 @@ Page({
     color: "#bcbcbc",
     meSelected: 0,
     selectedColor: "#256cfa",
-    //安全高度
-    appHeaderHeight: 0,
+    //胶囊信息
+    appHeader: undefined,
     // 底部栏
     list: {
       "INDEX": {
@@ -137,7 +137,7 @@ Page({
     let boundInfo = getApp().privateData.boundInfo;
     // console.log(boundInfo)
     this.setData({
-      appHeaderHeight: boundInfo.bottom
+      appHeader: boundInfo,
     })
   },
 
@@ -180,7 +180,10 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    console.log(1);
+    if (this.data.selected == 'MESSAGE'){
+      this.selectComponent(`#${this.data.selected}`).onReachBottom();
+    }
   },
 
   /**

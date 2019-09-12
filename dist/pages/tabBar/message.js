@@ -7,26 +7,26 @@ import {
 //这个是不需要更新数据的
 let data = {
   /**
- * 本地虚拟缓存
- */
+   * 本地虚拟缓存
+   */
   storageData: [],
   /**
- * 获取数据(聊天列表)
- */
+   * 获取数据(聊天列表)
+   */
   page: {
     start: 0,
     limit: 25
   },
   /**
-* 信息广播接收者
-*/
+   * 信息广播接收者
+   */
   //个人标识ID
   onMeId: undefined,
   //全部红点数量
   pendCount: 0,
   /**
- * 进行数据合并(数据池与缓存进行合并)
- */
+   * 进行数据合并(数据池与缓存进行合并)
+   */
   dataMergeList: [],
 }
 // component/dialog.js
@@ -58,12 +58,12 @@ Component({
       var _this = this;
       //初始化消息广播
       msgBroadcast.init();
-      this.getData(true, function () {
+      this.getData(true, function() {
         //运行数据轮询获取
         _this.getMsgList()
       });
       //加载个人信息
-      getApp().loadInfo(function () {
+      getApp().loadInfo(function() {
         data.onMeId = getApp().privateData.loginInfo.DeptCode;
         //读取缓存信息
         _this.dataGetStorage();
@@ -87,7 +87,12 @@ Component({
     onPullDownRefresh() {
       this.getData(true)
     },
-
+    /**
+     * 碰底部刷新
+     */
+    onReachBottom(){
+      this.getData();
+    },
     /**
      * 页面点击事件
      */
@@ -247,7 +252,7 @@ Component({
     // isDestroy: false,
     getMsgList() {
       var _this = this;
-      wx.$msgBroadcast.add('message', function (msgList) {
+      wx.$msgBroadcast.add('message', function(msgList) {
         //获取本地带回消息列表
         let dataDataList = _this.data.dataList;
         //遍历返回的消息池
@@ -313,7 +318,7 @@ Component({
       let privateData = getApp().privateData;
       wx.getStorage({
         key: `${privateData.loginInfo.CmpCode}-${privateData.loginInfo.DeptCode}-msgList`,
-        success: function (res) {
+        success: function(res) {
           let data = res.data;
           data.storageData = data
           // 与数据池中进行合并
