@@ -165,13 +165,15 @@ Component({
      *  更新红点 
      */
     refreshBadge() {
+      //将当前全部的红点数据传递出去
+      this.triggerEvent('badgeChange', data.pendCount);
       //当未读消息大于0为消息的右上角添加未读消息数量
-      if (data.pendCount > 0) {
-        wx.setTabBarBadge({
-          index: 0,
-          text: `${data.pendCount}`
-        })
-      }
+      // if (data.pendCount > 0) {
+      //   wx.setTabBarBadge({
+      //     index: 0,
+      //     text: `${data.pendCount}`
+      //   })
+      // }
     },
     getData(dataReset = false, callback) {
       //消息红点为0的消息列表

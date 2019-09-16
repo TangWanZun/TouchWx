@@ -46,6 +46,21 @@
   position: relative;
   padding-top: 4px;
 }
+/* 红点 */
+.tab-bar-item-badge{
+  position: absolute;
+  right: calc( 50% - 25px );
+  top:0;
+  background-color: red;
+  border-radius: 100%;
+  color: white;
+  margin-left: -9px;
+  width:18px;
+  height: 18px;
+  font-size: 12px;
+  text-align: center;
+  line-height: 18px;
+}
 .tab-bar-item-bind-show{
   position: absolute;
   top: 50%;
@@ -97,7 +112,7 @@
 }
 .tab-app-btn{
   border-radius: 20px;
-  background-color: #7e9ef5;
+  background-color: #2f63f4;
   display: flex;
   align-items: center;
   justify-content: center;

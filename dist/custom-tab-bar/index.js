@@ -7,7 +7,6 @@ import {
 } from "../library/sdk/util.js"
 import login from '../library/sdk/login.js'
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -50,6 +49,7 @@ Page({
         // "selectedIconPath": "/assets/tabBar/message-select.png",
         "iconPath": "/assets/tabBar/client.png",
         "selectedIconPath": "/assets/tabBar/client-select.png",
+        "badge":0,
         isShow: true
       },
       [wx.$UX.WeMinProCooReport]: {
@@ -73,7 +73,43 @@ Page({
     //应用功能
     funAppList: undefined,
     //app的抽屉现在是否在出来的状态
-    isAppShow: false
+    isAppShow: false,
+  },
+  /**
+   * 获取当前未读信息
+   */
+  getNoReact() {
+    wx.$request({
+      url: "/WeMinProChatMessage/GetNeedReplyList",
+      data: {
+        start: 0,
+        limit: 100,
+      },
+      success: (res) => {
+        let count = 0;
+        for (let x of res) {
+          //当在线的时候才进行统计
+          if (x.Online) {
+            count += x.PendCount;
+          }
+        }
+        this.setBarBadge('MESSAGE',count);
+      }
+    })
+  },
+  /**
+   * 为底部栏按钮设置气泡数字
+   */
+  setBarBadge(key,count){
+    this.setData({
+      [`list.${key}.badge`]:count
+    })
+  },
+  /**
+   * 表示当信息页面中信息值发生变化的时候 
+   */
+  messageBadgeChange(e){
+    this.setBarBadge('MESSAGE', e.detail);
   },
   // 页面跳转
   switchTab(e) {
@@ -87,13 +123,6 @@ Page({
     this.setData({
       selected: data.index
     })
-    // redirectTo
-    // wx.redirectTo({
-    //   url
-    // })
-    // this.setData({
-    //     selected: data.index
-    // })
   },
   // app抽屉展示
   appShow() {
@@ -124,6 +153,22 @@ Page({
     })
   },
   /**
+   * 更新首页页面的快捷入口
+   */
+  indexSetAppList() {
+    if (this.data.selected == 'INDEX') {
+      this.selectComponent(`#${this.data.selected}`).getApps();
+    }
+  },
+  /**
+   * 更新首页指标信息
+   */
+  indexSetIndexList() {
+    if (this.data.selected == 'INDEX') {
+      this.selectComponent(`#${this.data.selected}`).getData(true);
+    }
+  },
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
@@ -133,6 +178,8 @@ Page({
       //运行
       login.init();
     }
+    //获取未读的信息
+    this.getNoReact();
     let systemInfo = getApp().privateData.systemInfo;
     let boundInfo = getApp().privateData.boundInfo;
     // console.log(boundInfo)
@@ -166,7 +213,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-    
+
   },
 
   /**
@@ -180,8 +227,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-    console.log(1);
-    if (this.data.selected == 'MESSAGE'){
+    if (this.data.selected == 'MESSAGE') {
       this.selectComponent(`#${this.data.selected}`).onReachBottom();
     }
   },

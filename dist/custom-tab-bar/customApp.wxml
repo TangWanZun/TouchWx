@@ -1,0 +1,44 @@
+<view class="page-body">
+  <view>
+    <view class="page-send" bindtap="send">
+      <image src="/assets/icon/bc.svg"></image>
+    </view>
+    <view class="modal">
+      <view class="modal-tile">首页自定义功能</view>
+      <view class="modal-con">
+        <view class="modal-item" wx:for="{{appsList}}" wx:key="{{item}}" bindtap="delApp" data-index="{{index}}">
+          <view class="modal-item-icon">
+            <image src="/assets/icon/jq.svg"></image>
+          </view>
+          <image src="{{allApps[item].imgUrl}}"></image>
+          <view class="modal-item-title">{{allApps[item].name}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="modal">
+      <view class="modal-tile">应用功能</view>
+      <view class="modal-con">
+        <view class="modal-item" wx:for="{{funAppList}}" wx:key="{{index}}" bindtap="addApp" data-index="{{index}}">
+          <view class="modal-item-icon">
+            <image src="/assets/icon/tj.svg"></image>
+          </view>
+          <image src="{{item.imgUrl}}"></image>
+          <view class="modal-item-title">{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="modal">
+      <view class="modal-tile">业务功能</view>
+      <view class="modal-con">
+        <view class="modal-item" wx:for="{{appList}}" wx:key="{{index}}" bindtap="addApp" data-index="{{index}}">
+
+          <view class="modal-item-icon">
+            <image src="/assets/icon/tj.svg"></image>
+          </view>
+          <image src="{{item.imgUrl}}"></image>
+          <view class="modal-item-title">{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

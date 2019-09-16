@@ -88,6 +88,15 @@ export const INDEX_TYPE = {
         code:'NONE',
     }
 }
+
+/**
+ * Storage类型的全部key值
+ */
+export const STORAGE_KEY = {
+  //保存的自定义的首页应用
+  INDEX_APP:"indexApp"
+}
+
 export {
     WORK_TYPE,
     CHAT_CONST,

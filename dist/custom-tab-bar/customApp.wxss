@@ -1,0 +1,81 @@
+/* custom-tab-bar/customApp.wxss */
+
+.page-body {
+  min-height: 100vh;
+}
+
+.modal {
+}
+
+.modal-tile {
+  padding: 10px 15px;
+  font-size: 15px;
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
+}
+
+.modal-con {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 25vw;
+}
+
+.page-send{
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  background-color: #2f63f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page-send:active{
+  opacity: 0.8;
+}
+.page-send>image{
+  width: 26px;
+  height: 26px;
+}
+/* .modal-con-after::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 25vw;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  flex-grow: 1;
+  box-sizing: border-box;
+} */
+
+.modal-item {
+  width: 25vw;
+  height: 25vw;
+  background-color: rgba(0, 0, 0, 0.03);
+  border: 1px solid white;
+  padding-top: 2vw;
+  position: relative;
+}
+/* 添加按钮 */
+.modal-item-icon{
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  width: 5vw;
+  height: 5vw;
+}
+
+
+
+.modal-item>image {
+  width: 15vw;
+  height: 15vw;
+  margin: 0 auto;
+  margin-bottom: 1vw;
+}
+
+.modal-item-title {
+  text-align: center;
+  font-size: 13px;
+}

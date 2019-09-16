@@ -5,7 +5,11 @@ import {
   FunApps,
   Apps
 } from "../../library/sdk/UX_CONST.js";
+import {STORAGE_KEY} from "../../library/sdk/config.js"
+
 let AllApps = Object.assign({}, FunApps, Apps);
+
+
 Component({
   /**
    * 组件的属性列表
@@ -33,6 +37,7 @@ Component({
    */
   attached() {
     let app = getApp();
+    
     //查看是否存在data缓存
     if (app.tabBarPageCache.index) {
       //独取缓存信息
@@ -65,6 +70,8 @@ Component({
         this.getData(true);
       }
     }
+    //获取首页的app快捷入口
+    this.getApps();
   },
   /**
    * 组件被移除的时候
@@ -82,7 +89,13 @@ Component({
      * 获取快捷入口的app应用
      */
     getApps() {
-
+      //这里是获取首页的自定义应用的
+      let appList = wx.getStorageSync(STORAGE_KEY.INDEX_APP);
+      if (appList) {
+        this.setData({
+          appsList: appList
+        })
+      }
     },
     /**
      * 点击搜索按钮
