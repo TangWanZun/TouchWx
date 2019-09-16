@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    url: `${configUrl.host}weminproapp/aboutInfo/`
+    url: `${configUrl.host}weminproapp/aboutInfo/#/aboutInfo/index`
   },
 
   /**

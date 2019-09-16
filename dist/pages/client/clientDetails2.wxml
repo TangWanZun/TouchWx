@@ -72,7 +72,23 @@
             <image src='/assets/icon/hx.svg'></image>
             核销
         </navigator> -->
-    
+    <view class='content-card' wx:if="{{nameplateList.length>0||formData.IsAttest}}">
+      <view class='content-card-title'>
+        <view class='content-card-title-left'>客户铭牌</view>
+        <!-- <view class='content-card-title-right'>查看全部</view> -->
+      </view>
+      <view class='content-card-body'>
+        <view class='nameplate-list-white'></view>
+        <view class='nameplate-list app-scroll-none'>
+          <view wx:if="{{formData.IsAttest}}" class='nameplate-item'>
+            <image src='/assets/icon/yc.svg'></image>
+          </view>
+          <view wx:for="{{nameplateList}}" wx:key="{{index}}" class='nameplate-item' data-index="{{index}}" bindlongpress="nameplateShow">
+            <image src='{{imgUrl+item.ImgUrl}}'></image>
+          </view>
+        </view>
+      </view>
+    </view>
     <view class='content-card'>
       <view class='content-card-title'>
         <view class='content-card-title-left'>联系方式</view>
@@ -93,23 +109,6 @@
             <navigator hover-class="none" url='/pages/message/chat?openId={{formData.OpenId}}&cardName={{formData.CardName||formData.NickName}}&wxId={{formData.WxId}}&headImg={{formData.ProfilePhoto}}&online={{online}}' class='panel-icon'>
               <image src='/assets/icon/WX.svg'></image>
             </navigator>
-          </view>
-        </view>
-      </view>
-    </view>
-    <view class='content-card' wx:if="{{nameplateList.length>0||formData.IsAttest}}">
-      <view class='content-card-title'>
-        <view class='content-card-title-left'>客户铭牌</view>
-        <!-- <view class='content-card-title-right'>查看全部</view> -->
-      </view>
-      <view class='content-card-body'>
-        <view class='nameplate-list-white'></view>
-        <view class='nameplate-list app-scroll-none'>
-          <view wx:if="{{formData.IsAttest}}" class='nameplate-item'>
-            <image src='/assets/icon/yc.svg'></image>
-          </view>
-          <view wx:for="{{nameplateList}}" wx:key="{{index}}" class='nameplate-item' data-index="{{index}}" bindlongpress="nameplateShow">
-            <image src='{{imgUrl+item.ImgUrl}}'></image>
           </view>
         </view>
       </view>
@@ -155,6 +154,67 @@
             <image src='/assets/icon/sqcl2.svg'></image>
           </view>
         </navigator>
+      </view>
+    </view>
+    <view class='content-card' style='padding-bottom:20px' wx:if="{{formData.IsRegister}}">
+      <view class='content-card-title {{menuFixed?"content-card-title-fixed":""}}'>
+        <view class='content-card-title-left'>用户信息</view>
+        <view class='content-card-title-right' bindtap='sendData'>保存修改</view>
+      </view>
+      <view class='content-card-body'>
+        <!-- 性别 -->
+        <tuiInput type="select" data-key="formData.Sex" range="{{sexRange}}" bindinput="fromInput" value="{{formData.Sex}}">
+          <view slot="left">性别</view>
+          <image slot="right" src='/assets/icon/right.svg'></image>
+        </tuiInput>
+        <!-- 出生日 -->
+        <tuiInput type="date" data-key="formData.BirthDate" value="{{formData.BirthDate}}" bindinput="fromInput">
+          <view slot="left">出生日</view>
+          <image slot="right" src='/assets/icon/right.svg'></image>
+        </tuiInput>
+        <!-- 学历 -->
+        <tuiInput type="select" data-key="formData.EducationCode" range="{{educationRange}}" bindinput="fromInput" value="{{formData.EducationCode}}">
+          <view slot="left">学历</view>
+          <image slot="right" src='/assets/icon/right.svg'></image>
+        </tuiInput>
+        <!-- 职业 -->
+        <tuiInput data-key="formData.Profession" bindinput="fromInput" value="{{formData.Profession}}">
+          <view slot="left">职业</view>
+        </tuiInput>
+        <!-- 证件号 -->
+        <tuiInput data-key="formData.IDCard" input-type="idcard" bindinput="fromInput" value="{{formData.IDCard}}">
+          <view slot="left">证件号</view>
+        </tuiInput>
+        <!-- 住址 -->
+        <tuiInput data-key="formData.AddressDetails" bindinput="fromInput" value="{{formData.AddressDetails}}">
+          <view slot="left">住址</view>
+        </tuiInput>
+        <!-- 子女情况 -->
+        <tuiInput data-key="formData.ChildrenDesc" bindinput="fromInput" value="{{formData.ChildrenDesc}}">
+          <view slot="left">子女情况</view>
+        </tuiInput>
+        <!-- 子女数量-- -->
+        <tuiInput data-key="formData.ChildrenCount" bindinput="fromInput" value="{{formData.ChildrenCount}}">
+          <view slot="left">子女数量</view>
+        </tuiInput>
+        <!-- 常去商圈 -->
+        <tuiInput data-key="formData.OftenGoto" bindinput="fromInput" value="{{formData.OftenGoto}}">
+          <view slot="left">常去商圈</view>
+        </tuiInput>
+        <leafletAdd upload-type="sfCard" img-url="{{idCardImg}}" data-key="idCardImg" bindinput="leafletAddInput"></leafletAdd>
+        <view style='margin-bottom:10px'></view>
+        <leafletAdd upload-type="jsCard" img-url="{{drLicImg}}" data-key="drLicImg" bindinput="leafletAddInput"></leafletAdd>
+      </view>
+    </view>
+    <view class='content-card' style='padding-bottom:40px' wx:if="{{formData.IsRegister}}">
+      <view class='content-card-title {{menuFixed?"content-card-title-fixed":""}}'>
+        <view class='content-card-title-left'>客户上传证件</view>
+        <!-- <view class='content-card-title-right' bindtap='sendData'>保存修改</view> -->
+      </view>
+      <view class='content-card-body'>
+        <leafletAdd upload-type="sfCard" disabled="true" img-url="{{idCardImgUser}}"></leafletAdd>
+        <view style='margin-bottom:10px'></view>
+        <leafletAdd upload-type="jsCard" disabled="true" img-url="{{drLicImgUser}}"></leafletAdd>
       </view>
     </view>
   </view>
