@@ -16,7 +16,7 @@
                         <image src='/assets/icon/kh.svg'></image>
                         暂无客户
                 </view>
-                <navigator url='/pages/user/sweepCode?openId={{item.OpenId}}&online={{item.Online}}' class='client-item' wx:for="{{dataList}}" wx:key="{{itemIndex}}">
+                <navigator url='/pages/client/clientDetails?openId={{item.OpenId}}&online={{item.Online}}' class='client-item' wx:for="{{dataList}}" wx:key="{{itemIndex}}">
                         <view class='client-img {{item.Online?"":"client-img-hidden"}}'>
                                 <view class="image">
                                         <clientImg  src="{{item.ProfilePhoto}}"></clientImg>

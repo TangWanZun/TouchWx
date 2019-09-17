@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "tuiInput": "/component/tuiInput",
+    "leafletAdd": "/component/leafletAdd"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "客户档案"
+}

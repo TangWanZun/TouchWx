@@ -35,7 +35,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 36,
 			"list": [
 				{
 					"id": -1,
@@ -266,6 +266,13 @@
 					"name": "自定义首页应用",
 					"pathName": "custom-tab-bar/customApp",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "用户档案",
+					"pathName": "pages/client/clientInfo",
+					"query": "openId=oNnFQ1WqevN1RWXJs6VonfWl9izo",
 					"scene": null
 				}
 			]

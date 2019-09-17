@@ -15,7 +15,6 @@
             <view class='header-likes-item' wx:if="{{index<10}}" wx:for="{{labelList}}" wx:key="{{index}}">{{item.Name}}</view>
           </view>
         </navigator>
-
       </view>
       <view class='header-botton' wx:if="{{formData.IsRegister}}">
         <navigator url='./clientDetails/stored?openId={{formData.OpenId}}' class='header-botton-item'>
@@ -54,14 +53,14 @@
   <!-- 正文内容 -->
   <view class='content'>
     <view class="fun">
-      <view data-url="/pages/client/clientDetails?openId={{openId}}&online={{onLine}}" class="fun-item">
+      <navigator url="/pages/client/clientInfo?openId={{openId}}&online={{onLine}}" class="fun-item">
         <image src="/assets/sweepCode/5.svg"></image>
         <view class="fun-text">用户档案</view>
-      </view>
-      <view data-url='/pages/user/work/cardCustomer?openId={{openId}}' class="fun-item">
+      </navigator>
+      <navigator url='/pages/user/work/cardCustomer?openId={{openId}}' class="fun-item">
         <image src="/assets/sweepCode/1.svg"></image>
         <view class="fun-text">业务卡券核销</view>
-      </view>
+      </navigator>
     </view>
     <!-- 核销    之后还会有积分核销 -->
     <!-- <navigator wx:if="{{!formPage&&formData.IsRegister}}" hover-class="none" url='/pages/user/work/cardCustomer?openId={{openId}}' class=' app-shadow-2 content-cancel  app-shadow-2'>

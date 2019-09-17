@@ -123,20 +123,20 @@ Page({
             mask: true,
         })
         //加载学历自定义表
-        wx.$request({
-            url: "/WeMinProPlatJson/GetList",
-            data: {
-                docType: 'Combobx',
-                actionType: 'Education',
-                needTotal: false,
-            },
-            success(res) {
-                _this.setData({
-                    'educationRange': res,
-                })
-            },
-            complete() {}
-        })
+        // wx.$request({
+        //     url: "/WeMinProPlatJson/GetList",
+        //     data: {
+        //         docType: 'Combobx',
+        //         actionType: 'Education',
+        //         needTotal: false,
+        //     },
+        //     success(res) {
+        //         _this.setData({
+        //             'educationRange': res,
+        //         })
+        //     },
+        //     complete() {}
+        // })
 
         //加载相应数据
         wx.$request({
@@ -157,28 +157,29 @@ Page({
                     nameplateList: res.Table4 || [],
                 })
                 if (userData) {
-                    _this.setData({
-                        //身份证照片信息(后台维护)
-                        idCardImg: {
-                            orig: userData.IdCardOrigImg1 || '',
-                            thum: userData.IdCardThumImg1 || ''
-                        },
-                        //驾驶证信息(后台维护)
-                        drLicImg: {
-                            orig: userData.DrLicOrigImg1 || '',
-                            thum: userData.DrLicThumImg1 || ''
-                        },
-                        //身份证照片信息(用户上传)
-                        idCardImgUser: {
-                            orig: userData.IdCardOrigImg || '',
-                            thum: userData.IdCardThumImg || ''
-                        },
-                        //驾驶证信息(用户上传)
-                        drLicImgUser: {
-                            orig: userData.DrLicOrigImg || '',
-                            thum: userData.DrLicThumImg || ''
-                        }
-                    })
+                  //这个功能暂时去掉了
+                    // _this.setData({
+                    //     //身份证照片信息(后台维护)
+                    //     idCardImg: {
+                    //         orig: userData.IdCardOrigImg1 || '',
+                    //         thum: userData.IdCardThumImg1 || ''
+                    //     },
+                    //     //驾驶证信息(后台维护)
+                    //     drLicImg: {
+                    //         orig: userData.DrLicOrigImg1 || '',
+                    //         thum: userData.DrLicThumImg1 || ''
+                    //     },
+                    //     //身份证照片信息(用户上传)
+                    //     idCardImgUser: {
+                    //         orig: userData.IdCardOrigImg || '',
+                    //         thum: userData.IdCardThumImg || ''
+                    //     },
+                    //     //驾驶证信息(用户上传)
+                    //     drLicImgUser: {
+                    //         orig: userData.DrLicOrigImg || '',
+                    //         thum: userData.DrLicThumImg || ''
+                    //     }
+                    // })
                     //更改名称
                     wx.setNavigationBarTitle({
                         title: `${userData.CardName ? userData.CardName : userData.NickName}`,

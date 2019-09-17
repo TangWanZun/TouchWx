@@ -18,7 +18,8 @@
         "clientDetails/integral",
         "clientDetails/label",
         "clientDetails/carModify",
-        "carStyleSelect"
+        "carStyleSelect",
+        "clientInfo"
       ]
     },
     {

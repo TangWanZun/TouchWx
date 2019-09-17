@@ -115,7 +115,7 @@ Component({
         success(res) {
           // 扫码返回成功跳转到扫码入口页面
           wx.navigateTo({
-            url: '/pages/user/sweepCode?openId=' + res.result
+            url: '/pages/client/clientDetails?openId=' + res.result
           });
         },
         fail() {

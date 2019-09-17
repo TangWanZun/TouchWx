@@ -1,0 +1,73 @@
+/* 正文模块标题 */
+.content-card-title{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+/*启动吸顶*/
+.content-card-title-fixed{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    padding:0 15px 10px 15px;
+    background-color: white;
+}
+.content-card-title-left{
+  font-size: 18px;
+  font-weight: bold;
+}
+.content-card-title-right{
+  font-size: 15px;
+  color: #244df4;
+}
+/* 正文模块内容 */
+.content-card-body{
+    position: relative;
+        /* padding-top: 10px; */
+}
+.content-card{
+  margin-bottom: 15px;
+  padding:0 15px;
+}
+/* 用户画像 */
+.client{
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  position: relative;
+  padding:20px 0 5px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.client-header{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.client-icon{
+  width:20px;
+  height: 20px;
+  margin-right: 10px;
+  opacity: 0.5;
+}
+.client-title{
+  font-size: 15px;
+  width: 80px;
+}
+.client-value{
+  font-size: 15px;
+  flex-grow: 1;
+}
+.client-right{
+  flex-shrink: 0;
+  width:15px;
+}
+.client-right>image{
+  width:15px;
+  height:15px;
+  display:block;
+}
+.client-in{
+  position: absolute;
+  height: 100%;
+}
