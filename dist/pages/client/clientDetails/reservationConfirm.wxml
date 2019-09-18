@@ -1,0 +1,28 @@
+<view class="page-body">
+  <view class="page-item" wx:for="{{formList}}" wx:key="{{index}}">
+    <view class="page-title">
+      <view>{{RESERVE_TYPE[item.ReserveType]}}</view>
+      <view>{{RESERVE_ASS_TYPE[item.AssType]}}</view>
+    </view>
+    <view class="page-text">
+      预约项目：{{RESERVE_ITEM[item.ReserveItem]||item.ReserveItem}}
+    </view>
+    <view class="page-text">
+      预约车牌：{{item.CarNum||""}}
+    </view>
+    <view class="page-text">
+      预约时间：{{item._date}}
+    </view>
+    <view class="page-text">
+      预约备注：{{item.ReserveNote||''}}
+    </view>
+    <view class="page-item-footer">
+      <view class="page-item-btn" data-id="{{item.Id}}" bindtap="confirmComeShop">确认到店</view>
+    </view>
+  </view>
+  <llbox id='myLlbox'></llbox>
+  <!-- 添加用户预约信息 -->
+  <navigator url="/pages/client/clientDetails/addReservation?openId={{openId}}" class="addResercInfo">
+    <image src="/assets/icon/tj2.svg" ></image>
+  </navigator>
+</view>

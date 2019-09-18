@@ -12,7 +12,7 @@
 		"checkSiteMap": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.8.1",
+	"libVersion": "2.8.2",
 	"appid": "wx741745d2b71d095d",
 	"projectname": "dist",
 	"scripts": {},
@@ -35,7 +35,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 36,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -53,7 +53,7 @@
 					"id": 2,
 					"name": "客户详情",
 					"pathName": "pages/client/clientDetails",
-					"query": "openId=oE8EqwFiTCVEaC2ybKiQ9O9VHGjE&online=",
+					"query": "openId=oD6Vgv8RbPapvkvUB-3E2iAaWvVQ",
 					"scene": null
 				},
 				{
@@ -269,10 +269,17 @@
 					"scene": null
 				},
 				{
+					"id": 36,
+					"name": "预约确认",
+					"pathName": "pages/client/clientDetails/reservationConfirm",
+					"query": "openId=oD6Vgv8RbPapvkvUB-3E2iAaWvVQ",
+					"scene": null
+				},
+				{
 					"id": -1,
-					"name": "用户档案",
-					"pathName": "pages/client/clientInfo",
-					"query": "openId=oNnFQ1WqevN1RWXJs6VonfWl9izo",
+					"name": "员工添加预约",
+					"pathName": "pages/client/clientDetails/addReservation",
+					"query": "openId=oD6Vgv8RbPapvkvUB-3E2iAaWvVQ",
 					"scene": null
 				}
 			]

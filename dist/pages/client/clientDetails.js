@@ -198,8 +198,16 @@ Page({
      * 拨打电话
      */
     makePhoneCall(e) {
+      let panel = e.currentTarget.dataset.panel;
+      if(!panel){
+        wx.showToast({
+          title: '当前用户暂无电话',
+          icon:"none"
+        })
+        return
+      }
         wx.makePhoneCall({
-            phoneNumber: e.currentTarget.dataset.panel,
+          phoneNumber: panel,
         })
     },
 

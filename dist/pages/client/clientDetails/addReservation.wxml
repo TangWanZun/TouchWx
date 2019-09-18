@@ -1,0 +1,43 @@
+<view scroll-into-view="{{tapItemShow}}" scroll-with-animation="true" class='page-body' scroll-y="true">
+  <view class='page-module-box' id='A01'>
+    <view class='page-module app-shadow-3'>
+      <!-- 预约类型 -->
+      <tuiInput type="select" data-key="formData.ReserveType" value="{{formData.ReserveType}}" range="{{RESERVE_TYPE_SELECT}}" bindinput="inputSelect">
+        <view slot="left">预约类型</view>
+        <image slot="right" src='/assets/icon/right.svg'></image>
+      </tuiInput>
+      <!-- 分类 -->
+      <tuiInput type="select" data-key="formData.AssType" disabled="{{!RESERVE_MAP_SELECT[formData.ReserveType]}}" selectIndex="{{assTypeIndex}}" value="{{formData.AssType}}" range="{{RESERVE_MAP_SELECT[formData.ReserveType]}}" bindinput="inputSelect">
+        <view slot="left">分类</view>
+        <image slot="right" src='/assets/icon/right.svg'></image>
+      </tuiInput>
+      <!-- 预约项目 -->
+      <!-- 保养 -->
+      <tuiInput type="select" wx:if="{{formData.ReserveType=='A01'}}" data-key="formData.ReserveItem" selectIndex="{{reserveItemIndex}}"  value="{{formData.ReserveItem}}" range="{{RESERVE_BY_SELECT}}" bindinput="inputSelect">
+        <view slot="left">预约项目</view>
+        <image slot="right" src='/assets/icon/right.svg'></image>
+      </tuiInput>
+      <!-- 维修 -->
+      <tuiInput type="select" wx:elif="{{formData.ReserveType=='A02'}}" data-key="formData.ReserveItem" selectIndex="{{reserveItemIndex}}" value="{{formData.ReserveItem}}" range="{{RESERVE_WX_SELECT}}" bindinput="inputSelect">
+        <view slot="left">预约项目</view>
+        <image slot="right" src='/assets/icon/right.svg'></image>
+      </tuiInput>
+      <!-- 装饰 -->
+      <tuiInput type="select" wx:elif="{{formData.ReserveType=='A03'}}" data-key="formData.ReserveItem" selectIndex="{{reserveItemIndex}}" value="{{formData.ReserveItem}}" range="{{RESERVE_ZS_SELECT}}" bindinput="inputSelect">
+        <view slot="left">预约项目</view>
+        <image slot="right" src='/assets/icon/right.svg'></image>
+      </tuiInput>
+      <!-- 通用 -->
+      <tuiInput wx:else data-key="formData.ReserveItem" value="{{formData.ReserveItem}}" bindinput="inputSelect">
+        <view slot="left">预约项目</view>
+      </tuiInput>
+      <!-- 备注 -->
+      <tuiInput data-key="formData.Note" value="{{formData.Note}}" bindinput="inputSelect">
+        <view slot="left">备注</view>
+      </tuiInput>
+      <view class='page-button'>
+        <button disabled='{{sendDataDisabled}}' type='primary' bindtap='submit'>提交</button>
+      </view>
+    </view>
+  </view>
+</view>

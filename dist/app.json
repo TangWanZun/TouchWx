@@ -19,7 +19,9 @@
         "clientDetails/label",
         "clientDetails/carModify",
         "carStyleSelect",
-        "clientInfo"
+        "clientDetails/clientInfo",
+        "clientDetails/reservationConfirm",
+        "clientDetails/addReservation"
       ]
     },
     {

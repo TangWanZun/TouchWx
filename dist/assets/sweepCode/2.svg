@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="58px" height="59px" viewBox="0 0 58 59" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 50 (54983) - http://www.bohemiancoding.com/sketch -->
-    <title>Group 4</title>
+    <title>Group 5</title>
     <desc>Created with Sketch.</desc>
-    <defs></defs>
+    <defs>
+        <filter x="-51.3%" y="-26.9%" width="202.6%" height="200.0%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="9" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.796078431   0 0 0 0 0.847058824   0 0 0 0 0.992156863  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="公司信息-2-copy-7" transform="translate(-325.000000, -672.000000)">
-            <g id="Group-4" transform="translate(325.000000, 672.000000)">
-                <g id="Group-3" fill="#F7BE17">
-                    <circle id="Oval-3-Copy-10" cx="50" cy="50" r="50"></circle>
-                </g>
-                <path d="M67.776511,40.0361503 L59.776511,40.0361503 L59.776511,38.0361503 C59.776511,36.9315808 60.6719415,36.0361503 61.776511,36.0361503 L65.776511,36.0361503 C66.8810805,36.0361503 67.776511,36.9315808 67.776511,38.0361503 L67.776511,40.0361503 Z M67.776511,42.0361503 L67.776511,63.0361503 L63.776511,66.2555666 L59.776511,63.0361503 L59.776511,42.0361503 L67.776511,42.0361503 Z M62.776511,46.0361503 C62.2242262,46.0361503 61.776511,46.4838655 61.776511,47.0361503 L61.776511,53.0361503 C61.776511,53.588435 62.2242262,54.0361503 62.776511,54.0361503 C63.3287957,54.0361503 63.776511,53.588435 63.776511,53.0361503 L63.776511,47.0361503 C63.776511,46.4838655 63.3287957,46.0361503 62.776511,46.0361503 Z" id="Combined-Shape" fill="#FFFFFF" transform="translate(63.776511, 51.145858) rotate(40.000000) translate(-63.776511, -51.145858) "></path>
-                <path d="M69.0183983,35.1671118 L69.0183983,31.0827104 C69.0183983,27.7690019 66.3321068,25.0827104 63.0183983,25.0827104 L33.3267346,25.0827104 C30.0130261,25.0827104 27.3267346,27.7690019 27.3267346,31.0827104 L27.3267346,68.4656318 C27.3267346,71.7793403 30.0130261,74.4656318 33.3267346,74.4656318 L63.0183983,74.4656318 C66.3321068,74.4656318 69.0183983,71.7793403 69.0183983,68.4656318 L69.0183983,59.0058309" id="Path-25" stroke="#FFFFFF" stroke-width="4"></path>
-                <path d="M35,39 L62.9048473,39" id="Path-26" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path>
-                <path d="M35,50 L53,50" id="Path-26-Copy" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path>
-                <path d="M35,61 L46,61" id="Path-26-Copy-2" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path>
+        <g id="会员卡-普通会员-copy-5" transform="translate(-597.000000, -611.000000)" fill="#2F63F4">
+            <g id="Group-5" filter="url(#filter-1)" transform="translate(607.000000, 612.000000)">
+                <path d="M30,13.4581253 C28.88376,13.1593166 27.7104852,13 26.5,13 C22.5482377,13 18.9930516,14.6979451 16.5241962,17.4040812 C16.2561045,17.1534295 15.8959699,17 15.5,17 L8.5,17 C7.67157288,17 7,17.6715729 7,18.5 C7,19.3284271 7.67157288,20 8.5,20 L14.6649732,20 C13.6037397,21.9281585 13,24.1435738 13,26.5 C13,32.1480272 16.4684511,36.9859543 21.3915722,39 L8,39 C3.581722,39 5.41083001e-16,35.418278 0,31 L0,8 C-5.41083001e-16,3.581722 3.581722,8.11624501e-16 8,0 L22,0 C26.418278,-8.11624501e-16 30,3.581722 30,8 L30,13.4581253 Z M8.5,9 C7.67157288,9 7,9.67157288 7,10.5 C7,11.3284271 7.67157288,12 8.5,12 L15.5,12 C16.3284271,12 17,11.3284271 17,10.5 C17,9.67157288 16.3284271,9 15.5,9 L8.5,9 Z" id="Combined-Shape"></path>
+                <path d="M28,25 L28,22.5 C28,21.6715729 27.3284271,21 26.5,21 C25.6715729,21 25,21.6715729 25,22.5 L25,26.5 C25,27.3284271 25.6715729,28 26.5,28 L30.5,28 C31.3284271,28 32,27.3284271 32,26.5 C32,25.6715729 31.3284271,25 30.5,25 L28,25 Z M26.5,38 C20.1487254,38 15,32.8512746 15,26.5 C15,20.1487254 20.1487254,15 26.5,15 C32.8512746,15 38,20.1487254 38,26.5 C38,32.8512746 32.8512746,38 26.5,38 Z" id="Combined-Shape"></path>
             </g>
         </g>
     </g>

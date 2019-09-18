@@ -4,6 +4,9 @@
                 "clientImg": "/component/clientImg",
                 "leafletAdd": "/component/leafletAdd"
         },
+        "navigationBarBackgroundColor":"#2f63f4",
+        "backgroundColor":"#2f63f4",
+        "navigationBarTextStyle":"white",
         "enablePullDownRefresh": true,
         "navigationBarTitleText": "客户详情"
 }

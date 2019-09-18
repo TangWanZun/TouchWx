@@ -1,0 +1,52 @@
+.page-body{
+        width:100vw;
+        min-height: 100vh;
+        box-sizing:border-box;
+        background-color: #f9faf7;
+}
+/* 模块 */
+.page-module-box{
+        padding:10px 0;
+}
+.page-module{
+        width:95vw;
+        border-radius: 5px;
+        border:1px solid rgba(0, 0, 0, 0.1);
+        margin:0 auto;
+        padding:10px 15px;
+        background-color: white;
+}
+.page-module-title{
+        border-left: 3px solid #2f63f4;
+        font-size: 15px;
+        padding-left: 5px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+}
+.page-module-title span{
+        color: rgba(0, 0, 0, 0.5);
+}
+/*图片模块*/
+.page-img-module{
+        border:1px solid rgba(0, 0, 0, 0.1);
+        margin:0 auto;
+        padding:10px 15px;
+        background-color: white;
+}
+.page-img-module-box{
+        padding-top: 20px;
+}
+/* 按钮 */
+.page-button{
+        margin-top: 15px;
+}
+button[type='primary']{
+        background-color: #2f63f4 !important;
+        transition: background-color 0.3s;
+}
+button[type='primary']:active{
+        opacity: 0.8;
+}
+button[disabled]{
+        background-color: #c0c0c0 !important;
+}

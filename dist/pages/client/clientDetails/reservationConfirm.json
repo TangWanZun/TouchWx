@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "预约确认",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "llbox": "/component/llbox"
+  }
+}

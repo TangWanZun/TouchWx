@@ -1,7 +1,7 @@
 // pages/client/clientInfo.js
 import {
   util
-} from '../../library/sdk.js'
+} from '../../../library/sdk.js'
 Page({
 
   /**

@@ -4,19 +4,31 @@
     <!-- 头部内容 -->
     <view class='header-center'>
       <view class='header-top'>
+        <view class="header-top-left">
+          <!-- 铭牌 -->
+          <view class="nameplate-list">
+            <view wx:if="{{formData.IsAttest}}" class='nameplate-item'>
+              <image src='/assets/icon/yc.svg'></image>
+            </view>
+            <view wx:for="{{nameplateList}}" wx:key="{{index}}" class='nameplate-item' data-index="{{index}}" bindlongpress="nameplateShow">
+              <image src='{{imgUrl+item.ImgUrl}}'></image>
+            </view>
+          </view>
+          <!-- 爱好标签 -->
+          <navigator url='./clientDetails/label?openId={{formData.OpenId}}' class='header-likes-box'>
+            <view class='header-likes'>
+              <view class='header-likes-item' wx:if="{{index<5}}" wx:for="{{labelList}}" wx:key="{{index}}">{{item.Name}}</view>
+              <view class='header-likes-item' wx:if="{{labelList.length==0}}">标签定义</view>
+              <image class="app-filter-btow header-likes-icon" src="/assets/icon/right.svg"></image>
+            </view>
+          </navigator>
+        </view>
         <!-- 头像 -->
         <view class='header-img' bindtap='previewImage'>
           <clientImg src="{{formData.ProfilePhoto}}"></clientImg>
         </view>
-        <!-- 爱好标签 -->
-        <navigator url='./clientDetails/label?openId={{formData.OpenId}}' class='header-likes-box'>
-          <view class='header-likes'>
-            <view class='header-likes-item'>更多...</view>
-            <view class='header-likes-item' wx:if="{{index<10}}" wx:for="{{labelList}}" wx:key="{{index}}">{{item.Name}}</view>
-          </view>
-        </navigator>
       </view>
-      <view class='header-botton' wx:if="{{formData.IsRegister}}">
+      <!-- <view class='header-botton' wx:if="{{formData.IsRegister}}">
         <navigator url='./clientDetails/stored?openId={{formData.OpenId}}' class='header-botton-item'>
           <view class='header-botton-item-title'>储值</view>
           <view class='header-botton-item-number'>￥{{formData.AvailableBalance||'0'}}</view>
@@ -29,11 +41,7 @@
           <view class='header-botton-item-title'>电子券</view>
           <view class='header-botton-item-number'>{{formData.AvailableECard||'0'}}张</view>
         </navigator>
-        <!-- <view class='header-botton-item'>
-          <view class='header-botton-item-title'>电子券</view>
-          <view class='header-botton-item-number'>{{clientData.coupon}}张</view>
-        </view> -->
-      </view>
+      </view> -->
       <!-- 铭牌 -->
       <!-- <view class='nameplate'>
                 <view wx:if="{{formData.IsAttest}}" class='nameplate-item'>
@@ -45,15 +53,30 @@
             </view> -->
     </view>
     <!-- 背景图 -->
-    <view class='header-bg'>
+    <!-- <view class='header-bg'>
       <clientImg mode='aspectFill' src="{{formData.ProfilePhoto}}"></clientImg>
-      <!-- <image mode='aspectFill' src='{{formData.ProfilePhoto?imgUrl+formData.ProfilePhoto:"/assets/chat/kh_tx.svg"}}'></image> -->
-    </view>
+    </view> -->
   </view>
   <!-- 正文内容 -->
   <view class='content'>
-    <view class="fun">
-      <navigator url="/pages/client/clientInfo?openId={{openId}}&online={{onLine}}" class="fun-item">
+    <view class='content-card'>
+      <view class='content-card-body header-botton'>
+        <navigator url='./clientDetails/stored?openId={{formData.OpenId}}' class='header-botton-item'>
+          <view class='header-botton-item-number'>￥{{formData.AvailableBalance||'0'}}</view>
+          <view class='header-botton-item-title'>储值</view>
+        </navigator>
+        <navigator url='./clientDetails/integral?openId={{formData.OpenId}}' class='header-botton-item'>
+          <view class='header-botton-item-number'>{{formData.AvailableScore||'0'}}</view>
+          <view class='header-botton-item-title'>积分</view>
+        </navigator>
+        <navigator url='./clientDetails/coupon?openId={{formData.OpenId}}' class='header-botton-item'>
+          <view class='header-botton-item-number'>{{formData.AvailableECard||'0'}}张</view>
+          <view class='header-botton-item-title'>电子券</view>
+        </navigator>
+      </view>
+    </view>
+    <view class="fun content-card">
+      <navigator url="/pages/client/clientDetails/clientInfo?openId={{openId}}&online={{onLine}}" class="fun-item">
         <image src="/assets/sweepCode/5.svg"></image>
         <view class="fun-text">用户档案</view>
       </navigator>
@@ -61,45 +84,32 @@
         <image src="/assets/sweepCode/1.svg"></image>
         <view class="fun-text">业务卡券核销</view>
       </navigator>
+      <navigator url='/pages/client/clientDetails/reservationConfirm?openId={{openId}}' class="fun-item">
+        <image src="/assets/sweepCode/2.svg"></image>
+        <view class="fun-text">预约确认</view>
+      </navigator>
     </view>
-    <!-- 核销    之后还会有积分核销 -->
-    <!-- <navigator wx:if="{{!formPage&&formData.IsRegister}}" hover-class="none" url='/pages/user/work/cardCustomer?openId={{openId}}' class=' app-shadow-2 content-cancel  app-shadow-2'>
-            <image src='/assets/icon/hx.svg'></image>
-            档案
-        </navigator>
-        <navigator wx:if="{{!formPage&&formData.IsRegister}}" hover-class="none" url='/pages/user/work/cardCustomer?openId={{openId}}' class=' app-shadow-2 content-cancel  app-shadow-2'>
-            <image src='/assets/icon/hx.svg'></image>
-            核销
-        </navigator> -->
-    
     <view class='content-card'>
       <view class='content-card-title'>
         <view class='content-card-title-left'>联系方式</view>
         <!-- <view class='content-card-title-right'>更改联系方式</view> -->
       </view>
-      <view class='content-card-body'>
-        <view class='panel-item'>
-          <!-- 拨打电话 -->
-          <view class='panel'>
-            <view class='panel-number'>{{formData.Phone||'-'}}</view>
-            <view class='panel-icon' data-panel="{{formData.Phone}}" catchtap="makePhoneCall">
-              <image src='/assets/icon/call.svg'></image>
-            </view>
-          </view>
-          <!-- 微信 -->
-          <view class='panel'>
-            <view class='panel-number'>{{formData.NickName}}</view>
-            <navigator hover-class="none" url='/pages/message/chat?openId={{formData.OpenId}}&cardName={{formData.CardName||formData.NickName}}&wxId={{formData.WxId}}&headImg={{formData.ProfilePhoto}}&online={{online}}' class='panel-icon'>
-              <image src='/assets/icon/WX.svg'></image>
-            </navigator>
-          </view>
+      <view class='content-card-body panel-list'>
+        <!-- 拨打电话 -->
+        <view class='panel-item' data-panel="{{formData.Phone}}" catchtap="makePhoneCall">
+          <image src='/assets/icon/sj.svg'></image>
+          拨打电话
         </view>
+        <!-- 在线沟通 -->
+        <navigator class='panel-item' hover-class="none" url='/pages/message/chat?openId={{formData.OpenId}}&cardName={{formData.CardName||formData.NickName}}&wxId={{formData.WxId}}&headImg={{formData.ProfilePhoto}}&online={{online}}'>
+          <image src='/assets/icon/zxgt.svg'></image>
+          在线沟通
+        </navigator>
       </view>
     </view>
-    <view class='content-card' wx:if="{{nameplateList.length>0||formData.IsAttest}}">
+    <!-- <view class='content-card' wx:if="{{nameplateList.length>0||formData.IsAttest}}">
       <view class='content-card-title'>
         <view class='content-card-title-left'>客户铭牌</view>
-        <!-- <view class='content-card-title-right'>查看全部</view> -->
       </view>
       <view class='content-card-body'>
         <view class='nameplate-list-white'></view>
@@ -111,6 +121,27 @@
             <image src='{{imgUrl+item.ImgUrl}}'></image>
           </view>
         </view>
+      </view>
+    </view> -->
+    <view class='content-card' wx:if="{{carList.length>0}}">
+      <view class='content-card-title'>
+        <view class='content-card-title-left'>绑定车辆</view>
+        <view class='content-card-title-right'></view>
+      </view>
+      <view class='content-card-body'>
+        <navigator url="clientDetails/carDetails?openId={{formData.OpenId}}&carId={{item.CarId}}" class='car' wx:for="{{carList}}" wx:key="{{index}}">
+          <view class='car-con'>
+            <!-- <view class='car-img'><image src='/assets/carIcon/{{item.brand}}-i.svg'></image></view> -->
+            <view class='car-model'>{{item.CarStyle}}</view>
+          </view>
+          <view class='car-bg'>
+            <image mode='aspectFit' src='/assets/icon/lc.svg'></image>
+          </view>
+          <view class='car-number'>{{item.CarNum}}</view>
+          <view wx:if="{{item.Auth}}" class='car-auth'>
+            <image src='/assets/icon/sqcl2.svg'></image>
+          </view>
+        </navigator>
       </view>
     </view>
     <view class='content-card' wx:if="{{clientList.length>0}}">
@@ -133,27 +164,6 @@
             </view>
           </view>
         </view>
-      </view>
-    </view>
-    <view class='content-card' wx:if="{{carList.length>0}}">
-      <view class='content-card-title'>
-        <view class='content-card-title-left'>绑定车辆</view>
-        <view class='content-card-title-right'></view>
-      </view>
-      <view class='content-card-body'>
-        <navigator url="clientDetails/carDetails?openId={{formData.OpenId}}&carId={{item.CarId}}" class='car' wx:for="{{carList}}" wx:key="{{index}}">
-          <view class='car-con'>
-            <!-- <view class='car-img'><image src='/assets/carIcon/{{item.brand}}-i.svg'></image></view> -->
-            <view class='car-model'>{{item.CarStyle}}</view>
-          </view>
-          <view class='car-bg'>
-            <image mode='aspectFit' src='/assets/icon/lc.svg'></image>
-          </view>
-          <view class='car-number'>{{item.CarNum}}</view>
-          <view wx:if="{{item.Auth}}" class='car-auth'>
-            <image src='/assets/icon/sqcl2.svg'></image>
-          </view>
-        </navigator>
       </view>
     </view>
   </view>

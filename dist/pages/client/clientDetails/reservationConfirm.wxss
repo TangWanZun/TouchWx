@@ -1,0 +1,56 @@
+.page-body{
+  padding:0 15px 15px 15px;
+}
+.page-item{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding:10px 5px;
+}
+.page-title{
+  display: flex;
+  font-size: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.page-title>view{
+  margin-right: 20px;
+}
+.page-text{
+  font-size: 15px;
+  margin-top: 5px;
+}
+.page-item-footer{
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 10px;
+}
+.page-item-btn{
+  font-size: 15px;
+  padding:5px 15px;
+  border-radius: 3px;
+  background-color: #2f63f4;
+  color: white;
+}
+.page-item-btn:active{
+  opacity: 0.5;
+}
+/* 添加预约信息 */
+.addResercInfo{
+  position: fixed;
+  left:50%;
+  bottom: 10px;
+  width: 60px;
+  height: 60px;
+  margin-left: -30px;
+  background-color: #2f63f4;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.addResercInfo image{
+  width:60%;
+  height: 60%;
+}
+.addResercInfo:active{
+  opacity: 0.5;
+}

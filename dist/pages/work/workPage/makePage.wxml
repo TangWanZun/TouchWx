@@ -2,32 +2,6 @@
         <view class='page-tap-item  page-tap-item-show' data-key="A01" bindtap='tapItemSelect'>基本</view>
         <view class='page-tap-item page-tap-item-show' data-key="A03" bindtap='tapItemSelect'>处理</view>
 </view>
-<wxs module="m1">
-function reserveType(val){
-        switch(val){
-                case 'A01':return '保养预约'
-                case 'A02':return '维修预约'
-                case 'A03':return '装饰代办'
-                case 'A04':return '上门预约'
-        }
-}
-function AssType(val){
-            switch(val){
-                case 'B01':return '首次保养'
-                case 'B02':return '定期保养'
-                case 'B03':return '常规维修'
-                case 'B04':return '事故维修'
-                case 'B05':return '免费检测'
-                case 'B06':return '厂家召回'
-                case 'B07':return '装饰'
-                case 'B08':return '代办'
-                case 'B09':return '保养'
-                case 'B10':return '维修'
-            }
-}
-module.exports.reserveType = reserveType;
-module.exports.AssType = AssType;
-</wxs>
 <scroll-view  scroll-into-view="{{tapItemShow}}" scroll-with-animation="true" class='page-body' scroll-y="true"> 
         <view class='page-module-box'  id='A01'>
                 <view class='page-module app-shadow-3'>
@@ -39,11 +13,11 @@ module.exports.AssType = AssType;
                                 <view slot="left">编号</view>
                         </tuiInput>
                         <!-- 预约类型 -->
-                        <tuiInput  disabled="{{true}}"  value="{{m1.reserveType(formData.ReserveType)}}">
+                        <tuiInput  disabled="{{true}}"  value="{{RESERVE_TYPE[formData.ReserveType]}}">
                                 <view slot="left">预约类型</view>
                         </tuiInput>
                         <!-- 分类 -->
-                        <tuiInput  disabled="{{true}}"  value="{{m1.AssType(formData.AssType)}}">
+                        <tuiInput  disabled="{{true}}"  value="{{RESERVE_ASS_TYPE[formData.AssType]}}">
                                 <view slot="left">分类</view>
                         </tuiInput>
                         <!-- 客户名称 -->
