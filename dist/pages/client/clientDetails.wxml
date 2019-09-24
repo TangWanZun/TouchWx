@@ -75,7 +75,7 @@
         </navigator>
       </view>
     </view>
-    <view class="fun content-card">
+    <view class="content-card fun">
       <navigator url="/pages/client/clientDetails/clientInfo?openId={{openId}}&online={{onLine}}" class="fun-item">
         <image src="/assets/sweepCode/5.svg"></image>
         <view class="fun-text">用户档案</view>
@@ -87,6 +87,14 @@
       <navigator url='/pages/client/clientDetails/reservationConfirm?openId={{openId}}' class="fun-item">
         <image src="/assets/sweepCode/2.svg"></image>
         <view class="fun-text">预约确认</view>
+      </navigator>
+      <navigator url='/pages/client/clientDetails/reservationConfirm?openId={{openId}}' class="fun-item">
+        <image src="/assets/sweepCode/2.svg"></image>
+        <view class="fun-text">洗车券核销</view>
+      </navigator>
+      <navigator url='/pages/client/clientDetails/reservationConfirm?openId={{openId}}' class="fun-item">
+        <image src="/assets/sweepCode/2.svg"></image>
+        <view class="fun-text">餐券核销</view>
       </navigator>
     </view>
     <view class='content-card'>

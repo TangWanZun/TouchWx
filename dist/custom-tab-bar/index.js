@@ -1,6 +1,7 @@
 import {
   Apps,
-  FunApps
+  FunApps,
+  TABBAR_UX
 } from "../library/sdk/UX_CONST.js"
 import {
   find
@@ -19,55 +20,7 @@ Page({
     //胶囊信息
     appHeader: undefined,
     // 底部栏
-    list: {
-      "INDEX": {
-        "pagePath": "/pages/tabBar/index",
-        "text": "首页",
-        // "iconPath": "/assets/tabBar/message.png",
-        // "selectedIconPath": "/assets/tabBar/message-select.png",
-        "iconPath": "/assets/tabBar/index.png",
-        "selectedIconPath": "/assets/tabBar/index-select.png",
-        isShow: true
-      },
-      // [wx.$UX.WeMinProWork]: {
-      "WORK": {
-        "pagePath": "/pages/tabBar/work",
-        "text": "工作",
-        "iconPath": "/assets/tabBar/work.png",
-        "selectedIconPath": "/assets/tabBar/work-select.png",
-        isShow: true
-      },
-      'app': {
-        isApp: true,
-        isShow: true
-      },
-      'MESSAGE': {
-        // [wx.$UX.WeMinProMessage]: {
-        "pagePath": "/pages/tabBar/message",
-        "text": "客户",
-        // "iconPath": "/assets/tabBar/message.png",
-        // "selectedIconPath": "/assets/tabBar/message-select.png",
-        "iconPath": "/assets/tabBar/client.png",
-        "selectedIconPath": "/assets/tabBar/client-select.png",
-        "badge":0,
-        isShow: true
-      },
-      [wx.$UX.WeMinProCooReport]: {
-        "pagePath": "/pages/tabBar/cooReport",
-        "text": "报告",
-        "iconPath": "/assets/tabBar/report.png",
-        "selectedIconPath": "/assets/tabBar/report-select.png",
-        isShow: false
-      },
-      "USER": {
-        // [wx.$UX.WeMinProUser]: {
-        "pagePath": "/pages/tabBar/user",
-        "text": "我的",
-        "iconPath": "/assets/tabBar/user.png",
-        "selectedIconPath": "/assets/tabBar/user-select.png",
-        isShow: true
-      },
-    },
+    list: TABBAR_UX,
     //业务功能
     appList: undefined,
     //应用功能
