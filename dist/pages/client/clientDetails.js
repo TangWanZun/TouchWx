@@ -11,8 +11,6 @@ Page({
      * 页面的初始数据
      */
     data: {
-        //核销
-        ux_consumeRelease: false,
         //图片数据
         imgUrl: getApp().privateData.configUrl.imgUrl,
         formData: {},
@@ -247,12 +245,6 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function() {
-        wx.$getUX(wx.$UX.ConsumeRelease)
-            .then(res => {
-                this.setData({
-                    ux_consumeRelease: res
-                })
-            })
     },
     /**
      * 生命周期函数--监听页面显示

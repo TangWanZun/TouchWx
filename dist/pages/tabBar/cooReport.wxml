@@ -119,4 +119,4 @@
         </view>
     </view>
 </view>
-<tab-bar selected="{{UX_CONST.WeMinProCooReport}}" ></tab-bar>
+<!-- <tab-bar selected="{{UX_CONST.WeMinProCooReport}}" ></tab-bar> -->

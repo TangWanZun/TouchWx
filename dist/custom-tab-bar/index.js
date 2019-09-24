@@ -13,9 +13,8 @@ Page({
    */
   data: {
     //当前选择的项目
-    selected: "INDEX",
+    selected: "",
     color: "#bcbcbc",
-    meSelected: 0,
     selectedColor: "#256cfa",
     //胶囊信息
     appHeader: undefined,
@@ -131,10 +130,27 @@ Page({
       //运行
       login.init();
     }
+    let app = getApp();
+    //更新底部数据
+    app.loadInfo(()=>{
+      //获取当前第一个可以显示的页面
+      for (let x in TABBAR_UX){
+        if (TABBAR_UX[x].isShow){
+          this.setData({
+            selected:x
+          })
+          break;
+        }
+      }
+      //更新用户底部栏权限
+      this.setData({
+        list:TABBAR_UX
+      })
+    })
     //获取未读的信息
     this.getNoReact();
-    let systemInfo = getApp().privateData.systemInfo;
-    let boundInfo = getApp().privateData.boundInfo;
+    let systemInfo = app.privateData.systemInfo;
+    let boundInfo = app.privateData.boundInfo;
     // console.log(boundInfo)
     this.setData({
       appHeader: boundInfo,

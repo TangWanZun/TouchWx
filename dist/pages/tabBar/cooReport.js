@@ -156,7 +156,7 @@ Page({
     //     }
     //   },
     data: {
-        UX_CONST: wx.$UX,
+        // UX_CONST: wx.$UX,
         bg1: '/assets/bg/di.png',
         // 会员数量占比
         ec1: {

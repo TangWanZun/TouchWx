@@ -94,7 +94,9 @@ export const INDEX_TYPE = {
  */
 export const STORAGE_KEY = {
   //保存的自定义的首页应用
-  INDEX_APP: "indexApp"
+  INDEX_APP: "indexApp",
+  //APP的权限
+  APP_UX:'appUx'
 }
 
 /**

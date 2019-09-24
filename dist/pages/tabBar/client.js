@@ -7,7 +7,6 @@ Page({
      * 页面的初始数据
      */
     data: {
-        UX_CONST: wx.$UX,
         //使用数据
         dataList: [],
         //图片数据

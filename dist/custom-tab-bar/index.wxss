@@ -63,11 +63,11 @@
 }
 .tab-bar-item-bind-show{
   position: absolute;
-  top: 50%;
+  top: 0;
   left:0%;
-  width: calc( ( 100vw - 52px ) / 4 );
-  height: calc( ( 100vw - 52px ) / 4 );
-  margin-top: calc( ( 52px - 100vw ) / 8 );
+  width: 100%;
+  padding-top: 100%;
+  margin-top:calc( -50% + 26px );
   border-radius: 100%;
   background-color: rgba(0, 0, 0, 0);
   transition: 0.3s;
