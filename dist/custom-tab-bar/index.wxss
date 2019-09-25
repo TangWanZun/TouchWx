@@ -1,5 +1,7 @@
 /* 背景色 */
-.tab-bar-bg{
+
+.tab-bar-bg {
+  z-index: 5;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -19,8 +21,11 @@
   display: flex;
   justify-content: space-between;
 }
+
 /* 底部栏 */
+
 .tab-bar {
+  z-index: 5;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -30,7 +35,6 @@
   padding-bottom: env(safe-area-inset-bottom);
 }
 
-
 .tab-bar-item {
   flex: 1;
   text-align: center;
@@ -39,47 +43,52 @@
   align-items: flex-end;
   position: relative;
 }
-.tab-bar-item-bind{
+
+.tab-bar-item-bind {
   height: 47px;
   width: 100%;
   overflow: hidden;
   position: relative;
   padding-top: 4px;
 }
+
 /* 红点 */
-.tab-bar-item-badge{
+
+.tab-bar-item-badge {
   position: absolute;
-  right: calc( 50% - 25px );
-  top:0;
+  right: calc(50% - 25px);
+  top: 0;
   background-color: red;
   border-radius: 100%;
   color: white;
   margin-left: -9px;
-  width:18px;
+  width: 18px;
   height: 18px;
   font-size: 12px;
   text-align: center;
   line-height: 18px;
 }
-.tab-bar-item-bind-show{
+
+.tab-bar-item-bind-show {
   position: absolute;
   top: 0;
-  left:0%;
+  left: 0%;
   width: 100%;
   padding-top: 100%;
-  margin-top:calc( -50% + 26px );
+  margin-top: calc(-50% + 26px);
   border-radius: 100%;
   background-color: rgba(0, 0, 0, 0);
   transition: 0.3s;
 }
-.tab-bar-item-bind:active > .tab-bar-item-bind-show{
+
+.tab-bar-item-bind:active > .tab-bar-item-bind-show {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
 .tab-bar-item image {
   width: 27px;
   height: 27px;
-  margin:0 auto;
+  margin: 0 auto;
 }
 
 .tab-bar-item view {
@@ -87,30 +96,36 @@
 }
 
 /* 这个是特殊的app按钮 */
-.tab-bar-app{
-  width:52px;
+
+.tab-bar-app {
+  width: 52px;
   height: 52px;
   border-radius: 100%;
   background-color: white;
   box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.1);
-  border:1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.tab-bar-app:active{
+
+.tab-bar-app:active {
   background-color: rgb(247, 247, 247);
 }
-.tab-bar-app image{
-  width:34px;
+
+.tab-bar-app image {
+  width: 34px;
   height: 34px;
 }
+
 /* 应用列表按钮 */
-.tab-app-header{
+
+.tab-app-header {
   margin-bottom: 10px;
   padding-left: 10pt;
 }
-.tab-app-btn{
+
+.tab-app-btn {
   border-radius: 20px;
   background-color: #2f63f4;
   display: flex;
@@ -120,89 +135,166 @@
   font-size: 14px;
   width: 130px;
 }
+
 /* 全部应用列表 */
-.tab-app{
+
+.tab-app {
   position: fixed;
   top: 0px;
-  left:0;
+  left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(255,255,255, 1);
+  background-color: rgba(255, 255, 255, 1);
   transform: translateY(-100vh);
   transition: 0.1s transform;
   z-index: 9;
 }
-.tab-app-show{
+
+.tab-app-show {
   transform: translateY(0);
 }
-.tab-app-body{
+
+.tab-app-body {
   /* height: calc( 100% - 80px ); */
   overflow: auto;
 }
-.tab-app-body-item{
-  padding:0 15px;
+
+.tab-app-body-item {
+  padding: 0 15px;
   padding-bottom: 15px;
 }
-.tab-app-body-title{
+
+.tab-app-body-title {
   font-size: 15px;
 }
-.tab-app-body-con{
+
+.tab-app-body-con {
   display: flex;
   flex-wrap: wrap;
 }
+
 /* 单个应用 */
-.tab-app-body-con-item{
-  width:calc(( 100vw - 30px ) / 4 );
-  padding:10px 0;
+
+.tab-app-body-con-item {
+  width: calc((100vw - 30px) / 4);
+  padding: 10px 0;
   border-radius: 5px;
 }
-.tab-app-body-con-item:active{
+
+.tab-app-body-con-item:active {
   background-color: rgba(0, 0, 0, 0.05);
 }
-.tab-app-body-con-item>image{
-  margin:0 auto;
-  width:44px;
+
+.tab-app-body-con-item>image {
+  margin: 0 auto;
+  width: 44px;
   height: 44px;
   margin-bottom: 5px;
 }
-.tab-app-body-con-item>view{
+
+.tab-app-body-con-item>view {
   font-size: 13px;
   text-align: center;
 }
+
 /* 关闭应用抽屉 */
-.tab-app-close{
-  position: fixed; 
+
+.tab-app-close {
+  position: fixed;
   z-index: 10;
-  left:50%;
+  left: 50%;
   bottom: 15px;
   margin-left: -26px;
-  width:52px;
+  width: 52px;
   height: 52px;
   background-color: #2f63f4;
   border-radius: 100%;
   transform: translateY(80px);
   transition: 0.2s transform;
 }
-.tab-app-close:active{
+
+.tab-app-close:active {
   opacity: 0.8;
 }
-.tab-app-close-item{
+
+.tab-app-close-item {
   border-radius: 10px;
-  width:30px;
+  width: 30px;
   height: 2px;
   background-color: white;
   position: absolute;
-  left:50%;
-  top:50%;
+  left: 50%;
+  top: 50%;
   margin-left: -15px;
   margin-top: -1px;
 }
-.tab-app-close-item-1{
+
+.tab-app-close-item-1 {
   transform: rotate(45deg);
 }
-.tab-app-close-item-2{
+
+.tab-app-close-item-2 {
   transform: rotate(-45deg);
 }
-.tab-app-close-show{
+
+.tab-app-close-show {
   transform: translateY(0);
+}
+
+/* 正在加载的loading */
+.k-line-box{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.k-line-con{
+
+}
+@keyframes k-loadingA {
+  0% {
+    height: 15px;
+  }
+
+  50% {
+    height: 45px;
+  }
+
+  100% {
+    height: 15px;
+  }
+}
+
+.k-line {
+  display: inline-block;
+  width: 10px;
+  height: 15px;
+  border-radius: 15px;
+  margin:0 5px;
+}
+
+.k-line3-1 {
+  animation: k-loadingA 1.5s 0s infinite;
+  background-color: #2f63f4;
+}
+
+.k-line3-2 {
+  animation: k-loadingA 1.5s 0.1s infinite;
+  background-color: #4c7af7;
+}
+
+.k-line3-3 {
+  animation: k-loadingA 1.5s 0.2s infinite;
+  background-color: #6a90f8;
+}
+
+.k-line3-4 {
+  animation: k-loadingA 1.5s 0.3s infinite;
+  background-color: #8fadff;
+}
+
+.k-line3-5 {
+  animation: k-loadingA 1.5s 0.4s infinite;
+  background-color: #b9cafa;
 }

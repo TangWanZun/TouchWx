@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 50 (54983) - http://www.bohemiancoding.com/sketch -->
-    <title>Group 5</title>
+    <title>chifan2600</title>
     <desc>Created with Sketch.</desc>
-    <defs></defs>
+    <defs>
+        <filter x="-32.5%" y="-17.5%" width="165.0%" height="165.0%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="9" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.796078431   0 0 0 0 0.847058824   0 0 0 0 0.992156863  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="公司信息-2-copy-7" transform="translate(-563.000000, -672.000000)">
-            <g id="Group-5" transform="translate(563.000000, 672.000000)">
-                <circle id="Oval-3-Copy-11" fill="#EC9747" cx="50" cy="50" r="50"></circle>
-                <polygon id="Path-27" fill="#FFFFFF" points="36.9049533 28.247067 36.9049533 42.081309 38.8749385 42.081309 38.8749385 28.247067 44.9450598 28.247067 44.9450598 42.081309 47.0626895 42.081309 47.0626895 28.247067 50.8837095 28.247067 52.982036 32.3451162 52.982036 46.0160623 44.9450598 46.0160623 44.9450598 51.717333 47.0626895 51.717333 47.0626895 74.1123502 44.9450598 75.5569713 38.8749385 75.5569713 36.9049533 74.1123502 36.9049533 51.9020191 38.8749385 51.9020191 38.8749385 46.0160623 31.045082 46.0160623 31.045082 32.3451162 32.8606404 28.247067"></polygon>
-                <polygon id="Path-28" fill="#FFFFFF" points="58.8805139 34.2660605 58.8805139 56.080412 64.6224782 56.080412 64.6224782 75.9847753 68.9876441 75.9847753 68.9876441 28.5047928 63.934079 28.5047928"></polygon>
+        <g id="我的卡券-copy-13" transform="translate(-335.000000, -615.000000)" fill="#2F63F4" fill-rule="nonzero">
+            <g id="chifan2600" filter="url(#filter-1)" transform="translate(345.000000, 616.000000)">
+                <path d="M20.3337612,0 L20.3337612,17.5 L17.7920411,17.5 L17.7920411,0 L10.1668806,0 L10.1668806,17.5 L7.62516046,17.5 L7.62516046,0 L2.54172015,0 L0,5 L0,22.5 L10.1668806,22.5 L10.1668806,30 L7.62516046,30 L7.62516046,57.5 L10.3526217,60 L17.7920411,60 L20.3337612,57.5 L20.3337612,30 L17.7920411,30 L17.7920411,22.5 L27.9589217,22.5 L27.9589217,5 L25.4172015,0 L20.3337612,0 Z M52.306853,0 L46.5,7.5 L46.5,35 L54.1251605,35 L54.1251605,60 L59.2086008,60 L59.2086008,0 L52.306853,0 Z" id="Shape"></path>
             </g>
         </g>
     </g>

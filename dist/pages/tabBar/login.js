@@ -214,7 +214,7 @@ Page({
                 login.getUX({
                     complete(){
                         wx.redirectTo({
-                          url: "/custom-tab-bar/customApp",
+                          url: "/custom-tab-bar/index",
                         })
                     }
                 })

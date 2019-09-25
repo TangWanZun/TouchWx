@@ -6,7 +6,7 @@
     <view class="modal">
       <view class="modal-tile">首页自定义功能</view>
       <view class="modal-con">
-        <view class="modal-item" wx:for="{{appsList}}" wx:key="{{item}}" bindtap="delApp" data-index="{{index}}">
+        <view class="modal-item" wx:for="{{appsList}}" wx:key="{{item}}" bindtap="delApp" data-index="{{index}}" wx:if="{{allApps[item]._show}}">
           <view class="modal-item-icon">
             <image src="/assets/icon/jq.svg"></image>
           </view>
@@ -18,7 +18,7 @@
     <view class="modal">
       <view class="modal-tile">应用功能</view>
       <view class="modal-con">
-        <view class="modal-item" wx:for="{{funAppList}}" wx:key="{{index}}" bindtap="addApp" data-index="{{index}}">
+        <view class="modal-item" wx:for="{{funAppList}}" wx:key="{{index}}" bindtap="addApp" data-index="{{index}}" >
           <view class="modal-item-icon">
             <image src="/assets/icon/tj.svg"></image>
           </view>
@@ -30,7 +30,7 @@
     <view class="modal">
       <view class="modal-tile">业务功能</view>
       <view class="modal-con">
-        <view class="modal-item" wx:for="{{appList}}" wx:key="{{index}}" bindtap="addApp" data-index="{{index}}">
+        <view class="modal-item" wx:for="{{appList}}" wx:key="{{index}}" bindtap="addApp" data-index="{{index}}" wx:if="{{item._show}}">
 
           <view class="modal-item-icon">
             <image src="/assets/icon/tj.svg"></image>

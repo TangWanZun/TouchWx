@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "modal-box":"../../component/modalBox",
+    "client-img":"../../component/clientImg"
+  }
+}

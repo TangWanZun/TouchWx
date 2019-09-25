@@ -1,4 +1,13 @@
 /**
+ * 权限的常量索引表
+ */
+export const UX_MAP = {
+  //独立功能-餐券
+  "MealVoucher":"MealVoucher",
+  //独立功能-洗车券
+  "CarWash":"CarWash"
+}
+/**
  * 功能应用面板信息
  */
 export const FunApps = {
@@ -51,6 +60,19 @@ export const Apps = {
   }
 }
 /**
+ * 独立权限功能
+ */
+export const ALONE_FUN = {
+  //洗车券核销
+  [UX_MAP.CarWash]:{
+    _show:false,
+  },
+  //餐券核销
+  [UX_MAP.MealVoucher]: {
+    _show: false,
+  },
+}
+/**
  * 底部栏权限
  */
 export const TABBAR_UX = {
@@ -61,7 +83,17 @@ export const TABBAR_UX = {
     // "selectedIconPath": "/assets/tabBar/message-select.png",
     "iconPath": "/assets/tabBar/index.png",
     "selectedIconPath": "/assets/tabBar/index-select.png",
-    isShow: false
+    _show: false
+  },
+  //这个是独立的首页，给非本4S店业务人员使用 ， 只包括常用功能
+  "ALONE_INDEX": {
+    "pagePath": "/pages/tabBar/aloneIndex",
+    "text": "首页",
+    // "iconPath": "/assets/tabBar/message.png",
+    // "selectedIconPath": "/assets/tabBar/message-select.png",
+    "iconPath": "/assets/tabBar/index.png",
+    "selectedIconPath": "/assets/tabBar/index-select.png",
+    _show: false
   },
   // [wx.$UX.WeMinProWork]: {
   "WORK": {
@@ -69,11 +101,11 @@ export const TABBAR_UX = {
     "text": "工作",
     "iconPath": "/assets/tabBar/work.png",
     "selectedIconPath": "/assets/tabBar/work-select.png",
-    isShow: false
+    _show: false
   },
   'app': {
     isApp: true,
-    isShow: false
+    _show: false
   },
   'MESSAGE': {
     // [wx.$UX.WeMinProMessage]: {
@@ -84,14 +116,14 @@ export const TABBAR_UX = {
     "iconPath": "/assets/tabBar/client.png",
     "selectedIconPath": "/assets/tabBar/client-select.png",
     "badge": 0,
-    isShow: false
+    _show: false
   },
   // [wx.$UX.WeMinProCooReport]: {
   //   "pagePath": "/pages/tabBar/cooReport",
   //   "text": "报告",
   //   "iconPath": "/assets/tabBar/report.png",
   //   "selectedIconPath": "/assets/tabBar/report-select.png",
-  //   isShow: false
+  //   _show: false
   // },
   "USER": {
     // [wx.$UX.WeMinProUser]: {
@@ -99,7 +131,7 @@ export const TABBAR_UX = {
     "text": "我的",
     "iconPath": "/assets/tabBar/user.png",
     "selectedIconPath": "/assets/tabBar/user-select.png",
-    isShow: true
+    _show: true
   }
 }
 /**
@@ -118,7 +150,13 @@ export const upDateApp = function(uxList, callBack) {
   //表示是代表的底部栏的权限信息
   for (let x in uxList.WeMinProTabr) {
     if (uxList.WeMinProTabr[x]) {
-      TABBAR_UX[x].isShow = true;
+      TABBAR_UX[x]._show = true;
+    }
+  }
+  //更新独立功能权限信息
+  for (let x in uxList.WeMinProAloneFun){
+    if (uxList.WeMinProAloneFun[x]) {
+      ALONE_FUN[x]._show = true;
     }
   }
   //并且将全部的底部栏权限信息进行缓存，下次将调用缓存，减少等待时间
@@ -136,32 +174,7 @@ export const UX_CONST = {
   /**
    * 最新的权限信息
    */
-
-  /**
-   * 原来的权限信息
-   */
-  //信息权限
-  "WeMinProMessage": "WeMinProChat",
-  //客户页面
-  "WeMinProClient": "WeMinProOcrd",
-  //工作权限
-  "WeMinProWork": "WeMinProWorker",
-  //我的权限
-  "WeMinProUser": "WeMinProUserMain",
-  //运营报告
-  "WeMinProCooReport": "WeMinProCooReport",
-  //核销权限
-  "ConsumeRelease": "WeMinProOcrd.ConsumeRelease",
-  //业务权限范围
-  "CmpScopeFilter": "WeMinProUserMain.CmpScopeFilter",
-  //预约单权限
-  "WeiXinReserve": "WeMinProWorker.WeiXinReserve",
-  //救援单权限
-  "WeiXinRescue": "WeMinProWorker.WeiXinRescue",
-  //活动报名权限
-  "WeiXinActivitySignUp": "WeMinProWorker.WeiXinActivitySignUp",
-  //到期提醒权限
-  "TimedReport": "WeMinProWorker.TimedReport",
+  
 }
 /**
  * 获取权限信息

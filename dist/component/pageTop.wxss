@@ -10,7 +10,7 @@
   font-size: 17px;
   display: flex;
   align-items: center;
-  z-index: 9;
+  z-index: 5;
   overflow: hidden;
 }
 .page-header-title{

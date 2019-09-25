@@ -11,7 +11,7 @@
         </view>
       </navigator>
       <!-- 进入客户页面 -->
-      <navigator url="/pages/tabBar/client" class='page-txl'>
+      <navigator url="/pages/client/client" class='page-txl'>
         <image src="/assets/icon/txl.svg"></image>
       </navigator>
     </view>

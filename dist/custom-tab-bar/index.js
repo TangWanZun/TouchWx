@@ -26,6 +26,8 @@ Page({
     funAppList: undefined,
     //app的抽屉现在是否在出来的状态
     isAppShow: false,
+    //当前加载是否已经完成
+    loadInfo:false
   },
   /**
    * 获取当前未读信息
@@ -135,7 +137,7 @@ Page({
     app.loadInfo(()=>{
       //获取当前第一个可以显示的页面
       for (let x in TABBAR_UX){
-        if (TABBAR_UX[x].isShow){
+        if (TABBAR_UX[x]._show){
           this.setData({
             selected:x
           })
@@ -144,11 +146,14 @@ Page({
       }
       //更新用户底部栏权限
       this.setData({
-        list:TABBAR_UX
+        list:TABBAR_UX,
+        //加载完成
+        loadInfo:true,
       })
+      //根据权限进行加载数据
+      //获取未读的信息
+      this.getNoReact();
     })
-    //获取未读的信息
-    this.getNoReact();
     let systemInfo = app.privateData.systemInfo;
     let boundInfo = app.privateData.boundInfo;
     // console.log(boundInfo)

@@ -6,13 +6,25 @@
 <message-view id="MESSAGE" wx:elif="{{selected=='MESSAGE'}}" bindbadgeChange="messageBadgeChange"></message-view>
 <!-- 我的 -->
 <user-view id="USER" wx:elif="{{selected=='USER'}}"></user-view>
+<!-- 首页（无业务展示） -->
+<alone-index-view id="ALONE_INDEX" wx:elif="{{selected=='ALONE_INDEX'}}"> </alone-index-view>
+<!-- 加载loading -->
+<view wx:else class="k-line-box">
+  <view class="k-line-con">
+    <view class="k-line k-line3-1"></view>
+    <view class="k-line k-line3-2"></view>
+    <view class="k-line k-line3-3"></view>
+    <view class="k-line k-line3-4"></view>
+    <view class="k-line k-line3-5"></view>
+  </view>
+</view>
 <!-- 背景色 -->
-<view class="tab-bar-bg">
+<view class="tab-bar-bg" wx:if="{{loadInfo}}">
   <view class="tab-bar-border"></view>
 </view>
 <!-- 底部栏 -->
-<view class="tab-bar">
-  <view wx:for="{{list}}" wx:if="{{item.isShow}}" wx:key="index" class="{{item.isApp?'tab-bar-app':'tab-bar-item'}}">
+<view class="tab-bar" wx:if="{{loadInfo}}">
+  <view wx:for="{{list}}" wx:if="{{item._show}}" wx:key="index" class="{{item.isApp?'tab-bar-app':'tab-bar-item'}}">
     <!-- app应用按钮 -->
     <image bindtap="appShow" wx:if="{{item.isApp}}" src="/assets/tabBar/app.png"></image>
     <!-- 普通按钮 -->
@@ -21,7 +33,7 @@
       <view style="color: {{selected === index ? selectedColor : color}}">{{item.text}}</view>
       <view class="tab-bar-item-badge" wx:if="{{item.badge}}">{{item.badge}}</view>
       <view class="tab-bar-item-bind-show">
-      
+
       </view>
     </view>
   </view>
@@ -41,7 +53,7 @@
         </view>
       </view>
     </view> -->
-     <view class="tab-app-body-item">
+    <view class="tab-app-body-item">
       <view class="tab-app-body-title">应用功能</view>
       <view class="tab-app-body-con">
         <navigator url="{{item.url}}" class="tab-app-body-con-item" wx:for="{{funAppList}}" wx:key="{{index}}" wx:if="{{item._show}}">

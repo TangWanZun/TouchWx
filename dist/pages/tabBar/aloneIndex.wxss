@@ -1,0 +1,109 @@
+
+.page-body{
+  background-color: var(--bodyBg);
+  min-height: 100vh;
+}
+/* 顶部栏 */
+
+.page-header {
+  background-color: var(--mainColor);
+  height: 35vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes headerRoute1 {
+  0% {
+    transform: rotate(0deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(180deg) translateY(-10px);
+  }
+
+  100% {
+    transform: rotate(359deg) translateY(0);
+  }
+}
+
+@keyframes headerRoute2 {
+  0% {
+    transform: rotate(45deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(225deg) translateY(-10px);
+  }
+
+  100% {
+    transform: rotate(44deg) translateY(0);
+  }
+}
+
+.page-header::after {
+  content: "";
+  position: absolute;
+  background-color: #f2f2f2;
+  width: 300vw;
+  height: 300vw;
+  border-radius: 43%;
+  margin-left: -150vw;
+  left: 35%;
+  bottom: -292vw;
+  animation: headerRoute1 16s linear;
+  animation-iteration-count: infinite;
+  opacity: 0.3;
+}
+
+.page-header::before {
+  content: "";
+  position: absolute;
+  background-color: #f2f2f2;
+  width: 300vw;
+  height: 300vw;
+  border-radius: 45%;
+  margin-left: -150vw;
+  left: 70%;
+  bottom: -292vw;
+  animation: headerRoute2 15s linear;
+  animation-iteration-count: infinite;
+  opacity: 0.3;
+}
+
+/* logo */
+
+.page-header-logo {
+  width: 80vw;
+}
+
+/* 主要内容 */
+.page-con{
+  padding:20px 15px;
+}
+/* 按钮 */
+.page-btn{
+  border-radius: 10px;
+  background-color: white;
+  height: 20vh;
+  margin-bottom: 10px;
+  padding-top: 6vh;
+}
+.page-btn:active{
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.page-btn:last-child{
+  margin-bottom: 0px;
+}
+.page-btn-icon{
+  width: 6vh;
+  height: 6vh;
+  margin:0 auto;
+  margin-bottom: 1vh;
+}
+.page-btn-text{
+  text-align: center;
+  font-size: 15px;
+}

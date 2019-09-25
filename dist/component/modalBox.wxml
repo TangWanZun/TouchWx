@@ -1,0 +1,4 @@
+<view wx:if="{{myValue}}" class="modal-box">
+  <slot>
+  </slot>
+</view>

@@ -1,15 +1,15 @@
 {
   "pages": [
     "custom-tab-bar/index",
-    "pages/test",
     "pages/tabBar/login",
-    "pages/tabBar/client",
+    
     "custom-tab-bar/customApp"
   ],
   "subPackages": [
     {
       "root": "pages/client",
       "pages": [
+        "client",
         "clientDetails",
         "clientDetails/carDetails",
         "clientDetails/coupon",
