@@ -8,7 +8,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    
   },
 
   /**
@@ -54,9 +54,8 @@ Component({
         success(res) {
           //保存openid
           _this.openId = res.result;
-          wx.showModal({
-            title: '',
-            content: res.result ,
+          wx.navigateTo({
+            url: `/pages/client/clientDetails/specialECard?openid=${res.result}&ecardtype=${echartType}`,
           })
         },
         fail(e) {

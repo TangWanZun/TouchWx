@@ -1,0 +1,25 @@
+<view class="page-body">
+  <view class="page-header app-shadow-3">
+    <view class="page-img">
+      <client-img root-img="{{true}}" src="{{userInfo.Headimgurl}}"></client-img>
+    </view>
+    <view class="page-header-right">
+      <view>{{userInfo.CardName}}</view>
+      <view>{{userInfo.CarNum}}</view>
+    </view>
+  </view>
+  <view class="page-con">
+    <view class="page-card-item app-shadow-3  {{item._select?'page-card-item-show':''}}" wx:for="{{ecardList}}" wx:key="{{index}}" data-index="{{index}}" bindtap="selectCard">
+      <view class="page-card-item-left">
+        {{item.RuleName}}
+      </view>
+      <view class="page-card-item-right">
+        <view class="page-card-item-date">{{item._date}}</view>
+        <view class="page-card-item-note">{{item.ReleasePerson}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="page-btn {{btnDisabled?'page-btn-disabled':''}}" bindtap="submit">
+    卡券核销
+  </view>
+</view>

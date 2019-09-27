@@ -2,7 +2,6 @@
   "pages": [
     "custom-tab-bar/index",
     "pages/tabBar/login",
-    
     "custom-tab-bar/customApp"
   ],
   "subPackages": [
@@ -21,7 +20,8 @@
         "carStyleSelect",
         "clientDetails/clientInfo",
         "clientDetails/reservationConfirm",
-        "clientDetails/addReservation"
+        "clientDetails/addReservation",
+        "clientDetails/specialECard"
       ]
     },
     {

@@ -34,6 +34,10 @@
 		"game": {
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 2,
 			"list": [
@@ -280,6 +284,13 @@
 					"name": "员工添加预约",
 					"pathName": "pages/client/clientDetails/addReservation",
 					"query": "openId=oD6Vgv8RbPapvkvUB-3E2iAaWvVQ",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "特殊卡券核销",
+					"pathName": "pages/client/clientDetails/specialECard",
+					"query": "openid=oD6Vgv8RbPapvkvUB-3E2iAaWvVQ&ecardtype=MealVoucher",
 					"scene": null
 				}
 			]

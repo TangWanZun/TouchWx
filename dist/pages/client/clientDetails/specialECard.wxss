@@ -1,0 +1,82 @@
+/* pages/client/clientDetails/specialECard.wxss */
+.page-body{
+  background-color: var(--bodyBg);
+  min-height: 100vh;
+  padding:15px 15px;
+}
+.page-header{
+  height: 100px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding:0 15px;
+}
+.page-img{
+  width:60px;
+  height: 60px;
+  border-radius: 100%;
+  border:3px solid var(--mainColor);
+  overflow: hidden;
+  margin-right: 10px;
+}
+.page-header-right>view{
+  font-size: 15px;
+  margin: 10px 0px;
+}
+.page-con{
+  padding-top: 20px;
+  padding-bottom: 60px;
+}
+.page-card-item{
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  min-height: 80px;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  transition: 0.3s;
+}
+.page-card-item-show{
+  box-shadow:0px 0px 10px 1px var(--mainColor);
+}
+.page-card-item-left{
+  background-color: var(--mainColor);
+  width:100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+.page-card-item-right{
+  padding: 10px 0;
+}
+.page-card-item-date{
+  font-size: 13px;
+}
+.page-card-item-note{
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.page-btn{
+  position: fixed;
+  bottom: 10px;
+  left:5vw;
+  width:90vw;
+  height: 40px;
+  background-color: var(--mainColor);
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 40px;
+  color: white;
+  transition: 0.3s;
+}
+.page-btn-disabled{
+  opacity: 0.6;   
+}

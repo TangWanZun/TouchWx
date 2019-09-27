@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "卡券核销",
+  "usingComponents": {
+    "client-img": "../../../component/clientImg"
+  }
+}

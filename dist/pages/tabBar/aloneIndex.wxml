@@ -3,11 +3,11 @@
     <image class="page-header-logo" mode="widthFix" src="/assets/bg/logo.png"></image>
   </view>
   <view class="page-con">
-    <view class="page-btn app-shadow" wx:if="{{ALONE_FUN[UX_MAP.MealVoucher]._show}}" data-type="mealVoucher" bindtap="showCode">
+    <view class="page-btn app-shadow" wx:if="{{ALONE_FUN[UX_MAP.MealVoucher]._show}}" data-type="{{UX_MAP.MealVoucher}}" bindtap="showCode">
       <image class="page-btn-icon" src="/assets/sweepCode/3.svg"></image>
       <view class="page-btn-text">餐券核销</view>
     </view>
-    <view class="page-btn app-shadow" wx:if="{{ALONE_FUN[UX_MAP.CarWash]._show}}" data-type="carWash" bindtap="showCode">
+    <view class="page-btn app-shadow" wx:if="{{ALONE_FUN[UX_MAP.CarWash]._show}}" data-type="{{UX_MAP.CarWash}}" bindtap="showCode">
       <image class="page-btn-icon" src="/assets/sweepCode/4.svg"></image>
       <view class="page-btn-text">洗车券核销</view>
     </view>
