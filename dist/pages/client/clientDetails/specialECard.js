@@ -18,7 +18,9 @@ Page({
     btnDisabled: true,
     selectCount: 0
   },
-  openid:"",
+  openid: "",
+  //卡券类型
+  ecardtype: "",
   /**
    * 对当前餐券进行选择
    */
@@ -35,27 +37,61 @@ Page({
   /**
    * 更新
    */
-  submit(){
+  submit() {
+    wx.showLoading({
+      title: '正在核销中',
+    })
     let selectList = [];
-    for (let x of this.data.ecardList){
-      if (x._select){
+    for (let x of this.data.ecardList) {
+      if (x._select) {
         selectList.push(Object.assign({
-          SelectCount:1
-        },x));
+          SelectCount: 1
+        }, x));
       }
+    }
+    //判断是什么卡券核销
+    let actionType = "";
+    switch (this.ecardtype) {
+      //餐券核销
+      case UX_MAP.MealVoucher:
+        {
+          actionType = 'MealConsumeRelease';
+          break;
+        }
+        //洗车券核销
+      case UX_MAP.CarWash:
+        {
+          actionType = 'CarWashConsumeRelease';
+          break;
+        }
     }
     //加载相应数据
     wx.$request({
       url: "/WeMinProPlatJson/Submit",
-      docType: 'Ocrd',
-      actionType: 'OhemWeiXinReserveSubmit',
-      data:{
-        docId:this.openid,
-        docJson:JSON.stringify({
+      data: {
+        docId: this.openid,
+        docType: 'Consume',
+        actionType: actionType,
+        docJson: JSON.stringify({
           List: selectList
         })
       },
-      success(res) {}
+      success(res) {},
+      complete() {
+        wx.hideLoading();
+        setTimeout(() => {
+          wx.showModal({
+            title: '提示',
+            content: '当前卡券核销成功',
+            showCancel: false,
+            success(res) {
+              if (res.confirm) {
+                wx.navigateBack();
+              }
+            }
+          })
+        }, 300)
+      }
     })
     console.log(selectList);
   },
@@ -64,6 +100,7 @@ Page({
    */
   onLoad: function(options) {
     this.openid = options.openid;
+    this.ecardtype = options.ecardtype;
     //获取当前用户的全部可用卡券
     let fun1 = function() {
       //判断是什么卡券核销
