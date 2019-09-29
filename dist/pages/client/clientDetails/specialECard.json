@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "卡券核销",
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "client-img": "../../../component/clientImg"
   }

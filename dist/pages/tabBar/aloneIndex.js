@@ -50,7 +50,7 @@ Component({
       //获取核销类型
       let echartType = e.currentTarget.dataset.type;
       wx.scanCode({
-        onlyFromCamera: true,
+        // onlyFromCamera: true,
         success(res) {
           //保存openid
           _this.openId = res.result;

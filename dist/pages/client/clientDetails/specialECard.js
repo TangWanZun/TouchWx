@@ -101,18 +101,25 @@ Page({
   onLoad: function(options) {
     this.openid = options.openid;
     this.ecardtype = options.ecardtype;
+    this.getData();
+  },
+  /**
+   * 获取数据
+   */
+  getData(){
+    let _this = this;
     //获取当前用户的全部可用卡券
-    let fun1 = function() {
+    let fun1 = function () {
       //判断是什么卡券核销
       let actionType = "";
-      switch (options.ecardtype) {
+      switch (_this.ecardtype) {
         //餐券核销
         case UX_MAP.MealVoucher:
           {
             actionType = 'MealECard';
             break;
           }
-          //洗车券核销
+        //洗车券核销
         case UX_MAP.CarWash:
           {
             actionType = 'CarWashECard';
@@ -126,7 +133,7 @@ Page({
             docType: 'Consume',
             actionType: actionType,
             needTotal: false,
-            docId: options.openid
+            docId: _this.openid
           },
           success: res => {
             resolve(res)
@@ -139,7 +146,7 @@ Page({
     }
 
     //获取当前用户的基本信息
-    let fun2 = function() {
+    let fun2 = function () {
       return new Promise((resolve, reject) => {
         wx.$request({
           url: "/WeMinProPlatJson/GetDataSet",
@@ -147,7 +154,7 @@ Page({
             docType: 'Main',
             actionType: 'ScanBaseInfo',
             needTotal: false,
-            docId: options.openid
+            docId: _this.openid
           },
           success: res => {
             resolve(res)
@@ -189,10 +196,9 @@ Page({
       })
       .finally(() => {
         wx.hideLoading();
+        wx.stopPullDownRefresh();
       })
-
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -225,7 +231,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.getData()
   },
 
   /**
