@@ -28,6 +28,8 @@ Page({
     cmpIndex: 0,
     //选择的公司WXID
     cmpWxid: '',
+    //选择公司的名称
+    cmpName:"",
     qrcodeWidth: qrcodeWidth,
     //是否打开微信二维码
     qrIsShow: false,
@@ -62,7 +64,8 @@ Page({
       success: res => {
         this.setData({
           cmpList: res.Table,
-          cmpWxid: res.Table[0].WxId
+          cmpWxid: res.Table[0].WxId,
+          cmpName: res.Table[0].CmpName,
         })
       },
       complete: res => {
@@ -74,12 +77,13 @@ Page({
    * 选择经销商
    */
   bindPickerChange(e) {
-    // console.log(e)
-    let wxid = e.currentTarget.dataset.wxid;
+    console.log(e)
     let index = e.detail.value;
+    let cmp = this.data.cmpList[index];
     this.setData({
       cmpIndex: index,
-      cmpWxid: wxid
+      cmpWxid: cmp.WxId,
+      cmpName: cmp.CmpName,
     })
   },
   /**
@@ -87,7 +91,7 @@ Page({
    */
   showQr() {
     this.setData({
-      qrIsShow: true
+      qrIsShow: true,
     })
     setTimeout(() => {
       //生成新的二维码
@@ -105,7 +109,7 @@ Page({
   /**
    * 点击二维码弹框
    */
-  qrTap() {
+  modalClose() {
     this.setData({
       qrIsShow: false
     })

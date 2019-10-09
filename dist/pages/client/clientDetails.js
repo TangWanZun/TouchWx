@@ -1,5 +1,9 @@
 // pages/client/clientDetails.js
 import {
+  UX_MAP,
+  ALONE_FUN
+} from "../../library/sdk/UX_CONST.js"
+import {
     util
 } from '../../library/sdk.js'
 import {
@@ -65,7 +69,11 @@ Page({
         },
         //图钉是否启用
         menuFixed: false,
-        UXList: getApp().privateData.UXList
+        // UXList: getApp().privateData.UXList,
+        //独立功能组件权限
+        ALONE_FUN,
+        //权限对照
+        UX_MAP
     },
     /**
      * 预览头像
@@ -105,6 +113,13 @@ Page({
      */
     onLoad: function(options) {
         var _this = this;
+        //更新底部数据
+        getApp().loadInfo(() => {
+          //更新用户独立功能权限
+          this.setData({
+            ALONE_FUN: ALONE_FUN,
+          })
+        })
         //加载是否在线
         this.setData({
             online: options.online,
@@ -115,6 +130,7 @@ Page({
             // hx_UX: getApp().privateData.UXList[UX_NAME.A01]
 
         })
+
         //GetNewNeedReplyList需要接受一个参数是openid
         wx.showLoading({
             title: '正在加载数据',

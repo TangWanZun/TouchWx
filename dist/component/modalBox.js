@@ -26,6 +26,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    /**
+     * 关闭当前页面
+     */
+    close(){
+      this.triggerEvent("close");
+    }
   }
 })

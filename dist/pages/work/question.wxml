@@ -1,0 +1,16 @@
+<view class="body">
+  <view class="item" wx:for="{{dataList}}" wx:key="{{index}}" data-index="{{index}}" bindtap="showQr">
+    <view>{{item.Name}}</view>
+    <image src="/assets/icon/ewm.svg"></image>
+  </view>
+  <llbox id='myLlbox'></llbox>
+</view>
+<modal-box modal-show="{{modalShow}}" bindclose="modalClose">
+  <view class="modal-box">
+    <view class="modal-qr">
+      <image src="/assets/icon/jzz.svg"></image>
+      <canvas class='canvas' wx:if="{{modalShow}}" style="width:{{qrcodeWidth}}px; height:{{qrcodeWidth}}px;" canvas-id='canvas' bindlongtap='save'></canvas>
+    </view>
+    <view class="modal-title">{{modalTitle}}</view>
+  </view>
+</modal-box>

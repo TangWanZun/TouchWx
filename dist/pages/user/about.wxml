@@ -3,6 +3,6 @@
     <image src="/assets/bg/logo.jpg"></image>
   </view>
   <view class="page-name">鹏龙会员管理</view>
-  <view class="page-v">v2.0.0</view>
+  <view class="page-v">v2.1.0</view>
   <navigator class="page-btn" url="/pages/user/aboutInfo">查看更新日志</navigator>
 </view>

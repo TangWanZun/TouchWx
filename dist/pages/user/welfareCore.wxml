@@ -1,7 +1,7 @@
 <!-- 添加一个生成福利中心二维码的 -->
 <view class="header">
   <view class="picker-box">
-    <picker bindchange="bindPickerChange" value="{{cmpIndex}}" data-wxid="{{cmpList[cmpIndex].WxId}}" range-key="CmpName" range="{{cmpList}}">
+    <picker bindchange="bindPickerChange" value="{{cmpIndex}}" data-wxid="{{cmpList[cmpIndex].WxId}}" data-name="{{cmpList[cmpIndex].CmpName}}" range-key="CmpName" range="{{cmpList}}">
       <view class="picker">
         当前选择：{{cmpList[cmpIndex].CmpName}}
       </view>
@@ -10,11 +10,15 @@
   <view class="app-buttom" bindtap="showQr">生成二维码</view>
 </view>
 <!-- 二维码生成页面 -->
-<view wx:if="{{qrIsShow}}" class="qr-box" bindtap="qrTap">
-  <view class="qr">
-    <canvas class='canvas' style="width:{{qrcodeWidth}}px; height:{{qrcodeWidth}}px;" canvas-id='canvas' bindlongtap='save'></canvas>
+<modal-box modal-show="{{qrIsShow}}" bindclose="modalClose">
+  <view class="modal-box">
+    <view class="modal-qr">
+      <image src="/assets/icon/jzz.svg"></image>
+      <canvas class='canvas' wx:if="{{qrIsShow}}" style="width:{{qrcodeWidth}}px; height:{{qrcodeWidth}}px;" canvas-id='canvas' bindlongtap='save'></canvas>
+    </view>
+    <view class="modal-title">{{cmpName}}</view>
   </view>
-</view>
+</modal-box>
 <view class="carList">
   <navigator url="/pages/user/welfareCoreInfo?id={{item.Id}}" wx:for="{{dataList}}" class="card-item" wx:key="{{index}}" style="background-color:{{item.ECardColor}}">
     <view class="card-content">

@@ -1,4 +1,8 @@
-<view wx:if="{{myValue}}" class="modal-box">
-  <slot>
-  </slot>
+<view wx:if="{{myValue}}" class="modal-box" >
+  <view class="modal-bg" bindtap="close">
+  </view>
+  <view class="modal-main">
+    <slot>
+    </slot>
+  </view>
 </view>

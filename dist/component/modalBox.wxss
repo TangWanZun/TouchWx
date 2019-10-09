@@ -1,4 +1,22 @@
 /* component/modalBox.wxss */
+@keyframes modalBgShow{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+@keyframes modalMainShow{
+  0%{
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .modal-box{
   position: fixed;
   z-index: 8;
@@ -6,8 +24,20 @@
   left:0;
   width:100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.modal-bg{
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  animation: modalBgShow 0.3s;
+}
+.modal-main{
+  position: relative;
+  animation: modalMainShow 0.3s;
 }

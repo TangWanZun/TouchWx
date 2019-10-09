@@ -8,6 +8,10 @@ export const UX_MAP = {
   "CarWash":"CarWash"
 }
 /**
+ * 首页快捷入口的默认自定义组件
+ */
+export const AppsList = ["QRcode", "cmpScopeFilter"];
+/**
  * 功能应用面板信息
  */
 export const FunApps = {
@@ -57,6 +61,13 @@ export const Apps = {
     imgUrl: '/assets/app/flzx.svg',
     name: '福利中心',
     url: '/pages/user/welfareCore'
+  },
+  //问卷调查
+  "WeMinProQuestion": {
+    _show: false,
+    imgUrl: '/assets/app/wjdc.svg',
+    name: '问卷调查',
+    url: '/pages/work/question'
   }
 }
 /**

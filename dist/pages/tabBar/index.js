@@ -3,7 +3,8 @@
 // component/dialog.js
 import {
   FunApps,
-  Apps
+  Apps,
+  AppsList
 } from "../../library/sdk/UX_CONST.js";
 import {STORAGE_KEY} from "../../library/sdk/config.js"
 
@@ -28,7 +29,7 @@ Component({
     loginTop: 0,
     headerTop: 0,
     //首页快捷入口应用
-    appsList: ["QRcode", "cmpScopeFilter", "WeMinProActivitySignUp", "WeMinProReserve"],
+    appsList: AppsList,
     //全部应用
     allApps: AllApps
   },
@@ -37,7 +38,6 @@ Component({
    */
   attached() {
     let app = getApp();
-    
     //查看是否存在data缓存
     if (app.tabBarPageCache.index) {
       //独取缓存信息
@@ -91,6 +91,7 @@ Component({
     getApps() {
       //这里是获取首页的自定义应用的
       let appList = wx.getStorageSync(STORAGE_KEY.INDEX_APP);
+      // console.log(appList)
       if (appList) {
         this.setData({
           appsList: appList

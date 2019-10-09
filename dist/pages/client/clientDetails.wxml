@@ -88,11 +88,11 @@
         <image src="/assets/sweepCode/2.svg"></image>
         <view class="fun-text">预约确认</view>
       </navigator>
-      <navigator url='/pages/client/clientDetails/reservationConfirm?openId={{openId}}' class="fun-item">
+      <navigator wx:if="{{ALONE_FUN[UX_MAP.CarWash]._show}}" url='/pages/client/clientDetails/specialECard?openid={{openId}}&ecardtype={{UX_MAP.CarWash}}' class="fun-item">
         <image src="/assets/sweepCode/2.svg"></image>
         <view class="fun-text">洗车券核销</view>
       </navigator>
-      <navigator url='/pages/client/clientDetails/reservationConfirm?openId={{openId}}' class="fun-item">
+      <navigator wx:if="{{ALONE_FUN[UX_MAP.MealVoucher]._show}}" url='/pages/client/clientDetails/specialECard?openid={{openId}}&ecardtype={{UX_MAP.MealVoucher}}' class="fun-item">
         <image src="/assets/sweepCode/2.svg"></image>
         <view class="fun-text">餐券核销</view>
       </navigator>

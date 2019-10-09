@@ -1,12 +1,13 @@
 // custom-tab-bar/customApp.js
 import {
   Apps,
-  FunApps
+  FunApps,
+  AppsList
 } from "../library/sdk/UX_CONST.js"
 import { STORAGE_KEY} from "../library/sdk/config.js"
 
 
-let AllApps = Object.assign({}, FunApps, Apps);
+// let AllApps = Object.assign({}, FunApps, Apps);
 
 Page({
 
@@ -19,9 +20,9 @@ Page({
     //应用功能
     funAppList: undefined,
     //全部应用
-    allApps: AllApps,
+    allApps: undefined,
     //首页快捷入口应用
-    appsList: ["QRcode", "cmpScopeFilter", "WeMinProActivitySignUp", "WeMinProReserve"]
+    appsList: AppsList
   },
 
   /**
@@ -29,6 +30,7 @@ Page({
    */
   onLoad: function(options) {
     let appsList =  wx.getStorageSync(STORAGE_KEY.INDEX_APP);
+    // console.log(appsList)
     if(appsList){
       this.setData({
         appsList: appsList
@@ -38,7 +40,8 @@ Page({
       //获取业务应用与 应用功能
       this.setData({
         funAppList: FunApps,
-        appList: Apps
+        appList: Apps,
+        allApps: Object.assign({}, FunApps, Apps)
       })
     })
   },
@@ -51,6 +54,13 @@ Page({
       wx.showToast({
         icon: "none",
         title: '首页最多添加4个应用'
+      })
+      return
+    }
+    if (this.data.appsList.indexOf(index)>=0){
+      wx.showToast({
+        icon: "none",
+        title: '当前应用已存在'
       })
       return
     }

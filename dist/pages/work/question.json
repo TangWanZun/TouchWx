@@ -1,8 +1,8 @@
 {
-  "navigationBarTitleText": "福利中心",
   "usingComponents": {
     "llbox": "/component/llbox",
     "modal-box": "/component/modalBox"
   },
+  "navigationBarTitleText": "问卷调查",
   "enablePullDownRefresh": true
 }
