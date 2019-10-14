@@ -1,11 +1,13 @@
 // pages/user/about.js
+import { APP_V } from "../../library/sdk/config.js"
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    APP_V: APP_V
   },
 
   /**

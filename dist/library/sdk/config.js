@@ -1,3 +1,5 @@
+//当前系统版本
+export const APP_V = "2.1.1";
 //正式
 // appId wx741745d2b71d095d
 const wxid = "gh_88faf4d66bc0";

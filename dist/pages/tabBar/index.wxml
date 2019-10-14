@@ -28,7 +28,7 @@
     <navigator url="/pages/user/aboutInfo" class="page-xtgg app-shadow-3">
       <image src="/assets/icon/gg.svg"></image>
       <view>
-        系统升级：2.1.0系统上线
+        系统升级：{{APP_V}}系统上线
       </view>
     </navigator>
     <!-- 指标信息 -->

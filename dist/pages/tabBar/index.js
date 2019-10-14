@@ -6,7 +6,7 @@ import {
   Apps,
   AppsList
 } from "../../library/sdk/UX_CONST.js";
-import {STORAGE_KEY} from "../../library/sdk/config.js"
+import { STORAGE_KEY, APP_V} from "../../library/sdk/config.js"
 
 let AllApps = Object.assign({}, FunApps, Apps);
 
@@ -31,7 +31,9 @@ Component({
     //首页快捷入口应用
     appsList: AppsList,
     //全部应用
-    allApps: AllApps
+    allApps: AllApps,
+    //当前系统版本
+    APP_V: APP_V
   },
   /**
    * 在组件实例进入也买你节点树的时候的更新
