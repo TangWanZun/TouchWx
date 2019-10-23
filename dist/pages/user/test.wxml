@@ -1,0 +1,7 @@
+<button bindtap="start">启动连接</button>
+<input bindinput="input"></input>
+<button bindtap="send">发送连接</button>
+<text>
+  {{textContent}}
+</text>
+
