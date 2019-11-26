@@ -12,8 +12,8 @@
 		"checkSiteMap": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.8.3",
-	"appid": "wx741745d2b71d095d",
+	"libVersion": "2.9.3",
+	"appid": "wx334450ff9ab82891",
 	"projectname": "dist",
 	"scripts": {},
 	"simulatorType": "wechat",

@@ -56,7 +56,7 @@
     <view class="tab-app-body-item">
       <view class="tab-app-body-title">应用功能</view>
       <view class="tab-app-body-con">
-        <navigator url="{{item.url}}" class="tab-app-body-con-item" wx:for="{{funAppList}}" wx:key="{{index}}" wx:if="{{item._show}}">
+        <navigator url="{{item.url}}" class="tab-app-body-con-item" wx:for="{{funAppList}}" wx:key="index" wx:if="{{item._show}}">
           <image src="{{item.imgUrl}}"></image>
           <view>{{item.name}}</view>
         </navigator>
@@ -65,7 +65,7 @@
     <view class="tab-app-body-item">
       <view class="tab-app-body-title">业务功能</view>
       <view class="tab-app-body-con">
-        <navigator url="{{item.url}}" class="tab-app-body-con-item" wx:for="{{appList}}" wx:key="{{index}}" wx:if="{{item._show}}">
+        <navigator url="{{item.url}}" class="tab-app-body-con-item" wx:for="{{appList}}" wx:key="index" wx:if="{{item._show}}">
           <image src="{{item.imgUrl}}"></image>
           <view>{{item.name}}</view>
         </navigator>

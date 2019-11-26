@@ -17,7 +17,7 @@
     </view>
     <!-- 快捷入口 -->
     <view class="page-kjrk app-shadow-3">
-      <navigator wx:for="{{appsList}}" wx:key="{{index}}" url='{{allApps[item].url}}' class="page-kjrk-item">
+      <navigator wx:for="{{appsList}}" wx:key="index" url='{{allApps[item].url}}' class="page-kjrk-item">
         <image src="{{allApps[item].imgUrl}}"></image>
         <view>
           {{allApps[item].name}}

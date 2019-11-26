@@ -68,7 +68,14 @@ export const Apps = {
     imgUrl: '/assets/app/wjdc.svg',
     name: '问卷调查',
     url: '/pages/work/question'
-  }
+  },
+  //活动签到
+  "WeMinProActivitySignIn": {
+    _show: false,
+    imgUrl: '/assets/app/hdqd.svg',
+    name: '活动签到',
+    url: '/pages/work/question'
+  },
 }
 /**
  * 独立权限功能

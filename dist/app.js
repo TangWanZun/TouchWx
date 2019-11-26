@@ -1,6 +1,7 @@
 import $request from 'library/sdk/request.js'
 import * as $config from 'library/sdk/config.js'
 import login from 'library/sdk/login.js'
+import WebSocket from "./library/sdk/websocket.js"
 
 App({
 
@@ -19,6 +20,8 @@ App({
     // wx.$getUX = getUX;
     //挂载configUrl
     this.privateData.configUrl = $config.configUrl;
+
+    new WebSocket($config.configUrl.webSocket)
   },
   /**
    * 当小程序启动，或从后台进入前台显示，会触发 onShow
