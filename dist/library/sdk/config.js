@@ -2,13 +2,13 @@
 export const APP_V = "2.1.1";
 //正式
 // appId wx741745d2b71d095d
-// const wxid = "gh_88faf4d66bc0";
-// const host = "https://evip.rocar.net/";
-// const pehost = "https://evip.rocar.net/wxapp/#/"
+const wxid = "gh_88faf4d66bc0";
+const host = "https://evip.rocar.net/";
+const pehost = "https://evip.rocar.net/wxapp/#/"
 //测试
-const wxid = "gh_a8db42819a59";
-const host = "https://vip.sap-unis.com/wxpc/";
-const pehost = "https://vip.sap-unis.com/wxapp/#/";
+// const wxid = "gh_a8db42819a59";
+// const host = "https://vip.sap-unis.com/wxpc/";
+// const pehost = "https://vip.sap-unis.com/wxapp/#/";
 // wx334450ff9ab82891
 let configUrl = {
   wxid,
@@ -64,6 +64,7 @@ export const CMP_REGION = {
   'A02': '西区',
   'A03': '南区',
   'A04': '北区',
+  'A05': '北京'
 }
 //客户铭牌 位置
 export const NAMEPLATE = {
@@ -99,7 +100,7 @@ export const STORAGE_KEY = {
   //保存的自定义的首页应用
   INDEX_APP: "indexApp",
   //APP的权限
-  APP_UX:'appUx'
+  APP_UX: 'appUx'
 }
 
 /**
@@ -132,33 +133,33 @@ export const RESERVE_ASS_TYPE = {
 }
 //预约类型对应的分类
 export const RESERVE_MAP = {
-  'A01': ['B01','B02'],
-  'A02': ['B03', 'B04', 'B05','B06'],
-  'A03': ['B07','B08'],
-  'A04': ['B09','B10']
+  'A01': ['B01', 'B02'],
+  'A02': ['B03', 'B04', 'B05', 'B06'],
+  'A03': ['B07', 'B08'],
+  'A04': ['B09', 'B10']
 }
 
 //装饰预约的预约项目
 export const RESERVE_ZS = {
-  'C02':'贴膜' ,
-  'C03':'电气安装' ,
-  'C04':'美容' ,
-  'C05':'改装' ,
-  'C01':'其他' ,
+  'C02': '贴膜',
+  'C03': '电气安装',
+  'C04': '美容',
+  'C05': '改装',
+  'C01': '其他',
 }
 //维修预约的预约项目
 export const RESERVE_WX = {
-  'C06':'发动机' ,
-  'C07':'变速箱' ,
-  'C08':'底盘' ,
-  'C09':'电气设备' ,
-  'C01':'其他' ,
+  'C06': '发动机',
+  'C07': '变速箱',
+  'C08': '底盘',
+  'C09': '电气设备',
+  'C01': '其他',
 }
 //保养预约的预约项目
 export const RESERVE_BY = {
-  'C10':'A保' ,
-  'C11':'B保' ,
-  'C12':'保养'
+  'C10': 'A保',
+  'C11': 'B保',
+  'C12': '保养'
 }
 
 export {

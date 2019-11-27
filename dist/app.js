@@ -21,7 +21,7 @@ App({
     //挂载configUrl
     this.privateData.configUrl = $config.configUrl;
 
-    new WebSocket($config.configUrl.webSocket)
+    // new WebSocket($config.configUrl.webSocket)
   },
   /**
    * 当小程序启动，或从后台进入前台显示，会触发 onShow
