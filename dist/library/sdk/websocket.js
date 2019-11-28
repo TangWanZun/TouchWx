@@ -2,7 +2,9 @@
  * 用与接受类内部事件
  * _onReconnectFail：当重连失败的时候
  */
-export default function(url) {
+export default function(url, {
+  success
+}) {
   //当前访问的ws的url
   this.url = url;
   //当前websocket对象
@@ -58,7 +60,7 @@ export default function(url) {
   function init() {
     // 建立一个websocket连接
     ws = wx.connectSocket({
-      url: url,
+      url: url
     })
     //当ws成功连接的时候
     ws.onOpen((e) => {
@@ -91,6 +93,8 @@ export default function(url) {
     resetState()
     //启动心跳重连
     startHeartbeat();
+    //回调链接成功
+    success(e);
   }
 
   /**
@@ -138,7 +142,7 @@ export default function(url) {
       return
     }
     ws.send({
-      data:data
+      data: data
     })
   }
 
@@ -148,17 +152,16 @@ export default function(url) {
    * @param data 
    */
   function createSendObj(typeName, data) {
-    return JSON.stringify({
+    return JSON.stringify(Object.assign({
       ServiceType: typeName,
-      Data: data,
-    })
+    }, data))
   }
 
   /**
    * 创建一个接受对象并对外调用
    * 通常这个对象是用来处理本类对外相应的方法，而不是ws的相应
    */
-  function createResObj(typeName, data={}) {
+  function createResObj(typeName, data = {}) {
     wsOnmessage(this, {
       data: JSON.stringify({
         ServiceType: typeName,
@@ -235,8 +238,8 @@ export default function(url) {
    * @param typeName 
    * @param data 
    */
-  function _sendObj(typeName, data={}) {
-    send(createSendObj(typeName, data={}))
+  function _sendObj(typeName, data = {}) {
+    send(createSendObj(typeName, data))
   }
 
   /**

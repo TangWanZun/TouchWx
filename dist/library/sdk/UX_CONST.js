@@ -38,7 +38,7 @@ export const Apps = {
   "WeMinProActivitySignUp": {
     _show: false,
     imgUrl: '/assets/app/WORK_HD.svg',
-    name: '活动报名',
+    name: '会员活动',
     url: '/pages/work/workActivity'
   },
   //救援单

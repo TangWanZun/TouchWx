@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "query-box": "/component/queryBox"
+  },
+  "navigationBarTitleText": "报名信息",
+  "enablePullDownRefresh": true
+}

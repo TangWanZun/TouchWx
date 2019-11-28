@@ -12,8 +12,8 @@
 		"checkSiteMap": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.9.3",
-	"appid": "wx741745d2b71d095d",
+	"libVersion": "2.9.4",
+	"appid": "wx334450ff9ab82891",
 	"projectname": "dist",
 	"scripts": {},
 	"simulatorType": "wechat",
@@ -305,6 +305,20 @@
 					"name": "测试",
 					"pathName": "pages/user/test",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": 41,
+					"name": "活动 -  活动报名",
+					"pathName": "pages/work/workActivity/signUp",
+					"query": "id=52cff6a7c3404f3fafdd317fb3f6e9ad",
+					"scene": null
+				},
+				{
+					"id": 42,
+					"name": "活动 - 签到",
+					"pathName": "pages/work/workActivity/signIn",
+					"query": "id=aba0cd1c678f4a0986a89f85cc12f4dc",
 					"scene": null
 				}
 			]

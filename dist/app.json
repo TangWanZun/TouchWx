@@ -59,7 +59,9 @@
         "workPage/complainPage",
         "workPage/makePage",
         "workPage/activityPage",
-        "question"
+        "question",
+        "workActivity/signUp",
+        "workActivity/signIn"
       ]
     }
   ],

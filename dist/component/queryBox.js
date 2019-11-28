@@ -45,8 +45,17 @@ Component({
     bindinput(e){
       //获取input上输入内容
       this.data.inputValue = e.detail.value;
+      // this.setData({
+        // inputValue: e.detail.value
+      // })
       //将信息传递出去
       this.triggerEvent("input", { value: e.detail.value });
+    },
+    /**
+     * 点击搜索按钮的时候
+     */
+    bindconfirm(){
+      this.triggerEvent("search", { value: this.data.inputValue });
     }
   }
 })

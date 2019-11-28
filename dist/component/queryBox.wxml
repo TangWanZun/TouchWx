@@ -4,7 +4,7 @@
     <view class='query-text'>查询</view>
   </view>
   <view class='query-content query-content-input' wx:else>
-    <input focus="{{isShowInput}}" bindblur="bindblur" bindinput="bindinput"></input>
-    <view class='query-icon-in'><image src='/assets/icon/select.svg'></image></view>
+    <input focus="{{isShowInput}}" bindblur="bindblur" bindinput="bindinput" bindconfirm="bindconfirm" confirm-type="search"></input>
+    <view class='query-icon-in' bindtap="bindconfirm"><image src='/assets/icon/select.svg'></image></view>
   </view>
 </view>

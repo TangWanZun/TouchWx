@@ -1,8 +1,9 @@
 {
   "usingComponents": {
     "dialog": "/component/dialog",
-    "query-box": "/component/queryBox"
+    "query-box": "/component/queryBox",
+    "llbox": "/component/llbox"
   },
-  "navigationBarTitleText": "活动报名",
+  "navigationBarTitleText": "活动",
   "enablePullDownRefresh": true
 }

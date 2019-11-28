@@ -1,0 +1,31 @@
+<view class="body">
+  <!-- <view class="image" >
+    <image mode="widthFix" src="https://evip.rocar.net/upload/Activity/G00001/20191112170338_c912ea39157c432680fb7a55a4baba4c.jpg"></image>
+  </view> -->
+  <view class="title">
+    {{fromData.Name}}
+  </view>
+  <view class="card-list">
+    <view class="card-item">
+      <view class="card-title">报名人数</view>
+      <view class="card-number">{{dataListLength}}</view>
+    </view>
+  </view>
+  <view>
+    <query-box bindsearch="bindsearch"></query-box>
+  </view>
+  <view class="list">
+    <view class="item" wx:for="{{dataList}}" wx:key="Id" data-id="{{item.Id}}" bindtap="bindtapitem">
+      <view class="item-image">
+        <image src="{{item.Headimgurl}}"></image>
+      </view>
+      <view class="item-content">
+        <view class="item-name">{{item.CardName}}</view>
+        <view class="item-date">{{item._date}}</view>
+      </view>
+      <view class='page-item-phone' data-phone="{{item.Phone}}" catchtap='playPhone'>
+        <image src='/assets/icon/call.svg'></image>
+      </view>
+    </view>
+  </view>
+</view>

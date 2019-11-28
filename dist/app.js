@@ -1,7 +1,7 @@
 import $request from 'library/sdk/request.js'
 import * as $config from 'library/sdk/config.js'
 import login from 'library/sdk/login.js'
-import WebSocket from "./library/sdk/websocket.js"
+
 
 App({
 
