@@ -4,7 +4,8 @@ import {
   configUrl
 } from '../../../library/sdk/config.js'
 import {
-  dateParse
+  dateParse,
+  find
 } from "../../../library/sdk/util.js"
 Page({
 
@@ -15,9 +16,13 @@ Page({
     fromData: {},
     dataList: [],
     dataListLength: 0,
+    //图片地址
+    imgUrl: configUrl.imgUrl,
   },
   id: "",
   search: "",
+  //websocket
+  ws:undefined,
   /**
    *点击搜索 
    */
@@ -41,18 +46,28 @@ Page({
     let app = getApp();
     this.id = options.id
     this.getData();
-    // app.loadInfo(() => {
-    //   let ws = new WebSocket(configUrl.webSocket, {
-    //     success() {
-    //       setTimeout(() => {
-    //         //发送登录信息
-    //         ws.sendObj("LoginIn", {
-    //           Token: app.privateData.Token.split("=")[1]
-    //         });
-    //       }, 500)
-    //     }
-    //   });
-    // })
+    app.loadInfo(() => {
+      this.ws = new WebSocket(configUrl.webSocket, {
+        success:()=>{
+          //发送登录信息
+          this.ws.sendObj("LoginIn", {
+            Token: app.privateData.Token.split("=")[1],
+            WxId: configUrl.wxid
+          });
+        }
+      });
+      this.ws.registerReceiver("AcitvityCheckIn", (res) => {
+        //对数据进行处理一下
+        res.Headimgurl = res.ProfilePhoto;
+        let index = find(this.data.dataList, "Id", res.Id);
+        if (index < 0) {
+          this.setData({
+            dataList: [].concat(this.setDataList([res]), this.data.dataList),
+            dataListLength: this.data.dataListLength+1
+          })
+        }
+      })
+    })
   },
 
   /**
@@ -80,7 +95,9 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
+    if(this.ws){
+      this.ws.close();
+    }
   },
 
   /**
@@ -104,6 +121,15 @@ Page({
 
   },
   /**
+   * 对数据进行处理
+   */
+  setDataList(list) {
+    for (let item of list) {
+      item._date = dateParse(item.CreateDate)
+    }
+    return list
+  },
+  /**
    * 获取数据
    */
   getData() {
@@ -124,12 +150,9 @@ Page({
             dataListLength: res.Table1.length,
           })
         }
-        for (let item of res.Table1) {
-          item._date = dateParse(item.CreateDate)
-        }
         this.setData({
           fromData: res.Table[0],
-          dataList: res.Table1
+          dataList: this.setDataList(res.Table1)
         })
       },
       complete() {

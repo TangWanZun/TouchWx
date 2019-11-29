@@ -2,6 +2,9 @@
 import {
   dateParse
 } from "../../../library/sdk/util.js"
+import {
+  configUrl
+} from '../../../library/sdk.js'
 Page({
 
   /**
@@ -11,6 +14,8 @@ Page({
     fromData: {},
     dataList: [],
     dataListLength: 0,
+    //图片地址
+    imgUrl: configUrl.imgUrl,
   },
   id: "",
   search: "",

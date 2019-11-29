@@ -46,6 +46,28 @@ export const arrToTree =  function ({
 }
 
 /**
+ * 获取周信息
+*/
+export const getWeek = function(week) {
+  switch (week) {
+    case 1:
+      return '周一';
+    case 2:
+      return '周二';
+    case 3:
+      return '周三';
+    case 4:
+      return '周四';
+    case 5:
+      return '周五';
+    case 6:
+      return '周六';
+    case 0:
+      return '周日';
+  }
+}
+
+/**
  * objArror对象数组第一个出现属性等于prname的对象索引
  */
 function find(objArror, prNamn, value) {

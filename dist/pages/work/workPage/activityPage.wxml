@@ -1,79 +1,77 @@
 <view class='page-tap' id='page-tap'>
-        <view class='page-tap-item  page-tap-item-show' data-key="A01" bindtap='tapItemSelect'>活动</view>
-        <view class='page-tap-item page-tap-item-show ' data-key="A02" bindtap='tapItemSelect'>基本</view>
-        <view class='page-tap-item page-tap-item-show' data-key="A03" bindtap='tapItemSelect'>处理</view>
+  <view class='page-tap-item page-tap-item-show ' data-key="A01" bindtap='tapItemSelect'>基本</view>
+  <view class='page-tap-item  page-tap-item-show' data-key="A02" bindtap='tapItemSelect'>报名</view>
+  <view class='page-tap-item page-tap-item-show' data-key="A03" bindtap='tapItemSelect'>处理</view>
 </view>
-<scroll-view  scroll-into-view="{{tapItemShow}}" scroll-with-animation="true" class='page-body' scroll-y="true"> 
-        <view class='page-module-box page-module-box-none'  id='A01'>
-                <view class='page-fm'>
-                        <image mode="widthFix" src='{{imgUrl}}{{formData.ThumImg}}'></image>
-                        <view class='page-fm-title'>{{formData.Title}}</view>
-                </view>
-        </view>
-        <view class='page-module-box page-module-box-top'  id='A02'>
-                <view class='page-module app-shadow-3'>
-                        <view class='page-module-title'>
-                                基本信息
-                        </view>
-                        <!-- 编号 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.Id}}">
-                                <view slot="left">编号</view>
-                        </tuiInput>
-                        <!-- 报名日期 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.CreateDate}}">
-                                <view slot="left">报名日期</view>
-                        </tuiInput>
-                        <!-- 到店时间 -->
-                        <tuiInput  disabled="{{true}}"  value="">
-                                <view slot="left">到店时间</view>
-                        </tuiInput>
-                        <!-- 客户姓名 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.CardName}}">
-                                <view slot="left">客户姓名</view>
-                        </tuiInput>
-                        <!-- 客户性别-->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.Sex}}">
-                                <view slot="left">客户性别</view>
-                        </tuiInput>
-                        <!-- 手机号 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.Phone}}">
-                                <view slot="left">手机号</view>
-                        </tuiInput>
-                        <!-- 会员编号 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.UsedVipCode}}">
-                                <view slot="left">会员编号</view>
-                        </tuiInput>
-                        <!-- 参加人数 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.SignUpQty}}">
-                                <view slot="left">成人人数</view>
-                        </tuiInput>
-                        <!-- 参加人数 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.Children}}">
-                                <view slot="left">儿童人数</view>
-                        </tuiInput>
-                        <!-- 留言 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.SignUpNote}}">
-                                <view slot="left">留言</view>
-                        </tuiInput>
-                </view>
-        </view>
-        <view class='page-module-box'  id='A03'>
-                <view class='page-module app-shadow-3'>
-                        <view class='page-module-title'>
-                                处理意见
-                        </view>
-                        <!-- 报名处理 -->
-                        <tuiInput    type="select" data-key="formData.DocStatus" value="{{formData.DocStatus}}" range="{{docTypeRange}}" bindinput="inputSelect" >
-                                <view slot="left">报名处理</view>
-                                <image slot="right" src='/assets/icon/right.svg'></image>
-                        </tuiInput>
-                        <!-- 备注 -->
-                        <tuiInput   data-key="formData.Note"  value="{{formData.Note}}"  bindinput="inputSelect" >
-                                <view slot="left">备注</view>
-                        </tuiInput>
-                        <view class='page-button'>
-                                <button disabled='{{sendDataDisabled}}' type='primary' bindtap='submit'>提交</button>
-                        </view>
-                </view>
-        </view>
+<scroll-view scroll-into-view="{{tapItemShow}}" scroll-with-animation="true" class='page-body' scroll-y="true">
+  <view class='page-module-box page-module-box-none'>
+    <view class='page-fm'>
+      <image mode="widthFix" src='{{imgUrl}}{{formData.ThumImg}}'></image>
+      <view class='page-fm-title'>{{formData.Title}}</view>
+    </view>
+  </view>
+  <view class='page-module-box page-module-box-top' id='A01'>
+    <view class='page-module app-shadow-3'>
+      <view class='page-module-title'>
+        基本信息
+      </view>
+      <!-- 编号 -->
+      <tuiInput disabled="{{true}}" value="{{formData.Id}}">
+        <view slot="left">编号</view>
+      </tuiInput>
+      <!-- 报名日期 -->
+      <tuiInput disabled="{{true}}" value="{{formData.CreateDate}}">
+        <view slot="left">报名日期</view>
+      </tuiInput>
+      <!-- 客户姓名 -->
+      <tuiInput disabled="{{true}}" value="{{formData.CardName}}">
+        <view slot="left">客户姓名</view>
+      </tuiInput>
+      <!-- 客户性别-->
+      <tuiInput disabled="{{true}}" value="{{formData.Sex}}">
+        <view slot="left">客户性别</view>
+      </tuiInput>
+      <!-- 手机号 -->
+      <tuiInput disabled="{{true}}" value="{{formData.Phone}}">
+        <view slot="left">手机号</view>
+      </tuiInput>
+      <!-- 会员编号 -->
+      <tuiInput disabled="{{true}}" value="{{formData.UsedVipCode}}">
+        <view slot="left">会员编号</view>
+      </tuiInput>
+      <!-- 留言 -->
+      <tuiInput disabled="{{true}}" value="{{formData.SignUpNote}}">
+        <view slot="left">留言</view>
+      </tuiInput>
+    </view>
+  </view>
+  <view class='page-module-box' id='A02'>
+    <view class='page-module app-shadow-3'>
+      <view class='page-module-title'>
+        报名信息
+      </view>
+      <tuiInput disabled="{{true}}"  wx:for="{{dataList}}" wx:key="AssemblyName" value="{{item.AssemblyValue}}">
+        <view slot="left">{{item.AssemblyName}}</view>
+      </tuiInput>
+    </view>
+  </view>
+  <view class='page-module-box' id='A03'>
+    <view class='page-module app-shadow-3'>
+      <view class='page-module-title'>
+        处理意见
+      </view>
+      <!-- 报名处理 -->
+      <tuiInput type="select" data-key="formData.DocStatus" value="{{formData.DocStatus}}" range="{{docTypeRange}}" bindinput="inputSelect">
+        <view slot="left">报名处理</view>
+        <image slot="right" src='/assets/icon/right.svg'></image>
+      </tuiInput>
+      <!-- 备注 -->
+      <tuiInput data-key="formData.Note" value="{{formData.Note}}" bindinput="inputSelect">
+        <view slot="left">备注</view>
+      </tuiInput>
+      <view class='page-button'>
+        <button disabled='{{sendDataDisabled}}' type='primary' bindtap='submit'>提交</button>
+      </view>
+    </view>
+  </view>
 </scroll-view>

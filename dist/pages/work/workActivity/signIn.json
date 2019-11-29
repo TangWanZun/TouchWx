@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "query-box": "/component/queryBox"
+    "query-box": "/component/queryBox",
+    "client-img": "/component/clientImg"
   },
   "navigationBarTitleText": "签到信息",
   "enablePullDownRefresh": true

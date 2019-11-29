@@ -1,28 +1,35 @@
 <dialog bindconfirm="bindconfirm" select="{{dialogSelect}}"></dialog>
 <view class='app-box'>
   <view class='page-query'>
-    <query-box  bindsearch="bindsearch"></query-box>
+    <query-box bindsearch="bindsearch"></query-box>
   </view>
   <view class='page-data-list'>
-    <view class="page-data" wx:for="{{dataList}}" wx:key="Id">
-      <image mode="aspectFill" class="page-data-img" src="{{imgUrl}}{{item.ThumImg}}"></image>
-      <view class="page-data-title">
-        {{item.Name}}
+    <view wx:for="{{dataList}}" wx:key="Id">
+      <view wx:if="{{item.dataType=='DATE'}}" class="page-data-date">
+        <view class="page-date-week">{{item.title}}</view>
+        <view class="page-date-title">{{item.date}}</view>
       </view>
-      <view class="page-data-state page-data-state-A01" wx:if="{{item._state=='A01'}}">
-        未开始
-      </view>
-      <view class="page-data-state page-data-state-A02" wx:elif="{{item._state=='A02'}}">
-        正在进行
-      </view>
-      <view class="page-data-state page-data-state-A03" wx:elif="{{item._state=='A03'}}">
-        已结束
-      </view>
-      <view class="page-data-footer">
-        <view class="page-data-btn" data-id="{{item.DocId}}" bindtap="bindSignUp">报名信息</view>
-        <view class="page-data-btn" data-id="{{item.DocId}}" bindtap="bindSignIn" wx:if="{{item.IsSignIn}}">签到信息</view>
+      <view class="page-data" wx:else>
+        <image mode="aspectFill" class="page-data-img" src="{{imgUrl}}{{item.ThumImg}}"></image>
+        <view class="page-data-title">
+          {{item.Name}}
+        </view>
+        <view class="page-data-state page-data-state-A01" wx:if="{{item._state=='A01'}}">
+          未开始
+        </view>
+        <view class="page-data-state page-data-state-A02" wx:elif="{{item._state=='A02'}}">
+          正在进行
+        </view>
+        <view class="page-data-state page-data-state-A03" wx:elif="{{item._state=='A03'}}">
+          已结束
+        </view>
+        <view class="page-data-footer">
+          <view class="page-data-btn" data-id="{{item.DocId}}" bindtap="bindSignUp">报名信息</view>
+          <view class="page-data-btn" data-id="{{item.DocId}}" bindtap="bindSignIn" wx:if="{{item.IsSignIn}}">签到信息</view>
+        </view>
       </view>
     </view>
+
     <llbox id='myLlbox'></llbox>
   </view>
 </view>

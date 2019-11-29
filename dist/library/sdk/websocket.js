@@ -77,7 +77,9 @@ export default function(url, {
     })
 
     //当ws关闭的时候
-    ws.onClose(function(e) {})
+    ws.onClose(function(e) {
+      console.log("ws关闭",e)
+    })
   }
 
   /**
@@ -348,6 +350,7 @@ export default function(url, {
     // resetState();
     if (ws) {
       ws.close();
+      // wx.closeSocket()
     }
   }
 

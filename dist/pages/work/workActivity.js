@@ -121,9 +121,7 @@ Page({
   onShareAppMessage: function() {
 
   },
-  /**
-   * 数据获取
-   */
+
   /**
    * 获取数据
    */
@@ -144,8 +142,16 @@ Page({
       success(res) {
         // console.log(res);
         let newDate = util.dateTo(res[0].CurrentDate);
-        //对数据进行处理
-        for (let item of res) {
+
+        let list = [];
+
+        for (let i = 0; i < res.length; i++) {
+          let item = res[i];
+          let timeObj = _this.dataGenerate(i == 0 ? null : res[i - 1].CreateDate, item.CreateDate);
+          if (timeObj) {
+            list.push(timeObj);
+          }
+          item.dataType = 'NEWS';
           let startDate = util.dateTo(item.StartDate);
           let endDate = util.dateTo(item.EndDate);
           if (newDate < startDate) {
@@ -159,14 +165,46 @@ Page({
             // 已经结束
             item._state = 'A03'
           }
+          list.push(item);
         }
+        
         _this.setData({
-          dataList: _this.data.dataList.concat(res)
+          dataList: _this.data.dataList.concat(list)
         })
       },
       complete(res) {
         wx.stopPullDownRefresh();
       }
     });
+  },
+  /**
+   *时间生成器,会根据两个时间间隔，来决定是否需要生成一个时间标签
+   */
+  dataGenerate(aTime, bTime) {
+
+    let bNTime = util.dateTo(bTime);
+    //需要返回的标题  默认为当前星期
+    let dateTitle = util.getWeek(bNTime.getDay());
+    //首先判断如果aTIme是否为null
+    if (aTime) {
+      //判断是否为同一天
+      let aNTime = util.dateTo(aTime);
+      if (aNTime.toDateString() == bNTime.toDateString()) {
+        //为同一天的时候,不添加
+        return false
+      }
+    } else {
+      //判断是否为今天
+      let date = new Date();
+      if (date.toDateString() == bNTime.toDateString()) {
+        dateTitle = '今天';
+      }
+    }
+    //不为同一天的时候  显示后者时间
+    return {
+      dataType: 'DATE',
+      title: dateTitle,
+      date: `${bNTime.getFullYear()}年${bNTime.getMonth() + 1}月${bNTime.getDate()}日`,
+    }
   }
 })

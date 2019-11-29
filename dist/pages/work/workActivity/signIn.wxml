@@ -10,6 +10,7 @@
       <view class="card-title">签到人数</view>
       <view class="card-number">{{dataListLength}}</view>
     </view>
+    <image class="card-item-img" mode="aspectFill" src="{{imgUrl+fromData.ThumImg}}"></image>
   </view>
   <view>
     <query-box bindsearch="bindsearch"></query-box>
@@ -17,7 +18,7 @@
   <view class="list">
     <view class="item" wx:for="{{dataList}}" wx:key="Id">
       <view class="item-image">
-        <image src="{{item.Headimgurl}}"></image>
+        <client-img root-img="{{true}}" src="{{item.Headimgurl}}"></client-img>
       </view>
       <view class="item-content">
         <view class="item-name">{{item.CardName}}</view>

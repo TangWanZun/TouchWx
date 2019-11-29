@@ -13,7 +13,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.9.4",
-	"appid": "wx334450ff9ab82891",
+	"appid": "wx741745d2b71d095d",
 	"projectname": "dist",
 	"scripts": {},
 	"simulatorType": "wechat",
@@ -135,10 +135,11 @@
 					"query": "openId=oS4HgsvcWpf3jL8ss_AO7JCShhq0&wxId=gh_40c534b93a9f"
 				},
 				{
-					"id": -1,
-					"name": "活动报名",
+					"id": 15,
+					"name": "会员活动",
 					"pathName": "pages/work/workActivity",
-					"query": "openId=oS4HgsvcWpf3jL8ss_AO7JCShhq0&wxId=gh_40c534b93a9f"
+					"query": "openId=oS4HgsvcWpf3jL8ss_AO7JCShhq0&wxId=gh_40c534b93a9f",
+					"scene": null
 				},
 				{
 					"id": -1,
@@ -179,10 +180,11 @@
 					"query": "id=9"
 				},
 				{
-					"id": 23,
+					"id": 22,
 					"name": "活动报名单页",
 					"pathName": "pages/work/workPage/activityPage",
-					"query": "id=19"
+					"query": "id=622",
+					"scene": null
 				},
 				{
 					"id": -1,
@@ -311,7 +313,7 @@
 					"id": 41,
 					"name": "活动 -  活动报名",
 					"pathName": "pages/work/workActivity/signUp",
-					"query": "id=52cff6a7c3404f3fafdd317fb3f6e9ad",
+					"query": "id=aba0cd1c678f4a0986a89f85cc12f4dc",
 					"scene": null
 				},
 				{

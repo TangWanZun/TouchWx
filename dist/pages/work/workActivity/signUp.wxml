@@ -10,6 +10,7 @@
       <view class="card-title">报名人数</view>
       <view class="card-number">{{dataListLength}}</view>
     </view>
+    <image class="card-item-img" mode="aspectFill" src="{{imgUrl+fromData.ThumImg}}"></image>
   </view>
   <view>
     <query-box bindsearch="bindsearch"></query-box>
@@ -17,10 +18,15 @@
   <view class="list">
     <view class="item" wx:for="{{dataList}}" wx:key="Id" data-id="{{item.Id}}" bindtap="bindtapitem">
       <view class="item-image">
-        <image src="{{item.Headimgurl}}"></image>
+        <client-img root-img="{{true}}" src="{{item.Headimgurl}}"></client-img>
       </view>
       <view class="item-content">
-        <view class="item-name">{{item.CardName}}</view>
+        <view class="item-name-signup">
+          <view class="item-name-tabr item-name-tabr-A00" wx:if="{{!item.DocStatus}}">未处理</view>
+          <view class="item-name-tabr item-name-tabr-A01" wx:elif="{{item.DocStatus=='A01'}}">有效</view>
+          <view class="item-name-tabr item-name-tabr-A02" wx:elif="{{item.DocStatus=='A02'}}">无效</view>
+          <view>{{item.CardName}}</view>
+        </view>
         <view class="item-date">{{item._date}}</view>
       </view>
       <view class='page-item-phone' data-phone="{{item.Phone}}" catchtap='playPhone'>
