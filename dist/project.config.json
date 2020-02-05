@@ -12,7 +12,7 @@
 		"checkSiteMap": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.9.4",
+	"libVersion": "2.10.1",
 	"appid": "wx334450ff9ab82891",
 	"projectname": "dist",
 	"scripts": {},
@@ -174,10 +174,11 @@
 					"query": "id=9"
 				},
 				{
-					"id": 22,
+					"id": 21,
 					"name": "预约单页",
 					"pathName": "pages/work/workPage/makePage",
-					"query": "id=9"
+					"query": "id=11220",
+					"scene": null
 				},
 				{
 					"id": 22,

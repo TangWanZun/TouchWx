@@ -97,7 +97,7 @@
     padding-left: 15px;
     padding-top: 85px;
     position: relative;
-    color: white;
+    /* color: white; */
 
 }
 
