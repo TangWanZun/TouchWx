@@ -1,5 +1,5 @@
 //当前系统版本
-export const APP_V = "2.2.0";
+export const APP_V = "2.2.1";
 //正式
 // appId wx741745d2b71d095d
 // const wxid = "gh_88faf4d66bc0";
@@ -114,6 +114,8 @@ export const RESERVE_TYPE = {
   'A05': '喷漆预约',
   'A06': '召回预约',
   'A07': '检测预约',
+  'A08': '其他预约',
+  'A07': '续保预约',
 }
 
 /**
@@ -129,7 +131,9 @@ export const RESERVE_ASS_TYPE = {
   'B07': '装饰',
   'B08': '代办',
   'B09': '保养',
-  'B10': '维修'
+  'B10': '维修',
+  'B11': '续保',
+  'B12': '转保',
 }
 //预约类型对应的分类
 export const RESERVE_MAP = {

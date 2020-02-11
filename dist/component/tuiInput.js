@@ -11,8 +11,9 @@ Component({
                 /**
                  * 当前input的类型
                  * 1. input 输入框(默认值)
-                 * 2. date  时间选择器()
+                 * 2. date  日期选择器()
                  * 3. select 普通选择器
+                 * 4. time 时间选择器
                  */
                 type: {
                         type: String,
@@ -44,11 +45,14 @@ Component({
                                                         break
                                                 }
                                         }
-                                } else if (this.data.type == 'date'){
+                                }else if (this.data.type == 'date'||this.data.type == 'time'){
                                         //当type为date的时候,自动将服务器时间转化为当前插件使用时间
-                                        let date =  util.dateTo(newVal);
+                                        // let date =  util.dateTo(newVal);
+                                        // this.setData({
+                                        //         dateValue: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+                                        // })
                                         this.setData({
-                                                dateValue: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+                                                dateValue: newVal
                                         })
                                 }
                         }
@@ -154,13 +158,38 @@ Component({
                  * 当type为date的时候回调参数
                  */
                 dateChange(e){
+                        // let value = e.detail.value;
+                        // //改变显示当前时间
+                        // this.setData({
+                        //         dateValue: value
+                        // })
+                        // let data = {
+                        //         value:`${value} 00:00:00.000`
+                        // }
+                        // //将信息传递出去
+                        // this.triggerEvent('input', data)
                         let value = e.detail.value;
                         //改变显示当前时间
                         this.setData({
                                 dateValue: value
                         })
                         let data = {
-                                value:`${value} 00:00.000`
+                                value:`${value}`
+                        }
+                        //将信息传递出去
+                        this.triggerEvent('input', data)
+                },
+                /**
+                 * 当type为time的时候回调参数
+                 */
+                timeChange(e){
+                        let value = e.detail.value;
+                        //改变显示当前时间
+                        this.setData({
+                                dateValue: value
+                        })
+                        let data = {
+                                value:`${value}`
                         }
                         //将信息传递出去
                         this.triggerEvent('input', data)

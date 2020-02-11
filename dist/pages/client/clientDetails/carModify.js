@@ -1,4 +1,5 @@
 // pages/client/clientDetails/carModify.js
+import {toDate} from "../../../library/sdk/util"
 Page({
 
     /**
@@ -100,6 +101,11 @@ Page({
             },
             success(res) {
                 console.log(res.Table[0])
+                let carInfo = res.Table[0];
+                carInfo.CarDate = toDate(carInfo.CarDate);
+                carInfo.MaintainDate = toDate(carInfo.MaintainDate);
+                carInfo.InsuranceDate = toDate(carInfo.InsuranceDate);
+                carInfo.AnnualReviewDate = toDate(carInfo.AnnualReviewDate);
                 _this.setData({
                     formData: res.Table[0]
                 })

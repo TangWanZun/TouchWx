@@ -164,7 +164,9 @@ Page({
             drLicImgUser: {
               orig: userData.DrLicOrigImg || '',
               thum: userData.DrLicThumImg || ''
-            }
+            },
+            //出生日器
+            "formData.BirthDate":util.toDate(userData.BirthDate)
           })
           //更改名称
           wx.setNavigationBarTitle({

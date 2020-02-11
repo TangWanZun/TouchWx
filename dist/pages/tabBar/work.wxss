@@ -264,8 +264,12 @@
 /* 救援服务 */
 
 .work-jyfw {
-    background-color: #ff7043;
+    /* background-color: #ff7043; */
     border-radius: 2px;
+}
+
+.work-jyfw .work-item {
+    background-color: #ff7043;
 }
 
 .work-jyfw view {

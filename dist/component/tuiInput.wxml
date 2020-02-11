@@ -55,5 +55,26 @@
                         </view>
                 </view>
         </picker>
+        <!-- type 为 time 类型 -->
+        <picker wx:elif="{{type=='time'}}" disabled='{{disabled}}'   mode="time"  value="{{dateValue}}"  bindchange="timeChange">
+               <view class='tuiInput' >
+                        <view class='tuiInput-header'>
+                                <view class='tuiInput-title'>
+                                        <slot name="left"></slot>
+                                </view>
+                        </view>
+                        <!-- 当前有值 -->
+                        <view class='tuiInput-value' wx:if="{{dateValue}}">
+                                {{dateValue}}
+                        </view>
+                        <!-- 当前值为空 -->
+                        <view class='tuiInput-value tuiInput-value-none' wx:else>
+                                未填写
+                        </view>
+                        <view class='tuiInput-right'>
+                                <slot name="right"></slot>
+                        </view>
+                </view>
+        </picker>
         <view class='tuiInput-minPx-top'></view>
 </view>

@@ -58,14 +58,17 @@ Page(createPage({
         needTotal: false,
       },
       success(res) {
+        console.log(res);
         let data = res[0]
         //整理数据
         //预约日期
         data.ReserveDate = toDate(data.ReserveDate)
         //创建日期
-        data.CreateDate = toDateTime(data.CreateDate)
+        // data.CreateDate = toDateTime(data.CreateDate)
         //时间段
-        data.ReserveTime = `${toTime(data.ReserveStartTime)} - ${toTime(data.ReserveEndTime)}`
+        data._reserveStartTime = toTime(data.ReserveStartTime);
+        data._reserveEndTime = toTime(data.ReserveEndTime);
+        // data.ReserveTime = `${toTime(data.ReserveStartTime)} - ${toTime(data.ReserveEndTime)}`
         _this.setData({
           formData: data
         })
@@ -82,16 +85,21 @@ Page(createPage({
       })
       let _formData = this.data.formData;
       let _this = this;
+      let data = {
+        Id: _formData.Id,
+        DocStatus: _formData.DocStatus,
+        Note: _formData.Note||"",
+        OhemId: _formData.OhemId || 0,
+        UnionGuidTemp: GUID(),
+        UnionGuid: _formData.UnionGuid,
+        ReserveDate: _formData.ReserveDate,
+        ReserveStartTime:`2020-01-01 ${_formData._reserveStartTime}:00.000`,
+        ReserveEndTime: `2020-01-01 ${_formData._reserveEndTime}:00.000`
+      }
+      // console.log(data)
       wx.$request({
         url: "/WeMinProReserve/Submit",
-        data: {
-          Id: _formData.Id,
-          DocStatus: _formData.DocStatus,
-          Note: _formData.Note,
-          OhemId: _formData.OhemId || 0,
-          UnionGuidTemp: GUID(),
-          UnionGuid: _formData.UnionGuid
-        },
+        data:data,
         success(res) {
           console.log(res);
           wx.showToast({

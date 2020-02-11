@@ -1,5 +1,6 @@
 <view class='page-tap' id='page-tap'>
         <view class='page-tap-item  page-tap-item-show' data-key="A01" bindtap='tapItemSelect'>基本</view>
+        <view class='page-tap-item page-tap-item-show' data-key="A02" bindtap='tapItemSelect'>可调整信息</view>
         <view class='page-tap-item page-tap-item-show' data-key="A03" bindtap='tapItemSelect'>处理</view>
 </view>
 <scroll-view  scroll-into-view="{{tapItemShow}}" scroll-with-animation="true" class='page-body' scroll-y="true"> 
@@ -32,14 +33,6 @@
                         <tuiInput  disabled="{{true}}"  value="{{formData.CreateDate}}">
                                 <view slot="left">创建日期</view>
                         </tuiInput>
-                        <!-- 预约日期 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.ReserveDate}}">
-                                <view slot="left">预约日期</view>
-                        </tuiInput>
-                        <!-- 时间段 -->
-                        <tuiInput  disabled="{{true}}"  value="{{formData.ReserveTime}}">
-                                <view slot="left">时间段</view>
-                        </tuiInput>
                         <!-- 预约项目-->
                         <tuiInput  disabled="{{true}}"  value="{{formData.ReserveItem}}">
                                 <view slot="left">预约项目</view>
@@ -71,6 +64,28 @@
                         <!-- 预约备注-->
                         <tuiInput  disabled="{{true}}"  value="{{formData.ReserveNote}}">
                                 <view slot="left">预约备注</view>
+                        </tuiInput>
+                </view>
+        </view>
+        <view class='page-module-box'  id='A02'>
+                <view class='page-module app-shadow-3'>
+                        <view class='page-module-title'>
+                                可调整信息
+                        </view>
+                        <!-- 预约日期 -->
+                        <tuiInput    type="date" data-key="formData.ReserveDate" value="{{formData.ReserveDate}}" bindinput="inputSelect" >
+                                <view slot="left">预约日期</view>
+                                <image slot="right" src='/assets/icon/right.svg'></image>
+                        </tuiInput>
+                        <!-- 时间起 -->
+                         <tuiInput  type="time" data-key="formData._reserveStartTime" value="{{formData._reserveStartTime}}" bindinput="inputSelect" >
+                                <view slot="left">时间起</view>
+                                <image slot="right" src='/assets/icon/right.svg'></image>
+                        </tuiInput>
+                        <!-- 时间止 -->
+                        <tuiInput  type="time"  data-key="formData._reserveEndTime"   value="{{formData._reserveEndTime}}"  bindinput="inputSelect">
+                                <view slot="left">时间止</view>
+                                <image slot="right" src='/assets/icon/right.svg'></image>
                         </tuiInput>
                 </view>
         </view>
