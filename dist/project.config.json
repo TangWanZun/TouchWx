@@ -12,8 +12,8 @@
 		"checkSiteMap": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.0",
-	"appid": "wx334450ff9ab82891",
+	"libVersion": "2.10.1",
+	"appid": "wx741745d2b71d095d",
 	"projectname": "dist",
 	"scripts": {},
 	"simulatorType": "wechat",
@@ -323,6 +323,13 @@
 					"pathName": "pages/work/workActivity/signIn",
 					"query": "id=aba0cd1c678f4a0986a89f85cc12f4dc",
 					"scene": null
+				},
+				{
+					"id": 43,
+					"name": "首页跳转测试",
+					"pathName": "custom-tab-bar/index",
+					"query": "to=WORK",
+					"scene": 1001
 				}
 			]
 		}

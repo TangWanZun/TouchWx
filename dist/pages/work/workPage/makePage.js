@@ -58,7 +58,7 @@ Page(createPage({
         needTotal: false,
       },
       success(res) {
-        console.log(res);
+        // console.log(res);
         let data = res[0]
         //整理数据
         //预约日期
@@ -113,6 +113,22 @@ Page(createPage({
           wx.hideLoading();
         }
       })
+    },
+    /**
+     * 点击拨打电话
+     */
+    openPhone(){
+      let phone = this.data.formData.Phone;
+      if(phone){
+        wx.makePhoneCall({
+          phoneNumber: phone //仅为示例，并非真实的电话号码
+        })
+      }else{
+        wx.showToast({
+          icon:"none",
+          title: '当前用户无电话号码',
+        })
+      }
     }
   }
 }))

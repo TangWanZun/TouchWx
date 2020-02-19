@@ -27,7 +27,7 @@ Page({
     //app的抽屉现在是否在出来的状态
     isAppShow: false,
     //当前加载是否已经完成
-    loadInfo:false
+    loadInfo: false
   },
   /**
    * 获取当前未读信息
@@ -47,22 +47,22 @@ Page({
             count += x.PendCount;
           }
         }
-        this.setBarBadge('MESSAGE',count);
+        this.setBarBadge('MESSAGE', count);
       }
     })
   },
   /**
    * 为底部栏按钮设置气泡数字
    */
-  setBarBadge(key,count){
+  setBarBadge(key, count) {
     this.setData({
-      [`list.${key}.badge`]:count
+      [`list.${key}.badge`]: count
     })
   },
   /**
    * 表示当信息页面中信息值发生变化的时候 
    */
-  messageBadgeChange(e){
+  messageBadgeChange(e) {
     this.setBarBadge('MESSAGE', e.detail);
   },
   // 页面跳转
@@ -125,7 +125,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     //这里会出现抢线程的问题，比如app的跳转早于这个页面
     let privateData = getApp().privateData;
     if (typeof privateData.loginInfo === 'undefined') {
@@ -134,21 +134,32 @@ Page({
     }
     let app = getApp();
     //更新底部数据
-    app.loadInfo(()=>{
-      //获取当前第一个可以显示的页面
-      for (let x in TABBAR_UX){
-        if (TABBAR_UX[x]._show){
+    app.loadInfo(() => {
+      let toTabber = options.to;
+      //判断是否要跳转到特定页面并且这个页面是否可以展示
+      if (toTabber && TABBAR_UX[toTabber]._show) {
+        if (TABBAR_UX[toTabber]._show) {
+          //展示这个页面
           this.setData({
-            selected:x
+            selected: toTabber
           })
-          break;
+        }
+      } else {
+        //获取当前第一个可以显示的页面
+        for (let x in TABBAR_UX) {
+          if (TABBAR_UX[x]._show) {
+            this.setData({
+              selected: x
+            })
+            break;
+          }
         }
       }
       //更新用户底部栏权限
       this.setData({
-        list:TABBAR_UX,
+        list: TABBAR_UX,
         //加载完成
-        loadInfo:true,
+        loadInfo: true,
       })
       //根据权限进行加载数据
       //获取未读的信息
@@ -165,42 +176,42 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
     this.selectComponent(`#${this.data.selected}`).onPullDownRefresh();
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
     if (this.data.selected == 'MESSAGE') {
       this.selectComponent(`#${this.data.selected}`).onReachBottom();
     }
@@ -209,7 +220,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

@@ -3,6 +3,7 @@
         <view class='page-tap-item page-tap-item-show' data-key="A02" bindtap='tapItemSelect'>可调整信息</view>
         <view class='page-tap-item page-tap-item-show' data-key="A03" bindtap='tapItemSelect'>处理</view>
 </view>
+
 <scroll-view  scroll-into-view="{{tapItemShow}}" scroll-with-animation="true" class='page-body' scroll-y="true"> 
         <view class='page-module-box'  id='A01'>
                 <view class='page-module app-shadow-3'>
@@ -114,3 +115,7 @@
                 </view>
         </view>
 </scroll-view>
+<view v-if="formData.Phone" class="open-phone" bindtap="openPhone">
+        <image src='/assets/icon/call.svg'></image>
+</view>
+

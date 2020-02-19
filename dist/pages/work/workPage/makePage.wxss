@@ -1,1 +1,27 @@
-@import './workPage.wxss'
+@import './workPage.wxss';
+.page-module-box:last-child{
+  padding-bottom: 80px;
+}
+/* 拨打电话 */
+.open-phone{
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  right: 15px;
+  bottom: 20px;
+  border-radius: 5px;
+  color: white;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  background-color: white;
+  /* padding: 10px 20px; */
+}
+.open-phone:active{
+  opacity: 0.8;
+}
+.open-phone>image{
+  width:50px;
+  height: 50px;
+}
