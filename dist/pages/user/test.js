@@ -5,56 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    textContent:"",
-    inpuValue:""
+
   },
-  ws:{},
-  /**
-   * input
-   */
-  input(e){
-    this.setData({
-      inpuValue: e.detail.value
-    })
-  },
-  /**
-   * 启动连接
-   */
-  start(){
-    this.sf("连接启动中...")
-    this.ws =  wx.connectSocket({
-      url: 'wss://vip.sap-unis.com/rocar2/websocket',
-      success:()=>{
-        this.sf("连接成功");
-      }
-    })
-    this.ws.onMessage((data)=>{
-      this.sf('接受数据：'+data);
-    })
-  },
-  /**
-   * 发送连接
-   */
-  send(){
-    this.ws.send({
-      data: this.data.inpuValue,
-      success:()=>{
-        this.sf("发送数据：" + this.data.inpuValue)
-      }
-    })
-  },
-  /**
-   * 赋值
-   */
-  sf(val){
-    this.setData({
-      textContent: this.data.textContent+val+" \n"
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
   },
 
   /**

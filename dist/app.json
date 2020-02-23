@@ -2,7 +2,8 @@
   "pages": [
     "custom-tab-bar/index",
     "pages/tabBar/login",
-    "custom-tab-bar/customApp"
+    "custom-tab-bar/customApp",
+    "pages/test/video/video"
   ],
   "subPackages": [
     {

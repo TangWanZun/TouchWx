@@ -1,0 +1,65 @@
+<scroll-view class="page-body" scroll-y scroll-into-view="video-{{playVideoIndex}}" scroll-with-animation>
+	<view class="page-item" wx:for="{{formData}}" wx:key="index">
+		<view class="page-item-poster" style="background-image:url({{item.poster}})" bindtap="showItem" data-index="{{index}}" id="video-{{index}}">
+			<view class="page-item-bf" wx:if="{{index !== playVideoIndex}}">
+				<image src="/assets/icon/bf2.svg"></image>
+			</view>
+			<video wx:else src="{{item.src}}" autoplay class="{{showData?'page-item-show':''}}"></video>
+		</view>
+		<view class="page-item-footer">
+			<view class="page-item-title">
+				{{ item.title }}
+			</view>
+			<image data-index="{{index}}" bindtap="showPl" src="/assets/icon/xx.svg"></image>
+			<!-- <img  src="@/assets/icon/pl.svg" class="app-filter-white" alt /> -->
+		</view>
+	</view>
+	<!-- 这个展示评论等功能弹框 -->
+	<view class="pop-box" wx:if="{{showData}}">
+		<view class="pop-box-header">
+			<view data-index="1" bindtap="showTabber" class="pop-box-header-bar {{selectTabber == 1?'pop-box-header-bar-select':''}}">
+				简介
+			</view>
+			<view data-index="2" bindtap="showTabber" class="pop-box-header-bar {{selectTabber == 2?'pop-box-header-bar-select':''}}">
+				评论
+			</view>
+			<view class="pop-box-header-close" bindtap="popBoxClose">
+				<image src="/assets/icon/close.svg"></image>
+			</view>
+		</view>
+		<!-- 内部元素 -->
+		<view class="pop-box-content">
+			<view wx:if="{{selectTabber == 1}}">
+				<view class="pop-box-title">
+					{{ showData.title }}
+				</view>
+				<view class="pop-box-title-n">
+					300次观看 · 2019-11-30 发布
+				</view>
+				<view class="pop-box-fun">
+					<view class="pop-box-like">
+						<image src="/assets/icon/xh.svg"></image>
+						喜欢
+					</view>
+					<view class="pop-box-fun-right">
+						<view class="pop-box-fun-right-item">
+							<image src="/assets/icon/fx.svg"></image>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view wx:elif="{{selectTabber == 2}}">
+				<view class="pop-box-pl-item" wx:for="{{10}}" :key="index">
+					<image class="pop-box-pl-item-hi" src="https://vip.sap-unis.com/wxpc/upload/WeChat/user_profilephoto/gh_4e97c0fa0704/oD6Vgv55oTTBuy4aUS6z90xiRGQY/0.jpg"></image>
+					<view>
+						<view class="pop-box-pl-name">用户名称</view>
+						<view class="pop-box-pl-time">2019-12-13</view>
+						<view class="pop-box-pl-text">
+							测试回复数据据，测试回复数据据
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</scroll-view>

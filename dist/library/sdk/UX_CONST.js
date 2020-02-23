@@ -10,7 +10,7 @@ export const UX_MAP = {
 /**
  * 首页快捷入口的默认自定义组件
  */
-export const AppsList = ["QRcode", "cmpScopeFilter"];
+export const AppsList = ["QRcode", "cmpScopeFilter","smellVideoTest"];
 /**
  * 功能应用面板信息
  */
@@ -29,6 +29,13 @@ export const FunApps = {
     name: '数据权限',
     url: '/pages/user/cmpScopeFilter'
   },
+  //短视频测试
+  "smellVideoTest":{
+    _show: true,
+    imgUrl: '/assets/app/dsp.svg',
+    name: '短视频',
+    url: '/pages/test/video/video'
+  }
 }
 /**
  * 业务应用面板信息
