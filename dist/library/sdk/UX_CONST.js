@@ -5,7 +5,13 @@ export const UX_MAP = {
   //独立功能-餐券
   "MealVoucher":"MealVoucher",
   //独立功能-洗车券
-  "CarWash":"CarWash"
+  "CarWash":"CarWash",
+  //用户档案-修改用户信息
+  "UserSet":"UserSet",
+  //业务卡券核销
+  "ECardWrite":"ECardWrite",
+  //预约确认
+  "MakeDete":"MakeDete"
 }
 /**
  * 首页快捷入口的默认自定义组件
@@ -87,6 +93,18 @@ export const ALONE_FUN = {
   },
   //餐券核销
   [UX_MAP.MealVoucher]: {
+    _show: false,
+  },
+  //用户档案-修改用户信息
+  [UX_MAP.UserSet]:{
+    _show:false,
+  },
+  //业务卡券核销
+  [UX_MAP.ECardWrite]: {
+    _show: false,
+  },
+  //预约确认
+  [UX_MAP.MakeDete]: {
     _show: false,
   },
 }

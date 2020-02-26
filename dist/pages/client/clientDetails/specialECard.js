@@ -38,6 +38,7 @@ Page({
    * 更新
    */
   submit() {
+    if(this.data.btnDisabled)return
     wx.showLoading({
       title: '正在核销中',
     })

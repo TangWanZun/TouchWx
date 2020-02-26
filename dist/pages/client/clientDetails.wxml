@@ -76,15 +76,15 @@
       </view>
     </view>
     <view class="content-card fun">
-      <navigator url="/pages/client/clientDetails/clientInfo?openId={{openId}}&online={{onLine}}" class="fun-item">
+      <navigator wx:if="{{ALONE_FUN[UX_MAP.UserSet]._show}}" url="/pages/client/clientDetails/clientInfo?openId={{openId}}&online={{onLine}}" class="fun-item">
         <image src="/assets/sweepCode/5.svg"></image>
         <view class="fun-text">用户档案</view>
       </navigator>
-      <navigator url='/pages/user/work/cardCustomer?openId={{openId}}' class="fun-item">
+      <navigator wx:if="{{ALONE_FUN[UX_MAP.ECardWrite]._show}}" url='/pages/user/work/cardCustomer?openId={{openId}}' class="fun-item">
         <image src="/assets/sweepCode/1.svg"></image>
         <view class="fun-text">业务卡券核销</view>
       </navigator>
-      <navigator url='/pages/client/clientDetails/reservationConfirm?openId={{openId}}' class="fun-item">
+      <navigator wx:if="{{ALONE_FUN[UX_MAP.MakeDete]._show}}" url='/pages/client/clientDetails/reservationConfirm?openId={{openId}}' class="fun-item">
         <image src="/assets/sweepCode/2.svg"></image>
         <view class="fun-text">预约确认</view>
       </navigator>
