@@ -3,20 +3,20 @@
  */
 export const UX_MAP = {
   //独立功能-餐券
-  "MealVoucher":"MealVoucher",
+  "MealVoucher": "MealVoucher",
   //独立功能-洗车券
-  "CarWash":"CarWash",
+  "CarWash": "CarWash",
   //用户档案-修改用户信息
-  "UserSet":"UserSet",
+  "UserSet": "UserSet",
   //业务卡券核销
-  "ECardWrite":"ECardWrite",
+  "ECardWrite": "ECardWrite",
   //预约确认
-  "MakeDete":"MakeDete"
+  "MakeDete": "MakeDete"
 }
 /**
  * 首页快捷入口的默认自定义组件
  */
-export const AppsList = ["QRcode", "cmpScopeFilter","smellVideoTest"];
+export const AppsList = ["QRcode", "cmpScopeFilter"];
 /**
  * 功能应用面板信息
  */
@@ -36,12 +36,12 @@ export const FunApps = {
     url: '/pages/user/cmpScopeFilter'
   },
   //短视频测试
-  "smellVideoTest":{
-    _show: true,
-    imgUrl: '/assets/app/dsp.svg',
-    name: '短视频',
-    url: '/pages/test/video/video'
-  }
+  // "smellVideoTest":{
+  //   _show: true,
+  //   imgUrl: '/assets/app/dsp.svg',
+  //   name: '短视频',
+  //   url: '/pages/test/video/video'
+  // }
 }
 /**
  * 业务应用面板信息
@@ -77,7 +77,7 @@ export const Apps = {
   },
   //问卷调查
   "WeMinProQuestion": {
-    _show: false,  
+    _show: false,
     imgUrl: '/assets/app/wjdc.svg',
     name: '问卷调查',
     url: '/pages/work/question'
@@ -88,16 +88,16 @@ export const Apps = {
  */
 export const ALONE_FUN = {
   //洗车券核销
-  [UX_MAP.CarWash]:{
-    _show:false,
+  [UX_MAP.CarWash]: {
+    _show: false,
   },
   //餐券核销
   [UX_MAP.MealVoucher]: {
     _show: false,
   },
   //用户档案-修改用户信息
-  [UX_MAP.UserSet]:{
-    _show:false,
+  [UX_MAP.UserSet]: {
+    _show: false,
   },
   //业务卡券核销
   [UX_MAP.ECardWrite]: {
@@ -173,7 +173,7 @@ export const TABBAR_UX = {
 /**
  * 当权限获取之后的生命周期
  */
-export const upDateApp = function(uxList, callBack) {
+export const upDateApp = function (uxList, callBack) {
   // console.log(uxList)
   //这里是用来 更新用户应用抽屉的权限的
   for (let x in Apps) {
@@ -185,13 +185,13 @@ export const upDateApp = function(uxList, callBack) {
   //添加一个更新用户底部栏权限信息
   //表示是代表的底部栏的权限信息
   for (let x in uxList.WeMinProTabr) {
-    if (uxList.WeMinProTabr[x]) {
+    if (TABBAR_UX[x] && uxList.WeMinProTabr[x]) {
       TABBAR_UX[x]._show = true;
     }
   }
   //更新独立功能权限信息
-  for (let x in uxList.WeMinProAloneFun){
-    if (uxList.WeMinProAloneFun[x]) {
+  for (let x in uxList.WeMinProAloneFun) {
+    if (ALONE_FUN[x] && uxList.WeMinProAloneFun[x]) {
       ALONE_FUN[x]._show = true;
     }
   }
@@ -210,17 +210,17 @@ export const UX_CONST = {
   /**
    * 最新的权限信息
    */
-  
+
 }
 /**
  * 获取权限信息
  */
-export const getUX = function(UX) {
+export const getUX = function (UX) {
   let privateData = getApp().privateData;
   return new Promise((resolve, reject) => {
     let dataList = UX.split('.');
     //等待获取运营权限
-    getApp().loadInfo(function() {
+    getApp().loadInfo(function () {
       let res = privateData.UXList;
       for (let i = 0; i < dataList.length; i++) {
         let item = res[dataList[i]];
