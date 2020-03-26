@@ -1,50 +1,52 @@
-<!-- 首页 -->
-<index-view id="INDEX" wx:if="{{selected=='INDEX'}}"></index-view>
-<!-- 工作 -->
-<work-view id="WORK" wx:elif="{{selected=='WORK'}}"></work-view>
-<!-- 消息（客户） -->
-<message-view id="MESSAGE" wx:elif="{{selected=='MESSAGE'}}" bindbadgeChange="messageBadgeChange"></message-view>
-<!-- 我的 -->
-<user-view id="USER" wx:elif="{{selected=='USER'}}"></user-view>
-<!-- 首页（无业务展示） -->
-<alone-index-view id="ALONE_INDEX" wx:elif="{{selected=='ALONE_INDEX'}}"> </alone-index-view>
-<!-- 加载loading -->
-<view wx:else class="k-line-box">
-  <view class="k-line-con">
-    <view class="k-line k-line3-1"></view>
-    <view class="k-line k-line3-2"></view>
-    <view class="k-line k-line3-3"></view>
-    <view class="k-line k-line3-4"></view>
-    <view class="k-line k-line3-5"></view>
-  </view>
+<view class="content-body">
+	<!-- 首页 -->
+	<index-view id="INDEX" wx:if="{{selected=='INDEX'}}"></index-view>
+	<!-- 工作 -->
+	<work-view id="WORK" wx:elif="{{selected=='WORK'}}"></work-view>
+	<!-- 消息（客户） -->
+	<message-view id="MESSAGE" wx:elif="{{selected=='MESSAGE'}}" bindbadgeChange="messageBadgeChange"></message-view>
+	<!-- 我的 -->
+	<user-view id="USER" wx:elif="{{selected=='USER'}}"></user-view>
+	<!-- 首页（无业务展示） -->
+	<alone-index-view id="ALONE_INDEX" wx:elif="{{selected=='ALONE_INDEX'}}"> </alone-index-view>
+	<!-- 加载loading -->
+	<view wx:else class="k-line-box">
+		<view class="k-line-con">
+			<view class="k-line k-line3-1"></view>
+			<view class="k-line k-line3-2"></view>
+			<view class="k-line k-line3-3"></view>
+			<view class="k-line k-line3-4"></view>
+			<view class="k-line k-line3-5"></view>
+		</view>
+	</view>
 </view>
 <!-- 背景色 -->
 <view class="tab-bar-bg" wx:if="{{loadInfo}}">
-  <view class="tab-bar-border"></view>
+	<view class="tab-bar-border"></view>
 </view>
 <!-- 底部栏 -->
 <view class="tab-bar" wx:if="{{loadInfo}}">
-  <view wx:for="{{list}}" wx:if="{{item._show}}" wx:key="index" class="{{item.isApp?'tab-bar-app':'tab-bar-item'}}">
-    <!-- app应用按钮 -->
-    <image bindtap="appShow" wx:if="{{item.isApp}}" src="/assets/tabBar/app.png"></image>
-    <!-- 普通按钮 -->
-    <view wx:else data-path="{{item.pagePath}}" data-index="{{index}}" bindtap="switchTab" class="tab-bar-item-bind">
-      <image src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></image>
-      <view style="color: {{selected === index ? selectedColor : color}}">{{item.text}}</view>
-      <view class="tab-bar-item-badge" wx:if="{{item.badge}}">{{item.badge}}</view>
-      <view class="tab-bar-item-bind-show">
+	<view wx:for="{{list}}" wx:if="{{item._show}}" wx:key="index" class="{{item.isApp?'tab-bar-app':'tab-bar-item'}}">
+		<!-- app应用按钮 -->
+		<image bindtap="appShow" wx:if="{{item.isApp}}" src="/assets/tabBar/app.png"></image>
+		<!-- 普通按钮 -->
+		<view wx:else data-path="{{item.pagePath}}" data-index="{{index}}" bindtap="switchTab" class="tab-bar-item-bind">
+			<image src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></image>
+			<view style="color: {{selected === index ? selectedColor : color}}">{{item.text}}</view>
+			<view class="tab-bar-item-badge" wx:if="{{item.badge}}">{{item.badge}}</view>
+			<view class="tab-bar-item-bind-show">
 
-      </view>
-    </view>
-  </view>
+			</view>
+		</view>
+	</view>
 </view>
 <!-- 全部应用列表 -->
 <view class="tab-app {{isAppShow?'tab-app-show':''}}">
-  <view class="tab-app-header" style="padding-top:{{appHeader.top}}px;">
-    <navigator url="/custom-tab-bar/customApp" class="tab-app-btn" style="height:{{appHeader.height}}px;">自定义首页应用</navigator>
-  </view>
-  <view class="tab-app-body" style="height: calc( 100% - 90px );">
-    <!-- <view class="tab-app-body-item" wx:for="{{4}}" wx:key="{{index}}">
+	<view class="tab-app-header" style="padding-top:{{appHeader.top}}px;">
+		<navigator url="/custom-tab-bar/customApp" class="tab-app-btn" style="height:{{appHeader.height}}px;">自定义首页应用</navigator>
+	</view>
+	<view class="tab-app-body" style="height: calc( 100% - 90px );">
+		<!-- <view class="tab-app-body-item" wx:for="{{4}}" wx:key="{{index}}">
       <view class="tab-app-body-title">微信数据</view>
       <view class="tab-app-body-con">
         <view class="tab-app-body-con-item" wx:for="{{10}}" wx:key="{{index}}">
@@ -53,28 +55,28 @@
         </view>
       </view>
     </view> -->
-    <view class="tab-app-body-item">
-      <view class="tab-app-body-title">应用功能</view>
-      <view class="tab-app-body-con">
-        <navigator url="{{item.url}}" class="tab-app-body-con-item" wx:for="{{funAppList}}" wx:key="index" wx:if="{{item._show}}">
-          <image src="{{item.imgUrl}}"></image>
-          <view>{{item.name}}</view>
-        </navigator>
-      </view>
-    </view>
-    <view class="tab-app-body-item">
-      <view class="tab-app-body-title">业务功能</view>
-      <view class="tab-app-body-con">
-        <navigator url="{{item.url}}" class="tab-app-body-con-item" wx:for="{{appList}}" wx:key="index" wx:if="{{item._show}}">
-          <image src="{{item.imgUrl}}"></image>
-          <view>{{item.name}}</view>
-        </navigator>
-      </view>
-    </view>
-  </view>
+		<view class="tab-app-body-item">
+			<view class="tab-app-body-title">应用功能</view>
+			<view class="tab-app-body-con">
+				<navigator url="{{item.url}}" class="tab-app-body-con-item" wx:for="{{funAppList}}" wx:key="index" wx:if="{{item._show}}">
+					<image src="{{item.imgUrl}}"></image>
+					<view>{{item.name}}</view>
+				</navigator>
+			</view>
+		</view>
+		<view class="tab-app-body-item">
+			<view class="tab-app-body-title">业务功能</view>
+			<view class="tab-app-body-con">
+				<navigator url="{{item.url}}" class="tab-app-body-con-item" wx:for="{{appList}}" wx:key="index" wx:if="{{item._show}}">
+					<image src="{{item.imgUrl}}"></image>
+					<view>{{item.name}}</view>
+				</navigator>
+			</view>
+		</view>
+	</view>
 </view>
 <!-- 关闭抽屉按钮 -->
 <view class="tab-app-close {{isAppShow?'tab-app-close-show':''}}" bindtap="closeApp">
-  <view class="tab-app-close-item tab-app-close-item-1"></view>
-  <view class="tab-app-close-item tab-app-close-item-2"></view>
+	<view class="tab-app-close-item tab-app-close-item-1"></view>
+	<view class="tab-app-close-item tab-app-close-item-2"></view>
 </view>

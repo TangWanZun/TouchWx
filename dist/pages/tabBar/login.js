@@ -88,7 +88,7 @@ Page({
     /**
      * 登陆方式切换
      */
-    loginEx: function() {
+    loginEx: function () {
         this.setData({
             accountShow: !this.data.accountShow
         })
@@ -96,12 +96,12 @@ Page({
     /**
      * 发送验证码
      */
-    sendCode: function() {
+    sendCode: function () {
         if (!this.data.codeObj.isCountDown) {
             var _this = this;
             wx.showLoading({
                 title: '正在发送验证码',
-                mask:true
+                mask: true
             })
             wx.$request({
                 url: "/WeMinProLogin/SendVerifCode",
@@ -115,7 +115,7 @@ Page({
                         title: '验证码发送成功'
                     })
                     //开启倒计时
-                    var TIME_CONST = setInterval(function() {
+                    var TIME_CONST = setInterval(function () {
                         let obj = _this.data.codeObj;
                         if (obj.NEW_TIME <= 0) {
                             //倒计时结束
@@ -163,9 +163,16 @@ Page({
      * 登陆
      * 全部信息上传
      */
-    login: function(res) {
-      // console.log(JSON.stringify(res))
-      // console.log( res)
+    login: function (res) {
+        // console.log(JSON.stringify(res))
+        if (!res.detail.encryptedData) {
+            wx.showModal({
+                title: '系统提示',
+                showCancel: false,
+                content: '本小程序为内部员工使用，为了保障正常使用小程序，请允许微信授权',
+            })
+            return;
+        }
         let logtype = res.currentTarget.dataset.logtype;
         // console.log({
         //     UserCode: logtype === "code" ? this.formData.user : "",
@@ -191,20 +198,20 @@ Page({
             },
             // UV: true,
             success(res) {
-                console.log("success", res);
+                // console.log("success", res);
                 //表示当前用户没有注册
-                if (!res.IsRegister){
-                  wx.showModal({
-                    title: "系统提示",
-                    content: "当前用户未注册",
-                    showCancel: false,
-                    // success(res) {
-                    //     if (res.confirm) {
-                    //         mepara.failCall(result.data);
-                    //     }
-                    // }
-                  })
-                  return
+                if (!res.IsRegister) {
+                    wx.showModal({
+                        title: "系统提示",
+                        content: "当前用户未注册",
+                        showCancel: false,
+                        // success(res) {
+                        //     if (res.confirm) {
+                        //         mepara.failCall(result.data);
+                        //     }
+                        // }
+                    })
+                    return
                 }
                 //将个人信息保存到内存
                 getApp().privateData.loginInfo = res;
@@ -212,9 +219,9 @@ Page({
                 // redirectTo switchTab
                 //重新获取权限数据
                 login.getUX({
-                    complete(){
+                    complete() {
                         wx.redirectTo({
-                          url: "/custom-tab-bar/index",
+                            url: "/custom-tab-bar/index",
                         })
                     }
                 })
@@ -240,55 +247,55 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
+    onLoad: function (options) {
 
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function() {
+    onReady: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {
+    onShow: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function() {
+    onHide: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function() {
+    onUnload: function () {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function() {
+    onReachBottom: function () {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function() {
+    onShareAppMessage: function () {
 
     }
 })

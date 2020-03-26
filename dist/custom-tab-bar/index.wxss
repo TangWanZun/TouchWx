@@ -1,3 +1,10 @@
+.content-body {
+  height: calc(100vh- 48px);
+  height: calc(100vh- 48px - env(safe-area-inset-bottom));
+  height: calc(100vh- 48px - constant(safe-area-inset-bottom));
+  overflow: auto;
+}
+
 /* 背景色 */
 
 .tab-bar-bg {
@@ -6,8 +13,12 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 48px;
   background: white;
+  height:48px;
+  height: calc(48px + env(safe-area-inset-bottom));
+  height: calc(48px + constant(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-bottom: constant(safe-area-inset-bottom);
 }
 
 .tab-bar-border {
@@ -30,9 +41,12 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 68px;
   display: flex;
+  height: 68px;
+  height: calc(68px + env(safe-area-inset-bottom));
+  height: calc(68px + constant(safe-area-inset-bottom));
   padding-bottom: env(safe-area-inset-bottom);
+  padding-bottom: constant(safe-area-inset-bottom);
 }
 
 .tab-bar-item {
@@ -50,6 +64,10 @@
   overflow: hidden;
   position: relative;
   padding-top: 4px;
+  /* height: calc(47px +  env(safe-area-inset-bottom));
+  height: calc(47px +  constant(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-bottom: constant(safe-area-inset-bottom); */
 }
 
 /* 红点 */
@@ -81,7 +99,7 @@
   transition: 0.3s;
 }
 
-.tab-bar-item-bind:active > .tab-bar-item-bind-show {
+.tab-bar-item-bind:active>.tab-bar-item-bind-show {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -204,12 +222,14 @@
   z-index: 10;
   left: 50%;
   bottom: 15px;
+  bottom: calc(15px + env(safe-area-inset-bottom));
+  bottom: calc(15px + constant(safe-area-inset-bottom));
   margin-left: -26px;
   width: 52px;
   height: 52px;
   background-color: #2f63f4;
   border-radius: 100%;
-  transform: translateY(80px);
+  transform: translateY(150px);
   transition: 0.2s transform;
 }
 
@@ -242,16 +262,16 @@
 }
 
 /* 正在加载的loading */
-.k-line-box{
+.k-line-box {
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.k-line-con{
 
-}
+.k-line-con {}
+
 @keyframes k-loadingA {
   0% {
     height: 15px;
@@ -271,7 +291,7 @@
   width: 10px;
   height: 15px;
   border-radius: 15px;
-  margin:0 5px;
+  margin: 0 5px;
 }
 
 .k-line3-1 {

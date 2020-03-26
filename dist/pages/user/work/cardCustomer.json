@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "会员消费",
+  "navigationBarTitleText": "业务卡券核销",
   "navigationBarBackgroundColor": "#f9faf7",
   "usingComponents": {
     "llbox": "/component/llbox",

@@ -88,7 +88,7 @@ module.exports.fun = isEcardShow;
                                 <image src='/assets/icon/dzq.svg'></image>
                                 <span>暂无电子券</span>
                         </view>
-                        <view wx:if="{{isEcardShow.fun(selectEchatType,item.L1Used)}}" class='page-Ecard  {{item.L1Used?"page-Ecard-select":""}}' data-index="{{index}}" wx:for="{{ecardList}}" wx:key="{{index}}" bindtap='selectEcard'>
+                        <view wx:if="{{isEcardShow.fun(selectEchatType,item.L1Used)}}" class='page-Ecard  {{item.L1Used?"page-Ecard-select":""}}' data-index="{{index}}" wx:for="{{ecardList}}" wx:key="index" bindtap='selectEcard'>
                                 <view class='page-Ecard-left'>
                                         <view class='page-Ecard-money'>
                                                 ￥{{item.L1Total}}

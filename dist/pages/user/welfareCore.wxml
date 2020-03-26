@@ -26,14 +26,15 @@
         <span>￥</span>
         {{item.Price}}
       </view>
-      <view class="card-item-center">
+      <!-- <view class="card-item-center">
         <view class="card-item-name">{{item.Name}}</view>
-      </view>
+      </view> -->
       <view class="card-item-right">
+        <view class="card-item-name">{{item.Name}}</view>
         <view class="card-item-text" wx:if="{{item.DateType=='A01'}}">有效期：{{item.ExpiredMonth}}月</view>
         <view class="card-item-text" wx:else>{{item._date}}</view>
-        <view class="card-item-btn">查看二维码</view>
-        <view class="card-item-text">使用说明</view>
+        <view class="card-item-btn">使用说明</view>
+        <!-- <view class="card-item-text">使用说明</view> -->
       </view>
     </view>
   </navigator>

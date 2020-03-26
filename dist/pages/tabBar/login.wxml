@@ -61,4 +61,7 @@
                         </view>
                 </view>
         </view>
+        <view class="page-footer">
+                注：当前小程序仅供公司内部员工使用，无法注册
+        </view>
 </view>

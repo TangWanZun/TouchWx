@@ -29,33 +29,36 @@
 }
 
 /* 弹框 */
-.modal-box{
-  width:80vw;
+.modal-box {
+  width: 80vw;
   background-color: white;
   border-radius: 5px;
-  padding:5vw;
+  padding: 5vw;
 }
-.modal-qr{
-  width:70vw;
+
+.modal-qr {
+  width: 70vw;
   height: 70vw;
   /* background-color: red; */
-  margin:0 auto;
+  margin: 0 auto;
   position: relative;
 }
-.modal-qr>image{
-  width:40px;
+
+.modal-qr>image {
+  width: 40px;
   height: 40px;
   margin-left: -20px;
   margin-top: -20px;
-  top:50%;
-  left:50%;
+  top: 50%;
+  left: 50%;
   position: absolute;
   animation: appListLoging 1s;
-  animation-iteration-count:infinite;
-  animation-timing-function:linear;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
   opacity: 0.5;
 }
-.modal-title{
+
+.modal-title {
   margin-top: 20px;
   font-size: 15px;
   text-align: center;
@@ -70,14 +73,15 @@
 
 .carList .card-item {
   padding: 10px 12px;
-  -webkit-mask-position: center;
+  /* -webkit-mask-position: center;
   -webkit-mask-size: 100% 100%;
-  -webkit-mask-image: url(https://evip.rocar.net/wxapp/img/wxMin/ECardBox.png);
-  mask-position: center;
+  -webkit-mask-image: url(https://evip.rocar.net/wxapp/img/wxMin/ECardBox.png); */
+  /* mask-position: center;
   mask-size: 100% 100%;
-  mask-image: url(https://evip.rocar.net/wxapp/img/wxMin/ECardBox.png);
+  mask-image: url(https://evip.rocar.net/wxapp/img/wxMin/ECardBox.png); */
   background-size: 100% 100%;
   background-image: url(https://evip.rocar.net/wxapp/img/wxMin/ECard.png);
+  background-color: rgba(0, 0, 0, 0.4);
   margin-bottom: 15px;
   display: block;
   color: black;
@@ -102,22 +106,21 @@
   font-size: 10vw;
   display: flex;
   align-items: center;
-  flex-grow: 1;
-  width: 0;
+  flex-shrink: 0;
   margin-right: 10px;
 }
 
-.carList .card-item .card-content .card-item-left > span {
+.carList .card-item .card-content .card-item-left>span {
   font-size: 20px;
 }
 
-.carList .card-item .card-content .card-item-center {
+/* .carList .card-item .card-content .card-item-center {
   flex-shrink: 0;
   display: flex;
   align-items: center;
-}
+} */
 
-.carList .card-item .card-content .card-item-center .card-item-name {
+/* .carList .card-item .card-content .card-item-center .card-item-name {
   font-size: 13px;
   width: 40px;
   text-align: center;
@@ -129,10 +132,10 @@
   -webkit-line-clamp: 3;
   overflow: hidden;
   text-overflow: ellipsis;
-}
+} */
 
 .carList .card-item .card-content .card-item-right {
-  flex-shrink: 0;
+  flex-grow: 1;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -140,6 +143,18 @@
   padding: 10px 0;
   padding-right: 13px;
   padding-top: 20px;
+}
+
+.carList .card-item .card-content .card-item-name {
+  font-size: 13px;
+  text-align: right;
+  color: white;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .carList .card-item .card-content .card-item-right .card-item-text {

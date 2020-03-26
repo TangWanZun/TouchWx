@@ -41,7 +41,27 @@ Page({
       },
       {
         Code: 'A03',
-        Name: '其他'
+        Name: '配件'
+      },
+      {
+        Code: 'A04',
+        Name: '精品'
+      },
+      {
+        Code: 'A05',
+        Name: '保险'
+      },
+      {
+        Code: 'A06',
+        Name: '洗车'
+      },
+      {
+        Code: 'A07',
+        Name: '用餐'
+      },
+      {
+        Code: 'A08',
+        Name: '购车'
       },
     ],
     //当前用户数据
@@ -101,7 +121,7 @@ Page({
     this.setData({
       [key]: value
     })
-    console.log(this.data.formData);
+    // console.log(this.data.formData);
   },
   /**
    * 电子券类型选择
@@ -339,7 +359,7 @@ Page({
       url: "/WeMinProVip/ConsumeRelease",
       data,
       success: (res) => {
-        console.log(res)
+        // console.log(res)
         wx.showToast({
           title: '提交成功',
         })
@@ -373,7 +393,7 @@ Page({
         scanCode: options.openId
       },
       success(res) {
-        console.log(res)
+        // console.log(res)
         let rangeList = res.VipCard;
         //这里需要处理一下数据,将数据整理成Code Name类型的
         for (let x of rangeList) {

@@ -9,8 +9,8 @@
       <view>优惠券</view>
     </view>
     <view class="card-content" wx:elif="{{formData.CardType=='A01'}}">
-      <span>张</span>
       1
+      <span>张</span>
       <view>优惠券</view>
     </view>
   </view>

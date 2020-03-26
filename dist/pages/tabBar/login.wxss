@@ -146,3 +146,14 @@
   top: 0;
   left: 0;
 } */
+
+.page-footer{
+  position: fixed;
+  left:0;
+  bottom: 0;
+  width: 100vw;
+  color: red;
+  font-size: 12px;
+  text-align: center;
+  padding:10px 0;
+}
