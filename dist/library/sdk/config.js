@@ -2,19 +2,33 @@
 export const APP_V = "2.2.5";
 //正式
 // appId wx741745d2b71d095d
-const wxid = "gh_88faf4d66bc0";
-const host = "https://evip.rocar.net/";
-const pehost = "https://evip.rocar.net/wxapp/#/"
+// const wxid = "gh_88faf4d66bc0";
+// const host = "https://evip.rocar.net/";
+// const pehost = "https://evip.rocar.net/wxapp/#/"
+// const imgUrl = host;
+// const url = `${host}wx/${wxid}`;
+
 //测试
 // const wxid = "gh_a8db42819a59";
 // const host = "https://vip.sap-unis.com/wxpc/";
 // const pehost = "https://vip.sap-unis.com/wxapp/#/";
+// const imgUrl = host;
+// const url = `${host}wx/${wxid}`;
 // wx334450ff9ab82891
+
+//阿里云配置 测试
+const wxid = "gh_ddf50b70c559";
+const host = "https://evip.sap-unis.com/zbgy2/weminpro/";
+const pehost = "https://evip.sap-unis.com/zbgy2/#/";
+const imgUrl = "https://evip.sap-unis.com/zbgy2/";
+const url = `${host}/${wxid}`;
+// wxa26a15e6f077f54b
+
 let configUrl = {
   wxid,
   host,
-  url: `${host}wx/${wxid}`,
-  imgUrl: `${host}`,
+  url: url,
+  imgUrl: `${imgUrl}`,
   //手机端页面位置
   peUrl: `${pehost}`,
   webSocket: `wss://vip.sap-unis.com/wxpc/websocket`

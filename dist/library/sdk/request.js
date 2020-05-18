@@ -33,6 +33,8 @@ function $request(para) {
         NRR: para.NRR || false,
         //这里将其反过来是因为,如果传入值为false,则最终结构就变成了true
         loading: (!para.loading) || false,
+        //是否显示错误信息
+        isErrorShow:typeof para.isErrorShow != "boolean"?true:para.isErrorShow,
         data: para.data || {},
         success: para.success || function() {},
         fail: para.fail || function() {},
@@ -125,7 +127,7 @@ function $request(para) {
                         } else {
                             // wx.hideLoading();
                             //正常情况下
-                            wx.showToast({
+                            mepara.isErrorShow&&wx.showToast({
                                 title: result.msg,
                                 icon: 'none',
                                 duration: 2500

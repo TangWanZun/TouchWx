@@ -194,8 +194,9 @@ Page({
                 Phone: logtype === "phone" ? this.formData.phone : "",
                 VerifCode: logtype === "phone" ? this.formData.code : "",
                 Iv: res.detail.iv,
-                EncryptedData: res.detail.encryptedData
+                EncryptedData: res.detail.encryptedData,
             },
+            isErrorShow:false,
             // UV: true,
             success(res) {
                 // console.log("success", res);

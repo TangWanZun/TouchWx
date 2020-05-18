@@ -1,7 +1,7 @@
 <!--pages/tabBar/index.wxml-->
 <view class="page-body">
   <view class="page-header" style="padding-top:{{headerTop}}px">
-    <image style="top:{{loginTop}}px;width:{{loginWidth}}px;height:{{loginHeight}}px" class="page-header-logo" mode="scaleToFill" src="/assets/bg/logo.png"></image>
+    <!-- <image style="top:{{loginTop}}px;width:{{loginWidth}}px;height:{{loginHeight}}px" class="page-header-logo" mode="scaleToFill" src="/assets/bg/logo.png"></image> -->
     <!-- <image class="page-header-logo" mode="scaleToFill" src="/assets/bg/logo.png"></image> -->
   </view>
   <!-- 主要内容 -->
